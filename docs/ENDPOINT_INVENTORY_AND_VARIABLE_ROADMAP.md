@@ -30,9 +30,12 @@ currently publish as a validated research variable**.
 | `Votesmotion` | Vote-on-motion evidence. | Candidate future-scope inventory retained from the outset. | Unresolved; relationship to bill stages/amendments is unassessed. |
 | Petitions | Not part of the intended initial research direction. | Outside proposed initial inventory. | Not assessed. |
 
-The list above is a family-level roadmap, not the final endpoint inventory. A
-DEC-0007 decision must name exact routes, allowed parameters, and any explicit
-exclusions before capture/proxy/DB1 work can be proposed.
+The list above is a family-level roadmap, not the final approved endpoint
+inventory. The exact proposed route set, allowed parameters, and exclusions are
+now recorded in
+[`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
+DEC-0007 must approve, reject, or revise that proposal before capture/proxy/DB1
+work can be proposed.
 
 ## 3. Native access and DB1 rules
 

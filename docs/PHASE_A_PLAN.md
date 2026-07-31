@@ -28,6 +28,12 @@ This approval permits only the creation and review of:
 - [`ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md); and
 - [`ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`](ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md).
 
+The owner later authorised a narrowly bounded, metadata-only catalogue-route
+inspection under DEC-0015 to prepare the DEC-0007 proposal. Its retained
+outputs are
+[`GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md`](GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md)
+and [`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
+
 It does not permit browsing or querying a source, receiving a source response,
 accessing a VPS or database, using credentials, capturing or storing data,
 creating code or infrastructure, or selecting a source endpoint by assumption.
@@ -95,4 +101,4 @@ This planning pack is ready for owner review when:
 
 Meeting these criteria completes the planning pack, not Phase A. The next
 action is owner review of the proposed DEC-0007 endpoint inventory and variable
-roadmap.
+roadmap in `GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`.

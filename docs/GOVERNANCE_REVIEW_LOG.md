@@ -163,3 +163,19 @@ Next review due:
 | Affected work blocked | Direct endpoint requests, capture, proxy/DB1 implementation, canonical builds, and charts remain blocked pending their specific later approvals. |
 | Owner decision required | DEC-0007 and DEC-0008 before any capture/proxy/DB1 proposal. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0007
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — preparation of the DEC-0007 endpoint-inventory proposal |
+| Reviewer role | Maintainer; metadata-only route inspection authority is recorded in DEC-0015 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `PHASE_A_PLAN.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`, `GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md`, `GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`, and this log |
+| Active phase and authorising decision | Phase A endpoint-inventory specification; DEC-0012, DEC-0014, and DEC-0015 |
+| Checks performed | The proposal names a selected route set, parameter forms, direct-native/DB1 status, exclusions, and variable-roadmap limits. Catalogue observations are separated from owner requirements and unresolved field/linkage questions. No listed API endpoint was opened or called; no source payload, capture, proxy/DB1 implementation, code, database/VPS activity, or public claim occurred. |
+| Findings | The route inventory is ready for owner review as DEC-0007. Route listing is not treated as field or relationship evidence; a later source/capture assessment is still required before implementation or variable specification. |
+| Outcome | `PASS` for the documentation-only DEC-0007 proposal-preparation scope. |
+| Affected work blocked | Any source endpoint request, capture, proxy/DB1 work, canonical variable build, chart, or public data claim remains blocked. |
+| Owner decision required | DEC-0007, then DEC-0008 and a separate capture/proxy/DB1 proposal before any source request or implementation. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
