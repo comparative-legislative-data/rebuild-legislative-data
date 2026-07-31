@@ -88,8 +88,12 @@ DEC-0008 approved the retention, publication, and personal-data policy in
 [`RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md),
 with its route-level companion
 [`SOURCE_HANDLING_RECORD_TEMPLATE.md`](SOURCE_HANDLING_RECORD_TEMPLATE.md).
-The next gate is a separate bounded capture/proxy/DB1 proposal. No capture or
-implementation is authorised.
+The draft for the next gate is
+[`GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`](GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md),
+with its required per-batch control record
+[`CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`](CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
+Owner approval of DEC-0018 remains required. No capture or implementation is
+authorised.
 
 ## Repository state at handover
 

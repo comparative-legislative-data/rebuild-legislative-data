@@ -243,3 +243,19 @@ Next review due:
 | Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked pending their specific later approvals. |
 | Owner decision required | A separate bounded capture/proxy/DB1 proposal before any source request or implementation. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0012
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — preparation of the capture/proxy/DB1 plan proposal |
+| Reviewer role | Maintainer; documentation-preparation authority is recorded in DEC-0017 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`, `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`, `GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`, `CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`, and this log |
+| Active phase and authorising decision | Phase A capture/proxy/DB1 planning; DEC-0017 |
+| Checks performed | The plan retains the full approved API inventory while sequencing it into evidence-gated batches. It distinguishes separately authorised source-documentation/terms inspection from source-data request authorisation, then separates restricted raw capture, native access, DB1, and later canonical variables. Per-batch request caps/rates/parameters are deliberately unresolved until source evidence and owner approval exist. No external request, capture, storage, code, infrastructure, or public claim occurred. |
+| Findings | DEC-0018 and its batch authorisation template are ready for owner review. The plan does not grant external or implementation authority. |
+| Outcome | `PASS` for the capture/proxy/DB1 plan-preparation scope. |
+| Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked. |
+| Owner decision required | DEC-0018, then a G0 route-qualification package, a separately approved source-documentation/terms inspection, and a separately approved G1 batch authorisation before any source-data request. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
