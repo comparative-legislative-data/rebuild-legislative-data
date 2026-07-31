@@ -65,7 +65,7 @@ requires it. The motion, motion-answer, committee official-report, plenary
 official-report, and vote-on-motion groups should remain explicitly in future
 scope rather than be silently dropped.
 
-The next owner decision is DEC-0007: approve, reject, or revise that candidate
-slice and its success criteria. Any later direct endpoint request, including a
-minimal raw capture needed to establish fields, requires a separate approved
-capture proposal and compliance with DEC-0008.
+The next owner decision is DEC-0007: approve, reject, or revise the complete
+selected endpoint inventory and variable roadmap. Any later direct endpoint
+request, including a minimal raw capture needed to establish fields, requires a
+separate approved capture/proxy/DB1 proposal and compliance with DEC-0008.

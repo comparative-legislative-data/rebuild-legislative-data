@@ -81,8 +81,9 @@ catalogue inspection under `DEC-0013`, defined in
 [`RECONNAISSANCE_AUTHORIZATION_DEC0013.md`](RECONNAISSANCE_AUTHORIZATION_DEC0013.md).
 The DEC-0013 catalogue assessment is recorded in
 [`GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`](GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md).
-DEC-0007 will consider the first GB-SCT source slice from that assessment. No
-capture or implementation is authorised.
+DEC-0007 will consider the complete selected endpoint inventory, DB1/native
+access status, and variable roadmap from that assessment. No capture or
+implementation is authorised.
 
 ## Repository state at handover
 

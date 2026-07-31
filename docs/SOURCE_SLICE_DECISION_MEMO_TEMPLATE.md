@@ -1,14 +1,13 @@
-# Source-Slice Decision Memo Template
+# Source-Slice Decision Memo Template — Superseded
 
-**Status:** Planning template — no candidate or source has been approved
+**Status:** Superseded by `ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`
 
 **Version:** 0.1.0
 **Last updated:** 31 July 2026
 
-Use this template to submit DEC-0007 after a separately approved source
-reconnaissance action. Complete every field with evidence or an explicit
-unresolved state. A completed memo is a proposal for owner approval, not an
-authorisation to capture, ingest, or publish data.
+This retained historical template used the earlier narrow-slice framing. Use
+[`ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`](ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md)
+for DEC-0007 under the approved endpoint-inventory model.
 
 ## Decision record
 

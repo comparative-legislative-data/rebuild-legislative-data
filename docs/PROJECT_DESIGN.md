@@ -2,7 +2,7 @@
 
 **Status:** Approved governing baseline (DEC-0006)
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Last updated:** 31 July 2026
 
 ## 1. Purpose and commitment
@@ -198,6 +198,12 @@ Public status badges are generated from verification artefacts, never hard-coded
 
 APIs are read-only and expose a declared dataset version. They do not query mutable data without returning a release/build identifier. Downloads are generated from the same versioned build as their API and must include a manifest and checksum.
 
+A native-access proxy is capture-backed, versioned, and explicit about the
+source route and supported query contract. It is not described as a live
+pass-through or a full upstream mirror unless that narrower claim has its own
+evidence. An operational database projection is likewise a DB1 projection with
+record-to-capture lineage, not a 1:1 mirror by default.
+
 An API must not promise OData compatibility unless the supported grammar and semantics are tested and documented. It is preferable to offer a smaller, explicit query contract than an incomplete implementation presented as OData.
 
 ### 6.2 Database-first analysis
@@ -250,23 +256,28 @@ The Scottish Parliament is a pilot for the process, not evidence that the proces
 
 - Record only official sources that have been reviewed for authority, licence, access method, pagination, identifiers, and observed limitations.
 - Create a source registry and test fixture from an approved capture. Do not rely on an informal endpoint list or assumed field semantics.
-- Define the first narrow data slice and its acceptance criteria. The first slice should be small enough for full inspection.
+- Define and approve the complete research-relevant endpoint inventory, its
+  direct/native-access and DB1 status, and its variable roadmap. The first
+  canonical dataset remains small enough for full inspection.
 
 ### Phase B — raw capture and native access
 
-- Implement immutable capture, manifests, checksums, retry/failure reporting, and source-drift checks for the approved slice.
-- Provide a native-access API and download that identify the capture version and transparently disclose that they are source captures or projections.
+- Implement immutable capture, manifests, checksums, retry/failure reporting,
+  and source-drift checks for the approved endpoint inventory.
+- Provide a capture-backed native-access surface that identifies the capture
+  version, source route, and supported query contract.
 - Verify byte and manifest integrity before publishing any source-data availability claim.
 
 ### Phase C — operational projection
 
-- Build a typed projection only where it aids queryability.
+- Build DB1 as a typed, loss-aware operational projection of the approved
+  endpoint inventory only where it aids queryability.
 - Retain a record-to-capture lineage key and preserve unparsed source payload alongside any index where practical.
 - Reject rather than coerce values whose type or meaning is not specified; report such rejections as a testable data-quality result.
 
 ### Phase D — one canonical research dataset
 
-- Start with only variables whose source fields and meaning have been independently checked.
+- Start with only Tier 1/2 variables whose source fields and meaning have been independently checked; preserve selected deferred sources for later Tier 3+ work without presenting them as released variables.
 - Release `NATIVE_DIRECT` variables before any derived variables.
 - Add one `DERIVED_DETERMINISTIC` variable only after its temporal rule, edge cases, fixtures, and reproducibility check are approved.
 - Publish a codebook, build manifest, verification report, and equivalent downloads with the dataset.

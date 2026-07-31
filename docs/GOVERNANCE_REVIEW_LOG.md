@@ -147,3 +147,19 @@ Next review due:
 | Affected work blocked | Direct endpoint requests, raw capture, ingestion, implementation, and public claims remain blocked. |
 | Owner decision required | DEC-0007 on the candidate source slice and its success criteria; DEC-0008 and a separate capture proposal before source-data capture. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0006
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of endpoint-inventory delivery model |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0014 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `PHASE_A_PLAN.md`, `ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`, `ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `HANDOVER.md`, and this log |
+| Active phase and authorising decision | Phase A endpoint-inventory specification; DEC-0014 |
+| Checks performed | The model separates selected endpoint preservation, capture-backed native access, DB1 operational projection, Tier 1/2 canonical variables, and charts. The active documents preserve the prohibition on source-data capture and implementation. |
+| Findings | DEC-0007 now selects the complete endpoint inventory and variable roadmap; the first canonical dataset remains deliberately narrow. |
+| Outcome | `PASS` for the documented model revision. |
+| Affected work blocked | Direct endpoint requests, capture, proxy/DB1 implementation, canonical builds, and charts remain blocked pending their specific later approvals. |
+| Owner decision required | DEC-0007 and DEC-0008 before any capture/proxy/DB1 proposal. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |

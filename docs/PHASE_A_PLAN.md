@@ -1,4 +1,4 @@
-# Phase A Planning Pack: Source Reconnaissance and Specification
+# Phase A Planning Pack: Endpoint Inventory, Reconnaissance, and Specification
 
 **Status:** Approved for planning documentation only (DEC-0012)
 
@@ -7,10 +7,11 @@
 
 ## 1. Purpose
 
-This pack prepares an owner decision about a small, defensible first source
-slice for the Scottish Parliament (`GB-SCT`). It defines the evidence that a
-future, separately approved source-reconnaissance action must produce. It does
-not make that action, select a source, or establish any fact about a source.
+This pack prepares an owner decision about a complete, research-relevant
+endpoint inventory for the Scottish Parliament (`GB-SCT`) and a separate,
+narrow first canonical dataset. It defines the evidence that a future,
+separately approved source-reconnaissance action must produce. It does not make
+that action, select an endpoint, or establish any fact about a source.
 
 The pack implements Phase A in `PROJECT_DESIGN.md` only at the planning level.
 Actual Phase A reconnaissance begins only after the owner approves a separate,
@@ -23,7 +24,9 @@ This approval permits only the creation and review of:
 
 - this plan;
 - [`SOURCE_ASSESSMENT_PROTOCOL.md`](SOURCE_ASSESSMENT_PROTOCOL.md); and
-- [`SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md`](SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md).
+- [`SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md`](SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md);
+- [`ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md); and
+- [`ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`](ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md).
 
 It does not permit browsing or querying a source, receiving a source response,
 accessing a VPS or database, using credentials, capturing or storing data,
@@ -58,10 +61,12 @@ permit raw capture, ingestion, database work, or publication.
 ### 3.2 Source-slice decision
 
 After the approved reconnaissance activity ends, DEC-0007 can be submitted
-with a completed source-slice decision memo. It must select or reject a narrow
-slice based on the retained assessment evidence. It does not itself authorise
-raw capture: a later capture proposal must also satisfy the approved retention
-and publication policy in DEC-0008.
+with a completed endpoint-inventory decision memo. It must select or reject the
+complete research-relevant endpoint inventory, its native-access/DB1 status,
+and its Tier 1/2 versus deferred-variable roadmap. The first canonical dataset
+must still be narrow. DEC-0007 does not authorise raw capture: a later capture
+proposal must also satisfy the approved retention and publication policy in
+DEC-0008.
 
 ## 4. Assessment standard
 
@@ -89,4 +94,5 @@ This planning pack is ready for owner review when:
 - DEC-0012 and a governance-review entry record the planning-only approval.
 
 Meeting these criteria completes the planning pack, not Phase A. The next
-action is owner review of a proposed DEC-0013 bounded reconnaissance action.
+action is owner review of the proposed DEC-0007 endpoint inventory and variable
+roadmap.
