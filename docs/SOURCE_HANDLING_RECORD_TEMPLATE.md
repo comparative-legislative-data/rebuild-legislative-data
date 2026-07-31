@@ -8,7 +8,7 @@
 
 Complete one record for each proposed route or clearly bounded route group
 before it appears in a capture/proxy/DB1 proposal. This record implements the
-policy proposed in `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`; it does
+policy approved in `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`; it does
 not authorise a source request, capture, storage, or release.
 
 | Required field | Record |

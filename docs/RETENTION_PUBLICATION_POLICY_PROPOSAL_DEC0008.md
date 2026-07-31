@@ -1,25 +1,25 @@
 # Retention, Publication, and Personal-Data Policy Proposal — DEC-0008
 
-**Status:** Proposed for owner decision; no source capture, storage, or publication authorised
+**Status:** Approved retention, publication, and personal-data policy (DEC-0008); no source capture, storage, or publication authorised
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 31 July 2026
 
-**Decision requested:** DEC-0008
+**Decision:** DEC-0008, approved by the project owner on 31 July 2026
 
-## 1. Decision requested
+## 1. Approved decision
 
-Approve this policy as the minimum data-governance condition for any future
-GB-SCT capture/proxy/DB1 proposal. It establishes default handling rules and a
-per-route handling record; it does not approve any route, source request,
-retention system, data store, public endpoint, or release.
+The project owner approved this policy as the minimum data-governance condition
+for any future GB-SCT capture/proxy/DB1 proposal. It establishes default
+handling rules and a per-route handling record; it does not approve any route,
+source request, retention system, data store, public endpoint, or release.
 
 The policy aims to preserve reproducibility without treating source data as
 automatically publishable merely because it may be publicly accessible at the
 source.
 
-## 2. Proposed policy
+## 2. Approved policy
 
 ### 2.1 Default posture
 
@@ -41,10 +41,10 @@ source.
 
 ### 2.2 Retention schedule
 
-The proposed schedule distinguishes provenance evidence from source-content
+The approved schedule distinguishes provenance evidence from source-content
 copies.
 
-| Asset | Proposed default | Review / exception |
+| Asset | Approved default | Review / exception |
 | --- | --- | --- |
 | Decision records, source registry metadata, manifests, checksums, codebooks, transformation specifications, and verification reports | Retain indefinitely in the durable project record, subject to secret and personal-data exclusions. | Correct by superseding rather than silently overwriting. |
 | Raw capture bytes and associated non-secret retrieval metadata | Retain while an associated dataset or native-access version is active, then for **at least seven years** after its last public release or last research use, whichever is later. | A route-specific handling record may require a longer term. If source terms, a data-protection assessment, or a valid removal obligation require a shorter term, do not capture until the conflict is resolved or an approved exception specifies a lawful, reproducible alternative. |
@@ -52,9 +52,9 @@ copies.
 | Public canonical releases and charts | Retain as versioned releases while publicly represented, with their manifests and verification reports. | Withdrawal or correction creates a dated withdrawal/supersession record; it must not silently rewrite prior claims. |
 | Logs and access records | Retain only for the documented security, audit, and incident purpose; do not include raw payloads or secrets. | Exact duration and access controls must be defined in the later implementation proposal. |
 
-Seven years is a proposed minimum for owner review, not a claim that it is a
-universal legal requirement or appropriate for every source. The project must
-not retain material simply because a preferred period has been written down.
+Seven years is an owner-approved minimum, not a claim that it is a universal
+legal requirement or appropriate for every source. The project must not retain
+material simply because a preferred period has been written down.
 
 ### 2.3 Access classes
 
@@ -154,8 +154,8 @@ A future proposal may claim to comply with this policy only if it supplies:
 
 ## 6. Consequence of approval
 
-DEC-0008 approval would resolve the project-level retention/publication policy
-dependency. It would not authorise source requests, raw capture, DB1/proxy
+DEC-0008 approval resolves the project-level retention/publication policy
+dependency. It does not authorise source requests, raw capture, DB1/proxy
 implementation, deployment, public release, or document-source work. Those
 remain subject to a separate bounded proposal and the approved endpoint
 inventory.

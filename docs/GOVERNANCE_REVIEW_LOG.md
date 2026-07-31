@@ -227,3 +227,19 @@ Next review due:
 | Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked. |
 | Owner decision required | DEC-0008, then a separate bounded capture/proxy/DB1 proposal. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0011
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of DEC-0008 |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0008 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`, `SOURCE_HANDLING_RECORD_TEMPLATE.md`, and this log |
+| Active phase and authorising decision | Phase A retention/publication policy; DEC-0008 |
+| Checks performed | The approved policy establishes restrictive-by-default handling, the owner-approved seven-year minimum source-content retention floor, route-level handling records, and correction/restriction controls. It expressly preserves the separate approval requirement for any source request, storage implementation, public native access, or release. |
+| Findings | DEP-0002 is satisfied. The next required artefact is a separate bounded capture/proxy/DB1 proposal, including completed source assessments and route-level handling records. |
+| Outcome | `PASS` for recording the DEC-0008 approval. |
+| Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked pending their specific later approvals. |
+| Owner decision required | A separate bounded capture/proxy/DB1 proposal before any source request or implementation. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
