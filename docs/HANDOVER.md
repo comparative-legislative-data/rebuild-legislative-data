@@ -84,9 +84,12 @@ The DEC-0013 catalogue assessment is recorded in
 DEC-0007 approved the complete selected endpoint inventory and roadmap in
 [`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md),
 supported by the catalogue assessment and its route-metadata supplement.
-The next gate is DEC-0008 (retention, publication, and personal-data policy),
-followed by a separate capture/proxy/DB1 proposal. No capture or implementation
-is authorised.
+The draft for the next gate, DEC-0008, is
+[`RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md),
+with its route-level companion
+[`SOURCE_HANDLING_RECORD_TEMPLATE.md`](SOURCE_HANDLING_RECORD_TEMPLATE.md).
+Owner approval of DEC-0008 remains required, followed by a separate
+capture/proxy/DB1 proposal. No capture or implementation is authorised.
 
 ## Repository state at handover
 

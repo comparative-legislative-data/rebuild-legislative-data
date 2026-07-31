@@ -101,5 +101,6 @@ This planning pack is ready for owner review when:
 
 Meeting these criteria completes the planning pack, not Phase A. DEC-0007 has
 approved the endpoint inventory and variable roadmap in
-`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`. The next gate is DEC-0008,
-followed by a separate capture/proxy/DB1 proposal.
+`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`. The proposed DEC-0008
+policy is in `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`; owner approval
+of it is required before a separate capture/proxy/DB1 proposal.

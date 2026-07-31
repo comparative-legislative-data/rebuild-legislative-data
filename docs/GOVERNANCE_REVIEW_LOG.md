@@ -211,3 +211,19 @@ Next review due:
 | Affected work blocked | API source requests, capture, proxy/DB1 implementation, document work, canonical builds, charts, and public claims remain blocked pending their specific later approvals. |
 | Owner decision required | DEC-0008, then a separate bounded capture/proxy/DB1 proposal. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0010
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — preparation of the DEC-0008 policy proposal |
+| Reviewer role | Maintainer; documentation-preparation authority is recorded in DEC-0016 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`, `SOURCE_HANDLING_RECORD_TEMPLATE.md`, and this log |
+| Active phase and authorising decision | Phase A policy specification; DEC-0016 |
+| Checks performed | The proposal separates raw capture, DB1, provenance metadata, canonical outputs, and public native access; it applies minimisation, route-level assessment, handling classes, retention/review, and correction/restriction controls. It is explicit that the proposed seven-year retention floor is a policy choice for owner review, not a legal conclusion. No source, VPS, database, credential, storage, code, or public-release action occurred. |
+| Findings | The DEC-0008 proposal and route-level handling template are ready for owner review. Source-specific authority, terms, personal-data, and access evidence remains unresolved and is a stop condition for later work. |
+| Outcome | `PASS` for the DEC-0008 proposal-preparation scope. |
+| Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked. |
+| Owner decision required | DEC-0008, then a separate bounded capture/proxy/DB1 proposal. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
