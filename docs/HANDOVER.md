@@ -7,7 +7,7 @@
 
 This is a clean rebuild. Read these files before proposing or making any change:
 
-1. [`PROJECT_DESIGN.md`](PROJECT_DESIGN.md) — the agreed draft design and non-negotiable standards.
+1. [`PROJECT_DESIGN.md`](PROJECT_DESIGN.md) — the approved governing design and non-negotiable standards.
 2. This handover note.
 
 The project owner prioritises academic integrity, accuracy, traceability, and truthful disclosure above speed, feature delivery, appearance, or task completion. “Unknown”, “incomplete”, and “blocked” are acceptable outcomes. Unsupported claims are not.
@@ -18,7 +18,7 @@ The project owner prioritises academic integrity, accuracy, traceability, and tr
 - This repository is the sole active project repository.
 - The old project may be consulted only as a read-only reference when necessary; do not copy its data, database contents, exports, credentials, claims, or implementation into this project.
 - No VPS, database, source-data capture, infrastructure, or application implementation work has been authorised yet.
-- The first substantive artefact is the project-design document. It is a draft for the owner to review and refine.
+- The first substantive artefact is the approved project-design baseline. Future revisions require the documented change-control process.
 - The first legislature will be the Scottish Parliament (`GB-SCT`), but the project must be designed so an additional parliament cannot affect another parliament’s data, code, releases, or services.
 
 ## Methodological position
@@ -75,15 +75,10 @@ only, including a governance-enforcement amendment. The pack is defined in
 [`GOVERNANCE_REVIEW_LOG.md`](GOVERNANCE_REVIEW_LOG.md). It does not authorise
 implementation or operational work.
 
-Ask the owner to review `PROJECT_DESIGN.md` and the Phase 0 pack, especially:
-
-- the project purpose and non-goals;
-- the seven-tier definitions and validation rules;
-- the initial GB-SCT scope;
-- the operational reset and approval gates.
-
-Then incorporate only the owner’s requested revisions. Do not begin
-implementation merely because the design document or Phase 0 pack exists.
+The next owner decision is `DEC-0007`: whether to approve a bounded proposal
+for the first GB-SCT source slice and its success criteria. Do not begin Phase
+A, source work, or implementation merely because the design or Phase 0 pack is
+approved.
 
 ## Repository state at handover
 

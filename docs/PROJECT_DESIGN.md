@@ -1,7 +1,8 @@
 # Project Design: Comparative Legislative Data
 
-**Status:** Draft for approval  
-**Version:** 0.1.0  
+**Status:** Approved governing baseline (DEC-0006)
+
+**Version:** 1.0.0
 **Last updated:** 31 July 2026
 
 ## 1. Purpose and commitment

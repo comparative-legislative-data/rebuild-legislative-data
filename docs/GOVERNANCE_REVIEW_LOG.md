@@ -83,3 +83,19 @@ Next review due:
 | Affected work blocked | Any work outside Phase 0 documentation remains blocked. |
 | Owner decision required | None to publish this approved documentation amendment; separate owner approval remains required for all later phases. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0002
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of the project-design baseline |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0006 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_0_DELIVERY_PLAN.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
+| Active phase and authorising decision | Phase 0; DEC-0005 (Phase 0 documentation), DEC-0011 (governance enforcement), and DEC-0006 (approved design baseline) |
+| Checks performed | Design status, decision status, handover wording, Phase 0 exit criteria, dependency wording, and the review record were aligned. The approved design does not authorise Phase A, source work, infrastructure, or implementation. |
+| Findings | DEC-0007 remains the next owner decision. No conflict with the Phase 0 operational boundary identified. |
+| Outcome | `PASS` for the documented approval-recording scope. |
+| Affected work blocked | Phase A and all operational work remain blocked pending their specific owner approvals. |
+| Owner decision required | DEC-0007 before a first source-slice proposal can proceed. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |

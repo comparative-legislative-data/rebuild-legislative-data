@@ -82,7 +82,8 @@ Phase 0 is complete only when:
   handover; and
 - the governance-review control has a current initial entry and a next review
   deadline; and
-- the owner has been asked to review the design and Phase 0 pack.
+- the owner has approved the Phase 0 pack and the project-design baseline, with
+  those approvals recorded in the decision register.
 
 Phase 0 completion does not approve source reconnaissance, VPS inventory,
 infrastructure work, source capture, databases, or application implementation.
