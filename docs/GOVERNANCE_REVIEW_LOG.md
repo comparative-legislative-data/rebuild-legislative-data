@@ -275,3 +275,19 @@ Next review due:
 | Affected work blocked | All VPS connections, credential use, database access, data extraction, deletion, provisioning, deployment, source capture, and application implementation remain blocked. |
 | Owner decision required | DEC-0020, then an exact host-specific V0 authorisation before any VPS connection. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0014
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of DEC-0020 |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0020 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`, `VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`, and this log |
+| Active phase and authorising decision | Infrastructure/VPS control planning only; DEC-0020 |
+| Checks performed | The approved plan limits legacy DB1 treatment to redacted operational metadata, excludes content and secret reads, requires project-owned/unrelated/unresolved classification, and separates V0 authorisation, V1 inventory, V2 proposal, V3 change approval, and V4 clean rebuild. The decision does not select an environment or permit a VPS connection. |
+| Findings | The VPS-control plan is approved. RSK-0012 and DEP-0004 continue to block actual VPS access until an exact host-specific V0 record is approved; DEC-0009 remains required before any new environment is selected. |
+| Outcome | `PASS` for recording the DEC-0020 approval. |
+| Affected work blocked | All VPS connections, credential use, database access, data extraction, deletion, provisioning, deployment, source capture, and application implementation remain blocked. |
+| Owner decision required | An exact host-specific V0 authorisation before any VPS connection; later V3 authorisation before any deletion or recreation action. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |

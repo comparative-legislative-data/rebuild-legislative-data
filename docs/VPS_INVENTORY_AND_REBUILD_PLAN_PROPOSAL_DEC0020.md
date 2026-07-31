@@ -1,21 +1,21 @@
 # VPS Inventory, Isolation, and Rebuild Plan Proposal — DEC-0020
 
-**Status:** Proposed VPS-control plan; no VPS access, deletion, or provisioning authorised
+**Status:** Approved VPS-control plan; no VPS access, deletion, or provisioning authorised
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
-**Prepared:** 31 July 2026
+**Approved:** 31 July 2026
 
-**Decision requested:** DEC-0020
+**Decision:** DEC-0020
 
-## 1. Decision requested
+## 1. Approved decision
 
-Approve this as the governing plan for a future read-only inventory of the
+The project owner approved this as the governing plan for a future read-only inventory of the
 legacy VPS and, only after a separately approved exact deletion/recreation
 plan, an isolated rebuild environment for this project.
 
-Approval would authorise planning and preparation of an inventory-authorisation
-record only. It would not authorise access to any VPS, use of credentials,
+This approval authorises planning and preparation of an inventory-authorisation
+record only. It does not authorise access to any VPS, use of credentials,
 database connection, data extraction, service change, deletion, provisioning,
 deployment, or reuse of legacy material.
 
@@ -135,6 +135,6 @@ credentials, source-data content, raw capture, or unrelated-workload content.
 
 ## 9. Next decision
 
-If DEC-0020 is approved, the next action is to prepare a V0 authorisation for
-the exact VPS host and permitted read-only metadata commands. No VPS connection
-or command execution follows directly from this plan.
+The next action is to prepare a V0 authorisation for the exact VPS host and
+permitted read-only metadata commands. No VPS connection or command execution
+is authorised until that host-specific record is explicitly approved.
