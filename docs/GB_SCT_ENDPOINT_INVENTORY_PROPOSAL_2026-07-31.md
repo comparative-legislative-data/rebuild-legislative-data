@@ -39,7 +39,7 @@ pass-through or a 1:1 upstream mirror.
 | Motions, questions, answers and event structure | `/api/motionsquestionsanswersevents`; `/api/motionsquestionsanswersevents/:id`; `/api/motionsquestionsanswerseventtypes`; `/api/motionsquestionsanswerseventtypes/:id`; `/api/motionsquestionsanswerseventsubtypes`; `/api/motionsquestionsanswerseventsubtypes/:id`; `/api/motionsquestionsanswerseventlinks`; `/api/motionsquestionsanswerseventlinks?childUniqueId=:id`; `/api/motionsquestionsanswerseventlinks?mainUniqueId=:id`; `/api/motionsquestionsanswerseventlinks?parentUniqueId=:id`; `/api/motionsquestionsanswersmotions`; `/api/motionsquestionsanswersmotions/:id`; `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=consideration`; `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme`; `/api/motionsquestionsanswersquestions`; `/api/motionsquestionsanswersquestions/:id`; `/api/motionsquestionsanswersquestions?year=:year`; `/api/motionsquestionsanswerssupports`; `/api/motionsquestionsanswerssupports/:id` | Preserve the full selected structured motion/question/event context for later research, including the two explicitly documented business-motion filters. | Source-native records may become Tier 1 only at confirmed field level. No bill-related Tier 1/2 variable is proposed from this group now. | Bill-stage, financial-resolution, amendment, vote, or answer linkage; query-year semantics; no separately named `...answers` route was observed. |
 | Committee official-report contributions | `/api/Orscommitteemeeting/:id`; `/api/orscommitteemeeting?year=:year` | Preserve source contributions for future committee Stage 1/2 and amendment research. | No analytical Tier 1/2 variable is proposed. A later schema assessment may identify native contribution fields, but that does not establish their legislative meaning. | Stage 1/2 classification, bill linkage, amendment extraction, speaker/committee linkage, and document parsing are deferred Tier 3+ or unresolved. |
 | Plenary official-report contributions | `/api/orsplenarymeeting/:id`; `/api/orsplenarymeeting?year=:year` | Preserve source contributions for future Stage 1/3 debate and amendment research. | No analytical Tier 1/2 variable is proposed. | Stage 1/3 classification, bill linkage, amendment extraction, and document parsing are deferred Tier 3+ or unresolved. |
-| Votes on motions | `/api/votesmotion/:id`; `/api/votesmotion?year=:year` | Preserve source vote-on-motion records for future bill-stage, financial-resolution, and amendment-vote assessment. | No bill-stage or amendment-vote Tier 1/2 variable is proposed. Native vote fields can be considered only after field semantics are assessed. | Linking a vote to a bill, a stage, a financial resolution, or an amendment is unresolved and may require Tier 2, Tier 3, or another approved method. |
+| Votes on motions | `/api/votesmotion/:id`; `/api/votesmotion?year=:year` | Preserve source vote-on-motion records, including possible votes on amendments to motions. | No bill-stage, financial-resolution, or bill-amendment Tier 1/2 variable is proposed. Native vote fields can be considered only after field semantics are assessed. | A vote on an amendment to a motion is not a vote on an amendment to a bill. The owner reports that bill amendments do not have an API endpoint; that source-scope statement remains unverified until a later document-source assessment. Linking a vote to a bill, stage, financial resolution, or bill amendment is therefore unresolved and may require a different approved method. |
 
 ### 2.1 Documented parameter limits
 
@@ -88,7 +88,25 @@ capture/proxy/DB1 proposal must state:
 5. the DB1 projection schema, raw/unparsed payload retention, record-to-capture
    lineage, rejected-value handling, and reproducibility checks.
 
-## 5. Variable-roadmap status
+## 5. Deferred document-based programme
+
+The following material is deliberately **outside the API inventory** and will
+be considered only after the API-based capture, DB1, Tier 1/2, and chart work
+has been completed and reviewed:
+
+- bills and accompanying published documents;
+- marshalled lists of amendments to bills;
+- minutes of meetings; and
+- other bill-related documentary material identified through a later source
+  assessment.
+
+This is not a determination that any document exists for every bill or that a
+particular document establishes a particular fact. The programme requires its
+own owner-approved source inventory, retention and personal-data assessment,
+capture proposal, and Tier 3+ extraction/coding methodology. It must not be
+folded into the API work by calling document-derived material native API data.
+
+## 6. Variable-roadmap status
 
 No variable is `SPECIFIED`, `IMPLEMENTED_NOT_VALIDATED`, or released by this
 proposal. The “candidate” language above identifies research concepts that may
@@ -103,7 +121,7 @@ The report and vote families are retained deliberately even though their
 bill-related analytical use is presently `DEFERRED_TIER_3_PLUS` or
 `UNRESOLVED`. Preservation is not a shortcut around the tier requirements.
 
-## 6. Stop conditions and next gate
+## 7. Stop conditions and next gate
 
 Stop a subsequent capture/proxy/DB1 proposal for any affected route if source
 authority, licence, personal-data handling, access conditions, response shape,
@@ -112,5 +130,6 @@ unknown in a way that would affect the proposed work. Record the block rather
 than substituting an assumption.
 
 If DEC-0007 is approved, the next documentation gate is DEC-0008 together with
-a separate, bounded capture/proxy/DB1 proposal. No source request follows from
-DEC-0007 itself.
+a separate, bounded capture/proxy/DB1 proposal. After the API-based programme
+has completed, a distinct document-source proposal may be prepared. No source
+request follows from DEC-0007 itself.

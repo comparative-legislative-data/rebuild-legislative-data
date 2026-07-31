@@ -37,6 +37,21 @@ now recorded in
 DEC-0007 must approve, reject, or revise that proposal before capture/proxy/DB1
 work can be proposed.
 
+### 2.1 Deferred document corpus
+
+The API inventory does not include bill documents, accompanying documents,
+marshalled lists of bill amendments, minutes of meetings, or other
+document-based sources. These are a distinct later programme, to be considered
+after the API-based capture, DB1, Tier 1/2, and chart work has been completed
+and reviewed.
+
+The owner reports that bill amendments do not have an API endpoint. This is a
+scope constraint for the current proposal, not an independently verified source
+finding. `Votesmotion` may contain votes on amendments to **motions**; that
+must never be represented as evidence of votes on amendments to **bills**.
+Any document-based bill-amendment work requires a later source assessment and
+an approved Tier 3+ methodology.
+
 ## 3. Native access and DB1 rules
 
 The native-access surface is capture-backed and versioned. It must identify the

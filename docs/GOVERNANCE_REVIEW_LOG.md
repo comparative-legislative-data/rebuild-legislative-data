@@ -179,3 +179,19 @@ Next review due:
 | Affected work blocked | Any source endpoint request, capture, proxy/DB1 work, canonical variable build, chart, or public data claim remains blocked. |
 | Owner decision required | DEC-0007, then DEC-0008 and a separate capture/proxy/DB1 proposal before any source request or implementation. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0008
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner clarification of vote and document-source scope |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`, `GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`, and this log |
+| Active phase and authorising decision | Phase A endpoint-inventory specification; DEC-0012, DEC-0014, and proposed DEC-0007 |
+| Checks performed | The proposal now distinguishes votes on amendments to motions from any evidence concerning amendments to bills. The owner-provided statement that bill amendments lack an API endpoint is retained as an unverified scope constraint. A separate, later document-based programme is recorded without authorising document access, capture, extraction, coding, or implementation. |
+| Findings | API and document-based work remain distinct. No amendment-related variable can claim bill-amendment evidence from `Votesmotion` alone. |
+| Outcome | `PASS` for the documentation clarification. |
+| Affected work blocked | All source requests, capture, document collection/parsing, proxy/DB1 work, canonical variable build, chart, and public data claim activity remains blocked. |
+| Owner decision required | DEC-0007, then DEC-0008 and a separate capture/proxy/DB1 proposal before API work; a later separate owner decision before document-source work. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
