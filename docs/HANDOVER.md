@@ -79,10 +79,10 @@ The owner has authorised a documentation-only Phase A planning pack under
 `DEC-0012`, defined in [`PHASE_A_PLAN.md`](PHASE_A_PLAN.md), and a bounded
 catalogue inspection under `DEC-0013`, defined in
 [`RECONNAISSANCE_AUTHORIZATION_DEC0013.md`](RECONNAISSANCE_AUTHORIZATION_DEC0013.md).
-Only the activity expressly allowed by DEC-0013 may proceed. DEC-0007 will
-consider the first GB-SCT source slice only after that reconnaissance has
-produced a retained assessment record. No capture or implementation is
-authorised.
+The DEC-0013 catalogue assessment is recorded in
+[`GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`](GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md).
+DEC-0007 will consider the first GB-SCT source slice from that assessment. No
+capture or implementation is authorised.
 
 ## Repository state at handover
 

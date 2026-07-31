@@ -24,7 +24,7 @@ approved action.
 | DEC-0010 | Approve a VPS inventory and any deletion/recreation plan after a future read-only inspection. | `PROPOSED` | Project design §§9, 12; handover “How to work with the owner”. | No VPS inspection, deletion, or recreation is authorised by this entry. |
 | DEC-0011 | Adopt active governance enforcement: repository pre-flight instructions and periodic/triggered alignment reviews. | `APPROVED` | Owner approval of the Phase 0.1 governance-enforcement amendment (31 July 2026). | Create and maintain `AGENTS.md` and `GOVERNANCE_REVIEW_LOG.md`; all later work remains subject to its own explicit approval. |
 | DEC-0012 | Prepare a Phase A planning pack for future source-slice reconnaissance and specification. | `APPROVED` | Owner instruction to proceed with the planning-only scope (31 July 2026). | Create planning documents only; DEC-0007 remains proposed and no source, VPS, database, credential, capture, or implementation action is authorised. |
-| DEC-0013 | Approve a bounded GB-SCT API-catalogue reconnaissance action. | `APPROVED` | Owner approval (31 July 2026); `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`. | Inspect only the named catalogue and visible same-host documentation navigation. No direct API calls, capture, credentials, database/VPS activity, code, or publication is authorised. |
+| DEC-0013 | Approve a bounded GB-SCT API-catalogue reconnaissance action. | `APPROVED` | Owner approval (31 July 2026); `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`; `GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`. | Catalogue inspection completed within scope. No direct API calls, capture, credentials, database/VPS activity, code, or publication occurred. DEC-0007 remains required for source-slice selection. |
 
 ## Record updates
 

@@ -84,20 +84,20 @@ Next review due:
 | Owner decision required | None to publish this approved documentation amendment; separate owner approval remains required for all later phases. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
 
-### GOV-REV-0004
+### GOV-REV-0002
 
 | Field | Record |
 | --- | --- |
 | Date (UTC) | 31 July 2026 |
-| Review type | Triggered — owner approval of bounded DEC-0013 reconnaissance |
-| Reviewer role | Maintainer; owner approval is recorded in DEC-0013 |
-| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_A_PLAN.md`, `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`, `SOURCE_ASSESSMENT_PROTOCOL.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
-| Active phase and authorising decision | Phase A catalogue reconnaissance; DEC-0013 |
-| Checks performed | Target, permitted actions, working hypotheses, evidence output, and stop conditions are explicit. The authorisation excludes direct API calls, capture, credentials, database/VPS activity, code, and publication. |
-| Findings | The owner-provided endpoint priorities are recorded as candidates, not observed source facts. |
-| Outcome | `PASS` for the bounded reconnaissance scope. |
-| Affected work blocked | Any direct endpoint request, raw capture, ingestion, technical implementation, or work outside the named target remains blocked. |
-| Owner decision required | DEC-0007 after the assessment record, and a later capture proposal before any source-data capture. |
+| Review type | Triggered — owner approval of the project-design baseline |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0006 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_0_DELIVERY_PLAN.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
+| Active phase and authorising decision | Phase 0; DEC-0005 (Phase 0 documentation), DEC-0011 (governance enforcement), and DEC-0006 (approved design baseline) |
+| Checks performed | Design status, decision status, handover wording, Phase 0 exit criteria, dependency wording, and the review record were aligned. The approved design does not authorise Phase A, source work, infrastructure, or implementation. |
+| Findings | DEC-0007 remains the next owner decision. No conflict with the Phase 0 operational boundary identified. |
+| Outcome | `PASS` for the documented approval-recording scope. |
+| Affected work blocked | Phase A and all operational work remain blocked pending their specific owner approvals. |
+| Owner decision required | DEC-0007 before a first source-slice proposal can proceed. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
 
 ### GOV-REV-0003
@@ -116,18 +116,34 @@ Next review due:
 | Owner decision required | DEC-0013 before source reconnaissance; a completed DEC-0007 proposal before any capture proposal. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
 
-### GOV-REV-0002
+### GOV-REV-0004
 
 | Field | Record |
 | --- | --- |
 | Date (UTC) | 31 July 2026 |
-| Review type | Triggered — owner approval of the project-design baseline |
-| Reviewer role | Maintainer; owner approval is recorded in DEC-0006 |
-| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_0_DELIVERY_PLAN.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
-| Active phase and authorising decision | Phase 0; DEC-0005 (Phase 0 documentation), DEC-0011 (governance enforcement), and DEC-0006 (approved design baseline) |
-| Checks performed | Design status, decision status, handover wording, Phase 0 exit criteria, dependency wording, and the review record were aligned. The approved design does not authorise Phase A, source work, infrastructure, or implementation. |
-| Findings | DEC-0007 remains the next owner decision. No conflict with the Phase 0 operational boundary identified. |
-| Outcome | `PASS` for the documented approval-recording scope. |
-| Affected work blocked | Phase A and all operational work remain blocked pending their specific owner approvals. |
-| Owner decision required | DEC-0007 before a first source-slice proposal can proceed. |
+| Review type | Triggered — owner approval of bounded DEC-0013 reconnaissance |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0013 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_A_PLAN.md`, `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`, `SOURCE_ASSESSMENT_PROTOCOL.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
+| Active phase and authorising decision | Phase A catalogue reconnaissance; DEC-0013 |
+| Checks performed | Target, permitted actions, working hypotheses, evidence output, and stop conditions are explicit. The authorisation excludes direct API calls, capture, credentials, database/VPS activity, code, and publication. |
+| Findings | The owner-provided endpoint priorities are recorded as candidates, not observed source facts. |
+| Outcome | `PASS` for the bounded reconnaissance scope. |
+| Affected work blocked | Any direct endpoint request, raw capture, ingestion, technical implementation, or work outside the named target remains blocked. |
+| Owner decision required | DEC-0007 after the assessment record, and a later capture proposal before any source-data capture. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0005
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — completion of bounded DEC-0013 catalogue reconnaissance |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`, `GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`, `PHASE_A_PLAN.md`, `SOURCE_ASSESSMENT_PROTOCOL.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `HANDOVER.md`, and this log |
+| Active phase and authorising decision | Phase A catalogue reconnaissance; DEC-0013 |
+| Checks performed | The inspection was confined to the named catalogue and visible page content. No listed endpoint was opened. The assessment distinguishes observed catalogue statements, owner-provided candidates, and unresolved field/linkage/volume questions. |
+| Findings | A narrow bill-core candidate is supported for DEC-0007 review. The motion and official-report groups remain future scope; their Tier 1/2 suitability is unresolved. |
+| Outcome | `PASS` for the DEC-0013 scope. |
+| Affected work blocked | Direct endpoint requests, raw capture, ingestion, implementation, and public claims remain blocked. |
+| Owner decision required | DEC-0007 on the candidate source slice and its success criteria; DEC-0008 and a separate capture proposal before source-data capture. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
