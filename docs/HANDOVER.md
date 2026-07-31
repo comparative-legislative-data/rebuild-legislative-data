@@ -75,10 +75,13 @@ only, including a governance-enforcement amendment. The pack is defined in
 [`GOVERNANCE_REVIEW_LOG.md`](GOVERNANCE_REVIEW_LOG.md). It does not authorise
 implementation or operational work.
 
-The next owner decision is `DEC-0007`: whether to approve a bounded proposal
-for the first GB-SCT source slice and its success criteria. Do not begin Phase
-A, source work, or implementation merely because the design or Phase 0 pack is
-approved.
+The owner has authorised a documentation-only Phase A planning pack under
+`DEC-0012`. It is defined in [`PHASE_A_PLAN.md`](PHASE_A_PLAN.md). The next
+owner decision is `DEC-0013`: whether to approve a bounded source-reconnaissance
+action. DEC-0007 will consider the first GB-SCT source slice only after that
+reconnaissance has produced retained assessment evidence. Do not begin source
+reconnaissance, capture, or implementation merely because the planning pack
+exists.
 
 ## Repository state at handover
 

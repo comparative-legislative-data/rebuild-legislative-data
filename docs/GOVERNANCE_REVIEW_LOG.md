@@ -84,6 +84,22 @@ Next review due:
 | Owner decision required | None to publish this approved documentation amendment; separate owner approval remains required for all later phases. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
 
+### GOV-REV-0003
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of Phase A planning-only documentation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0012 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_A_PLAN.md`, `SOURCE_ASSESSMENT_PROTOCOL.md`, `SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
+| Active phase and authorising decision | Phase 0 governance baseline with a Phase A planning pack; DEC-0012 |
+| Checks performed | The new documents define evidence and approval requirements without naming a source or reporting source findings. Their scope excludes source access, capture, credentials, VPS/database activity, and implementation. DEC-0013 is proposed for a future bounded reconnaissance action; DEC-0007 remains proposed for a later source-slice decision. |
+| Findings | Phase A planning is authorised; operational Phase A reconnaissance is not. The decision sequence avoids requiring source-slice evidence before reconnaissance is approved. |
+| Outcome | `PASS` for the planning-only scope. |
+| Affected work blocked | All external/source and technical actions remain blocked pending separate owner approval. |
+| Owner decision required | DEC-0013 before source reconnaissance; a completed DEC-0007 proposal before any capture proposal. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
 ### GOV-REV-0002
 
 | Field | Record |
