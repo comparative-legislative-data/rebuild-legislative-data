@@ -84,6 +84,22 @@ Next review due:
 | Owner decision required | None to publish this approved documentation amendment; separate owner approval remains required for all later phases. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
 
+### GOV-REV-0004
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of bounded DEC-0013 reconnaissance |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0013 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `PHASE_A_PLAN.md`, `RECONNAISSANCE_AUTHORIZATION_DEC0013.md`, `SOURCE_ASSESSMENT_PROTOCOL.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `AGENTS.md`, and this log |
+| Active phase and authorising decision | Phase A catalogue reconnaissance; DEC-0013 |
+| Checks performed | Target, permitted actions, working hypotheses, evidence output, and stop conditions are explicit. The authorisation excludes direct API calls, capture, credentials, database/VPS activity, code, and publication. |
+| Findings | The owner-provided endpoint priorities are recorded as candidates, not observed source facts. |
+| Outcome | `PASS` for the bounded reconnaissance scope. |
+| Affected work blocked | Any direct endpoint request, raw capture, ingestion, technical implementation, or work outside the named target remains blocked. |
+| Owner decision required | DEC-0007 after the assessment record, and a later capture proposal before any source-data capture. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
 ### GOV-REV-0003
 
 | Field | Record |
