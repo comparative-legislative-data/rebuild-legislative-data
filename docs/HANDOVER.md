@@ -95,6 +95,13 @@ with its required per-batch control record
 Owner approval of DEC-0018 remains required. No capture or implementation is
 authorised.
 
+VPS control is separate from the source-data plan. The proposed VPS gate is
+[`VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`](VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md),
+with a required per-host control record in
+[`VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`](VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md).
+Owner approval of DEC-0020 remains required; no VPS connection or change is
+authorised.
+
 ## Repository state at handover
 
 - Default branch: `main`

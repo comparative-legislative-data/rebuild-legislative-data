@@ -259,3 +259,19 @@ Next review due:
 | Affected work blocked | All source requests, capture, storage, proxy/DB1 implementation, document work, canonical builds, charts, and public release remain blocked. |
 | Owner decision required | DEC-0018, then a G0 route-qualification package, a separately approved source-documentation/terms inspection, and a separately approved G1 batch authorisation before any source-data request. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0013
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — preparation of the VPS inventory/isolation plan |
+| Reviewer role | Maintainer; documentation-preparation authority is recorded in DEC-0019 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`, `VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`, and this log |
+| Active phase and authorising decision | Infrastructure/VPS planning only; DEC-0019 |
+| Checks performed | The plan treats legacy DB1 as untrusted operational metadata, not reusable source data. It requires a host-specific read-only authorisation, excludes data/secrets/content reads, classifies project-owned versus unrelated components, and makes deletion/rebuild separate owner-approved gates. It does not select a deployment environment or authorise VPS access. |
+| Findings | DEC-0020 and its V0 template are ready for owner review. DEC-0009 remains required before a new environment can be selected; an exact V0 authorisation remains required before any VPS connection. |
+| Outcome | `PASS` for the VPS-plan preparation scope. |
+| Affected work blocked | All VPS connections, credential use, database access, data extraction, deletion, provisioning, deployment, source capture, and application implementation remain blocked. |
+| Owner decision required | DEC-0020, then an exact host-specific V0 authorisation before any VPS connection. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
