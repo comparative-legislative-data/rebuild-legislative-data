@@ -68,14 +68,22 @@ Do not access the VPS, delete old resources, connect to a database, use credenti
 
 ## Recommended immediate next action
 
-Ask the owner to review `PROJECT_DESIGN.md`, especially:
+The owner has authorised a Phase 0 planning and governance documentation pack
+only, including a governance-enforcement amendment. The pack is defined in
+[`PHASE_0_DELIVERY_PLAN.md`](PHASE_0_DELIVERY_PLAN.md), governed by
+[`GOVERNANCE.md`](GOVERNANCE.md), and reviewed through
+[`GOVERNANCE_REVIEW_LOG.md`](GOVERNANCE_REVIEW_LOG.md). It does not authorise
+implementation or operational work.
+
+Ask the owner to review `PROJECT_DESIGN.md` and the Phase 0 pack, especially:
 
 - the project purpose and non-goals;
 - the seven-tier definitions and validation rules;
 - the initial GB-SCT scope;
 - the operational reset and approval gates.
 
-Then incorporate only the owner’s requested revisions. Do not begin implementation merely because the design document exists.
+Then incorporate only the owner’s requested revisions. Do not begin
+implementation merely because the design document or Phase 0 pack exists.
 
 ## Repository state at handover
 
