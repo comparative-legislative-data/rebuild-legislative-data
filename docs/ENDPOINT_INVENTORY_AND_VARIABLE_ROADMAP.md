@@ -1,8 +1,8 @@
 # Endpoint Inventory and Variable Roadmap
 
-**Status:** Approved framework; inventory selection remains proposed (DEC-0007)
+**Status:** Approved framework and selected endpoint inventory (DEC-0007)
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 **Last updated:** 31 July 2026
 
 ## 1. Delivery model
@@ -34,8 +34,8 @@ The list above is a family-level roadmap, not the final approved endpoint
 inventory. The exact proposed route set, allowed parameters, and exclusions are
 now recorded in
 [`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
-DEC-0007 must approve, reject, or revise that proposal before capture/proxy/DB1
-work can be proposed.
+DEC-0007 approved that inventory on 31 July 2026. Capture/proxy/DB1 work still
+requires DEC-0008 and a separate implementation proposal.
 
 ### 2.1 Deferred document corpus
 

@@ -1,21 +1,21 @@
 # GB-SCT Endpoint Inventory Proposal — DEC-0007
 
-**Status:** Proposed for owner decision; no capture or implementation authorised
+**Status:** Approved endpoint inventory and roadmap (DEC-0007); no capture or implementation authorised
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 31 July 2026
 
-**Decision requested:** DEC-0007
+**Decision:** DEC-0007, approved by the project owner on 31 July 2026
 
 **Evidence:** [`GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`](GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md) and [`GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md`](GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md)
 
-## 1. Decision requested
+## 1. Approved decision
 
-Approve the selected route inventory below as the full GB-SCT scope to be
-preserved through a later capture-backed native-access surface and represented
-in DB1. The decision separates that preservation scope from the much smaller
-set of future Tier 1/2 candidates.
+The project owner approved the selected route inventory below as the full
+GB-SCT scope to be preserved through a later capture-backed native-access
+surface and represented in DB1. The decision separates that preservation scope
+from the much smaller set of future Tier 1/2 candidates.
 
 This is the complete **selected** inventory, not a claim to select every route
 in the Scottish Parliament catalogue. It does not approve any external request,
@@ -129,7 +129,7 @@ identifier semantics, pagination, historical coverage, or retention policy is
 unknown in a way that would affect the proposed work. Record the block rather
 than substituting an assumption.
 
-If DEC-0007 is approved, the next documentation gate is DEC-0008 together with
-a separate, bounded capture/proxy/DB1 proposal. After the API-based programme
-has completed, a distinct document-source proposal may be prepared. No source
-request follows from DEC-0007 itself.
+Following DEC-0007 approval, the next documentation gate is DEC-0008 together
+with a separate, bounded capture/proxy/DB1 proposal. After the API-based
+programme has completed, a distinct document-source proposal may be prepared.
+No source request follows from DEC-0007 itself.

@@ -195,3 +195,19 @@ Next review due:
 | Affected work blocked | All source requests, capture, document collection/parsing, proxy/DB1 work, canonical variable build, chart, and public data claim activity remains blocked. |
 | Owner decision required | DEC-0007, then DEC-0008 and a separate capture/proxy/DB1 proposal before API work; a later separate owner decision before document-source work. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0009
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 31 July 2026 |
+| Review type | Triggered — owner approval of DEC-0007 |
+| Reviewer role | Maintainer; owner sign-off is recorded in DEC-0007 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `PHASE_A_PLAN.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`, `GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`, and this log |
+| Active phase and authorising decision | Phase A endpoint-inventory specification; DEC-0007 |
+| Checks performed | The approved decision selects the exact API route inventory and its native-access/DB1 and variable-roadmap boundaries. The decision preserves the distinction between votes on motion amendments and bill amendments, defers document-based sources, and does not broaden operational authority. |
+| Findings | DEP-0001 is satisfied. DEC-0008 and a separate capture/proxy/DB1 proposal remain mandatory before any API source request, capture, or implementation. |
+| Outcome | `PASS` for recording the DEC-0007 approval. |
+| Affected work blocked | API source requests, capture, proxy/DB1 implementation, document work, canonical builds, charts, and public claims remain blocked pending their specific later approvals. |
+| Owner decision required | DEC-0008, then a separate bounded capture/proxy/DB1 proposal. |
+| Next review due | 30 August 2026, or earlier if a review trigger occurs. |
