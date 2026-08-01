@@ -1,16 +1,17 @@
 # V4A Native-Cluster Runtime-Directory Recovery Proposal — DEC-0035
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — execution `PASS`; V4A foundation completed
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0035
+**Decision:** DEC-0035
 
-## Exact decision
+## Approved decision and execution outcome
 
-Approve one recovery completion package for the down `16/cld_gb_sct` cluster
+The project owner approved one recovery completion package for the down
+`16/cld_gb_sct` cluster
 only. DEC-0033 established that the new service's `RuntimeDirectory` lifecycle
 continues to leave the PostgreSQL socket directory unusable, despite the
 postgres-owned `ExecStartPre` line.
@@ -37,6 +38,12 @@ resource limits, and service identity. The pre-start command recreates the
 postgres-owned runtime directory on each service start without a systemd
 runtime-directory lifecycle conflict.
 
+The action passed. The new service is active and listens only at
+`127.0.0.1:5434`; its runtime directory is `postgres:postgres` mode `0750`.
+The two empty project roles and two empty project databases were created only
+after the service checks passed. The restricted result is retained as
+`V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_RESULT.md`.
+
 ## Conditional V4A completion
 
 Only after the corrected new service is active, listens solely on
@@ -53,8 +60,9 @@ DNS, firewall, package, credential, source-data, application, or public action
 is permitted. No second start attempt or automatic deletion is permitted. Any
 unexpected state or need to touch another target is `BLOCKED`.
 
-## Owner decision
+## Decision outcome
 
-Approve or reject DEC-0035. Approval authorises only this three-line drop-in
-correction, manager reload, one replacement start attempt, and conditional
-empty V4A foundation completion with a restricted result record.
+DEC-0035 authorised only this three-line drop-in correction, manager reload,
+one replacement start attempt, and conditional empty V4A foundation completion
+with a restricted result record. It does not authorise V4B services,
+credential issuance, schema/data work, source capture, or public cutover.

@@ -579,3 +579,19 @@ Next review due:
 | Affected work blocked | New-cluster start/recovery, database/role creation, V4B services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0035 or their respective approvals. |
 | Owner decision required | DEC-0035. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0033
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0035 runtime-directory recovery and V4A foundation completion |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0035 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_PROPOSAL_DEC0035.md`, restricted recovery result, and this log |
+| Active phase and authorising decision | V4A isolated native-cluster foundation under DEC-0035 |
+| Checks performed | DEC-0035 removed only the two conflicting new-drop-in `RuntimeDirectory` settings, retained the explicit postgres-owned pre-start directory creation and resource limits, and made one replacement start. The new cluster reported active, had exactly one loopback port-5434 listener, and had a postgres-owned `0750` runtime directory. The two named no-login/password-null roles and empty project databases were then created and validated for ownership/access/no-public-privilege/no-user-relations. |
+| Findings | `16-main` and `16-bills` retained their active states and database-name-set digests. No shared service/configuration, network/public, credential, source, application, or V4B/V4C action occurred. |
+| Outcome | `PASS` for V4A foundation within DEC-0035's scope. |
+| Affected work blocked | V4B services, credential issuance, schema/data work, source capture, proxy/DB1 implementation, canonical builds, charts, Nginx/DNS cutover, and public claims remain blocked pending their own approvals. |
+| Owner decision required | A separate V4B service/secret/application package, when the owner wishes to proceed. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
