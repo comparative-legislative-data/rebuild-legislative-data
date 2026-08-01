@@ -1,18 +1,24 @@
 # V4A Native-Cluster Foundation Authorisation Proposal — DEC-0026
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — execution `FAIL` in capacity pre-flight; no VPS mutation
+occurred
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0026
+**Decision:** DEC-0026
 
-## 1. Exact decision
+## 1. Approved decision and execution outcome
 
-Approve one additive V4A action on the current VPS that creates a new native
+The project owner approved one additive V4A action on the current VPS that creates a new native
 PostgreSQL 16 cluster, its disabled project identities, two empty databases,
 and empty project paths.
+
+The approved action failed during the capacity pre-flight because this host's
+`df` rejects the combined `-P` and `--output=avail` options. It did not enter
+the mutation stage. The restricted result is retained as
+`V4A_NATIVE_CLUSTER_FOUNDATION_RESULT.md`.
 
 The action targets only PostgreSQL cluster `16/cld_gb_sct`, bound to
 `127.0.0.1:5434`. It uses the existing local PostgreSQL 16 tooling and no
@@ -144,9 +150,10 @@ target exists, leave only the partial new target disabled/contained and record
 the state. Its correction or removal requires a new exact owner-approved
 action; no broad cleanup is permitted.
 
-## 7. Owner decision
+## 7. Decision outcome
 
-Approve or reject DEC-0026. Approval authorises this one V4A native-cluster
-foundation action and its restricted result record. It does not authorise a
-credential, service deployment, frontend/backend, Nginx/DNS change, source
-capture, proxy/DB1 build, canonical dataset, chart, or public claim.
+DEC-0026 authorised this one V4A native-cluster foundation action and its
+restricted result record. The action is `FAIL` before mutation. It does not
+authorise a retry, credential, service deployment, frontend/backend, Nginx/DNS
+change, source capture, proxy/DB1 build, canonical dataset, chart, or public
+claim.

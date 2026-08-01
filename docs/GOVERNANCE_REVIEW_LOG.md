@@ -419,3 +419,19 @@ Next review due:
 | Affected work blocked | New-cluster/database/role/path creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending exact approval. |
 | Owner decision required | DEC-0026; then its restricted V4A result and a separately approved V4B prerequisite plan. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0023
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0026 V4A action failed in pre-flight and exact correction preparation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0026 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md`, `V4A_NATIVE_CLUSTER_PREFLIGHT_CORRECTION_PROPOSAL_DEC0027.md`, restricted V4A-native result, and this log |
+| Active phase and authorising decision | Native-cluster V4A action under DEC-0026 failed pre-mutation; DEC-0027 correction proposal only |
+| Checks performed | The action reached the storage-capacity command before target completion or mutation. The host rejected a mutually incompatible `df` option combination. The result is a script compatibility failure, not evidence of a host-capacity or resource conflict. No follow-up VPS command ran. |
+| Findings | No target was created or changed. DEC-0027 changes only `df -PB1 --output=avail` to `df -B1 --output=avail`; it retains all capacity floors, exclusive targets, limits, and stop conditions. |
+| Outcome | `FAIL` for DEC-0026 before mutation; `PASS` for recording the bounded failure and preparing the correction proposal. |
+| Affected work blocked | Any cluster/database/role/path creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0027. |
+| Owner decision required | DEC-0027. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

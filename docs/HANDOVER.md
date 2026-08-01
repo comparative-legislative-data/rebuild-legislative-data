@@ -118,8 +118,9 @@ DEC-0024 then established by a minimal read-only check that the shared
 the project database design. A new native loopback/private-cluster proposal is
 now approved as DEC-0025 in
 [`NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`](NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md).
-The next decision is DEC-0026, proposed in
-[`V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md`](V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md).
+DEC-0026 was approved but failed before mutation on a `df` option
+compatibility check. The next decision is the one-command correction in
+[`V4A_NATIVE_CLUSTER_PREFLIGHT_CORRECTION_PROPOSAL_DEC0027.md`](V4A_NATIVE_CLUSTER_PREFLIGHT_CORRECTION_PROPOSAL_DEC0027.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
