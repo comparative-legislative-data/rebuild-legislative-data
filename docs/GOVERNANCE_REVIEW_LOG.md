@@ -371,3 +371,19 @@ Next review due:
 | Affected work blocked | Any V4A retry, PostgreSQL configuration change, role/database creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims. |
 | Owner decision required | An exact read-only listener-boundary clarification authorisation; then, only if it establishes a non-interfering path, a new V4A authorisation. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0020
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner-approved read-only V4A listener-boundary clarification |
+| Reviewer role | Maintainer; owner instruction is recorded as DEC-0024 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0009, DEC-0022, DEC-0023, restricted V4A-L1 result, and this log |
+| Active phase and authorising decision | Read-only listener-boundary clarification under DEC-0024; no foundation action authorised |
+| Checks performed | The check queried only PostgreSQL's configured listener/port and the port-5432 TCP bindings. It established a wildcard listener on the shared `16-main` cluster. No configuration, service, database, role, path, credential, source-data, Nginx, DNS, or firewall action occurred. |
+| Findings | `16-main` cannot satisfy the approved project private-listener control without changing shared infrastructure. The current-VPS/no-Docker direction remains viable only through a separately assessed native loopback/private cluster. RSK-0014 records this constraint. |
+| Outcome | `PASS` for the bounded read-only clarification; `BLOCKED` for V4A against `16-main`. |
+| Affected work blocked | V4A on `16-main`, any shared PostgreSQL change, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims. |
+| Owner decision required | A separate native loopback/private PostgreSQL-cluster proposal, then an exact V4A authorisation if approved. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

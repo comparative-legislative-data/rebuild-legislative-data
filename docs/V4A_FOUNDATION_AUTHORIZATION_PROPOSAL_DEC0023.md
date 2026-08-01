@@ -20,6 +20,10 @@ listener-boundary check did not pass. It did not reach the mutation stage; no
 account, path, database, role, privilege, service, or configuration changed.
 The restricted result is retained as `V4A_GB_SCT_FOUNDATION_RESULT.md`.
 
+The owner-approved V4A-L1 clarification subsequently established that
+`16-main` has a wildcard listener. DEC-0023 is closed as `BLOCKED`; it must
+not be retried against that cluster.
+
 The action must run once, through the existing approved SSH path, by the
 named administrative account already used for V0–V3. The host address,
 credential reference, and host-key reference remain in restricted local

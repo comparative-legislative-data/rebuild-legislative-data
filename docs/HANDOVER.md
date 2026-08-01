@@ -113,8 +113,10 @@ DEC-0022 approved the staged V4 foundation/service/cutover boundary in
 DEC-0023 was approved but its one-shot V4A action was `BLOCKED` during
 pre-flight before any mutation, as recorded in
 [`V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md`](V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md).
-A new exact read-only listener-boundary clarification proposal is required
-before a V4A retry or a changed approach. Later frontend/backend service
+DEC-0024 then established by a minimal read-only check that the shared
+`16-main` PostgreSQL cluster has wildcard listeners, so it is excluded from
+the project database design. A new native loopback/private-cluster proposal is
+required before a V4A retry or changed approach. Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
 No V4 provisioning, credential issuance, database/service creation,

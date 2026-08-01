@@ -1,9 +1,9 @@
 # Environment and Secret-Management Proposal — DEC-0009
 
-**Status:** Approved — current-VPS environment direction only; no provisioning,
-credential issuance, deployment, or source-data activity authorised
+**Status:** Approved current-VPS/no-Docker direction; the `16-main` cluster
+implementation is `BLOCKED` by V4A listener evidence
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 **Prepared:** 1 August 2026
 
@@ -15,8 +15,14 @@ The project owner approved an isolated, no-Docker `GB-SCT` project namespace
 on the current VPS as the first clean-rebuild environment, together with the
 minimum secret-management and isolation rules in this proposal.
 
-The environment would reuse only the physical VPS and its PostgreSQL `16-main`
-service. It would not reuse legacy databases, names, roles, paths, service
+The subsequent V4A-L1 read-only clarification established that the shared
+`16-main` cluster does not meet this proposal's loopback/private-listener
+condition. The current-VPS/no-Docker direction remains approved, but this
+document no longer authorises or supports using `16-main` for project
+databases. A separately approved native-cluster alternative is required.
+
+The environment would reuse only the physical VPS. It would not reuse legacy
+databases, names, roles, paths, service
 units, credentials, or storage. Approval authorises only future detailed V4
 planning; it does not authorise provider account access, VPS changes,
 credential creation, deployment, source requests, capture, database creation,
@@ -28,6 +34,11 @@ Version 0.2.0 replaces the version 0.1.0 recommendation of an immediately
 dedicated VPS following the owner's scope correction on 1 August 2026. A
 dedicated VPS remains a future migration option if the project proves
 successful; it is not a prerequisite for the initial rebuild.
+
+Version 1.1.0 records V4A-L1: `16-main` has a wildcard listener and therefore
+cannot be the project database cluster under the approved listener condition.
+It does not authorise a new cluster or change the current-VPS/no-Docker
+decision.
 
 ## 2. Recommended environment decision
 
@@ -41,7 +52,7 @@ explicitly. It does not claim host-level independence from the other workloads.
 | --- | --- |
 | Host context | Reuse the current VPS only; no host-wide restart, upgrade, generic cleanup, or shared-role action is part of this project. |
 | Legislature isolation | A separate `GB-SCT` runtime namespace, database role, data/storage prefix, service names, and release identifiers. |
-| Database | Two fresh databases in PostgreSQL `16-main`, bound only to loopback/private network; no public database listener or shared application role. |
+| Database | Two fresh databases in a separately approved loopback/private native PostgreSQL cluster; no public database listener or shared application role. The shared `16-main` cluster is excluded by V4A-L1. |
 | Runtime | One non-login application account (`cld-gb-sct`) with no sudo; separate deployment account with narrowly defined administrative authority. |
 | Services | Native systemd services only; Docker, Docker Compose, and container-wide operations are excluded. |
 | Ingress | Only the approved public web/API ports, if and when a later deployment proposal selects them; SSH key-only access limited to approved maintainers. |
@@ -86,9 +97,9 @@ have been safely provisioned.
 - SSH is key-only; root login and password authentication are disabled.
 - The deployment account can perform only the approved V4 provisioning and
   release tasks. The runtime account cannot administer the host.
-- PostgreSQL `16-main` remains loopback/private-network only. The two new
-  databases revoke default public access and grant access only to the named
-  project roles.
+- The future project PostgreSQL cluster must be loopback/private-network only.
+  The two new databases revoke default public access and grant access only to
+  the named project roles. Shared `16-main` is excluded by V4A-L1.
 - No service receives a credential allowing access to another legislature,
   unrelated VPS, or legacy resource.
 - Firewall rules are deny-by-default. Any later public HTTP/S ingress is named

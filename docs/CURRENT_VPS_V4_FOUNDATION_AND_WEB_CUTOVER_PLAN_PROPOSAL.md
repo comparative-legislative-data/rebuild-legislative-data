@@ -1,9 +1,9 @@
 # Current-VPS V4 Foundation and Web-Cutover Plan Proposal — DEC-0022
 
-**Status:** Approved — staged V4 boundary only; each stage still needs its
-own exact authorisation
+**Status:** Approved V4 boundary; its original V4A `16-main` database target
+is `BLOCKED` by V4A-L1 listener evidence
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 **Prepared:** 1 August 2026
 
@@ -14,6 +14,11 @@ own exact authorisation
 The project owner approved the staged V4 plan for a no-Docker `GB-SCT`
 foundation on the current VPS and a later, explicitly gated
 `legislativedata.org` frontend/backend cutover.
+
+V4A-L1 established that the shared `16-main` cluster has a wildcard listener.
+The original V4A database target is therefore not usable under DEC-0009. The
+staged boundary remains in force, but a new, separately approved V4A proposal
+is required before any foundation action.
 
 The plan has three independently authorised stages. Later stages are not
 implied by an earlier one:
@@ -35,7 +40,7 @@ V4A may create only these new resources:
 | Project root | `/srv/cld-gb-sct/{raw,db1,canonical,releases,state}` | New project-owned paths only; no legacy path is renamed, reused, or removed. |
 | Secret root | `/etc/cld-gb-sct/secrets/` | Root-owned; secret values never enter Git, command lines, or logs. |
 | Database roles | `cld_gb_sct_runtime`, `cld_gb_sct_migrate` | No superuser, no createdb/createrole, no grants on any existing database. |
-| Databases | `cld_gb_sct_db1`, `cld_gb_sct_canonical` | Fresh PostgreSQL `16-main` databases, with `PUBLIC` connection revoked and project-role-only access. |
+| Databases | `cld_gb_sct_db1`, `cld_gb_sct_canonical` | Fresh databases in a separately approved loopback/private native cluster, with `PUBLIC` connection revoked and project-role-only access. `16-main` is excluded. |
 | Reserved loopback ports | `127.0.0.1:3210` (backend), `127.0.0.1:3220` (frontend) | Must be proven unused before use; no public listener or firewall change. |
 
 V4A must not create a Docker resource, modify PostgreSQL cluster settings,
