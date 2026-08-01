@@ -499,3 +499,19 @@ Next review due:
 | Affected work blocked | New-cluster start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0031 or later exact approval. |
 | Owner decision required | DEC-0031. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0028
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0031 HBA validation found an unexpected rule profile before service start |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0031 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_HBA_VALIDATION_AND_START_PROPOSAL_DEC0031.md`, `V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`, restricted validation result, and this log |
+| Active phase and authorising decision | DEC-0031 HBA validation stopped before service action; DEC-0032 inspection proposal only |
+| Checks performed | DEC-0031 revalidated the three effective new-cluster configuration values while down and read the HBA with the required privilege. The observed non-comment HBA rule profile did not match the approval's exact two-rule expectation, so the action stopped before port check, failed-state reset, or service start. No configuration, database/role, or existing-service action occurred. |
+| Findings | The HBA content itself must be inspected before it can be described, corrected, or used as a basis for another start proposal. RSK-0020 records this boundary. DEC-0032 permits only an effective-HBA path/rule inspection of the new down cluster. |
+| Outcome | `BLOCKED` for DEC-0031's start condition; `PASS` for preserving the stop condition and preparing the read-only DEC-0032 proposal. |
+| Affected work blocked | New-cluster repair/start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0032 or later exact approval. |
+| Owner decision required | DEC-0032. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

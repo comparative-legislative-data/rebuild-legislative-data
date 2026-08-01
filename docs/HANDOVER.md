@@ -126,9 +126,11 @@ read-only inspection and identified malformed quoting in three new-cluster
 settings. DEC-0029 then established that the native helper writes the raw IPv4
 literal without required PostgreSQL quoting, so offline validation stopped the
 start. DEC-0030 directly corrected and offline-validated the three lines, but
-stopped before its start attempt because its HBA reader lacked permission. The
-next decision is the privileged-HBA-read/one-start proposal in
-[`V4A_NATIVE_CLUSTER_HBA_VALIDATION_AND_START_PROPOSAL_DEC0031.md`](V4A_NATIVE_CLUSTER_HBA_VALIDATION_AND_START_PROPOSAL_DEC0031.md).
+stopped before its start attempt because its HBA reader lacked permission.
+DEC-0031 completed the privileged HBA read but found an unexpected rule profile
+and stopped before any start. The next decision is the new-cluster-only,
+read-only HBA inspection proposal in
+[`V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`](V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).

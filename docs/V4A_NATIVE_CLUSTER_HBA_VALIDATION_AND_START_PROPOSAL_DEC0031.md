@@ -1,16 +1,17 @@
 # V4A Native-Cluster HBA Validation and Start Proposal — DEC-0031
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — start condition `BLOCKED`; no service start occurred
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0031
+**Decision:** DEC-0031
 
-## Exact decision
+## Approved decision and execution outcome
 
-Approve one completion action for the down `16/cld_gb_sct` cluster only.
+The project owner approved one completion action for the down
+`16/cld_gb_sct` cluster only.
 DEC-0030 already made and offline-validated the three direct configuration
 replacements. This action makes **no configuration edit**. It reads only the
 new cluster's protected HBA file using the existing required privilege,
@@ -36,6 +37,13 @@ It may not edit any configuration, path, account, service definition, or other
 resource. The port remains 5434; existing clusters, databases, roles, Nginx,
 DNS, firewall, source data, and application components are out of scope.
 
+The direct settings passed revalidation and the privileged HBA read completed,
+but its active rules did not match the exact two-rule expectation. The action
+stopped before the port check, failed-state reset, or start command. No
+configuration edit, role/database action, or existing-service action occurred.
+The restricted result is retained as
+`V4A_NATIVE_CLUSTER_HBA_VALIDATION_AND_START_RESULT.md`.
+
 ## Validation and one start
 
 Before any start, the action must record existing-cluster active state and
@@ -52,8 +60,9 @@ digests.
 No role/database creation, second start attempt, automatic deletion, or repair
 of another resource is permitted.
 
-## Owner decision
+## Decision outcome
 
-Approve or reject DEC-0031. Approval authorises only the privileged HBA read,
-the stated revalidation, one new-service start attempt if validation passes,
-and its restricted result record.
+DEC-0031 authorised only the privileged HBA read, the stated revalidation, one
+new-service start attempt if validation passes, and its restricted result
+record. Its start condition was not met. It does not authorise HBA inspection,
+repair, or another start attempt.
