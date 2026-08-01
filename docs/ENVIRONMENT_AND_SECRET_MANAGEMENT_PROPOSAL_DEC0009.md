@@ -3,7 +3,7 @@
 **Status:** Proposed — no provisioning, credential issuance, deployment, or
 source-data activity authorised
 
-**Version:** 0.1.0
+**Version:** 0.2.0
 
 **Prepared:** 1 August 2026
 
@@ -11,33 +11,41 @@ source-data activity authorised
 
 ## 1. Decision requested
 
-Approve a dedicated, newly provisioned VPS as the first clean-rebuild
-environment for `GB-SCT`, together with the minimum secret-management and
-isolation rules in this proposal.
+Approve an isolated, no-Docker `GB-SCT` project namespace on the current VPS
+as the first clean-rebuild environment, together with the minimum
+secret-management and isolation rules in this proposal.
 
-The approved environment would be separate from the existing shared VPS. It
-would not reuse legacy databases, names, roles, paths, service units,
-credentials, or storage. Approval authorises only future detailed V4 planning;
-it does not authorise provider account access, VPS provisioning, DNS changes,
+The environment would reuse only the physical VPS and its PostgreSQL `16-main`
+service. It would not reuse legacy databases, names, roles, paths, service
+units, credentials, or storage. Approval authorises only future detailed V4
+planning; it does not authorise provider account access, VPS changes,
 credential creation, deployment, source requests, capture, database creation,
 or application implementation.
 
+## Revision history
+
+Version 0.2.0 replaces the version 0.1.0 recommendation of an immediately
+dedicated VPS following the owner's scope correction on 1 August 2026. A
+dedicated VPS remains a future migration option if the project proves
+successful; it is not a prerequisite for the initial rebuild.
+
 ## 2. Recommended environment decision
 
-Use one new, dedicated VPS for the rebuild's first operational environment.
-The future VPS must have no unrelated application workload or shared PostgreSQL
-cluster. This is the recommended option because the V1 inventory confirmed
-that the existing VPS has a shared PostgreSQL cluster and a shared superuser
-boundary. A same-host rebuild would add avoidable operational coupling.
+Use the current VPS, with a new isolated project namespace and no Docker. The
+V1 inventory established a shared PostgreSQL cluster and a shared superuser
+boundary, so this proposal controls database privileges, operating-system
+permissions, service identity, storage paths, secret access, and resource use
+explicitly. It does not claim host-level independence from the other workloads.
 
 | Concern | Recommended control |
 | --- | --- |
-| Host isolation | A newly provisioned VPS dedicated to this project; no unrelated service or database on the host. |
+| Host context | Reuse the current VPS only; no host-wide restart, upgrade, generic cleanup, or shared-role action is part of this project. |
 | Legislature isolation | A separate `GB-SCT` runtime namespace, database role, data/storage prefix, service names, and release identifiers. |
-| Database | A new PostgreSQL instance on the dedicated VPS, bound only to loopback/private network; no public database listener. |
+| Database | Two fresh databases in PostgreSQL `16-main`, bound only to loopback/private network; no public database listener or shared application role. |
 | Runtime | One non-login application account (`cld-gb-sct`) with no sudo; separate deployment account with narrowly defined administrative authority. |
+| Services | Native systemd services only; Docker, Docker Compose, and container-wide operations are excluded. |
 | Ingress | Only the approved public web/API ports, if and when a later deployment proposal selects them; SSH key-only access limited to approved maintainers. |
-| Raw capture storage | A new private, legislature-specific archive prefix, separate from DB1 and canonical outputs. Its provider and retention implementation require a later approved capture/storage action. |
+| Raw capture storage | A new private `/srv/cld-gb-sct/` namespace with separate raw, DB1, canonical, and release paths. Its capture/retention implementation requires a later approved action. |
 
 ## 3. New resource identity
 
@@ -45,13 +53,13 @@ The following are proposed naming constraints, not existing resources:
 
 | Class | Proposed identity | Constraint |
 | --- | --- | --- |
-| VPS/runtime namespace | `cld-gb-sct` | Never `comparativelegislativedata`, `ScottishParliamentBills`, or a legacy path. |
+| Project root | `/srv/cld-gb-sct/` | Never a legacy path; separate subdirectories for raw, DB1, canonical, releases, and runtime state. |
 | DB1 database | `cld_gb_sct_db1` | Fresh database; no restore, import, or legacy object copy. |
 | Canonical database | `cld_gb_sct_canonical` | Fresh database; no restore, import, or legacy object copy. |
 | Database roles | `cld_gb_sct_runtime`, `cld_gb_sct_migrate` | Least privilege; distinct role per purpose; neither is superuser. |
 | Runtime account | `cld-gb-sct` | Non-login, no sudo, no access to other legislature namespaces. |
-| Services | `cld-gb-sct-*` | Fresh names; no reuse of legacy unit names. |
-| Storage | `cld/gb-sct/...` | Separate raw, DB1, canonical, and release prefixes. |
+| Services | `cld-gb-sct-*` | Fresh native systemd names; no Docker or legacy unit names. |
+| Storage | `/srv/cld-gb-sct/{raw,db1,canonical,releases,state}` | Separate paths with least-privilege ownership. |
 
 ## 4. Secret-management policy
 
@@ -78,8 +86,9 @@ have been safely provisioned.
 - SSH is key-only; root login and password authentication are disabled.
 - The deployment account can perform only the approved V4 provisioning and
   release tasks. The runtime account cannot administer the host.
-- PostgreSQL listens only on loopback/private network and accepts only the two
-  named project database roles.
+- PostgreSQL `16-main` remains loopback/private-network only. The two new
+  databases revoke default public access and grant access only to the named
+  project roles.
 - No service receives a credential allowing access to another legislature,
   unrelated VPS, or legacy resource.
 - Firewall rules are deny-by-default. Any later public HTTP/S ingress is named
@@ -90,8 +99,10 @@ have been safely provisioned.
 DB1 and the canonical database are separate from the raw capture archive. The
 runtime role receives only the schema/database privileges required by its
 declared service; no generic owner/superuser role is used by the application.
-The capture role is write-only to its raw archive and cannot modify canonical
-outputs. Downstream transformation roles cannot write raw captures.
+The V4 proposal must explicitly revoke `PUBLIC` connection access to each new
+database and grant it only to the named project roles. The capture role is
+write-only to its raw archive and cannot modify canonical outputs. Downstream
+transformation roles cannot write raw captures.
 
 No source data is captured, created, copied, or retained under this decision.
 DEC-0008 and route-level handling records remain mandatory before any such
@@ -99,40 +110,45 @@ action.
 
 ## 7. Required V4 proposal and acceptance checks
 
-Before provisioning, a V4 proposal must name the provider/account context,
-exact VPS identity, operating-system baseline, SSH keys by reference, firewall
-rules, service account/group IDs, database version, fresh resource names,
-secret inventory, storage provider/prefixes, and rollback/containment steps.
-It must include checks that:
+Before provisioning, a V4 proposal must name the current VPS identity,
+operating-system baseline, SSH keys by reference, firewall rules, service
+account/group IDs, database version, fresh resource names, secret inventory,
+storage paths, systemd resource limits/sandboxing, and rollback/containment
+steps. It must include checks that:
 
-1. the new host contains no unrelated workload;
+1. no existing service, database, role, path, Nginx site, or unrelated workload
+   is changed or made a project dependency;
 2. no legacy name, role, credential, data, path, service, or storage prefix is
    reused;
 3. the runtime role cannot access administrative, raw-archive, or other
    legislature resources beyond its approved scope;
 4. the database has no public listener;
 5. secret files have the declared ownership and modes without exposing values;
-6. the service cannot read another legislature's data namespace; and
-7. every check has a retained `PASS`, `FAIL`, or `BLOCKED` result.
+6. each native systemd service runs as the non-login runtime account with
+   declared CPU, memory, filesystem, and privilege boundaries;
+7. the service cannot read another legislature's data namespace; and
+8. every check has a retained `PASS`, `FAIL`, or `BLOCKED` result.
 
 ## 8. Alternatives rejected for this decision
 
 | Alternative | Reason not selected |
 | --- | --- |
-| Reuse the shared VPS and its PostgreSQL `16-main` cluster | V1 established shared databases and a shared superuser boundary; it weakens the desired isolation. |
+| Provision a dedicated VPS immediately | Deferred for efficiency. It remains a future migration option if project scale, resilience, or isolation needs justify it. |
 | Restore or adapt the deleted legacy databases | Contradicts the clean-rebuild decision and does not provide reproducible provenance. |
 | Keep secrets in repository files or service unit text | Fails the project secret-management and audit requirements. |
 
 ## 9. Stop conditions
 
-Stop V4 planning or execution if a provider/account scope is ambiguous, a
+Stop V4 planning or execution if the current-host scope is ambiguous, a
 resource name collides, a deployment would reuse a legacy or unrelated
-resource, a required secret-management control is unavailable, or any proposed
-configuration allows cross-legislature or unrelated-workload access.
+resource, a required secret-management control is unavailable, a systemd
+resource boundary is omitted, or any proposed configuration allows
+cross-legislature or unrelated-workload access.
 
 ## 10. Owner decision
 
-Approve or reject DEC-0009. Approval adopts this dedicated-environment and
-secret-management direction and authorises preparation of a separate exact V4
-provisioning proposal only. It does not authorise a new VPS, database, secret,
-service, firewall, DNS record, deployment, capture, or application code.
+Approve or reject DEC-0009. Approval adopts this current-VPS, no-Docker,
+isolated-namespace and secret-management direction and authorises preparation
+of a separate exact V4 provisioning proposal only. It does not authorise a
+database, secret, service, firewall, DNS record, deployment, capture, or
+application code.

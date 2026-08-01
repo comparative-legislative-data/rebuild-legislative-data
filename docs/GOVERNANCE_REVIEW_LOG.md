@@ -307,3 +307,19 @@ Next review due:
 | Affected work blocked | VPS provisioning, database/service/secret creation, deployment, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
 | Owner decision required | DEC-0009; then a separately approved exact V4 provisioning proposal. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0016
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner correction of the DEC-0009 environment scope |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`, and this log |
+| Active phase and authorising decision | Environment/secret-management planning only; owner-directed revision of proposed DEC-0009 |
+| Checks performed | The proposal now uses the current VPS with an isolated no-Docker project namespace. It retains fresh database/role/path/service identities, loopback-only PostgreSQL access, restricted secret files, native systemd service hardening, and explicit shared-host residual-risk disclosure. It does not claim a dedicated host or host-level zero blast radius. |
+| Findings | The revised proposal fits the owner-approved efficiency scope while preserving runtime/data isolation requirements. The shared-host availability and administrator boundary remain a recorded residual risk; V4 provisioning remains blocked pending DEC-0009. |
+| Outcome | `PASS` for the DEC-0009 scope correction. |
+| Affected work blocked | VPS changes, database/service/secret creation, deployment, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
+| Owner decision required | DEC-0009; then a separately approved exact V4 provisioning proposal. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
