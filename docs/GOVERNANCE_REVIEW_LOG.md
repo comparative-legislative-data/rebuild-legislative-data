@@ -435,3 +435,19 @@ Next review due:
 | Affected work blocked | Any cluster/database/role/path creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0027. |
 | Owner decision required | DEC-0027. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0024
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0027 corrected V4A action failed at new-cluster first start and recovery-inspection preparation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0027 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_PREFLIGHT_CORRECTION_PROPOSAL_DEC0027.md`, `V4A_NATIVE_CLUSTER_RECOVERY_INSPECTION_PROPOSAL_DEC0028.md`, restricted V4A-native corrected result, and this log |
+| Active phase and authorising decision | Corrected native-cluster V4A action under DEC-0027 failed after partial new-target creation; DEC-0028 recovery-inspection proposal only |
+| Checks performed | The corrected capacity check passed. The action created only its new foundation targets, then stopped at the first start of the new cluster service. It did not reach the database-role/database stage or perform after-change checks. The result does not infer a cause or claim post-failure health of existing clusters. |
+| Findings | RSK-0016 records the need to preserve the partial isolated state and inspect it narrowly. DEC-0028 permits no mutation and limits output to the new service/configuration/log/listener plus existing-cluster active-state/digest evidence. |
+| Outcome | `FAIL` for DEC-0027 V4A startup; `PASS` for stopping and preparing the bounded inspection proposal. |
+| Affected work blocked | Any retry, repair, removal, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0028 and subsequent exact direction. |
+| Owner decision required | DEC-0028. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
