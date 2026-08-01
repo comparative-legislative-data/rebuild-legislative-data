@@ -387,3 +387,19 @@ Next review due:
 | Affected work blocked | V4A on `16-main`, any shared PostgreSQL change, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims. |
 | Owner decision required | A separate native loopback/private PostgreSQL-cluster proposal, then an exact V4A authorisation if approved. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0021
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — preparation of the native PostgreSQL-cluster alternative |
+| Reviewer role | Maintainer; documentation-preparation authority follows the owner instruction to proceed after DEC-0024 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0009, DEC-0022, DEC-0024, `NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`, and this log |
+| Active phase and authorising decision | Current-VPS foundation planning only; DEC-0025 remains proposed |
+| Checks performed | The proposal replaces only the blocked shared-cluster implementation with a proposed new native PostgreSQL 16 cluster. It keeps the current VPS, no-Docker rule, fresh resource identities, loopback-only network boundary, and V4B/V4C separation. It adds resource/capacity, port, and existing-cluster non-interference pre-flight controls. |
+| Findings | The alternative does not claim that native tools, capacity, port 5434, or the new resource names are presently available; those are explicit future pre-flight checks. RSK-0014 remains the exclusion of `16-main`; RSK-0015 covers the proposed cluster's shared-host resource risk. |
+| Outcome | `PASS` for preparing DEC-0025; no VPS mutation, source-data action, implementation, service deployment, or domain change occurred. |
+| Affected work blocked | Cluster/database/role/path creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their exact approvals. |
+| Owner decision required | DEC-0025; then an exact V4A native-cluster foundation authorisation. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
