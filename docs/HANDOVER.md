@@ -107,11 +107,14 @@ plan is
 with a required per-host control record in
 [`VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`](VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md).
 The V0–V3 legacy-control sequence is complete for its limited two-database
-scope. The next decision is DEC-0009, proposed for an isolated no-Docker
-namespace on the current VPS in
+scope. DEC-0009 approved an isolated no-Docker namespace on the current VPS.
+The next decision is DEC-0022, proposed in
+[`CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`](CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md),
+which separates V4 foundation provisioning from later frontend/backend service
+deployment and the `legislativedata.org` cutover. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
 No V4 provisioning, credential issuance, database/service creation,
-deployment, source capture, or implementation is authorised.
+deployment, Nginx/DNS change, source capture, or implementation is authorised.
 
 ## Repository state at handover
 

@@ -323,3 +323,19 @@ Next review due:
 | Affected work blocked | VPS changes, database/service/secret creation, deployment, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
 | Owner decision required | DEC-0009; then a separately approved exact V4 provisioning proposal. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0017
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0009 and V4 frontend/backend scope clarification |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0009 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`, `CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`, and this log |
+| Active phase and authorising decision | Current-VPS environment direction approved under DEC-0009; V4 boundary planning only under owner instruction; DEC-0022 remains proposed |
+| Checks performed | The approved environment uses the current shared VPS without Docker, with new accounts, roles, paths, secret files, native-systemd limits, and loopback-only services. The V4 proposal explicitly distinguishes foundation provisioning, backend/frontend deployment, and the single-site `legislativedata.org` Nginx cutover. No existing unrelated service is included in the target list. |
+| Findings | DEP-0003 is satisfied. RSK-0013 records the front-end/backend and Nginx cutover risk. No V4 mutation, application deployment, domain change, source capture, or code work is authorised. |
+| Outcome | `PASS` for recording DEC-0009 approval and DEC-0022 proposal preparation. |
+| Affected work blocked | VPS changes, database/service/secret creation, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
+| Owner decision required | DEC-0022; then a separately approved exact V4A foundation authorisation. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

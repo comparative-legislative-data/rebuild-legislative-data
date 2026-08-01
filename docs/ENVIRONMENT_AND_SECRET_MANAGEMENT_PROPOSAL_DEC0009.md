@@ -1,19 +1,19 @@
 # Environment and Secret-Management Proposal — DEC-0009
 
-**Status:** Proposed — no provisioning, credential issuance, deployment, or
-source-data activity authorised
+**Status:** Approved — current-VPS environment direction only; no provisioning,
+credential issuance, deployment, or source-data activity authorised
 
-**Version:** 0.2.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0009
+**Decision:** DEC-0009
 
 ## 1. Decision requested
 
-Approve an isolated, no-Docker `GB-SCT` project namespace on the current VPS
-as the first clean-rebuild environment, together with the minimum
-secret-management and isolation rules in this proposal.
+The project owner approved an isolated, no-Docker `GB-SCT` project namespace
+on the current VPS as the first clean-rebuild environment, together with the
+minimum secret-management and isolation rules in this proposal.
 
 The environment would reuse only the physical VPS and its PostgreSQL `16-main`
 service. It would not reuse legacy databases, names, roles, paths, service
@@ -147,8 +147,7 @@ cross-legislature or unrelated-workload access.
 
 ## 10. Owner decision
 
-Approve or reject DEC-0009. Approval adopts this current-VPS, no-Docker,
-isolated-namespace and secret-management direction and authorises preparation
-of a separate exact V4 provisioning proposal only. It does not authorise a
-database, secret, service, firewall, DNS record, deployment, capture, or
-application code.
+DEC-0009 adopts this current-VPS, no-Docker, isolated-namespace and
+secret-management direction. It authorises preparation of a separate exact V4
+provisioning proposal only. It does not authorise a database, secret, service,
+firewall, DNS record, deployment, capture, or application code.
