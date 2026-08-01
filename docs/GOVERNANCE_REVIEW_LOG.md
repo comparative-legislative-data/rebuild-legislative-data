@@ -291,3 +291,19 @@ Next review due:
 | Affected work blocked | All VPS connections, credential use, database access, data extraction, deletion, provisioning, deployment, source capture, and application implementation remain blocked. |
 | Owner decision required | An exact host-specific V0 authorisation before any VPS connection; later V3 authorisation before any deletion or recreation action. |
 | Next review due | 30 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0015
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — completed owner-approved V0–V3 legacy-VPS control sequence and preparation of DEC-0009 |
+| Reviewer role | Maintainer; operational owner approvals are recorded in restricted V0–V3 records and DEC-0021 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`, restricted V0–V3 records, `ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`, and this log |
+| Active phase and authorising decision | Legacy VPS control complete for its limited scope; environment/secret-management planning only under owner instruction; DEC-0009 remains proposed |
+| Checks performed | The operational sequence used explicitly approved, scoped metadata checks and a V3 command targeting only the two named databases and the old frontend service. The shared cluster, role, paths, Nginx sites, other databases, and unrelated workloads were not targets. The DEC-0009 proposal recommends a dedicated new VPS, fresh resource names/roles, isolated data namespaces, and a defined secret-file mechanism. |
+| Findings | The limited V3 result is `PASS`; it does not authorise a rebuild. RSK-0012 remains active for future V4 work. DEP-0003 remains blocking pending DEC-0009. |
+| Outcome | `PASS` for recording the limited legacy-control result and DEC-0009 proposal preparation. |
+| Affected work blocked | VPS provisioning, database/service/secret creation, deployment, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
+| Owner decision required | DEC-0009; then a separately approved exact V4 provisioning proposal. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

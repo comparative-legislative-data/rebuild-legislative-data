@@ -17,7 +17,13 @@ The project owner prioritises academic integrity, accuracy, traceability, and tr
 - The prior project is not trusted as a data source, code base, database, verification record, or production foundation.
 - This repository is the sole active project repository.
 - The old project may be consulted only as a read-only reference when necessary; do not copy its data, database contents, exports, credentials, claims, or implementation into this project.
-- No VPS, database, source-data capture, infrastructure, or application implementation work has been authorised yet.
+- Restricted V0–V3 VPS control activity was completed under owner-approved
+  operational records on 1 August 2026: the old frontend was stopped/disabled,
+  and the two named legacy legislative databases were removed. No legacy data
+  was migrated or retained. The shared cluster, roles, paths, Nginx sites,
+  other databases, and unrelated workloads remain out of scope.
+- No source-data capture, new infrastructure, deployment, database creation,
+  or application implementation work has been authorised yet.
 - The first substantive artefact is the approved project-design baseline. Future revisions require the documented change-control process.
 - The first legislature will be the Scottish Parliament (`GB-SCT`), but the project must be designed so an additional parliament cannot affect another parliament’s data, code, releases, or services.
 
@@ -100,8 +106,11 @@ plan is
 [`VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`](VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md),
 with a required per-host control record in
 [`VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`](VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md).
-An exact host-specific V0 authorisation remains required; no VPS connection or
-change is authorised until that record is approved.
+The V0–V3 legacy-control sequence is complete for its limited two-database
+scope. The next decision is DEC-0009, proposed in
+[`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
+No V4 provisioning, credential issuance, database/service creation,
+deployment, source capture, or implementation is authorised.
 
 ## Repository state at handover
 
