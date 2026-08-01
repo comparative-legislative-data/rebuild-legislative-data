@@ -467,3 +467,19 @@ Next review due:
 | Affected work blocked | New-cluster configuration/start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0029 or later exact approvals. |
 | Owner decision required | DEC-0029. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0026
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0029 offline validation blocked helper-based correction and direct-correction preparation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0029 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md`, `V4A_NATIVE_CLUSTER_DIRECT_CONFIG_CORRECTION_PROPOSAL_DEC0030.md`, restricted correction result, and this log |
+| Active phase and authorising decision | New-cluster recovery correction under DEC-0029 stopped in offline validation; DEC-0030 direct-correction proposal only |
+| Checks performed | DEC-0029 changed only the three new-cluster settings and validated before a service action. The host helper emitted the raw IPv4 literal without PostgreSQL quoting; the PostgreSQL binary rejected the down configuration. The new service was not started, and no database/role action or existing-service action occurred. |
+| Findings | RSK-0018 records that the helper must not be used for these values. DEC-0030 limits recovery to exact direct replacements of the three lines, followed by offline validation and one new-service start attempt. |
+| Outcome | `BLOCKED` for the DEC-0029 start condition; `PASS` for stopping before start and preparing DEC-0030. |
+| Affected work blocked | New-cluster start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0030 or later exact approval. |
+| Owner decision required | DEC-0030. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

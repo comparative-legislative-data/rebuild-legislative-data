@@ -1,16 +1,16 @@
 # V4A Native-Cluster Recovery Correction Proposal — DEC-0029
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — offline validation `BLOCKED`; no service start occurred
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0029
+**Decision:** DEC-0029
 
-## Exact decision
+## Approved decision and execution outcome
 
-Approve one narrow recovery action for the new `16/cld_gb_sct` cluster only.
+The project owner approved one narrow recovery action for the new `16/cld_gb_sct` cluster only.
 It corrects the three malformed configuration values found by DEC-0028,
 validates them while the cluster remains down, and starts only the new cluster
 for a bounded health check.
@@ -18,6 +18,12 @@ for a bounded health check.
 It may not create databases, roles, schemas, extensions, credentials, source
 data, application services, or public endpoints. It may not alter `16-main`,
 `16-bills`, Nginx, DNS, firewall, existing paths, or any other service.
+
+The action changed only the three values, then stopped in offline validation:
+the native configuration helper emitted an unquoted IPv4 literal. It made no
+service start attempt, database/role action, or existing-service action. The
+restricted result is retained as
+`V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_RESULT.md`.
 
 ## Exclusive operation
 
@@ -60,7 +66,8 @@ No automatic deletion, role/database creation, or second retry is allowed. A
 failed recovery start leaves the new cluster in its resulting state and stops.
 Any next action requires a new exact owner-approved proposal.
 
-## Owner decision
+## Decision outcome
 
-Approve or reject DEC-0029. Approval authorises this correction and one start
-attempt for the new cluster only, plus its restricted result record.
+DEC-0029 authorised this correction and one start attempt for the new cluster
+only, plus its restricted result record. The start condition was `BLOCKED` by
+offline validation. It does not authorise another correction or start attempt.

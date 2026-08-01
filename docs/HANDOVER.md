@@ -123,9 +123,10 @@ DEC-0027 corrected that check, created the new foundation targets, and then
 stopped when the new cluster's first systemd start failed before database roles
 or databases were created. DEC-0028 then performed a new-cluster-only
 read-only inspection and identified malformed quoting in three new-cluster
-settings; the next
-decision is the narrowly scoped correction/start proposal in
-[`V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md`](V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md).
+settings. DEC-0029 then established that the native helper writes the raw IPv4
+literal without required PostgreSQL quoting, so offline validation stopped the
+start. The next decision is the direct three-line correction/start proposal in
+[`V4A_NATIVE_CLUSTER_DIRECT_CONFIG_CORRECTION_PROPOSAL_DEC0030.md`](V4A_NATIVE_CLUSTER_DIRECT_CONFIG_CORRECTION_PROPOSAL_DEC0030.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
