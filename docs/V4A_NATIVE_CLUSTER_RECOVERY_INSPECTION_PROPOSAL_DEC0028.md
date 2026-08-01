@@ -1,16 +1,16 @@
 # V4A Native-Cluster Recovery Inspection Proposal — DEC-0028
 
-**Status:** Proposed — read-only inspection only; no repair or retry authorised
+**Status:** Approved — inspection completed; recovery remains separately gated
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0028
+**Decision:** DEC-0028
 
-## 1. Exact decision
+## 1. Approved decision and outcome
 
-Approve one read-only inspection following the DEC-0027 first-start failure.
+The project owner approved one read-only inspection following the DEC-0027 first-start failure.
 It may inspect only the new `16/cld_gb_sct` cluster and the minimum metadata
 needed to show whether `16-main` and `16-bills` remain unchanged.
 
@@ -18,6 +18,11 @@ It does not authorise a systemd start/restart/reload, `pg_ctlcluster` action,
 configuration edit, role/database operation, removal, package operation,
 source-data access, application action, Nginx/DNS/firewall change, or any
 activity outside the named targets below.
+
+The inspection found malformed quoting in three settings of the new cluster,
+which blocks a start retry. It also observed that `16-main` and `16-bills`
+reported active. The restricted result is retained as
+`V4A_NATIVE_CLUSTER_RECOVERY_INSPECTION_RESULT.md`.
 
 ## 2. Permitted checks
 
@@ -43,7 +48,8 @@ existing-cluster mismatch, or request for a mutation. A diagnostic finding is
 not authority to correct it. Any repair, reconfiguration, service action, or
 removal needs a separate exact owner-approved action.
 
-## 4. Owner decision
+## 4. Decision outcome
 
-Approve or reject DEC-0028. Approval authorises this single read-only recovery
-inspection and its restricted result only.
+DEC-0028 authorised this single read-only recovery inspection and its
+restricted result only. It does not authorise repair, restart, retry, role/
+database creation, removal, or any V4B/V4C activity.

@@ -451,3 +451,19 @@ Next review due:
 | Affected work blocked | Any retry, repair, removal, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0028 and subsequent exact direction. |
 | Owner decision required | DEC-0028. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0025
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner-approved DEC-0028 read-only inspection and recovery-correction preparation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0028 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_RECOVERY_INSPECTION_PROPOSAL_DEC0028.md`, `V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md`, restricted inspection result, and this log |
+| Active phase and authorising decision | Read-only recovery inspection under DEC-0028 completed; DEC-0029 correction/start proposal only |
+| Checks performed | The inspection read only the new unit/configuration/listener state and minimum existing-cluster active/digest metadata. It found extra quote characters in the three new-cluster string settings, the new cluster down with no port-5434 listener, and the existing clusters reporting active. It did not mutate any resource. |
+| Findings | The malformed values explain why a start retry cannot proceed as-is. RSK-0017 records the correction boundary. DEC-0029 changes only those three new-cluster values, requires offline validation before a single new-unit start, and excludes database/role creation. |
+| Outcome | `PASS` for DEC-0028 inspection and preparation of DEC-0029; all recovery changes remain blocked pending approval. |
+| Affected work blocked | New-cluster configuration/start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0029 or later exact approvals. |
+| Owner decision required | DEC-0029. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

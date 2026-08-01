@@ -121,9 +121,11 @@ now approved as DEC-0025 in
 DEC-0026 failed before mutation on a `df` option compatibility check.
 DEC-0027 corrected that check, created the new foundation targets, and then
 stopped when the new cluster's first systemd start failed before database roles
-or databases were created. The next decision is a new-cluster-only read-only
-inspection in
-[`V4A_NATIVE_CLUSTER_RECOVERY_INSPECTION_PROPOSAL_DEC0028.md`](V4A_NATIVE_CLUSTER_RECOVERY_INSPECTION_PROPOSAL_DEC0028.md).
+or databases were created. DEC-0028 then performed a new-cluster-only
+read-only inspection and identified malformed quoting in three new-cluster
+settings; the next
+decision is the narrowly scoped correction/start proposal in
+[`V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md`](V4A_NATIVE_CLUSTER_RECOVERY_CORRECTION_PROPOSAL_DEC0029.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
