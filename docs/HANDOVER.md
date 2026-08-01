@@ -22,11 +22,11 @@ The project owner prioritises academic integrity, accuracy, traceability, and tr
   and the two named legacy legislative databases were removed. No legacy data
   was migrated or retained. The shared cluster, roles, paths, Nginx sites,
   other databases, and unrelated workloads remain out of scope.
-- No source-data capture or application implementation work has been
-  authorised. V4A's isolated empty database foundation is complete; DEC-0036
-  authorises B0 application-delivery specification preparation only. Deployment,
-  database schema work, secrets, credentials, and public exposure remain
-  separately gated.
+- No source-data capture has been authorised. V4A's isolated empty database
+  foundation and the local-only B1 application shell are complete. B1 contains
+  no data, database connectivity, secret, source, or deployment capability.
+  Deployment, database schema work, secrets, credentials, and public exposure
+  remain separately gated.
 - The first substantive artefact is the approved project-design baseline. Future revisions require the documented change-control process.
 - The first legislature will be the Scottish Parliament (`GB-SCT`), but the project must be designed so an additional parliament cannot affect another parliament’s data, code, releases, or services.
 
@@ -148,17 +148,22 @@ gated. The next planning decision is
 it is approved and establishes an evidence-led B0–B3 route to local-only
 service deployment, not an immediate deployment. B0 is approved in
 [`V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`](V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md):
-Node.js `24.17.0`/TypeScript, Fastify API, and React/Vite web application.
-The next decision is the local-only B1 implementation package in
-[`V4B_B1_LOCAL_APPLICATION_SHELL_IMPLEMENTATION_PROPOSAL_DEC0038.md`](V4B_B1_LOCAL_APPLICATION_SHELL_IMPLEMENTATION_PROPOSAL_DEC0038.md).
+Node.js 24 LTS/TypeScript, Fastify API, and React/Vite web application; the
+local B1 build baseline is `24.14.1` and does not select the later VPS patch.
+B1 is complete with a local-only `PASS` result in
+[`V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`](V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md).
+The next decision, if requested, is a separately prepared B2 local-deployment
+proposal.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
-No V4 provisioning, credential issuance, database/service creation,
-deployment, Nginx/DNS change, source capture, or implementation is authorised.
+No V4 deployment, credential issuance, database schema/service creation,
+Nginx/DNS change, source capture, or public implementation claim is
+authorised. The B1 local repository implementation is complete only within its
+stated no-data/no-database/no-deployment boundary.
 
 ## Repository state at handover
 

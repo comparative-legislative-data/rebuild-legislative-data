@@ -1,0 +1,24 @@
+[Unit]
+Description=Comparative Legislative Data API (B1 template only)
+
+[Service]
+User=cld-gb-sct
+WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID/apps/api
+ExecStart=/usr/bin/node dist/server.js
+Environment=HOST=127.0.0.1
+Environment=PORT=3210
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ReadWritePaths=/srv/cld-gb-sct/state
+CPUQuota=35%
+MemoryMax=768M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

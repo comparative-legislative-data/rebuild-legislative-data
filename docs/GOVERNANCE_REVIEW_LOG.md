@@ -643,3 +643,19 @@ Next review due:
 | Affected work blocked | Local code/dependency installation, VPS/service deployment, database schema/login/migration work, secret or credential issuance, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
 | Owner decision required | DEC-0038 to permit the bounded local B1 implementation package. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0037
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0038 local B1 application-shell implementation result |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0038 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`, `V4B_B1_LOCAL_APPLICATION_SHELL_IMPLEMENTATION_PROPOSAL_DEC0038.md`, `V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`, and this log |
+| Active phase and authorising decision | V4B B1 local application shell under DEC-0038 |
+| Checks performed | Verified exact local Node/npm alignment, lockfile installation with lifecycle scripts disabled, direct dependency allowlist, strict TypeScript checks, production builds, five health/loopback contract tests, application capability scan, archive content boundary, and deterministic two-build archive/manifest digests. |
+| Findings | The B1 implementation is synthetic-only and retains no database, secret, source, or public capability. An initial archive timestamp/order issue was corrected within the local packaging code; the final two-build check passed identical archive and manifest digests. No VPS command or external source request occurred. |
+| Outcome | `PASS` for the local B1 implementation and retained result only. |
+| Affected work blocked | VPS/service deployment, target-host runtime installation/selection, database schema/login/migration work, secret or credential issuance, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
+| Owner decision required | A separate B2 local-deployment proposal, if the owner wishes to continue. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

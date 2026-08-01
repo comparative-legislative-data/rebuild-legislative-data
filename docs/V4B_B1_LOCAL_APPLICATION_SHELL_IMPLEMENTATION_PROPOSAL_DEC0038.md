@@ -1,20 +1,21 @@
 # V4B B1 Local Application-Shell Implementation Proposal — DEC-0038
 
-**Status:** Proposed — no implementation, dependency installation, VPS,
-database, secret, source-data, or public-web action is authorised
+**Status:** Approved — execution `PASS`; local implementation only
 
 **Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0038
+**Decision:** DEC-0038, approved 1 August 2026
 
 ## 1. Purpose and exact scope
 
-DEC-0037 selected the first application stack: Node.js `24.17.0`, TypeScript,
-Fastify for a separate API, and React/Vite for a separate web application. This
-proposal requests approval for one local-repository B1 package to implement
-only the synthetic operational shell specified in DEC-0037.
+DEC-0037 selected the first application stack: Node.js 24 LTS (with local B1
+baseline `24.14.1`), TypeScript,
+Fastify for a separate API, and React/Vite for a separate web application. The
+owner approved one local-repository B1 package to implement only the synthetic
+operational shell specified in DEC-0037. Its execution result is recorded in
+`V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`.
 
 The package would create a reproducibly built and tested source artefact. It
 would not access the VPS, install anything on it, connect to PostgreSQL,
@@ -25,7 +26,7 @@ login, bind a public port, or deploy a service.
 
 | Area | Permitted outcome |
 | --- | --- |
-| Runtime contract | `.nvmrc` and `package.json` both require exactly Node.js `24.17.0`; build metadata records the observed local Node/npm versions. |
+| Runtime contract | `.nvmrc` and `package.json` both require exactly Node.js `24.14.1`; build metadata records the observed local Node/npm versions. This local build pin does not select the later VPS runtime. |
 | Dependency control | One root `package.json` and committed `package-lock.json`, using npm workspaces and exact direct dependency versions. Installation is `npm ci --ignore-scripts`; no lifecycle script may run. |
 | API source | `apps/api` implements only `GET /healthz` at configured loopback host/port, with the exact `process_ready` and capability contract in DEC-0037. |
 | Web source | `apps/web` implements a React/Vite static page and `GET /healthz` through its local static-asset server. It has no API/data request, chart, analytical calculation, or external asset. |
@@ -88,7 +89,7 @@ versions, input commit, lockfile and build digests, timestamps, and `PASS`,
 
 | Check | Passing condition |
 | --- | --- |
-| Runtime alignment | `.nvmrc`, `package.json`, and recorded Node version are exactly `24.17.0`. |
+| Runtime alignment | `.nvmrc`, `package.json`, and recorded Node version are exactly `24.14.1`. |
 | Dependency integrity | `npm ci --ignore-scripts` succeeds from the committed lockfile; direct dependency set matches §3. |
 | Static checks | Strict TypeScript check, production web/API build, and source scan complete with no ignored errors. |
 | API contract | Local test asserts only the exact JSON schema, content type, capability values, and loopback configuration for `/healthz`. |
@@ -116,8 +117,8 @@ claim, or any change to the B0 stack contract.
 
 ## 7. Decision requested
 
-DEC-0038 would authorise the one local-repository B1 package in §§2–6,
-including the bounded npm dependency installation described in §3. It would
-not authorise any VPS, service, database, schema, secret, source-data,
+DEC-0038 authorised and completed the one local-repository B1 package in §§2–6,
+including its bounded npm dependency installation. It did not authorise or
+perform any VPS, service, database, schema, secret, source-data,
 network-listener, Nginx/DNS/firewall, or public-release action. A separate B2
 proposal and owner approval remain required before any local deployment.

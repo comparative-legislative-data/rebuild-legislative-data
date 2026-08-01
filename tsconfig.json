@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/contracts" },
+    { "path": "./packages/verification" },
+    { "path": "./apps/api" },
+    { "path": "./apps/web/tsconfig.server.json" }
+  ]
+}

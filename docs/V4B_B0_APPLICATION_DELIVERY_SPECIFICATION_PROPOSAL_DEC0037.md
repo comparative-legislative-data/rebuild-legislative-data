@@ -1,8 +1,8 @@
 # V4B B0 Application Delivery Specification Proposal — DEC-0037
 
-**Status:** Approved — B1 implementation-package preparation only; no
-application, dependency, VPS, database, secret, source-data, or public-web
-action is authorised
+**Status:** Approved — B1 follow-on completed under DEC-0038; database,
+secret, source-data, VPS-deployment, and public-web actions remain separately
+gated
 
 **Version:** 1.0.0
 
@@ -29,7 +29,7 @@ or inspected for reuse.
 | Concern | B0 specification |
 | --- | --- |
 | Language | TypeScript, with strict compiler settings and no implicit `any` in project code. |
-| Runtime | Node.js `24.17.0` LTS. B1 must record that exact version in `.nvmrc`, `package.json` `engines`, the CI test record, and the release manifest. A B1 build fails if these disagree. |
+| Runtime | Node.js 24 LTS line. The local B1 build baseline is `24.14.1`, the installed runtime observed in its pre-flight. B1 must record that exact version in `.nvmrc`, `package.json` `engines`, the CI test record, and the release manifest. A B1 build fails if these disagree. A later deployment package must select and verify its then-supported production patch. |
 | Package manager | npm only. `package-lock.json` is mandatory; installation uses `npm ci`, never an unrecorded dependency resolution. |
 | Workspace | npm workspaces: `apps/api`, `apps/web`, `packages/contracts`, and `packages/verification`. The first implementation may leave a workspace absent only when the B1 record explicitly explains why. |
 | Backend | Fastify, with exact package versions locked in `package-lock.json`. It owns API routing and API health only. |
@@ -37,11 +37,12 @@ or inspected for reuse.
 | Database driver | None in the first B1 application shell. Adding PostgreSQL connectivity, a migration tool, a login role, or a database secret is a later separately approved package. |
 | Test tools | Node's built-in test runner for service/contract tests and a browser-independent build check for the web application. Additional test tooling requires its pinned dependency and B1 rationale. |
 
-Node.js `24.17.0` is the selected supported LTS baseline at this decision
-point. This is a technology choice, not a claim about the host's installed
-packages; B1 must not assume the runtime exists on the VPS. Any version update
-requires a documented dependency/runtime review and a matching lockfile,
-test, and release-manifest record.
+Node.js 24 LTS is the selected runtime line. B1 is pinned to local Node.js
+`24.14.1` because that is the observed development runtime; it is not a claim
+about the VPS. Before B2, the project must select and verify the then-supported
+Node 24 patch for the target host. Any version update requires a documented
+dependency/runtime review and a matching lockfile, test, and release-manifest
+record.
 
 ## 3. Repository and release layout
 
