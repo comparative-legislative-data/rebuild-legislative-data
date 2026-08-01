@@ -627,3 +627,19 @@ Next review due:
 | Affected work blocked | B1 application/dependency implementation; all VPS checks/changes and service deployment; database schema/login/migration work; secret or credential issuance; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
 | Owner decision required | DEC-0037 to adopt the B0 specification and permit preparation of a B1 implementation package. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0036
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner selection of Fastify API and React/Vite web stack; B1 implementation proposal |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0037; DEC-0038 is proposed |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`, `V4B_B1_LOCAL_APPLICATION_SHELL_IMPLEMENTATION_PROPOSAL_DEC0038.md`, and this log |
+| Active phase and authorising decision | V4B B1 local implementation-package preparation under DEC-0037 |
+| Checks performed | Confirmed the owner selected the B0 Fastify/React/Vite option. Checked current Node release documentation before setting the supported LTS baseline to `24.17.0`; no runtime was installed or inspected on the VPS. Confirmed DEC-0038 limits direct dependencies, disables lifecycle scripts, fixes repository-only targets, requires synthetic-only capability labels, and excludes all database/source/VPS/public work. |
+| Findings | The B1 package has a narrow, reproducible local implementation purpose. It cannot demonstrate database, source, service, or deployment behaviour. RSK-0024 records the dependency/supply-chain boundary. |
+| Outcome | `PASS` for DEC-0037 approval recording and DEC-0038 proposal preparation only. |
+| Affected work blocked | Local code/dependency installation, VPS/service deployment, database schema/login/migration work, secret or credential issuance, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
+| Owner decision required | DEC-0038 to permit the bounded local B1 implementation package. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

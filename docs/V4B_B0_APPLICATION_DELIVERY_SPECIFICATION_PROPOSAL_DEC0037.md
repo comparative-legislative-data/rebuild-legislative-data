@@ -1,13 +1,14 @@
 # V4B B0 Application Delivery Specification Proposal — DEC-0037
 
-**Status:** Proposed — specification only; no application, dependency, VPS,
-database, secret, source-data, or public-web action is authorised
+**Status:** Approved — B1 implementation-package preparation only; no
+application, dependency, VPS, database, secret, source-data, or public-web
+action is authorised
 
 **Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0037
+**Decision:** DEC-0037, approved 1 August 2026
 
 ## 1. Purpose and scope
 
@@ -28,7 +29,7 @@ or inspected for reuse.
 | Concern | B0 specification |
 | --- | --- |
 | Language | TypeScript, with strict compiler settings and no implicit `any` in project code. |
-| Runtime | Node.js 22 LTS line. The B1 package must select one security-supported patch release, record it in `.nvmrc`, `package.json` `engines`, the CI test record, and the release manifest. A B1 build fails if these disagree. |
+| Runtime | Node.js `24.17.0` LTS. B1 must record that exact version in `.nvmrc`, `package.json` `engines`, the CI test record, and the release manifest. A B1 build fails if these disagree. |
 | Package manager | npm only. `package-lock.json` is mandatory; installation uses `npm ci`, never an unrecorded dependency resolution. |
 | Workspace | npm workspaces: `apps/api`, `apps/web`, `packages/contracts`, and `packages/verification`. The first implementation may leave a workspace absent only when the B1 record explicitly explains why. |
 | Backend | Fastify, with exact package versions locked in `package-lock.json`. It owns API routing and API health only. |
@@ -36,10 +37,11 @@ or inspected for reuse.
 | Database driver | None in the first B1 application shell. Adding PostgreSQL connectivity, a migration tool, a login role, or a database secret is a later separately approved package. |
 | Test tools | Node's built-in test runner for service/contract tests and a browser-independent build check for the web application. Additional test tooling requires its pinned dependency and B1 rationale. |
 
-Node.js 22 LTS is selected to keep the initial native-systemd deployment
-simple and to avoid a framework-specific server runtime. This is a technology
-choice, not a claim about the host's installed packages; B1 must not assume the
-runtime exists on the VPS.
+Node.js `24.17.0` is the selected supported LTS baseline at this decision
+point. This is a technology choice, not a claim about the host's installed
+packages; B1 must not assume the runtime exists on the VPS. Any version update
+requires a documented dependency/runtime review and a matching lockfile,
+test, and release-manifest record.
 
 ## 3. Repository and release layout
 
@@ -183,8 +185,9 @@ service as deployed, available, source-backed, or ready for V4C.
 
 ## 8. Explicit exclusions and decision requested
 
-DEC-0037 would approve this B0 specification and permit preparation of a
-separate B1 implementation package. It would not authorise application code,
-dependency installation, source access/capture, database work, credentials,
-secrets, VPS access/change, service deployment, Nginx/DNS/firewall change, or
-public release.
+The owner approved DEC-0037 to adopt this B0 specification—Fastify for the
+separate API and React/Vite for the separate web application—and to permit
+preparation of a separate B1 implementation package. It does not authorise
+application code, dependency installation, source access/capture, database
+work, credentials, secrets, VPS access/change, service deployment,
+Nginx/DNS/firewall change, or public release.
