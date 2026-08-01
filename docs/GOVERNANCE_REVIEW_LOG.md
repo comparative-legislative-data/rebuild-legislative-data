@@ -355,3 +355,19 @@ Next review due:
 | Affected work blocked | V4A provision, credentials, PostgreSQL login/schema grants, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their exact approvals. |
 | Owner decision required | DEC-0023; then a restricted V4A verification result and separately approved V4B prerequisites. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0019
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner-approved DEC-0023 V4A action stopped in mandatory pre-flight |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0023 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md`, restricted V4A result, and this log |
+| Active phase and authorising decision | Exact V4A foundation action under DEC-0023; execution stopped before mutation |
+| Checks performed | The one-shot action reached the PostgreSQL listener-boundary pre-flight check and returned `BLOCKED`. It did not enter its mutation stage, perform a target-absence check, create any account/path/role/database, or access source data. No follow-up query was run. |
+| Findings | The listener condition is unresolved, not a basis for inferring that the service is public or unsafe. RSK-0014 records the gap. The shared host, PostgreSQL configuration, existing services/databases, Nginx, DNS, and other workloads remain unchanged. |
+| Outcome | `BLOCKED` for V4A execution; `PASS` for stopping before mutation and retaining the bounded result. |
+| Affected work blocked | Any V4A retry, PostgreSQL configuration change, role/database creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims. |
+| Owner decision required | An exact read-only listener-boundary clarification authorisation; then, only if it establishes a non-interfering path, a new V4A authorisation. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

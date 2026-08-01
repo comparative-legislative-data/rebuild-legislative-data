@@ -1,18 +1,24 @@
 # V4A Foundation Authorisation Proposal — DEC-0023
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — execution `BLOCKED` in pre-flight; no VPS mutation
+occurred
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0023
+**Decision:** DEC-0023
 
-## 1. Exact decision
+## 1. Approved decision and execution outcome
 
-Approve one additive V4A foundation action on the current VPS identified in
+The project owner approved one additive V4A foundation action on the current VPS identified in
 the restricted V0–V3 operational record. The action may create only the empty
 accounts, paths, PostgreSQL roles, and PostgreSQL databases named below.
+
+The approved one-shot action stopped during mandatory pre-flight because its
+listener-boundary check did not pass. It did not reach the mutation stage; no
+account, path, database, role, privilege, service, or configuration changed.
+The restricted result is retained as `V4A_GB_SCT_FOUNDATION_RESULT.md`.
 
 The action must run once, through the existing approved SSH path, by the
 named administrative account already used for V0–V3. The host address,
@@ -176,9 +182,10 @@ and isolated; its removal or correction requires a new exact owner-approved
 action. This avoids an unreviewed deletion or a broad cleanup on the shared
 host.
 
-## 7. Owner decision
+## 7. Decision outcome
 
-Approve or reject DEC-0023. Approval authorises this one V4A foundation action
-and its restricted non-secret verification record. It does not authorise any
-later deployment, service, credentials, source-data work, proxy/DB1 build,
-canonical build, chart, Nginx/DNS change, or public claim.
+DEC-0023 authorised this one V4A foundation action and its restricted
+non-secret verification record. The action is `BLOCKED` before mutation. It
+does not authorise a retry, listener/configuration change, later deployment,
+service, credentials, source-data work, proxy/DB1 build, canonical build,
+chart, Nginx/DNS change, or public claim.
