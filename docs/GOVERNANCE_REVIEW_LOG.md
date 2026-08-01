@@ -339,3 +339,19 @@ Next review due:
 | Affected work blocked | VPS changes, database/service/secret creation, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
 | Owner decision required | DEC-0022; then a separately approved exact V4A foundation authorisation. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0018
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0022 and preparation of exact V4A authorisation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0022 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`, `CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`, `V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md`, and this log |
+| Active phase and authorising decision | Current-VPS V4 boundary approved under DEC-0022; exact V4A authorisation preparation only; DEC-0023 remains proposed |
+| Checks performed | The V4A proposal names only fresh disabled accounts, empty paths, no-login PostgreSQL roles, and empty databases. It preserves the shared cluster, existing users, services, paths, Nginx configuration, ports, the separate bills cluster, and all source-data boundaries. It records the shared-cluster `PUBLIC CONNECT` uncertainty as a later V4B gate rather than implying that a no-login foundation proves deployment isolation. |
+| Findings | DEC-0022 is recorded as approved. DEP-0003 is satisfied through the staging boundary. RSK-0013 remains active; DEC-0023 is required before the additive foundation action. No VPS action, source-data action, implementation, service deployment, or domain cutover occurred. |
+| Outcome | `PASS` for recording DEC-0022 approval and preparing the DEC-0023 proposal. |
+| Affected work blocked | V4A provision, credentials, PostgreSQL login/schema grants, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their exact approvals. |
+| Owner decision required | DEC-0023; then a restricted V4A verification result and separately approved V4B prerequisites. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

@@ -1,19 +1,19 @@
 # Current-VPS V4 Foundation and Web-Cutover Plan Proposal — DEC-0022
 
-**Status:** Proposed — no VPS provisioning, database/service creation, secret
-issuance, deployment, DNS change, or source-data activity authorised
+**Status:** Approved — staged V4 boundary only; each stage still needs its
+own exact authorisation
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0022
+**Decision:** DEC-0022
 
-## 1. Decision requested
+## 1. Approved decision
 
-Approve the staged V4 plan for a no-Docker `GB-SCT` foundation on the current
-VPS and a later, explicitly gated `legislativedata.org` frontend/backend
-cutover.
+The project owner approved the staged V4 plan for a no-Docker `GB-SCT`
+foundation on the current VPS and a later, explicitly gated
+`legislativedata.org` frontend/backend cutover.
 
 The plan has three independently authorised stages. Later stages are not
 implied by an earlier one:
@@ -111,9 +111,8 @@ Stop on a port collision, database-role privilege leak, unexpected Nginx
 validation result, failed resource limit, path ownership ambiguity, existing
 service dependency, or any required broad configuration change.
 
-## 7. Owner decision
+## 7. Consequence of approval
 
-Approve or reject DEC-0022. Approval adopts this staged V4 boundary and
-authorises preparation of an exact V4A foundation authorisation only. It does
-not authorise any VPS mutation, service start, frontend/backend deployment,
-Nginx/DNS change, source capture, or application code.
+DEC-0022 authorises preparation of an exact V4A foundation authorisation only.
+It does not authorise a VPS mutation, service start, frontend/backend
+deployment, Nginx/DNS change, source capture, or application code.
