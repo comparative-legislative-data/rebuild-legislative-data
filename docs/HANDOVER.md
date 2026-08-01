@@ -140,7 +140,10 @@ correction; no roles or databases were created and existing clusters remained
 unchanged. DEC-0035 removed the conflicting runtime-directory lifecycle,
 started the new cluster loopback-only, and created only the two empty project
 roles and two empty project databases. V4A is complete; V4B remains separately
-gated.
+gated. The next planning decision is
+[`V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`](V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md):
+it proposes an evidence-led B0–B3 route to local-only service deployment, not
+an immediate deployment.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).

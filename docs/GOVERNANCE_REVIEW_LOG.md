@@ -595,3 +595,19 @@ Next review due:
 | Affected work blocked | V4B services, credential issuance, schema/data work, source capture, proxy/DB1 implementation, canonical builds, charts, Nginx/DNS cutover, and public claims remain blocked pending their own approvals. |
 | Owner decision required | A separate V4B service/secret/application package, when the owner wishes to proceed. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0034
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — V4B service, secret, and application delivery planning proposal |
+| Reviewer role | Maintainer; DEC-0036 is proposed and has no owner approval yet |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`, `ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`, `V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_PROPOSAL_DEC0035.md`, `V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`, and this log |
+| Active phase and authorising decision | V4B planning only following V4A completion under DEC-0035; DEC-0036 is a proposal only |
+| Checks performed | Confirmed the V4A foundation is limited to the loopback-only empty project databases/roles and that the repository contains no approved runtime, application, lockfile, release artefact, migration, login-capable database role, secret, unit, or health implementation. Confirmed the V4B proposal separates specification, implementation, local deployment, and local acceptance. |
+| Findings | An application/service deployment cannot be evidenced yet. DEC-0036 prevents a generic placeholder deployment and retains separate gates for dependencies, secrets, schema/login roles, VPS/service work, source-data work, and V4C public cutover. |
+| Outcome | `PASS` for proposal preparation only; no V4B operational action is authorised. |
+| Affected work blocked | B1 implementation; B2/B3 VPS deployment and verification; package installation; secret or credential issuance; schema/migration work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
+| Owner decision required | DEC-0036 to adopt the B0–B3 sequence and permit B0 specification preparation. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
