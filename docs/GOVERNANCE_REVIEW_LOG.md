@@ -515,3 +515,19 @@ Next review due:
 | Affected work blocked | New-cluster repair/start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0032 or later exact approval. |
 | Owner decision required | DEC-0032. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0029
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0032 HBA inspection passed; V4A-completion and proportionate-control proposals prepared |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0032 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`, `V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`, `INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`, restricted inspection result, and this log |
+| Active phase and authorising decision | DEC-0032 effective-HBA inspection completed; DEC-0033 and DEC-0034 proposals only |
+| Checks performed | The inspection read only the effective HBA path and non-comment rules of the down new cluster. It found the standard local peer rule for `postgres`, local peer for all local accounts, and the sole TCP rule at `127.0.0.1/32` using SCRAM. No service, configuration, database/role, source, network, or existing-service action occurred. |
+| Findings | The HBA profile supports the proposed no-edit V4A completion checks. The owner requested less granular control for routine setup. DEC-0034 preserves explicit gates for material/shared/public/data actions while allowing bounded owner-approved VPS work packages to handle ordinary implementation details without serial micro-decisions. |
+| Outcome | `PASS` for DEC-0032 inspection and proposal preparation. |
+| Affected work blocked | New-cluster start, database/role creation, infrastructure work-package delegation, services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their respective approvals. |
+| Owner decision required | DEC-0033 and DEC-0034. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

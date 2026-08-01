@@ -131,6 +131,13 @@ DEC-0031 completed the privileged HBA read but found an unexpected rule profile
 and stopped before any start. The next decision is the new-cluster-only,
 read-only HBA inspection proposal in
 [`V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`](V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md).
+DEC-0032 then confirmed the expected local-only HBA profile, including the
+standard local peer rule for the PostgreSQL service account. The next V4A
+decision is the bounded cluster/start/database completion proposal in
+[`V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`](V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md).
+The owner has also requested a more proportionate control model for basic VPS
+setup; its documentation proposal is
+[`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
