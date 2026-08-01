@@ -1,16 +1,17 @@
 # V4A Native-Cluster Direct-Configuration Correction Proposal — DEC-0030
 
-**Status:** Proposed — no VPS action is authorised by this document
+**Status:** Approved — start condition `BLOCKED`; no service start occurred
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0030
+**Decision:** DEC-0030
 
-## Exact decision
+## Approved decision and execution outcome
 
-Approve one replacement correction for the down `16/cld_gb_sct` cluster only.
+The project owner approved one replacement correction for the down
+`16/cld_gb_sct` cluster only.
 It replaces only the three malformed setting lines directly in that new
 cluster's `postgresql.conf`, validates while down, and makes one new-service-
 only start attempt.
@@ -28,6 +29,13 @@ file may be edited. The port remains 5434; the HBA, resource limits, start
 state, accounts, paths, existing clusters, databases, roles, services, Nginx,
 DNS, firewall, source data, and application components are out of scope.
 
+The three authorised direct replacements completed and the PostgreSQL binary
+validated all three effective values while the cluster remained down. Before a
+start could occur, the action was `BLOCKED`: its unprivileged HBA reader could
+not read the protected `pg_hba.conf`. No service-start command, role/database
+action, or existing-service action occurred. The restricted result is retained
+as `V4A_NATIVE_CLUSTER_DIRECT_CONFIG_CORRECTION_RESULT.md`.
+
 ## Validation and one start
 
 Before any start, the PostgreSQL 16 binary must read each effective value from
@@ -43,8 +51,9 @@ only `127.0.0.1:5434`, the service limits remain effective, and `16-main` plus
 No role/database creation, second start attempt, automatic deletion, or repair
 of another resource is permitted.
 
-## Owner decision
+## Decision outcome
 
-Approve or reject DEC-0030. Approval authorises only this direct three-line
-correction, offline validation, one new-service start attempt, and its
-restricted result record.
+DEC-0030 authorised only this direct three-line correction, offline
+validation, one new-service start attempt, and its restricted result record.
+Its start condition was not met. It does not authorise an HBA reread or any
+further start attempt.

@@ -483,3 +483,19 @@ Next review due:
 | Affected work blocked | New-cluster start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0030 or later exact approval. |
 | Owner decision required | DEC-0030. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0027
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0030 stopped before start because its HBA validation reader lacked required privilege |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0030 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_DIRECT_CONFIG_CORRECTION_PROPOSAL_DEC0030.md`, `V4A_NATIVE_CLUSTER_HBA_VALIDATION_AND_START_PROPOSAL_DEC0031.md`, restricted correction result, and this log |
+| Active phase and authorising decision | DEC-0030 direct correction completed through offline validation; DEC-0031 HBA-validation/start proposal only |
+| Checks performed | DEC-0030 directly replaced only the three approved new-cluster settings. The PostgreSQL binary accepted their effective values while down. The action stopped before a start command because the HBA reader lacked permission for the protected file. Existing clusters reported active before the attempted validation; no database/role or existing-service action occurred. |
+| Findings | The direct configuration correction does not need repeating. RSK-0019 records the missing read privilege. DEC-0031 permits only a privileged read of the already-existing HBA, repeated effective-value/port checks, and one new-service start if they all pass. |
+| Outcome | `BLOCKED` for DEC-0030's start condition; `PASS` for stopping without a service start and preparing the narrower DEC-0031 proposal. |
+| Affected work blocked | New-cluster start, database/role creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0031 or later exact approval. |
+| Owner decision required | DEC-0031. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
