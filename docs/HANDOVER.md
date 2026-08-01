@@ -22,8 +22,11 @@ The project owner prioritises academic integrity, accuracy, traceability, and tr
   and the two named legacy legislative databases were removed. No legacy data
   was migrated or retained. The shared cluster, roles, paths, Nginx sites,
   other databases, and unrelated workloads remain out of scope.
-- No source-data capture, new infrastructure, deployment, database creation,
-  or application implementation work has been authorised yet.
+- No source-data capture or application implementation work has been
+  authorised. V4A's isolated empty database foundation is complete; DEC-0036
+  authorises B0 application-delivery specification preparation only. Deployment,
+  database schema work, secrets, credentials, and public exposure remain
+  separately gated.
 - The first substantive artefact is the approved project-design baseline. Future revisions require the documented change-control process.
 - The first legislature will be the Scottish Parliament (`GB-SCT`), but the project must be designed so an additional parliament cannot affect another parliament’s data, code, releases, or services.
 
@@ -142,8 +145,9 @@ started the new cluster loopback-only, and created only the two empty project
 roles and two empty project databases. V4A is complete; V4B remains separately
 gated. The next planning decision is
 [`V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`](V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md):
-it proposes an evidence-led B0–B3 route to local-only service deployment, not
-an immediate deployment.
+it is approved and establishes an evidence-led B0–B3 route to local-only
+service deployment, not an immediate deployment. B0 is now proposed in
+[`V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`](V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md).
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).

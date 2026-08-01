@@ -1,13 +1,14 @@
 # V4B Service, Secret, and Application Delivery Plan Proposal — DEC-0036
 
-**Status:** Proposed — planning only; no service, secret, application, source,
-database-schema, dependency, or public-web action is authorised
+**Status:** Approved — B0 application-delivery specification preparation only;
+no service, secret, application, source, database-schema, dependency, or
+public-web action is authorised
 
 **Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0036
+**Decision:** DEC-0036, approved 1 August 2026
 
 ## 1. Purpose and observed starting point
 
@@ -21,15 +22,15 @@ a health endpoint.
 It would therefore be misleading and operationally unsafe to start a generic
 or placeholder backend/frontend service. V4B should create a reviewable chain
 from an application specification to a reproducible local-only deployment.
-This proposal does not select an implementation technology or claim that a
-service is ready.
+The approved decision does not select an implementation technology or claim
+that a service is ready. It authorises B0 specification preparation only.
 
 ## 2. Active scope, authority, and containment
 
 | Item | Record |
 | --- | --- |
 | Active phase | V4B delivery planning after the completed V4A foundation |
-| Current authority | Owner request to prepare this documentation-only proposal; DEC-0035 completed V4A |
+| Current authority | Owner approval of DEC-0036 (1 August 2026); DEC-0035 completed V4A |
 | Systems affected now | Repository documentation only |
 | Explicitly excluded | VPS access or change; package installation; credential or secret issuance; database-schema/migration work; application code; source request/capture; DNS, firewall, Nginx, or public exposure |
 | Verification artefact | This proposal, the decision/risk/dependency registers, and the governance-review entry updated with it |
@@ -109,9 +110,9 @@ unexpected database target, or resource-limit issue.
 
 ## 6. Explicit gates retained
 
-DEC-0036 would authorise B0 planning only. It does not authorise B1, B2, or
-B3 execution. Each of the following requires a subsequent owner-approved,
-exact package:
+DEC-0036 authorises B0 planning only. It does not authorise B1, B2, or B3
+execution. Each of the following requires a subsequent owner-approved, exact
+package:
 
 - application implementation, dependency installation, or release build;
 - a database schema, migration, login-capable role, password, or any secret;
@@ -122,7 +123,6 @@ exact package:
 
 ## 7. Acceptance and decision requested
 
-The owner is asked to approve DEC-0036 to adopt the B0–B3 sequence and permit
-preparation of the B0 application delivery specification. Approval would keep
-all operational and data actions blocked until their later, exact authorising
-packages are approved.
+The owner approved DEC-0036 to adopt the B0–B3 sequence and permit preparation
+of the B0 application delivery specification. All operational and data actions
+remain blocked until their later, exact authorising packages are approved.

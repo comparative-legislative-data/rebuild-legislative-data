@@ -611,3 +611,19 @@ Next review due:
 | Affected work blocked | B1 implementation; B2/B3 VPS deployment and verification; package installation; secret or credential issuance; schema/migration work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
 | Owner decision required | DEC-0036 to adopt the B0–B3 sequence and permit B0 specification preparation. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0035
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0036 and B0 application-delivery specification proposal |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0036; DEC-0037 is proposed |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`, `V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`, and this log |
+| Active phase and authorising decision | V4B B0 application-delivery specification preparation under DEC-0036 |
+| Checks performed | Confirmed the repository has documentation only and no non-document tracked application artefact. Checked the B0 proposal gives an explicit runtime/dependency policy, two loopback service contracts, reproducible release evidence, no-data/no-database/no-secret first increment, and separate B1/B2/B3 gates. |
+| Findings | The B0 proposal chooses a Node.js 22 LTS/TypeScript workspace but does not claim the runtime is installed, available, or suitable on the VPS. Its first shell has no source route, database driver, database login, secret, external request, chart, or public claim. RSK-0023 records the risk of mistaking process readiness for research/data readiness. |
+| Outcome | `PASS` for B0 specification preparation only. |
+| Affected work blocked | B1 application/dependency implementation; all VPS checks/changes and service deployment; database schema/login/migration work; secret or credential issuance; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
+| Owner decision required | DEC-0037 to adopt the B0 specification and permit preparation of a B1 implementation package. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
