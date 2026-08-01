@@ -152,8 +152,12 @@ Node.js 24 LTS/TypeScript, Fastify API, and React/Vite web application; the
 local B1 build baseline is `24.14.1` and does not select the later VPS patch.
 B1 is complete with a local-only `PASS` result in
 [`V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`](V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md).
-The next decision, if requested, is a separately prepared B2 local-deployment
-proposal.
+The next decision is the proposed B2 local-deployment package in
+[`V4B_B2_LOCAL_DEPLOYMENT_PROPOSAL_DEC0039.md`](V4B_B2_LOCAL_DEPLOYMENT_PROPOSAL_DEC0039.md).
+It would deploy only the B1 synthetic shell as two hardened loopback-only
+services, using a private project Node runtime after host preflight. It
+remains unapproved: no VPS/runtime/release/unit/service action may begin until
+the owner explicitly approves DEC-0039.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).

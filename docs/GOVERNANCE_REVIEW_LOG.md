@@ -659,3 +659,19 @@ Next review due:
 | Affected work blocked | VPS/service deployment, target-host runtime installation/selection, database schema/login/migration work, secret or credential issuance, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure and claims remain blocked pending their own approvals. |
 | Owner decision required | A separate B2 local-deployment proposal, if the owner wishes to continue. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0038
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — B2 local-deployment proposal prepared after the B1 `PASS` result |
+| Reviewer role | Maintainer; DEC-0039 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0035–DEC-0038 records/results, `V4B_B2_LOCAL_DEPLOYMENT_PROPOSAL_DEC0039.md`, and this log |
+| Active phase and authorising decision | V4B B2 proposal preparation only, following DEC-0038’s local-only result |
+| Checks performed | Confirmed the proposal keeps the first VPS increment synthetic-only and database/secret-free; selects a private, checksummed/signed Node 24 LTS runtime rather than a host-wide package; requires preflight for host compatibility, service names, ports, path ownership, capacity, protected-cluster state, and systemd directives; fixes both unit contracts and V4A resource limits; and defers all Nginx/public/source/database actions. |
+| Findings | B1’s local `24.14.1` metadata cannot be treated as a production runtime selection. DEC-0039 therefore requires a runtime-aligned, fully reverified release before transfer and stops if the target host cannot run the exact selected private Node patch. RSK-0025 and DEP-0007 record the remaining deployment dependency. |
+| Outcome | `PASS` for proposal preparation and register alignment only; all B2 operational activity remains `BLOCKED` pending owner approval of DEC-0039. |
+| Affected work blocked | VPS preflight/change, private runtime installation, release transfer, unit creation/start, B3 acceptance, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure, and public claims remain blocked pending their own explicit approvals. |
+| Owner decision required | DEC-0039. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
