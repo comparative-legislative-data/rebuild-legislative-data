@@ -13,7 +13,7 @@
     "packages/*"
   ],
   "scripts": {
-    "typecheck": "tsc -b --pretty false && tsc -p apps/web/tsconfig.json --pretty false",
+    "typecheck": "tsc -b --force --pretty false && tsc -p apps/web/tsconfig.json --pretty false",
     "build": "npm run typecheck && vite build --config apps/web/vite.config.ts",
     "test": "npm run build && node --test tests/*.test.mjs",
     "verify:capabilities": "node scripts/verify_capabilities.mjs",

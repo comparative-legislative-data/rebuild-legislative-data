@@ -58,8 +58,8 @@ were produced and checked during this run:
 
 | Artefact | SHA-256 |
 | --- | --- |
-| `artifacts/b1-local-only/manifest.json` | `acf622685edbdea377b21edaab139dec2fc1c3d32277caa1c2842a514de2ca53` |
-| `artifacts/b1-local-only/b1-local-only.tar.gz` | `8b92d603161d43ec85f37693dca9bcb7c099fc491a9883c223c260514386fd62` |
+| `artifacts/b1-local-only/manifest.json` | `2e0407e8145314d219043321d543d1e3150e7e11a316f84d22c6d5fb97f04824` |
+| `artifacts/b1-local-only/b1-local-only.tar.gz` | `4d55e3fb44615a01820405f9359b693a3dcbe5e5ceda074b43b3e3b386502b07` |
 
 ## Remaining boundary
 
