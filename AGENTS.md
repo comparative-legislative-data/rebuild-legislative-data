@@ -34,6 +34,23 @@ If no explicit owner-approved decision authorises the exact work, mark it
 `BLOCKED` and seek direction. Do not treat related work, a prior phase exit, a
 draft, or silence as approval.
 
+### Approved infrastructure work packages
+
+For VPS infrastructure only, an owner-approved work package may authorise a
+bounded outcome across named project resources rather than one decision per
+ordinary command. Within that package, normal command syntax, repeated
+read-only checks, and a correction to an implementation detail may proceed
+without another owner decision only when the target, permitted end state,
+resource class, exposure, and privilege boundary do not change.
+
+Stop and seek a new owner decision for any protected-resource touch, deletion
+outside a declared project-owned target, public/non-loopback exposure,
+credential/login/SSH/sudo capability, shared-service or host-wide change,
+source or research-data action, package installation, material resource-limit
+increase, or ambiguity about impact on another workload. Retain a restricted
+work-package result and update the durable registers after each material
+package or unexpected stop.
+
 ## Absolute boundaries
 
 Do not access a VPS, credentials, database, source data, legacy system, or

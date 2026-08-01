@@ -1,14 +1,14 @@
 # Infrastructure Work-Package Control Proposal — DEC-0034
 
-**Status:** Proposed — no operational action is authorised by this document
+**Status:** Approved — applies to future VPS infrastructure work packages only
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0034
+**Decision:** DEC-0034
 
-## Purpose
+## Approved decision
 
 Adopt a proportionate control model for routine project infrastructure work on
 the shared VPS. It retains owner control over material boundaries while ending
@@ -66,9 +66,9 @@ non-secret verification evidence. Project documentation receives a concise
 outcome and governance review after a material package or an unexpected stop;
 it need not receive a decision entry for each internal command.
 
-## Owner decision
+## Decision outcome
 
-Approve or reject DEC-0034. Approval authorises updating the governance
-procedure and `AGENTS.md` to use this work-package model for future VPS
-infrastructure work only. It does not authorise any particular VPS change;
-each package still requires a named owner-approved scope.
+DEC-0034 authorises updating the governance procedure and `AGENTS.md` to use
+this work-package model for future VPS infrastructure work only. It does not
+authorise any particular VPS change; each package still requires a named
+owner-approved scope.

@@ -531,3 +531,51 @@ Next review due:
 | Affected work blocked | New-cluster start, database/role creation, infrastructure work-package delegation, services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their respective approvals. |
 | Owner decision required | DEC-0033 and DEC-0034. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0030
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0033 V4A completion and DEC-0034 proportionate infrastructure control |
+| Reviewer role | Maintainer; owner approvals are recorded in DEC-0033 and DEC-0034 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`, `INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`, and this log |
+| Active phase and authorising decision | V4A completion under DEC-0033; DEC-0034 applies to future VPS infrastructure work packages only |
+| Checks performed | DEC-0033 remains a named, bounded V4A package: no configuration edit, one new-cluster start, then conditional empty-role/database creation with existing-cluster non-interference checks. DEC-0034 permits ordinary implementation details within an approved VPS package but retains explicit gates for shared/public/destructive/credential/data actions. |
+| Findings | The control model is proportionate to routine infrastructure without weakening the project's academic evidence and source-data controls. The V4A result must still record its actual outcome before any next stage is proposed. |
+| Outcome | `PASS` for the approval record and updated work-package control; DEC-0033 execution pending. |
+| Affected work blocked | V4B services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their own approvals. |
+| Owner decision required | None for DEC-0033 execution; later work retains its own gates. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0031
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — contained DEC-0033 startup failure and DEC-0034 work-package correction |
+| Reviewer role | Maintainer; DEC-0033 and DEC-0034 owner approvals are recorded in the decision register |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`, restricted DEC-0033 result/diagnostic, and this log |
+| Active phase and authorising decision | V4A completion under DEC-0033, using DEC-0034 contained implementation-correction authority |
+| Checks performed | DEC-0033 passed offline configuration/HBA/port checks and made its first new-unit start attempt. The service reached its loopback listener but stopped because the new service runtime directory was root-owned and PostgreSQL could not create its socket lock. Existing clusters retained their active states and database-name-set digests in the read-only post-failure check. |
+| Findings | The correction is limited to one `ExecStartPre` ownership-creation line in the existing new service drop-in, a manager reload, and one corrected start attempt. It does not alter the target cluster, resource limits, listener, authentication rule, protected resources, or end-state. DEC-0034 permits this contained correction without a serial new decision. |
+| Outcome | `PASS` for applying the work-package control to the bounded correction; corrected start and conditional foundation database/role creation pending. |
+| Affected work blocked | Any action outside DEC-0033's named new-cluster/drop-in targets; V4B services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
+| Owner decision required | None for this DEC-0034-contained correction; later work retains its own gates. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0032
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0033 contained correction exhausted without new-cluster startup |
+| Reviewer role | Maintainer; DEC-0033 and DEC-0034 owner approvals are recorded in the decision register |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`, `V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_PROPOSAL_DEC0035.md`, restricted completion result, and this log |
+| Active phase and authorising decision | DEC-0033 V4A completion stopped; DEC-0035 recovery completion proposal only |
+| Checks performed | DEC-0033 passed configuration/HBA/port checks and made its first start. Under DEC-0034, it added one new-drop-in pre-start ownership line and made one corrected start. Both starts failed at the new-cluster socket lock before role/database creation. The final bounded diagnostic confirmed that `16-main` and `16-bills` remained active with unchanged database-name-set digests. |
+| Findings | The systemd `RuntimeDirectory` lifecycle conflicts with the service-managed PostgreSQL socket path. DEC-0035 changes only the two conflicting new-drop-in settings, retains explicit postgres-owned pre-start directory creation and resource limits, and permits one replacement start. |
+| Outcome | `BLOCKED` for DEC-0033 completion; `PASS` for contained diagnostics and preservation of the new control boundary. |
+| Affected work blocked | New-cluster start/recovery, database/role creation, V4B services, credentials, Nginx/DNS, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending DEC-0035 or their respective approvals. |
+| Owner decision required | DEC-0035. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |

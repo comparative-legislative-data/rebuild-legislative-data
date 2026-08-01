@@ -135,6 +135,11 @@ DEC-0032 then confirmed the expected local-only HBA profile, including the
 standard local peer rule for the PostgreSQL service account. The next V4A
 decision is the bounded cluster/start/database completion proposal in
 [`V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`](V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md).
+DEC-0033 then exhausted its permitted starts after a contained runtime-directory
+correction; no roles or databases were created and existing clusters remained
+unchanged. The next decision is the replacement runtime-directory recovery and
+V4A completion proposal in
+[`V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_PROPOSAL_DEC0035.md`](V4A_NATIVE_CLUSTER_RUNTIME_DIRECTORY_RECOVERY_PROPOSAL_DEC0035.md).
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).

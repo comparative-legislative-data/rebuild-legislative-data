@@ -138,7 +138,31 @@ is reviewed. `BLOCKED` identifies the owner decision or external fact needed to
 proceed. A stale or missing review blocks a phase transition and any public
 claim.
 
-## 9. Enforcement and traceability
+## 9. Infrastructure work packages
+
+For routine VPS infrastructure only, the owner may approve a named,
+outcome-bounded work package instead of individual commands. The package must
+state its project namespace, permitted resource classes/end state, protected
+resources, resource limits, verification checks, and containment/rollback
+position.
+
+Within that approved package, the maintainer may choose normal command syntax,
+repeat harmless read-only checks, and correct an implementation detail without
+another decision only if the target, resource class, exposure, privilege
+boundary, and intended end state do not change. The work must remain additive
+or be a declared project-owned rollback, and its restricted record must retain
+the actions by intent, outcomes, stop conditions, and non-secret verification.
+
+A new owner decision remains mandatory for a protected-resource touch,
+deletion/overwrite outside a declared project-owned target, shared-service or
+host-wide change, public/non-loopback exposure, credential/login/SSH/sudo
+capability, source/research-data work, package installation, material
+resource-limit increase, or any uncertainty about another workload.
+
+This model does not relax any capture, retention, provenance, DB1, canonical,
+publication, research-claim, public-release, or public-cutover control.
+
+## 10. Enforcement and traceability
 
 [`../AGENTS.md`](../AGENTS.md) is the repository-wide pre-flight instruction
 for people working through agents and for automated agents. It requires the
