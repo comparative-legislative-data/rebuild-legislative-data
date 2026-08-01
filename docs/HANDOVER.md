@@ -116,9 +116,11 @@ pre-flight before any mutation, as recorded in
 DEC-0024 then established by a minimal read-only check that the shared
 `16-main` PostgreSQL cluster has wildcard listeners, so it is excluded from
 the project database design. A new native loopback/private-cluster proposal is
-now proposed as DEC-0025 in
+now approved as DEC-0025 in
 [`NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`](NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md).
-It must be approved before a revised V4A authorisation is prepared. Later frontend/backend service
+The next decision is DEC-0026, proposed in
+[`V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md`](V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md).
+Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
 [`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
 No V4 provisioning, credential issuance, database/service creation,

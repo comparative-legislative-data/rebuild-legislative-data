@@ -1,16 +1,17 @@
 # Native PostgreSQL Cluster Proposal — DEC-0025
 
-**Status:** Proposed — no VPS or database action is authorised
+**Status:** Approved — native-cluster direction only; an exact action remains
+required
 
 **Version:** 0.1.0
 
 **Prepared:** 1 August 2026
 
-**Decision requested:** DEC-0025
+**Decision:** DEC-0025
 
-## 1. Decision
+## 1. Approved decision
 
-Approve a revised V4A direction: create one new native PostgreSQL 16 cluster
+The project owner approved a revised V4A direction: create one new native PostgreSQL 16 cluster
 on the current VPS, dedicated to `GB-SCT`, instead of using the shared
 `16-main` cluster.
 
@@ -117,10 +118,8 @@ access and systemd resource boundaries without enabling access to `16-main`,
 `16-bills`, or another workload. V4C remains the only stage allowed to alter
 the named `legislativedata.org` Nginx site, after its own exact authorisation.
 
-## 7. Owner decision
+## 7. Consequence of approval
 
-Approve or reject DEC-0025. Approval chooses this native, loopback-only
-cluster direction and authorises preparation of an exact V4A
-cluster-foundation authorisation. It does not authorise creation of the
-cluster, any database, service, account, secret, source-data activity, code,
-or public/domain change.
+DEC-0025 authorises preparation of an exact V4A cluster-foundation
+authorisation. It does not authorise creation of the cluster, any database,
+service, account, secret, source-data activity, code, or public/domain change.

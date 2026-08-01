@@ -403,3 +403,19 @@ Next review due:
 | Affected work blocked | Cluster/database/role/path creation, credentials, services, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending their exact approvals. |
 | Owner decision required | DEC-0025; then an exact V4A native-cluster foundation authorisation. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0022
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0025 and preparation of exact native-cluster V4A authorisation |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0025 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0009, DEC-0022, DEC-0024, `NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`, `V4A_NATIVE_CLUSTER_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0026.md`, and this log |
+| Active phase and authorising decision | Native-cluster direction approved under DEC-0025; exact V4A authorisation preparation only; DEC-0026 remains proposed |
+| Checks performed | The proposed V4A action targets a newly named PostgreSQL 16 cluster only, creates it disabled, applies its own loopback listener and fixed cgroup limits before first start, and compares the existing clusters' narrowly scoped metadata before/after. It preserves the no-Docker rule, source-data boundary, V4B/V4C separation, and no-touch boundary around existing services, Nginx, DNS, and firewall. |
+| Findings | The exact action remains conditional on native tool availability, absent-target/port checks, and capacity floors. It makes no assertion that any pre-flight will pass. RSK-0015 covers resource contention and requires the declared cap. |
+| Outcome | `PASS` for recording DEC-0025 approval and preparing DEC-0026; no VPS mutation, source-data action, implementation, service deployment, or domain change occurred. |
+| Affected work blocked | New-cluster/database/role/path creation, credentials, frontend/backend deployment, Nginx/DNS change, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked pending exact approval. |
+| Owner decision required | DEC-0026; then its restricted V4A result and a separately approved V4B prerequisite plan. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
