@@ -186,7 +186,12 @@ done
 [[ "$nginx_status" == *'ACCESS_CONTROL_READY'* ]]
 
 if [[ "$resend_initial_activation" == true ]]; then
-  sudo -n -u cld-gb-sct bash -lc "set -a; source /etc/cld-gb-sct/secrets/access-api.env; set +a; '$runtime/node' '$release_path/apps/api/dist/access/resend_initial_superuser_activation.js'"
+  set -a
+  # shellcheck disable=SC1091
+  source /etc/cld-gb-sct/secrets/access-api.env
+  set +a
+  "$runtime/node" "$release_path/apps/api/dist/access/resend_initial_superuser_activation.js"
+  unset CLD_ACCESS_DB CLD_ACCESS_PEPPER CLD_RESEND_KEY CLD_ACCESS_FROM CLD_INITIAL_SUPERUSER CLD_PUBLIC_ORIGIN
 fi
 
 # The local named-site check above is the deployment gate.  The public-domain
