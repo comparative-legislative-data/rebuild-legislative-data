@@ -866,3 +866,51 @@ Next review due:
 | Affected work blocked | Account/database schema, superuser configuration, Resend request, invitation/magic-link/password implementation, any data layer, download/API access, V4C/public exposure, and public claims. |
 | Owner decision required | Review and approval of amended DEC-0042; then separate exact implementation packages. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0051
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner approval of DEC-0042 |
+| Reviewer role | Maintainer; recording an explicit owner decision |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, and `GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md` |
+| Active phase and authorising decision | Approved programme design only — DEC-0042 |
+| Checks performed | Recorded the decision without broadening its boundary. Confirmed the decision governs the three-layer model and the private-beta requirement, but leaves authentication, email, source/terms, proxy, capture, DB1, DB2, database, VPS, frontend, and public-release actions for later exact packages. |
+| Findings | The design now supplies a coherent sequence, but not operational authority. The first source-facing activity must remain bounded to its route and terms question; the first user-facing data test must remain private beta. |
+| Outcome | `PASS` — DEC-0042 approval correctly recorded; no operational action taken. |
+| Affected work blocked | All implementation and external/source actions pending their own approval. |
+| Owner decision required | Review DEC-0043 and DEC-0044 when prepared. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0052
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0043 private-beta access-foundation proposal preparation |
+| Reviewer role | Maintainer; DEC-0043 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0009, DEC-0042, and `PRIVATE_BETA_ACCESS_FOUNDATION_PROPOSAL_DEC0043.md` |
+| Active phase and authorising decision | DEC-0042 programme design; proposal preparation only |
+| Checks performed | Kept account-control records outside DB1/raw storage and within a separately permissioned schema in the approved two-database layout. Specified one-way credentials/tokens, server-side layer checks, superuser approval/revocation, bounded guest access, server-only Resend values, and staged synthetic-layer acceptance. |
+| Findings | A private beta needs its own auditable access boundary before it can safely gate research layers. The design avoids creating a third research database while requiring proof that account controls cannot read research data. |
+| Outcome | `PASS` for proposal preparation only. No account, secret, email, database, application, VPS, or data action occurred. |
+| Affected work blocked | All DEC-0043 implementation stages and every data-layer route remain blocked pending owner approval and later exact packages. |
+| Owner decision required | DEC-0043. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0053
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0044 Bills route-qualification/source-terms proposal preparation |
+| Reviewer role | Maintainer; DEC-0044 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0008, DEC-0042, catalogue assessment/route metadata, and `GB_SCT_BILLS_ROUTE_QUALIFICATION_AND_SOURCE_TERMS_PROPOSAL_DEC0044.md` |
+| Active phase and authorising decision | DEC-0042 programme design; proposal preparation only |
+| Checks performed | Confined the proposed inspection to official documentation and terms for `/api/bills` and `/api/bills/:id`; prohibited every API request and raw-page/data retention; separated legal/operational qualification from response-schema observation and later pass-through implementation. |
+| Findings | Bills is the smallest coherent first data type, but the catalogue alone cannot establish source authority, allowed relay, handling implications, or research fitness. The terms result must be able to block the route. |
+| Outcome | `PASS` for proposal preparation only. No external inspection or source/API action occurred. |
+| Affected work blocked | Official documentation inspection, any Bills API request, proxy, capture, DB1/DB2 action, beta interface, and public release remain blocked pending their exact approvals. |
+| Owner decision required | DEC-0044. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

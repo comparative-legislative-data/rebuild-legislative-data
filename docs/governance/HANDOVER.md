@@ -165,10 +165,15 @@ closure passed under DEC-0041, recorded in
 V4B is closed only for the local synthetic shell. Every later data, database,
 secret, or public step remains separately gated.
 
-The next proposed design decision is DEC-0042, the three-layer GB-SCT programme
-in [`GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`](../data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md).
+DEC-0042 is approved as the three-layer GB-SCT programme in
+[`GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`](../data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md).
 It distinguishes upstream pass-through access, manifest-backed DB1, and Tier
-1/2 DB2 releases, but remains non-operational pending owner review.
+1/2 DB2 releases. It remains non-operational: the next exact proposals are
+private-beta access controls (DEC-0043) and source/terms qualification for the
+first Bills pass-through route (DEC-0044). Their review links are
+[`PRIVATE_BETA_ACCESS_FOUNDATION_PROPOSAL_DEC0043.md`](../application/PRIVATE_BETA_ACCESS_FOUNDATION_PROPOSAL_DEC0043.md)
+and
+[`GB_SCT_BILLS_ROUTE_QUALIFICATION_AND_SOURCE_TERMS_PROPOSAL_DEC0044.md`](../data/gb-sct/GB_SCT_BILLS_ROUTE_QUALIFICATION_AND_SOURCE_TERMS_PROPOSAL_DEC0044.md).
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

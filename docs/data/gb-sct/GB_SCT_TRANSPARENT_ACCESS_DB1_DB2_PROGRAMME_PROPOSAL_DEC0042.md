@@ -1,10 +1,10 @@
 # GB-SCT Transparent Access, DB1, and DB2 Programme Proposal — DEC-0042
 
-**Status:** Proposed programme design — no source request, implementation, or public-exposure authority
+**Status:** Approved programme design — exact delivery packages remain required
 
 **Version:** 1.1.0
 **Prepared:** 2 August 2026
-**Decision requested:** DEC-0042
+**Decision:** DEC-0042, approved by the project owner on 2 August 2026
 
 ## 1. Purpose
 
@@ -18,9 +18,9 @@ The intended standard is that a researcher can identify the exact data object us
 
 ## 2. Decision requested and boundary
 
-DEC-0042 would adopt this three-layer programme and its shared transparency contract as the governing design for later exact work packages. It supersedes the **unapproved** live-access position in the proposed DEC-0018 plan: the programme includes a separately labelled upstream pass-through layer as well as capture-backed DB1 access.
+DEC-0042 adopts this three-layer programme and its shared transparency contract as the governing design for later exact work packages. It supersedes the **unapproved** live-access position in the proposed DEC-0018 plan: the programme includes a separately labelled upstream pass-through layer as well as capture-backed DB1 access.
 
-It would not authorise a source-documentation inspection, source request, proxy request, capture, retention, database write, DB1/DB2 build, application or frontend implementation, download/API publication, VPS/secret change, public routing, dataset release, chart, or public claim. Tier 3–7 work, including document extraction and bill-amendment work, remains out of scope.
+It does not authorise a source-documentation inspection, source request, proxy request, capture, retention, database write, DB1/DB2 build, application or frontend implementation, download/API publication, VPS/secret change, public routing, dataset release, chart, or public claim. Tier 3–7 work, including document extraction and bill-amendment work, remains out of scope.
 
 Every implementation needs a separately approved, exact package. The selected endpoint inventory and exclusions remain governed by [the roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md), [the inventory decision](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md), and the retention policy.
 
