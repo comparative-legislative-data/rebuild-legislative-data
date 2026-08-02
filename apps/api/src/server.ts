@@ -27,6 +27,10 @@ export function createApiServer() {
 
   void app.register(cookie);
   void app.register(rateLimit, { global: false });
+  app.addHook("onSend", async (_request, reply, payload) => {
+    reply.header("cache-control", "no-store");
+    return payload;
+  });
 
   app.get<{ Reply: HealthResponse }>("/healthz", {
     schema: { response: { 200: healthResponseSchema } }

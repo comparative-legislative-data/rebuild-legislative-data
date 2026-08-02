@@ -6,6 +6,7 @@ test("API health response is static and truthful", async () => {
   const app = createApiServer();
   const response = await app.inject({ method: "GET", url: "/healthz" });
   assert.equal(response.statusCode, 200);
+  assert.equal(response.headers["cache-control"], "no-store");
   assert.match(response.headers["content-type"], /^application\/json/);
   assert.deepEqual(response.json(), {
     service: "cld-gb-sct-api",
