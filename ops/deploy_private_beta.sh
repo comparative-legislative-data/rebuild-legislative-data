@@ -140,7 +140,7 @@ systemctl daemon-reload
 systemctl restart cld-gb-sct-api.service
 systemctl restart cld-gb-sct-web.service
 
-for attempt in 1 2 3 4 5; do
+for attempt in $(seq 1 30); do
   status="$(curl -sS --max-time 5 http://127.0.0.1:3210/auth/status || true)"
   [[ "$status" == *'ACCESS_CONTROL_READY'* ]] && break
   sleep 1
