@@ -204,6 +204,12 @@ Any next Bills source package must be separately approved and remains limited
 to a transient, value-free detail observation; no capture, pass-through, DB1,
 DB2, frontend, or public step is enabled.
 
+The next proposed decision is DEC-0048:
+[`GB_SCT_BILLS_DETAIL_OBSERVATION_PROPOSAL_DEC0048.md`](../data/gb-sct/GB_SCT_BILLS_DETAIL_OBSERVATION_PROPOSAL_DEC0048.md).
+It proposes at most two transient requests: collection selection of a
+non-retained numeric identifier, then one detail response observation. It is
+not approved and no request may occur unless the owner expressly approves it.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure

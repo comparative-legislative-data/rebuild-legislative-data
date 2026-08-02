@@ -1026,3 +1026,19 @@ Next review due:
 | Affected work blocked | Bills collection/detail capture, pass-through, DB1/DB2, beta/public output, and all source-content handling remain blocked pending a separately approved exact package and resolution of its applicable handling conditions. |
 | Owner decision required | A separately approved transient, value-free Bills detail-observation package, if the owner wishes to continue source reconnaissance. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0061
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0048 Bills detail-observation proposal preparation |
+| Reviewer role | Maintainer; DEC-0048 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0047, the master endpoint matrix, and `GB_SCT_BILLS_DETAIL_OBSERVATION_PROPOSAL_DEC0048.md` |
+| Active phase and authorising decision | Proposal preparation only, following the owner instruction to prepare the next bounded Bills reconnaissance package |
+| Checks performed | Constrained the proposal to a maximum of two unauthenticated no-query/no-redirect requests. The collection response may select only the first element's usable numeric `ID` in memory; its value, the resolved detail URL, and all source values are prohibited from retention. The detail response is limited to a value-free field/type/shape result with 2 MiB and time ceilings, explicit stop conditions, and no implementation authority. |
+| Findings | A dynamic identifier can be used without preserving source content only when the selection rule is fully deterministic and the detail request cannot fall back to another ID or route. This proposed control reduces detail-route uncertainty without treating it as capture or a handling/public-output decision. |
+| Outcome | `PASS` for proposal preparation only. No source request, source value, capture, proxy, database, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | The two proposed requests and every capture, pass-through, DB1/DB2, beta/public output, or implementation action remain blocked pending DEC-0048 owner approval and their separate later gates. |
+| Owner decision required | DEC-0048. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
