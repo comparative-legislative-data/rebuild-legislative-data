@@ -706,3 +706,19 @@ Next review due:
 | Affected work blocked | B2 package-code investigation/fix, final runtime/release installation, unit installation/start, B3 acceptance, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure, and public claims. |
 | Owner decision required | A new narrowly scoped corrective packaging proposal. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0041
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner requested a more efficient contained-infrastructure recovery model |
+| Reviewer role | Maintainer; DEC-0040 is proposed and has no owner approval |
+| Documents and records reviewed | PROJECT_DESIGN.md, HANDOVER.md, GOVERNANCE.md, AGENTS.md, DECISION_REGISTER.md, RISK_AND_DEPENDENCY_REGISTER.md, DEC-0039 result, V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_PROPOSAL_DEC0040.md, and this log |
+| Active phase and authorising decision | V4B B2a corrective-package proposal preparation only |
+| Checks performed | Confirmed that the B2a proposal retains the no-data/no-database/no-public/shared-host boundary. It limits the new recovery mechanism to one root-owned project staging hold, packaging code/tests only, owner notification, a 24-hour expiry, renewed full gates, and project-only cleanup. |
+| Findings | The prior immediate cleanup was safe but inefficient for a tooling-only failure. The proposed diagnostic hold preserves containment while allowing one bounded repair cycle without serial approval, but does not apply to credential, data, public, shared-service, privilege, or scope-expanding incidents. |
+| Outcome | PASS for DEC-0040 proposal preparation only. B2 deployment remains BLOCKED pending DEC-0040 and its result. |
+| Affected work blocked | VPS staging recreation, packaging diagnosis/fix, final runtime/release/unit deployment, B3 acceptance, database/secret work, source/data work, Nginx/DNS/firewall/public exposure, and public claims. |
+| Owner decision required | DEC-0040. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
