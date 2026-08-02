@@ -1074,3 +1074,19 @@ Next review due:
 | Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and all Bills source-content handling remain blocked pending a Bills-family qualification-gap resolution and later separate packages. |
 | Owner decision required | A documentation-only Bills-family qualification-gap resolution proposal, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0064
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0050 Bills-family qualification-gap resolution proposal preparation |
+| Reviewer role | Maintainer; DEC-0050 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0049, the master endpoint matrix, both Bills handling assessments, and `GB_SCT_BILLS_FAMILY_QUALIFICATION_GAP_RESOLUTION_PROPOSAL_DEC0050.md` |
+| Active phase and authorising decision | Proposal preparation only, following the owner instruction to prepare the Bills-family gap-resolution plan |
+| Checks performed | Consolidated the two route-specific blocks without treating them as retirement; separated source authority/terms, technical conditions, field semantics, personal-data handling, retention/access, and output fitness into ordered G1–G6 gates; and prohibited external inspection, source request, retention, implementation, and public action. |
+| Findings | The observations narrowed response-shape uncertainty but did not replace source documentation, handling evidence, or implementation/release controls. The proposed sequence makes unresolved evidence visible and prevents a generic licence, a transient sample, or a future frontend from being used as a substitute for route-level qualification. |
+| Outcome | `PASS` for proposal preparation only. No source request, external inspection, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | All Bills capture, pass-through, DB1/DB2, beta/public output, and later evidence packages remain blocked pending DEC-0050 owner approval and their respective exact approvals. |
+| Owner decision required | DEC-0050. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
