@@ -1154,3 +1154,19 @@ Next review due:
 | Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and implementation remain blocked. No further documentation inspection is authorised. |
 | Owner decision required | A documentation-only G4 Bills handling assessment, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0069
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0053 G4 handling-assessment proposal preparation |
+| Reviewer role | Maintainer; DEC-0053 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0045–DEC-0052, both Bills route-handling records, both value-free observation results, and `GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_PROPOSAL_DEC0053.md` |
+| Active phase and authorising decision | DEC-0050 approved G1–G6 planning control; owner instruction to prepare DEC-0053 only |
+| Checks performed | Limited the proposal to named, existing non-content records and separate collection/detail conclusions. Prohibited external inspection, source/API/data access, legal classification, and all system/public action. Required unresolved potential personal-data, sensitive-content, or linking implications to preserve the existing restrictive class. |
+| Findings | The DEC-0052 privacy/terms material is general and the prior observations intentionally omit values and definitions. A G4 assessment can clarify the project-handling consequence of that uncertainty, but cannot turn it into a data classification or operational permission. |
+| Outcome | `PASS` for proposal preparation only. No external request, source/data action, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | The DEC-0053 assessment and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval and later exact packages. |
+| Owner decision required | DEC-0053. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

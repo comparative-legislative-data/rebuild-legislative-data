@@ -233,8 +233,11 @@ Its non-network output-path preflight passed and its four page requests
 produced limited general source/licence evidence only; G2–G3 remain unresolved
 and both routes remain blocked. The retained result is
 [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md).
-The next proposed step is a documentation-only G4 Bills handling assessment;
-it requires a new owner approval and no further external request is proposed.
+DEC-0053 is now proposed as that documentation-only G4 Bills handling
+assessment in
+[`GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_PROPOSAL_DEC0053.md`](../data/gb-sct/GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_PROPOSAL_DEC0053.md).
+It requires owner approval, reads only named existing non-content records, and
+proposes no further external request.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
