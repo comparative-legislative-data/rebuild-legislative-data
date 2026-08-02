@@ -58,8 +58,13 @@
   script defect created a verified-empty `access_control` schema in the default
   database instead of the canonical database. The error trap restored the prior
   project service and named-site files before release, email, or cutover. A
-  new owner-approved cleanup/correction is required; see the DEC-0059 stop
-  result.
+  later owner-approved cleanup removed that empty schema and corrected the
+  target; see the DEC-0059 stop result.
+- The correction completed the private access-control migration and passed the
+  isolated API/web plus local Nginx checks. The public Cloudflare request still
+  returned HTTP 502, so the named site was restored and the private-beta site
+  remains externally unavailable. See the public-edge stop result; a separate
+  public-edge package is required before another external cutover.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 

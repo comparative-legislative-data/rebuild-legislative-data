@@ -1,6 +1,6 @@
 # Private-Beta Runtime and Private Cutover Package — DEC-0059
 
-**Status:** APPROVED — EXECUTED BLOCKED pending corrective authorisation
+**Status:** APPROVED — EXECUTED BLOCKED at the public-edge gate
 
 **Version:** 1.0.0
 
@@ -114,7 +114,7 @@ activation link, establish a password, obtain a secure server-side session,
 and see the beta shell with no research-data route available. A 502-free site
 alone is not a pass.
 
-## 7. Corrective decision required
+## 7. Database-target corrective action
 
 The proposed minimal correction is:
 
@@ -125,5 +125,23 @@ The proposed minimal correction is:
 3. repeat the existing DEC-0059 package, retaining the same project-only
    database roles, service paths, limits, email scope, and named-site boundary.
 
-This is a protected-database cleanup caused by an execution defect. It requires
-an explicit owner direction before deletion or retry.
+The owner approved and this corrective action was executed before the later
+public-edge stop. The schema removal and corrected retry are recorded in the
+stop result; this subsection is retained to explain the recovery path.
+
+## 8. Public-edge stop — 2 August 2026
+
+The approved correction removed the empty schema and the access-control schema
+was then created in the intended canonical database. The target-host build,
+local tests, scope scan, access-runtime database connection, API readiness,
+web readiness, and local Nginx `/api/` proxy check passed.
+
+The final public request through `https://legislativedata.org/` still returned
+Cloudflare HTTP 502. The deployment trap restored the previous named Nginx
+file, so the external site was not left pointing at a route that the public
+edge could not reach. This is not evidence of a source, DB1, DB2, or research
+data route.
+
+No Cloudflare-zone, DNS, firewall, certificate, or shared Nginx action is
+authorised by DEC-0059. A separately approved public-edge diagnosis/correction
+is required before the private-beta site can be made externally reachable.
