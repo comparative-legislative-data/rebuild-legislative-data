@@ -11,8 +11,8 @@ test("web health response and page disclose the shell boundary", async () => {
 
   const page = await app.inject({ method: "GET", url: "/" });
   assert.equal(page.statusCode, 200);
-  assert.match(page.body, /Internal deployment check/);
-  assert.match(page.body, /No data release is available/);
+  assert.match(page.body, /Private beta access is being configured/);
+  assert.match(page.body, /No account, source proxy, dataset, or data release is available/);
   await app.close();
 });
 

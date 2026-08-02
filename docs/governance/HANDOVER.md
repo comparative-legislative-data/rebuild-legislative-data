@@ -42,6 +42,12 @@
   continue in parallel.
 - The proposed next execution design is the proxy-only package,
   [`GB_SCT_PROXY_PHASE_EXECUTION_PROPOSAL_DEC0057.md`](../data/gb-sct/GB_SCT_PROXY_PHASE_EXECUTION_PROPOSAL_DEC0057.md). It contains no DB1 work and awaits owner review.
+- DEC-0058 is the active local-only implementation package for the private-beta
+  access foundation. It permits code and test artefacts only; no secrets,
+  database connection/schema change, email, VPS, source relay, DB1, or DB2.
+- DEC-0058 completed `PASS` locally. The access UI and API are fail-closed and
+  the unapplied migration/grant artefacts are ready for later controlled
+  runtime proof. No active account system exists yet.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 

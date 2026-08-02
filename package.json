@@ -21,10 +21,15 @@
     "verify": "npm run test && npm run verify:capabilities && npm run package:b1"
   },
   "dependencies": {
+    "@fastify/cookie": "^11.1.2",
+    "@fastify/rate-limit": "^10.3.0",
     "@fastify/static": "10.1.2",
+    "argon2": "^0.44.0",
     "fastify": "5.11.0",
+    "pg": "^8.22.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "resend": "^6.18.1"
   },
   "devDependencies": {
     "@types/node": "26.1.2",

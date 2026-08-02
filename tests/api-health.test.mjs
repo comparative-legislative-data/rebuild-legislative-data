@@ -27,3 +27,17 @@ test("API rejects non-loopback configuration", async () => {
   if (previousHost === undefined) delete process.env.HOST;
   else process.env.HOST = previousHost;
 });
+
+test("access routes fail closed before a repository is configured", async () => {
+  const app = createApiServer();
+  const status = await app.inject({ method: "GET", url: "/auth/status" });
+  assert.deepEqual(status.json(), {
+    status: "ACCESS_CONTROL_NOT_CONFIGURED",
+    authentication_available: false,
+    data_layers_available: false
+  });
+  const login = await app.inject({ method: "POST", url: "/auth/login", payload: {} });
+  assert.equal(login.statusCode, 503);
+  assert.deepEqual(login.json(), { status: "ACCESS_CONTROL_NOT_CONFIGURED" });
+  await app.close();
+});
