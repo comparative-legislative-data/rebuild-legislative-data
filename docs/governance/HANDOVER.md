@@ -179,6 +179,12 @@ route was called. The approved specification and result are
 and
 [`GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md).
 
+DEC-0045 records the owner’s inclusion-first endpoint instruction: all 64
+DEC-0007 selected route forms remain intended for eventual pass-through and
+DB1, unless an owner decision retires one. The current route-level status and
+priority control is
+[`GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md).
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure

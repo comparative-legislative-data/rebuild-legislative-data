@@ -946,3 +946,19 @@ Next review due:
 | Affected work blocked | Copying/migrating pilot code, configuration, data, credentials, infrastructure, or operational claims; all access/data implementation remains gated. |
 | Owner decision required | None for this completed reconnaissance. Later implementation requires its own exact proposal. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0056
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-directed inclusion-first master endpoint matrix |
+| Reviewer role | Maintainer; recording an explicit owner scope-control decision |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0042, DEC-0044, and `GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md` |
+| Active phase and authorising decision | DEC-0045 planning control only |
+| Checks performed | Listed every 64 DEC-0007 route form individually; preserved its intended pass-through and DB1 status; retained all existing Tier 1/2 limitations; and separated inclusion, priority, qualification, and operational authority. |
+| Findings | Comprehensive research scope and controlled implementation are compatible only when a route block does not silently become a scope deletion. The matrix makes that distinction inspectable and prevents high-volume/future-use routes from disappearing from the plan. |
+| Outcome | `PASS` for planning-control documentation only. No source/API request, proxy, capture, database, application, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Every route remains blocked from operational use until its own bounded package passes. |
+| Owner decision required | A separately approved limited Bills endpoint-observation package, if the owner wishes to begin source-response qualification. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
