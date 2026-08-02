@@ -2,7 +2,7 @@
 
 **Status:** Approved operating boundary
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 **Recorded:** 2 August 2026
 
@@ -40,6 +40,15 @@ identifiers/parameters needed to understand list/detail relationships. The
 maintainer may make normal follow-up requests where a documented route form
 requires one, provided the work remains within the selected inventory and is
 reasonably bounded for exploratory inspection.
+
+For a known unpaginated high-volume form, the maintainer may use a
+route-appropriate extended read window and a client that can complete the
+response, then inspect the complete response only in transient memory. The
+durable result must retain aggregate transport/volume/schema/coverage findings
+only; it must discard the body immediately after inspection. An incomplete
+response is itself a valid latency/volume finding. This permission is for
+route-form audit, not for systematic multi-year harvesting, capture, or a
+mirror: a full historical run remains subject to the stop gates below.
 
 The maintainer will report after each cohort, not after every routine request.
 Each report records the endpoints inspected, structural/operating findings,

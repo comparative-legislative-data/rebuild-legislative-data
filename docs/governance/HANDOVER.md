@@ -17,6 +17,10 @@
   HTTP 200 for sampled years from 2011 through 2026. This is an availability
   profile, not a claim of complete series coverage. See
   [`GB_SCT_VOTES_ON_MOTIONS_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_VOTES_ON_MOTIONS_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md).
+- Full transient audits establish that a single 2025 committee report is about
+  150 MB and a plenary report about 124 MB. The extended-route method and
+  findings are in
+  [`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md).
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 
