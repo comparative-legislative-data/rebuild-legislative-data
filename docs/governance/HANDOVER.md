@@ -13,6 +13,10 @@
   and motions collection; and high-latency broad events/questions/supports
   collections. See
   [`GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md).
+- The votes-on-motions annual form was observed to fail for 2010 and return
+  HTTP 200 for sampled years from 2011 through 2026. This is an availability
+  profile, not a claim of complete series coverage. See
+  [`GB_SCT_VOTES_ON_MOTIONS_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_VOTES_ON_MOTIONS_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md).
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 
