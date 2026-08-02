@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { Pool } from "pg";
 import { Resend } from "resend";
-import { createOpaqueToken, digestOpaqueValue, hashPassword, verifyPassword } from "./crypto.js";
+import { createLogoutProof, createOpaqueToken, digestOpaqueValue, hashPassword, verifyLogoutProof, verifyPassword } from "./crypto.js";
 
 const ACCESS_LAYER = "synthetic-access-foundation";
 const SESSION_DAYS = 14;
@@ -22,6 +22,7 @@ export interface SessionIdentity {
   userId: string;
   email: string;
   roles: MembershipRole[];
+  logoutProof: string;
 }
 
 export interface ApplicationRecord {
@@ -185,18 +186,20 @@ export class AccessRuntime {
 
   async identity(sessionToken: string | undefined): Promise<SessionIdentity | undefined> {
     if (!sessionToken) return undefined;
-    const result = await this.pool.query<{ id: string; email: string; role: MembershipRole }>(
-      "select u.id, u.email_normalized as email, m.role from access_control.sessions s join access_control.users u on u.id = s.user_id join access_control.memberships m on m.user_id = u.id where s.session_digest = $1 and s.revoked_at is null and s.expires_at > now() and u.state = 'ACTIVE' and m.revoked_at is null and (m.expires_at is null or m.expires_at > now())",
+    const result = await this.pool.query<{ id: string; session_id: string; email: string; role: MembershipRole }>(
+      "select u.id, s.id as session_id, u.email_normalized as email, m.role from access_control.sessions s join access_control.users u on u.id = s.user_id join access_control.memberships m on m.user_id = u.id where s.session_digest = $1 and s.revoked_at is null and s.expires_at > now() and u.state = 'ACTIVE' and m.revoked_at is null and (m.expires_at is null or m.expires_at > now())",
       [this.digest(sessionToken)]
     );
     const first = result.rows[0];
     if (!first) return undefined;
-    return { userId: first.id, email: first.email, roles: [...new Set(result.rows.map((row) => row.role))] };
+    return { userId: first.id, email: first.email, roles: [...new Set(result.rows.map((row) => row.role))], logoutProof: createLogoutProof(first.session_id, this.config.pepper) };
   }
 
-  async revokeSession(sessionToken: string | undefined): Promise<boolean> {
-    if (!sessionToken) return false;
-    const result = await this.pool.query("update access_control.sessions set revoked_at = now() where session_digest = $1 and revoked_at is null", [this.digest(sessionToken)]);
+  async revokeSession(sessionToken: string | undefined, logoutProof: string | undefined): Promise<boolean> {
+    const sessionDigest = sessionToken ? this.digest(sessionToken) : undefined;
+    const sessionId = logoutProof ? verifyLogoutProof(logoutProof, this.config.pepper) : undefined;
+    if (!sessionDigest && !sessionId) return false;
+    const result = await this.pool.query("update access_control.sessions set revoked_at = now() where revoked_at is null and (session_digest = $1 or id = $2)", [sessionDigest, sessionId]);
     return result.rowCount === 1;
   }
 

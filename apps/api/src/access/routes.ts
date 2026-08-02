@@ -95,7 +95,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
 
   app.get("/auth/me", async (request) => {
     const identity = await session(runtime, request);
-    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], data_layers_available: false };
+    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], logout_proof: identity?.logoutProof ?? null, data_layers_available: false };
   });
 
   app.post("/auth/password/change", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
@@ -106,7 +106,8 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
   });
 
   app.post("/auth/logout", { schema: { response: { 200: logoutResultSchema } } }, async (request, reply) => {
-    const signedOut = await runtime.revokeSession(request.cookies[cookieName]);
+    const logoutProof = requiredText(body(request.body).logout_proof, 256);
+    const signedOut = await runtime.revokeSession(request.cookies[cookieName], logoutProof);
     clearSession(reply);
     return reply.send({ accepted: true, signed_out: signedOut });
   });
