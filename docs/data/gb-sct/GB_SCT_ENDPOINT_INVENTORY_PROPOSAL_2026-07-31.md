@@ -26,7 +26,7 @@ capture, proxy, database, code, public API, data release, or chart.
 For every route form in this table, both the proposed native-access and DB1
 status are `PROPOSED`. A later implementation proposal must be capture-backed,
 versioned, loss-aware, and lineage-preserving as required by
-[`PROJECT_DESIGN.md`](PROJECT_DESIGN.md). It may not call either layer a live
+[`PROJECT_DESIGN.md`](../../governance/PROJECT_DESIGN.md). It may not call either layer a live
 pass-through or a 1:1 upstream mirror.
 
 | Inventory group | Exact selected source route forms | Why retain it | Immediate Tier 1/2 roadmap | Deferred or unresolved work |

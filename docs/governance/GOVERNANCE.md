@@ -164,7 +164,7 @@ publication, research-claim, public-release, or public-cutover control.
 
 ## 10. Enforcement and traceability
 
-[`../AGENTS.md`](../AGENTS.md) is the repository-wide pre-flight instruction
+[`../AGENTS.md`](../../AGENTS.md) is the repository-wide pre-flight instruction
 for people working through agents and for automated agents. It requires the
 governing records to be read, a phase and authorising decision to be stated,
 and work to stop if approval is absent or scope is ambiguous.

@@ -802,3 +802,19 @@ Next review due:
 | Affected work blocked | V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked pending separate approvals. |
 | Owner decision required | A separately scoped next package, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0047
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-directed repository documentation reorganisation |
+| Reviewer role | Maintainer; owner directed the documentation-only tidy-up |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, and the complete Markdown link graph |
+| Active phase and authorising decision | Repository documentation hygiene only; no operational/data phase action |
+| Checks performed | Moved active documents into governance, planning, data, infrastructure, and application domains; retained completed V4A implementation records in an explicit archive; added the `docs/README.md` human entry point; updated repository rules; and resolved every Markdown link after relocation. |
+| Findings | The prior flat directory mixed active controls, data plans, operational records, and historical implementation evidence. The revised layout preserves all records and makes the current data, infrastructure, and application boundaries visible without implying any new approval. |
+| Outcome | `PASS` for documentation organisation and link integrity only. |
+| Affected work blocked | No data, source, database, application, VPS, secret, public-routing, or public-claim scope changed. All existing gates remain in force. |
+| Owner decision required | A separate approved data programme package before proxy, DB1, or DB2 execution. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

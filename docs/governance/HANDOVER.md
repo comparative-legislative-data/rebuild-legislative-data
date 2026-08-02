@@ -79,48 +79,48 @@ Do not access the VPS, delete old resources, connect to a database, use credenti
 
 The owner has authorised a Phase 0 planning and governance documentation pack
 only, including a governance-enforcement amendment. The pack is defined in
-[`PHASE_0_DELIVERY_PLAN.md`](PHASE_0_DELIVERY_PLAN.md), governed by
+[`PHASE_0_DELIVERY_PLAN.md`](../planning/PHASE_0_DELIVERY_PLAN.md), governed by
 [`GOVERNANCE.md`](GOVERNANCE.md), and reviewed through
 [`GOVERNANCE_REVIEW_LOG.md`](GOVERNANCE_REVIEW_LOG.md). It does not authorise
 implementation or operational work.
 
 The owner has authorised a documentation-only Phase A planning pack under
-`DEC-0012`, defined in [`PHASE_A_PLAN.md`](PHASE_A_PLAN.md), and a bounded
+`DEC-0012`, defined in [`PHASE_A_PLAN.md`](../planning/PHASE_A_PLAN.md), and a bounded
 catalogue inspection under `DEC-0013`, defined in
-[`RECONNAISSANCE_AUTHORIZATION_DEC0013.md`](RECONNAISSANCE_AUTHORIZATION_DEC0013.md).
+[`RECONNAISSANCE_AUTHORIZATION_DEC0013.md`](../data/gb-sct/RECONNAISSANCE_AUTHORIZATION_DEC0013.md).
 The DEC-0013 catalogue assessment is recorded in
-[`GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`](GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md).
+[`GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md`](../data/gb-sct/GB_SCT_API_CATALOGUE_ASSESSMENT_2026-07-31.md).
 DEC-0007 approved the complete selected endpoint inventory and roadmap in
-[`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md),
+[`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](../data/gb-sct/GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md),
 supported by the catalogue assessment and its route-metadata supplement.
 DEC-0008 approved the retention, publication, and personal-data policy in
-[`RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md),
+[`RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`](../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md),
 with its route-level companion
-[`SOURCE_HANDLING_RECORD_TEMPLATE.md`](SOURCE_HANDLING_RECORD_TEMPLATE.md).
+[`SOURCE_HANDLING_RECORD_TEMPLATE.md`](../data/gb-sct/SOURCE_HANDLING_RECORD_TEMPLATE.md).
 The draft for the next gate is
-[`GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`](GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md),
+[`GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`](../data/gb-sct/GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md),
 with its required per-batch control record
-[`CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`](CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
+[`CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`](../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
 Owner approval of DEC-0018 remains required. No capture or implementation is
 authorised.
 
 VPS control is separate from the source-data plan. The approved VPS-control
 plan is
-[`VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`](VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md),
+[`VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md`](../infrastructure/VPS_INVENTORY_AND_REBUILD_PLAN_PROPOSAL_DEC0020.md),
 with a required per-host control record in
-[`VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`](VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md).
+[`VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md`](../infrastructure/VPS_READ_ONLY_INVENTORY_AUTHORIZATION_TEMPLATE.md).
 The V0–V3 legacy-control sequence is complete for its limited two-database
 scope. DEC-0009 approved an isolated no-Docker namespace on the current VPS.
 DEC-0022 approved the staged V4 foundation/service/cutover boundary in
-[`CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`](CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md).
+[`CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md`](../infrastructure/CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md).
 DEC-0023 was approved but its one-shot V4A action was `BLOCKED` during
 pre-flight before any mutation, as recorded in
-[`V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md`](V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md).
+[`V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md`](../archive/infrastructure/v4a/V4A_FOUNDATION_AUTHORIZATION_PROPOSAL_DEC0023.md).
 DEC-0024 then established by a minimal read-only check that the shared
 `16-main` PostgreSQL cluster has wildcard listeners, so it is excluded from
 the project database design. A new native loopback/private-cluster proposal is
 now approved as DEC-0025 in
-[`NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`](NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md).
+[`NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md`](../archive/infrastructure/v4a/NATIVE_POSTGRESQL_CLUSTER_PROPOSAL_DEC0025.md).
 DEC-0026 failed before mutation on a `df` option compatibility check.
 DEC-0027 corrected that check, created the new foundation targets, and then
 stopped when the new cluster's first systemd start failed before database roles
@@ -133,43 +133,48 @@ stopped before its start attempt because its HBA reader lacked permission.
 DEC-0031 completed the privileged HBA read but found an unexpected rule profile
 and stopped before any start. The next decision is the new-cluster-only,
 read-only HBA inspection proposal in
-[`V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`](V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md).
+[`V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md`](../archive/infrastructure/v4a/V4A_NATIVE_CLUSTER_HBA_INSPECTION_PROPOSAL_DEC0032.md).
 DEC-0032 then confirmed the expected local-only HBA profile, including the
 standard local peer rule for the PostgreSQL service account. The next V4A
 decision is the bounded cluster/start/database completion proposal in
-[`V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`](V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md).
+[`V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md`](../archive/infrastructure/v4a/V4A_NATIVE_CLUSTER_COMPLETION_PROPOSAL_DEC0033.md).
 DEC-0033 then exhausted its permitted starts after a contained runtime-directory
 correction; no roles or databases were created and existing clusters remained
 unchanged. DEC-0035 removed the conflicting runtime-directory lifecycle,
 started the new cluster loopback-only, and created only the two empty project
 roles and two empty project databases. V4A is complete; V4B remains separately
 gated. The next planning decision is
-[`V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`](V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md):
+[`V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`](../application/V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md):
 it is approved and establishes an evidence-led B0–B3 route to local-only
 service deployment, not an immediate deployment. B0 is approved in
-[`V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`](V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md):
+[`V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md`](../application/V4B_B0_APPLICATION_DELIVERY_SPECIFICATION_PROPOSAL_DEC0037.md):
 Node.js 24 LTS/TypeScript, Fastify API, and React/Vite web application; the
 local B1 build baseline is `24.14.1` and does not select the later VPS patch.
 B1 is complete with a local-only `PASS` result in
-[`V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`](V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md).
+[`V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md`](../application/V4B_B1_LOCAL_IMPLEMENTATION_RESULT_2026-08-01.md).
 DEC-0039 initially stopped correctly at target-host package nondeterminism.
 The approved DEC-0040 recovery isolated the diagnosis to volatile tar metadata,
 made a packaging-only repair, and repeated the target-host checks. Its result
 is `PASS` in
-[`V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_RESULT_2026-08-02.md`](V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_RESULT_2026-08-02.md):
+[`V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_RESULT_2026-08-02.md`](../application/V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_RESULT_2026-08-02.md):
 the VPS now has only the private Node runtime, one immutable synthetic B1
 release, and the two named hardened loopback-only services. No source,
 database/secret, shared-host, or public-web action occurred. B3 acceptance
 closure passed under DEC-0041, recorded in
-[`V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md`](V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md).
+[`V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md`](../application/V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md).
 V4B is closed only for the local synthetic shell. Every later data, database,
 secret, or public step remains separately gated.
+
+Repository documentation is organised from [`docs/README.md`](../README.md):
+active governance, planning, data, infrastructure, and application records
+are separate; completed V4A implementation records remain in the infrastructure
+archive. Future active records must follow that structure and update the index.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
-[`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).
+[`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](../infrastructure/INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).
 Later frontend/backend service
 deployment and the `legislativedata.org` cutover remain separately gated. DEC-0009 is recorded in
-[`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
+[`ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md`](../infrastructure/ENVIRONMENT_AND_SECRET_MANAGEMENT_PROPOSAL_DEC0009.md).
 No V4 deployment, credential issuance, database schema/service creation,
 Nginx/DNS change, source capture, or public implementation claim is
 authorised. The B1 local repository implementation is complete only within its

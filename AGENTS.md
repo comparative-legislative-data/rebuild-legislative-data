@@ -8,12 +8,12 @@ do not replace the project owner’s authority.
 
 Before proposing, editing, reviewing, or executing a material change, read:
 
-1. [`docs/PROJECT_DESIGN.md`](docs/PROJECT_DESIGN.md)
-2. [`docs/HANDOVER.md`](docs/HANDOVER.md)
-3. [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md)
-4. [`docs/DECISION_REGISTER.md`](docs/DECISION_REGISTER.md)
-5. [`docs/RISK_AND_DEPENDENCY_REGISTER.md`](docs/RISK_AND_DEPENDENCY_REGISTER.md)
-6. the latest entry in [`docs/GOVERNANCE_REVIEW_LOG.md`](docs/GOVERNANCE_REVIEW_LOG.md)
+1. [`docs/governance/PROJECT_DESIGN.md`](docs/governance/PROJECT_DESIGN.md)
+2. [`docs/governance/HANDOVER.md`](docs/governance/HANDOVER.md)
+3. [`docs/governance/GOVERNANCE.md`](docs/governance/GOVERNANCE.md)
+4. [`docs/governance/DECISION_REGISTER.md`](docs/governance/DECISION_REGISTER.md)
+5. [`docs/governance/RISK_AND_DEPENDENCY_REGISTER.md`](docs/governance/RISK_AND_DEPENDENCY_REGISTER.md)
+6. the latest entry in [`docs/governance/GOVERNANCE_REVIEW_LOG.md`](docs/governance/GOVERNANCE_REVIEW_LOG.md)
 
 A change is material when it could affect a data definition, provenance,
 validation status, source scope, public claim, security boundary, retention
@@ -66,7 +66,7 @@ required by `PROJECT_DESIGN.md`.
 
 ## Governance maintenance
 
-Apply the review cadence and event triggers in `docs/GOVERNANCE.md`. Before a
+Apply the review cadence and event triggers in `docs/governance/GOVERNANCE.md`. Before a
 phase transition or public claim, the latest governance review must be current
 and must not be `CHANGES_REQUIRED` or `BLOCKED`. Record material decisions,
 risks, dependencies, and review outcomes in their designated registers; do not
@@ -75,3 +75,24 @@ create a competing source of truth.
 For a minor editorial change, preserve document status, meaning, links, and
 metadata. Escalate the change to the pre-flight gate if its meaning or scope is
 uncertain.
+
+## Documentation structure
+
+[`docs/README.md`](docs/README.md) is the human entry point. Place new records
+by the resource or decision they govern:
+
+- `docs/governance/` — governing baseline, decisions, risks, reviews, and
+  handover;
+- `docs/planning/` — cross-cutting phase plans;
+- `docs/data/` — source, proxy, DB1, DB2, variable, release, and data-access
+  documentation, partitioned by legislature where applicable;
+- `docs/infrastructure/` — current VPS, deployment-boundary, and operational
+  controls;
+- `docs/application/` — application contracts, implementation, and service
+  acceptance evidence; and
+- `docs/archive/` — completed or superseded historical records retained for
+  auditability, never silently deleted.
+
+Update `docs/README.md` when adding a new active area or changing the reading
+path. Keep links valid; do not place a new active document directly in the
+`docs/` root.
