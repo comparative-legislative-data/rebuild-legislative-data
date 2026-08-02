@@ -1234,3 +1234,19 @@ Next review due:
 | Affected work blocked | Remaining DEC-0054 source requests, all Bills capture/pass-through/DB1/DB2/beta/public output, and implementation work remain blocked. |
 | Owner decision required | A recovery package with a validated output allowlist before any further source request. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0074
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-directed correction to exploratory-reconnaissance controls |
+| Reviewer role | Maintainer; recording the owner-approved DEC-0055 operating boundary |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0008, DEC-0045, DEC-0054, and DEC-0055 |
+| Active phase and authorising decision | DEC-0055 public API exploratory reconnaissance |
+| Checks performed | Separated normal public-API inspection from capture/retention/release. Replaced per-request gates with cohort reporting, allowed transient ordinary identifiers/values for list/detail inspection, and retained strict stops for credentials, external contact, unapproved scope, bulk/persistence, legal interpretation, system work, and public output. |
+| Findings | The prior model applied production-ingestion controls too early. DEC-0055 better matches the actual task—understanding a public API inventory and its practical limits—without weakening the academic data-management gates that follow reconnaissance. |
+| Outcome | `PASS` for DEC-0055 control reset. No new external request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred in this review. |
+| Affected work blocked | Capture, retention, pass-through, DB1/DB2, beta/public output, implementation, external contact, and new endpoint families remain blocked. |
+| Owner decision required | None for ordinary DEC-0055 reconnaissance; owner approval remains required at the stated later gates or if a stop condition occurs. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

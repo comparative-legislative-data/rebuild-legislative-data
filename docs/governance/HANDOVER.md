@@ -244,14 +244,27 @@ it requires owner approval and proposes no external action by itself.
 
 The owner has requested a faster, planned work-package rhythm while preserving
 academic-grade transparency and immediate escalation of genuine issues.
-DEC-0054 stopped after its Formal Stages family in
-[`GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md`](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md).
-Its summary tool exposed the transient selection identifier, so no further
-family request or retry occurred. Its [rolling record](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_RECORD_2026-08-02.md)
-and [safe stop result](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_STOP_RESULT_2026-08-02.md)
-retain no identifier.
-A new recovery package with a validated output allowlist is required before any
-further source request.
+DEC-0054 stopped after its Formal Stages family because the prior work-package
+boundary treated a transient identifier in a tool summary as an output-hygiene
+exception. Its [safe stop result](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_STOP_RESULT_2026-08-02.md)
+remains an audit record only.
+
+DEC-0055 now provides the active, proportionate exploratory boundary in
+[`GB_SCT_EXPLORATORY_RECONNAISSANCE_OPERATING_BOUNDARY_DEC0055.md`](../data/gb-sct/GB_SCT_EXPLORATORY_RECONNAISSANCE_OPERATING_BOUNDARY_DEC0055.md).
+It permits planned cohort-based inspection of the selected public API inventory
+without per-route approval. Capture, DB1/DB2, implementation, external contact,
+and public release remain separately gated.
+
+That Bills-foundation cohort has now completed `PASS` under DEC-0055, recorded
+in [`GB_SCT_BILLS_FOUNDATION_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_RECONNAISSANCE_RESULT_2026-08-02.md).
+The next normal cohort is structured member, party, government-role, committee,
+and contextual reference routes.
+
+The member/representation/party reference subcohort has now completed `PASS`,
+recorded in [`GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md).
+It creates no operational data asset and flags the affected routes for later
+handling assessment. The next normal subcohort is party roles, government
+roles, committees, and committee taxonomies/links.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

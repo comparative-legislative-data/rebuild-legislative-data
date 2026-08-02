@@ -169,29 +169,26 @@ resource-limit increase, or any uncertainty about another workload.
 This model does not relax any capture, retention, provenance, DB1, canonical,
 publication, research-claim, public-release, or public-cutover control.
 
-### 9.1 Source-qualification work packages
+### 9.1 Exploratory API reconnaissance
 
-For bounded source qualification only, the owner may approve a named route
-cohort and a fixed class of transient, value-free observations instead of one
-decision per routine request. The package must list every route form, maximum
-request count, identifier/parameter selection rule, response ceiling,
-persistence prohibition, permitted retained metadata, stop conditions, rolling
-evidence record, and final closure artefact.
+For an owner-approved public endpoint inventory or cohort, the maintainer may
+inspect normal route forms, catalogue material, list/detail relationships, and
+ordinary transient identifiers/parameters without a decision for each request.
+The durable record is limited to route/parameter forms, access and
+transport/shape observations, field names/types, volume/pagination clues, and
+concise limitations or published restrictions. It must not become a raw
+capture, payload store, fixture, cache, database record, proxy, download, or
+public source-data example.
 
-Within that exact boundary, the maintainer may complete normal listed requests
-and update the rolling record without a further approval. The maintainer stops
-for any unlisted route or request form, redirect, retry, authentication/cookie
-requirement, response above the ceiling, unexpected content type or unsafe
-output path, uncontainable data-handling concern, external contact, credential,
-capture/retention/release, system action, or ambiguity about scope.
+Stop and seek owner direction only for credentials/authentication, payment,
+external contact, an unapproved route family, materially abnormal rate/bulk
+behaviour, persistence, publication, source-terms/legal interpretation beyond
+published material, or system/database/frontend action. Ordinary public values
+or identifiers seen transiently during inspection are not themselves a stop or
+a capture incident.
 
-Observer output must use an explicit allowlist of permitted summary fields;
-dynamic identifiers, resolved URLs, source values, raw content, headers,
-digests, and tool transcripts must be excluded before output is emitted.
-
-This control cannot authorise raw capture, storage, proxying, DB1/DB2,
-implementation, public output, a legal conclusion, source-terms conclusion,
-or a research claim. Those remain separately approval-gated.
+Capture, retention, DB1/DB2, implementation, public output, legal conclusions,
+and research claims remain separately approval-gated.
 
 ## 10. Enforcement and traceability
 

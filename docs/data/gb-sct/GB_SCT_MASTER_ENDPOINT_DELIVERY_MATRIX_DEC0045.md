@@ -59,26 +59,26 @@ and silent scope expansion.
 | Bills | `/api/bills/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill detail fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; GAP_RESOLUTION_APPROVED_DEC0050; DOC_INSPECTION_PARTIAL_DEC0052; G4_BLOCKED_DEC0053` |
 | Formal stages | `/api/billstages` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `OBSERVATION_PASS; HANDLING_REQUIRED; WORK_PACKAGE_STOPPED_DEC0054` |
 | Formal stages | `/api/billstages/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `OBSERVATION_PASS; HANDLING_REQUIRED; WORK_PACKAGE_STOPPED_DEC0054` |
-| Stage types | `/api/billstagetypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Stage types | `/api/billstagetypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Bill types | `/api/billtypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Bill types | `/api/billtypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Sessions | `/api/sessions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Sessions | `/api/sessions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Members | `/api/members` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Members | `/api/members/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member constituency status | `/api/memberelectionconstituencystatuses` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member constituency status | `/api/memberelectionconstituencystatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member region status | `/api/memberelectionregionstatuses` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member region status | `/api/memberelectionregionstatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Constituencies | `/api/constituencies` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Constituencies | `/api/constituencies/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Regions | `/api/regions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Regions | `/api/regions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Parties | `/api/parties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Parties | `/api/parties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member parties | `/api/memberparties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
-| Member parties | `/api/memberparties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
+| Stage types | `/api/billstagetypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Stage types | `/api/billstagetypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Bill types | `/api/billtypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Bill types | `/api/billtypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Sessions | `/api/sessions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Sessions | `/api/sessions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Members | `/api/members` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Members | `/api/members/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member constituency status | `/api/memberelectionconstituencystatuses` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member constituency status | `/api/memberelectionconstituencystatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member region status | `/api/memberelectionregionstatuses` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member region status | `/api/memberelectionregionstatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Constituencies | `/api/constituencies` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Constituencies | `/api/constituencies/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Regions | `/api/regions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Regions | `/api/regions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Parties | `/api/parties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Parties | `/api/parties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member parties | `/api/memberparties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Member parties | `/api/memberparties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Party roles | `/api/partyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
 | Party roles | `/api/partyroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
 | Member party roles | `/api/memberpartyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `NOT_STARTED; OBSERVATION_REQUIRED` |
