@@ -266,6 +266,12 @@ It creates no operational data asset and flags the affected routes for later
 handling assessment. The next normal subcohort is party roles, government
 roles, committees, and committee taxonomies/links.
 
+That roles-and-committees subcohort has completed `PASS`, recorded in
+[`GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md).
+It provides observed date coverage for member-role and committee routes and
+confirms no HTTP update validators in this cohort. The next normal cohort is
+motions/questions/answers, with explicit volume and temporal-coverage profiling.
+
 Updateability is now a required reconnaissance dimension. The first limited
 transport-metadata check is in
 [`GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md): it establishes no usable source validator on two small routes and no conclusion on the timed-out high-volume route. A later DB1 design must not assume source-supplied change detection.
