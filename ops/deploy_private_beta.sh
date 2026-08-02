@@ -158,8 +158,13 @@ cp "$staging/source/ops/nginx/legislativedata.org.private-beta.conf" /etc/nginx/
 nginx -t
 systemctl reload nginx
 curl -fsS --max-time 5 -H 'Host: legislativedata.org' http://127.0.0.1/api/auth/status | grep -q 'ACCESS_CONTROL_READY'
-curl -fsS --max-time 10 https://legislativedata.org/ >/dev/null
+
+# The local named-site check above is the deployment gate.  The public-domain
+# result is recorded separately because it traverses Cloudflare and must not
+# undo a known-good, locally verified origin configuration.
+public_edge_status="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 10 https://legislativedata.org/ || true)"
+printf 'public-edge HTTP status after origin cutover: %s\n' "$public_edge_status"
 
 cleanup
 trap - ERR
-printf 'private-beta deployment passed for %s\n' "$commit"
+printf 'private-beta origin cutover passed for %s\n' "$commit"
