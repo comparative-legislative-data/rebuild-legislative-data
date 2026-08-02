@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, utimesSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, readlinkSync, rmSync, utimesSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, resolve } from "node:path";
 import { gzipSync } from "node:zlib";
@@ -57,6 +57,80 @@ function filesForArchive(path, relativePath = "") {
   });
 }
 
+function tarPathParts(relativePath) {
+  const bytes = Buffer.from(relativePath);
+  if (bytes.length <= 100) {
+    return { name: relativePath, prefix: "" };
+  }
+  const segments = relativePath.split("/");
+  for (let index = segments.length - 1; index > 0; index -= 1) {
+    const prefix = segments.slice(0, index).join("/");
+    const name = segments.slice(index).join("/");
+    if (Buffer.byteLength(prefix) <= 155 && Buffer.byteLength(name) <= 100) {
+      return { name, prefix };
+    }
+  }
+  throw new Error(`Path cannot be represented in a portable ustar archive: ${relativePath}`);
+}
+
+function writeTarText(header, offset, length, value) {
+  const bytes = Buffer.from(value);
+  if (bytes.length > length) {
+    throw new Error(`Tar header field is too long: ${value}`);
+  }
+  bytes.copy(header, offset);
+}
+
+function writeTarOctal(header, offset, length, value) {
+  const encoded = `${value.toString(8).padStart(length - 2, "0")}\0 `;
+  writeTarText(header, offset, length, encoded);
+}
+
+function tarHeader(relativePath, sourcePath) {
+  const stat = lstatSync(sourcePath);
+  const isSymbolicLink = stat.isSymbolicLink();
+  const { name, prefix } = tarPathParts(relativePath);
+  const header = Buffer.alloc(512, 0);
+  const mode = isSymbolicLink ? 0o777 : (stat.mode & 0o111) === 0 ? 0o644 : 0o755;
+  writeTarText(header, 0, 100, name);
+  writeTarOctal(header, 100, 8, mode);
+  writeTarOctal(header, 108, 8, 0);
+  writeTarOctal(header, 116, 8, 0);
+  writeTarOctal(header, 124, 12, isSymbolicLink ? 0 : stat.size);
+  writeTarOctal(header, 136, 12, 946684800);
+  header.fill(0x20, 148, 156);
+  header[156] = isSymbolicLink ? "2".charCodeAt(0) : "0".charCodeAt(0);
+  if (isSymbolicLink) {
+    writeTarText(header, 157, 100, readlinkSync(sourcePath));
+  }
+  writeTarText(header, 257, 6, "ustar\0");
+  writeTarText(header, 263, 2, "00");
+  writeTarText(header, 265, 32, "root");
+  writeTarText(header, 297, 32, "root");
+  writeTarText(header, 345, 155, prefix);
+  writeTarOctal(header, 148, 8, header.reduce((total, byte) => total + byte, 0));
+  return { header, isSymbolicLink, size: stat.size };
+}
+
+function deterministicTar(rootPath, archiveEntries) {
+  const chunks = [];
+  for (const relativePath of archiveEntries) {
+    const sourcePath = join(rootPath, relativePath);
+    const { header, isSymbolicLink, size } = tarHeader(relativePath, sourcePath);
+    chunks.push(header);
+    if (!isSymbolicLink) {
+      const contents = readFileSync(sourcePath);
+      chunks.push(contents);
+      const padding = (512 - (size % 512)) % 512;
+      if (padding > 0) {
+        chunks.push(Buffer.alloc(padding, 0));
+      }
+    }
+  }
+  chunks.push(Buffer.alloc(1024, 0));
+  return Buffer.concat(chunks);
+}
+
 if (existsSync(artifactRoot)) {
   rmSync(artifactRoot, { recursive: true, force: true });
 }
@@ -71,9 +145,7 @@ execFileSync("npm", ["ci", "--omit=dev", "--ignore-scripts", "--prefix", stageRo
 });
 normalizeTimes(stageRoot);
 const archiveEntries = filesForArchive(stageRoot);
-const tarBytes = execFileSync("tar", ["-cf", "-", "-C", stageRoot, ...archiveEntries], {
-  maxBuffer: 128 * 1024 * 1024
-});
+const tarBytes = deterministicTar(stageRoot, archiveEntries);
 writeFileSync(archivePath, gzipSync(tarBytes, { mtime: 0 }));
 const manifest = {
   build_id: "b1-local-only",
