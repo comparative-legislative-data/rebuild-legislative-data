@@ -25,6 +25,13 @@
   a 3.6 MB programme-motion response. Whole questions, supports, and events
   still require a lower-cost operational strategy; their non-completion is
   recorded rather than hidden.
+- The MQA taxonomy details and all three event-link query forms now have
+  successful structural observations. The two official-report detail forms
+  each returned HTTP 200 but an empty object for one transient nested
+  contribution identifier; do not infer usable detail content from that route.
+- The votes-on-motions detail route shows the same empty-object pattern for a
+  transient nested detail identifier; its top-level annual-response identifier
+  returned HTTP 404. Neither form supports a usable detail-content claim.
 - DEC-0056 confirms the binding implementation order: complete and beta-accept
   the approved upstream pass-through phase before any DB1 capture, schema, or
   mirror operation. Reconnaissance and non-operational documentation may still
