@@ -14,7 +14,7 @@ project_root=/srv/cld-gb-sct
 runtime="$project_root/runtime/node-v24.18.1/bin"
 socket_directory=/run/postgresql-cld-gb-sct
 database=cld_gb_sct_canonical
-commit=d2887499272679759f03fb0d2f3ee49fb3b20fb6
+commit=main
 staging="$(mktemp -d "$project_root/staging/private-beta.XXXXXX")"
 release_path=""
 nginx_backup="$staging/legislativedata.org.before"
@@ -103,7 +103,7 @@ grant_proof="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$data
 [[ "$grant_proof" == "t" ]]
 
 git clone --depth 1 https://github.com/comparative-legislative-data/rebuild-legislative-data.git "$staging/source"
-git -C "$staging/source" checkout --detach "$commit"
+commit="$(git -C "$staging/source" rev-parse HEAD)"
 cp "$staging/source/migrations/access_control/001_access_control.sql" "$staging/migration.sql"
 PGPASSWORD="$access_migrate_password" psql -h 127.0.0.1 -p 5434 -U cld_gb_sct_access_migrate -d "$database" -v ON_ERROR_STOP=1 -f "$staging/migration.sql"
 
