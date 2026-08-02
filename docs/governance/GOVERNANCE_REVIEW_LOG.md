@@ -1186,3 +1186,19 @@ Next review due:
 | Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, G5/G6 revision, and implementation remain blocked. |
 | Owner decision required | A documentation-only unresolved-evidence strategy, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0071
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-requested source-qualification control improvement and DEC-0054 work-package proposal preparation |
+| Reviewer role | Maintainer; DEC-0054 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0045, DEC-0050–DEC-0053, prior Bills observations/handling records, and `GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md` |
+| Active phase and authorising decision | Owner instruction to prepare a faster but bounded control model; DEC-0054 proposal preparation only |
+| Checks performed | Replaced sequential one-action approvals with one proposed named-route/fixed-request package. Preserved route-specific limits, transient value-free handling, independent family results, rolling reporting, and mandatory stops for any exception. Excluded capture, retention, release, implementation, credentials, contact, and scope expansion. |
+| Findings | The prior approach gave strong traceability but imposed unnecessary delay on routine observations. A work package can preserve academic transparency where its cohort, request cap, evidence fields, disposal rule, and escalation boundary are explicit. |
+| Outcome | `PASS` for proposal preparation only. No external request, source/data action, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | The DEC-0054 work package and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval. |
+| Owner decision required | DEC-0054. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

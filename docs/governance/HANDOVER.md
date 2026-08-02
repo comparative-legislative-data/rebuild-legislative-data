@@ -242,6 +242,14 @@ remain blocked. The result is
 The next proposed step is a documentation-only unresolved-evidence strategy;
 it requires owner approval and proposes no external action by itself.
 
+The owner has requested a faster, planned work-package rhythm while preserving
+academic-grade transparency and immediate escalation of genuine issues.
+DEC-0054 is proposed in
+[`GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md`](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md).
+It would run four named Bills-foundation route families under an eight-request,
+value-free ceiling and update the source-qualification control model. It needs
+owner approval before any source request.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure
