@@ -51,6 +51,31 @@ increase, or ambiguity about impact on another workload. Retain a restricted
 work-package result and update the durable registers after each material
 package or unexpected stop.
 
+### Approved source-qualification work packages
+
+An owner-approved source-qualification work package may authorise a named
+route cohort and a fixed class of transient, value-free observations. It must
+state every route form, maximum request count, identifier/parameter rule,
+response ceiling, persistence prohibition, permitted retained metadata, stop
+conditions, rolling evidence record, and final closure artefact.
+
+Within those limits, routine listed requests and their documentation updates
+may continue without another owner approval. Stop and seek a new owner decision
+for an unlisted route or request form, redirect, retry, authentication/cookie
+requirement, response above the stated ceiling, unexpected content type or
+unsafe output path, data-handling concern that cannot be contained by the
+value-free method, external contact, credential, capture/retention/release,
+system action, or any ambiguity about the approved boundary.
+
+Any observer output must be formed from an explicit allowlist of permitted
+summary fields. Dynamic identifiers, resolved URLs, source values, raw response
+content, headers, digests, and tool transcripts must be excluded before the
+output is emitted, not merely omitted from the later project record.
+
+This mechanism cannot authorise capture, retention, proxying, DB1/DB2,
+implementation, public output, legal advice, a source-terms conclusion, or a
+claim beyond the documented observation scope.
+
 ## Absolute boundaries
 
 Do not access a VPS, credentials, database, source data, legacy system, or

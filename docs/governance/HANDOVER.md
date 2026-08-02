@@ -244,11 +244,14 @@ it requires owner approval and proposes no external action by itself.
 
 The owner has requested a faster, planned work-package rhythm while preserving
 academic-grade transparency and immediate escalation of genuine issues.
-DEC-0054 is proposed in
+DEC-0054 stopped after its Formal Stages family in
 [`GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md`](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_PROPOSAL_DEC0054.md).
-It would run four named Bills-foundation route families under an eight-request,
-value-free ceiling and update the source-qualification control model. It needs
-owner approval before any source request.
+Its summary tool exposed the transient selection identifier, so no further
+family request or retry occurred. Its [rolling record](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_RECORD_2026-08-02.md)
+and [safe stop result](../data/gb-sct/GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_STOP_RESULT_2026-08-02.md)
+retain no identifier.
+A new recovery package with a validated output allowlist is required before any
+further source request.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

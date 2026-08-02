@@ -169,6 +169,30 @@ resource-limit increase, or any uncertainty about another workload.
 This model does not relax any capture, retention, provenance, DB1, canonical,
 publication, research-claim, public-release, or public-cutover control.
 
+### 9.1 Source-qualification work packages
+
+For bounded source qualification only, the owner may approve a named route
+cohort and a fixed class of transient, value-free observations instead of one
+decision per routine request. The package must list every route form, maximum
+request count, identifier/parameter selection rule, response ceiling,
+persistence prohibition, permitted retained metadata, stop conditions, rolling
+evidence record, and final closure artefact.
+
+Within that exact boundary, the maintainer may complete normal listed requests
+and update the rolling record without a further approval. The maintainer stops
+for any unlisted route or request form, redirect, retry, authentication/cookie
+requirement, response above the ceiling, unexpected content type or unsafe
+output path, uncontainable data-handling concern, external contact, credential,
+capture/retention/release, system action, or ambiguity about scope.
+
+Observer output must use an explicit allowlist of permitted summary fields;
+dynamic identifiers, resolved URLs, source values, raw content, headers,
+digests, and tool transcripts must be excluded before output is emitted.
+
+This control cannot authorise raw capture, storage, proxying, DB1/DB2,
+implementation, public output, a legal conclusion, source-terms conclusion,
+or a research claim. Those remain separately approval-gated.
+
 ## 10. Enforcement and traceability
 
 [`../AGENTS.md`](../../AGENTS.md) is the repository-wide pre-flight instruction

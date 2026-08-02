@@ -1,13 +1,16 @@
 # GB-SCT Bills-Foundation Qualification Work Package — DEC-0054
 
-**Status:** Proposed — no external, source-data, capture, or implementation
-action authorised until owner approval
+**Status:** Approved — executed STOPPED; no further DEC-0054 request authorised
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision sought:** DEC-0054
+**Decision:** DEC-0054, approved by the project owner on 2 August 2026
+
+**Rolling record:** [`GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_RECORD_2026-08-02.md`](GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_RECORD_2026-08-02.md)
+
+**Stop result:** [`GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_STOP_RESULT_2026-08-02.md`](GB_SCT_BILLS_FOUNDATION_QUALIFICATION_WORK_PACKAGE_STOP_RESULT_2026-08-02.md)
 
 ## 1. Purpose: faster, bounded qualification
 
@@ -135,7 +138,7 @@ owner approves DEC-0054.
 
 ## 8. Owner decision
 
-DEC-0054 is **proposed**. If approved, it authorises the stated eight-request,
-four-family qualification work package and the narrow operating-control
-amendment in section 7. It does not authorise any action outside those exact
-boundaries.
+DEC-0054 was approved and stopped after the Formal Stages family. A summary
+output exposed the transient selection identifier, so the package cannot
+continue or retry under this decision. It does not authorise any action outside
+its exact boundaries.

@@ -1202,3 +1202,35 @@ Next review due:
 | Affected work blocked | The DEC-0054 work package and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval. |
 | Owner decision required | DEC-0054. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0072
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0054 owner approval and work-package start |
+| Reviewer role | Maintainer; recording the approved qualification boundary before external execution |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0045, DEC-0050–DEC-0054, and the DEC-0054 rolling record |
+| Active phase and authorising decision | DEC-0054 Bills-foundation transient source qualification |
+| Checks performed | Added the approved source-qualification work-package controls to `AGENTS.md` and `GOVERNANCE.md`. Confirmed the route cohort, eight-request limit, one in-memory selection rule per family, 2 MiB ceiling, persistence prohibition, rolling record, and exception-only stop conditions. |
+| Findings | The approved package accelerates ordinary planned observations while leaving capture, retention, release, implementation, credentials, external contact, and scope expansion separately gated. |
+| Outcome | `PASS` for work-package start. No external request, source/data action, capture, database, proxy, frontend, account, VPS, email, secret, or public action had occurred at this review point. |
+| Affected work blocked | Any action outside the four named route families and all capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked. |
+| Owner decision required | None for normal DEC-0054 execution; a new decision is required for a stop condition or excluded action. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0073
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0054 source-qualification output-hygiene stop |
+| Reviewer role | Maintainer; recording an unexpected containment exception |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0045, DEC-0054 proposal/rolling record/stop result, and the master matrix |
+| Active phase and authorising decision | DEC-0054 Bills-foundation transient source qualification |
+| Checks performed | Formal Stages used its two permitted requests with no retry or route expansion. The tool summary exposed the transient selection identifier, contrary to the persistence/output prohibition. Stopped the entire package, retained no identifier in a project record, and added an explicit output-allowlist rule to the approved control model. |
+| Findings | The safe field/type summary is usable as limited observation evidence, but the execution exception prevents treating the work package as normal completion. Stage Types, Bill Types, and Sessions were not requested. |
+| Outcome | `STOPPED` for DEC-0054; `PASS` for containment after detection. No capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Remaining DEC-0054 source requests, all Bills capture/pass-through/DB1/DB2/beta/public output, and implementation work remain blocked. |
+| Owner decision required | A recovery package with a validated output allowlist before any further source request. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
