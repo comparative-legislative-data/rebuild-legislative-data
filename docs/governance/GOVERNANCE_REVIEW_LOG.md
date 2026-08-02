@@ -1106,3 +1106,19 @@ Next review due:
 | Affected work blocked | The four proposed page inspections and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending DEC-0051 owner approval and later exact packages. |
 | Owner decision required | DEC-0051. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0066
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0051 owner approval and bounded documentation-inspection stop |
+| Reviewer role | Maintainer; recording an external-inspection result that stopped under its own controls |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0044, DEC-0047, DEC-0049–DEC-0051, the master endpoint matrix, and `GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md` |
+| Active phase and authorising decision | DEC-0051 four-page official-documentation inspection |
+| Checks performed | Submitted the exact four named page URLs in one bounded inspection call, without an API-route request or link-following instruction. The available tool returned an unexpected output shape before page-specific metadata/evidence could be safely recorded. Applied the one-attempt/no-adaptation stop condition: no retry, alternate retrieval, page expansion, API request, or content retention followed. |
+| Findings | The stop creates no evidence about page availability or content. G1–G3 remain unresolved, and the project cannot infer a source permission, technical condition, or field definition from the failed evidence path. RSK-0034 records the recovery boundary. |
+| Outcome | `BLOCKED` for DEC-0051 evidence collection; `PASS` for preserving containment and a non-content stop record. No API request, source-data retrieval, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | All Bills capture, pass-through, DB1/DB2, beta/public output, and further official-documentation inspection remain blocked pending a separately approved recovery proposal. |
+| Owner decision required | A documentation-only official-documentation inspection recovery proposal, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

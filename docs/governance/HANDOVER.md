@@ -222,10 +222,13 @@ qualification-gap resolution proposal; it would make no source request.
 
 DEC-0050 is now approved as that resolution plan in
 [`GB_SCT_BILLS_FAMILY_QUALIFICATION_GAP_RESOLUTION_PROPOSAL_DEC0050.md`](../data/gb-sct/GB_SCT_BILLS_FAMILY_QUALIFICATION_GAP_RESOLUTION_PROPOSAL_DEC0050.md).
-It defines G1–G6 evidence gaps and preserves both route blocks. DEC-0051 is
-the next proposed, separately gated official-documentation inspection:
-[`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_PROPOSAL_DEC0051.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_PROPOSAL_DEC0051.md).
-No external inspection or source/data action is authorised pending its review.
+It defines G1–G6 evidence gaps and preserves both route blocks. DEC-0051's
+one permitted official-documentation inspection attempt stopped because the
+tool-output path could not produce a safe page-specific result; it was not
+retried. Its result is
+[`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md).
+G1–G3 remain unresolved. A new recovery proposal is required before any
+external inspection or source/data action.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

@@ -1,13 +1,14 @@
 # GB-SCT Bills Official-Documentation Inspection Proposal — DEC-0051
 
-**Status:** Proposed — no API route, source-data request, capture, proxy, DB1,
-DB2, frontend, or public action authorised
+**Status:** Approved — executed BLOCKED; no page-specific evidence retained
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0051
+**Decision:** DEC-0051, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md`](GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md)
 
 ## 1. Purpose and pre-flight
 
@@ -87,7 +88,7 @@ frontend, or public action needs its own exact owner approval.
 
 ## 6. Owner decision
 
-DEC-0051 is `PROPOSED`. Owner approval is required before any page is opened.
-Approval applies only to the page list, questions, retention boundary, and
-stop conditions stated here.
-
+DEC-0051 is approved and executed BLOCKED. Its single permitted inspection
+attempt could not produce a safe page-specific result through the available
+tool-output path; it may not be retried under this decision. No later source,
+data, implementation, or public action is authorised.
