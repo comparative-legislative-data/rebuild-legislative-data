@@ -786,3 +786,19 @@ Next review due:
 | Affected work blocked | All VPS modification, V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked. |
 | Owner decision required | None for DEC-0041's fixed read-only checks; a new decision is required for a mismatch repair or any excluded action. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0046
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0041 B3 local-acceptance result |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0041 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, B2/B2a records/results, `V4B_B3_LOCAL_ACCEPTANCE_PROPOSAL_DEC0041.md`, `V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md`, and this log |
+| Active phase and authorising decision | V4B B3 local acceptance under DEC-0041 |
+| Checks performed | Verified active/enabled service state and owner, private runtime/release identity, unit digests and hardening/resource/network policy, exact two-route health contract, assigned IPv4 loopback listeners, release exclusions, protected-cluster state and non-name digest equality, project-database listener, staging absence, and singleton project runtime/release paths. |
+| Findings | Every fixed B3 condition passed without a VPS change. The record remains operational evidence for two local synthetic shells only; it contains no data, source content, secret, database name, or unrelated-service detail. |
+| Outcome | `PASS` for V4B B3 local acceptance. The V4B B0–B3 local synthetic-shell sequence is closed. |
+| Affected work blocked | V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked pending separate approvals. |
+| Owner decision required | A separately scoped next package, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

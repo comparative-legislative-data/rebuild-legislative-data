@@ -1,6 +1,6 @@
 # V4B B3 Local Acceptance Proposal — DEC-0041
 
-**Status:** Approved — execution pending
+**Status:** Approved — executed `PASS`
 
 **Version:** 1.0.0
 
