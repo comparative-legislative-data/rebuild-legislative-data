@@ -1,8 +1,8 @@
 # Private-Beta Runtime and Private Cutover Package — DEC-0059
 
-**Status:** APPROVED — EXECUTED PARTIAL (runtime/cutover PASS; owner acceptance pending)
+**Status:** APPROVED — EXECUTED PASS (owner acceptance complete)
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 
 **Recorded:** 2 August 2026
 
@@ -208,3 +208,18 @@ was sent. The public shell is `DYNAMIC` at the Cloudflare edge and serves the
 current hashed client revision. The final owner acceptance check is to use the
 new link within its stated lifetime, set a password, and verify the signed-in
 private-beta shell.
+
+## 12. Owner acceptance — 2 August 2026
+
+The owner completed and confirmed the intended private-beta lifecycle in the
+deployed application: a beta application was submitted; the superuser reviewed
+and approved it; the applicant received and used the activation email; the
+account could use password login, request and use a magic link, change its
+password, and sign out. The ordinary approved account did not receive the
+superuser control, while the superuser account did. The final empty-JSON-header
+correction in revision `a54ecf260681a8b4d2f3d36b13ba73ce1a9b1dfa` was deployed
+before the successful approval/email test.
+
+This is an acceptance of the private-beta account lifecycle only. The proposed
+guest-invitation path was not exercised in this acceptance session, and no
+source relay, DB1, DB2, research output, or public data access was enabled.

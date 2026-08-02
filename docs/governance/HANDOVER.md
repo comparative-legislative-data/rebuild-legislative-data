@@ -351,6 +351,14 @@ Nginx/DNS change, source capture, or public implementation claim is
 authorised. The B1 local repository implementation is complete only within its
 stated no-data/no-database/no-deployment boundary.
 
+DEC-0059 is now `APPROVED — EXECUTED PASS` for the private-beta runtime and
+cutover. The owner has exercised beta application, approval, activation email,
+password and magic-link login, password change, logout, and role separation.
+This authorises no source relay, DB1, DB2, research output, or public data
+access. The next data-layer decision remains DEC-0057, the proposed transparent
+upstream proxy-phase execution design; guest invitations remain a later,
+separately unexercised access path.
+
 ## Repository state at handover
 
 - Default branch: `main`

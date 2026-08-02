@@ -1314,3 +1314,19 @@ Next review due:
 | Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
 | Owner decision required | No new decision for the final owner activation acceptance; DEC-0057 approval remains required before proxy implementation. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0079
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0059 owner acceptance completion |
+| Reviewer role | Maintainer; recording the owner's completed private-beta acceptance test |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, DEC-0043, DEC-0058, and DEC-0059 |
+| Active phase and authorising decision | DEC-0059 controlled private-beta access runtime/cutover |
+| Checks performed | The owner confirmed the complete tested lifecycle: beta application; superuser review and approval; delivered activation email; password setup; password login; magic-link request and login; password change; sign-out; and absence of superuser controls for an ordinary approved account. The final no-body request-header correction was deployed and the approval/email test then passed. |
+| Findings | The private-beta access boundary functions as intended for the exercised lifecycle. The guest-invitation path was not exercised and is not claimed as accepted. No source relay, DB1, DB2, research output, or public data route was enabled. |
+| Outcome | `PASS` — DEC-0059 is `APPROVED — EXECUTED PASS` for its tested private-beta runtime/cutover scope. |
+| Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
+| Owner decision required | DEC-0057 approval is required before proxy implementation; a later bounded test is required if guest invitations are to be released. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
