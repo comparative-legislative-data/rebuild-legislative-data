@@ -1,8 +1,8 @@
 # Private-Beta Runtime and Private Cutover Package — DEC-0059
 
-**Status:** APPROVED — EXECUTED BLOCKED at the public-edge gate
+**Status:** APPROVED — EXECUTED PARTIAL (runtime/cutover PASS; owner acceptance pending)
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 **Recorded:** 2 August 2026
 
@@ -142,6 +142,28 @@ file, so the external site was not left pointing at a route that the public
 edge could not reach. This is not evidence of a source, DB1, DB2, or research
 data route.
 
-No Cloudflare-zone, DNS, firewall, certificate, or shared Nginx action is
-authorised by DEC-0059. A separately approved public-edge diagnosis/correction
-is required before the private-beta site can be made externally reachable.
+No Cloudflare-zone, DNS, firewall, certificate, or shared Nginx action was
+taken.
+
+## 9. Final cutover result — 2 August 2026
+
+The public-edge stop was traced to the deployment procedure, not Cloudflare:
+the named site had been restored to the legacy `127.0.0.1:3100` upstream after
+the old public check failed. A subsequent local proxy check could briefly be
+handled by an old Nginx worker immediately after reload. The procedure was
+corrected to wait (for at most ten seconds) for the named `/api/` proxy to
+return the API-ready marker; the locally verified origin configuration is no
+longer rolled back merely because a separate public-edge check fails.
+
+The exact deployed revision is `7210ffb3690b0d3930b7aef6f15ccc7014abf842`.
+The target-host build, tests, capability scan, canonical access-control
+migration, loopback API/web checks, and named-site proxy check passed. Direct
+HTTPS to the VPS using the domain name and normal public HTTPS through
+Cloudflare both returned HTTP 200. The API health response confirms that
+authentication is available and that all source, DB1, DB2, and research-data
+layers remain unavailable.
+
+This is an infrastructure/runtime pass, not a research-data release or the
+package's complete user-journey acceptance. The outstanding owner acceptance
+check is to use the single-superuser activation flow and confirm the private
+beta shell.

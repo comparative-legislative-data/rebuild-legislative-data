@@ -1266,3 +1266,19 @@ Next review due:
 | Affected work blocked | DEC-0059 database/grant activation, runtime deployment, bootstrap email, and named-site cutover. Source relay, DB1, and DB2 remain excluded independently. |
 | Owner decision required | No new decision; provide the three named values in the owner-controlled input, then execution may resume within DEC-0059. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0076
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0059 runtime/cutover completion after origin-proxy correction |
+| Reviewer role | Maintainer; recording the approved package result and the contained correction |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0043, DEC-0058, DEC-0059, and both DEC-0059 stop records |
+| Active phase and authorising decision | DEC-0059 controlled private-beta runtime and named-site cutover |
+| Checks performed | Verified target-host build/tests/capability scan, canonical access-control migration, API/web loopback readiness, named-site proxy readiness after Nginx reload, direct-origin HTTPS, and normal public HTTPS. The two HTTPS checks returned HTTP 200. No Cloudflare configuration, source action, DB1, DB2, or research-data route was changed. |
+| Findings | The prior 502 arose from the project deployment procedure retaining the legacy port-3100 configuration and checking too soon after Nginx reload. The bounded retry corrects only that procedure. Authentication is available; all research-data layers remain unavailable. |
+| Outcome | `PASS` for the completed DEC-0059 runtime/cutover scope. DEC-0059 remains `EXECUTED PARTIAL` pending owner acceptance of the superuser activation journey; no data release is claimed. |
+| Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
+| Owner decision required | No decision for owner acceptance of the deployed activation flow; DEC-0057 approval is required before proxy implementation. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

@@ -48,25 +48,16 @@
 - DEC-0058 completed `PASS` locally. The access UI and API are fail-closed and
   the unapplied migration/grant artefacts are ready for later controlled
   runtime proof. No active account system exists yet.
-- DEC-0059's read-only deployment preflight found the existing public site
-  points at an unused legacy port and therefore returns HTTP 502. The isolated
-  project web/API services remain healthy on their loopback ports. The approved
-  private-beta runtime/cutover package is blocked only pending the three
-  owner-supplied server-only values; no secret, database, email, service, or
-  Nginx change has occurred.
-- The first DEC-0059 execution then stopped at its database-schema gate: a
-  script defect created a verified-empty `access_control` schema in the default
-  database instead of the canonical database. The error trap restored the prior
-  project service and named-site files before release, email, or cutover. A
-  later owner-approved cleanup removed that empty schema and corrected the
-  target; see the DEC-0059 stop result.
-- The correction completed the private access-control migration and passed the
-  isolated API/web plus local Nginx checks. The public Cloudflare request still
-  returned HTTP 502, so the named site was restored and the private-beta site
-  remains externally unavailable. See the public-edge stop result; a separate
-  public-edge package is required before another external cutover.
-- Next: complete the small MQA detail forms and identify bounded strategies for
-  high-volume MQA routes; separately profile votes-on-motions year forms.
+- DEC-0059 is now deployed and passes its runtime/cutover checks. The earlier
+  502 was a project Nginx deployment error: the named site had been restored to
+  its unused legacy port. The corrected named-site proxy passes direct-origin
+  and public HTTPS checks (both HTTP 200), without a Cloudflare change.
+- Authentication is available, but every source, DB1, DB2, and research-data
+  layer remains unavailable. The next acceptance check is the owner using the
+  superuser activation flow and confirming the private beta shell.
+- Next after that acceptance: return to the proposed proxy-only execution
+  package, DEC-0057; it remains unapproved and no proxy/data work may begin
+  until the owner approves it.
 
 ## Start here
 

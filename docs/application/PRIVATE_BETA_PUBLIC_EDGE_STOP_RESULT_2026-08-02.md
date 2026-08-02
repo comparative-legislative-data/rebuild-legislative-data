@@ -1,6 +1,6 @@
 # Private-Beta Public-Edge Stop Result
 
-**Status:** `BLOCKED` — VPS-private services pass; public edge remains 502
+**Status:** `SUPERSEDED / RESOLVED` — retained as the earlier stopped attempt
 
 **Date:** 2 August 2026
 
@@ -20,9 +20,15 @@
 No source request, source relay, DB1, DB2, canonical research output, chart,
 download, or public data route was enabled.
 
-## Required next decision
+## Resolution
 
-A public-edge diagnosis/correction package must name whether it may inspect or
-change Cloudflare-zone settings, DNS, origin TLS/certificate configuration, or
-the named site. It must establish why the Cloudflare edge cannot reach the VPS
-before another external cutover attempt.
+This stop was resolved under the existing DEC-0059 package. The cause was the
+deployment procedure: it restored the named site to its legacy `127.0.0.1:3100`
+upstream and checked the Nginx proxy before the reload had settled. The retry
+waited for the named proxy's ready response and retained the configuration once
+the origin check passed. Direct-origin and normal public HTTPS then both
+returned HTTP 200. No Cloudflare, DNS, firewall, certificate, shared-Nginx,
+source, DB1, DB2, or research-data action was required.
+
+See the final result in
+[`PRIVATE_BETA_RUNTIME_AND_PRIVATE_CUTOVER_PACKAGE_DEC0059.md`](PRIVATE_BETA_RUNTIME_AND_PRIVATE_CUTOVER_PACKAGE_DEC0059.md).
