@@ -1010,3 +1010,19 @@ Next review due:
 | Affected work blocked | Bills detail observation, route handling, pass-through, DB1/DB2, authentication/frontend, and public release require separate packages. |
 | Owner decision required | A separately approved next Bills route-handling or detail-route observation package, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0060
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0047 Bills collection route-handling assessment |
+| Reviewer role | Maintainer; completing an owner-authorised documentation-only assessment |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0046, the master endpoint matrix, and `GB_SCT_BILLS_COLLECTION_ROUTE_HANDLING_ASSESSMENT_DEC0047.md` |
+| Active phase and authorising decision | DEC-0047 formal handling assessment for `/api/bills` only |
+| Checks performed | Applied every field in the DEC-0008 source-handling template to the collection route; retained the distinction between the evidence-limited collection observation and unobserved detail route; classified raw and DB1 handling separately from non-content provenance; and prohibited content retention or release where terms, personal-data, retention, and operating conditions remain unresolved. |
+| Findings | The field names `PersonID` and `ThirdPartyOrganisation`, together with unassessed string content and partial route-specific terms evidence, prevent any capture or public-output classification. `DO_NOT_CAPTURE_OR_RELEASE` is a visible control, not a route retirement: DEC-0045's inclusion-first scope remains unchanged. |
+| Outcome | `PASS` for a documentation-only restrictive assessment. No source request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills collection/detail capture, pass-through, DB1/DB2, beta/public output, and all source-content handling remain blocked pending a separately approved exact package and resolution of its applicable handling conditions. |
+| Owner decision required | A separately approved transient, value-free Bills detail-observation package, if the owner wishes to continue source reconnaissance. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

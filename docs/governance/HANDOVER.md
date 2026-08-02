@@ -194,6 +194,16 @@ response/transport shape; `PersonID` and `ThirdPartyOrganisation` field names
 mean restrictive-default route handling still applies. The result is
 [`GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md).
 
+DEC-0047 completed that handling assessment for `/api/bills`. Its current
+classification is `DO_NOT_CAPTURE_OR_RELEASE`: the evidence does not yet
+resolve terms coverage, personal-data treatment, retention fit, or operating
+conditions. The restriction does not retire the route from the DEC-0045
+inventory. The record is
+[`GB_SCT_BILLS_COLLECTION_ROUTE_HANDLING_ASSESSMENT_DEC0047.md`](../data/gb-sct/GB_SCT_BILLS_COLLECTION_ROUTE_HANDLING_ASSESSMENT_DEC0047.md).
+Any next Bills source package must be separately approved and remains limited
+to a transient, value-free detail observation; no capture, pass-through, DB1,
+DB2, frontend, or public step is enabled.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure
