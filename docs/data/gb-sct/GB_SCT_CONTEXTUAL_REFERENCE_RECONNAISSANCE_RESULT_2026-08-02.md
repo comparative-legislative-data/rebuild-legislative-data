@@ -31,7 +31,30 @@ field set as its collection response. This is a limited one-record comparison,
 not a parity or completeness claim. The largest response was Member Parties at
 134,503 bytes; no response approached the 5 MiB exploratory safety ceiling.
 
-## 2. Data-handling consequence
+## 2. Aggregate date-coverage profile
+
+The aggregate results below record date values observed in the collection
+responses. A missing calendar year means only that no value for this particular
+start-date field appeared in that year; it does **not** mean that the endpoint,
+representation, geography, or affiliation has no record for that year.
+
+| Family / field | Observed aggregate profile | Interpretation limit |
+| --- | --- | --- |
+| Member constituency status / `ValidFromDate` | 523 non-null values, 1999-05-05 to 2026-05-06; 16 calendar years with start values across that span (annual counts: 1–73). | Start dates describe record changes, not annual membership completeness. |
+| Member region status / `ValidFromDate` | 413 non-null values, 1999-05-05 to 2026-07-28; 17 calendar years with start values (annual counts: 1–58). | Same limitation; interval conventions remain unverified. |
+| Constituencies / `ValidFromDate` | 223 non-null values, 1999-04-30 to 2026-05-06; 5 calendar years with start values (annual counts: 2–73). | Geographic changes need not occur annually; this is not a coverage gap finding. |
+| Regions / `StartDate` | 29 non-null values, 1999-04-30 to 2026-05-05; 5 calendar years with start values (annual counts: 2–9). | Same limitation. |
+| Parties / `ValidFromDate` | 14 non-null values, 1999-05-05 to 2026-04-30; 7 calendar years with start values (annual counts: 1–7). | Does not establish the party system or source completeness. |
+| Member parties / `ValidFromDate` | 976 non-null values, 1999-05-05 to 2026-07-28; 24 calendar years with start values (annual counts: 1–133). | Start-date coverage does not establish uninterrupted affiliation history or conflict handling. |
+
+For future interval work, the observed non-null end-date ranges are: member
+constituency status 1999-12-21 to 2026-04-08 (450 records); member region
+status 2001-08-10 to 2026-07-22 (356); constituencies 2011-05-03 to
+2026-05-05 (150); regions 2011-04-29 to 2026-05-05 (21); parties one value on
+2003-12-15; and member parties 1999-05-11 to 2026-07-22 (847). Null end dates
+are observed but have not been interpreted.
+
+## 3. Data-handling consequence
 
 The Members, representation-status, Member Parties, and Notes-related fields
 require route-specific handling assessment before capture, DB1, DB2, proxy, or
@@ -41,7 +64,7 @@ personal-data, sensitive-content, linking, retention, or publication issues.
 No field is assigned a personal-data or legal classification by this result.
 The result records only the need for a stricter future assessment.
 
-## 3. Next cohort
+## 4. Next cohort
 
 Proceed to party roles, government roles, committees, committee roles/types,
 and committee-type links. Under DEC-0055 this is normal reconnaissance. The

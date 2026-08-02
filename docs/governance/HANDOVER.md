@@ -3,6 +3,19 @@
 **Status:** Active handover note  
 **Date:** 31 July 2026
 
+## Latest reconnaissance update — 2 August 2026
+
+- The Bills-foundation and contextual-reference results now contain aggregate
+  date-coverage profiles. They explicitly distinguish observed field-date
+  values from a claim of source completeness or settled interval semantics.
+- The MQA first pass found small, responsive event taxonomy/link routes; a
+  tractable documented consideration-motion filter; a larger programme filter
+  and motions collection; and high-latency broad events/questions/supports
+  collections. See
+  [`GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md).
+- Next: complete the small MQA detail forms and identify bounded strategies for
+  high-volume MQA routes; separately profile votes-on-motions year forms.
+
 ## Start here
 
 This is a clean rebuild. Read these files before proposing or making any change:

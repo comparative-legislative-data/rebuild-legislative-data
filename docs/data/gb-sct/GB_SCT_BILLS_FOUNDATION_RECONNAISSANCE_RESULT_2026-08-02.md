@@ -33,7 +33,24 @@ The largest received response was the Formal Stages collection at 137,488
 bytes; no response approached the 5 MiB exploratory safety ceiling. List/detail
 field-set equality is observed only for the one detail response per family.
 
-## 3. Research and handling consequence
+## 3. Aggregate date-coverage profile
+
+The following is a one-time aggregate profile of the collection responses. It
+describes values present in the indicated date field, not the completeness of
+the underlying legislative history or the semantics of those dates.
+
+| Family / field | Observed aggregate profile | Interpretation limit |
+| --- | --- | --- |
+| Formal stages / `StageDate` | 1,727 non-null values of 1,754 records; 1999-05-11 to 2026-03-24. Every calendar year from 1999 to 2026 had at least one date value (annual counts: 15–97). | This supports a broad observed date-value span only. It does not establish that each bill, stage, date, or historical period is complete. |
+| Sessions / `StartDate` | 6 non-null values, 1999-05-11 to 2021-05-12. | The six source records are not evidence of an exhaustive or semantically settled session-history model. |
+| Sessions / `EndDate` | 5 non-null values, 2003-03-30 to 2021-05-03; one record has a null end date. | A null may denote an open/current session or another source convention; no inference is made. |
+
+This profile establishes the project's standard distinction between observed
+field-date coverage, record counts by year, and any future claim of historical
+or semantic completeness. It must be refreshed during a later approved
+capture/mirroring design, not treated as an operational completeness test.
+
+## 4. Research and handling consequence
 
 The cohort makes these fields candidates for later Tier 1 source-field
 assessment only. It creates no Tier 1 value, Tier 2 rule, codebook entry,
@@ -44,7 +61,7 @@ public-output conditions remain to be qualified before any operational use.
 The historical DEC-0054 Formal Stages stop is retained for auditability but
 does not limit this cohort's safe structural finding under DEC-0055.
 
-## 4. Next cohort
+## 5. Next cohort
 
 Proceed to the structured contextual cohort: members, constituency/region
 status, parties and party roles, government roles, committees and committee
