@@ -675,3 +675,19 @@ Next review due:
 | Affected work blocked | VPS preflight/change, private runtime installation, release transfer, unit creation/start, B3 acceptance, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure, and public claims remain blocked pending their own explicit approvals. |
 | Owner decision required | DEC-0039. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0039
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — owner approval of DEC-0039 B2 local-deployment work package |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0039 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0035–DEC-0038 records/results, `V4B_B2_LOCAL_DEPLOYMENT_PROPOSAL_DEC0039.md`, and this log |
+| Active phase and authorising decision | V4B B2 isolated local deployment under DEC-0039 |
+| Checks performed | Confirmed that the approval remains bounded to the named project staging/runtime/release paths and two named systemd units, with no data, database/secret, public-routing, host-wide runtime, or shared-service authority. Clarified the only protected-cluster metadata check as a `postgres` service-account query that emits database-name-set digests only, moved final executable/unit validation to the project staging step before unit installation, and moved runtime download, signature verification, dependency installation, build, and release packaging to VPS staging. Confirmed that all mutation remains conditional on the recorded compatibility, namespace, port, capacity, protected-cluster, and unit-directive gates. |
+| Findings | The clarification does not alter the target, resource class, privilege boundary, exposure, or end state: it makes the stated before/after protected-cluster digest check possible without retaining names, makes final-systemd validation possible only once the private executable exists, and keeps the maintainer Mac free of a parallel Node/runtime/release setup. Approval permits the ordered B2 package, not a successful deployment claim. DEP-0007 remains unsatisfied until the preflight result is recorded. RSK-0025's stop and project-only rollback conditions apply unchanged. |
+| Outcome | `PASS` for recording the authority and aligned execution boundary; B2 preflight is pending. |
+| Affected work blocked | Any B2 mutation before a passing preflight; B3 acceptance closure; database/secret work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure; and public claims remain blocked pending their respective conditions or approvals. |
+| Owner decision required | None for DEC-0039’s bounded execution; a new decision is required for any stop condition or excluded action. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
