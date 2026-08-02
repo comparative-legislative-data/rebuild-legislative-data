@@ -76,6 +76,13 @@ For a minor editorial change, preserve document status, meaning, links, and
 metadata. Escalate the change to the pre-flight gate if its meaning or scope is
 uncertain.
 
+## Reporting discipline
+
+Every material activity update or completion report must state the smallest
+proposed **what next** step. Make clear whether that step is merely a proposed
+documentation task or requires a new explicit owner approval; never present a
+proposed next step as already authorised.
+
 ## Documentation structure
 
 [`docs/README.md`](docs/README.md) is the human entry point. Place new records
