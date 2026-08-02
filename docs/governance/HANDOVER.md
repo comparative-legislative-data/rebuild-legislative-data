@@ -40,6 +40,8 @@
   the approved upstream pass-through phase before any DB1 capture, schema, or
   mirror operation. Reconnaissance and non-operational documentation may still
   continue in parallel.
+- The proposed next execution design is the proxy-only package,
+  [`GB_SCT_PROXY_PHASE_EXECUTION_PROPOSAL_DEC0057.md`](../data/gb-sct/GB_SCT_PROXY_PHASE_EXECUTION_PROPOSAL_DEC0057.md). It contains no DB1 work and awaits owner review.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 
