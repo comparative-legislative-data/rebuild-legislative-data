@@ -68,6 +68,10 @@ access_migrate_password="$(openssl rand -hex 32)"
 access_runtime_password="$(openssl rand -hex 32)"
 access_pepper="$(openssl rand -hex 48)"
 
+systemd_environment_value() {
+  printf '%s' "$1" | sed -e 's/[\\$`\"]/\\&/g'
+}
+
 sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -v ON_ERROR_STOP=1 <<SQL
 DO \$\$
 BEGIN
@@ -121,7 +125,12 @@ chmod -R g+rX,o-rwx "$release_path"
 install -d -o root -g root -m 0700 /etc/cld-gb-sct/secrets
 database_url="postgresql://cld_gb_sct_access_runtime:${access_runtime_password}@127.0.0.1:5434/${database}"
 umask 0077
-printf 'CLD_ACCESS_DB=%s\nCLD_ACCESS_PEPPER=%s\nCLD_RESEND_KEY=%s\nCLD_ACCESS_FROM=%s\nCLD_INITIAL_SUPERUSER=%s\nCLD_PUBLIC_ORIGIN=https://legislativedata.org\n' "$database_url" "$access_pepper" "$resend_api_key" "$access_from_email" "$initial_superuser_email" > /etc/cld-gb-sct/secrets/access-api.env
+printf 'CLD_ACCESS_DB="%s"\nCLD_ACCESS_PEPPER="%s"\nCLD_RESEND_KEY="%s"\nCLD_ACCESS_FROM="%s"\nCLD_INITIAL_SUPERUSER="%s"\nCLD_PUBLIC_ORIGIN="https://legislativedata.org"\n' \
+  "$(systemd_environment_value "$database_url")" \
+  "$(systemd_environment_value "$access_pepper")" \
+  "$(systemd_environment_value "$resend_api_key")" \
+  "$(systemd_environment_value "$access_from_email")" \
+  "$(systemd_environment_value "$initial_superuser_email")" > /etc/cld-gb-sct/secrets/access-api.env
 chown root:cld-gb-sct /etc/cld-gb-sct/secrets/access-api.env
 chmod 0640 /etc/cld-gb-sct/secrets/access-api.env
 
