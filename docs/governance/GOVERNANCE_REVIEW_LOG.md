@@ -834,3 +834,19 @@ Next review due:
 | Affected work blocked | The rule authorises no code, documentation, data, VPS, database, secret, public-routing, or public-claim change without the appropriate existing authority and, for a tidy-up, owner agreement. |
 | Owner decision required | None for the standing assessment; owner agreement is required before each identified tidy-up. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0049
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0042 three-layer GB-SCT data-programme proposal preparation |
+| Reviewer role | Maintainer; DEC-0042 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007/DEC-0008/DEC-0018 materials, the V4B result, `GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`, and this log |
+| Active phase and authorising decision | GB-SCT data-programme proposal preparation only |
+| Checks performed | Distinguished upstream pass-through from captured DB1 and canonical DB2; required layer-visible metadata, codebooks, reproducible downloads, citations, and multi-tool access patterns; retained source/terms, capture-batch, variable, public-release, and Tier 3+ gates. |
+| Findings | A direct upstream relay can improve accessibility but must never masquerade as a capture or dataset. DB1 provides the frozen evidence layer; DB2 provides the reproducible research layer. The planned interface makes those distinctions inspectable rather than burying them in implementation. |
+| Outcome | `PASS` for DEC-0042 proposal preparation only. All source, proxy, capture, DB1, DB2, frontend, and public actions remain blocked pending their exact approvals. |
+| Affected work blocked | Source-documentation inspection/request, pass-through implementation, DB1 capture/build, DB2 variable/release work, application/frontend changes, database action, secret work, V4C/public exposure, and public claims. |
+| Owner decision required | DEC-0042. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

@@ -165,6 +165,11 @@ closure passed under DEC-0041, recorded in
 V4B is closed only for the local synthetic shell. Every later data, database,
 secret, or public step remains separately gated.
 
+The next proposed design decision is DEC-0042, the three-layer GB-SCT programme
+in [`GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`](../data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md).
+It distinguishes upstream pass-through access, manifest-backed DB1, and Tier
+1/2 DB2 releases, but remains non-operational pending owner review.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure

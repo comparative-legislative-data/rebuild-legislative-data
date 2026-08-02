@@ -20,7 +20,7 @@ than browsing a flat file list.
 | --- | --- | --- |
 | [Governance](governance/) | Project rules, decisions, risks, reviews, and current handover. | [Governance guide](governance/GOVERNANCE.md) |
 | [Planning](planning/) | Phase-level plans and sequencing. | [Phase A plan](planning/PHASE_A_PLAN.md) |
-| [Data — GB-SCT](data/gb-sct/) | Source scope, endpoint inventory, retention, capture/proxy/DB1 planning, and control templates. | [Endpoint inventory and variable roadmap](data/gb-sct/ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md) |
+| [Data — GB-SCT](data/gb-sct/) | Source scope, endpoint inventory, transparent pass-through, DB1, DB2, retention, and control templates. | [Three-layer programme proposal](data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md) |
 | [Infrastructure](infrastructure/) | Current VPS boundary, operating controls, secrets/environment design, and VPS inventory records. | [Current VPS V4 plan](infrastructure/CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md) |
 | [Application](application/) | V4B application specification, local implementation, deployment, and acceptance evidence. | [B3 local acceptance result](application/V4B_B3_LOCAL_ACCEPTANCE_RESULT_2026-08-02.md) |
 | [Archive](archive/) | Superseded or completed historical implementation records retained for auditability. | [V4A infrastructure archive](archive/infrastructure/v4a/) |
