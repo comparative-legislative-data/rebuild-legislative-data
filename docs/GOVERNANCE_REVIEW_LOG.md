@@ -738,3 +738,19 @@ Next review due:
 | Affected work blocked | Any action outside the approved B2a staging/package scope; B3 acceptance, database/secret work, source work, Nginx/DNS/firewall/public exposure, and public claims remain blocked. |
 | Owner decision required | None for DEC-0040’s bounded execution; a new decision is required for an excluded action or stop condition. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0043
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0040 B2a recovery and DEC-0039 B2 final result |
+| Reviewer role | Maintainer; owner approvals are recorded in DEC-0039 and DEC-0040 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0039/DEC-0040 records and results, and this log |
+| Active phase and authorising decision | V4B B2 corrective packaging and isolated local deployment under DEC-0039 and DEC-0040 |
+| Checks performed | Repeated project/protected-resource preflight; verified the exact private Node archive and signing key; preserved and compared two target-host package variants; limited the repair to package code and a repeat-package helper; ran two repaired VPS package passes; verified capability/build contracts; verified concrete systemd units; verified exact local health responses, loopback listeners, hardening/resource boundaries, immutable path metadata, protected-cluster states/digests, release exclusions, and staging removal. |
+| Findings | The mismatch was volatile GNU tar extended metadata, not an application-content difference. The repaired portable USTAR writer produced identical target-host archives. Two temporary start attempts rolled back only the newly created project resources because an immediate health check raced process readiness and then an evidence pipeline lacked its final privilege boundary; the final bounded readiness/evidence sequence passed. No shared, database, secret, source, or public resource changed. |
+| Outcome | `PASS` for the limited B2 local synthetic-shell deployment and DEC-0040 recovery. It does not establish a data API, database-backed service, research release, or public website. |
+| Affected work blocked | B3 acceptance closure; database/secret work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure; and public claims remain blocked pending their own approvals. |
+| Owner decision required | A separately scoped B3 or later package, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
