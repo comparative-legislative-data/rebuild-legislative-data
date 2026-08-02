@@ -213,6 +213,13 @@ The next proposed step is a documentation-only detail route-handling
 assessment; capture, pass-through, DB1, DB2, frontend, and public work remain
 blocked.
 
+DEC-0049 has now completed that assessment. Both Bills collection and detail
+routes are `DO_NOT_CAPTURE_OR_RELEASE`; neither is retired from the intended
+inventory. The detail record is
+[`GB_SCT_BILLS_DETAIL_ROUTE_HANDLING_ASSESSMENT_DEC0049.md`](../data/gb-sct/GB_SCT_BILLS_DETAIL_ROUTE_HANDLING_ASSESSMENT_DEC0049.md).
+The next proposed step is a documentation-only Bills-family
+qualification-gap resolution proposal; it would make no source request.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure

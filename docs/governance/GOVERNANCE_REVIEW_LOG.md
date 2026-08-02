@@ -1058,3 +1058,19 @@ Next review due:
 | Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and source-content handling remain blocked pending a completed detail handling assessment and later separate packages. |
 | Owner decision required | A documentation-only Bills detail route-handling assessment, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0063
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0049 Bills detail route-handling assessment |
+| Reviewer role | Maintainer; completing an owner-authorised documentation-only assessment |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0048, the master endpoint matrix, and `GB_SCT_BILLS_DETAIL_ROUTE_HANDLING_ASSESSMENT_DEC0049.md` |
+| Active phase and authorising decision | DEC-0049 formal handling assessment for `/api/bills/:id` only |
+| Checks performed | Applied every DEC-0008 source-handling template field to the detail route; kept the transient one-record observation distinct from unobserved parameter, error, and response variation; retained the raw/DB1/public-output distinction; and prohibited source-content retention or release while terms, personal-data, retention, and operating conditions remain unresolved. |
+| Findings | The detail route has the same fundamental qualification gap as the collection route. The single observed `PersonID` and `ThirdPartyOrganisation` field patterns cannot establish their legal or semantic treatment. `DO_NOT_CAPTURE_OR_RELEASE` is therefore required for `/api/bills/:id` and does not retire it from DEC-0045 scope. |
+| Outcome | `PASS` for a documentation-only restrictive assessment. No source request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and all Bills source-content handling remain blocked pending a Bills-family qualification-gap resolution and later separate packages. |
+| Owner decision required | A documentation-only Bills-family qualification-gap resolution proposal, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
