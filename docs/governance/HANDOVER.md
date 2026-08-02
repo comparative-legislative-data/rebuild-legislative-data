@@ -54,6 +54,12 @@
   private-beta runtime/cutover package is blocked only pending the three
   owner-supplied server-only values; no secret, database, email, service, or
   Nginx change has occurred.
+- The first DEC-0059 execution then stopped at its database-schema gate: a
+  script defect created a verified-empty `access_control` schema in the default
+  database instead of the canonical database. The error trap restored the prior
+  project service and named-site files before release, email, or cutover. A
+  new owner-approved cleanup/correction is required; see the DEC-0059 stop
+  result.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 

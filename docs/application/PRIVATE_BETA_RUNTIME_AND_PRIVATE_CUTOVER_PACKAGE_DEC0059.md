@@ -1,6 +1,6 @@
 # Private-Beta Runtime and Private Cutover Package — DEC-0059
 
-**Status:** APPROVED — BLOCKED pending owner secret input
+**Status:** APPROVED — EXECUTED BLOCKED pending corrective authorisation
 
 **Version:** 1.0.0
 
@@ -37,9 +37,33 @@ or account data and without changing the VPS:
 The preflight did not inspect source data, account data, secret values,
 unrelated service configuration, or database contents.
 
-The owner-controlled local input did not contain the three required variable
-names at the time of the preflight. No secret was requested, read, generated,
-or installed.
+The required owner-controlled input names were supplied before execution. Their
+values were read only to stream them to the root-owned deployment process and
+were not retained in this repository or a project record. The stop occurred
+before a service secret file could be installed.
+
+## 2.1 Execution stop — 2 August 2026
+
+The first database command correctly created the two named access-only login
+roles and scoped database-connect privileges to the canonical database.
+However, an implementation defect addressed the subsequent `CREATE SCHEMA`
+command to PostgreSQL's default `postgres` database rather than
+`cld_gb_sct_canonical`. The immediate next statement, which expected that
+schema in the canonical database, failed. The script's error trap restored the
+prior project service-unit files and named Nginx file before any release,
+service replacement, bootstrap-email, or public cutover could occur.
+
+A read-only containment check found exactly one unexpected schema:
+`postgres.access_control`, with zero relations. The intended canonical database
+has no `access_control` schema. The old project API/web services remained
+active on their loopback ports, and the named site's pre-existing configuration
+was restored.
+
+No source request, source data, DB1, DB2, account, Resend delivery, new
+release, or Nginx configuration change remains in effect. The roles and
+canonical-database connect grants created before the stop are access-control
+infrastructure only; no application login can use them because no matching
+schema or secret file was installed.
 
 ## 3. Exact mutable scope
 
@@ -89,3 +113,17 @@ The result is `PASS` only if one intended superuser can receive a single-use
 activation link, establish a password, obtain a secure server-side session,
 and see the beta shell with no research-data route available. A 502-free site
 alone is not a pass.
+
+## 7. Corrective decision required
+
+The proposed minimal correction is:
+
+1. drop only the newly created, verified-empty `access_control` schema from
+   the default `postgres` database;
+2. correct the deployment script to target `cld_gb_sct_canonical` for schema
+   creation; and
+3. repeat the existing DEC-0059 package, retaining the same project-only
+   database roles, service paths, limits, email scope, and named-site boundary.
+
+This is a protected-database cleanup caused by an execution defect. It requires
+an explicit owner direction before deletion or retry.
