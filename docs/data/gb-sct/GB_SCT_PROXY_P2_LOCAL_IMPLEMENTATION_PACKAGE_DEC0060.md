@@ -1,13 +1,13 @@
 # GB-SCT Proxy P2 Local Implementation Package — DEC-0060
 
-**Status:** PROPOSED — local code and test artefacts only
+**Status:** APPROVED — EXECUTED PASS (local code and test artefacts only)
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Authority requested:** DEC-0060, following DEC-0042, DEC-0043, DEC-0056,
-and DEC-0057.
+**Authority:** Owner instruction to proceed, 2 August 2026; DEC-0060,
+following DEC-0042, DEC-0043, DEC-0056, and DEC-0057.
 
 ## 1. Decision requested
 
@@ -115,3 +115,8 @@ cohort. That package must define the source terms/handling basis, exact
 parameter grammar, streaming and body-size controls, no-persistence checks,
 beta acceptance, VPS scope, and stop conditions. DB1 remains blocked until the
 full proxy phase has passed its separate P4 acceptance gate.
+
+## 8. Result
+
+The local result is recorded in
+[`GB_SCT_PROXY_P2_LOCAL_IMPLEMENTATION_RESULT_2026-08-02.md`](GB_SCT_PROXY_P2_LOCAL_IMPLEMENTATION_RESULT_2026-08-02.md).

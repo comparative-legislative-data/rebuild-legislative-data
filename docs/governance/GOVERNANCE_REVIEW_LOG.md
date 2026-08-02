@@ -1346,3 +1346,19 @@ Next review due:
 | Affected work blocked | All upstream relay, source requests, capture, DB1, DB2, research output, deployment, and public access remain blocked pending DEC-0060 approval and later route/package gates. |
 | Owner decision required | DEC-0060 approval is required before local fail-closed catalogue implementation. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0081
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0060 local catalogue completion |
+| Reviewer role | Maintainer; recording the owner-approved local implementation and verification result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0045, DEC-0056, DEC-0057, and DEC-0060 |
+| Active phase and authorising decision | DEC-0060 local fail-closed P2 catalogue implementation |
+| Checks performed | Verified the 64-form route registry, exact template parity with the DEC-0045 matrix, authenticated catalogue route, route-ID and parameter validation, no-relayed-state invariant, unauthenticated denial, local unavailable response for a syntactically valid route request, capability scan, production build, 13 passing tests, and local release packaging. |
+| Findings | The catalogue implements metadata/access transparency only. Its outbound guard and static scan show that an attempted route test cannot make a source request. The result does not evidence a deployed user interface or a source relay. |
+| Outcome | `PASS` — DEC-0060 local scope completed. No VPS, secret, email, database, DB1, DB2, source request/response, cache, download, or public action occurred. |
+| Affected work blocked | Upstream relay, source requests, capture, DB1, DB2, research output, deployment, and public access remain blocked pending a later exact route-qualification/deployment package. |
+| Owner decision required | A new named-cohort route-qualification and private deployment proposal is required before any source route can be exposed. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

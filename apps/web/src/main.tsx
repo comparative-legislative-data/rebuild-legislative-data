@@ -3,8 +3,20 @@ import { createRoot } from "react-dom/client";
 import type { FormEvent } from "react";
 import "./styles.css";
 
-type View = "login" | "apply" | "settings" | "admin";
+type View = "login" | "apply" | "settings" | "admin" | "catalogue";
 type Identity = { authenticated: boolean; email: string | null; roles: string[]; logout_proof: string | null; data_layers_available: false };
+type CatalogueRoute = {
+  id: string;
+  group: string;
+  template: string;
+  priority: string;
+  operatingClass: string;
+  availability: string;
+  qualification: string;
+  limitation: string;
+  parameters: Array<{ name: string; grammar: string; required: boolean; allowedValues?: string[] }>;
+};
+type Catalogue = { legislature: "GB-SCT"; layer: "UPSTREAM_PASSTHROUGH_DESIGN"; source_requests_enabled: false; route_count: number; routes: CatalogueRoute[] };
 
 async function request(path: string, init: RequestInit = {}) {
   const headers = new Headers(init.headers);
@@ -19,6 +31,8 @@ function App() {
   const [identity, setIdentity] = useState<Identity>({ authenticated: false, email: null, roles: [], logout_proof: null, data_layers_available: false });
   const [activationToken, setActivationToken] = useState<string | undefined>();
   const [applications, setApplications] = useState<Array<{ id: string; email: string; requestText: string; createdAt: string }>>([]);
+  const [catalogue, setCatalogue] = useState<Catalogue | undefined>();
+  const [catalogueFeedback, setCatalogueFeedback] = useState<string | undefined>();
 
   async function refreshIdentity() {
     const response = await request("/auth/me");
@@ -76,6 +90,23 @@ function App() {
     setFormFeedback("Approval complete. An activation email has been sent.");
   }
 
+  async function loadCatalogue() {
+    const response = await request("/catalogue/gb-sct");
+    if (!response.ok) {
+      setCatalogueFeedback("The route catalogue is unavailable for this account.");
+      return;
+    }
+    setCatalogue(await response.json() as Catalogue);
+    setCatalogueFeedback(undefined);
+  }
+
+  async function requestRoute(route: CatalogueRoute) {
+    const parameters = Object.fromEntries(route.parameters.map((parameter) => [parameter.name, parameter.grammar === "year" ? "2025" : parameter.grammar === "fixed_value" ? parameter.allowedValues?.[0] ?? "" : "1"]));
+    const response = await request(`/catalogue/gb-sct/${route.id}/request`, { method: "POST", body: JSON.stringify({ parameters }) });
+    const outcome = await response.json().catch(() => undefined) as { message?: unknown; code?: unknown } | undefined;
+    setCatalogueFeedback(typeof outcome?.message === "string" ? outcome.message : `This route remains unavailable (${typeof outcome?.code === "string" ? outcome.code : "unknown state"}).`);
+  }
+
   if (activationToken) {
     return <main className="site-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><div className="auth-layout"><section className="access-panel activation-panel" aria-labelledby="password-heading"><p className="eyebrow">Account activation</p><h1 id="password-heading">Set your password</h1><p className="panel-copy">Create a password to finish activating your private-beta account.</p><p className="status-message" role="status">{message}</p><form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password", { token: activationToken, password }, "Your password has been set. Taking you to the beta shell…").then((nextIdentity) => { if (nextIdentity?.authenticated) { setActivationToken(undefined); setView("login"); setMessage("Your private-beta account is active."); window.history.replaceState({}, "", "/"); } else { setMessage("We could not confirm your session. Please use a new activation link."); } }); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Set password and continue</button></form></section></div></main>;
   }
@@ -96,6 +127,7 @@ function App() {
       <nav className="access-nav" aria-label="Access options">
         {!identity.authenticated ? <><button type="button" onClick={() => { setView("login"); setFormFeedback(undefined); }}>Log in</button><button type="button" onClick={() => { setView("apply"); setFormFeedback(undefined); }}>Apply for beta access</button></> : null}
         {identity.authenticated ? <span className="signed-in-badge">Private beta active</span> : null}
+        {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Route catalogue</button> : null}
         {identity.authenticated ? <button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button> : null}
         {identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}
       </nav>
@@ -104,6 +136,7 @@ function App() {
       {view === "apply" ? <section className="access-panel" aria-labelledby="apply-heading"><h2 id="apply-heading">Apply for beta access</h2><p className="panel-copy">Tell us how you would use the platform. A superuser reviews each request.</p>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const data = new FormData(event.currentTarget); void submit(event, "/auth/applications", { email: String(data.get("email") ?? ""), requestText: String(data.get("requestText") ?? "") }, "Your request has been received. If approved, you will receive an activation link."); }}><label>Email<input name="email" type="email" required autoComplete="email" /></label><label>Why would access be useful?<textarea name="requestText" maxLength={2000} required /></label><button>Submit application</button></form></section> : null}
       {view === "settings" && identity.authenticated ? <section className="access-panel" aria-labelledby="settings-heading"><h2 id="settings-heading">Settings</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password/change", { password }, "Your password has been changed."); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Change password</button></form><button className="secondary-button" type="button" onClick={() => { void request("/auth/logout", { method: "POST", body: JSON.stringify({ logout_proof: identity.logout_proof ?? "" }) }).then(async (response) => { const outcome = await response.json().catch(() => undefined) as { signed_out?: unknown } | undefined; const nextIdentity = await refreshIdentity(); setView("login"); setMessage(response.ok && outcome?.signed_out === true && !nextIdentity?.authenticated ? "You are signed out." : "We could not confirm sign-out. Please try again."); }); }}>Log out</button></section> : null}
       {view === "admin" && identity.roles.includes("SUPERUSER") ? <section className="access-panel" aria-labelledby="admin-heading"><h2 id="admin-heading">Superuser review</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}{applications.length === 0 ? <p>No pending applications.</p> : <ul>{applications.map((application) => <li key={application.id}><p><strong>{application.email}</strong></p><p>{application.requestText}</p><button type="button" onClick={() => void approve(application.id)}>Approve</button></li>)}</ul>}</section> : null}
+      {view === "catalogue" && identity.authenticated ? <section className="catalogue-panel" aria-labelledby="catalogue-heading"><p className="eyebrow">GB-SCT route inventory</p><h2 id="catalogue-heading">Transparent upstream access catalogue</h2><p className="panel-copy">This is a route-level design catalogue, not a dataset or snapshot. No upstream request has been made from this application.</p>{catalogueFeedback ? <p className="form-feedback" role="status">{catalogueFeedback}</p> : null}{catalogue ? <><p className="catalogue-summary"><strong>{catalogue.route_count} selected route forms</strong> · source requests disabled pending route qualification.</p><div className="catalogue-list">{catalogue.routes.map((route) => <article className="route-card" key={route.id}><div className="route-card-heading"><p className="route-group">{route.group} · {route.priority}</p><span className="route-state">{route.availability.replaceAll("_", " ")}</span></div><h3>{route.id}</h3><code>{route.template}</code><dl><div><dt>Operating class</dt><dd>{route.operatingClass.replaceAll("_", " ")}</dd></div><div><dt>Qualification</dt><dd>{route.qualification.replaceAll("_", " ")}</dd></div>{route.parameters.length > 0 ? <div><dt>Allowed parameters</dt><dd>{route.parameters.map((parameter) => `${parameter.name}: ${parameter.grammar}${parameter.required ? " (required)" : ""}`).join(", ")}</dd></div> : null}</dl><p>{route.limitation}</p><button type="button" className="secondary-button" onClick={() => void requestRoute(route)}>Test route boundary</button></article>)}</div></> : <p className="panel-copy">Loading the route registry…</p>}</section> : null}
       <p className="boundary">Current boundary: no direct source relay, DB1 storage, canonical dataset, chart, export, or research release is available from this application.</p>
     </main>
   );

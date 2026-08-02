@@ -15,6 +15,19 @@ const prohibited = [
   "research export"
 ];
 
+const localCatalogueFiles = [
+  "apps/api/src/catalogue/gb-sct.ts",
+  "apps/api/src/access/routes.ts"
+];
+const localCatalogueProhibited = [
+  "fetch(",
+  "node:http",
+  "node:https",
+  "undici",
+  "http://",
+  "https://"
+];
+
 function filesBelow(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -41,4 +54,11 @@ if (findings.length > 0) {
   throw new Error(findings.join("\n"));
 }
 
-process.stdout.write("Runtime scope scan passed: no source, DB1, DB2, or research-export route is present.\n");
+for (const path of localCatalogueFiles) {
+  const content = readFileSync(path, "utf8").toLowerCase();
+  for (const term of localCatalogueProhibited) {
+    if (content.includes(term)) throw new Error(`${path}: local catalogue contains prohibited outbound capability ${term}`);
+  }
+}
+
+process.stdout.write("Runtime scope scan passed: no source, DB1, DB2, research-export, or outbound catalogue route is present.\n");

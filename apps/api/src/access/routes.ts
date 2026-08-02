@@ -1,6 +1,7 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
 import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, approvalRejectedSchema, approvalResultSchema, genericAcceptedSchema, logoutResultSchema } from "./contracts.js";
 import { type AccessRuntime, sessionDays } from "./runtime.js";
+import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -34,6 +35,10 @@ async function session(runtime: AccessRuntime, request: FastifyRequest) {
   return runtime.identity(request.cookies[cookieName]);
 }
 
+function hasCatalogueAccess(identity: Awaited<ReturnType<AccessRuntime["identity"]>>): boolean {
+  return Boolean(identity?.roles.some((role) => role === "SUPERUSER" || role === "BETA_USER" || role === "GUEST"));
+}
+
 export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime }): Promise<void> {
   const runtime = options.runtime;
   app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
@@ -46,6 +51,8 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     for (const path of ["/auth/login", "/auth/magic-link", "/auth/applications", "/auth/password"]) {
       app.post(path, { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     }
+    app.get("/catalogue/gb-sct", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.post("/catalogue/gb-sct/:id/request", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -130,5 +137,32 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     } catch {
       return reply.code(502).send(approvalRejected);
     }
+  });
+
+  app.get("/catalogue/gb-sct", async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasCatalogueAccess(identity)) return reply.code(403).send({ code: "CATALOGUE_ACCESS_DENIED" });
+    return reply.send({
+      legislature: "GB-SCT",
+      layer: "UPSTREAM_PASSTHROUGH_DESIGN",
+      source_requests_enabled: false,
+      route_count: gbSctRoutes.length,
+      routes: gbSctRoutes
+    });
+  });
+
+  app.post("/catalogue/gb-sct/:id/request", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasCatalogueAccess(identity)) return reply.code(403).send({ code: "CATALOGUE_ACCESS_DENIED" });
+    const id = requiredText((request.params as Record<string, unknown>).id, 128);
+    const route = id ? findGbSctRoute(id) : undefined;
+    if (!route) return reply.code(404).send({ code: "ROUTE_NOT_FOUND" });
+    const issue = validateParameters(route, body(request.body).parameters ?? {});
+    if (issue) return reply.code(400).send({ code: "PARAMETER_REJECTED", message: issue });
+    return reply.code(409).send({
+      code: route.availability,
+      route_id: route.id,
+      message: "No upstream request has been made. This route is not available for pass-through access."
+    });
   });
 }
