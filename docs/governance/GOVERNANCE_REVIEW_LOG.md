@@ -978,3 +978,19 @@ Next review due:
 | Affected work blocked | Every candidate addition remains blocked until its own owner-approved route-addition decision and later bounded operational package. |
 | Owner decision required | A future specific route-addition decision only if an unselected relevant endpoint is identified. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0058
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0046 Bills collection observation proposal preparation |
+| Reviewer role | Maintainer; DEC-0046 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0008, DEC-0044, DEC-0045, and `GB_SCT_BILLS_COLLECTION_OBSERVATION_PROPOSAL_DEC0046.md` |
+| Active phase and authorising decision | Proposal preparation only; no source-response action authorised |
+| Checks performed | Bounded the scope to one specified collection URL with no query, credential, redirect, retry, detail request, or persistence; set size/time limits; required in-memory value-free observation and explicit disposal; and separated the output from raw capture, DB1, DB2, pass-through, and frontend work. |
+| Findings | A single collection response can establish only a preliminary transport/schema contract. It must not become a substitute for route-level handling, capture evidence, or field semantics. |
+| Outcome | `PASS` for proposal preparation only. No API route was requested and no source data was received, retained, parsed, or exposed. |
+| Affected work blocked | The proposed observation and every later source/API, proxy, DB1/DB2, authentication, frontend, VPS, and public activity pending the relevant approval. |
+| Owner decision required | DEC-0046. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
