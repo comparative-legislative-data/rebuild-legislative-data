@@ -1,8 +1,7 @@
 -- DEC-0058 local artefact only. This file has not been applied to any database.
--- The later controlled database package must prove access_control-only grants
--- and denial of DB1/research-schema access before applying this migration.
-
-CREATE SCHEMA IF NOT EXISTS access_control;
+-- The controlled runtime package creates and assigns ownership of the
+-- access_control schema before this migration runs. The migration role has no
+-- database-wide CREATE privilege.
 
 CREATE TYPE access_control.account_state AS ENUM ('BETA_PENDING', 'ACTIVE', 'REVOKED');
 CREATE TYPE access_control.membership_role AS ENUM ('SUPERUSER', 'BETA_USER', 'GUEST');
