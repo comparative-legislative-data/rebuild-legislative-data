@@ -53,11 +53,12 @@
   its unused legacy port. The corrected named-site proxy passes direct-origin
   and public HTTPS checks (both HTTP 200), without a Cloudflare change.
 - Authentication is available, but every source, DB1, DB2, and research-data
-  layer remains unavailable. Password setup issued a valid session but exposed
-  a client-side activation transition defect; that has been corrected and the
-  private-beta shell has received a bounded original visual refresh. The next
-  acceptance check is a normal owner password login reaching the signed-in
-  shell.
+  layer remains unavailable. The original activation link had been invalidated
+  by a prior token-pepper rotation, but generic success handling concealed that
+  fact. A truthful activation response, no-cache shell response, and one-use
+  server-only replacement-link action are now deployed; one replacement link
+  was sent. The next acceptance check is the owner using that new link to reach
+  the signed-in shell.
 - Next after that acceptance: return to the proposed proxy-only execution
   package, DEC-0057; it remains unapproved and no proxy/data work may begin
   until the owner approves it.

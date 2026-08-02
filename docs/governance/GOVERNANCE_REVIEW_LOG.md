@@ -1298,3 +1298,19 @@ Next review due:
 | Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
 | Owner decision required | No new decision for final owner login/shell acceptance; DEC-0057 approval remains required before proxy implementation. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0078
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-observed failed activation and contained DEC-0059 recovery |
+| Reviewer role | Maintainer; recording an activation-flow defect, failed recovery attempt, and successful retry |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, DEC-0043, DEC-0058, and DEC-0059 |
+| Active phase and authorising decision | DEC-0059 private-beta access runtime/cutover; owner instruction to repair the reported activation/login failure |
+| Checks performed | Confirmed the supplied superuser account was pending with no usable credential or active session, without reading a password or token. Identified prior pepper rotation as the cause of invalidating the original activation link. Verified the truthful activation response, one-use pending-superuser recovery conditions, no-store HTML response, target-host checks, API/Nginx readiness, public HTTPS, and successful redacted email-send result. The first sender attempt stopped and restored the prior release before any email/account mutation; the corrected retry sent exactly one replacement link. |
+| Findings | The original generic-success activation response was incompatible with truthful user feedback. The correction exposes no public recovery route, preserves the no-data application boundary, and records the failed sender attempt rather than concealing it. |
+| Outcome | `PASS` for the contained recovery. DEC-0059 remains `EXECUTED PARTIAL` pending the owner using the new link and confirming the signed-in shell. |
+| Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
+| Owner decision required | No new decision for the final owner activation acceptance; DEC-0057 approval remains required before proxy implementation. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

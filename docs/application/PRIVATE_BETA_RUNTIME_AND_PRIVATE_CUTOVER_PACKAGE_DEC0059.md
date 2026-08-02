@@ -170,12 +170,14 @@ beta shell.
 
 ## 10. Activation transition and beta-shell correction — 2 August 2026
 
-The owner acceptance attempt established that password creation and session
-issuance succeeded, but the client retained the consumed `activate` query
-state and therefore continued to render the set-password form. The correction
-now clears that state and the URL only after `/auth/me` confirms the new
-server-side session. It leaves the form in place with a truthful recovery
-message if that confirmation is absent.
+The owner acceptance attempt initially appeared to establish a password and
+session, but a subsequent account-state check found the account still pending
+with no credential or active session. Earlier retry deployments had rotated
+the token/session pepper, invalidating the original activation link; the route
+returned a generic success response and the client displayed a false success
+message. The correction now returns a truthful invalid/expired-link response,
+and clears the `activate` query state only after `/auth/me` confirms the new
+server-side session.
 
 The same owner-approved correction refreshed the access-only shell's visual
 system using an original dark-navy and restrained-gold treatment. A read-only
@@ -187,5 +189,22 @@ checks, and public HTTPS check passed. The server-side session pepper was
 preserved during this routine release, so already valid sessions are not
 invalidated by the deployment.
 
-The final owner acceptance check remains: refresh the public site and verify
-that a normal password login reaches the signed-in private-beta shell.
+## 11. Initial-superuser activation recovery — 2 August 2026
+
+The recovery release adds a one-use, server-only action which can send a fresh
+activation link only where the configured initial superuser is pending, has an
+active `SUPERUSER` membership, and has no usable password credential. It does
+not expose a public resend route or inspect/release account secrets. The
+recovery first failed because the protected server environment was not readable
+after dropping to the service user; the deployment trap restored the prior
+release and no activation email or account mutation occurred. The corrected
+release runs the one-use sender within the protected root process while it
+continues to use the same restricted application database role.
+
+Revision `64d348bcaa32732e42023c363b00a840597f2d1a` passed target-host
+verification, API/Nginx readiness, public HTTPS, and an HTML `Cache-Control:
+no-store` check. Exactly one replacement initial-superuser activation email
+was sent. The public shell is `DYNAMIC` at the Cloudflare edge and serves the
+current hashed client revision. The final owner acceptance check is to use the
+new link within its stated lifetime, set a password, and verify the signed-in
+private-beta shell.
