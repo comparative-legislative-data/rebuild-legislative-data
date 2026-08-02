@@ -21,6 +21,10 @@
   150 MB and a plenary report about 124 MB. The extended-route method and
   findings are in
   [`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md).
+- DEC-0056 confirms the binding implementation order: complete and beta-accept
+  the approved upstream pass-through phase before any DB1 capture, schema, or
+  mirror operation. Reconnaissance and non-operational documentation may still
+  continue in parallel.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 

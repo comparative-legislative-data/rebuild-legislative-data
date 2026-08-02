@@ -2,7 +2,7 @@
 
 **Status:** Approved programme design — exact delivery packages remain required
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Prepared:** 2 August 2026
 **Decision:** DEC-0042, approved by the project owner on 2 August 2026
 
@@ -149,12 +149,17 @@ No value becomes a released variable merely because a DB1 field exists. Motions 
 | --- | --- | --- | --- | --- |
 | 0 | Adopt this programme and prepare non-operational artefacts. | DEC-0042 | Approved design and registers. | Source or implementation action. |
 | 1 | Private-beta authentication and layer-test shell. | Exact authentication/account/email/secret package. | Role lifecycle, invitation/magic-link/password flows, restricted audit, and beta-access result. | Any data layer, capture, public account, or public route. |
-| 2 | First pass-through route slice and its beta interface. | Exact source/terms and proxy package. | Route/disclosure and layer-interface acceptance result. | Capture, DB1, DB2, or coverage claim. |
-| 3 | First DB1 capture/projection slice and its beta interface. | Source assessment, handling, and batch-specific capture/DB1 package. | Manifest, raw archive, lineage, drift/integrity, and interface acceptance result. | DB2 variables or research claim. |
+| 2 | Complete the approved pass-through route phase and its beta interface. | Exact source/terms and proxy package. | Route-by-route disclosure, transparent failure behaviour, and beta-layer acceptance result for the approved pass-through scope. | Capture, DB1, DB2, or coverage claim. |
+| 3 | First DB1 capture/projection slice and its beta interface. | Source assessment, handling, and batch-specific capture/DB1 package, after the pass-through phase exit. | Manifest, raw archive, lineage, drift/integrity, and interface acceptance result. | DB2 variables or research claim. |
 | 4 | First DB2 Tier 1/2 release and its beta interface. | Variable-specification and DB2-build package. | Codebook, deterministic build/validation, release/access, and interface acceptance result. | Tier 3+, charts, or unqualified claim. |
 | 5 | Public research access/cutover. | Separate public-release/V4C package. | Claim review and public verification. | Further data/method expansion. |
 
-The products are sequential in release dependency—pass-through, DB1, then DB2—but route qualification and non-operational documentation can be prepared in parallel. A failure blocks the affected route/layer, not the whole programme.
+The products are sequential in implementation and release dependency—complete
+approved pass-through phase, then DB1, then DB2. No DB1 implementation,
+capture, database schema, or mirror operation may begin before the pass-through
+phase has its required beta-layer acceptance result. Route qualification and
+non-operational documentation may be prepared in parallel. A failure blocks the
+affected route/layer, not the whole programme.
 
 ## 9. Stop rules
 
