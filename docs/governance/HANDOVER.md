@@ -220,10 +220,12 @@ inventory. The detail record is
 The next proposed step is a documentation-only Bills-family
 qualification-gap resolution proposal; it would make no source request.
 
-DEC-0050 is now proposed as that resolution plan in
+DEC-0050 is now approved as that resolution plan in
 [`GB_SCT_BILLS_FAMILY_QUALIFICATION_GAP_RESOLUTION_PROPOSAL_DEC0050.md`](../data/gb-sct/GB_SCT_BILLS_FAMILY_QUALIFICATION_GAP_RESOLUTION_PROPOSAL_DEC0050.md).
-It defines G1–G6 evidence gaps and preserves both route blocks. No external
-inspection or source/data action is authorised pending owner review.
+It defines G1–G6 evidence gaps and preserves both route blocks. DEC-0051 is
+the next proposed, separately gated official-documentation inspection:
+[`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_PROPOSAL_DEC0051.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_PROPOSAL_DEC0051.md).
+No external inspection or source/data action is authorised pending its review.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

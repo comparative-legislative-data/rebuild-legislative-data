@@ -1,13 +1,13 @@
 # GB-SCT Bills Family Qualification-Gap Resolution Proposal — DEC-0050
 
-**Status:** Proposed planning control — no source request, capture, proxy,
-DB1, DB2, frontend, or public action authorised
+**Status:** Approved planning control — no external inspection, source request,
+capture, proxy, DB1, DB2, frontend, or public action authorised
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0050
+**Decision:** DEC-0050, approved by the project owner on 2 August 2026
 
 ## 1. Purpose and pre-flight
 
@@ -104,7 +104,7 @@ require its own owner approval before any external page is opened.
 
 ## 7. Owner decision
 
-DEC-0050 is `PROPOSED`. Approval would adopt this gap-resolution sequence as
-the planning control for the two Bills routes. It would not authorise any
-external inspection, source request, retention, capture, implementation, or
-public action.
+DEC-0050 is approved. It adopts this gap-resolution sequence as planning
+control for the two Bills routes, but authorises no external inspection, source
+request, retention, capture, implementation, or public action. DEC-0051 is
+the next proposed, separately approval-gated G1–G3 documentation inspection.

@@ -3,7 +3,7 @@
 **Status:** Approved planning control — no source request, proxy, capture,
 database, application, or public action authorised
 
-**Version:** 1.6.0
+**Version:** 1.7.0
 
 **Prepared:** 2 August 2026
 
@@ -55,8 +55,8 @@ and silent scope expansion.
 
 | Group | Exact source route form | Pass-through | DB1 | Tier 1/2 position | Priority | Qualification |
 | --- | --- | --- | --- | --- | --- |
-| Bills | `/api/bills` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` only: observed field names/types include possible identity/title fields; no semantic/field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; BILLS_FAMILY_GAP_RESOLUTION_PROPOSED_DEC0050` |
-| Bills | `/api/bills/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill detail fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; BILLS_FAMILY_GAP_RESOLUTION_PROPOSED_DEC0050` |
+| Bills | `/api/bills` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` only: observed field names/types include possible identity/title fields; no semantic/field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; GAP_RESOLUTION_APPROVED_DEC0050; DOC_INSPECTION_PROPOSED_DEC0051` |
+| Bills | `/api/bills/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill detail fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; GAP_RESOLUTION_APPROVED_DEC0050; DOC_INSPECTION_PROPOSED_DEC0051` |
 | Formal stages | `/api/billstages` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
 | Formal stages | `/api/billstages/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
 | Stage types | `/api/billstagetypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |

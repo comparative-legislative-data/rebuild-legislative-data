@@ -1090,3 +1090,19 @@ Next review due:
 | Affected work blocked | All Bills capture, pass-through, DB1/DB2, beta/public output, and later evidence packages remain blocked pending DEC-0050 owner approval and their respective exact approvals. |
 | Owner decision required | DEC-0050. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0065
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0050 owner approval and DEC-0051 official-documentation inspection proposal preparation |
+| Reviewer role | Maintainer; recording an approved planning control and a new proposed external-inspection package |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0050, the master endpoint matrix, and `GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_PROPOSAL_DEC0051.md` |
+| Active phase and authorising decision | DEC-0050 approved planning control; DEC-0051 proposal preparation only |
+| Checks performed | Recorded DEC-0050 without treating it as inspection authority. Bounded DEC-0051 to four previously identified official HTTPS pages, one attempt each, no redirect/link-following, and a concise non-content G1–G3 result. Prohibited every API route, source-data retrieval, raw-page retention, external search/contact, and implementation action. |
+| Findings | Re-checking named official material may confirm an explicit condition or an enduring evidence gap, but page silence cannot create a permission. Route-specific source/data and handling conditions remain blocked unless the result supplies direct support. |
+| Outcome | `PASS` for DEC-0050 approval recording and DEC-0051 proposal preparation only. No external page, source/API request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | The four proposed page inspections and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending DEC-0051 owner approval and later exact packages. |
+| Owner decision required | DEC-0051. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
