@@ -7,7 +7,9 @@ type View = "login" | "apply" | "settings" | "admin";
 type Identity = { authenticated: boolean; email: string | null; roles: string[]; logout_proof: string | null; data_layers_available: false };
 
 async function request(path: string, init: RequestInit = {}) {
-  return fetch(`/api${path}`, { ...init, cache: "no-store", credentials: "same-origin", headers: { "content-type": "application/json", ...init.headers } });
+  const headers = new Headers(init.headers);
+  if (init.body !== undefined && !headers.has("content-type")) headers.set("content-type", "application/json");
+  return fetch(`/api${path}`, { ...init, cache: "no-store", credentials: "same-origin", headers });
 }
 
 function App() {
