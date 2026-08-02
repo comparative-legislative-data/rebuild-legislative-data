@@ -850,3 +850,19 @@ Next review due:
 | Affected work blocked | Source-documentation inspection/request, pass-through implementation, DB1 capture/build, DB2 variable/release work, application/frontend changes, database action, secret work, V4C/public exposure, and public claims. |
 | Owner decision required | DEC-0042. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0050
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-directed DEC-0042 private-beta and layer-interface amendment |
+| Reviewer role | Maintainer; DEC-0042 remains proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `GOVERNANCE.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`, and the DEC-0042 register entry |
+| Active phase and authorising decision | GB-SCT data-programme proposal preparation only |
+| Checks performed | Added a private-beta audience model, superuser approval/revocation, expiry-bound guest invitations, Resend-backed activation, password and magic-link recovery flows, and independent beta-interface acceptance gates for upstream pass-through, DB1, and DB2. Confirmed that no account, email, secret, or data implementation authority is inferred. |
+| Findings | Research transparency must be visible in the interface, not only in back-end records. Layer-by-layer beta testing prevents a usable-looking front end from obscuring an untested data layer; private access preserves controlled review before a future public release decision. |
+| Outcome | `PASS` for the DEC-0042 design amendment only. Source, proxy, authentication, email, database, frontend, and public work remain blocked pending exact approval. |
+| Affected work blocked | Account/database schema, superuser configuration, Resend request, invitation/magic-link/password implementation, any data layer, download/API access, V4C/public exposure, and public claims. |
+| Owner decision required | Review and approval of amended DEC-0042; then separate exact implementation packages. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

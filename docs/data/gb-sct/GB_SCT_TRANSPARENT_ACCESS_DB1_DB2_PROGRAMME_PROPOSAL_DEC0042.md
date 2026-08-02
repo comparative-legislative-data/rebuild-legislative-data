@@ -2,7 +2,7 @@
 
 **Status:** Proposed programme design — no source request, implementation, or public-exposure authority
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Prepared:** 2 August 2026
 **Decision requested:** DEC-0042
 
@@ -58,6 +58,60 @@ When separately authorised, the research-access interface must provide:
 
 These are product requirements, not current implementation claims.
 
+### 4.1 Layer-by-layer front-end acceptance
+
+Each data layer must be testable in the interface on its own before the next
+layer is built or exposed to beta users. A front-end acceptance result is a
+separate requirement from the underlying route, capture, or variable result.
+
+| Layer | Beta interface under test | Required visible evidence |
+| --- | --- | --- |
+| Upstream pass-through | A route viewer and route catalogue. | `UPSTREAM_PASSTHROUGH` status, exact upstream route/parameter form, request time, source limitations, and source-faithful response. |
+| DB1 | A capture/projection explorer. | Capture and projection identifiers, manifest and integrity state, raw-versus-projection distinction, lineage, pagination/completeness limits, and source-faithful fields. |
+| DB2 | A dataset/variable explorer and download surface. | Release ID, codebook, Tier 1/2 provenance, validation state, deterministic-rule/input lineage, null semantics, downloads, citations, and reproducibility material. |
+
+No DB1 or DB2 interface is populated with a later data layer before the
+previous layer has its own approved implementation and beta acceptance result.
+The test outcome may be `PASS`, `FAIL`, `BLOCKED`, or `NOT_RUN`; a polished
+interface never substitutes for the missing data/provenance evidence.
+
+### 4.2 Private beta access model
+
+Until a separately approved public-release decision, the data interface and
+data routes are available only to authenticated, approved users. The only
+unauthenticated surface is the minimal sign-in, beta-application, and
+email-link completion flow; it exposes no route response, capture, DB1, DB2,
+download, variable, or catalogue content.
+
+| Role/state | Access |
+| --- | --- |
+| `SUPERUSER` | The owner-controlled account; can view beta requests, approve/revoke memberships, issue guest invitations, and access all approved beta layers. |
+| `BETA_PENDING` | May submit an application but has no data access. |
+| `BETA_USER` | Approved, named research beta user; read-only access to the named tested layers. |
+| `GUEST` | Superuser-issued, revocable, read-only preview access to named beta layers; an expiry is required. It is not a shareable anonymous account. |
+
+The required user journey is:
+
+1. A prospective user opens the login modal and chooses username/password or a magic-link request; they may instead open the beta-access application modal.
+2. A beta application creates a `BETA_PENDING` request. Only the superuser sees the request list and can approve it in the application.
+3. Approval creates a `BETA_USER` invitation and sends a single-use, time-limited activation email through the project Resend domain configuration.
+4. The activation link opens the application password-setting modal. On successful password creation, the user is automatically signed in.
+5. In settings, an authenticated user can set a new password without re-entering the existing password. A magic link provides account recovery/sign-in and then permits the same reset flow, avoiding dependence on manual password support.
+6. A superuser can issue the equivalent expiry-bound invitation for a `GUEST` user before a person makes a formal beta application.
+
+Account state changes, invitation/magic-link consumption, approval/revocation,
+and email delivery outcome require restricted audit records without storing
+token or password values. Passwords use an approved one-way password mechanism;
+activation and magic-link tokens are single-use and time-limited. The owner may
+later supply an initial superuser identifier through uncommitted local
+server-side configuration such as `.env.local`; this proposal does not read,
+record, or expose any credential value. Production secret handling and the
+Resend configuration remain subject to their own exact implementation package.
+
+This model is a design requirement only. It does not authorise an account
+schema, email send, Resend request, secret access, authentication library,
+frontend, or public login implementation.
+
 ## 5. Workstream A — transparent upstream pass-through
 
 The pass-through layer makes selected Scottish Parliament API material easier to discover and retrieve through the project while preserving that it remains an upstream response. It does not persist response data in DB1 or DB2. Any operational buffering/caching must be explicitly approved, bounded, and marked as non-authoritative transport behaviour; it cannot be relabelled as capture.
@@ -94,10 +148,11 @@ No value becomes a released variable merely because a DB1 field exists. Motions 
 | Order | Deliverable | Required authority | Completion evidence | Not authorised |
 | --- | --- | --- | --- | --- |
 | 0 | Adopt this programme and prepare non-operational artefacts. | DEC-0042 | Approved design and registers. | Source or implementation action. |
-| 1 | First pass-through route slice. | Exact source/terms and proxy package. | Route/disclosure contract and bounded-behaviour result. | Capture, DB1, DB2, or coverage claim. |
-| 2 | First DB1 capture/projection slice. | Source assessment, handling, and batch-specific capture/DB1 package. | Manifest, raw archive, lineage, drift/integrity result. | DB2 variables or research claim. |
-| 3 | First DB2 Tier 1/2 release. | Variable-specification and DB2-build package. | Codebook, deterministic build/validation, release/access result. | Tier 3+, charts, or unqualified claim. |
-| 4 | Public research access/cutover. | Separate public-release/V4C package. | Claim review and public verification. | Further data/method expansion. |
+| 1 | Private-beta authentication and layer-test shell. | Exact authentication/account/email/secret package. | Role lifecycle, invitation/magic-link/password flows, restricted audit, and beta-access result. | Any data layer, capture, public account, or public route. |
+| 2 | First pass-through route slice and its beta interface. | Exact source/terms and proxy package. | Route/disclosure and layer-interface acceptance result. | Capture, DB1, DB2, or coverage claim. |
+| 3 | First DB1 capture/projection slice and its beta interface. | Source assessment, handling, and batch-specific capture/DB1 package. | Manifest, raw archive, lineage, drift/integrity, and interface acceptance result. | DB2 variables or research claim. |
+| 4 | First DB2 Tier 1/2 release and its beta interface. | Variable-specification and DB2-build package. | Codebook, deterministic build/validation, release/access, and interface acceptance result. | Tier 3+, charts, or unqualified claim. |
+| 5 | Public research access/cutover. | Separate public-release/V4C package. | Claim review and public verification. | Further data/method expansion. |
 
 The products are sequential in release dependency—pass-through, DB1, then DB2—but route qualification and non-operational documentation can be prepared in parallel. A failure blocks the affected route/layer, not the whole programme.
 
