@@ -227,8 +227,10 @@ one permitted official-documentation inspection attempt stopped because the
 tool-output path could not produce a safe page-specific result; it was not
 retried. Its result is
 [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md).
-G1–G3 remain unresolved. A new recovery proposal is required before any
-external inspection or source/data action.
+G1–G3 remain unresolved. DEC-0052 is now proposed in
+[`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_PROPOSAL_DEC0052.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_PROPOSAL_DEC0052.md).
+It does not reopen DEC-0051; it requires owner approval before a local
+non-network output-path check or any fresh external inspection.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

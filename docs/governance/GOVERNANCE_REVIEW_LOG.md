@@ -1122,3 +1122,19 @@ Next review due:
 | Affected work blocked | All Bills capture, pass-through, DB1/DB2, beta/public output, and further official-documentation inspection remain blocked pending a separately approved recovery proposal. |
 | Owner decision required | A documentation-only official-documentation inspection recovery proposal, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0067
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0052 Bills official-documentation recovery proposal preparation |
+| Reviewer role | Maintainer; DEC-0052 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0044, DEC-0047, DEC-0049–DEC-0051, the Bills matrix, and `GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_PROPOSAL_DEC0052.md` |
+| Active phase and authorising decision | DEC-0050 approved G1–G6 planning control; owner instruction to prepare DEC-0052 only |
+| Checks performed | Preserved DEC-0051 as exhausted rather than treating a new package as an implicit retry. Required an inert non-network evidence-output preflight before any fresh page request; bounded the recovery to four exact URLs, sequential single attempts, no redirects/link-following, and a concise non-content result. Prohibited all API, source-data, retention, system, and public work. |
+| Findings | The proposal gives the RSK-0034 tool-output failure a clear recovery route while retaining the evidence boundary: a failed preflight prevents any external call, and a page-specific stop cannot be converted into an API request, broader browsing, or permission inference. G1–G3 and both route blocks remain unresolved. |
+| Outcome | `PASS` for proposal preparation only. No external page/API request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | The DEC-0052 procedure preflight, every fresh page request, and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval and later exact packages. |
+| Owner decision required | DEC-0052. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
