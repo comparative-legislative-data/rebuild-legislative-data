@@ -1,9 +1,10 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
-import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, genericAcceptedSchema } from "./contracts.js";
+import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, genericAcceptedSchema } from "./contracts.js";
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
+const activationRejected = { accepted: false, message: "This activation link is invalid, expired, or has already been used." };
 const cookieName = "cld_access_session";
 
 function body(value: unknown): Record<string, unknown> {
@@ -81,14 +82,14 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     return reply.send(accepted);
   });
 
-  app.post("/auth/password", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+  app.post("/auth/password", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema, 400: activationRejectedSchema } } }, async (request, reply) => {
     const input = body(request.body);
     const token = requiredText(input.token, 512);
     const password = requiredText(input.password, 512);
-    if (token && password) {
-      const sessionToken = await runtime.setPassword(token, password);
-      if (sessionToken) setSession(reply, sessionToken);
-    }
+    if (!token || !password) return reply.code(400).send(activationRejected);
+    const sessionToken = await runtime.setPassword(token, password);
+    if (!sessionToken) return reply.code(400).send(activationRejected);
+    setSession(reply, sessionToken);
     return reply.send(accepted);
   });
 

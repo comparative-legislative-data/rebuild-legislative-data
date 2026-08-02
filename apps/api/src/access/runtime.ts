@@ -99,6 +99,24 @@ export class AccessRuntime {
     }
   }
 
+  async resendPendingInitialSuperuserActivation(): Promise<boolean> {
+    const result = await this.pool.query<{ id: string }>(
+      "select u.id from access_control.users u where u.email_normalized = $1 and u.state = 'BETA_PENDING' and exists (select 1 from access_control.memberships m where m.user_id = u.id and m.role = 'SUPERUSER' and m.revoked_at is null) and not exists (select 1 from access_control.credentials c where c.user_id = u.id and c.revoked_at is null)",
+      [this.config.initialSuperuserEmail]
+    );
+    const user = result.rows[0];
+    if (!user) return false;
+    const token = await this.createToken(user.id, "ACTIVATION");
+    try {
+      await this.sendActivation(this.config.initialSuperuserEmail, token);
+      await this.audit(null, "INITIAL_SUPERUSER_ACTIVATION_RESENT", user.id, "SENT");
+      return true;
+    } catch (error) {
+      await this.pool.query("delete from access_control.one_time_tokens where token_digest = $1", [this.digest(token)]);
+      throw error;
+    }
+  }
+
   async submitApplication(email: string, requestText: string): Promise<void> {
     const normalized = normalizeEmail(email);
     await this.pool.query(

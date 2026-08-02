@@ -49,7 +49,8 @@ function App() {
     event.preventDefault();
     const response = await request(path, { method: "POST", body: JSON.stringify(values) });
     if (!response.ok) {
-      setMessage("That request could not be completed. Please try again or use a new link.");
+      const failure = await response.json().catch(() => undefined) as { message?: unknown } | undefined;
+      setMessage(typeof failure?.message === "string" ? failure.message : "That request could not be completed. Please try again.");
       return undefined;
     }
     setMessage(success);

@@ -26,6 +26,11 @@ export function createWebServer() {
     index: false
   });
 
+  app.addHook("onSend", async (request, reply, payload) => {
+    if (request.url === "/") reply.header("cache-control", "no-store");
+    return payload;
+  });
+
   app.get("/healthz", async (_request, reply) =>
     reply.type("text/plain; charset=utf-8").code(200).send("process_ready")
   );

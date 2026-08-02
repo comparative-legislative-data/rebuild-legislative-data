@@ -6,6 +6,16 @@ if [[ "${EUID}" -ne 0 ]]; then
   exit 1
 fi
 
+resend_initial_activation=false
+if [[ "${1:-}" == "--resend-initial-activation" ]]; then
+  resend_initial_activation=true
+  shift
+fi
+if [[ "$#" -ne 0 ]]; then
+  echo "usage: $0 [--resend-initial-activation]" >&2
+  exit 1
+fi
+
 read -r -d '' initial_superuser_email
 read -r -d '' resend_api_key
 read -r -d '' access_from_email
@@ -174,6 +184,10 @@ for attempt in $(seq 1 10); do
   sleep 1
 done
 [[ "$nginx_status" == *'ACCESS_CONTROL_READY'* ]]
+
+if [[ "$resend_initial_activation" == true ]]; then
+  sudo -n -u cld-gb-sct bash -lc "set -a; source /etc/cld-gb-sct/secrets/access-api.env; set +a; '$runtime/node' '$release_path/apps/api/dist/access/resend_initial_superuser_activation.js'"
+fi
 
 # The local named-site check above is the deployment gate.  The public-domain
 # result is recorded separately because it traverses Cloudflare and must not

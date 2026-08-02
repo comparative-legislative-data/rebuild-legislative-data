@@ -19,6 +19,16 @@ export const genericAcceptedSchema = {
   properties: { accepted: { const: true } }
 } as const;
 
+export const activationRejectedSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["accepted", "message"],
+  properties: {
+    accepted: { const: false },
+    message: { const: "This activation link is invalid, expired, or has already been used." }
+  }
+} as const;
+
 export const accessUnavailableSchema = {
   type: "object",
   additionalProperties: false,
