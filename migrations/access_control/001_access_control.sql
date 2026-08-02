@@ -3,11 +3,17 @@
 -- access_control schema before this migration runs. The migration role has no
 -- database-wide CREATE privilege.
 
-CREATE TYPE access_control.account_state AS ENUM ('BETA_PENDING', 'ACTIVE', 'REVOKED');
-CREATE TYPE access_control.membership_role AS ENUM ('SUPERUSER', 'BETA_USER', 'GUEST');
-CREATE TYPE access_control.token_purpose AS ENUM ('ACTIVATION', 'MAGIC_LINK', 'GUEST_INVITE');
+DO $$ BEGIN
+  CREATE TYPE access_control.account_state AS ENUM ('BETA_PENDING', 'ACTIVE', 'REVOKED');
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TYPE access_control.membership_role AS ENUM ('SUPERUSER', 'BETA_USER', 'GUEST');
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TYPE access_control.token_purpose AS ENUM ('ACTIVATION', 'MAGIC_LINK', 'GUEST_INVITE');
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
-CREATE TABLE access_control.users (
+CREATE TABLE IF NOT EXISTS access_control.users (
   id uuid PRIMARY KEY,
   email_normalized text NOT NULL UNIQUE,
   username text UNIQUE,
@@ -18,7 +24,7 @@ CREATE TABLE access_control.users (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE TABLE access_control.memberships (
+CREATE TABLE IF NOT EXISTS access_control.memberships (
   id uuid PRIMARY KEY,
   user_id uuid NOT NULL REFERENCES access_control.users(id),
   role access_control.membership_role NOT NULL,
@@ -29,14 +35,14 @@ CREATE TABLE access_control.memberships (
   UNIQUE (user_id, role, layer_id)
 );
 
-CREATE TABLE access_control.credentials (
+CREATE TABLE IF NOT EXISTS access_control.credentials (
   user_id uuid PRIMARY KEY REFERENCES access_control.users(id),
   password_hash text NOT NULL,
   changed_at timestamptz NOT NULL DEFAULT now(),
   revoked_at timestamptz
 );
 
-CREATE TABLE access_control.one_time_tokens (
+CREATE TABLE IF NOT EXISTS access_control.one_time_tokens (
   id uuid PRIMARY KEY,
   user_id uuid NOT NULL REFERENCES access_control.users(id),
   purpose access_control.token_purpose NOT NULL,
@@ -47,7 +53,7 @@ CREATE TABLE access_control.one_time_tokens (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE TABLE access_control.sessions (
+CREATE TABLE IF NOT EXISTS access_control.sessions (
   id uuid PRIMARY KEY,
   user_id uuid NOT NULL REFERENCES access_control.users(id),
   session_digest char(64) NOT NULL UNIQUE,
@@ -57,7 +63,7 @@ CREATE TABLE access_control.sessions (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE TABLE access_control.beta_applications (
+CREATE TABLE IF NOT EXISTS access_control.beta_applications (
   id uuid PRIMARY KEY,
   applicant_email_normalized text NOT NULL,
   request_text text NOT NULL CHECK (char_length(request_text) <= 2000),
@@ -66,7 +72,7 @@ CREATE TABLE access_control.beta_applications (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE TABLE access_control.access_audit (
+CREATE TABLE IF NOT EXISTS access_control.access_audit (
   id uuid PRIMARY KEY,
   actor_user_id uuid REFERENCES access_control.users(id),
   action text NOT NULL,
@@ -75,9 +81,9 @@ CREATE TABLE access_control.access_audit (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
-CREATE INDEX memberships_active_lookup_idx
+CREATE INDEX IF NOT EXISTS memberships_active_lookup_idx
   ON access_control.memberships (user_id, revoked_at, expires_at);
-CREATE INDEX one_time_tokens_active_lookup_idx
+CREATE INDEX IF NOT EXISTS one_time_tokens_active_lookup_idx
   ON access_control.one_time_tokens (token_digest, consumed_at, revoked_at, expires_at);
-CREATE INDEX sessions_active_lookup_idx
+CREATE INDEX IF NOT EXISTS sessions_active_lookup_idx
   ON access_control.sessions (session_digest, revoked_at, expires_at);

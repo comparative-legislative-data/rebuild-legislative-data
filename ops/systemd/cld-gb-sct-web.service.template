@@ -4,7 +4,7 @@ Description=Comparative Legislative Data web application (B1 template only)
 [Service]
 User=cld-gb-sct
 WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID/apps/web
-ExecStart=/usr/bin/node dist/server/server.js
+ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node dist/server/server.js
 Environment=HOST=127.0.0.1
 Environment=PORT=3220
 NoNewPrivileges=true
