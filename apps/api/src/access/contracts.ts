@@ -29,6 +29,16 @@ export const activationRejectedSchema = {
   }
 } as const;
 
+export const logoutResultSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["accepted", "signed_out"],
+  properties: {
+    accepted: { const: true },
+    signed_out: { type: "boolean" }
+  }
+} as const;
+
 export const accessUnavailableSchema = {
   type: "object",
   additionalProperties: false,

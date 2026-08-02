@@ -194,9 +194,10 @@ export class AccessRuntime {
     return { userId: first.id, email: first.email, roles: [...new Set(result.rows.map((row) => row.role))] };
   }
 
-  async revokeSession(sessionToken: string | undefined): Promise<void> {
-    if (!sessionToken) return;
-    await this.pool.query("update access_control.sessions set revoked_at = now() where session_digest = $1 and revoked_at is null", [this.digest(sessionToken)]);
+  async revokeSession(sessionToken: string | undefined): Promise<boolean> {
+    if (!sessionToken) return false;
+    const result = await this.pool.query("update access_control.sessions set revoked_at = now() where session_digest = $1 and revoked_at is null", [this.digest(sessionToken)]);
+    return result.rowCount === 1;
   }
 
   async applications(): Promise<ApplicationRecord[]> {

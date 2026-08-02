@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
-import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, genericAcceptedSchema } from "./contracts.js";
+import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, genericAcceptedSchema, logoutResultSchema } from "./contracts.js";
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
@@ -105,10 +105,10 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     return reply.send(accepted);
   });
 
-  app.post("/auth/logout", async (request, reply) => {
-    await runtime.revokeSession(request.cookies[cookieName]);
+  app.post("/auth/logout", { schema: { response: { 200: logoutResultSchema } } }, async (request, reply) => {
+    const signedOut = await runtime.revokeSession(request.cookies[cookieName]);
     clearSession(reply);
-    return reply.send(accepted);
+    return reply.send({ accepted: true, signed_out: signedOut });
   });
 
   app.get("/auth/admin/applications", async (request, reply) => {
