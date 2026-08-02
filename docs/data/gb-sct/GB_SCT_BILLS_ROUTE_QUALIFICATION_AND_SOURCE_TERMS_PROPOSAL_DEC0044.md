@@ -1,13 +1,15 @@
 # GB-SCT Bills Route Qualification and Source-Terms Proposal — DEC-0044
 
-**Status:** Proposed — no source API route, proxy, capture, storage, database,
-or application action authorised
+**Status:** Approved and executed — `PARTIAL_OR_CONDITIONAL`; no source API
+route, proxy, capture, storage, database, or application action occurred
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0044
+**Decision:** DEC-0044, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md`](GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md)
 
 ## 1. Purpose
 
@@ -28,7 +30,7 @@ not turn them into approved live routes.
 
 ## 2. Decision and boundary
 
-DEC-0044 would authorise one bounded **official documentation and terms
+DEC-0044 authorises one bounded **official documentation and terms
 inspection**, performed only to produce a route-qualification record. It would
 permit a browser retrieval of:
 
@@ -104,6 +106,6 @@ the smallest useful redacted finding and seek owner direction.
 
 ## 7. Owner decision
 
-Approve, revise, or reject DEC-0044. Approval permits only the bounded
-official documentation-and-terms inspection described here and its concise
+DEC-0044 is approved and permits only the bounded official
+documentation-and-terms inspection described here and its concise
 qualification record. It does not permit any data request or implementation.

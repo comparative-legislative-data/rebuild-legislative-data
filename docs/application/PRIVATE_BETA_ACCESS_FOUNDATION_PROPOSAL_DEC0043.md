@@ -1,13 +1,13 @@
 # Private Beta Access Foundation Proposal — DEC-0043
 
-**Status:** Proposed — no account, database, email, secret, application, VPS,
-or data-route action authorised
+**Status:** Approved foundation specification — exact implementation packages
+remain required
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0043
+**Decision:** DEC-0043, approved by the project owner on 2 August 2026
 
 ## 1. Purpose
 
@@ -22,7 +22,7 @@ inspect, or expose either kind of data.
 
 ## 2. Decision and boundary
 
-DEC-0043 would approve the following **implementation specification only**:
+DEC-0043 approves the following **implementation specification only**:
 
 1. named, private access states and their authorisation rules;
 2. an access-control persistence boundary within the already approved
@@ -32,7 +32,7 @@ DEC-0043 would approve the following **implementation specification only**:
 5. the acceptance evidence required before any separately approved data-layer
    test is made available to beta users.
 
-It would not authorise dependency installation, code, database roles or schema
+It does not authorise dependency installation, code, database roles or schema
 migration, account creation, initial-superuser configuration, Resend use,
 email delivery, VPS deployment, a data route, source request, capture, DB1,
 DB2, download, public routing, or public claim. Each of those actions requires
@@ -148,6 +148,5 @@ an unauthenticated or unapproved user.
 
 ## 7. Owner decision
 
-Approve, revise, or reject DEC-0043. Approval adopts this private-beta access
-foundation as the specification for later exact implementation packages only;
-it performs none of the described work.
+DEC-0043 is approved as the specification for later exact implementation
+packages only; it performs none of the described work.

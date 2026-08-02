@@ -914,3 +914,35 @@ Next review due:
 | Affected work blocked | Official documentation inspection, any Bills API request, proxy, capture, DB1/DB2 action, beta interface, and public release remain blocked pending their exact approvals. |
 | Owner decision required | DEC-0044. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0054
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner approval of DEC-0043 and DEC-0044; DEC-0044 execution |
+| Reviewer role | Maintainer; recording owner decisions and a bounded result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0008, DEC-0009, DEC-0042, DEC-0043, DEC-0044, and the official Open Data, accessibility, copyright, and privacy pages named in the DEC-0044 result |
+| Active phase and authorising decision | DEC-0043 approved foundation specification; DEC-0044 bounded documentation/terms qualification |
+| Checks performed | Recorded DEC-0043 without treating it as implementation authority. Under DEC-0044, inspected only the named official documentation/terms pages, made no API-route request, and retained no page body or source record. Separated licence evidence from route-response evidence and personal-data classification. |
+| Findings | The official licence supplies a conditional reuse framework requiring attribution and avoiding endorsement, but excludes personal data and does not settle exact Bills-response coverage or technical operating conditions. The appropriate result is `PARTIAL_OR_CONDITIONAL`, not a pass-through implementation approval. |
+| Outcome | `PASS` for DEC-0043 approval recording and DEC-0044 bounded execution. No account, email, secret, API request, capture, database, application, VPS, or public action occurred. |
+| Affected work blocked | DEC-0043 implementation; Bills endpoint observation; pass-through; DB1/DB2; data interface; and public release remain separately gated. |
+| Owner decision required | A later exact access-foundation implementation package and/or a separately bounded Bills endpoint-observation proposal, if the owner wishes to proceed. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0055
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-sanctioned read-only pilot access-flow reconnaissance |
+| Reviewer role | Maintainer; pilot treated as an untrusted reference |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `GOVERNANCE.md`, DEC-0043, `PILOT_ACCESS_FLOW_RECONNAISSANCE_2026-08-02.md`, and named non-secret pilot source/manifests only |
+| Active phase and authorising decision | Reference reconnaissance only; no new-project implementation action |
+| Checks performed | Excluded pilot environment/secret files, credentials, database contents, source data, binaries, deployment state, and external services. Compared observed flow concepts against DEC-0043 and explicitly documented non-adopted session, token, storage, and schema patterns. |
+| Findings | The pilot is useful evidence of user-flow intent, but not a technical baseline. Its insecure or incompatible patterns must not be copied into the rebuild. |
+| Outcome | `PASS` for bounded reference reconnaissance only. |
+| Affected work blocked | Copying/migrating pilot code, configuration, data, credentials, infrastructure, or operational claims; all access/data implementation remains gated. |
+| Owner decision required | None for this completed reconnaissance. Later implementation requires its own exact proposal. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

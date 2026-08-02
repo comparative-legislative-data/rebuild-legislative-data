@@ -168,12 +168,16 @@ secret, or public step remains separately gated.
 DEC-0042 is approved as the three-layer GB-SCT programme in
 [`GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md`](../data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md).
 It distinguishes upstream pass-through access, manifest-backed DB1, and Tier
-1/2 DB2 releases. It remains non-operational: the next exact proposals are
-private-beta access controls (DEC-0043) and source/terms qualification for the
-first Bills pass-through route (DEC-0044). Their review links are
+1/2 DB2 releases. DEC-0043 is approved as the private-beta access-foundation
+specification, but it remains non-operational pending exact implementation
+packages. DEC-0044's terms/documentation qualification for the first Bills
+pass-through route returned `PARTIAL_OR_CONDITIONAL`: it found a reusable
+information licence subject to attribution/non-endorsement conditions, but did
+not establish route-specific limits or the absence of personal data. No API
+route was called. The approved specification and result are
 [`PRIVATE_BETA_ACCESS_FOUNDATION_PROPOSAL_DEC0043.md`](../application/PRIVATE_BETA_ACCESS_FOUNDATION_PROPOSAL_DEC0043.md)
 and
-[`GB_SCT_BILLS_ROUTE_QUALIFICATION_AND_SOURCE_TERMS_PROPOSAL_DEC0044.md`](../data/gb-sct/GB_SCT_BILLS_ROUTE_QUALIFICATION_AND_SOURCE_TERMS_PROPOSAL_DEC0044.md).
+[`GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_ROUTE_QUALIFICATION_RESULT_2026-08-02.md).
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
