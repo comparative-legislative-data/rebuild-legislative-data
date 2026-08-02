@@ -184,6 +184,9 @@ DEC-0007 selected route forms remain intended for eventual pass-through and
 DB1, unless an owner decision retires one. The current route-level status and
 priority control is
 [`GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md).
+The same control has an explicit route-addition path for newly discovered or
+newly available relevant endpoints; an addition requires its own documented
+assessment and owner approval before any operational action.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

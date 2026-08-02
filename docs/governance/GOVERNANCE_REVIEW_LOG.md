@@ -962,3 +962,19 @@ Next review due:
 | Affected work blocked | Every route remains blocked from operational use until its own bounded package passes. |
 | Owner decision required | A separately approved limited Bills endpoint-observation package, if the owner wishes to begin source-response qualification. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0057
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-approved controlled endpoint-addition path |
+| Reviewer role | Maintainer; recording a scope-control clarification |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0007, DEC-0045, and `GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md` |
+| Active phase and authorising decision | DEC-0045 planning control only |
+| Checks performed | Added an explicit `CANDIDATE_ADDITION` path requiring exact route form, discovery evidence, intended layer/tier position, qualification plan, and owner approval. Confirmed that it supplements—not silently changes—the approved DEC-0007 inventory. |
+| Findings | Future completeness needs a controlled way to add relevant routes, while research discipline requires that discovery alone never creates operational authority. |
+| Outcome | `PASS` for documentation/governance clarification only. No external, source/API, proxy, capture, database, application, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Every candidate addition remains blocked until its own owner-approved route-addition decision and later bounded operational package. |
+| Owner decision required | A future specific route-addition decision only if an unselected relevant endpoint is identified. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

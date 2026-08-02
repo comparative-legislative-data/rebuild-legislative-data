@@ -3,7 +3,7 @@
 **Status:** Approved planning control — no source request, proxy, capture,
 database, application, or public action authorised
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 **Prepared:** 2 August 2026
 
@@ -25,6 +25,21 @@ it. Retirement needs an explicit owner decision with recorded evidence.
 This document is the active route-level planning control. It does not modify
 DEC-0007's selected inventory, create a new source claim, or authorise any
 external interaction.
+
+### 1.1 Controlled additions
+
+The matrix is deliberately extensible. If a relevant Scottish Parliament route
+is discovered later, or a new relevant route becomes available, it may be
+added without reopening or weakening the existing 64-route scope. The addition
+must have its own dated row and route-addition record containing: the exact
+route form and documented parameters; discovery source/time; intended
+pass-through, DB1, and Tier 1/2 position; likely data/terms considerations;
+priority; and a route-specific qualification plan.
+
+The owner must explicitly approve that addition before any source request,
+proxy, capture, or exposure. Until then it is `CANDIDATE_ADDITION`, not part
+of the approved operational inventory. This prevents both accidental omission
+and silent scope expansion.
 
 ## 2. Matrix legend
 
@@ -126,4 +141,6 @@ evidence, not change its inclusion-first scope.
 
 DEC-0045 records the owner’s instruction that all DEC-0007 selected route forms
 remain in the intended eventual pass-through and DB1 scope unless the owner
-later explicitly retires a route. It authorises this planning matrix only.
+later explicitly retires a route. It also retains a controlled path to add
+newly discovered or newly available relevant routes through a route-addition
+record and explicit owner approval. It authorises this planning matrix only.
