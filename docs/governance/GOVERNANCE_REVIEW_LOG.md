@@ -1138,3 +1138,19 @@ Next review due:
 | Affected work blocked | The DEC-0052 procedure preflight, every fresh page request, and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval and later exact packages. |
 | Owner decision required | DEC-0052. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0068
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0052 approval and official-documentation recovery result |
+| Reviewer role | Maintainer; recording an approved bounded external-inspection result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044, DEC-0047, DEC-0049–DEC-0052, the Bills matrix, and `GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md` |
+| Active phase and authorising decision | DEC-0050 G1–G6 planning control; DEC-0052 G1–G3 recovery package |
+| Checks performed | Passed the inert non-network output-procedure check. Requested each exact approved page once, sequentially, with no redirect/link following, API call, query, credential, source-data retention, or scope expansion. Retained only concise paraphrases, page URLs, access outcomes, and gap conclusions. |
+| Findings | The official pages provide limited general evidence that the SPCB operates the Open Data website and licenses published information subject to conditions/exclusions. They do not establish Bills-route licence coverage, technical conditions, or source field/identifier semantics. G1 is `PARTIAL_OR_CONDITIONAL`; G2–G3 are `UNRESOLVED`. |
+| Outcome | `PARTIAL_OR_CONDITIONAL` for DEC-0052. Both Bills routes remain `DO_NOT_CAPTURE_OR_RELEASE`. No API request, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and implementation remain blocked. No further documentation inspection is authorised. |
+| Owner decision required | A documentation-only G4 Bills handling assessment, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

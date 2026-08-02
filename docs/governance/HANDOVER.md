@@ -227,10 +227,14 @@ one permitted official-documentation inspection attempt stopped because the
 tool-output path could not produce a safe page-specific result; it was not
 retried. Its result is
 [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_INSPECTION_RESULT_2026-08-02.md).
-G1–G3 remain unresolved. DEC-0052 is now proposed in
+DEC-0052 then completed a fresh bounded recovery in
 [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_PROPOSAL_DEC0052.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_PROPOSAL_DEC0052.md).
-It does not reopen DEC-0051; it requires owner approval before a local
-non-network output-path check or any fresh external inspection.
+Its non-network output-path preflight passed and its four page requests
+produced limited general source/licence evidence only; G2–G3 remain unresolved
+and both routes remain blocked. The retained result is
+[`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md).
+The next proposed step is a documentation-only G4 Bills handling assessment;
+it requires a new owner approval and no further external request is proposed.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

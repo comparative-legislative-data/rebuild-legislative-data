@@ -1,12 +1,14 @@
 # GB-SCT Bills Official-Documentation Recovery Proposal — DEC-0052
 
-**Status:** Proposed — no external action authorised
+**Status:** Approved — executed PARTIAL_OR_CONDITIONAL; route blocks retained
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision sought:** DEC-0052
+**Decision:** DEC-0052, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md`](GB_SCT_BILLS_OFFICIAL_DOCUMENTATION_RECOVERY_RESULT_2026-08-02.md)
 
 ## 1. Purpose and pre-flight
 
@@ -110,8 +112,8 @@ approval.
 
 ## 6. Owner decision
 
-DEC-0052 is **proposed**. If approved, it authorises only the local inert
-procedure preflight and the exact, fresh, one-attempt-per-page inspection
-described above. It does not authorise any API request, data capture,
-retention, database/proxy/frontend/VPS work, account/email action, or public
-claim.
+DEC-0052 was approved and executed. The output-procedure preflight passed and
+each approved page was requested once within scope. The result is
+`PARTIAL_OR_CONDITIONAL`; it does not authorise any API request, data capture,
+retention, database/proxy/frontend/VPS work, account/email action, public
+claim, or relaxation of either Bills-route block.
