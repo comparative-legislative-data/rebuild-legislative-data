@@ -16,6 +16,7 @@ button { cursor: pointer; }
 .status-message, .identity { max-width: 46rem; margin: .7rem 0; color: #c8d3df; line-height: 1.5; }
 .identity strong { color: #f4d390; overflow-wrap: anywhere; }
 .access-nav { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1.4rem 0 1rem; }
+.signed-in-badge { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .65rem 1rem; border: 1px solid rgba(232, 189, 104, .5); border-radius: .5rem; background: rgba(232, 189, 104, .1); color: #f1cb7c; font-size: .79rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .access-nav button, .access-panel button { min-height: 2.75rem; padding: .65rem 1rem; border: 1px solid #e8bd68; border-radius: .5rem; background: #e8bd68; color: #17202d; font-weight: 750; transition: transform .16s ease, background .16s ease, box-shadow .16s ease; }
 .access-nav button:hover, .access-panel button:hover { background: #f3cf87; box-shadow: 0 .5rem 1.25rem rgba(232, 189, 104, .18); transform: translateY(-1px); }
 .access-nav button:first-child, .secondary-button { border-color: rgba(222, 232, 244, .25) !important; background: transparent !important; color: #e9eef6 !important; }

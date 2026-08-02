@@ -69,7 +69,7 @@ function App() {
   }
 
   if (activationToken) {
-    return <main className="site-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><div className="auth-layout"><section className="access-panel activation-panel" aria-labelledby="password-heading"><p className="eyebrow">Account activation</p><h1 id="password-heading">Set your password</h1><p className="panel-copy">Create a password to finish activating your private-beta account.</p><p className="status-message" role="status">{message}</p><form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password", { token: activationToken, password }, "Your password has been set. Taking you to the beta shell…").then((nextIdentity) => { if (nextIdentity?.authenticated) { setActivationToken(undefined); setView("login"); window.history.replaceState({}, "", "/"); } else { setMessage("We could not confirm your session. Please use a new activation link."); } }); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Set password and continue</button></form></section></div></main>;
+    return <main className="site-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><div className="auth-layout"><section className="access-panel activation-panel" aria-labelledby="password-heading"><p className="eyebrow">Account activation</p><h1 id="password-heading">Set your password</h1><p className="panel-copy">Create a password to finish activating your private-beta account.</p><p className="status-message" role="status">{message}</p><form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password", { token: activationToken, password }, "Your password has been set. Taking you to the beta shell…").then((nextIdentity) => { if (nextIdentity?.authenticated) { setActivationToken(undefined); setView("login"); setMessage("Your private-beta account is active."); window.history.replaceState({}, "", "/"); } else { setMessage("We could not confirm your session. Please use a new activation link."); } }); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Set password and continue</button></form></section></div></main>;
   }
 
   return (
@@ -86,8 +86,8 @@ function App() {
       <p className="status-message" role="status">{message}</p>
       {identity.authenticated ? <p className="identity">Signed in as <strong>{identity.email}</strong>.</p> : null}
       <nav className="access-nav" aria-label="Access options">
-        <button type="button" onClick={() => setView("login")}>Log in</button>
-        <button type="button" onClick={() => setView("apply")}>Apply for beta access</button>
+        {!identity.authenticated ? <><button type="button" onClick={() => setView("login")}>Log in</button><button type="button" onClick={() => setView("apply")}>Apply for beta access</button></> : null}
+        {identity.authenticated ? <span className="signed-in-badge">Private beta active</span> : null}
         {identity.authenticated ? <button type="button" onClick={() => setView("settings")}>Settings</button> : null}
         {identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); void loadApplications(); }}>Superuser review</button> : null}
       </nav>
