@@ -96,3 +96,17 @@ by the resource or decision they govern:
 Update `docs/README.md` when adding a new active area or changing the reading
 path. Keep links valid; do not place a new active document directly in the
 `docs/` root.
+
+## Daily repository hygiene
+
+On each UTC calendar day in which substantive work is active, conduct one
+read-only hygiene assessment covering documentation structure and links,
+repository status, stale/generated artefacts, and obvious code or text
+organisation that would make the project harder to inspect or reproduce.
+
+When that assessment indicates a tidy-up would be useful, tell the project
+owner what is proposed and ask for agreement before moving, archiving,
+deleting, reformatting, or otherwise changing repository content. Do not treat
+this standing rule as pre-approval for a tidy-up. Once approved, keep the work
+bounded, preserve audit-relevant history, verify links and relevant checks,
+and record any material documentation/governance effect.

@@ -818,3 +818,19 @@ Next review due:
 | Affected work blocked | No data, source, database, application, VPS, secret, public-routing, or public-claim scope changed. All existing gates remain in force. |
 | Owner decision required | A separate approved data programme package before proxy, DB1, or DB2 execution. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0048
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-directed daily repository-hygiene control |
+| Reviewer role | Maintainer; owner directed the standing control |
+| Documents and records reviewed | `AGENTS.md`, `GOVERNANCE.md`, `docs/README.md`, and the current documentation structure |
+| Active phase and authorising decision | Repository discipline control only; no operational/data phase action |
+| Checks performed | Added a once-per-active-UTC-day read-only hygiene assessment for documentation/link integrity, stale artefacts, and code/text organisation. Required the maintainer to seek owner agreement before making any resulting tidy-up change, and distinguished the checkpoint from the formal governance-review cadence. |
+| Findings | The project needs a sustainable cleanliness control as it begins source, DB1, DB2, and data-access work. The approved rule preserves owner control and audit history while preventing document and repository drift. |
+| Outcome | `PASS` for governance-control alignment only. |
+| Affected work blocked | The rule authorises no code, documentation, data, VPS, database, secret, public-routing, or public-claim change without the appropriate existing authority and, for a tidy-up, owner agreement. |
+| Owner decision required | None for the standing assessment; owner agreement is required before each identified tidy-up. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

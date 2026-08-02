@@ -138,6 +138,13 @@ is reviewed. `BLOCKED` identifies the owner decision or external fact needed to
 proceed. A stale or missing review blocks a phase transition and any public
 claim.
 
+The repository also has a daily hygiene checkpoint while substantive work is
+active. It is distinct from this formal governance review: the maintainer first
+assesses documentation/link integrity, stale artefacts, and code/text
+organisation, then asks the owner to agree any proposed tidy-up before changing
+repository content. This keeps the working record inspectable without treating
+routine tidying as an unapproved scope change.
+
 ## 9. Infrastructure work packages
 
 For routine VPS infrastructure only, the owner may approve a named,
