@@ -754,3 +754,19 @@ Next review due:
 | Affected work blocked | B3 acceptance closure; database/secret work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure; and public claims remain blocked pending their own approvals. |
 | Owner decision required | A separately scoped B3 or later package, if the owner wishes to continue. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0044
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — B3 local-acceptance proposal preparation |
+| Reviewer role | Maintainer; DEC-0041 is proposed and has no owner approval |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, B2/B2a records/results, `V4B_SERVICE_SECRET_AND_APPLICATION_DELIVERY_PLAN_PROPOSAL_DEC0036.md`, `V4B_B3_LOCAL_ACCEPTANCE_PROPOSAL_DEC0041.md`, and this log |
+| Active phase and authorising decision | V4B B3 proposal preparation only |
+| Checks performed | Confirmed that B3 is the separately required local-acceptance record in DEC-0036, and constrained DEC-0041 to read-only evidence over the installed B2 state. The proposal fixes the only two health routes, preserves the B2 digest/path/hardening/protected-cluster evidence model, forbids disclosure of database names or unknown environment values, and introduces no mutable VPS target. |
+| Findings | B2 `PASS` does not itself close B3 or authorise public exposure. A short independent acceptance record provides durable evidence of the local-only state without broadening the product, data, or shared-host scope. |
+| Outcome | `PASS` for proposal preparation only. B3 checks remain blocked pending owner approval of DEC-0041. |
+| Affected work blocked | All B3 VPS inspection, V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked pending their respective approvals. |
+| Owner decision required | DEC-0041. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

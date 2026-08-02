@@ -160,8 +160,10 @@ is `PASS` in
 the VPS now has only the private Node runtime, one immutable synthetic B1
 release, and the two named hardened loopback-only services. No source,
 database/secret, shared-host, or public-web action occurred. B3 acceptance
-closure and every later data, database, secret, or public step remain
-separately gated.
+closure is proposed as DEC-0041 in
+[`V4B_B3_LOCAL_ACCEPTANCE_PROPOSAL_DEC0041.md`](V4B_B3_LOCAL_ACCEPTANCE_PROPOSAL_DEC0041.md);
+it remains blocked pending owner approval. Every later data, database, secret,
+or public step remains separately gated.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).
