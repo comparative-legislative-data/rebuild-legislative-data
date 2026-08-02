@@ -157,7 +157,12 @@ curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null
 cp "$staging/source/ops/nginx/legislativedata.org.private-beta.conf" /etc/nginx/sites-available/legislativedata.org
 nginx -t
 systemctl reload nginx
-curl -fsS --max-time 5 -H 'Host: legislativedata.org' http://127.0.0.1/api/auth/status | grep -q 'ACCESS_CONTROL_READY'
+for attempt in $(seq 1 10); do
+  nginx_status="$(curl -sS --max-time 5 -H 'Host: legislativedata.org' http://127.0.0.1/api/auth/status || true)"
+  [[ "$nginx_status" == *'ACCESS_CONTROL_READY'* ]] && break
+  sleep 1
+done
+[[ "$nginx_status" == *'ACCESS_CONTROL_READY'* ]]
 
 # The local named-site check above is the deployment gate.  The public-domain
 # result is recorded separately because it traverses Cloudflare and must not
