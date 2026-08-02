@@ -1,12 +1,12 @@
 # V4B B2a Corrective Packaging and Continuation Proposal — DEC-0040
 
-**Status:** Proposed — owner approval required
+**Status:** Approved — execution pending
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0040
+**Decision:** DEC-0040, approved 2 August 2026
 
 ## 1. Purpose
 
@@ -18,7 +18,7 @@ It does not change the data, database, secret, public-routing, account, privileg
 
 ## 2. Approved-work-package model requested
 
-If approved, DEC-0040 authorises a single bounded B2a work package with this sequence:
+DEC-0040 authorises a single bounded B2a work package with this sequence:
 
 1. recreate only a root-owned project staging directory and re-run the DEC-0039 preflight;
 2. re-establish the signature/checksum-verified private Node v24.18.1 runtime in that staging area;
@@ -93,4 +93,4 @@ After §6 passes, the existing DEC-0039 rollback applies only to the new final p
 
 The result must retain the two initial DEC-0039 digest pairs; current and repaired source commits; runtime provenance; structural comparison; each repair diff; re-verification results; diagnostic-hold lifecycle; and final non-interference evidence. It must not retain secrets, source data, database names/rows, or unrelated service content.
 
-Approve DEC-0040 to execute the B2a contained-repair-and-continuation package in §§2–7. It allows a notification plus immediate project-staging repair cycle for this narrow build problem, without a redundant full rollback. It does not authorise any broader technical, data, database, public, or shared-host action.
+DEC-0040 authorises the B2a contained-repair-and-continuation package in §§2–7. It allows a notification plus immediate project-staging repair cycle for this narrow build problem, without a redundant full rollback. It does not authorise any broader technical, data, database, public, or shared-host action.

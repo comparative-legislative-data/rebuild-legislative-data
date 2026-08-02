@@ -160,9 +160,9 @@ deterministic-packaging check, as recorded in
 No runtime/release/unit remains deployed. The next decision is the B2a
 corrective-packaging-and-continuation proposal in
 [`V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_PROPOSAL_DEC0040.md`](V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_PROPOSAL_DEC0040.md).
-It proposes a short project-staging diagnostic hold, notification, and an
-immediate packaging-only repair/retest cycle, while retaining all data,
-database/secret, shared-host, and public-web exclusions.
+It is approved as DEC-0040. It permits a short project-staging diagnostic
+hold, notification, and an immediate packaging-only repair/retest cycle, while
+retaining all data, database/secret, shared-host, and public-web exclusions.
 The owner has also requested a more proportionate control model for basic VPS
 setup; its documentation proposal is
 [`INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md`](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md).

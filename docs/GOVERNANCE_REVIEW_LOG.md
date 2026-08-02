@@ -722,3 +722,19 @@ Next review due:
 | Affected work blocked | VPS staging recreation, packaging diagnosis/fix, final runtime/release/unit deployment, B3 acceptance, database/secret work, source/data work, Nginx/DNS/firewall/public exposure, and public claims. |
 | Owner decision required | DEC-0040. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0042
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner approval of DEC-0040 contained B2a recovery package |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0040 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0039 result, `V4B_B2A_CORRECTIVE_PACKAGING_AND_CONTINUATION_PROPOSAL_DEC0040.md`, and this log |
+| Active phase and authorising decision | V4B B2a corrective packaging and continuation under DEC-0040 |
+| Checks performed | Confirmed that the approved package permits only the root-owned project staging hold, packaging code/tests, notification, renewed reproducibility evidence, and the pre-existing final-deployment path. It retains all stops for unexpected staging content, scope/privilege expansion, shared/public/data/credential action, and failed final gates. |
+| Findings | The approval improves recovery efficiency for this contained build defect without treating the failed B2 package as deployed or weakening source/data/public governance. |
+| Outcome | `PASS` for recording approval and aligned execution boundary; B2a preflight and diagnosis are pending. |
+| Affected work blocked | Any action outside the approved B2a staging/package scope; B3 acceptance, database/secret work, source work, Nginx/DNS/firewall/public exposure, and public claims remain blocked. |
+| Owner decision required | None for DEC-0040’s bounded execution; a new decision is required for an excluded action or stop condition. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
