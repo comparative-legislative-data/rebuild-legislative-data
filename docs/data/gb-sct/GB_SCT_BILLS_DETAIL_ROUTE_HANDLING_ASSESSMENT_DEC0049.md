@@ -75,6 +75,15 @@ inspection from those requiring an owner policy decision. It must not request
 source data, select an identifier, authorise capture, or imply that either
 route can be exposed.
 
+### 4.1 Post-assessment status update — DEC-0052 and DEC-0053
+
+DEC-0052 adds only general source/licence and privacy-framework evidence; it
+does not establish route/field coverage, operating conditions, or source
+semantics. DEC-0053 records G4 as `BLOCKED_PENDING_OWNER_DECISION`: the
+single value-free detail shape is insufficient to assess actual content,
+linkage, or personal-data implications. This does not classify any field or
+change the current `DO_NOT_CAPTURE_OR_RELEASE` outcome.
+
 ## 5. Decision record
 
 DEC-0049 records the owner's authority for this documentation-only detail

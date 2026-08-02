@@ -1170,3 +1170,19 @@ Next review due:
 | Affected work blocked | The DEC-0053 assessment and all Bills capture, pass-through, DB1/DB2, beta/public output, and implementation work remain blocked pending owner approval and later exact packages. |
 | Owner decision required | DEC-0053. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0070
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0053 approval and G4 handling-assessment result |
+| Reviewer role | Maintainer; recording an approved internal non-content assessment result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0045–DEC-0053, both Bills route-handling records, both value-free observation results, and `GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_RESULT_2026-08-02.md` |
+| Active phase and authorising decision | DEC-0050 G1–G6 planning control; DEC-0053 G4 internal assessment |
+| Checks performed | Compared only DEC-0053's named non-content inputs. Separated observed names/types/null states from source semantics or legal classification; applied DEC-0008's restrictive-default rule without inferring actual content, personal-data status, or operating permission. |
+| Findings | General source terms/privacy material and value-free shape evidence cannot establish the personal-data, sensitive-content, or linkage implications of either route's actual content. G4 therefore remains `BLOCKED_PENDING_OWNER_DECISION`; G1 is partial and G2–G3 unresolved. |
+| Outcome | `BLOCKED_PENDING_OWNER_DECISION` for G4; `PASS` for contained assessment execution. Both Bills routes remain `DO_NOT_CAPTURE_OR_RELEASE`. No external request, source/data action, capture, database, proxy, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, G5/G6 revision, and implementation remain blocked. |
+| Owner decision required | A documentation-only unresolved-evidence strategy, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

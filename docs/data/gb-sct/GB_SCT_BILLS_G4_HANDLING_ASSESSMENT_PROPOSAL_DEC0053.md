@@ -1,12 +1,14 @@
 # GB-SCT Bills G4 Handling-Assessment Proposal — DEC-0053
 
-**Status:** Proposed — documentation-only; no external or data action authorised
+**Status:** Approved — executed `BLOCKED_PENDING_OWNER_DECISION`; route blocks retained
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision sought:** DEC-0053
+**Decision:** DEC-0053, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_RESULT_2026-08-02.md`](GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_RESULT_2026-08-02.md)
 
 ## 1. Purpose and pre-flight
 
@@ -84,7 +86,7 @@ owner decision to leave the routes blocked; neither is authorised here.
 
 ## 6. Owner decision
 
-DEC-0053 is **proposed**. If approved, it authorises only the exact internal,
-non-content assessment above and one result record. It does not authorise any
-external request, source/data capture or retention, system action, or public
-output.
+DEC-0053 was approved and completed within its exact internal, non-content
+scope. The result is `BLOCKED_PENDING_OWNER_DECISION`: neither route has the
+evidence needed for a handling reclassification. It authorises no external
+request, source/data capture or retention, system action, or public output.

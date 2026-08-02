@@ -75,6 +75,15 @@ action. A later capture/proxy proposal remains blocked until the unresolved
 terms, personal-data, operating-condition, retention, and access-control
 conditions are resolved.
 
+### 4.1 Post-assessment status update — DEC-0052 and DEC-0053
+
+DEC-0052 adds only general source/licence and privacy-framework evidence; it
+does not establish route/field coverage, operating conditions, or source
+semantics. DEC-0053 records G4 as `BLOCKED_PENDING_OWNER_DECISION`: the
+value-free collection shape is insufficient to assess actual content, linkage,
+or personal-data implications. This does not classify any field or change the
+current `DO_NOT_CAPTURE_OR_RELEASE` outcome.
+
 ## 5. Decision record
 
 DEC-0047 records the owner's authority for this documentation-only handling

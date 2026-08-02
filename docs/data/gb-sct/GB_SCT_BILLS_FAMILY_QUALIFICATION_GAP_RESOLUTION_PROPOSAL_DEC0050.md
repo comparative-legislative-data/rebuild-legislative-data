@@ -91,6 +91,15 @@ content retention, external contact, legal advice, system access, or a less
 restrictive class, it stops for a new explicit owner decision. No workaround
 is permitted.
 
+### 5.1 Current gap status update — 2 August 2026
+
+DEC-0052 supplies `PARTIAL_OR_CONDITIONAL` general source/licence evidence for
+G1; G2–G3 remain `UNRESOLVED`. DEC-0053 records G4 as
+`BLOCKED_PENDING_OWNER_DECISION` for both Bills routes: no field-level or
+route-specific assessment basis exists to determine the proposed project's
+personal-data, sensitive-content, or linking position. G5 and G6 remain
+unassessed. Both routes remain `DO_NOT_CAPTURE_OR_RELEASE`.
+
 ## 6. Acceptance result and next action
 
 The DEC-0050 result is `PASS` only when the Bills-family qualification result
