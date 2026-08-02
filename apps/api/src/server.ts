@@ -49,5 +49,9 @@ export async function startApiServer() {
 }
 
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-  void startApiServer();
+  void startApiServer().catch((error: unknown) => {
+    const message = error instanceof Error ? error.message : "access runtime startup failed";
+    process.stderr.write(`access runtime startup failed: ${message}\n`);
+    process.exitCode = 1;
+  });
 }
