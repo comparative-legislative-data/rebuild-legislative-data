@@ -1250,3 +1250,19 @@ Next review due:
 | Affected work blocked | Capture, retention, pass-through, DB1/DB2, beta/public output, implementation, external contact, and new endpoint families remain blocked. |
 | Owner decision required | None for ordinary DEC-0055 reconnaissance; owner approval remains required at the stated later gates or if a stop condition occurs. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0075
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0059 private-beta runtime/cutover preflight |
+| Reviewer role | Maintainer; recording owner-authorised preflight and a dependency block before mutation |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0009, DEC-0041–DEC-0043, DEC-0056, DEC-0058, and DEC-0059 |
+| Active phase and authorising decision | DEC-0059 controlled private-beta runtime and named-site cutover package |
+| Checks performed | Read only the named project service/listener/cluster/secret-root metadata, the configured private cluster socket setting, and the existing `legislativedata.org` Nginx site. Checked the public domain response without retaining account or source data. Checked only the required variable names in the owner-controlled local input, not values. |
+| Findings | The two project services and isolated cluster are active. The named site points at unused port 3100 and returns 502 publicly; the project web service is healthy only on loopback 3220. The required owner-provided value names were absent, so a usable authentication/bootstrap flow cannot be deployed or tested. |
+| Outcome | `BLOCKED` pending `INITIAL_SUPERUSER_EMAIL`, `RESEND_API_KEY`, and `ACCESS_FROM_EMAIL`. No secret, database, email, service, Nginx, source, DB1, DB2, or public-route mutation occurred. |
+| Affected work blocked | DEC-0059 database/grant activation, runtime deployment, bootstrap email, and named-site cutover. Source relay, DB1, and DB2 remain excluded independently. |
+| Owner decision required | No new decision; provide the three named values in the owner-controlled input, then execution may resume within DEC-0059. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

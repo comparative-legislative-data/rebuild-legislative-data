@@ -48,6 +48,12 @@
 - DEC-0058 completed `PASS` locally. The access UI and API are fail-closed and
   the unapplied migration/grant artefacts are ready for later controlled
   runtime proof. No active account system exists yet.
+- DEC-0059's read-only deployment preflight found the existing public site
+  points at an unused legacy port and therefore returns HTTP 502. The isolated
+  project web/API services remain healthy on their loopback ports. The approved
+  private-beta runtime/cutover package is blocked only pending the three
+  owner-supplied server-only values; no secret, database, email, service, or
+  Nginx change has occurred.
 - Next: complete the small MQA detail forms and identify bounded strategies for
   high-volume MQA routes; separately profile votes-on-motions year forms.
 
