@@ -68,6 +68,17 @@ access_migrate_password="$(openssl rand -hex 32)"
 access_runtime_password="$(openssl rand -hex 32)"
 access_pepper="$(openssl rand -hex 48)"
 
+# A release may rotate the database-login password, but it must retain the
+# existing session pepper so a routine deployment does not revoke every valid
+# private-beta session. This file is sourced only by root on the VPS and no
+# value is emitted to the command output.
+if [[ -f /etc/cld-gb-sct/secrets/access-api.env ]]; then
+  # shellcheck disable=SC1091
+  source /etc/cld-gb-sct/secrets/access-api.env
+  : "${CLD_ACCESS_PEPPER:?existing access pepper is required}"
+  access_pepper="$CLD_ACCESS_PEPPER"
+fi
+
 systemd_environment_value() {
   printf '%s' "$1" | sed -e 's/[\\$`\"]/\\&/g'
 }
