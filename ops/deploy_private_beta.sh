@@ -146,6 +146,12 @@ for attempt in $(seq 1 30); do
   sleep 1
 done
 [[ "$status" == *'ACCESS_CONTROL_READY'* ]]
+for attempt in $(seq 1 30); do
+  if curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null; then
+    break
+  fi
+  sleep 1
+done
 curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null
 
 cp "$staging/source/ops/nginx/legislativedata.org.private-beta.conf" /etc/nginx/sites-available/legislativedata.org
