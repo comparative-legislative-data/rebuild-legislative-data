@@ -66,3 +66,19 @@ CREATE TABLE access_control.beta_applications (
   decided_at timestamptz,
   created_at timestamptz NOT NULL DEFAULT now()
 );
+
+CREATE TABLE access_control.access_audit (
+  id uuid PRIMARY KEY,
+  actor_user_id uuid REFERENCES access_control.users(id),
+  action text NOT NULL,
+  target_user_id uuid REFERENCES access_control.users(id),
+  result text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX memberships_active_lookup_idx
+  ON access_control.memberships (user_id, revoked_at, expires_at);
+CREATE INDEX one_time_tokens_active_lookup_idx
+  ON access_control.one_time_tokens (token_digest, consumed_at, revoked_at, expires_at);
+CREATE INDEX sessions_active_lookup_idx
+  ON access_control.sessions (session_digest, revoked_at, expires_at);

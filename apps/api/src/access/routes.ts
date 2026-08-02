@@ -1,15 +1,126 @@
-import type { FastifyInstance } from "fastify";
-import { ACCESS_NOT_CONFIGURED, accessStatus, accessStatusSchema, accessUnavailableSchema } from "./contracts.js";
+import type { FastifyInstance, FastifyRequest } from "fastify";
+import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, genericAcceptedSchema } from "./contracts.js";
+import { type AccessRuntime, sessionDays } from "./runtime.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
+const accepted = { accepted: true };
+const cookieName = "cld_access_session";
 
-export async function registerAccessRoutes(app: FastifyInstance): Promise<void> {
-  app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => accessStatus);
+function body(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" ? value as Record<string, unknown> : {};
+}
 
-  for (const path of ["/auth/login", "/auth/magic-link", "/auth/applications", "/auth/password"]) {
-    app.post(path, {
-      config: { rateLimit: { max: 5, timeWindow: "1 minute" } },
-      schema: { response: { 503: accessUnavailableSchema } }
-    }, async (_request, reply) => reply.code(503).send(unavailable));
+function requiredText(value: unknown, maximum = 2_000): string | undefined {
+  return typeof value === "string" && value.trim().length > 0 && value.trim().length <= maximum ? value.trim() : undefined;
+}
+
+function setSession(reply: { setCookie: Function }, token: string): void {
+  reply.setCookie(cookieName, token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: sessionDays * 24 * 60 * 60
+  });
+}
+
+function clearSession(reply: { clearCookie: Function }): void {
+  reply.clearCookie(cookieName, { path: "/", httpOnly: true, secure: true, sameSite: "lax" });
+}
+
+async function session(runtime: AccessRuntime, request: FastifyRequest) {
+  return runtime.identity(request.cookies[cookieName]);
+}
+
+export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime }): Promise<void> {
+  const runtime = options.runtime;
+  app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
+    status: runtime ? ACCESS_READY : ACCESS_NOT_CONFIGURED,
+    authentication_available: Boolean(runtime),
+    data_layers_available: false
+  }));
+
+  if (!runtime) {
+    for (const path of ["/auth/login", "/auth/magic-link", "/auth/applications", "/auth/password"]) {
+      app.post(path, { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    }
+    return;
   }
+
+  app.post("/auth/login", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const input = body(request.body);
+    const identifier = requiredText(input.identifier, 320);
+    const password = requiredText(input.password, 512);
+    if (identifier && password) {
+      const token = await runtime.login(identifier, password);
+      if (token) setSession(reply, token);
+    }
+    return reply.send(accepted);
+  });
+
+  app.post("/auth/magic-link", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const email = requiredText(body(request.body).email, 320);
+    if (email) await runtime.requestMagicLink(email);
+    return reply.send(accepted);
+  });
+
+  app.post("/auth/magic-link/consume", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const token = requiredText(body(request.body).token, 512);
+    if (token) {
+      const sessionToken = await runtime.consumeMagicLink(token);
+      if (sessionToken) setSession(reply, sessionToken);
+    }
+    return reply.send(accepted);
+  });
+
+  app.post("/auth/applications", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const input = body(request.body);
+    const email = requiredText(input.email, 320);
+    const requestText = requiredText(input.requestText);
+    if (email && requestText) await runtime.submitApplication(email, requestText);
+    return reply.send(accepted);
+  });
+
+  app.post("/auth/password", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const input = body(request.body);
+    const token = requiredText(input.token, 512);
+    const password = requiredText(input.password, 512);
+    if (token && password) {
+      const sessionToken = await runtime.setPassword(token, password);
+      if (sessionToken) setSession(reply, sessionToken);
+    }
+    return reply.send(accepted);
+  });
+
+  app.get("/auth/me", async (request) => {
+    const identity = await session(runtime, request);
+    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], data_layers_available: false };
+  });
+
+  app.post("/auth/password/change", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    const password = requiredText(body(request.body).password, 512);
+    if (identity && password) await runtime.changePassword(identity.userId, password);
+    return reply.send(accepted);
+  });
+
+  app.post("/auth/logout", async (request, reply) => {
+    await runtime.revokeSession(request.cookies[cookieName]);
+    clearSession(reply);
+    return reply.send(accepted);
+  });
+
+  app.get("/auth/admin/applications", async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!identity?.roles.includes("SUPERUSER")) return reply.code(403).send({ accepted: false });
+    return { applications: await runtime.applications() };
+  });
+
+  app.post("/auth/admin/applications/:id/approve", async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!identity?.roles.includes("SUPERUSER")) return reply.code(403).send({ accepted: false });
+    const id = requiredText((request.params as Record<string, unknown>).id, 64);
+    if (id) await runtime.approveApplication(identity.userId, id);
+    return reply.send(accepted);
+  });
 }

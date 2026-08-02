@@ -1,26 +1,22 @@
 export const ACCESS_NOT_CONFIGURED = "ACCESS_CONTROL_NOT_CONFIGURED" as const;
-
-export interface AccessStatus {
-  status: typeof ACCESS_NOT_CONFIGURED;
-  authentication_available: false;
-  data_layers_available: false;
-}
-
-export const accessStatus: AccessStatus = {
-  status: ACCESS_NOT_CONFIGURED,
-  authentication_available: false,
-  data_layers_available: false
-};
+export const ACCESS_READY = "ACCESS_CONTROL_READY" as const;
 
 export const accessStatusSchema = {
   type: "object",
   additionalProperties: false,
   required: ["status", "authentication_available", "data_layers_available"],
   properties: {
-    status: { const: ACCESS_NOT_CONFIGURED },
-    authentication_available: { const: false },
+    status: { enum: [ACCESS_NOT_CONFIGURED, ACCESS_READY] },
+    authentication_available: { type: "boolean" },
     data_layers_available: { const: false }
   }
+} as const;
+
+export const genericAcceptedSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["accepted"],
+  properties: { accepted: { const: true } }
 } as const;
 
 export const accessUnavailableSchema = {

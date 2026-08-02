@@ -1,10 +1,11 @@
 [Unit]
-Description=Comparative Legislative Data API (B1 template only)
+Description=Comparative Legislative Data API (private beta)
 
 [Service]
 User=cld-gb-sct
 WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID/apps/api
-ExecStart=/usr/bin/node dist/server.js
+ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node dist/server.js
+EnvironmentFile=/etc/cld-gb-sct/secrets/access-api.env
 Environment=HOST=127.0.0.1
 Environment=PORT=3210
 NoNewPrivileges=true

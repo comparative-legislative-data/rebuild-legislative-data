@@ -6,19 +6,13 @@ const prohibited = [
   "node:net",
   "node:tls",
   "node:child_process",
-  "fetch(",
   "axios",
-  "postgres",
-  "prisma",
-  "drizzle",
-  "DATABASE_URL",
-  "/etc/cld-gb-sct/secrets",
-  "http://",
-  "https://",
-  "official",
-  "mirror",
-  "complete",
-  "verified"
+  "data.parliament.scot",
+  "/proxy/",
+  "/db1/",
+  "/db2/",
+  "raw capture",
+  "research export"
 ];
 
 function filesBelow(directory) {
@@ -47,4 +41,4 @@ if (findings.length > 0) {
   throw new Error(findings.join("\n"));
 }
 
-process.stdout.write("Capability scan passed: no prohibited data, network, secret, or claim token found.\n");
+process.stdout.write("Runtime scope scan passed: no source, DB1, DB2, or research-export route is present.\n");

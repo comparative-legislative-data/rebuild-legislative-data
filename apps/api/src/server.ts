@@ -7,6 +7,7 @@ import {
   type HealthResponse
 } from "@cld-gb-sct/contracts";
 import { registerAccessRoutes } from "./access/routes.js";
+import { AccessRuntime, loadAccessRuntimeConfig } from "./access/runtime.js";
 
 export const API_HOST = "127.0.0.1";
 export const API_PORT = 3210;
@@ -21,6 +22,8 @@ function requireConfiguredValue(name: string, expected: string): string {
 
 export function createApiServer() {
   const app = Fastify({ logger: false });
+  const config = loadAccessRuntimeConfig();
+  const runtime = config ? new AccessRuntime(config) : undefined;
 
   void app.register(cookie);
   void app.register(rateLimit, { global: false });
@@ -29,7 +32,10 @@ export function createApiServer() {
     schema: { response: { 200: healthResponseSchema } }
   }, async (_request, reply) => reply.type("application/json").code(200).send(healthResponse));
 
-  void app.register(registerAccessRoutes);
+  void app.register(registerAccessRoutes, runtime ? { runtime } : {});
+  app.addHook("onClose", async () => runtime?.close());
+
+  if (runtime) app.addHook("onReady", async () => runtime.bootstrapInitialSuperuser());
 
   return app;
 }

@@ -3,7 +3,7 @@ export const PROCESS_READY = "process_ready" as const;
 
 export const capabilityLabels = [
   "NO_SOURCE_DATA",
-  "NO_DATABASE_CONNECTIVITY",
+  "NO_RESEARCH_DATA_ROUTE",
   "NOT_A_RESEARCH_RELEASE"
 ] as const;
 
@@ -12,7 +12,7 @@ export type CapabilityLabel = (typeof capabilityLabels)[number];
 export interface HealthResponse {
   service: typeof API_SERVICE_NAME;
   status: typeof PROCESS_READY;
-  build_id: "b1-local-only";
+  build_id: "private-beta-access";
   capabilities: readonly CapabilityLabel[];
 }
 
@@ -23,7 +23,7 @@ export const healthResponseSchema = {
   properties: {
     service: { const: API_SERVICE_NAME },
     status: { const: PROCESS_READY },
-    build_id: { const: "b1-local-only" },
+    build_id: { const: "private-beta-access" },
     capabilities: {
       type: "array",
       items: { enum: capabilityLabels },
@@ -36,6 +36,6 @@ export const healthResponseSchema = {
 export const healthResponse: HealthResponse = {
   service: API_SERVICE_NAME,
   status: PROCESS_READY,
-  build_id: "b1-local-only",
+  build_id: "private-beta-access",
   capabilities: capabilityLabels
 };

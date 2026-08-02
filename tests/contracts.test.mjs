@@ -9,7 +9,7 @@ import {
 test("health contract is explicit and capability-limited", () => {
   assert.equal(healthResponse.service, "cld-gb-sct-api");
   assert.equal(healthResponse.status, "process_ready");
-  assert.equal(healthResponse.build_id, "b1-local-only");
+  assert.equal(healthResponse.build_id, "private-beta-access");
   assert.deepEqual(healthResponse.capabilities, capabilityLabels);
   assert.equal(healthResponseSchema.additionalProperties, false);
 });

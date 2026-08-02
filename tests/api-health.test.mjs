@@ -10,10 +10,10 @@ test("API health response is static and truthful", async () => {
   assert.deepEqual(response.json(), {
     service: "cld-gb-sct-api",
     status: "process_ready",
-    build_id: "b1-local-only",
+    build_id: "private-beta-access",
     capabilities: [
       "NO_SOURCE_DATA",
-      "NO_DATABASE_CONNECTIVITY",
+      "NO_RESEARCH_DATA_ROUTE",
       "NOT_A_RESEARCH_RELEASE"
     ]
   });

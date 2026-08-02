@@ -17,6 +17,8 @@ const allowed = [
   "package-lock.json",
   ".nvmrc",
   "ops/systemd",
+  "ops/nginx",
+  "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",
   "packages/contracts/package.json",
@@ -148,10 +150,10 @@ const archiveEntries = filesForArchive(stageRoot);
 const tarBytes = deterministicTar(stageRoot, archiveEntries);
 writeFileSync(archivePath, gzipSync(tarBytes, { mtime: 0 }));
 const manifest = {
-  build_id: "b1-local-only",
+  build_id: "private-beta-access",
   capability_status: [
     "NO_SOURCE_DATA",
-    "NO_DATABASE_CONNECTIVITY",
+    "NO_RESEARCH_DATA_ROUTE",
     "NO_PUBLIC_LISTENER",
     "NOT_A_RESEARCH_RELEASE"
   ],
