@@ -1042,3 +1042,19 @@ Next review due:
 | Affected work blocked | The two proposed requests and every capture, pass-through, DB1/DB2, beta/public output, or implementation action remain blocked pending DEC-0048 owner approval and their separate later gates. |
 | Owner decision required | DEC-0048. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0062
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0048 owner approval and transient detail-observation execution |
+| Reviewer role | Maintainer; recording a bounded source-observation result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0048, the master endpoint matrix, and `GB_SCT_BILLS_DETAIL_OBSERVATION_RESULT_2026-08-02.md` |
+| Active phase and authorising decision | DEC-0048 two-request transient Bills detail observation |
+| Checks performed | Made one no-query/no-authentication/no-redirect collection request, applied the exact first-element numeric-ID selection rule only in memory, then made one no-query/no-authentication/no-redirect detail request. Both responses were below 2 MiB and received without a retry. Retained transport metadata and detail field names/types/null state only; no selected identifier, resolved URL, source value, raw body, digest, header value, screenshot, database/file record, or log payload was retained. Removed the transient observer. |
+| Findings | The detail response was a JSON object with the same seven observed top-level field names as the collection response; its detail-specific type pattern is recorded separately. `PersonID`, `ThirdPartyOrganisation`, and unassessed strings leave terms application, personal-data treatment, retention fit, and public-output suitability unresolved. |
+| Outcome | `PASS` within DEC-0048's exact source-observation scope. No capture, proxy, DB1/DB2, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills capture, pass-through, DB1/DB2, beta/public output, and source-content handling remain blocked pending a completed detail handling assessment and later separate packages. |
+| Owner decision required | A documentation-only Bills detail route-handling assessment, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

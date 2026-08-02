@@ -204,11 +204,14 @@ Any next Bills source package must be separately approved and remains limited
 to a transient, value-free detail observation; no capture, pass-through, DB1,
 DB2, frontend, or public step is enabled.
 
-The next proposed decision is DEC-0048:
-[`GB_SCT_BILLS_DETAIL_OBSERVATION_PROPOSAL_DEC0048.md`](../data/gb-sct/GB_SCT_BILLS_DETAIL_OBSERVATION_PROPOSAL_DEC0048.md).
-It proposes at most two transient requests: collection selection of a
-non-retained numeric identifier, then one detail response observation. It is
-not approved and no request may occur unless the owner expressly approves it.
+DEC-0048 then completed that two-request detail observation with `PASS`. The
+selected identifier and all source values were transient; the 229-byte detail
+response result retains field names/types and transport metadata only. It does
+not relax the collection route's restrictive handling state. The result is
+[`GB_SCT_BILLS_DETAIL_OBSERVATION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_DETAIL_OBSERVATION_RESULT_2026-08-02.md).
+The next proposed step is a documentation-only detail route-handling
+assessment; capture, pass-through, DB1, DB2, frontend, and public work remain
+blocked.
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

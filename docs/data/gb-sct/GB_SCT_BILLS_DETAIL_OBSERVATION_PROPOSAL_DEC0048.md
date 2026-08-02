@@ -1,13 +1,15 @@
 # GB-SCT Bills Detail Observation Proposal — DEC-0048
 
-**Status:** Proposed — no source request, source-content retention, proxy,
-capture, DB1, DB2, frontend, or public action authorised
+**Status:** Approved — executed `PASS`; no raw response or source values
+retained
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0048
+**Decision:** DEC-0048, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_DETAIL_OBSERVATION_RESULT_2026-08-02.md`](GB_SCT_BILLS_DETAIL_OBSERVATION_RESULT_2026-08-02.md)
 
 ## 1. Pre-flight and purpose
 
@@ -129,6 +131,7 @@ authentication, frontend, VPS, database, or public work.
 
 ## 7. Owner decision
 
-DEC-0048 is `PROPOSED`. Owner approval is required before either request may
-be made. The approval applies only to the exact two-request transient
-observation contract in this document.
+DEC-0048 is approved and executed `PASS`. It permitted only the exact
+two-request transient observation contract in this document. Its result does
+not authorise any later source, data, infrastructure, account, or public
+action.
