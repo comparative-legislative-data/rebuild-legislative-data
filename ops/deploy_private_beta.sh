@@ -68,7 +68,7 @@ access_migrate_password="$(openssl rand -hex 32)"
 access_runtime_password="$(openssl rand -hex 32)"
 access_pepper="$(openssl rand -hex 48)"
 
-sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d postgres -v ON_ERROR_STOP=1 <<SQL
+sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -v ON_ERROR_STOP=1 <<SQL
 DO \$\$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'cld_gb_sct_access_migrate') THEN
