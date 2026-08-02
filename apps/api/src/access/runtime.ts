@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { Pool } from "pg";
+import { Pool, type PoolClient } from "pg";
 import { Resend } from "resend";
 import { createLogoutProof, createOpaqueToken, digestOpaqueValue, hashPassword, verifyLogoutProof, verifyPassword } from "./crypto.js";
 
@@ -80,23 +80,26 @@ export class AccessRuntime {
     );
     if (existing.rowCount) return;
     const userId = randomUUID();
-    await this.pool.query("begin");
+    const client = await this.pool.connect();
     try {
-      await this.pool.query(
+      await client.query("begin");
+      await client.query(
         "insert into access_control.users (id, email_normalized, state) values ($1, $2, 'BETA_PENDING')",
         [userId, this.config.initialSuperuserEmail]
       );
-      await this.pool.query(
+      await client.query(
         "insert into access_control.memberships (id, user_id, role, layer_id) values ($1, $2, 'SUPERUSER', $3)",
         [randomUUID(), userId, ACCESS_LAYER]
       );
-      const token = await this.createToken(userId, "ACTIVATION");
+      const token = await this.createToken(userId, "ACTIVATION", client);
       await this.sendActivation(this.config.initialSuperuserEmail, token);
-      await this.audit(null, "INITIAL_SUPERUSER_INVITED", userId, "SENT");
-      await this.pool.query("commit");
+      await this.audit(null, "INITIAL_SUPERUSER_INVITED", userId, "SENT", client);
+      await client.query("commit");
     } catch (error) {
-      await this.pool.query("rollback");
+      await client.query("rollback");
       throw error;
+    } finally {
+      client.release();
     }
   }
 
@@ -162,18 +165,21 @@ export class AccessRuntime {
     const userId = await this.consumeToken(token, ["ACTIVATION"]);
     if (!userId) return undefined;
     const passwordHash = await hashPassword(password);
-    await this.pool.query("begin");
+    const client = await this.pool.connect();
     try {
-      await this.pool.query(
+      await client.query("begin");
+      await client.query(
         "insert into access_control.credentials (user_id, password_hash) values ($1, $2) on conflict (user_id) do update set password_hash = excluded.password_hash, changed_at = now(), revoked_at = null",
         [userId, passwordHash]
       );
-      await this.pool.query("update access_control.users set state = 'ACTIVE', activated_at = coalesce(activated_at, now()), updated_at = now() where id = $1", [userId]);
-      await this.audit(userId, "PASSWORD_SET", userId, "SUCCESS");
-      await this.pool.query("commit");
+      await client.query("update access_control.users set state = 'ACTIVE', activated_at = coalesce(activated_at, now()), updated_at = now() where id = $1", [userId]);
+      await this.audit(userId, "PASSWORD_SET", userId, "SUCCESS", client);
+      await client.query("commit");
     } catch (error) {
-      await this.pool.query("rollback");
+      await client.query("rollback");
       throw error;
+    } finally {
+      client.release();
     }
     return this.createSession(userId);
   }
@@ -218,19 +224,22 @@ export class AccessRuntime {
     if (!item) return false;
     let user = await this.pool.query<{ id: string; state: string }>("select id, state from access_control.users where email_normalized = $1", [item.email]);
     const userId = user.rows[0]?.id ?? randomUUID();
-    await this.pool.query("begin");
+    const client = await this.pool.connect();
     try {
-      if (!user.rowCount) await this.pool.query("insert into access_control.users (id, email_normalized, state) values ($1, $2, 'BETA_PENDING')", [userId, item.email]);
-      await this.pool.query("insert into access_control.memberships (id, user_id, role, layer_id) values ($1, $2, 'BETA_USER', $3) on conflict (user_id, role, layer_id) do update set revoked_at = null", [randomUUID(), userId, ACCESS_LAYER]);
-      await this.pool.query("update access_control.beta_applications set decision = 'APPROVED', decided_at = now() where id = $1", [applicationId]);
-      const token = await this.createToken(userId, "ACTIVATION");
+      await client.query("begin");
+      if (!user.rowCount) await client.query("insert into access_control.users (id, email_normalized, state) values ($1, $2, 'BETA_PENDING')", [userId, item.email]);
+      await client.query("insert into access_control.memberships (id, user_id, role, layer_id) values ($1, $2, 'BETA_USER', $3) on conflict (user_id, role, layer_id) do update set revoked_at = null", [randomUUID(), userId, ACCESS_LAYER]);
+      await client.query("update access_control.beta_applications set decision = 'APPROVED', decided_at = now() where id = $1", [applicationId]);
+      const token = await this.createToken(userId, "ACTIVATION", client);
       await this.sendActivation(item.email, token);
-      await this.audit(actorId, "BETA_APPLICATION_APPROVED", userId, "SENT");
-      await this.pool.query("commit");
+      await this.audit(actorId, "BETA_APPLICATION_APPROVED", userId, "SENT", client);
+      await client.query("commit");
       return true;
     } catch (error) {
-      await this.pool.query("rollback");
+      await client.query("rollback");
       throw error;
+    } finally {
+      client.release();
     }
   }
 
@@ -238,9 +247,9 @@ export class AccessRuntime {
     return digestOpaqueValue(value, this.config.pepper);
   }
 
-  private async createToken(userId: string, purpose: "ACTIVATION" | "MAGIC_LINK" | "GUEST_INVITE"): Promise<string> {
+  private async createToken(userId: string, purpose: "ACTIVATION" | "MAGIC_LINK" | "GUEST_INVITE", client: Pool | PoolClient = this.pool): Promise<string> {
     const token = createOpaqueToken();
-    await this.pool.query(
+    await client.query(
       "insert into access_control.one_time_tokens (id, user_id, purpose, token_digest, expires_at) values ($1, $2, $3, $4, $5)",
       [randomUUID(), userId, purpose, this.digest(token), future(TOKEN_MINUTES)]
     );
@@ -264,8 +273,8 @@ export class AccessRuntime {
     return token;
   }
 
-  private async audit(actorId: string | null, action: string, targetId: string, result: string): Promise<void> {
-    await this.pool.query(
+  private async audit(actorId: string | null, action: string, targetId: string, result: string, client: Pool | PoolClient = this.pool): Promise<void> {
+    await client.query(
       "insert into access_control.access_audit (id, actor_user_id, action, target_user_id, result) values ($1, $2, $3, $4, $5)",
       [randomUUID(), actorId, action, targetId, result]
     );

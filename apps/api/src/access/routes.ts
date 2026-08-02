@@ -1,10 +1,11 @@
 import type { FastifyInstance, FastifyRequest } from "fastify";
-import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, genericAcceptedSchema, logoutResultSchema } from "./contracts.js";
+import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, approvalRejectedSchema, approvalResultSchema, genericAcceptedSchema, logoutResultSchema } from "./contracts.js";
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
 const activationRejected = { accepted: false, message: "This activation link is invalid, expired, or has already been used." };
+const approvalRejected = { approved: false, message: "Approval could not be completed. The applicant remains pending." };
 const cookieName = "cld_access_session";
 
 function body(value: unknown): Record<string, unknown> {
@@ -118,11 +119,16 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     return { applications: await runtime.applications() };
   });
 
-  app.post("/auth/admin/applications/:id/approve", async (request, reply) => {
+  app.post("/auth/admin/applications/:id/approve", { schema: { response: { 200: approvalResultSchema, 403: approvalRejectedSchema, 409: approvalRejectedSchema, 502: approvalRejectedSchema } } }, async (request, reply) => {
     const identity = await session(runtime, request);
-    if (!identity?.roles.includes("SUPERUSER")) return reply.code(403).send({ accepted: false });
+    if (!identity?.roles.includes("SUPERUSER")) return reply.code(403).send(approvalRejected);
     const id = requiredText((request.params as Record<string, unknown>).id, 64);
-    if (id) await runtime.approveApplication(identity.userId, id);
-    return reply.send(accepted);
+    if (!id) return reply.code(409).send(approvalRejected);
+    try {
+      if (!await runtime.approveApplication(identity.userId, id)) return reply.code(409).send(approvalRejected);
+      return reply.send({ approved: true });
+    } catch {
+      return reply.code(502).send(approvalRejected);
+    }
   });
 }

@@ -39,6 +39,23 @@ export const logoutResultSchema = {
   }
 } as const;
 
+export const approvalResultSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["approved"],
+  properties: { approved: { const: true } }
+} as const;
+
+export const approvalRejectedSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["approved", "message"],
+  properties: {
+    approved: { const: false },
+    message: { const: "Approval could not be completed. The applicant remains pending." }
+  }
+} as const;
+
 export const accessUnavailableSchema = {
   type: "object",
   additionalProperties: false,
