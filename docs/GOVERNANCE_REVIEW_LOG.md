@@ -770,3 +770,19 @@ Next review due:
 | Affected work blocked | All B3 VPS inspection, V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked pending their respective approvals. |
 | Owner decision required | DEC-0041. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0045
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner approval of DEC-0041 B3 local acceptance |
+| Reviewer role | Maintainer; owner approval is recorded in DEC-0041 |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, B2/B2a records/results, `V4B_B3_LOCAL_ACCEPTANCE_PROPOSAL_DEC0041.md`, and this log |
+| Active phase and authorising decision | V4B B3 read-only local acceptance under DEC-0041 |
+| Checks performed | Confirmed the approved scope has no mutable VPS target and permits only the fixed local checks and restricted durable record stated in DEC-0041. |
+| Findings | The approval closes no public or data gate. It permits evidence gathering only; every mismatched condition remains a stop-and-record result. |
+| Outcome | `PASS` for approval recording and execution boundary; B3 verification is pending. |
+| Affected work blocked | All VPS modification, V4C/public exposure, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall changes, and public claims remain blocked. |
+| Owner decision required | None for DEC-0041's fixed read-only checks; a new decision is required for a mismatch repair or any excluded action. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

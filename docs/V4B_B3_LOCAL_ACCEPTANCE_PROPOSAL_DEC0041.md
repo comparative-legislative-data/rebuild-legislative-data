@@ -1,10 +1,12 @@
 # V4B B3 Local Acceptance Proposal — DEC-0041
 
-**Status:** Proposed — no execution authority
+**Status:** Approved — execution pending
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
+
+**Decision:** DEC-0041, owner approved 2 August 2026
 
 ## 1. Purpose and bounded outcome
 
