@@ -994,3 +994,19 @@ Next review due:
 | Affected work blocked | The proposed observation and every later source/API, proxy, DB1/DB2, authentication, frontend, VPS, and public activity pending the relevant approval. |
 | Owner decision required | DEC-0046. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0059
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0046 owner approval and one-request execution |
+| Reviewer role | Maintainer; recording a bounded source-observation result |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0008, DEC-0044–DEC-0046, the master endpoint matrix, and `GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md` |
+| Active phase and authorising decision | DEC-0046 one-request Bills collection observation |
+| Checks performed | Made one unauthenticated no-query/no-redirect `GET` to the specified collection URL. The 99,823-byte response was below the 2 MiB ceiling and was decoded in memory only. Retained field names/types/counts and transport metadata, not raw bytes, values, headers, digests, screenshots, or payload excerpts. Removed the transient observer after completion. |
+| Findings | The route returned a JSON array with 473 elements and seven observed top-level fields. `PersonID` and `ThirdPartyOrganisation` names require restrictive-default handling pending a field/route assessment. The result does not establish completeness, semantics, stable IDs, or pass-through/capture suitability. |
+| Outcome | `PASS` within DEC-0046 scope. No detail route, retry, capture, DB1/DB2, frontend, account, VPS, email, secret, or public action occurred. |
+| Affected work blocked | Bills detail observation, route handling, pass-through, DB1/DB2, authentication/frontend, and public release require separate packages. |
+| Owner decision required | A separately approved next Bills route-handling or detail-route observation package, if the owner wishes to continue. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

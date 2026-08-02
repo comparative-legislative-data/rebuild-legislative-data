@@ -188,9 +188,11 @@ The same control has an explicit route-addition path for newly discovered or
 newly available relevant endpoints; an addition requires its own documented
 assessment and owner approval before any operational action.
 
-The next proposed operational step is DEC-0046, a one-request, value-free
-observation of the Bills collection route. Its review record is
-[`GB_SCT_BILLS_COLLECTION_OBSERVATION_PROPOSAL_DEC0046.md`](../data/gb-sct/GB_SCT_BILLS_COLLECTION_OBSERVATION_PROPOSAL_DEC0046.md).
+DEC-0046 completed the one-request, value-free observation of the Bills
+collection route with `PASS`. The result establishes only a preliminary
+response/transport shape; `PersonID` and `ThirdPartyOrganisation` field names
+mean restrictive-default route handling still applies. The result is
+[`GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md).
 
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records

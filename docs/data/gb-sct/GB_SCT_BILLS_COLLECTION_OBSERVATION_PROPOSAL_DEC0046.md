@@ -1,12 +1,15 @@
 # GB-SCT Bills Collection Observation Proposal — DEC-0046
 
-**Status:** Proposed — no source request has occurred
+**Status:** Approved — executed `PASS`; no raw response or source values
+retained
 
 **Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0046
+**Decision:** DEC-0046, approved by the project owner on 2 August 2026
+
+**Result:** [`GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md`](GB_SCT_BILLS_COLLECTION_OBSERVATION_RESULT_2026-08-02.md)
 
 ## 1. Purpose
 
@@ -21,7 +24,7 @@ No response bytes or source values become a project artefact.
 
 ## 2. Exact authority requested
 
-DEC-0046 would permit exactly one unauthenticated HTTPS `GET` request:
+DEC-0046 permits exactly one unauthenticated HTTPS `GET` request:
 
 | Field | Authorised value |
 | --- | --- |
@@ -117,5 +120,5 @@ variable, a public/beta account, or a claim of source completeness/currentness.
 
 ## 7. Owner decision
 
-Approve, revise, or reject DEC-0046. Approval permits only the one bounded
+DEC-0046 is approved and executed. It permitted only the one bounded
 `/api/bills` observation and the value-free result record specified above.

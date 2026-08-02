@@ -55,7 +55,7 @@ and silent scope expansion.
 
 | Group | Exact source route form | Pass-through | DB1 | Tier 1/2 position | Priority | Qualification |
 | --- | --- | --- | --- | --- | --- |
-| Bills | `/api/bills` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill identity/title fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_REQUIRED` |
+| Bills | `/api/bills` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` only: observed field names/types include possible identity/title fields; no semantic/field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_ASSESSMENT_REQUIRED` |
 | Bills | `/api/bills/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill detail fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_REQUIRED` |
 | Formal stages | `/api/billstages` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
 | Formal stages | `/api/billstages/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `NOT_STARTED; OBSERVATION_REQUIRED` |
