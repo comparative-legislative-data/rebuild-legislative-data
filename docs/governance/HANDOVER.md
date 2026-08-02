@@ -60,8 +60,9 @@
   was sent. The next acceptance check is the owner using that new link to reach
   the signed-in shell.
 - Next after that acceptance: return to the proposed proxy-only execution
-  package, DEC-0057; it remains unapproved and no proxy/data work may begin
-  until the owner approves it.
+  package, DEC-0057; it is approved only to prepare the exact P2 local
+  implementation package. DEC-0060 is now proposed; no proxy/data work may
+  begin until the owner approves that package.
 
 ## Start here
 
@@ -355,9 +356,10 @@ DEC-0059 is now `APPROVED — EXECUTED PASS` for the private-beta runtime and
 cutover. The owner has exercised beta application, approval, activation email,
 password and magic-link login, password change, logout, and role separation.
 This authorises no source relay, DB1, DB2, research output, or public data
-access. The next data-layer decision remains DEC-0057, the proposed transparent
-upstream proxy-phase execution design; guest invitations remain a later,
-separately unexercised access path.
+access. DEC-0057 now approves the transparent upstream proxy-phase design only
+and authorises preparation of the proposed DEC-0060 local fail-closed catalogue
+package; it does not authorise a source relay. Guest invitations remain a
+later, separately unexercised access path.
 
 ## Repository state at handover
 

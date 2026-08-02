@@ -1330,3 +1330,19 @@ Next review due:
 | Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
 | Owner decision required | DEC-0057 approval is required before proxy implementation; a later bounded test is required if guest invitations are to be released. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0080
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — DEC-0057 approval and proxy-phase implementation-package preparation |
+| Reviewer role | Maintainer; recording the owner-approved design decision and the fail-closed pre-flight position |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0045, DEC-0055, DEC-0056, DEC-0057, the endpoint matrix, and high-volume audit |
+| Active phase and authorising decision | DEC-0057 proxy P0/P2 package preparation only |
+| Checks performed | Confirmed that the accepted beta access foundation is available, that all selected route forms remain subject to route-level qualification, and that no form is currently cleared for an upstream relay. Confirmed the design requires route IDs, allowlisted parameters, no response-body persistence, transparent route limitations, and beta-only access. |
+| Findings | A local catalogue may be constructed safely only if it rejects every source request before network access until a later route qualification decision enables that individual form. This preserves the no-source, no-DB1/DB2 boundary while allowing the transparency/access contract to be tested. |
+| Outcome | `PASS` for DEC-0057 design approval and DEC-0060 proposal preparation. No local implementation, source request, VPS/deployment, cache, database, DB1, DB2, or public action occurred. |
+| Affected work blocked | All upstream relay, source requests, capture, DB1, DB2, research output, deployment, and public access remain blocked pending DEC-0060 approval and later route/package gates. |
+| Owner decision required | DEC-0060 approval is required before local fail-closed catalogue implementation. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

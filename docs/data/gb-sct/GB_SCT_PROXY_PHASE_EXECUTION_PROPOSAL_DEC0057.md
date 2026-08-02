@@ -1,13 +1,14 @@
 # GB-SCT Transparent Upstream Proxy Phase — Execution Proposal (DEC-0057)
 
-**Status:** PROPOSED — documentation only; no proxy, source relay, capture,
-database, cache, account, VPS, or public action authorised
+**Status:** APPROVED — permits preparation of the exact P2 local
+implementation package only; no proxy, source relay, capture, database,
+cache, VPS, or public action authorised
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 2 August 2026
 
-**Decision requested:** DEC-0057
+**Decision:** DEC-0057, approved by the project owner on 2 August 2026
 
 ## 1. Decision requested
 
@@ -140,8 +141,8 @@ catalogue state, not a hidden fallback, cache, inferred result, or DB1 build.
 
 ## 9. Next decision
 
-The owner may approve DEC-0057 after reviewing this proxy-only design. That
-approval would permit preparation of the exact P1/P2 implementation package;
-it would not itself permit a VPS change, secret use, email send, source relay,
-or application implementation. DB1 remains blocked by DEC-0056 until P4 is
-accepted.
+DEC-0057 permits preparation of the exact P2 local implementation package.
+It does not itself permit a VPS change, secret use, email send, source relay,
+or application implementation. The resulting DEC-0060 proposal must be
+explicitly approved before any local implementation. DB1 remains blocked by
+DEC-0056 until P4 is accepted.
