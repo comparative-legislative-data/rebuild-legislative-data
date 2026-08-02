@@ -1,6 +1,6 @@
 # V4B B2 Local Deployment Proposal — DEC-0039
 
-**Status:** Approved — execution pending
+**Status:** Approved — execution `BLOCKED` at deterministic-packaging gate
 
 **Version:** 1.0.0
 
@@ -306,4 +306,6 @@ of its restricted verification result. Approval permits only the private
 Node `v24.18.1` runtime, one runtime-aligned B1 release, and the two specified
 loopback synthetic-shell units, conditional on the required preflight and
 stop rules. It does not permit any excluded system, data, credential, database,
-or public-web action.
+or public-web action. Its execution result is `BLOCKED` in
+`V4B_B2_LOCAL_DEPLOYMENT_RESULT_2026-08-01.md`; no final runtime, release, or
+unit was installed.

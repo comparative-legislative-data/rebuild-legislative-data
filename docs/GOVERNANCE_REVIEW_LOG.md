@@ -307,7 +307,6 @@ Next review due:
 | Affected work blocked | VPS provisioning, database/service/secret creation, deployment, source capture, proxy/DB1 implementation, canonical builds, charts, and public claims remain blocked. |
 | Owner decision required | DEC-0009; then a separately approved exact V4 provisioning proposal. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
-
 ### GOV-REV-0016
 
 | Field | Record |
@@ -690,4 +689,20 @@ Next review due:
 | Outcome | `PASS` for recording the authority and aligned execution boundary; B2 preflight is pending. |
 | Affected work blocked | Any B2 mutation before a passing preflight; B3 acceptance closure; database/secret work; source capture/proxy/DB1/canonical/chart work; Nginx/DNS/firewall/public exposure; and public claims remain blocked pending their respective conditions or approvals. |
 | Owner decision required | None for DEC-0039’s bounded execution; a new decision is required for any stop condition or excluded action. |
+| Next review due | 31 August 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0040
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 1 August 2026 |
+| Review type | Triggered — DEC-0039 B2 package stopped at target-host deterministic-packaging gate |
+| Reviewer role | Maintainer; DEC-0039 owner approval is recorded |
+| Documents and records reviewed | PROJECT_DESIGN.md, HANDOVER.md, GOVERNANCE.md, AGENTS.md, DECISION_REGISTER.md, RISK_AND_DEPENDENCY_REGISTER.md, V4B_B2_LOCAL_DEPLOYMENT_PROPOSAL_DEC0039.md, V4B_B2_LOCAL_DEPLOYMENT_RESULT_2026-08-01.md, and this log |
+| Active phase and authorising decision | V4B B2 under DEC-0039; deployment outcome BLOCKED |
+| Checks performed | Confirmed that host/path/port/capacity preflight passed; Node v24.18.1 was signature/checksum-verified in VPS staging; source/dependencies/tests/capability scan passed under that runtime; and the second package build produced a different manifest and archive digest. Confirmed post-failure removal of the project staging path, absence of B2 release/runtime/unit/listener, and unchanged protected PostgreSQL state/digests. |
+| Findings | The mismatch defeats the required release-identity evidence. It is not safe to select one archive, relabel the result, or inspect/change package code under DEC-0039’s metadata-only alignment scope. RSK-0026 records the failure mode. |
+| Outcome | BLOCKED for B2 deployment; PASS for the stop rule, evidence retention, and project-target-only cleanup. |
+| Affected work blocked | B2 package-code investigation/fix, final runtime/release installation, unit installation/start, B3 acceptance, database/secret work, source capture/proxy/DB1/canonical/chart work, Nginx/DNS/firewall/public exposure, and public claims. |
+| Owner decision required | A new narrowly scoped corrective packaging proposal. |
 | Next review due | 31 August 2026, or earlier if a review trigger occurs. |
