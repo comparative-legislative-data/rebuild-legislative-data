@@ -1282,3 +1282,19 @@ Next review due:
 | Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
 | Owner decision required | No decision for owner acceptance of the deployed activation flow; DEC-0057 approval is required before proxy implementation. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0077
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 2 August 2026 |
+| Review type | Triggered — owner-observed DEC-0059 activation UX correction |
+| Reviewer role | Maintainer; recording a bounded client/runtime correction within the existing private-beta package |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, DEC-0043, DEC-0058, and DEC-0059 |
+| Active phase and authorising decision | DEC-0059 private-beta access runtime/cutover; owner instruction to proceed with the described activation and style correction |
+| Checks performed | Confirmed the observed account state: password creation had issued a session but the client retained its activation-token view. Verified the corrected session-confirmed transition, original access-shell styling, deployment-script session-pepper preservation, target-host checks, API/Nginx readiness, active services, and public HTTPS. |
+| Findings | The correction affects no source, DB1, DB2, research-data route, external font, pilot component, pilot data, or account-policy semantics. Existing valid sessions are retained across this routine release. |
+| Outcome | `PASS` for the bounded correction. DEC-0059 remains `EXECUTED PARTIAL` until the owner confirms normal login and the signed-in shell. |
+| Affected work blocked | Source relay, DB1, DB2, research output, and public data access remain blocked. DEC-0057 remains proposed. |
+| Owner decision required | No new decision for final owner login/shell acceptance; DEC-0057 approval remains required before proxy implementation. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

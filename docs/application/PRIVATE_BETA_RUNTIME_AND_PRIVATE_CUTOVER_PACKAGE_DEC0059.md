@@ -167,3 +167,25 @@ This is an infrastructure/runtime pass, not a research-data release or the
 package's complete user-journey acceptance. The outstanding owner acceptance
 check is to use the single-superuser activation flow and confirm the private
 beta shell.
+
+## 10. Activation transition and beta-shell correction — 2 August 2026
+
+The owner acceptance attempt established that password creation and session
+issuance succeeded, but the client retained the consumed `activate` query
+state and therefore continued to render the set-password form. The correction
+now clears that state and the URL only after `/auth/me` confirms the new
+server-side session. It leaves the form in place with a truthful recovery
+message if that confirmation is absent.
+
+The same owner-approved correction refreshed the access-only shell's visual
+system using an original dark-navy and restrained-gold treatment. A read-only
+pilot review informed the broad visual direction only: no pilot component,
+route, data, statistics, external font, or operational dependency was copied.
+The deployed revision is `21723a098c52c00c432a072eaae0d66765d0241d`.
+The target-host verification, loopback API/Nginx readiness, active service
+checks, and public HTTPS check passed. The server-side session pepper was
+preserved during this routine release, so already valid sessions are not
+invalidated by the deployment.
+
+The final owner acceptance check remains: refresh the public site and verify
+that a normal password login reaches the signed-in private-beta shell.
