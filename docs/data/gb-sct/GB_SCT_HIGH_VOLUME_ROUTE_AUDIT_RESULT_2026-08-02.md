@@ -35,7 +35,25 @@ The observed official-report payloads have no pagination field or link in their
 reported structures. This is evidence of the observed response shape, not a
 published API contract claim.
 
-## 3. Extreme-volume route finding
+## 3. Completed annual-response volume samples
+
+The following complete reads were sent to a null sink; only HTTP status,
+response size, and elapsed transfer time were retained. They show operational
+variation between years, not historical coverage or content completeness.
+
+| Route form / year | HTTP status | Bytes | Transfer time |
+| --- | ---: | ---: | ---: |
+| Committee official report / 1999 | 200 | 47,487,299 | 5.60 s |
+| Committee official report / 2025 | 200 | 150,496,374 | full structural audit; elapsed time not retained |
+| Committee official report / 2026 | 200 | 42,451,832 | 4.47 s |
+| Plenary official report / 1999 | 200 | 35,293,021 | 4.05 s |
+| Plenary official report / 2025 | 200 | 123,955,194 | full structural audit; elapsed time not retained |
+| Plenary official report / 2026 | 200 | 64,879,056 | 8.35 s |
+| Votes on motions / 2011 | 200 | 13,288,642 | full structural audit; elapsed time not retained |
+| Votes on motions / 2026 | 200 | 19,441,521 | 2.50 s |
+| Questions / 2026 documented year form | 200 | 6,526,940 | 2.16 s |
+
+## 4. Extreme-volume route finding
 
 The broad `/api/motionsquestionsanswersevents` collection did not complete a
 full response audit within the extended execution window. Together with its
@@ -46,12 +64,13 @@ retired from scope.
 
 The whole `/api/motionsquestionsanswersquestions` and
 `/api/motionsquestionsanswerssupports` collections also did not complete a
-full-body metadata audit in the current execution environment. For questions,
-the annual forms tested earlier each returned HTTP 200 but exceeded the initial
-2 MiB triage ceiling. These are transparent non-completion findings, not an
-availability, coverage, or semantic conclusion.
+full-body metadata audit in the current execution environment. The documented
+2026 questions-year form did complete at 6.5 MB, so the problem is the
+unfiltered questions collection rather than that annual form. These are
+transparent non-completion findings, not an availability, coverage, or
+semantic conclusion.
 
-## 4. Small MQA detail and link-form audit
+## 5. Small MQA detail and link-form audit
 
 | Route form | Observed result | Limitation |
 | --- | --- | --- |
@@ -61,7 +80,7 @@ availability, coverage, or semantic conclusion.
 | `/api/motionsquestionsanswerseventlinks?mainUniqueId=:id` | HTTP 200 array; one observed element; the same three link fields. | Same limitation. |
 | `/api/motionsquestionsanswerseventlinks?parentUniqueId=:id` | HTTP 200 array; one observed element; the same three link fields. | Same limitation. |
 
-## 5. Implication for later DB1 work
+## 6. Implication for later DB1 work
 
 The project should not design high-volume routes as “poll and overwrite”. A
 future approved DB1 package needs, at minimum: route/year work units where the
@@ -70,7 +89,7 @@ explicit incomplete/failed-run states; bounded retries; independent
 reconciliation/lookback rules; and retained source/retrieval timestamps. That
 is a future design requirement, not implementation authority.
 
-## 6. Next work
+## 7. Next work
 
 Complete the remaining MQA motion/event/question/support detail forms where a
 safe transient identifier can be obtained, then audit older/current report and

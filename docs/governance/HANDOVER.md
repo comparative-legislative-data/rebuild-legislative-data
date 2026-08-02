@@ -32,6 +32,10 @@
 - The votes-on-motions detail route shows the same empty-object pattern for a
   transient nested detail identifier; its top-level annual-response identifier
   returned HTTP 404. Neither form supports a usable detail-content claim.
+- Completed annual volume samples now cover 1999, 2025, and 2026 official
+  reports, plus 2011/2026 votes and the 2026 questions-year form. The annual
+  questions form is 6.5 MB; the unfiltered questions/supports routes—not the
+  documented annual form—remain the operational outliers.
 - DEC-0056 confirms the binding implementation order: complete and beta-accept
   the approved upstream pass-through phase before any DB1 capture, schema, or
   mirror operation. Reconnaissance and non-operational documentation may still
