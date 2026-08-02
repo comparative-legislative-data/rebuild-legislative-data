@@ -266,6 +266,10 @@ It creates no operational data asset and flags the affected routes for later
 handling assessment. The next normal subcohort is party roles, government
 roles, committees, and committee taxonomies/links.
 
+Updateability is now a required reconnaissance dimension. The first limited
+transport-metadata check is in
+[`GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md): it establishes no usable source validator on two small routes and no conclusion on the timed-out high-volume route. A later DB1 design must not assume source-supplied change detection.
+
 Repository documentation is organised from [`docs/README.md`](../README.md):
 active governance, planning, data, infrastructure, and application records
 are separate; completed V4A implementation records remain in the infrastructure

@@ -46,6 +46,12 @@ Each report records the endpoints inspected, structural/operating findings,
 known restrictions or gaps, and the proposed next cohort. The owner may
 redirect priority at any point.
 
+Each route-family report must also record an **updateability profile**: any
+published update/change statement; observed HTTP validators/cache/rate signals;
+candidate source date/version fields; detectable correction/deletion limits;
+and the resulting future mirror-polling uncertainty. This is reconnaissance
+metadata, not an authorisation to poll or mirror the source.
+
 ## 3. Transparency and data boundary
 
 Exploratory request responses are transient working material, not project data
