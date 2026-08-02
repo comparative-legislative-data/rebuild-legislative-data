@@ -21,6 +21,10 @@
   150 MB and a plenary report about 124 MB. The extended-route method and
   findings are in
   [`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](../data/gb-sct/GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md).
+- Full MQA audits now establish a 110 MB, 84,634-record motions response and
+  a 3.6 MB programme-motion response. Whole questions, supports, and events
+  still require a lower-cost operational strategy; their non-completion is
+  recorded rather than hidden.
 - DEC-0056 confirms the binding implementation order: complete and beta-accept
   the approved upstream pass-through phase before any DB1 capture, schema, or
   mirror operation. Reconnaissance and non-operational documentation may still
