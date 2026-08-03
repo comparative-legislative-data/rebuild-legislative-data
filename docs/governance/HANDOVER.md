@@ -5,6 +5,15 @@
 
 ## Latest implementation update — 3 August 2026
 
+- DEC-0068 is complete as an evidence-only handling assessment of the 24
+  non-Bills route forms blocked by existing handling concerns. They now reduce
+  to four shared policy workstreams—person/time-varying relationships,
+  `Notes`, committee contact/description, and MQA `IntroText`—without
+  classifying or enabling any route. See
+  [`GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md).
+  The next proposed step is a shared handling-policy design; contract and
+  operational work remain separate.
+
 - DEC-0062 is approved and has passed its local implementation stage. Exactly
   three small reference collections now have fixed, private-beta-only,
   no-retention source-pass-through code and pre-action provenance/limitation

@@ -1,6 +1,8 @@
 # GB-SCT Remaining Route Handling-Batch Proposal — DEC-0068
 
-**Status:** PROPOSED — evidence-only; no route is enabled
+**Status:** APPROVED — EXECUTED PASS; no route is enabled
+
+**Result:** [`GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md`](GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md)
 
 ## Decision requested
 

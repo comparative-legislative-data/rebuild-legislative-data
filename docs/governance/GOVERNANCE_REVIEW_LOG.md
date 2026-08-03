@@ -1618,3 +1618,19 @@ Next review due:
 | Affected work blocked | All three DEC-0066 candidates remain unavailable. MQA Event Subtypes, the four `Notes`-bearing collections, all other selected forms, DB1, and DB2 remain blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0066. |
 | Next review due | On DEC-0066 decision/result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0098
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0068 evidence-only handling-batch execution |
+| Reviewer role | Maintainer; consolidating recorded handling concerns without asserting source-content classifications |
+| Documents and records reviewed | DEC-0068 proposal; existing member/representation, roles/committees, MQA, and contextual-reference reconnaissance; DEC-0061; DEC-0067; and DEC-0008. |
+| Active phase and authorising decision | DEC-0068 repository-only route-handling assessment |
+| Checks performed | Mapped exactly the 24 named non-Bills forms to recorded person/relationship, `Notes`, committee contact/description, or MQA `IntroText` concerns. Kept unknown content, terms, route conditions, and classification explicit. |
+| Findings | The 24 forms reduce to four cross-route workstreams. This improves planning visibility but supplies no evidence that any route may be exposed, retained, or interpreted. |
+| Outcome | `PASS` — evidence-only handling consolidation. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | All 24 forms remain unavailable. The contract and operational backlogs, DB1, and DB2 remain separately blocked. |
+| Owner decision required | Approve a later shared handling-policy design proposal before any source-inspection or route-qualification package. |
+| Next review due | On that shared policy decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
