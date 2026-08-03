@@ -1426,3 +1426,19 @@ Next review due:
 | Affected work blocked | Deployment and owner source-action acceptance remain pending their approved next steps. DB1, DB2, capture, canonical variables, research output, and public data access remain independently blocked. |
 | Owner decision required | None for the already approved DEC-0062 preflight/deployment sequence; stop if that project-only check finds a required non-project change. |
 | Next review due | On VPS preflight/deployment outcome, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0086
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0062 project-only VPS preflight and release |
+| Reviewer role | Maintainer; recording an approved deployment result without source retrieval |
+| Documents and records reviewed | DEC-0062 local result, two project service templates/release script, project-only preflight output, named site upstreams, target-runtime verification output, and post-release health/boundary checks |
+| Active phase and authorising decision | DEC-0062 private two-service deployment |
+| Checks performed | Confirmed active isolated cluster/two project services and loopback listeners; inspected only the named `legislativedata.org` upstreams; passed Nginx syntax and local/public shell checks. Built/tested/package-verified release `45e9cea` on the target runtime, replaced only the two project services, confirmed access readiness, then confirmed the unauthenticated source endpoint returns 403 before any upstream request. |
+| Findings | The release is contained in the approved project namespace. The initial readiness probes while API startup was in progress failed closed, then the bounded readiness loop reached `ACCESS_CONTROL_READY`. No source endpoint was requested with credentials. |
+| Outcome | `PASS` — project-only VPS deployment complete. No source response, database write/migration, DB1, DB2, cache, email, Nginx write/reload, Cloudflare, public data access, or shared-host change occurred. |
+| Affected work blocked | Owner source-action acceptance remains pending. DB1, DB2, capture, canonical variables, research output, and public data access remain separately blocked. |
+| Owner decision required | No new decision for DEC-0062 acceptance; owner observation of the three already-approved actions is required. |
+| Next review due | On owner acceptance outcome, or 1 September 2026, whichever is earlier. |

@@ -17,6 +17,12 @@
   passes, release only the existing loopback API/web services using the new
   no-database/no-Nginx-change script, then obtain owner beta acceptance of the
   three visible source actions one at a time.
+- The VPS preflight and project-only release have now passed. The isolated
+  cluster and two loopback services remain healthy, the named Nginx upstreams
+  are unchanged, and the public shell returns HTTP 200. No source request was
+  made during deployment. The next action is owner testing of the three
+  disclosed source actions one at a time; see
+  [`GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md).
 
 ## Latest reconnaissance update — 2 August 2026
 
