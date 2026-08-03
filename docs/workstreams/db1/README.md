@@ -98,11 +98,13 @@ collections while deliberately leaving the D3 interface unchanged. A later
 D4B proposal would decide whether the expanded capture/projection history is
 suitable for a proxy-aligned DB1 catalogue.
 
-D4A is now deployed. Its [initial result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
-records one successful three-route cycle: Bill Types is `UNCHANGED` against
-D2, while Bill Stage Types and Sessions correctly begin at `INITIAL`. The
-daily timer is active, but D4A remains open until its first independently
-scheduled cycle completes.
+D4A has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
+records an initial three-route cycle and a repaired immediate verification
+cycle, with all later comparisons `UNCHANGED`; the daily timer is active. The
+record also preserves a false structural-drift positive caused by JSON-object
+key order, the timer pause, the code correction, and the successful corrected
+verification. The next DB1 work is proposal-only D4B, not an automatic source
+or interface expansion.
 
 ## 6. Detailed records
 

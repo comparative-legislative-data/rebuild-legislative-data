@@ -1,7 +1,7 @@
 # GB-SCT DB1 Reference-Cohort Reconciliation Result — DEC-0078
 
-**Status:** Initial cycle passed — first scheduled-cycle verification pending
-**Completed to date:** 3 August 2026
+**Status:** Passed — initial and immediate verification cycles complete; daily timer active
+**Completed:** 3 August 2026
 **Authority:** DEC-0078, owner-approved 3 August 2026
 
 ## Outcome to date
@@ -57,20 +57,48 @@ left retained evidence but no timer.
   for the D4A role, active timer/API/web services, and unchanged valid Nginx
   syntax.
 
+## Correction and acceptance
+
+The first immediate verification run temporarily marked Bill Stage Types and
+Sessions `BLOCKED_BY_SOURCE_DRIFT` despite their raw SHA-256 digests and byte
+counts being exactly unchanged. This was a contained false positive: PostgreSQL
+`jsonb` reordered equivalent structural-signature object keys and the original
+comparison treated serialization order as meaning.
+
+The D4A timer was disabled immediately. The comparison now canonicalises
+signature keys and their type lists before comparison; a dedicated regression
+test proves that equivalent key orders compare equal. The repaired worker was
+deployed without changing the API/web services, then made one correction
+verification cycle. All three fixed routes were `UNCHANGED`:
+
+| Fixed route | Correction-verification state | Manifest ID | Raw SHA-256 | Bytes | Observed (UTC) |
+| --- | --- | --- | --- | ---: | --- |
+| `gb-sct.bill-types.collection` | `UNCHANGED` | `6a414dbf-973a-4aa5-9aae-b217fc18c1e3` | `fad9e9fd1a754504e63e18d2057d6b43db5125f79d710e5847b496bdce99014b` | 189 | 2026-08-03 19:25:56 |
+| `gb-sct.bill-stage-types.collection` | `UNCHANGED` | `2315af79-5903-4540-904c-0eb3f95e99c4` | `2f72d044faa8668ebb3bcd759e144fe93d8fe926029906a2e79041ff03e78e9d` | 1,993 | 2026-08-03 19:26:02 |
+| `gb-sct.sessions.collection` | `UNCHANGED` | `e94719fb-f686-48ce-b652-d22f3b532ac3` | `8dc47832f3331e4b0f3d4e44241e746c007ff0cc25c69365724152368c422249` | 650 | 2026-08-03 19:26:07 |
+
+Both the false-positive observation and the correction deployment remain in
+the append-only DB1 evidence. The timer was re-enabled only after the corrected
+cycle achieved `SUCCEEDED`. Recess is not treated as proof of future source
+stability; it only explains why waiting for the next clock event added no
+verification value to this bounded implementation package.
+
 ## Remaining boundary and next gate
 
-D4A has not yet proved recurrence. It remains open until the first independent
-03:17 UTC scheduled cycle is recorded and compared. No user-facing DB1
-catalogue, additional projection, raw-object view/download, generic query,
-DB2 variable, chart, public data access, or wider route is created or
-authorised.
+D4A has proved its bounded initial and repeat comparison pipeline and has an
+active daily 03:17 UTC timer. A future timer failure, source-drift state, or
+unexpected data/host behaviour must be reviewed as an operational event; it
+does not reopen or enlarge the completed D4A implementation scope. No
+user-facing DB1 catalogue, additional projection, raw-object view/download,
+generic query, DB2 variable, chart, public data access, or wider route is
+created or authorised.
 
 ## What next
 
-**No new approval required within DEC-0078:** inspect and record the first
-scheduled-cycle result after 03:17 UTC on 4 August 2026. If it passes, close
-D4A and prepare (but do not implement) a separately approved D4B
-reference-cohort projection/catalogue proposal.
+**Proposed documentation-only next step:** prepare D4B, a
+reference-cohort projection/catalogue proposal. It may use the D4A record as a
+declared constraint but does not authorise a new source request, capture,
+projection, interface, download, or DB2 implementation.
 
 ## Related records
 

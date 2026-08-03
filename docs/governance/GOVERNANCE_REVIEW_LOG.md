@@ -2018,3 +2018,35 @@ Next review due:
 | Affected work blocked | Any route outside the fixed cohort; DB1 interface/download expansion; generic access; DB2; charts; research claims; public data access; and shared-host change remain blocked. |
 | Owner decision required | None to inspect/record the first scheduled D4A cycle under DEC-0078. A separate decision remains required for D4B or any scope change. |
 | Next review due | On the first scheduled-cycle outcome, a D4A stop condition, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0123
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner-approved immediate D4A verification amendment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0078 proposal/result; decision register; GOV-REV-0122. |
+| Active phase and authorising decision | DEC-0078 D4A, amended by the owner's instruction to verify immediately rather than wait for the first timer event. |
+| Checks performed | Retained the fixed three-route/no-query/serial/no-retry/timeout/body-cap boundary. The amendment adds exactly one three-request verification cycle; it changes no source host/path, data class, retention/access class, target, role, service, timer cadence, interface, or public claim. |
+| Findings | The timer remains useful for ongoing reconciliation, but it need not delay proof that a second observation is recorded and compared. Parliamentary recess is not treated as proof of unchanged source data. |
+| Outcome | `PASS — IMMEDIATE VERIFICATION AUTHORISED`. |
+| Affected work blocked | All routes outside the fixed cohort; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
+| Owner decision required | None for this one amended verification cycle. Any further non-scheduled cycle or scope change requires an explicit decision. |
+| Next review due | On immediate-verification outcome, a D4A stop condition, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0124
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0078 immediate verification, correction, and closure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0078 proposal/result; local regression test/build/capability/package evidence; correction deployment; metadata-only target results; decision register; handover; and GOV-REV-0122–0123. |
+| Active phase and authorising decision | DEC-0078 D4A reference-cohort reconciliation pilot. |
+| Checks performed | The immediate repeat found identical raw digests/byte counts but false structural drift for two routes. The timer was disabled; the stored false-positive evidence was retained; comparison canonicalisation and an order-independence regression test passed; the worker-only correction deployed; and one final fixed three-route repeat returned `UNCHANGED` for all routes before timer re-enable. API/web services remained active and unchanged. |
+| Findings | The false drift was a project comparison bug, not a source change. D4A now proves fixed-route repeat capture/comparison and an active daily timer, but not general API freshness, completeness, broad route coverage, or a generic mirror. |
+| Outcome | `PASS — DEC-0078 CLOSED`. |
+| Affected work blocked | All routes outside the fixed cohort; DB1 interface/download expansion; generic access; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
+| Owner decision required | A separate decision is required before D4B or any scope expansion. |
+| Next review due | Before D4B proposal, on a D4A operational/drift event, or 1 September 2026, whichever is earlier. |

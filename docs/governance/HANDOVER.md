@@ -60,10 +60,12 @@ proxy and DB1 are independent data pipes sharing only the
 application/authentication gateway. Read its [result](../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
 before any proposed next DB1 work.
 
-The current package is [DEC-0078](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md): an owner-approved three-route
-reference-cohort, daily reconciliation pilot. Its [initial cycle](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
-passed; the first scheduled 03:17 UTC cycle remains the closure gate. DB1
-interface/download expansion, DB2, and research release remain excluded.
+[DEC-0078](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md)
+has passed as the bounded three-route reference-cohort reconciliation pilot.
+Its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
+records the initial/repeat observations, false-positive correction, and active
+03:17 UTC timer. The next DB1 step is a D4B proposal only; interface/download
+expansion, DB2, and research release remain excluded.
 
 ## Documentation hygiene
 

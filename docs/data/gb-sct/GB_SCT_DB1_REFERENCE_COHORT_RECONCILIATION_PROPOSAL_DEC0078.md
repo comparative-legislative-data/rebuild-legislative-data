@@ -1,11 +1,16 @@
 # GB-SCT DB1 Reference-Cohort Reconciliation Pilot — DEC-0078
 
-**Status:** Approved — deployed; initial cycle passed; scheduled-cycle verification pending
+**Status:** Approved — executed pass; daily timer active
 **Version:** 1.0.0
 **Prepared:** 3 August 2026
 **Decision requested:** DEC-0078
 
-**Decision:** Approved by the project owner on 3 August 2026.
+**Decision:** Approved by the project owner on 3 August 2026. The owner also
+authorised one immediate fixed-route verification cycle on 3 August rather
+than waiting for the first 03:17 UTC timer event. After that cycle exposed a
+false project-side structural-drift positive, a contained correction
+verification used the same three-request envelope; it changed no route,
+source, retention, access, or interface scope.
 
 ## 1. Decision requested
 
@@ -18,8 +23,9 @@ reference collections:
 | `gb-sct.bill-stage-types.collection` | `GET https://data.parliament.scot/api/billstagetypes` | One | One per completed daily cycle |
 | `gb-sct.sessions.collection` | `GET https://data.parliament.scot/api/sessions` | One | One per completed daily cycle |
 
-The package would make one controlled initial run and then enable one
-project-owned, serial daily reconciliation run at a fixed UTC time. Each run
+The package makes one controlled initial run, one owner-authorised immediate
+verification run, and then enables one project-owned, serial daily
+reconciliation run at a fixed UTC time. Each run
 would make at most these three no-query requests: no other path, parameter,
 identifier, page, host, redirect target, retry, or discovery action is
 permitted. The existing D3 private preview remains pinned to its named D2
@@ -59,11 +65,11 @@ analytical use.
 | Source and exact request scope | Only the three HTTPS `GET` requests in section 1, fixed host/path, no parameters, serially. |
 | Purpose and expected evidence | Prove append-only daily reconciliation for a small declared cohort: manifest/run history, raw digest comparison, capture integrity, and visible changed/unchanged/failed/partial/block state. No analytical claim. |
 | Preconditions | DEC-0008 retention policy; DEC-0045 inventory; DEC-0061 reference-cohort evidence; DEC-0073 DB1 plan; DEC-0075–DEC-0077 passed results; and the existing route-level published-basis/handling evidence. |
-| Request controls | Initial run: maximum three requests. Each later cycle: maximum three requests, one per named route, serial, no retry, no redirect, 20-second total timeout per request, 1 MiB body cap per response, and at least five seconds between requests. A non-2xx response, invalid/non-JSON content type, empty body, cap breach, redirect, timeout, or transport failure records that route as failed and makes no second request. |
+| Request controls | Initial and immediate verification runs: maximum three requests each. Each later scheduled cycle: maximum three requests, one per named route, serial, no retry, no redirect, 20-second total timeout per request, 1 MiB body cap per response, and at least five seconds between requests. A non-2xx response, invalid/non-JSON content type, empty body, cap breach, redirect, timeout, or transport failure records that route as failed and makes no second request. |
 | Capture and manifest | Store successful unaltered bytes by SHA-256 in the project DB1 raw-object path; append a manifest entry for every attempted route. An unchanged digest may reference the existing raw object but must still create a new manifest/run observation. Failed attempts retain non-content manifest/audit metadata only. |
 | Handling and retention | `RESTRICTED_PROJECT` raw content and DB1 records; no new raw-byte audience. Retain according to DEC-0008 and revisit on rights, correction, withdrawal, privacy, or source-drift trigger. |
 | Schema and drift checks | Require a non-empty top-level JSON array. Record observed top-level key/type signatures and compare them with the prior completed capture of the same route. A difference is `BLOCKED_BY_SOURCE_DRIFT` for any affected future projection/interface work; it is not coerced, mapped, or silently ignored. |
-| Completion criteria | A passing initial cycle, an enabled contained schedule, and one independently executed subsequent daily cycle with complete manifest/digest/comparison evidence. The result must show whether every route was changed, unchanged, failed, partial, or blocked within its declared retrieval scope. |
+| Completion criteria | Passing initial and immediate verification cycles, an enabled contained schedule, and complete manifest/digest/comparison evidence. The result must show whether every route was initial, changed, unchanged, failed, partial, or blocked within its declared retrieval scope. |
 | Containment and rollback | Use only the project DB1 database/raw path and the existing project application host. On a stop condition, disable only the D4A scheduler, preserve successful raw objects and non-content audit records, restrict access if required, and leave D2/D3 and other services untouched. |
 | Explicit prohibitions | No additional route, query, detail endpoint, pagination, identifier/year discovery, retry, source substitution, proxy use, user-facing DB1 expansion, raw download, generic database access, DB2, chart, public release, Nginx/DNS/firewall/shared-service change, or new listener. |
 | Owner decision | Pending. Approval must explicitly cover the recurring daily source requests and the isolated scheduler/resource boundary. |
@@ -87,7 +93,7 @@ The D4A scheduler must use a non-overlap lock. If an earlier D4A cycle is
 still running, it records `SKIPPED_OVERLAP` without making source requests and
 does not queue a catch-up run. That is a failure/coverage signal, not a silent
 retry. The schedule begins only after a passing initial cycle and runs once per
-24-hour period at **03:17 UTC**. Its exact timer/unit implementation
+24-hour period at **03:17 UTC** after the immediate verification cycle. Its exact timer/unit implementation
 must be project-owned, constrained to this command/configuration, and leave
 the current API/web services and all unrelated VPS services unchanged.
 
