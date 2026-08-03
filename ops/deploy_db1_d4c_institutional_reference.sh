@@ -100,7 +100,7 @@ printf 'CLD_DB1_DATABASE_URL=postgresql://cld_gb_sct_d4c_runner:%s@127.0.0.1:543
 chown root:cld-gb-sct "$d4c_env"
 chmod 0640 "$d4c_env"
 
-sed "s#RELEASE_ID#${release_id}#g" "$staging/source/ops/systemd/cld-gb-sct-db1-d4c.service.template" > "$d4c_unit"
+sed -e "s#releases/RELEASE_ID#releases/${release_id}#g" -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" "$staging/source/ops/systemd/cld-gb-sct-db1-d4c.service.template" > "$d4c_unit"
 cp "$staging/source/ops/systemd/cld-gb-sct-db1-d4c.timer.template" "$d4c_timer"
 systemctl daemon-reload
 systemctl start cld-gb-sct-db1-d4c.service
