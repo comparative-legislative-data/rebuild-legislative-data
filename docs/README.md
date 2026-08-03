@@ -1,43 +1,59 @@
-# Documentation guide
+# Comparative Legislative Data
 
-This is the entry point for current project documentation. Completed work is
-preserved under [`archive/`](archive/); it is evidence, not the current
-instruction set.
+Comparative Legislative Data is research infrastructure for transparent,
+reproducible legislative data. The first legislature is the Scottish
+Parliament (`GB-SCT`). The project is designed so that a researcher can tell
+what was obtained, from where, when, how it was transformed, what has been
+validated, and what remains uncertain.
 
-## Read first
+The project does not present a convenient interface as proof of data quality.
+Each published layer must retain its own provenance, verification, limitations,
+and claim boundary. The governing standard is the
+[project design](governance/PROJECT_DESIGN.md).
 
-1. [Project design](governance/PROJECT_DESIGN.md) — research standards,
-   provenance, validation, and claim discipline.
-2. [Handover](governance/HANDOVER.md) — current state, boundaries, and next
-   owner decision.
-3. [Decision register](governance/DECISION_REGISTER.md) — approved, open, and
-   closed decisions.
-4. [Risk and dependency register](governance/RISK_AND_DEPENDENCY_REGISTER.md)
-   — current blockers and controls.
+## The programme in three workstreams
 
-## Current work areas
+The first release programme consists of three deliberately separate
+mini-projects. They are sequenced because each creates a different kind of
+value and a different kind of research claim.
 
-| Area | Current purpose | Start with |
-| --- | --- | --- |
-| [Governance](governance/) | Governing baseline, decisions, risks, review, and handover. | [Handover](governance/HANDOVER.md) |
-| [Planning](planning/) | Active phase-level sequencing. | [Phase A plan](planning/PHASE_A_PLAN.md) |
-| [Data — GB-SCT](data/gb-sct/) | Approved scope, current route controls, and the next DB1 planning gate. | [GB-SCT guide](data/gb-sct/README.md) |
-| [Infrastructure](infrastructure/) | Current VPS isolation and deployment controls. | [Current VPS plan](infrastructure/CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md) |
-| [Application](application/) | Current private-beta application boundary. | [Application status](application/README.md) |
-| [Archive](archive/) | Completed implementation, reconnaissance, and superseded planning records. | [Archive guide](archive/README.md) |
+| Workstream | Purpose | Current status | Start here |
+| --- | --- | --- | --- |
+| Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Not started; a new planning/implementation proposal is required. | [DB1 narrative](workstreams/db1/README.md) |
+| DB2 canonical variables | Create validated Tier 1/2 research variables, codebooks, downloads, and later charts from declared DB1 inputs. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
+
+The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
+upstream material at request time; DB1 will be a retained, versioned,
+source-faithful projection; DB2 will be a versioned research dataset with
+explicit variable definitions and validation. No layer may be described as
+another.
 
 ## Current programme position
 
-The private, no-retention upstream proxy MVP is closed and retained as an
-accepted application capability. It is not a dataset, capture, DB1, DB2, or
-research release. The next proposed programme step is DB1 planning under the
-existing approved three-layer design; it requires a new owner decision before
-any capture, database, or source-data action.
+The proxy MVP is the only completed data-access workstream. It is private,
+no-retention access to source-style routes and direct source URLs; it is not a
+dataset, capture, DB1, DB2, export, chart, or research release. The next
+proposed programme step is DB1 planning. It needs a new owner decision before
+any source-data capture, database change, or implementation.
 
-## Operating rule
+## How to use these documents
 
-Keep upstream relay, DB1 capture/projection, DB2 canonical variables,
-infrastructure, application access control, and public release distinct. New
-active documents belong in the area governing the live decision or resource.
-Move completed work to `archive/` with its audit trail intact; never delete it
-merely to shorten the reading path.
+1. Read the relevant [workstream narrative](workstreams/) for the human
+   account: purpose, evidence, decisions, implementation, gaps, legacy issues,
+   and review approach.
+2. Follow its links to current technical controls and detailed evidence only
+   where needed.
+3. Use [governance](governance/) for the authoritative decision, risk, and
+   handover record; use [archive](archive/) for completed or superseded
+   implementation evidence.
+
+## Supporting areas
+
+| Area | Purpose | Start with |
+| --- | --- | --- |
+| [GB-SCT data controls](data/gb-sct/) | Source scope, route controls, handling, volume, and updateability evidence. | [GB-SCT guide](data/gb-sct/README.md) |
+| [Application](application/) | Private-beta access-control boundary. | [Application status](application/README.md) |
+| [Infrastructure](infrastructure/) | VPS isolation, deployment, and operational controls. | [Current VPS plan](infrastructure/CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md) |
+| [Governance](governance/) | Decisions, risks, reviews, and handover. | [Handover](governance/HANDOVER.md) |
+| [Archive](archive/) | Detailed completed records retained for auditability. | [Archive guide](archive/README.md) |

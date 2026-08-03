@@ -1,12 +1,14 @@
-# GB-SCT data documentation
+# GB-SCT source controls and evidence
 
-## Current position
+This area holds the current source-scope, route-handling, operational, and
+updateability controls for the first legislature. It is supporting evidence,
+not the best starting point for understanding the programme.
 
-The selected Scottish Parliament API inventory remains approved. The private
-raw proxy MVP is closed: it provides authenticated, no-retention access to
-source-style routes, but it creates no project dataset. DB1 has not begun.
+For the human-readable workstream accounts, start with the
+[proxy](../../workstreams/proxy/README.md), [DB1](../../workstreams/db1/README.md),
+or [DB2](../../workstreams/db2/README.md) narrative.
 
-## Read in this order
+## Current controls
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

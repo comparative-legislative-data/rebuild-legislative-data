@@ -110,6 +110,8 @@ by the resource or decision they govern:
 
 - `docs/governance/` — governing baseline, decisions, risks, reviews, and
   handover;
+- `docs/workstreams/` — human-readable programme and mini-project narratives,
+  linked to their governing controls and detailed evidence;
 - `docs/planning/` — cross-cutting phase plans;
 - `docs/data/` — source, proxy, DB1, DB2, variable, release, and data-access
   documentation, partitioned by legislature where applicable;
@@ -123,6 +125,22 @@ by the resource or decision they govern:
 Update `docs/README.md` when adding a new active area or changing the reading
 path. Keep links valid; do not place a new active document directly in the
 `docs/` root.
+
+## Human-readable programme narratives
+
+`docs/README.md` must give a human reader the current programme story: purpose,
+major workstreams, their sequence, live/planned boundaries, and where to begin.
+Each material workstream must have a concise narrative before or alongside its
+detailed records. The narrative must cover, proportionately: purpose and user
+value; scope and exclusions; evidence gathered; key decisions and approach;
+implementation and acceptance; issues and changes of approach; gap analysis;
+legacy considerations; review triggers; and links to detailed evidence.
+
+Do not make a handover, decision register, or archive the primary explanation
+of a feature. Those are authority and evidence records. Update the relevant
+programme narrative whenever a material decision, implementation change,
+acceptance result, gap, or review outcome changes the human understanding of
+that workstream.
 
 ## Daily repository hygiene
 

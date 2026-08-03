@@ -1778,3 +1778,19 @@ Next review due:
 | Affected work blocked | Source-data capture, DB1 schema/build, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own package. |
 | Owner decision required | Approve, amend, or reject a new DB1 planning/implementation proposal before any DB1 action. |
 | Next review due | Before DB1 package approval, on a proxy-MVP review trigger, a material source/API change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0108
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner-approved human-readable programme narrative structure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `docs/README.md`, active GB-SCT controls, and the proxy-MVP archive. |
+| Active phase and authorising decision | Documentation structure and narrative work, approved by owner; no data, database, infrastructure, or application action. |
+| Checks performed | Created a master programme account and distinct proxy, DB1, and DB2 narratives. Confirmed that the proxy account covers evidence, decisions, implementation, issues/changes, gap analysis, legacy considerations, and review triggers, with links to retained evidence. Added a durable narrative requirement to `AGENTS.md`. |
+| Findings | The prior structure retained evidence but did not make a human-readable workstream story the primary entry point. The revised structure keeps authority in governance and detail in the archive while making the strategic shape navigable without reconstructing it from records. |
+| Outcome | `PASS` — current narratives align with the closed proxy MVP, unstarted DB1/DB2, and existing research-claim boundaries. |
+| Affected work blocked | Source-data capture, DB1 schema/build, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
+| Owner decision required | A new DB1 planning/implementation proposal before any DB1 action. |
+| Next review due | Before DB1 package approval, on a proxy-MVP review trigger, a material narrative change, or 1 September 2026, whichever is earlier. |
