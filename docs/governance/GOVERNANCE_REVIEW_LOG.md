@@ -2162,3 +2162,19 @@ Next review due:
 | Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; routes outside D4C; charts/research release; and shared-host changes. |
 | Owner decision required | Owner front-end acceptance is required to close DEC-0081. A new decision is required for a new cohort, later named refresh, or any scope change. |
 | Next review due | On owner front-end acceptance, D4C drift/failure, a proposed refresh/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0132
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — D4C owner acceptance and DB1 access-model direction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | D4C result; DEC-0081; DEC-0082; DB1 narrative; handover; decision/risk registers; and GOV-REV-0131. |
+| Active phase and authorising decision | DEC-0081 closed; DEC-0082 recorded design direction only. |
+| Checks performed | Recorded owner acceptance of the revised secondary record browser; confirmed source position remains visible as technical lineage only; and tested the access-mode direction against the DB1/DB2 boundary and high-volume limits. |
+| Findings | A small-collection record browser is suitable for D4B/D4C, but must not become an implied universal data-access promise. Future packages must declare an access mode before their interface design; RSK-0042 records the risk. |
+| Outcome | `PASS — DEC-0081 CLOSED; DEC-0082 RECORDED`. |
+| Affected work blocked | New capture cohorts; DB2; semantic variables; generic query/search/download; public data access; routes outside accepted cohorts; charts/research release; and shared-host changes. |
+| Owner decision required | A new proposal is required for any further DB1 cohort or access capability. |
+| Next review due | Before a new DB1 cohort proposal, on D4A/D4C drift or failure, or 1 September 2026, whichever is earlier. |

@@ -72,7 +72,11 @@ is owner accepted. DEC-0080 clarifies that DB1 is source-preserving and has no
 semantic transformation role; download expansion, DB2, and a research release
 remain excluded.
 
-The active owner-approved implementation package is [D4C](../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md): a four-route institutional-reference, source-preserving mirror increment. Its [restricted deployment result](../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md) passed and awaits owner front-end acceptance. DB2, generic access/download, public data access, and every route outside its fixed cohort remain excluded.
+D4C is closed: its four-route institutional-reference, source-preserving
+increment passed restricted deployment and owner front-end acceptance. Read its
+[result](../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
+before proposing a new DB1 cohort. The owner has also approved the
+[DB1 retained-data access direction](../data/gb-sct/GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md): access mode must fit source volume and shape rather than defaulting to an in-browser table. DB2, generic access/download, public data access, and every new route remain excluded pending a new package.
 
 ## Documentation hygiene
 

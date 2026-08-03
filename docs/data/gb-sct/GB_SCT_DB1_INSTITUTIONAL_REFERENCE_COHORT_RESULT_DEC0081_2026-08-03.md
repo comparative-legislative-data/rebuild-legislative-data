@@ -1,7 +1,7 @@
 # GB-SCT DB1 Institutional-Reference Cohort Result — DEC-0081
 
-**Status:** `PASS — OWNER FRONT-END ACCEPTANCE PENDING`  
-**Date:** 3 August 2026  
+**Status:** `PASS — OWNER ACCEPTED`
+**Date:** 3 August 2026
 **Decision:** DEC-0081  
 **Scope:** Four named no-query source captures, loss-aware fixed projections,
 one private catalogue route, and a separate D4C reconciliation timer.
@@ -48,20 +48,23 @@ reproduced in this result record.
 - The displayed named release is fixed to the four `INITIAL` manifests above.
   Later D4C observations may show reconciliation state but cannot modify it.
 
-## Owner front-end acceptance requested
+## Owner front-end acceptance
 
-Please sign in as a beta user and open **DB1 catalogue → Institutional
-reference**. Check that the four compact expandable panels load; that each
-panel visibly presents retained baseline, route, manifest/digest/byte/content
-type, projection counts, observed structural guide, limits, citation guidance,
-and preserved records; and that the screen does not imply a live feed or DB2
-variables. Also confirm that a guest account cannot use it.
+The project owner confirmed that the four-panel **Institutional reference**
+catalogue works as expected and accepted the revised record presentation. Each
+panel leads with retained baseline, route, manifest/digest/byte/content-type,
+projection counts, observed structure, limits and citation guidance. Preserved
+records are available through one secondary **Browse retained records**
+disclosure; individual source positions are retained inside record provenance,
+not presented as the primary interface or a substantive ordering.
+
+This is the accepted small-collection implementation under the DB1
+[retained-data access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md).
 
 ## Boundary and next review
 
 This does not establish complete Scottish Parliament coverage, source
 freshness, a general DB1 mirror, semantic codebook meaning, DB2 variables,
 downloads, charts, public access, or a research claim. Source drift, failed
-future reconciliation, a proposed projection refresh, any access change, and
-the owner interface result all trigger review. A new capture cohort requires a
-new decision.
+future reconciliation, a proposed projection refresh, or any access change
+trigger review. A new capture cohort requires a new decision.

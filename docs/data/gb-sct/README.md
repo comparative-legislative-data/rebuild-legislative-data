@@ -27,13 +27,14 @@ has passed. Its [result](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT
 records the three fixed retained projections and owner-accepted private
 provenance-first catalogue, without any new source activity.
 
-The active [D4C institutional-reference cohort](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
-has passed its restricted deployment checks. Its
-[result](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
+The [D4C institutional-reference cohort](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
+is closed. Its [result](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
 records four fixed no-query captures, a separate daily reconciliation service,
-and a fixed private source-preserving catalogue. Owner front-end acceptance is
-pending; DB2, generic access/download, public data access, and every route
-outside its fixed cohort remain excluded.
+and an owner-accepted private source-preserving catalogue. The approved
+[DB1 retained-data access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
+requires each later cohort to select an access mode suited to its scale and
+shape. DB2, generic access/download, public data access, and every new route
+remain excluded pending a new package.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

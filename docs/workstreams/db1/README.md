@@ -125,13 +125,15 @@ has accepted the front-end catalogue. It keeps later timer observations
 separate from displayed records; DB1 remains a deliberately narrow baseline,
 not a general mirror claim.
 
-The active [D4C institutional-reference cohort](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
-has completed its restricted deployment checks for only four bounded
-source-preserving collections—Constituencies, Regions, Committee Types, and
-Committee Type Links—before any more sensitive or high-volume route. Its
+The [D4C institutional-reference cohort](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
+is closed after capturing only four bounded source-preserving collections—
+Constituencies, Regions, Committee Types, and Committee Type Links—before any
+more sensitive or high-volume route. Its
 [result](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
-records the source/timer/projection/access proof; owner front-end acceptance
-remains the final D4C package gate.
+records source/timer/projection/access proof and owner acceptance. The
+[DB1 retained-data access direction](../../data/gb-sct/GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
+now requires an explicit volume-appropriate access mode for every later DB1
+cohort; the small-collection browser is not a universal template.
 
 ## 6. Detailed records
 
