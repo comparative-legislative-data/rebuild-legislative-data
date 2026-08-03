@@ -79,12 +79,21 @@ SQL
 reader_proof="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -Atqc "select has_table_privilege('cld_gb_sct_db1_reader', 'db1.catalogue_releases', 'SELECT') and has_table_privilege('cld_gb_sct_db1_reader', 'db1.reconciliation_observations', 'SELECT') and not has_table_privilege('cld_gb_sct_db1_reader', 'db1.raw_objects', 'SELECT') and not has_table_privilege('cld_gb_sct_db1_reader', 'db1.projection_records', 'INSERT')")"
 [[ "$reader_proof" == "t" ]]
 
-sed "s#RELEASE_ID#${commit}-${archive_digest:0:12}#g" "$staging/source/ops/systemd/cld-gb-sct-api.service.template" > "$api_unit"
+release_id="${commit}-${archive_digest:0:12}"
+sed -e "s#releases/RELEASE_ID/#releases/${release_id}/#g" -e "s#=RELEASE_ID#=${release_id}#g" "$staging/source/ops/systemd/cld-gb-sct-api.service.template" > "$api_unit"
 sed "s#RELEASE_ID#${commit}-${archive_digest:0:12}#g" "$staging/source/ops/systemd/cld-gb-sct-web.service.template" > "$web_unit"
 systemctl daemon-reload
 systemctl restart cld-gb-sct-api.service
 systemctl restart cld-gb-sct-web.service
+for attempt in $(seq 1 30); do
+  curl -fsS --max-time 5 http://127.0.0.1:3210/healthz >/dev/null && break
+  sleep 1
+done
 curl -fsS --max-time 5 http://127.0.0.1:3210/healthz >/dev/null
+for attempt in $(seq 1 30); do
+  curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null && break
+  sleep 1
+done
 curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null
 curl -sS --max-time 5 -o /dev/null -w '%{http_code}' http://127.0.0.1:3210/db1/gb-sct/reference-cohort/d4a-v1 | grep -qx '403'
 systemctl is-active --quiet cld-gb-sct-db1-d4a.timer
