@@ -1522,3 +1522,19 @@ Next review due:
 | Affected work blocked | All three DEC-0064 candidates remain unavailable. The four `Notes`-bearing routes remain blocked. DB1 and DB2 remain blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0064. |
 | Next review due | On DEC-0064 decision/result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0092
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0064 local implementation result |
+| Reviewer role | Maintainer; recording the approved local six-route implementation boundary and verification outcome |
+| Documents and records reviewed | DEC-0064 package; DEC-0062 accepted controls; DEC-0063 result; route registry; fixed source relay; frontend disclosures; synthetic tests; capability scan; package result. |
+| Active phase and authorising decision | DEC-0064 local implementation, approved by the owner on 3 August 2026. |
+| Checks performed | Limited changes to the three named candidate collections. Confirmed exact six-route allowlist/path tests, source-faithful synthetic streaming, authentication/query denial, no-persistence static scan, and B1 package generation. |
+| Findings | The local catalogue is consistent with the approved three-route extension and carries route-specific no-interpretation disclosures. The local runtime version is below the pinned target runtime, so it is not used as VPS evidence. |
+| Outcome | `PASS` — local implementation only. No source/API request, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | Target deployment and owner acceptance remain pending. The four `Notes`-bearing collections, all other unavailable routes, DB1, and DB2 remain blocked. |
+| Owner decision required | None for the already approved DEC-0064 project-only target release; owner route-by-route beta acceptance is required after a passing release. |
+| Next review due | On target deployment result, owner acceptance, a deployment stop, or 1 September 2026, whichever is earlier. |

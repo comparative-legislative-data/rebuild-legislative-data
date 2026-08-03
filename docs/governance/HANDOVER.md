@@ -34,12 +34,16 @@
   not safely resolve their `Notes`-field handling. See
   [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md).
   No additional source-facing action is authorised by that result.
-- DEC-0064 is the proposed exact implementation/deployment package for only
-  those three candidates. It retains the accepted no-retention relay and
-  direct-official-source controls, excludes the four `Notes`-bearing routes,
-  and requires a separate owner decision before any code, VPS, or source
-  action. Review
+- DEC-0064 is the exact implementation/deployment package for only those three
+  candidates. It retains the accepted no-retention relay and
+  direct-official-source controls and excludes the four `Notes`-bearing routes.
+  Review
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md).
+- DEC-0064 is approved and has passed its local implementation verification.
+  The three qualified collection routes are local-only until the approved
+  project-only VPS preflight/release and owner route-by-route beta acceptance
+  pass. See
+  [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
 
 ## Latest reconnaissance update — 2 August 2026
 

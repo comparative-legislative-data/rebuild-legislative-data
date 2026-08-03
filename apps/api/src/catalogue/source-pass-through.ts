@@ -5,7 +5,10 @@ const upstreamOrigin = "https://data.parliament.scot";
 const routePaths = new Map<string, string>([
   ["bill-stage-types.collection", "/api/billstagetypes"],
   ["bill-types.collection", "/api/billtypes"],
-  ["sessions.collection", "/api/sessions"]
+  ["sessions.collection", "/api/sessions"],
+  ["constituencies.collection", "/api/constituencies"],
+  ["regions.collection", "/api/regions"],
+  ["committee-types.collection", "/api/committeetypes"]
 ]);
 
 export type SourceTransportFailure = {

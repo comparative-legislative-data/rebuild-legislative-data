@@ -16,7 +16,7 @@ export type RouteDefinition = {
   group: string;
   template: string;
   priority: "P1" | "P2" | "P3" | "P4";
-  operatingClass: "REFERENCE_SMALL" | "STRUCTURED_MEDIUM" | "WHOLE_HISTORY_LARGE" | "ANNUAL_FIREHOSE" | "EXTREME_OR_UNRESOLVED";
+  operatingClass: "REFERENCE_SMALL" | "REFERENCE_GEOGRAPHY" | "STRUCTURED_MEDIUM" | "WHOLE_HISTORY_LARGE" | "ANNUAL_FIREHOSE" | "EXTREME_OR_UNRESOLVED";
   availability: Availability;
   parameters: readonly ParameterRule[];
   qualification: string;
@@ -46,6 +46,9 @@ const detail = "UNAVAILABLE_PENDING_DETAIL_CONTRACT" as const;
 const extreme = "UNAVAILABLE_EXTREME_VOLUME" as const;
 const relayed = "RELAYED_PRIVATE_BETA" as const;
 const privatePassThroughLimitation = "A private-beta action opens the fixed Scottish Parliament response at request time. It is not a project dataset, snapshot, endorsement, warranty, or claim of semantic completeness or freshness; source licence exceptions and third-party or personal-data rights remain applicable.";
+const constituencyPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined constituency reference only; CLD makes no geographic, validity-date, coverage, or temporal-semantic claim.`;
+const regionPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined regional reference only; CLD makes no date-boundary, coverage, or temporal-semantic claim.`;
+const committeeTypePassThroughLimitation = `${privatePassThroughLimitation} This is source-defined taxonomy only; CLD makes no classification, completeness, or historical-meaning claim.`;
 
 export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("bills.collection", "Bills", "/api/bills", "P1", "STRUCTURED_MEDIUM", pending, [], "HANDLING_DO_NOT_CAPTURE_OR_RELEASE", "Terms, handling, and output fit remain unresolved."),
@@ -64,9 +67,9 @@ export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("member-constituency-status.detail", "Member constituency status", "/api/memberelectionconstituencystatuses/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("member-region-status.collection", "Member region status", "/api/memberelectionregionstatuses", "P2", "STRUCTURED_MEDIUM", pending),
   entry("member-region-status.detail", "Member region status", "/api/memberelectionregionstatuses/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("constituencies.collection", "Constituencies", "/api/constituencies", "P2", "REFERENCE_SMALL", pending),
+  entry("constituencies.collection", "Constituencies", "/api/constituencies", "P2", "REFERENCE_GEOGRAPHY", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0064", constituencyPassThroughLimitation),
   entry("constituencies.detail", "Constituencies", "/api/constituencies/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("regions.collection", "Regions", "/api/regions", "P2", "REFERENCE_SMALL", pending),
+  entry("regions.collection", "Regions", "/api/regions", "P2", "REFERENCE_GEOGRAPHY", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0064", regionPassThroughLimitation),
   entry("regions.detail", "Regions", "/api/regions/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("parties.collection", "Parties", "/api/parties", "P2", "REFERENCE_SMALL", pending),
   entry("parties.detail", "Parties", "/api/parties/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
@@ -84,7 +87,7 @@ export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("committees.detail", "Committees", "/api/committees/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("committee-roles.collection", "Committee roles", "/api/committeeroles", "P2", "REFERENCE_SMALL", pending),
   entry("committee-roles.detail", "Committee roles", "/api/committeeroles/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("committee-types.collection", "Committee types", "/api/committeetypes", "P2", "REFERENCE_SMALL", pending),
+  entry("committee-types.collection", "Committee types", "/api/committeetypes", "P2", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0064", committeeTypePassThroughLimitation),
   entry("committee-types.detail", "Committee types", "/api/committeetypes/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("committee-type-links.collection", "Committee type links", "/api/committeetypelinks", "P2", "STRUCTURED_MEDIUM", pending),
   entry("mqa-events.collection", "MQA events", "/api/motionsquestionsanswersevents", "P3", "EXTREME_OR_UNRESOLVED", extreme, [], "COLLECTION_LATENCY_PROFILE_PASS_DEC0055", "Observed as a high-latency whole collection; no lower-cost relay contract is approved."),

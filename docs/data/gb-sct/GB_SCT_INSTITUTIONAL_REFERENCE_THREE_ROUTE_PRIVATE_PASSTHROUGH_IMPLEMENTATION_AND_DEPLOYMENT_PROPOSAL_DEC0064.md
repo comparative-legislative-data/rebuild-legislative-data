@@ -1,7 +1,8 @@
 # GB-SCT Institutional-Reference Three-Route Private Pass-Through
 # Implementation and Deployment Proposal — DEC-0064
 
-**Status:** PROPOSED — no route is enabled
+**Status:** APPROVED — LOCAL IMPLEMENTATION PASS; VPS DEPLOYMENT AND OWNER
+ACCEPTANCE PENDING
 
 **Version:** 1.0.0
 
@@ -147,3 +148,5 @@ pass-through cohort. It does not establish geography, temporal validity,
 committee classification, analytical meaning, currentness, completeness, or a
 research release. The four `Notes`-bearing forms remain blocked. DB1 remains
 blocked until the broader proxy phase has its own completed acceptance result.
+
+**Local result:** [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).

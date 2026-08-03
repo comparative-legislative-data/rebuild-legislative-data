@@ -7,7 +7,15 @@ import { gbSctRoutes, validateParameters } from "../apps/api/dist/catalogue/gb-s
 import { registerAccessRoutes } from "../apps/api/dist/access/routes.js";
 import { createSourcePassThrough } from "../apps/api/dist/catalogue/source-pass-through.js";
 
-const relayedIds = ["bill-stage-types.collection", "bill-types.collection", "sessions.collection"];
+const relayedRoutes = [
+  ["bill-stage-types.collection", "/api/billstagetypes"],
+  ["bill-types.collection", "/api/billtypes"],
+  ["sessions.collection", "/api/sessions"],
+  ["constituencies.collection", "/api/constituencies"],
+  ["regions.collection", "/api/regions"],
+  ["committee-types.collection", "/api/committeetypes"]
+];
+const relayedIds = relayedRoutes.map(([id]) => id);
 
 test("GB-SCT catalogue represents all selected route forms with exactly the approved private relay cohort", () => {
   assert.equal(gbSctRoutes.length, 64);
@@ -35,28 +43,33 @@ test("catalogue parameter rules reject unlisted and malformed input", () => {
   assert.equal(validateParameters(annualVotes, { year: "2025" }), undefined);
 });
 
-test("fixed relay transport uses no caller input and preserves synthetic redirect and source-error responses", async () => {
+test("fixed relay transport uses only the six approved paths and preserves synthetic redirect and source-error responses", async () => {
   const calls = [];
   const relay = createSourcePassThrough(async (url, init) => {
     calls.push({ url: url.toString(), init });
     return new Response(Buffer.from("redirect-body"), { status: 302, headers: { "content-type": "application/json", location: "/other" } });
   }, () => new Date("2026-08-03T12:02:00.000Z"));
-  const route = gbSctRoutes.find((entry) => entry.id === "bill-stage-types.collection");
-  assert.ok(route);
-  const redirect = await relay.relay(route);
-  assert.equal(redirect.kind, "source_response");
-  if (redirect.kind !== "source_response") throw new Error("expected a source response");
-  assert.equal(redirect.status, 302);
-  assert.equal(redirect.contentType, "application/json");
-  const bytes = [];
-  for await (const chunk of redirect.body) bytes.push(chunk);
-  assert.equal(Buffer.concat(bytes).toString("utf8"), "redirect-body");
-  assert.equal(calls[0].url, "https://data.parliament.scot/api/billstagetypes");
-  assert.equal(calls[0].init.method, "GET");
-  assert.equal(calls[0].init.headers.accept, "application/json");
-  assert.equal(calls[0].init.redirect, "manual");
+  for (const [id, path] of relayedRoutes) {
+    const route = gbSctRoutes.find((entry) => entry.id === id);
+    assert.ok(route);
+    const redirect = await relay.relay(route);
+    assert.equal(redirect.kind, "source_response");
+    if (redirect.kind !== "source_response") throw new Error("expected a source response");
+    assert.equal(redirect.status, 302);
+    assert.equal(redirect.contentType, "application/json");
+    const bytes = [];
+    for await (const chunk of redirect.body) bytes.push(chunk);
+    assert.equal(Buffer.concat(bytes).toString("utf8"), "redirect-body");
+    const call = calls.at(-1);
+    assert.equal(call.url, `https://data.parliament.scot${path}`);
+    assert.equal(call.init.method, "GET");
+    assert.equal(call.init.headers.accept, "application/json");
+    assert.equal(call.init.redirect, "manual");
+  }
 
   const sourceError = createSourcePassThrough(async () => new Response(Buffer.from("not-found"), { status: 404, headers: { "content-type": "application/json" } }));
+  const route = gbSctRoutes.find((entry) => entry.id === "committee-types.collection");
+  assert.ok(route);
   const outcome = await sourceError.relay(route);
   assert.equal(outcome.kind, "source_response");
   if (outcome.kind === "source_response") assert.equal(outcome.status, 404);
@@ -82,7 +95,7 @@ test("catalogue denies unauthenticated access and leaves unavailable routes fail
   assert.equal(catalogue.statusCode, 200);
   assert.equal(catalogue.json().route_count, 64);
   assert.equal(catalogue.json().source_requests_enabled, true);
-  assert.equal(catalogue.json().enabled_route_count, 3);
+  assert.equal(catalogue.json().enabled_route_count, 6);
 
   const refused = await app.inject({ method: "GET", url: "/catalogue/gb-sct/motion-votes.year/source", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(refused.statusCode, 409);
@@ -91,7 +104,7 @@ test("catalogue denies unauthenticated access and leaves unavailable routes fail
   await app.close();
 });
 
-test("approved source route streams the synthetic source response without rewriting it", async () => {
+test("approved DEC-0064 source route streams the synthetic source response without rewriting it", async () => {
   const calls = [];
   const app = await catalogueApp({
     relay: async (route) => {
@@ -105,19 +118,19 @@ test("approved source route streams the synthetic source response without rewrit
       };
     }
   });
-  const response = await app.inject({ method: "GET", url: "/catalogue/gb-sct/bill-types.collection/source", headers: { cookie: "cld_access_session=accepted" } });
+  const response = await app.inject({ method: "GET", url: "/catalogue/gb-sct/constituencies.collection/source", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(response.statusCode, 207);
   assert.equal(response.headers["content-type"], "application/json; charset=utf-8");
   assert.equal(response.headers["x-cld-layer"], "UPSTREAM_PASSTHROUGH");
-  assert.equal(response.headers["x-cld-route-id"], "bill-types.collection");
-  assert.equal(response.headers["x-cld-source-template"], "/api/billtypes");
+  assert.equal(response.headers["x-cld-route-id"], "constituencies.collection");
+  assert.equal(response.headers["x-cld-source-template"], "/api/constituencies");
   assert.equal(response.headers["x-cld-requested-at"], "2026-08-03T12:00:00.000Z");
   assert.equal(response.headers["x-cld-proxy-version"], "test-revision");
   assert.equal(response.headers["cache-control"], "no-store");
   assert.equal(response.headers["x-accel-buffering"], "no");
   assert.equal(response.headers.vary, "Cookie");
   assert.equal(response.body, '{"synthetic":true}\n');
-  assert.deepEqual(calls, ["bill-types.collection"]);
+  assert.deepEqual(calls, ["constituencies.collection"]);
   await app.close();
 });
 
