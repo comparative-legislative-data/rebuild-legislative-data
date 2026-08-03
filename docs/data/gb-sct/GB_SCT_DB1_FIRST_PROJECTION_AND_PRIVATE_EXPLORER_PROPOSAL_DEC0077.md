@@ -1,9 +1,14 @@
 # GB-SCT DB1 First Projection and Private Explorer Proposal — DEC-0077
 
-**Status:** Proposed — owner approval required  
+**Status:** Approved — implementation in progress
 **Version:** 1.0.0  
 **Prepared:** 3 August 2026  
 **Decision requested:** DEC-0077
+
+**Decision:** Approved by the project owner on 3 August 2026, with the
+clarification that the application API is a shared website/authentication
+gateway only. The upstream proxy and DB1 are independent data pipes: no DB1
+request uses the proxy, and no proxy request reads or writes DB1.
 
 ## 1. Decision requested
 
@@ -111,7 +116,7 @@ unauthenticated users receive no DB1 response or application entry point. The
 existing private-beta controls remain the only identity system; D3 adds no
 account, invitation, magic-link, email, or role-management behaviour.
 
-The API service will use a new project-local PostgreSQL role,
+The existing application API service will use a new project-local PostgreSQL role,
 `cld_gb_sct_db1_reader`, with only `CONNECT`, schema usage, and `SELECT` on
 the minimal DB1 views/tables required by this fixed response. It will have no
 write, DDL, role, raw-filesystem, or other-database privilege. Its connection
@@ -122,6 +127,12 @@ browser, logs, or result record.
 If the least-privilege grant cannot be proved without touching another
 database, role, cluster setting, or project, D3 stops rather than broadening
 the credential.
+
+Using the existing API process does **not** combine the proxy and DB1 data
+pipes. The shared process verifies the same private-beta session cookie, then
+dispatches either to the proxy’s no-retention source route or to the fixed DB1
+reader route. The DB1 route has no upstream client; the proxy route has no DB1
+reader, raw-store, or projection capability.
 
 ### 5.2 Fixed service contract
 

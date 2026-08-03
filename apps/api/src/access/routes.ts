@@ -3,6 +3,7 @@ import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavaila
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
+import { type Db1Explorer } from "../db1/explorer.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -40,16 +41,21 @@ function hasCatalogueAccess(identity: Awaited<ReturnType<AccessRuntime["identity
   return Boolean(identity?.roles.some((role) => role === "SUPERUSER" || role === "BETA_USER" || role === "GUEST"));
 }
 
+function hasDb1Access(identity: Awaited<ReturnType<AccessRuntime["identity"]>>): boolean {
+  return Boolean(identity?.roles.some((role) => role === "SUPERUSER" || role === "BETA_USER"));
+}
+
 type SourcePassThrough = ReturnType<typeof createSourcePassThrough>;
 
-export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime; sourcePassThrough?: SourcePassThrough; proxyVersion?: string }): Promise<void> {
+export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime; sourcePassThrough?: SourcePassThrough; db1Explorer?: Db1Explorer; proxyVersion?: string }): Promise<void> {
   const runtime = options.runtime;
   const sourcePassThrough = options.sourcePassThrough ?? createSourcePassThrough();
+  const db1Explorer = options.db1Explorer;
   const proxyVersion = options.proxyVersion ?? "development";
   app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
     status: runtime ? ACCESS_READY : ACCESS_NOT_CONFIGURED,
     authentication_available: Boolean(runtime),
-    data_layers_available: false
+    data_layers_available: Boolean(db1Explorer)
   }));
 
   if (!runtime) {
@@ -59,6 +65,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/catalogue/gb-sct", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.post("/catalogue/gb-sct/:id/request", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/catalogue/gb-sct/:id/source", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/bill-types/d2-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -109,7 +116,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
 
   app.get("/auth/me", async (request) => {
     const identity = await session(runtime, request);
-    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], logout_proof: identity?.logoutProof ?? null, data_layers_available: false };
+    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], logout_proof: identity?.logoutProof ?? null, data_layers_available: Boolean(db1Explorer) && hasDb1Access(identity) };
   });
 
   app.post("/auth/password/change", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
@@ -204,5 +211,19 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     if (outcome.contentType) reply.type(outcome.contentType);
     if (outcome.contentDisposition) reply.header("content-disposition", outcome.contentDisposition);
     return reply.code(outcome.status).send(outcome.body);
+  });
+
+  app.get("/db1/gb-sct/bill-types/d2-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const response = await db1Explorer.billTypesD2();
+    if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION");
+    reply.header("x-cld-db1-source-route", response.source.route_id);
+    reply.header("x-cld-db1-manifest", response.source.manifest_id);
+    reply.header("x-cld-db1-projection-build", response.projection.build_id);
+    reply.header("vary", "Cookie");
+    return reply.send(response);
   });
 }

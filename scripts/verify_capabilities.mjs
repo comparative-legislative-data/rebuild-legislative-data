@@ -5,13 +5,13 @@ const directories = ["apps", "packages"];
 const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const directSourceLinkFile = "apps/web/src/main.tsx";
 const d2CaptureFile = "apps/api/src/db1/foundation.ts";
+const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx"];
 const prohibited = [
   "node:net",
   "node:tls",
   "node:child_process",
   "axios",
   "/proxy/",
-  "/db1/",
   "/db2/",
   "raw capture",
   "research export"
@@ -50,9 +50,29 @@ for (const directory of directories) {
         findings.push(`${path}: prohibited capability or claim token ${term}`);
       }
     }
+    if (content.includes("/db1/") && !db1RouteFiles.includes(path)) {
+      findings.push(`${path}: DB1 route capability is not permitted here`);
+    }
     if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && content.includes("data.parliament.scot")) {
       findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
     }
+  }
+}
+
+const db1RouteSource = readFileSync("apps/api/src/access/routes.ts", "utf8");
+const fixedDb1Route = "/db1/gb-sct/bill-types/d2-v1";
+if ((db1RouteSource.match(new RegExp(fixedDb1Route, "g")) ?? []).length !== 2) {
+  throw new Error("DB1 reader must expose exactly one fixed route in configured and unavailable states");
+}
+if (/app\.get\("\/db1\/(?!gb-sct\/bill-types\/d2-v1)/.test(db1RouteSource)) {
+  throw new Error("DB1 reader must not expose a generic or alternate DB1 route");
+}
+const db1Explorer = readFileSync("apps/api/src/db1/explorer.ts", "utf8");
+for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "begin read only", "fetch(", "node:fs", "raw_object"]) {
+  if (term === "fetch(" || term === "node:fs" || term === "raw_object") {
+    if (db1Explorer.toLowerCase().includes(term.toLowerCase())) throw new Error(`DB1 explorer contains prohibited capability ${term}`);
+  } else if (!db1Explorer.includes(term)) {
+    throw new Error(`DB1 explorer control missing: ${term}`);
   }
 }
 
@@ -101,4 +121,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to its separately scanned foundation and one fixed D2 capture route.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to its separately scanned foundation, one fixed D2 capture, and one fixed private D3 projection route.\n");

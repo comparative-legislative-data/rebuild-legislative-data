@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import type { FormEvent } from "react";
 import "./styles.css";
 
-type View = "login" | "apply" | "settings" | "admin" | "catalogue";
-type Identity = { authenticated: boolean; email: string | null; roles: string[]; logout_proof: string | null; data_layers_available: false };
+type View = "login" | "apply" | "settings" | "admin" | "catalogue" | "db1";
+type Identity = { authenticated: boolean; email: string | null; roles: string[]; logout_proof: string | null; data_layers_available: boolean };
 type CatalogueRoute = {
   id: string;
   group: string;
@@ -19,6 +19,17 @@ type CatalogueRoute = {
 };
 type Catalogue = { legislature: "GB-SCT"; layer: "UPSTREAM_PASSTHROUGH_DESIGN"; source_requests_enabled: boolean; enabled_route_count: number; route_count: number; routes: CatalogueRoute[] };
 type SourceGuide = { officialUrl?: string; observedStructure: string; variables: Array<{ name: string; note: string }>; caution: string };
+type Db1Preview = {
+  layer: "DB1_OPERATIONAL_PROJECTION";
+  availability: "RESTRICTED_PRIVATE_BETA";
+  reconciliation_state: "NOT_SCHEDULED";
+  raw_access: "NOT_EXPOSED";
+  source: { route_id: string; source_path: string; capture_run_id: string; manifest_id: string; retrieved_at: string; raw_sha256: string; raw_byte_length: number; content_type: string; handling_class: string };
+  projection: { build_id: string; name: string; schema_version: string; code_revision: string; built_at: string; integrity_status: string; projected_records: number; rejected_records: number };
+  observed_structure: Array<{ key: string; observed_types: string[]; record_count: number }>;
+  limitations: string[];
+  records: Array<{ source_position: number; preserved_record: Record<string, unknown> }>;
+};
 
 const sourceGuides: Record<string, SourceGuide> = {
   "bill-stage-types.collection": {
@@ -207,6 +218,8 @@ function App() {
   const [applications, setApplications] = useState<Array<{ id: string; email: string; requestText: string; createdAt: string }>>([]);
   const [catalogue, setCatalogue] = useState<Catalogue | undefined>();
   const [catalogueFeedback, setCatalogueFeedback] = useState<string | undefined>();
+  const [db1Preview, setDb1Preview] = useState<Db1Preview | undefined>();
+  const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
 
   async function refreshIdentity() {
     const response = await request("/auth/me");
@@ -274,6 +287,16 @@ function App() {
     setCatalogueFeedback(undefined);
   }
 
+  async function loadDb1Preview() {
+    const response = await request("/db1/gb-sct/bill-types/d2-v1");
+    if (!response.ok) {
+      setDb1Feedback("The declared DB1 projection is unavailable for this account.");
+      return;
+    }
+    setDb1Preview(await response.json() as Db1Preview);
+    setDb1Feedback(undefined);
+  }
+
   if (activationToken) {
     return <main className="site-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><div className="auth-layout"><section className="access-panel activation-panel" aria-labelledby="password-heading"><p className="eyebrow">Account activation</p><h1 id="password-heading">Set your password</h1><p className="panel-copy">Create a password to finish activating your private-beta account.</p><p className="status-message" role="status">{message}</p><form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password", { token: activationToken, password }, "Your password has been set. Taking you to the beta shell…").then((nextIdentity) => { if (nextIdentity?.authenticated) { setActivationToken(undefined); setView("login"); setMessage("Your private-beta account is active."); window.history.replaceState({}, "", "/"); } else { setMessage("We could not confirm your session. Please use a new activation link."); } }); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Set password and continue</button></form></section></div></main>;
   }
@@ -295,6 +318,7 @@ function App() {
         {!identity.authenticated ? <><button type="button" onClick={() => { setView("login"); setFormFeedback(undefined); }}>Log in</button><button type="button" onClick={() => { setView("apply"); setFormFeedback(undefined); }}>Apply for beta access</button></> : null}
         {identity.authenticated ? <span className="signed-in-badge">Private beta active</span> : null}
         {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Route catalogue</button> : null}
+        {identity.authenticated && identity.data_layers_available ? <button type="button" onClick={() => { setView("db1"); setFormFeedback(undefined); void loadDb1Preview(); }}>DB1 preview</button> : null}
         {identity.authenticated ? <button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button> : null}
         {identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}
       </nav>
@@ -304,7 +328,8 @@ function App() {
       {view === "settings" && identity.authenticated ? <section className="access-panel" aria-labelledby="settings-heading"><h2 id="settings-heading">Settings</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password/change", { password }, "Your password has been changed."); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Change password</button></form><button className="secondary-button" type="button" onClick={() => { void request("/auth/logout", { method: "POST", body: JSON.stringify({ logout_proof: identity.logout_proof ?? "" }) }).then(async (response) => { const outcome = await response.json().catch(() => undefined) as { signed_out?: unknown } | undefined; const nextIdentity = await refreshIdentity(); setView("login"); setMessage(response.ok && outcome?.signed_out === true && !nextIdentity?.authenticated ? "You are signed out." : "We could not confirm sign-out. Please try again."); }); }}>Log out</button></section> : null}
       {view === "admin" && identity.roles.includes("SUPERUSER") ? <section className="access-panel" aria-labelledby="admin-heading"><h2 id="admin-heading">Superuser review</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}{applications.length === 0 ? <p>No pending applications.</p> : <ul>{applications.map((application) => <li key={application.id}><p><strong>{application.email}</strong></p><p>{application.requestText}</p><button type="button" onClick={() => void approve(application.id)}>Approve</button></li>)}</ul>}</section> : null}
       {view === "catalogue" && identity.authenticated ? <section className="catalogue-panel" aria-labelledby="catalogue-heading"><p className="eyebrow">GB-SCT route inventory</p><h2 id="catalogue-heading">Transparent upstream access catalogue</h2><p className="panel-copy">This is raw, transient source access — not a CLD dataset or snapshot. Open a source family, then an endpoint badge, to inspect the fixed source-style route, response guidance, and the choice between the CLD relay and the official source.</p>{catalogueFeedback ? <p className="form-feedback" role="status">{catalogueFeedback}</p> : null}{catalogue ? <><p className="catalogue-summary"><strong>{catalogue.route_count} selected route forms</strong> · {catalogue.enabled_route_count} authenticated private no-retention relay routes available.</p><div className="catalogue-sections">{catalogueSections.map((section) => { const routes = catalogue.routes.filter((route) => (section.groups as readonly string[]).includes(route.group)); const enabled = routes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").length; return <details className="catalogue-section" key={section.id}><summary className="catalogue-section-heading"><div><p className="eyebrow">Source family</p><h3>{section.title}</h3></div><div className="catalogue-section-state"><p>{routes.length} route forms{enabled > 0 ? ` · ${enabled} live private route${enabled === 1 ? "" : "s"}` : ""}</p><span>Show endpoints</span></div></summary><div className="catalogue-list">{routes.map((route) => <RouteBadge key={route.id} route={route} />)}</div></details>; })}</div></> : <p className="panel-copy">Loading the route registry…</p>}</section> : null}
-      <p className="boundary">Current boundary: private raw source relay only. No DB1 storage, canonical dataset, chart, export, or research release is available.</p>
+      {view === "db1" && identity.authenticated && identity.data_layers_available ? <section className="catalogue-panel db1-panel" aria-labelledby="db1-heading"><p className="eyebrow">Restricted DB1 projection</p><h2 id="db1-heading">Bill types — one named capture</h2><p className="panel-copy">This is a retained, dated DB1 operational projection. It is not the live proxy, raw-object access, an unqualified mirror, or a canonical dataset.</p>{db1Feedback ? <p className="form-feedback" role="status">{db1Feedback}</p> : null}{db1Preview ? <><section className="db1-provenance"><p className="route-state">{db1Preview.availability.replaceAll("_", " ")} · {db1Preview.reconciliation_state.replaceAll("_", " ")}</p><h3>Capture and projection provenance</h3><dl className="response-guide"><div><dt>Source route</dt><dd><code>{db1Preview.source.source_path}</code> · {db1Preview.source.route_id}</dd></div><div><dt>Capture</dt><dd>{new Date(db1Preview.source.retrieved_at).toLocaleString()} · manifest <code>{db1Preview.source.manifest_id}</code> · run <code>{db1Preview.source.capture_run_id}</code></dd></div><div><dt>Raw-object evidence</dt><dd>{db1Preview.source.content_type} · {db1Preview.source.raw_byte_length} bytes · SHA-256 <code>{db1Preview.source.raw_sha256}</code> · raw access {db1Preview.raw_access.replaceAll("_", " ")}</dd></div><div><dt>Projection build</dt><dd><code>{db1Preview.projection.name}</code> · build <code>{db1Preview.projection.build_id}</code> · {db1Preview.projection.projected_records} records / {db1Preview.projection.rejected_records} rejections · {db1Preview.projection.integrity_status}</dd></div></dl></section><section className="db1-provenance"><h3>Observed structure</h3><p className="panel-copy">Keys and types below are observed in this named projection only. They are not a source codebook, analytical variable definition, or DB2 dataset.</p><ul className="structure-list">{db1Preview.observed_structure.map((field) => <li key={field.key}><code>{field.key}</code> · {field.observed_types.join(", ")} · present in {field.record_count} projected record{field.record_count === 1 ? "" : "s"}</li>)}</ul></section><section className="db1-provenance"><h3>Limits and citation guidance</h3><ul>{db1Preview.limitations.map((limit) => <li key={limit}>{limit}</li>)}</ul><p className="panel-copy">Suggested citation: Scottish Parliament Open Data, <code>{db1Preview.source.source_path}</code>, retrieved {new Date(db1Preview.source.retrieved_at).toISOString()}; preserved by Comparative Legislative Data as manifest <code>{db1Preview.source.manifest_id}</code>, projection build <code>{db1Preview.projection.build_id}</code>; accessed {new Date().toISOString()}.</p></section><section className="db1-provenance"><h3>Preserved projection records</h3>{db1Preview.records.map((record) => <details className="db1-record" key={record.source_position}><summary>Source position {record.source_position}</summary><pre>{JSON.stringify(record.preserved_record, null, 2)}</pre></details>)}</section></> : <p className="panel-copy">Loading the declared DB1 projection…</p>}</section> : null}
+      <p className="boundary">Current boundary: private raw source relay plus, for eligible users, one named restricted DB1 projection. No canonical dataset, chart, export, scheduled mirror, or research release is available.</p>
     </main>
   );
 }

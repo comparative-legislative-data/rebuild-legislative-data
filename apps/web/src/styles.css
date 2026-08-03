@@ -58,6 +58,13 @@ button { cursor: pointer; }
 .source-action { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .55rem .85rem; border: 1px solid rgba(222, 232, 244, .52); border-radius: .5rem; color: #f5f8fc; font-weight: 750; line-height: 1.2; text-decoration: none; transition: transform .16s ease, background .16s ease, box-shadow .16s ease; }
 .source-actions button { font: inherit; cursor: pointer; }
 .source-action:hover { box-shadow: 0 .5rem 1.25rem rgba(232, 189, 104, .15); transform: translateY(-1px); }
+.db1-panel { max-width: 68rem; }
+.db1-provenance { margin-top: 1rem; padding: 1rem; border: 1px solid rgba(232, 189, 104, .3); border-radius: .65rem; background: rgba(5, 13, 25, .28); }
+.db1-provenance h3 { margin-top: 0; }
+.structure-list { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.db1-record { margin-top: .6rem; border: 1px solid rgba(220, 229, 239, .18); border-radius: .45rem; overflow: hidden; }
+.db1-record summary { padding: .7rem .8rem; cursor: pointer; font-weight: 800; }
+.db1-record pre { overflow: auto; margin: 0; padding: .85rem; border-top: 1px solid rgba(220, 229, 239, .14); color: #b6d6e5; background: rgba(1, 6, 14, .65); font-size: .8rem; }
 .relay-action { border-color: #e8bd68; background: #e8bd68; color: #17202d; }
 .relay-action:hover { background: #f3cf87; }
 .official-action { background: transparent; }

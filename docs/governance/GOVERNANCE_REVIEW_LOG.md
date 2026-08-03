@@ -1922,3 +1922,19 @@ Next review due:
 | Affected work blocked | Further source requests/capture, scheduling, DB1 projection/explorer implementation, reader-role creation, download/generic access, DB2, charts, research claims, public data access, and shared-host changes remain blocked pending DEC-0077. |
 | Owner decision required | Approve, amend, or reject DEC-0077 before any source-backed DB1 projection, project DB1 reader role, service release, or private explorer action. |
 | Next review due | On DEC-0077 decision, a material input/handling/access change, a D3 result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0117
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner approval of DEC-0077 and data-pipe clarification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0077, D2 result, project design, handover, DB1 narrative, application/proxy code boundary, decision register, risk register, and GOV-REV-0116. |
+| Active phase and authorising decision | DEC-0077, owner-approved D3 implementation. |
+| Checks performed | Recorded the owner’s clarification: frontend/authentication and the application API gateway may be shared, while upstream proxy and DB1 must remain independent data pipes. Confirmed the implementation path names one fixed DB1 reader response and excludes proxy-mediated capture/reading, source requests, scheduling, exports, generic access, DB2, and public data access. |
+| Findings | Sharing a session check and application process does not merge data flows. The isolation control is enforced by the distinct route, DB-only reader credential, absence of upstream capability in the DB1 reader, and absence of DB1 capability in the proxy relay. |
+| Outcome | `PASS — IMPLEMENTATION AUTHORISED`. D3 may build/deploy/test only its stated manifest-bound projection and private preview; all exclusions remain active. |
+| Affected work blocked | Further source requests/capture, schedule, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | No additional decision for the contained DEC-0077 implementation. Any route/input/privilege/exposure expansion requires a new decision. |
+| Next review due | On D3 result, a data-pipe/privilege/target deviation, a deployment failure, or 1 September 2026, whichever is earlier. |
