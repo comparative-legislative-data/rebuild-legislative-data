@@ -4,6 +4,7 @@ import { join } from "node:path";
 const directories = ["apps", "packages"];
 const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const directSourceLinkFile = "apps/web/src/main.tsx";
+const d2CaptureFile = "apps/api/src/db1/foundation.ts";
 const prohibited = [
   "node:net",
   "node:tls",
@@ -49,7 +50,7 @@ for (const directory of directories) {
         findings.push(`${path}: prohibited capability or claim token ${term}`);
       }
     }
-    if (path !== sourceRelayFile && path !== directSourceLinkFile && content.includes("data.parliament.scot")) {
+    if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && content.includes("data.parliament.scot")) {
       findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
     }
   }
@@ -100,4 +101,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use only an authenticated, fixed-host, no-retention relay contract; DB2, research export, and outbound paths outside the route registry are absent. DB1 is limited to its separately scanned synthetic-only internal foundation.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to its separately scanned foundation and one fixed D2 capture route.\n");
