@@ -40,8 +40,9 @@
   Review
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md).
 - DEC-0064 is approved and has passed its local implementation verification.
-  Its target release has also passed. The three qualified collection routes
-  now await owner route-by-route beta acceptance only. See
+  Its target release and owner route-by-route beta acceptance have passed. The
+  three qualified collection routes now form the accepted second private
+  pass-through cohort. See
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
   The target result is
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md).

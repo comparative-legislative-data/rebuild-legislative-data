@@ -1554,3 +1554,19 @@ Next review due:
 | Affected work blocked | DEC-0064 is not complete until owner acceptance of all three new actions. The four `Notes`-bearing collections, all other unavailable routes, DB1, and DB2 remain blocked. |
 | Owner decision required | No further deployment decision. Owner acceptance is required after testing Constituencies, Regions, and Committee Types one at a time. |
 | Next review due | On owner acceptance, a route failure, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0094
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0064 owner route acceptance completion |
+| Reviewer role | Maintainer; recording the owner-confirmed beta result without recasting transient source material as project data |
+| Documents and records reviewed | DEC-0064 package, local/deployment result, approved six-route registry, route disclosures, and owner confirmation. |
+| Active phase and authorising decision | DEC-0064 three-route institutional-reference private pass-through acceptance |
+| Checks performed | The owner confirmed that all three approved route forms behave as expected after testing their disclosed CLD no-retention relay and direct official-source actions. |
+| Findings | The result proves controlled private source-access behaviour for the three fixed routes, not a capture, immutable snapshot, schema validation, semantic interpretation, source completeness, freshness, or research release. Source material was viewed transiently and is not retained by CLD. |
+| Outcome | `PASS` — DEC-0064 complete for Constituencies, Regions, and Committee Types. No DB1/DB2 content, database write/migration, cache, canonical variable, chart, export, public data release, or shared-host change is created. |
+| Affected work blocked | The four `Notes`-bearing collections remain unavailable pending their own handling plan. All other selected route forms remain unavailable pending separate qualification; DB1 and DB2 remain blocked. |
+| Owner decision required | Approve a separately proposed next proxy cohort before another route is enabled. |
+| Next review due | On next-cohort proposal preparation, a handling plan, or 1 September 2026, whichever is earlier. |

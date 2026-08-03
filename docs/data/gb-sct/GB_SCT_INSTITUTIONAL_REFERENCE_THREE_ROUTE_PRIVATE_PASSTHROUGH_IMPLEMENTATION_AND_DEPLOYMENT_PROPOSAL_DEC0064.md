@@ -1,7 +1,7 @@
 # GB-SCT Institutional-Reference Three-Route Private Pass-Through
 # Implementation and Deployment Proposal — DEC-0064
 
-**Status:** APPROVED — DEPLOYED; OWNER ACCEPTANCE PENDING
+**Status:** APPROVED — EXECUTED PASS
 
 **Version:** 1.0.0
 

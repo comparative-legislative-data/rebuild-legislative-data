@@ -1,8 +1,7 @@
 # GB-SCT Institutional-Reference Three-Route Private Pass-Through Deployment
 # Result — 3 August 2026
 
-**Status:** PASS — target release complete; owner route-by-route acceptance
-pending
+**Status:** PASS — target release and owner route-by-route acceptance complete
 
 **Authority:** DEC-0064
 
@@ -49,11 +48,11 @@ request), unchanged Nginx syntax validation, and public HTTPS shell check
 No source response was requested, viewed, retained, or transformed by the
 deployment process.
 
-## 3. Remaining acceptance boundary
+## 3. Owner route-by-route acceptance
 
-This is target-runtime/deployment evidence, not owner acceptance of the new
-source actions. A normal approved beta user must now test the following one at
-a time:
+The owner tested each new route using the required normal approved beta-user
+path and confirmed on 3 August 2026 that all three behave as expected. The
+acceptance sequence was:
 
 1. Open the route badge and confirm the route-specific limitation disclosure
    appears before either action.
@@ -64,13 +63,16 @@ a time:
 4. Confirm that no project dataset, transformed preview, DB1/DB2 content,
    chart, export, or superuser control is presented to the normal beta user.
 
-The three actions should be tested separately for Constituencies, Regions, and
-Committee Types. The owner’s result is the only basis for marking DEC-0064
-complete. A failed route remains unavailable; it does not initiate DB1 work.
+The three actions were accepted separately for Constituencies, Regions, and
+Committee Types. This acceptance proves only the disclosed private-beta access
+behaviour. It does not create a project dataset, validate source meaning,
+geography, temporal semantics, classification, completeness, or freshness, or
+start DB1 work. Source responses are transient upstream material; CLD retains
+none of their bodies.
 
 ## 4. What next
 
-Obtain owner route-by-route beta acceptance, then record a final DEC-0064
-acceptance result and update the decision/governance records. The four
-`Notes`-bearing institutional-reference routes remain blocked pending their
-own handling evidence plan.
+DEC-0064 is complete for this three-route cohort. The next step, if proposed,
+is a separate narrow proxy-cohort qualification package. The four
+`Notes`-bearing institutional-reference routes remain blocked pending their own
+handling evidence plan; DB1 and DB2 remain separately blocked.
