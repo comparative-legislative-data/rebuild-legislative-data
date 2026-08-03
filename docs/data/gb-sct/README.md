@@ -11,10 +11,10 @@ or [DB2](../../workstreams/db2/README.md) narrative.
 ## Current controls
 
 The [approved DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-sets the DB1 product boundary. The current owner-review document is the
-[D1 synthetic foundation implementation proposal — DEC-0075](GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md).
-It would remain source-free and synthetic-only; it does not itself authorise a
-source request, capture, schedule, or researcher-facing DB1 access.
+sets the DB1 product boundary. Its [D1 synthetic foundation](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
+has passed without source data. The next owner-review document must be D2, an
+exact first-source-batch proposal; no source request, capture, schedule, or
+researcher-facing DB1 access is currently authorised.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

@@ -30,8 +30,9 @@ completed record is archived at
   handling for capture or release.
 - DEC-0045 keeps the complete selected inventory and its controlled
   addition/retirement path.
-- DB1 has **not** begun. No source response has been captured, no DB1 mirror
-  or projection exists, and no canonical variable or research claim exists.
+- DB1 has no source content. D1 has passed with one explicitly synthetic test
+  object and its internal manifest/projection lineage; no source response,
+  DB1 mirror/projection, canonical variable, or research claim exists.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -50,17 +51,14 @@ the archive. It is not the next DB1 package.
 
 ## Next owner decision
 
-DEC-0073 is approved. The current owner decision is
-[DEC-0075: D1 source-free synthetic foundation implementation](../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md).
-It proposes a contained implementation which proves raw-object, manifest, and
-projection/rejection lineage on the isolated DB1 targets using a
-project-created synthetic fixture only.
+DEC-0075 D1 has passed; its [result](../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
+records the synthetic-only raw-object, manifest, and projection/rejection
+lineage proof. The current owner decision is now D2: an exact first
+source-batch proposal.
 
-DEC-0073 authorises D1 proposal preparation only; DEC-0075 remains proposed.
-Until the owner approves it, no DB1 schema/database write, raw-storage change,
-service change, source request/capture, scheduled reconciliation, interface,
-or implementation is authorised. D2 and every later capture package retain
-their own separate approval.
+D2 and every later capture package retain their own separate approval. No
+source request/capture, scheduled reconciliation, DB1 interface/download,
+DB2, or research release is currently authorised.
 
 ## Documentation hygiene
 

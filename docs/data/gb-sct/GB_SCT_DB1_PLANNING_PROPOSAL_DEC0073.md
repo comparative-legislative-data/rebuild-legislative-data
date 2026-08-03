@@ -1,6 +1,6 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Approved strategic plan — DEC-0075 D1 foundation implementation proposal awaiting owner decision; no source/capture action authorised
+**Status:** Approved strategic plan — D1 passed; D2 first-source-batch proposal is next; no source/capture action authorised
 
 **Version:** 1.1.0
 **Prepared:** 3 August 2026
@@ -343,17 +343,16 @@ to the proxy, silent coercion, or a DB2/public claim.
 
 ## 10. Approval and review path
 
-The immediate decision is **DEC-0075: D1 DB1 foundation implementation**. Its
-proposal is small, source-free, and synthetic-only; it defines the exact
-isolated target, schema/migration boundary, raw-object and manifest interfaces,
-service/process needs, test fixtures, verification, and rollback. DEC-0075
-must be owner-approved before any implementation begins.
+D1 passed as a source-free, synthetic-only foundation. Its
+[result](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md) proves
+the isolated target, raw-object/manifest/projection interfaces, synthetic
+fixture, verification, and rollback boundary without a source request.
 
-Only after D1 is accepted should the owner review D2, an exact first
-source-capture batch proposal. D2 must name the route(s), window(s), request
-cap, source/handling basis, retention/access class, transfer and retry budget,
-manifest format, reconciliation cadence, success/failure criteria, and its own
-front-end hand-off.
+The immediate decision is now D2: an exact first source-capture batch proposal.
+It must name the route(s), window(s), request cap, source/handling basis,
+retention/access class, transfer and retry budget, manifest format,
+reconciliation cadence, success/failure criteria, and its own front-end
+hand-off. D2 must be owner-approved before any source action begins.
 
 The owner approved DEC-0073 after review against these questions:
 

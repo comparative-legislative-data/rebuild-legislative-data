@@ -1858,3 +1858,19 @@ Next review due:
 | Affected work blocked | Source-data capture, source access, scheduled reconciliation, DB1 schema/raw-storage/service action, DB1 user interface/downloads, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked pending explicit owner approval. |
 | Owner decision required | Approve, amend, or reject DEC-0075 before any D1 implementation. Approve D2 separately before any source capture. |
 | Next review due | On DEC-0075 decision, any material target/boundary change, a D1 result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0113
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0075 D1 synthetic foundation result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0075, local build/test/capability results, isolated-target preflight/postflight, D1 result, DB1 narrative, handover, and decision register. |
+| Active phase and authorising decision | DEC-0075, owner-approved D1 synthetic-only implementation. |
+| Checks performed | Verified one project-created fixture through the raw-object, SHA-256, manifest, projection-build, projected-record, and rejection chain; confirmed the `db1` schema owner, counts, raw-path ownership/modes, restored parent modes, and unchanged existing API/web service activity. |
+| Findings | D1 proves the source-preservation architecture without receiving source material. Temporary execution-path traversal was restored after the one run. A production capture worker/access design remains unproved and is intentionally deferred. |
+| Outcome | `PASS` — D1 is complete. The DB1 foundation contains one labelled synthetic test chain only; it must not be represented as source data or a DB1 release. |
+| Affected work blocked | All source requests/capture, scheduled reconciliation, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | Approve an exact D2 first-source-batch proposal before any source capture. |
+| Next review due | Before D2 approval, on a DB1 target/access change, a source/capture proposal, or 1 September 2026, whichever is earlier. |

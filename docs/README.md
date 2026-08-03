@@ -20,7 +20,7 @@ value and a different kind of research claim.
 | Workstream | Purpose | Current status | Start here |
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Strategic plan approved; D1 synthetic-only foundation implementation is awaiting owner approval. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1 synthetic-only foundation passed; D2 first-source-batch proposal is next. | [DB1 narrative](workstreams/db1/README.md) |
 | DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
@@ -33,10 +33,10 @@ DB1. No layer may be described as another.
 
 The proxy MVP is the only completed data-access workstream. It is private,
 no-retention access to source-style routes and direct source URLs; it is not a
-dataset, capture, DB1, DB2, export, chart, or research release. The next owner
-decision is D1, the [source-free synthetic DB1 foundation implementation proposal](data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md).
-D1 and later exact packages are required before any source-data capture,
-database change, or implementation.
+dataset, capture, DB1, DB2, export, chart, or research release. The D1
+[synthetic DB1 foundation](data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
+has passed without source data. The next owner decision is D2, an exact first
+source-batch proposal; it is required before any source-data capture.
 
 ## How to use these documents
 

@@ -1,7 +1,6 @@
 # GB-SCT DB1 Synthetic Foundation Implementation Proposal — DEC-0075
 
-**Status:** Proposed for owner review — synthetic-only; no source request,
-capture, or scheduled reconciliation authorised
+**Status:** Approved and executed — see the [D1 result](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 
 **Version:** 1.0.0  
 **Prepared:** 3 August 2026  
@@ -33,8 +32,9 @@ scheduler, source-route enablement, DB1 beta interface, public endpoint,
 download, export, DB2 variable, chart, research claim, role/grant change, or
 change to another VPS project or service.
 
-This is an implementation proposal, not approval to implement. DEC-0073
-currently authorises preparation of this document only.
+The owner approved D1 on 3 August 2026. Its implementation passed within the
+synthetic-only boundary; the detailed result is linked above. D2 remains a
+separate owner decision.
 
 ## 2. Why this is the right next step
 

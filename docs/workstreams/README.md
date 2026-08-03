@@ -6,8 +6,8 @@ boundary, then links to the detailed decisions, technical controls, and
 archived evidence that support it.
 
 1. [Upstream proxy](proxy/README.md) — completed private-beta MVP.
-2. [DB1 source-faithful projection](db1/README.md) — the next proposed
-   planning workstream.
+2. [DB1 source-faithful projection](db1/README.md) — D1 synthetic foundation
+   passed; D2 first-source-batch proposal is the next decision.
 3. [DB2 canonical variables](db2/README.md) — later Tier 1/2 research-data
    workstream.
 

@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1 source-free foundation implementation proposal ready for owner review
+**Status:** D1 synthetic-only foundation passed; D2 first-source-batch proposal is next
 
 ## 1. Purpose and user value
 
@@ -20,9 +20,11 @@ DB1 capture priorities, schema, retention, or success criteria.
 
 ## 2. Current boundary
 
-No source response has been captured. No DB1 schema, database table, service,
-or projection exists. The completed proxy does not create a DB1 precursor,
-because it retains no source response.
+No source response has been captured. D1 has created an internal `db1` schema
+and a single synthetic-only raw/manifest/projection/rejection chain; it is a
+technical proof, not DB1 source content. No DB1 data service, capture worker,
+projection of a source route, or researcher access surface exists. The
+completed proxy remains separate because it retains no source response.
 
 The current inventory and route evidence are inputs to DB1 planning, not
 authority to collect data. See the [GB-SCT source-controls guide](../../data/gb-sct/README.md).
@@ -49,12 +51,12 @@ PostgreSQL/raw-object architecture, researcher-access product, staged execution
 path, first-batch selection criteria, front-end acceptance, and stop
 conditions.
 
-The next decision is [DEC-0075: D1 synthetic foundation implementation](../../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md).
-It would prove the raw-object → manifest → projection/rejection chain using only
-project-created synthetic fixtures on the isolated project targets. It would
-not request or retain source content, schedule reconciliation, or expose DB1
-to a user. Until the owner approves DEC-0075, it remains a proposal and no
-DB1 implementation is authorised.
+The owner-approved [DEC-0075 D1 synthetic foundation](../../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md)
+has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
+proves the raw-object → manifest → projection/rejection chain using only a
+project-created fixture on the isolated project target. It did not request or
+retain source content, schedule reconciliation, expose DB1 to a user, or
+change the existing application services.
 
 The earlier DEC-0018 plan is retained as an
 [unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
@@ -62,10 +64,10 @@ not the governing plan.
 
 ## 5. Initial gaps and review approach
 
-DB1 still needs an approved D1 implementation; a defined first capture slice;
-route-specific source and handling basis; source-derived manifest/raw objects;
-a precise first projection contract; update/reconciliation method; and a
-front-end acceptance boundary. The D1 proposal defines synthetic verification
+DB1 still needs a separately approved first capture slice; route-specific
+source and handling basis; source-derived manifest/raw objects; a precise first
+projection contract; update/reconciliation method; capture-worker access
+design; and a front-end acceptance boundary. D1 defines synthetic verification
 only. Every later source action must evaluate these gaps openly and specify
 review triggers for source drift, failed runs, schema changes, and renewal of
 source/update assumptions.
