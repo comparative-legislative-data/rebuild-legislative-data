@@ -6,12 +6,16 @@
 
 DB1 is the future retained data-management layer. It will preserve approved
 source responses with immutable manifests and generate a loss-aware,
-reproducible operational projection for efficient access and later DB2 work.
+reproducible operational projection for transparent, efficient source access.
 Its value is to turn the mutable, sometimes firehose-like upstream API into a
 versioned research resource with explicit capture lineage and failure records.
 
 DB1 is not yet a proven full mirror. Until scope and parity are evidenced, it
 must be described as an intended source-faithful projection.
+
+DB1 is an independent mini-project. DB2 is a later, separate workstream that
+must work within the declared DB1 record if it proceeds; DB2 does not determine
+DB1 capture priorities, schema, retention, or success criteria.
 
 ## 2. Current boundary
 

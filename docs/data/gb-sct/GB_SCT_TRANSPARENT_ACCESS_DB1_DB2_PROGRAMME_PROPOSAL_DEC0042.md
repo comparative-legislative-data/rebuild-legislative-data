@@ -2,9 +2,11 @@
 
 **Status:** Approved programme design — exact delivery packages remain required
 
-**Version:** 1.2.0
+**Version:** 1.3.0
 **Prepared:** 2 August 2026
 **Decision:** DEC-0042, approved by the project owner on 2 August 2026
+
+**Clarification:** DEC-0074, recorded from owner direction on 3 August 2026
 
 ## 1. Purpose
 
@@ -36,6 +38,12 @@ and the retention policy.
 | DB2 | A versioned canonical dataset built solely from named DB1 inputs and documented Tier 1/2 rules. | Raw source material, a live view, or exhaustive legislative reality. | “Observed or deterministically derived under the stated rule and inputs.” |
 
 The UI, API, download, filename, citation, and navigation must show the layer before a user receives data. No response or file may silently cross layers.
+
+DB1 is an independent source-preservation product. Its route scope, capture
+sequence, projection, retention, and acceptance criteria are governed by DB1
+evidence and user value, not by a hoped-for DB2 analytical use. A future DB2
+workstream must accept DB1’s declared scope and limitations as constraints; it
+cannot silently redesign or reprioritise DB1.
 
 ## 4. Shared transparency and access contract
 
@@ -131,11 +139,11 @@ DB1 preserves what was obtained from approved source requests so later users can
 
 Each authorised capture run and DB1 build retains the route handling record, batch authorisation, capture manifest, raw-byte digest/content type/size, UTC timing, status, page/cursor relation, failure/retry record, tool/config revision, projection schema/build ID, raw-to-record lineage, rejected or ambiguous-value report, and integrity/reproducibility/schema-drift result.
 
-The approved inventory remains complete in research scope but execution is bounded in batches. The first data package should qualify a small bill/session/reference-context slice before high-volume motions, questions/answers, official reports, and vote-on-motion material. Those later families remain in DB1 scope but are not presumed Tier 1/2-ready. Document-based amendment/meeting work is a later Tier 3+ programme.
+The approved inventory remains complete in research scope but execution is bounded in batches. DB1 batches should be selected for source-preservation value, boundedness, handling basis, and operational feasibility before high-volume motions, questions/answers, official reports, and vote-on-motion material. Those later families remain in DB1 scope. Document-based amendment/meeting work is a separate later programme.
 
 ## 7. Workstream C — DB2 Tier 1/2 canonical variables
 
-DB2 reads only declared, versioned DB1 inputs. It cannot call the Scottish Parliament API directly, silently join an external source, or use browser-side analytical transformations. A new DB1 capture yields a new candidate DB2 build; it never overwrites a released canonical result.
+DB2, if later approved, reads only declared, versioned DB1 inputs. It cannot call the Scottish Parliament API directly, silently join an external source, or use browser-side analytical transformations. It must work within the available DB1 scope and never requires a DB1 redesign as an implicit precondition. A new DB1 capture may yield a new candidate DB2 build; it never overwrites a released canonical result.
 
 Every variable requires an approved specification naming the unit of analysis, stable ID, label, type, units, allowed values, null semantics, temporal reference point, input fields/captures, inclusion/exclusion rules, limitations, and validation plan.
 
@@ -157,12 +165,13 @@ No value becomes a released variable merely because a DB1 field exists. Motions 
 | 4 | First DB2 Tier 1/2 release and its beta interface. | Variable-specification and DB2-build package. | Codebook, deterministic build/validation, release/access, and interface acceptance result. | Tier 3+, charts, or unqualified claim. |
 | 5 | Public research access/cutover. | Separate public-release/V4C package. | Claim review and public verification. | Further data/method expansion. |
 
-The products are sequential in implementation and release dependency—complete
-approved pass-through phase, then DB1, then DB2. No DB1 implementation,
-capture, database schema, or mirror operation may begin before the pass-through
-phase has its required beta-layer acceptance result. Route qualification and
-non-operational documentation may be prepared in parallel. A failure blocks the
-affected route/layer, not the whole programme.
+The proxy and DB1 are sequential in implementation and release dependency. DB2
+is a separate later workstream, not a DB1 design target: it may begin only under
+its own approved package and within the stated DB1 record. No DB1
+implementation, capture, database schema, or mirror operation may begin before
+the proxy phase has its required beta-layer acceptance result. Route
+qualification and non-operational documentation may be prepared in parallel. A
+failure blocks the affected route/layer, not the whole programme.
 
 ## 9. Stop rules
 

@@ -1794,3 +1794,19 @@ Next review due:
 | Affected work blocked | Source-data capture, DB1 schema/build, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
 | Owner decision required | A new DB1 planning/implementation proposal before any DB1 action. |
 | Next review due | Before DB1 package approval, on a proxy-MVP review trigger, a material narrative change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0109
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner clarification of the DB1/DB2 relationship |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0042 programme design, DEC-0073 DB1 proposal, DB1/DB2 narratives, master project narrative, and decision register. |
+| Active phase and authorising decision | DEC-0073 remains proposed. DEC-0074 records the owner’s DB1/DB2 clarification. No operational action is authorised. |
+| Checks performed | Removed DB2/Tier 1/2 usefulness from DB1 first-batch selection; stated DB1’s independent source-preservation/access purpose; required future DB2 work to adapt to declared DB1 records; and prohibited DB2 from silently reprioritising or redesigning DB1. |
+| Findings | The previous wording could have caused DB1 to be optimised around a future analytical layer, narrowing or distorting the mirror/projection. The corrected one-way relationship preserves DB1 as an independently valuable product and makes DB2 a later constrained consumer. |
+| Outcome | `PASS` — programme narratives, DEC-0042, and proposed DEC-0073 now align with the owner’s clarification. |
+| Affected work blocked | Source-data capture, DB1 implementation, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
+| Owner decision required | Owner review of revised DEC-0073 before any DB1 foundation package. |
+| Next review due | Before DEC-0073 approval, on a material DB1/DB2 scope change, or 1 September 2026, whichever is earlier. |

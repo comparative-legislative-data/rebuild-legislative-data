@@ -21,13 +21,13 @@ value and a different kind of research claim.
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
 | DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Planning proposal awaiting owner review; no implementation authorised. | [DB1 narrative](workstreams/db1/README.md) |
-| DB2 canonical variables | Create validated Tier 1/2 research variables, codebooks, downloads, and later charts from declared DB1 inputs. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
+| DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
 upstream material at request time; DB1 will be a retained, versioned,
-source-faithful projection; DB2 will be a versioned research dataset with
-explicit variable definitions and validation. No layer may be described as
-another.
+source-faithful projection; DB2 will be a separately planned research dataset
+which must work within declared DB1 scope and limitations. DB2 does not shape
+DB1. No layer may be described as another.
 
 ## Current programme position
 

@@ -37,7 +37,8 @@ intended to make the following possible without overstating what it has proved:
 - identify its exact source route, window, time, byte digest, schema/drift
   state, and known retrieval failures;
 - query a declared, reproducible projection without claiming it is raw data;
-- provide declared DB1 inputs to later DB2 variables; and
+- provide a declared, inspectable source-preservation layer in its own right;
+  any later DB2 work must adapt to its stated scope and limitations; and
 - make a constrained capture or projection gap visible rather than silently
   presenting a partial result as a full Scottish Parliament mirror.
 
@@ -61,6 +62,20 @@ capture permission, a retention decision, or a DB1 availability claim.
 
 DB2, document-based material, Tier 3+ extraction, bill-amendment evidence,
 charts, and public release remain outside this proposal.
+
+### 3.1 DB2 is not a DB1 design input
+
+DB1 must be planned, prioritised, implemented, and assessed against its own
+source-preservation purpose: the approved inventory, source behaviour,
+provenance, retention, access, operational feasibility, and transparent DB1
+user value. A hoped-for DB2 variable, chart, or research question must not
+change the DB1 route scope, capture order, raw-object representation,
+projection schema, retention, or definition of success.
+
+If a future DB2 workstream is approved, it will use whatever declared DB1
+captures and projections are then available as a constraint. It may propose a
+new DB1 expansion only as a separate DB1 decision on DB1 grounds; it cannot
+quietly retrofit DB1 around a DB2 analytical preference.
 
 ## 4. Proposed DB1 operating model
 
@@ -152,7 +167,7 @@ does not exclude a family from the final inventory.
 | Package | Purpose | Permitted scope after separate approval | Completion evidence | Still excluded |
 | --- | --- | --- | --- | --- |
 | D1 — DB1 foundation | Build and test project-local DB1 capture/projection machinery with synthetic, non-source fixtures only. | Isolated project paths/database/schema/code, synthetic tests, role/grant and non-interference checks. | Reproducible synthetic capture → manifest → projection result; no-source capability check; isolated-target result. | Source request, raw source capture, scheduled polling, beta data interface. |
-| D2 — First source batch | Capture one small, specifically authorised low-volume reference slice. | Only named route(s), source window(s), request cap, retention class, and parameters in the batch authorisation. | Immutable manifest/raw objects; failure record; route-specific drift/integrity result. | Unnamed routes/years/IDs, high-volume routes, DB2 release, public access. |
+| D2 — First source batch | Capture one small, specifically authorised low-volume reference slice. | Only named route(s), source window(s), request cap, retention class, and parameters in the batch authorisation. | Immutable manifest/raw objects; failure record; route-specific drift/integrity result. | Unnamed routes/years/IDs, high-volume routes, DB2 work, public access. |
 | D3 — First DB1 projection and beta explorer | Generate a projection from D2 and let approved users test that layer alone. | Named D2 inputs, declared projection contract, private-beta DB1 explorer. | Lineage/reproducibility/rejection result and independent front-end acceptance. | DB2 variables, charts, public DB1/download claims. |
 | D4 — Bill/session/context expansion | Add further tractable approved route groups through separately authorised batches. | Exact batch route groups after their handling/terms/contract gates. | Per-batch manifests and projection results; updated DB1 coverage register. | Automatic inclusion of the remainder of inventory. |
 | D5 — High-volume programme | Address MQA, official-report, and vote-on-motion forms. | One separately designed retrieval/reconciliation method per named route/window. | Volume, transfer, cancellation, manifest, and reconciliation evidence per batch. | Firehose retrieval by assumption; bill-amendment claims. |
@@ -168,12 +183,12 @@ This proposal does not select or authorise the first source route. The D2
 proposal must nominate it using the following criteria, visibly scored rather
 than chosen for convenience:
 
-1. direct relevance to later Tier 1/2 foundations;
+1. clear source-preservation value within the approved inventory;
 2. small, bounded source response and documented concrete request form;
 3. route-specific handling/retention basis sufficient for the proposed action;
 4. an achievable source window and request/retry budget;
 5. an explicit schema and identifier uncertainty statement;
-6. a useful manifest/projection test without hidden relationship inference;
+6. a useful manifest/projection test without hidden semantic reinterpretation;
    and
 7. no dependence on an unproven update watermark or unbounded pagination.
 
@@ -186,8 +201,9 @@ preference, not an approval to request any listed route.
 ## 8. Transparency and front-end acceptance
 
 Before any DB1 beta surface is accepted, it must let a user distinguish source
-route, capture, raw object, projection, and DB2 (unavailable) without reading
-implementation code. For every exposed DB1 object it must display or link to:
+route, capture, raw object, and projection without reading implementation code.
+DB2 is outside this workstream, not a status within the DB1 interface. For
+every exposed DB1 object it must display or link to:
 
 - source route and declared source window/parameters;
 - capture-run and manifest identifier, retrieval time/range, status, content
@@ -213,7 +229,7 @@ lineage, and access decision.
 | IDs, parameters, pagination | Source examples and limited observations do not establish general semantics or full retrieval grammar. | Declare only observed/authorised grammar; reject/stop on anything else. |
 | Updates, corrections, deletions | No general reliable upstream watermark demonstrated. | Use manifests, digests, windows, overlap/reconciliation design, and visible uncertainty. |
 | High volume | Some routes are whole-history or annual firehoses. | Separate operational package with explicit transfer, streaming, cancellation, and storage budgets. |
-| Data quality/meaning | Fields and relationships are not automatically research variables. | Preserve source representation; defer DB2 semantics and Tier 1/2 claims. |
+| Data quality/meaning | Fields and relationships are not automatically research variables. | Preserve source representation; make no semantic or Tier 1/2 claim in DB1. |
 | Security/isolation | DB1 will be retained project data on a shared VPS. | Use only the isolated project target, least privilege, non-interference checks, and no-payload log controls. |
 
 Stop the affected route/package and record `BLOCKED` if the source behaviour,
@@ -238,7 +254,7 @@ manifest format, success/failure criteria, and its own front-end hand-off.
 Review DEC-0073 before approval against these questions:
 
 1. Does the proposed DB1 product boundary remain distinct from the proxy and
-   DB2?
+   any later analytical work?
 2. Is the staged route approach transparent without quietly shrinking the
    approved inventory?
 3. Are the proposed raw-capture, manifest, projection, access, and
