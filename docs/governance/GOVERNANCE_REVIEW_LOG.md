@@ -1474,3 +1474,19 @@ Next review due:
 | Affected work blocked | The other selected route forms remain unavailable pending their own cohort qualification, implementation, and owner acceptance. DB1 and DB2 remain separately blocked. |
 | Owner decision required | Approve a proposed next proxy cohort before another route is enabled. |
 | Next review due | On next-cohort proposal preparation, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0089
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0063 institutional-reference cohort proposal preparation |
+| Reviewer role | Maintainer; recording a proposed next proxy qualification gate |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, decision/risk registers, DEC-0042, DEC-0045, DEC-0055–DEC-0057, DEC-0061–DEC-0062, contextual-reference reconnaissance, and roles/committees reconnaissance |
+| Active phase and authorising decision | Documentation-only next-cohort proposal; DEC-0063 is not approved |
+| Checks performed | Selected only fixed no-query institutional reference/taxonomy collections with existing observation records. Excluded person and time-varying relationship routes, Committees/contact fields, Bills/Formal Stages, detail forms, parameterised routes, firehoses, and reports/votes. Required existing-evidence-only handling assessment before any later relay proposal. |
+| Findings | A seven-route qualification proposal can progress the proxy phase while preserving honest limits and avoiding an unsupported inference that reference data is automatically low-risk or analytically settled. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, relay, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | Every DEC-0063 route remains unavailable. Implementation/deployment, DB1, DB2, capture, variables, research output, and public data access remain blocked pending owner decision and later exact packages. |
+| Owner decision required | Approve, amend, or reject DEC-0063. |
+| Next review due | On DEC-0063 decision/result, or 1 September 2026, whichever is earlier. |

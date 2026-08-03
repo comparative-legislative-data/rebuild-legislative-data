@@ -27,6 +27,10 @@
 - DEC-0062 is now fully accepted for its three-route cohort. The next
   substantive work is a separately proposed next proxy cohort; DB1 remains
   blocked until the broader proxy phase has its own completed acceptance.
+- The proposed next cohort is DEC-0063, restricted to seven institutional
+  reference/taxonomy collections and existing evidence only. Review
+  [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_PROPOSAL_DEC0063.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_PROPOSAL_DEC0063.md)
+  before any further source-facing action.
 
 ## Latest reconnaissance update — 2 August 2026
 
