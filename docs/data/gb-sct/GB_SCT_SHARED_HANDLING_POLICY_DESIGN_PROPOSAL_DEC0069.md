@@ -1,6 +1,8 @@
 # GB-SCT Shared Handling-Policy Design Proposal — DEC-0069
 
-**Status:** PROPOSED — design only; no route, content, or system action is authorised
+**Status:** APPROVED — EXECUTED PASS; no route, content, or system action is authorised
+
+**Result:** [`GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md`](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 
 ## 1. Decision requested
 

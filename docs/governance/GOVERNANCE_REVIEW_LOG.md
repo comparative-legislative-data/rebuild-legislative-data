@@ -1650,3 +1650,19 @@ Next review due:
 | Affected work blocked | Every scoped route remains unavailable. Contract and operational batches, DB1, and DB2 remain separately blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0069. |
 | Next review due | On DEC-0069 decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0100
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0069 shared handling-policy application |
+| Reviewer role | Maintainer; applying the adopted framework without asserting a source-content classification |
+| Documents and records reviewed | DEC-0069 framework; DEC-0008 policy and handling template; DEC-0045 matrix; DEC-0068 result; member/representation, roles/committees, and MQA reconnaissance records. |
+| Active phase and authorising decision | DEC-0069 repository-only handling-register application, approved by the owner on 3 August 2026. |
+| Checks performed | Created one route-level record for each of the 24 scoped forms, checked the recorded evidence source and unresolved question, and confirmed the four workstreams do not transfer an outcome between collection/detail forms. |
+| Findings | Existing evidence does not resolve essential terms, content, minimisation, control, lifecycle, or output-fit questions for any scoped form. Each therefore remains `DO_NOT_CAPTURE_OR_RELEASE` for the current action set. |
+| Outcome | `PASS` — a complete current handling register with no route enabled. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | Every scoped route remains unavailable; no route is retired. The contract and operational batches, DB1, and DB2 remain separately blocked. |
+| Owner decision required | Approve a later contract-batch design proposal before detail or parameterised forms are assessed for any source-facing action. |
+| Next review due | On contract-batch decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
