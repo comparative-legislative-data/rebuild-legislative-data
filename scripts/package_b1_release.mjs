@@ -18,6 +18,8 @@ const allowed = [
   ".nvmrc",
   "ops/systemd",
   "ops/nginx",
+  "scripts/run_db1_d4_reference_reconciliation.mjs",
+  "scripts/migrate_db1_d4_reference_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",

@@ -1986,3 +1986,19 @@ Next review due:
 | Affected work blocked | All new source requests/capture, schedule, DB1 interface/download expansion, DB2, charts, research claims, public data access, and shared-host changes remain blocked pending a decision. |
 | Owner decision required | Approve, amend, or reject DEC-0078 before any D4A implementation, initial capture, or daily reconciliation run. |
 | Next review due | On DEC-0078 decision, an input/handling/target change, D4A result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0121
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner approval of DEC-0078 D4A reconciliation pilot |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0078; project design; handover; decision/risk registers; DB1 strategic plan/narrative; and GOV-REV-0120. |
+| Active phase and authorising decision | DEC-0078 owner-approved D4A implementation. |
+| Checks performed | Recorded the owner's approval. The approved scope remains three fixed no-query reference collections, a bounded initial cycle, and one serial daily 03:17 UTC cycle. It requires append-only manifests, raw digest/structure comparison, visible initial/changed/unchanged/failed/drift/overlap states, and leaves the D3 interface unchanged. |
+| Findings | The daily source action and timer are now authorised only within the declared project DB1 boundary. Any changed host/path, route, parameter, retention/exposure class, target, privilege, schedule, interface, or claim requires a new decision. |
+| Outcome | `PASS — IMPLEMENTATION AUTHORISED`. |
+| Affected work blocked | All routes outside the fixed cohort; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
+| Owner decision required | No additional decision for contained DEC-0078 implementation. A separate decision is required before D4B or any scope expansion. |
+| Next review due | On D4A local/deployment/initial-cycle result, a stop condition, or 1 September 2026, whichever is earlier. |

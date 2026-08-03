@@ -1,9 +1,11 @@
 # GB-SCT DB1 Reference-Cohort Reconciliation Pilot — DEC-0078
 
-**Status:** Proposed — owner approval required  
-**Version:** 1.0.0  
-**Prepared:** 3 August 2026  
+**Status:** Approved — implementation in progress
+**Version:** 1.0.0
+**Prepared:** 3 August 2026
 **Decision requested:** DEC-0078
+
+**Decision:** Approved by the project owner on 3 August 2026.
 
 ## 1. Decision requested
 
@@ -79,12 +81,13 @@ new, corrected, deleted, or historical material.
 | `FAILED` | The route's single allowed attempt did not yield an accepted complete response. | Failure stage/reason and no claim of unchanged/deleted content. |
 | `PARTIAL` | At least one cohort route completed and at least one failed or was blocked. | Per-route state; no cohort-complete assertion. |
 | `BLOCKED_BY_SOURCE_DRIFT` | The route completed but its observed structural signature differs from the prior completed observation, or another package stop condition applies. | The observed difference and the blocked affected projection/interface work. |
+| `SKIPPED_OVERLAP` | A D4A process already holds the project DB1 reconciliation lock, so the later attempt made no source request. | The skipped cycle record and absence of a catch-up request. |
 
 The D4A scheduler must use a non-overlap lock. If an earlier D4A cycle is
 still running, it records `SKIPPED_OVERLAP` without making source requests and
 does not queue a catch-up run. That is a failure/coverage signal, not a silent
 retry. The schedule begins only after a passing initial cycle and runs once per
-24-hour period at the declared UTC time. Its exact timer/unit implementation
+24-hour period at **03:17 UTC**. Its exact timer/unit implementation
 must be project-owned, constrained to this command/configuration, and leave
 the current API/web services and all unrelated VPS services unchanged.
 

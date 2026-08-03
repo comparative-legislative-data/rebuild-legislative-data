@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { createSyntheticFixture, D2_BILL_TYPES_URL, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, persistSyntheticRawObject } from "../apps/api/dist/db1/foundation.js";
+import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, persistSyntheticRawObject } from "../apps/api/dist/db1/foundation.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -34,4 +34,17 @@ test("D2 transport is fixed to one no-redirect JSON request and rejects unsafe r
   assert.equal(accepted.status, 200);
   await assert.rejects(fetchD2BillTypes(async () => new Response("redirect", { status: 302, headers: { location: "/other", "content-type": "application/json" } })), /HTTP_STATUS/);
   await assert.rejects(fetchD2BillTypes(async () => new Response("not-json", { status: 200, headers: { "content-type": "text/plain" } })), /CONTENT_TYPE/);
+});
+
+test("D4 transport accepts only the three fixed no-query reference routes", async () => {
+  const calls = [];
+  for (const route of D4_REFERENCE_ROUTES) {
+    await fetchD4ReferenceCollection(route, async (url, init) => {
+      calls.push({ url, init });
+      return new Response("[]", { status: 200, headers: { "content-type": "application/json" } });
+    });
+  }
+  assert.deepEqual(calls.map(({ url }) => url), D4_REFERENCE_ROUTES.map(({ url }) => url));
+  assert.ok(calls.every(({ init }) => init.method === "GET" && init.redirect === "manual"));
+  await assert.rejects(fetchD4ReferenceCollection({ id: "other", path: "/api/other", url: "https://example.invalid/other" }, async () => new Response("[]", { status: 200, headers: { "content-type": "application/json" } })), /fixed reference cohort/);
 });
