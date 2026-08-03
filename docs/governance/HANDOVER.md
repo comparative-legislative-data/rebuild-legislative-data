@@ -34,6 +34,12 @@
   not safely resolve their `Notes`-field handling. See
   [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md).
   No additional source-facing action is authorised by that result.
+- DEC-0064 is the proposed exact implementation/deployment package for only
+  those three candidates. It retains the accepted no-retention relay and
+  direct-official-source controls, excludes the four `Notes`-bearing routes,
+  and requires a separate owner decision before any code, VPS, or source
+  action. Review
+  [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md).
 
 ## Latest reconnaissance update — 2 August 2026
 

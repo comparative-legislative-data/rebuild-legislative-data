@@ -1506,3 +1506,19 @@ Next review due:
 | Affected work blocked | No DEC-0063 route is enabled. The four `Notes`-bearing collections remain unavailable pending route-specific terms/handling evidence. DB1 and DB2 remain blocked. |
 | Owner decision required | Approve, amend, or reject a later exact implementation/deployment proposal limited to the three candidates. |
 | Next review due | On a candidate implementation proposal/result, a blocked-route handling plan, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0091
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0064 three-route implementation/deployment proposal preparation |
+| Reviewer role | Maintainer; defining the smallest exact execution scope from the DEC-0063 candidates |
+| Documents and records reviewed | DEC-0062 implementation/deployment and acceptance records; DEC-0063 proposal/result; DEC-0045 matrix; DEC-0056–DEC-0057; existing private-beta controls. |
+| Active phase and authorising decision | Documentation-only proposed next proxy cohort; DEC-0064 is not approved. |
+| Checks performed | Limited the proposal to the three qualified fixed no-query collections. Reused the accepted relay, disclosure, no-retention, project-only deployment, rollback, and owner-acceptance controls. Excluded every blocked, detail, parameterised, DB1/DB2, and public-access change. |
+| Findings | A six-route private catalogue (the accepted first cohort plus three candidates) can be proposed without weakening the per-route qualification boundary. The candidate status does not itself enable any route. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, code, relay, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | All three DEC-0064 candidates remain unavailable. The four `Notes`-bearing routes remain blocked. DB1 and DB2 remain blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0064. |
+| Next review due | On DEC-0064 decision/result, or 1 September 2026, whichever is earlier. |
