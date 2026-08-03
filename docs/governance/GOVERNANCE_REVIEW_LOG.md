@@ -1842,3 +1842,19 @@ Next review due:
 | Affected work blocked | Source-data capture, scheduled polling, DB1 implementation, database/VPS action, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | Approve D1 before any synthetic-only DB1 foundation implementation; approve D2 before any source capture. |
 | Next review due | Before D1 approval, on a material DB1 design change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0112
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — D1 synthetic-only foundation proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0073, DEC-0074, retention policy, master endpoint matrix, DB1 narrative, handover, decision register, active application/infrastructure boundary, and existing repository layout. |
+| Active phase and authorising decision | DEC-0073, which authorises D1 proposal preparation only. |
+| Checks performed | Defined an exact D1 boundary: a synthetic fixture only; raw-object, manifest, projection, and rejection lineage; named isolated database/path targets subject to read-only preflight; no source capability; no schedule, public route, user interface, role/grant, or shared-host action; explicit verification and narrow rollback conditions. |
+| Findings | The strategic DB1 plan can now be reviewed as a contained implementation package rather than an abstract next step. The target names remain proposed until a later authorised preflight; the proposal does not infer their present state. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. The D1 package is ready as DEC-0075, but no implementation is authorised. |
+| Affected work blocked | Source-data capture, source access, scheduled reconciliation, DB1 schema/raw-storage/service action, DB1 user interface/downloads, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked pending explicit owner approval. |
+| Owner decision required | Approve, amend, or reject DEC-0075 before any D1 implementation. Approve D2 separately before any source capture. |
+| Next review due | On DEC-0075 decision, any material target/boundary change, a D1 result, or 1 September 2026, whichever is earlier. |

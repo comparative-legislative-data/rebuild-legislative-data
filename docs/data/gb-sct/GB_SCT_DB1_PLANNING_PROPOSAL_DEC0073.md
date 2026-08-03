@@ -1,6 +1,6 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Approved strategic plan — D1 foundation proposal is next; no source/capture action authorised
+**Status:** Approved strategic plan — DEC-0075 D1 foundation implementation proposal awaiting owner decision; no source/capture action authorised
 
 **Version:** 1.1.0
 **Prepared:** 3 August 2026
@@ -343,11 +343,11 @@ to the proxy, silent coercion, or a DB2/public claim.
 
 ## 10. Approval and review path
 
-If DEC-0073 is approved, the immediate next deliverable is **D1: a DB1
-foundation implementation proposal**. It must be small, source-free, and
-synthetic-only. It will define the exact isolated target, schema/migration
-boundary, raw-object and manifest interfaces, service/process needs, test
-fixtures, verification, and rollback.
+The immediate decision is **DEC-0075: D1 DB1 foundation implementation**. Its
+proposal is small, source-free, and synthetic-only; it defines the exact
+isolated target, schema/migration boundary, raw-object and manifest interfaces,
+service/process needs, test fixtures, verification, and rollback. DEC-0075
+must be owner-approved before any implementation begins.
 
 Only after D1 is accepted should the owner review D2, an exact first
 source-capture batch proposal. D2 must name the route(s), window(s), request

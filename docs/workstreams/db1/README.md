@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** Strategic plan approved; D1 source-free foundation proposal is next
+**Status:** D1 source-free foundation implementation proposal ready for owner review
 
 ## 1. Purpose and user value
 
@@ -43,12 +43,18 @@ are starting constraints, not a capture authorisation.
 
 ## 4. Decision and implementation path
 
-The proposed [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-is now approved. It sets out the strategic product shape, routine-reconciliation model,
+The [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
+is approved. It sets out the strategic product shape, routine-reconciliation model,
 PostgreSQL/raw-object architecture, researcher-access product, staged execution
 path, first-batch selection criteria, front-end acceptance, and stop
-conditions. It authorises preparation of D1 only; it does not authorise
-source-data requests, capture, database changes, or implementation.
+conditions.
+
+The next decision is [DEC-0075: D1 synthetic foundation implementation](../../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md).
+It would prove the raw-object → manifest → projection/rejection chain using only
+project-created synthetic fixtures on the isolated project targets. It would
+not request or retain source content, schedule reconciliation, or expose DB1
+to a user. Until the owner approves DEC-0075, it remains a proposal and no
+DB1 implementation is authorised.
 
 The earlier DEC-0018 plan is retained as an
 [unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
@@ -56,12 +62,13 @@ not the governing plan.
 
 ## 5. Initial gaps and review approach
 
-DB1 still needs a defined first capture slice; route-specific source and
-handling basis; manifest and raw-byte storage design; a precise projection
-contract; update/reconciliation method; failure policy; verification suite;
-and a front-end acceptance boundary. The future planning package must evaluate
-these gaps openly and specify review triggers for source drift, failed runs,
-schema changes, and renewal of source/update assumptions.
+DB1 still needs an approved D1 implementation; a defined first capture slice;
+route-specific source and handling basis; source-derived manifest/raw objects;
+a precise first projection contract; update/reconciliation method; and a
+front-end acceptance boundary. The D1 proposal defines synthetic verification
+only. Every later source action must evaluate these gaps openly and specify
+review triggers for source drift, failed runs, schema changes, and renewal of
+source/update assumptions.
 
 ## 6. Detailed records
 
