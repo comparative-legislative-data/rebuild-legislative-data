@@ -65,6 +65,9 @@ button { cursor: pointer; }
 .db1-record { margin-top: .6rem; border: 1px solid rgba(220, 229, 239, .18); border-radius: .45rem; overflow: hidden; }
 .db1-record summary { padding: .7rem .8rem; cursor: pointer; font-weight: 800; }
 .db1-record pre { overflow: auto; margin: 0; padding: .85rem; border-top: 1px solid rgba(220, 229, 239, .14); color: #b6d6e5; background: rgba(1, 6, 14, .65); font-size: .8rem; }
+.db1-record-browser { border: 1px solid rgba(220, 229, 239, .3); border-radius: .5rem; background: rgba(1, 6, 14, .26); }
+.db1-record-browser > summary { padding: .75rem .85rem; cursor: pointer; font-weight: 800; }
+.db1-record-list { padding: 0 .75rem .75rem; border-top: 1px solid rgba(220, 229, 239, .14); }
 .relay-action { border-color: #e8bd68; background: #e8bd68; color: #17202d; }
 .relay-action:hover { background: #f3cf87; }
 .official-action { background: transparent; }
