@@ -36,6 +36,11 @@ requires each later cohort to select an access mode suited to its scale and
 shape. DB2, generic access/download, public data access, and every new route
 remain excluded pending a new package.
 
+The next owner-review document is the [D5 formal-stages cohort proposal —
+DEC-0083](GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md). It proposes
+exactly `/api/billstages`, using an access-plan-first presentation under
+DEC-0082. It authorises nothing unless and until the owner approves it.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

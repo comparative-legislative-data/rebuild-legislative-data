@@ -33,8 +33,9 @@ completed record is archived at
 - DB1 contains D1's synthetic fixture, exactly one restricted D2
   `/api/billtypes` source object and manifest, the accepted D3 Bill Types
   operational projection/private preview, and D4A's three-route reconciliation
-  evidence. It is not a general DB1 mirror, canonical variable dataset,
-  download, or research release.
+  evidence, plus D4C's four retained institutional-reference collections and
+  their accepted private source-preserving catalogue. It is not a general DB1
+  mirror, canonical variable dataset, download, or research release.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -77,6 +78,12 @@ increment passed restricted deployment and owner front-end acceptance. Read its
 [result](../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
 before proposing a new DB1 cohort. The owner has also approved the
 [DB1 retained-data access direction](../data/gb-sct/GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md): access mode must fit source volume and shape rather than defaulting to an in-browser table. DB2, generic access/download, public data access, and every new route remain excluded pending a new package.
+
+The next owner decision is the proposed [D5 formal-stages cohort —
+DEC-0083](../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md).
+It is limited to `/api/billstages` and proposes an access-plan-first retained
+release. No D5 source request, capture, database action, timer, deployment, or
+interface action is authorised unless the owner approves it.
 
 ## Documentation hygiene
 

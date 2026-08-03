@@ -2178,3 +2178,19 @@ Next review due:
 | Affected work blocked | New capture cohorts; DB2; semantic variables; generic query/search/download; public data access; routes outside accepted cohorts; charts/research release; and shared-host changes. |
 | Owner decision required | A new proposal is required for any further DB1 cohort or access capability. |
 | Next review due | Before a new DB1 cohort proposal, on D4A/D4C drift or failure, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0133
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — D5 formal-stages proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0045, DEC-0073, DEC-0080–DEC-0082; the route-handling register; DB1 narrative; and GOV-REV-0132. |
+| Active phase and authorising decision | Documentation-only preparation of proposed DEC-0083 after closed D4C. |
+| Checks performed | Limited the proposal to `/api/billstages`; checked that its existing collection/contract evidence does not establish a handling or terms basis; applied DEC-0082 by declaring access-plan-first; and retained the raw archive/projection/DB2 and proxy/DB1 separations. |
+| Findings | Formal stages are a bounded P1 next-cohort candidate, but neither capture authority nor a claim about stage semantics, completeness, freshness, or access capability exists. The proposal fixes a no-query one-attempt contract and requires a handling gate before byte retention. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. No source, database, code, service, timer, or interface action occurred. |
+| Affected work blocked | D5 source/capture/timer/deployment work; all generic DB1 access/download; DB2; semantic variables; public data access; and shared-host changes remain blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0083 before any D5 action. |
+| Next review due | On DEC-0083 decision, D4A/D4C drift or failure, D5 result, or 1 September 2026, whichever is earlier. |

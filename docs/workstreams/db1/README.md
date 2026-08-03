@@ -135,6 +135,12 @@ records source/timer/projection/access proof and owner acceptance. The
 now requires an explicit volume-appropriate access mode for every later DB1
 cohort; the small-collection browser is not a universal template.
 
+The [D5 formal-stages cohort proposal — DEC-0083](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
+is the next owner decision. It is limited to `/api/billstages` and proposes
+access-plan-first rather than assuming a collection browser. No D5 source,
+capture, database, timer, or interface work is authorised while it remains
+proposed.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
