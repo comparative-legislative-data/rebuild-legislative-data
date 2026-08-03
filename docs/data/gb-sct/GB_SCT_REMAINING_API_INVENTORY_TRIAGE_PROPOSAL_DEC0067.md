@@ -1,6 +1,8 @@
 # GB-SCT Remaining API Inventory Triage Proposal — DEC-0067
 
-**Status:** PROPOSED — evidence-only; no additional route is enabled
+**Status:** APPROVED — EXECUTED PASS; no additional route is enabled
+
+**Result:** [`GB_SCT_REMAINING_API_INVENTORY_TRIAGE_RESULT_2026-08-03.md`](GB_SCT_REMAINING_API_INVENTORY_TRIAGE_RESULT_2026-08-03.md)
 
 **Purpose:** accelerate the proxy phase by qualifying the remaining selected
 inventory in route families rather than serial three-route planning cycles.
