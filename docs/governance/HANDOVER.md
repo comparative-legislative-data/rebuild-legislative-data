@@ -369,6 +369,12 @@ personal-data, no-warranty, semantic, and freshness limitations. No endpoint
 request, relay, deployment, or retained source data occurred. A separate exact
 implementation/deployment package is required before any route can be enabled.
 
+DEC-0062 is that proposed exact package. It is limited to those three fixed
+no-query collection forms, beta-only source-faithful streaming, no caching or
+retention, the two existing project services, and one-at-a-time owner frontend
+tests. It does not broaden the Nginx, Cloudflare, database, source, or public
+access boundary.
+
 ## Repository state at handover
 
 - Default branch: `main`

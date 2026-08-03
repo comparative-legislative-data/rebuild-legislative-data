@@ -1394,3 +1394,19 @@ Next review due:
 | Affected work blocked | Every relay, deployment, DB1, DB2, research output, and public-access action remains blocked pending a new exact private implementation/deployment decision. |
 | Owner decision required | Approve a later exact implementation/deployment package if the three candidates should be made available for private beta testing. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0084
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0062 private pass-through implementation/deployment proposal preparation |
+| Reviewer role | Maintainer; recording a proposed exact project-only package |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0056, DEC-0057, DEC-0059–DEC-0061, the three-route qualification result, and existing project deployment controls |
+| Active phase and authorising decision | Documentation-only package preparation; DEC-0062 is not approved |
+| Checks performed | Restricted the proposal to the three qualified collections and fixed no-query paths; retained beta-only access, source-faithful streaming, no-store/no-buffering/no-retention, explicit source limits, existing loopback services, unchanged named Nginx site, project-only rollback, and owner route-by-route frontend acceptance. |
+| Findings | The first deployed source path can remain contained without a database, new secret, account-policy, Cloudflare, or shared-service change. A source transport failure must be visible rather than replaced from a cache or converted into a success response. |
+| Outcome | `PASS` for DEC-0062 proposal preparation only. No implementation, source request, VPS action, deployment, database, DB1, DB2, cache, or public action occurred. |
+| Affected work blocked | All local source-client code, source relay, VPS deployment, and user-facing source response remain blocked pending DEC-0062 approval. DB1, DB2, research output, and public access remain independently blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0062. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
