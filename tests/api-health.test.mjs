@@ -13,8 +13,8 @@ test("API health response is static and truthful", async () => {
     status: "process_ready",
     build_id: "private-beta-access",
     capabilities: [
-      "NO_SOURCE_DATA",
-      "NO_RESEARCH_DATA_ROUTE",
+      "NO_RETAINED_SOURCE_DATA",
+      "PRIVATE_SOURCE_PASSTHROUGH_WHEN_CONFIGURED",
       "NOT_A_RESEARCH_RELEASE"
     ]
   });

@@ -2,8 +2,8 @@ export const API_SERVICE_NAME = "cld-gb-sct-api" as const;
 export const PROCESS_READY = "process_ready" as const;
 
 export const capabilityLabels = [
-  "NO_SOURCE_DATA",
-  "NO_RESEARCH_DATA_ROUTE",
+  "NO_RETAINED_SOURCE_DATA",
+  "PRIVATE_SOURCE_PASSTHROUGH_WHEN_CONFIGURED",
   "NOT_A_RESEARCH_RELEASE"
 ] as const;
 

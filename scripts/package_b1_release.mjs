@@ -153,7 +153,7 @@ const manifest = {
   build_id: "private-beta-access",
   capability_status: [
     "PRIVATE_NO_RETENTION_UPSTREAM_PASSTHROUGH",
-    "NO_RESEARCH_DATA_ROUTE",
+    "PRIVATE_SOURCE_PASSTHROUGH_WHEN_CONFIGURED",
     "NO_PUBLIC_LISTENER",
     "NOT_A_RESEARCH_RELEASE"
   ],

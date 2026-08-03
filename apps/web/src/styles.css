@@ -27,7 +27,20 @@ button { cursor: pointer; }
 .catalogue-list { display: grid; gap: .9rem; }
 .source-disclosure { margin-top: 1rem; padding: .9rem; border: 1px solid rgba(232, 189, 104, .32); border-radius: .65rem; background: rgba(232, 189, 104, .07); color: #d9e1eb; line-height: 1.5; }
 .source-disclosure p { margin: 0 0 .85rem; }
-.source-action { display: inline-block; text-decoration: none; }
+.response-guide { display: grid; gap: .75rem; margin: 1rem 0; }
+.response-guide div { display: grid; gap: .18rem; }
+.response-guide dt { color: #e8bd68; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.response-guide dd { margin: 0; color: #d9e1eb; font-size: .88rem; }
+.response-guide ul { gap: .35rem; margin: .35rem 0 0; padding-left: 1.1rem; }
+.response-guide li { color: #d9e1eb; font-size: .87rem; }
+.response-guide code { color: #b6d6e5; }
+.source-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
+.source-action { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .55rem .85rem; border: 1px solid rgba(222, 232, 244, .52); border-radius: .5rem; color: #f5f8fc; font-weight: 750; line-height: 1.2; text-decoration: none; transition: transform .16s ease, background .16s ease, box-shadow .16s ease; }
+.source-action:hover { box-shadow: 0 .5rem 1.25rem rgba(232, 189, 104, .15); transform: translateY(-1px); }
+.relay-action { border-color: #e8bd68; background: #e8bd68; color: #17202d; }
+.relay-action:hover { background: #f3cf87; }
+.official-action { background: transparent; }
+.official-action:hover { background: rgba(229, 237, 247, .08); }
 .route-card { padding: 1.1rem; border: 1px solid rgba(220, 229, 239, .13); border-radius: .75rem; background: rgba(5, 13, 25, .38); }
 .route-card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .route-group { margin: 0; color: #e8bd68; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }

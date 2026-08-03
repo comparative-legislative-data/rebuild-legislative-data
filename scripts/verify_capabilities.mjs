@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 const directories = ["apps", "packages"];
 const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
+const directSourceLinkFile = "apps/web/src/main.tsx";
 const prohibited = [
   "node:net",
   "node:tls",
@@ -48,7 +49,7 @@ for (const directory of directories) {
         findings.push(`${path}: prohibited capability or claim token ${term}`);
       }
     }
-    if (path !== sourceRelayFile && content.includes("data.parliament.scot")) {
+    if (path !== sourceRelayFile && path !== directSourceLinkFile && content.includes("data.parliament.scot")) {
       findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
     }
   }
@@ -69,6 +70,17 @@ for (const term of ["process.env", "request.query", "searchparams", "node:fs", "
   if (sourceRelay.toLowerCase().includes(term.toLowerCase())) throw new Error(`${sourceRelayFile}: prohibited source relay capability ${term}`);
 }
 
+const directSourceLinks = readFileSync(directSourceLinkFile, "utf8");
+for (const term of [
+  "https://data.parliament.scot/api/billstagetypes",
+  "https://data.parliament.scot/api/billtypes",
+  "https://data.parliament.scot/api/sessions",
+  "Open official Scottish Parliament API directly",
+  "Open via CLD no-retention relay"
+]) {
+  if (!directSourceLinks.includes(term)) throw new Error(`${directSourceLinkFile}: required fixed direct-source disclosure is missing: ${term}`);
+}
+
 if (findings.length > 0) {
   throw new Error(findings.join("\n"));
 }
@@ -81,4 +93,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: only the approved fixed no-retention source relay is present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");
+process.stdout.write("Runtime scope scan passed: only the approved fixed no-retention relay and three user-triggered official-source links are present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");
