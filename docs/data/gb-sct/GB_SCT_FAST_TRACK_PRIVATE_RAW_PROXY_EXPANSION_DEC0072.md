@@ -63,3 +63,16 @@ No source body was requested by this deployment check, and no database,
 capture/DB1, DB2, Nginx configuration, Cloudflare, secret, package, or
 shared-host change occurred. Owner acceptance of representative private-beta
 route tests remains pending.
+
+## Catalogue profile presentation
+
+The route catalogue now presents an **observed source profile** for every route
+family, drawing only on retained non-content reconnaissance metadata: response
+shape, observed field/group names, previously observed types or null behaviour
+where available, volume/temporal observations, and limitations. A family whose
+field profile has not been retained is explicitly marked as a profile gap.
+
+These cards are route-access guidance, not a DB1 schema, canonical codebook,
+field definition, data-quality finding, or research-variable release. They are
+intended to make raw upstream material navigable while preserving the distinction
+between source-observed structure and interpreted data.
