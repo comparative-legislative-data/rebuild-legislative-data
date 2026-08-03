@@ -100,4 +100,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use only an authenticated, fixed-host, no-retention relay contract; DB1, DB2, research export, and outbound paths outside the route registry are absent.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use only an authenticated, fixed-host, no-retention relay contract; DB2, research export, and outbound paths outside the route registry are absent. DB1 is limited to its separately scanned synthetic-only internal foundation.\n");
