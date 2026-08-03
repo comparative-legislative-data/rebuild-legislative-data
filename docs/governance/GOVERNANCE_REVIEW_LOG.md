@@ -1570,3 +1570,19 @@ Next review due:
 | Affected work blocked | The four `Notes`-bearing collections remain unavailable pending their own handling plan. All other selected route forms remain unavailable pending separate qualification; DB1 and DB2 remain blocked. |
 | Owner decision required | Approve a separately proposed next proxy cohort before another route is enabled. |
 | Next review due | On next-cohort proposal preparation, a handling plan, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0095
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0065 structured-link and event-taxonomy qualification proposal preparation |
+| Reviewer role | Maintainer; defining the next evidence-only proxy gate from existing reconnaissance |
+| Documents and records reviewed | DEC-0061 published-basis result; MQA first-pass and high-volume-route reconnaissance; roles/committees reconnaissance; DEC-0045; DEC-0056–DEC-0057; DEC-0064 acceptance record. |
+| Active phase and authorising decision | Documentation-only next-cohort proposal; DEC-0065 is not approved. |
+| Checks performed | Selected only fixed no-query collections with existing structural/volume evidence. Excluded free-text Event Subtypes, all parameters/details, person/contact/`Notes` routes, and high-volume forms. Retained explicit uncertainty for all identifiers, link direction, event meaning, and taxonomy semantics. |
+| Findings | A three-route evidence-only assessment can test whether small taxonomy/link material is suitable for later transient access without treating its structural fields as resolved relationships or research data. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | Every DEC-0065 route remains unavailable. Event Subtypes, the four `Notes`-bearing routes, all other selected forms, DB1, and DB2 remain blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0065. |
+| Next review due | On DEC-0065 decision/result, or 1 September 2026, whichever is earlier. |
