@@ -55,7 +55,10 @@ test("fixed relay transport uses the controlled route template and preserves syn
     for await (const chunk of redirect.body) bytes.push(chunk);
     assert.equal(Buffer.concat(bytes).toString("utf8"), "redirect-body");
     const call = calls.at(-1);
-    assert.equal(call.url, `https://data.parliament.scot${template.replace(":id", "42")}`);
+    const expectedPath = template
+      .replace(":id", parameters.id ?? parameters.childUniqueId ?? parameters.mainUniqueId ?? parameters.parentUniqueId ?? "")
+      .replace(":year", parameters.year ?? "");
+    assert.equal(call.url, `https://data.parliament.scot${expectedPath}`);
     assert.equal(call.init.method, "GET");
     assert.equal(call.init.headers.accept, "application/json");
     assert.equal(call.init.redirect, "manual");

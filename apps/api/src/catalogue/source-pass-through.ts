@@ -24,15 +24,16 @@ function routePath(route: RouteDefinition, parameters: Record<string, string>): 
   if (route.availability !== "RELAYED_PRIVATE_BETA") {
     throw new Error("Source relay route is not available for private pass-through.");
   }
-  const values = route.parameters.map((rule) => parameters[rule.name]);
-  if (values.some((value) => value === undefined)) throw new Error("Source relay parameters were not validated.");
-  if (route.template.includes(":id")) {
-    if (values.length !== 1) throw new Error("Source relay template has an ambiguous parameter contract.");
-    const value = values[0];
+  let path = route.template;
+  for (const rule of route.parameters) {
+    const value = parameters[rule.name];
     if (value === undefined) throw new Error("Source relay parameters were not validated.");
-    return route.template.replace(":id", encodeURIComponent(value));
+    path = path.replace(`:${rule.name}`, encodeURIComponent(value));
+    // Existing SP templates use :id for several differently named query parameters.
+    if (route.parameters.length === 1) path = path.replace(":id", encodeURIComponent(value));
   }
-  return route.template;
+  if (/:\w+/.test(path)) throw new Error("Source relay template has an unresolved parameter.");
+  return path;
 }
 
 function timeoutMs(route: RouteDefinition): number {

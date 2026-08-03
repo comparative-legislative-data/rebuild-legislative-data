@@ -108,9 +108,13 @@ const catalogueSections = [
 ] as const;
 
 function sourceUrl(route: CatalogueRoute, parameters: Record<string, string>, viaRelay: boolean): string {
-  const rule = route.parameters.length === 1 ? route.parameters[0] : undefined;
-  const value = rule ? parameters[rule.name] : undefined;
-  const template = value ? route.template.replace(":id", encodeURIComponent(value)) : route.template;
+  let template = route.template;
+  for (const rule of route.parameters) {
+    const value = parameters[rule.name];
+    if (!value) continue;
+    template = template.replace(`:${rule.name}`, encodeURIComponent(value));
+    if (route.parameters.length === 1) template = template.replace(":id", encodeURIComponent(value));
+  }
   if (!viaRelay) return `https://data.parliament.scot${template}`;
   const query = new URLSearchParams(parameters);
   return `/api/catalogue/gb-sct/${route.id}/source${query.size > 0 ? `?${query.toString()}` : ""}`;
