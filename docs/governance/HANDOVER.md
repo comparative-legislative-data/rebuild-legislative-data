@@ -18,6 +18,10 @@
   [`GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md`](../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md).
   The next proposed package is the separate contract batch for detail and
   parameterised forms.
+- DEC-0070 is that proposed 12-form contract batch. It limits later work to
+  transient, value-free observations of exact detail/parameter forms and does
+  not enable a source relay, capture, DB1/DB2, or any system action. Review
+  [`GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_PROPOSAL_DEC0070.md`](../data/gb-sct/GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_PROPOSAL_DEC0070.md).
 
 - DEC-0062 is approved and has passed its local implementation stage. Exactly
   three small reference collections now have fixed, private-beta-only,

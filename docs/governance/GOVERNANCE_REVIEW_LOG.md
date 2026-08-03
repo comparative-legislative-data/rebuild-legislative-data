@@ -1666,3 +1666,19 @@ Next review due:
 | Affected work blocked | Every scoped route remains unavailable; no route is retired. The contract and operational batches, DB1, and DB2 remain separately blocked. |
 | Owner decision required | Approve a later contract-batch design proposal before detail or parameterised forms are assessed for any source-facing action. |
 | Next review due | On contract-batch decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0101
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0070 detail/parameter contract-batch proposal preparation |
+| Reviewer role | Maintainer; defining the next exact evidence gate without broadening route or system scope |
+| Documents and records reviewed | DEC-0045 matrix; DEC-0055 reconnaissance boundary; DEC-0057 proxy contract; DEC-0067 triage; DEC-0069 handling register; existing structural route observations. |
+| Active phase and authorising decision | Documentation-only contract-batch proposal preparation; DEC-0070 is not approved. |
+| Checks performed | Restricted scope to the 12 DEC-0067 contract-gap forms; separated transport/shape evidence from terms, handling, semantics, operational capacity, and route availability; specified non-content retention and per-form stops. |
+| Findings | One bounded evidence batch can clarify request grammar and source response behaviour without treating a successful request as a handling, relay, capture, or research-data approval. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | All 12 scoped forms remain unavailable. The handling-restricted forms, high-volume operational batch, DB1, and DB2 remain separately blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0070. |
+| Next review due | On DEC-0070 decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
