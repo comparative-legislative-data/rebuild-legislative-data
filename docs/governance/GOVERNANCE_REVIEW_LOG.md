@@ -1586,3 +1586,19 @@ Next review due:
 | Affected work blocked | Every DEC-0065 route remains unavailable. Event Subtypes, the four `Notes`-bearing routes, all other selected forms, DB1, and DB2 remain blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0065. |
 | Next review due | On DEC-0065 decision/result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0096
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0065 evidence-only qualification execution |
+| Reviewer role | Maintainer; recording route-by-route candidate outcomes without new source access |
+| Documents and records reviewed | DEC-0065 proposal; DEC-0061 published-basis result; MQA first-pass/high-volume-route and roles/committees reconnaissance results; DEC-0045 matrix; retention/publication controls. |
+| Active phase and authorising decision | DEC-0065 evidence-only structured-link and event-taxonomy qualification |
+| Checks performed | Reused only the fixed collection forms, structural/volume observations, and published licence limits. Did not infer entity identity, link direction, taxonomy/event meaning, or data classification from identifier fields. |
+| Findings | Committee Type Links, MQA Event Types, and unfiltered MQA Event Links meet the narrow raw no-retention candidate threshold. The event-link response profile requires visible size/source-window disclosure later. |
+| Outcome | `PASS` — three candidate result. No source/API/portal/document request, source data, relay, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | No DEC-0065 route is enabled. MQA Event Subtypes, all detail/parameterised forms, the four `Notes`-bearing collections, DB1, and DB2 remain blocked. |
+| Owner decision required | Approve, amend, or reject a later exact implementation/deployment proposal limited to the three candidates. |
+| Next review due | On a candidate implementation proposal/result, a blocked-route handling plan, or 1 September 2026, whichever is earlier. |

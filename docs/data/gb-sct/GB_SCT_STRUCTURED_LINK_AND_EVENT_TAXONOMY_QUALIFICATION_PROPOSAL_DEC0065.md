@@ -1,6 +1,7 @@
 # GB-SCT Structured-Link and Event-Taxonomy Qualification Proposal — DEC-0065
 
-**Status:** PROPOSED — no additional source route is enabled
+**Status:** APPROVED — EXECUTED PASS (three candidates; no additional source
+route is enabled)
 
 **Version:** 1.0.0
 
@@ -119,3 +120,5 @@ separate exact private implementation/deployment proposal for those routes. If
 none qualify, the catalogue will state that outcome transparently and the next
 step is a route-specific evidence plan. DB1 remains blocked pending broader
 proxy-phase acceptance.
+
+**Result:** [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md`](GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md).

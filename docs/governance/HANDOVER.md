@@ -46,13 +46,13 @@
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
   The target result is
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md).
-- The proposed next cohort is DEC-0065, restricted to three fixed structured
-  taxonomy/link collections and existing evidence only: Committee Type Links,
-  MQA Event Types, and unfiltered MQA Event Links. It excludes MQA Event
-  Subtypes (`IntroText`), every parameterised/detail form, and all higher-risk
-  or high-volume routes. Review
-  [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_PROPOSAL_DEC0065.md`](../data/gb-sct/GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_PROPOSAL_DEC0065.md)
-  before any further source-facing action.
+- DEC-0065 is complete as an evidence-only qualification. Committee Type Links,
+  MQA Event Types, and unfiltered MQA Event Links are candidates for a
+  separately proposed private no-retention pass-through cohort. MQA Event
+  Subtypes remain unavailable because of `IntroText`; every detail and
+  parameterised form remains unavailable. See
+  [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md).
+  No additional source-facing action is authorised by that result.
 
 ## Latest reconnaissance update — 2 August 2026
 
