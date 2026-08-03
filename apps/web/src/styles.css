@@ -41,7 +41,13 @@ button { cursor: pointer; }
 .response-guide li { color: #d9e1eb; font-size: .87rem; }
 .response-guide code { color: #b6d6e5; }
 .source-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
+.source-parameter-form { display: grid; gap: .8rem; }
+.source-parameter-inputs { display: flex; flex-wrap: wrap; gap: .7rem; }
+.source-parameter-inputs label { display: grid; flex: 1 1 12rem; gap: .4rem; color: #dce5ef; font-size: .82rem; font-weight: 750; }
+.source-parameter-inputs input:not([type="hidden"]) { width: 100%; min-height: 2.5rem; padding: .55rem .7rem; border: 1px solid rgba(220, 229, 239, .3); border-radius: .45rem; background: rgba(5, 13, 25, .5); color: #f6f8fb; }
+.source-parameter-inputs input:focus { border-color: #e8bd68; box-shadow: 0 0 0 3px rgba(232, 189, 104, .17); outline: none; }
 .source-action { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .55rem .85rem; border: 1px solid rgba(222, 232, 244, .52); border-radius: .5rem; color: #f5f8fc; font-weight: 750; line-height: 1.2; text-decoration: none; transition: transform .16s ease, background .16s ease, box-shadow .16s ease; }
+.source-actions button { font: inherit; cursor: pointer; }
 .source-action:hover { box-shadow: 0 .5rem 1.25rem rgba(232, 189, 104, .15); transform: translateY(-1px); }
 .relay-action { border-color: #e8bd68; background: #e8bd68; color: #17202d; }
 .relay-action:hover { background: #f3cf87; }

@@ -38,13 +38,28 @@ function entry(
   qualification = "HANDLING_REQUIRED",
   limitation = "Route-level qualification is required before a source request can be made."
 ): RouteDefinition {
+  if (availability === "RELAYED_PRIVATE_BETA") {
+    return {
+      id,
+      group,
+      template,
+      priority,
+      operatingClass,
+      availability,
+      parameters,
+      qualification: "PRIVATE_RAW_RELAY_OWNER_APPROVED_DEC0072",
+      limitation: `${privatePassThroughLimitation} The displayed route and parameter contract control the request; CLD does not interpret, retain, index, or republish the response.`
+    };
+  }
   return { id, group, template, priority, operatingClass, availability, parameters, qualification, limitation };
 }
 
-const pending = "UNAVAILABLE_PENDING_QUALIFICATION" as const;
-const detail = "UNAVAILABLE_PENDING_DETAIL_CONTRACT" as const;
-const extreme = "UNAVAILABLE_EXTREME_VOLUME" as const;
 const relayed = "RELAYED_PRIVATE_BETA" as const;
+// DEC-0072 deliberately keeps the only available action narrow: an authenticated,
+// source-faithful stream. The former route assessment remains in repository history.
+const pending = relayed;
+const detail = relayed;
+const extreme = relayed;
 const privatePassThroughLimitation = "A private-beta action opens the fixed Scottish Parliament response at request time. It is not a project dataset, snapshot, endorsement, warranty, or claim of semantic completeness or freshness; source licence exceptions and third-party or personal-data rights remain applicable.";
 const constituencyPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined constituency reference only; CLD makes no geographic, validity-date, coverage, or temporal-semantic claim.`;
 const regionPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined regional reference only; CLD makes no date-boundary, coverage, or temporal-semantic claim.`;

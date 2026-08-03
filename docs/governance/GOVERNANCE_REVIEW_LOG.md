@@ -1730,3 +1730,19 @@ Next review due:
 | Affected work blocked | All 17 routes remain unavailable. DB1, DB2, public output, and every other unqualified route remain separately blocked. |
 | Owner decision required | Approve a later small combined route-qualification package before any new source-facing action or route implementation. |
 | Next review due | On that combined package decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0105
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner-approved DEC-0072 proportionate private raw proxy expansion |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0045 inventory; DEC-0057 proxy boundary; DEC-0067–DEC-0071 backlog records; access-control and existing source-relay implementation. |
+| Active phase and authorising decision | DEC-0072 authenticated private raw no-retention proxy access. |
+| Checks performed | Kept the existing two-service and private-beta boundary; retained fixed upstream host, route allowlist, parameter grammar, manual redirects, streamed bodies, no-store headers, and no source-body persistence. Kept DB1, DB2, public release, and research claims excluded. |
+| Findings | The owner has explicitly chosen proportionate delivery for the public institutional source inventory. Existing route assessment records remain useful as historical limitations and future DB1/DB2 evidence, but no longer block this limited transient access action. |
+| Outcome | `PASS — IMPLEMENTATION IN PROGRESS` — code and local verification are the next contained work; deployment follows only if those checks pass. |
+| Affected work blocked | Source capture, DB1, DB2, canonical variables, downloads, charts, public source/data access, research release, and shared-host changes remain blocked. |
+| Owner decision required | No new decision is required for the bounded implementation and existing project-only deployment. Owner acceptance is required after representative private-beta testing. |
+| Next review due | On local verification result, deployment result, owner acceptance, a material failure, or 1 September 2026, whichever is earlier. |

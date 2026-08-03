@@ -2,17 +2,6 @@ import { Readable } from "node:stream";
 import type { RouteDefinition } from "./gb-sct.js";
 
 const upstreamOrigin = "https://data.parliament.scot";
-const routePaths = new Map<string, string>([
-  ["bill-stage-types.collection", "/api/billstagetypes"],
-  ["bill-types.collection", "/api/billtypes"],
-  ["sessions.collection", "/api/sessions"],
-  ["constituencies.collection", "/api/constituencies"],
-  ["regions.collection", "/api/regions"],
-  ["committee-types.collection", "/api/committeetypes"],
-  ["committee-type-links.collection", "/api/committeetypelinks"],
-  ["mqa-event-types.collection", "/api/motionsquestionsanswerseventtypes"],
-  ["mqa-event-links.collection", "/api/motionsquestionsanswerseventlinks"]
-]);
 
 export type SourceTransportFailure = {
   kind: "transport_failure";
@@ -31,24 +20,35 @@ export type SourceResponse = {
 export type SourceOutcome = SourceTransportFailure | SourceResponse;
 export type SourceFetcher = (input: URL, init: RequestInit) => Promise<Response>;
 
-function routePath(route: RouteDefinition): string {
-  const path = routePaths.get(route.id);
-  if (!path || route.availability !== "RELAYED_PRIVATE_BETA" || route.template !== path || route.parameters.length !== 0) {
-    throw new Error("Source relay route must be one of the approved fixed collection paths.");
+function routePath(route: RouteDefinition, parameters: Record<string, string>): string {
+  if (route.availability !== "RELAYED_PRIVATE_BETA") {
+    throw new Error("Source relay route is not available for private pass-through.");
   }
-  return path;
+  const values = route.parameters.map((rule) => parameters[rule.name]);
+  if (values.some((value) => value === undefined)) throw new Error("Source relay parameters were not validated.");
+  if (route.template.includes(":id")) {
+    if (values.length !== 1) throw new Error("Source relay template has an ambiguous parameter contract.");
+    const value = values[0];
+    if (value === undefined) throw new Error("Source relay parameters were not validated.");
+    return route.template.replace(":id", encodeURIComponent(value));
+  }
+  return route.template;
+}
+
+function timeoutMs(route: RouteDefinition): number {
+  return ["WHOLE_HISTORY_LARGE", "ANNUAL_FIREHOSE", "EXTREME_OR_UNRESOLVED"].includes(route.operatingClass) ? 300_000 : 60_000;
 }
 
 export function createSourcePassThrough(fetcher: SourceFetcher = fetch, now: () => Date = () => new Date()) {
   return {
-    async relay(route: RouteDefinition): Promise<SourceOutcome> {
+    async relay(route: RouteDefinition, parameters: Record<string, string> = {}): Promise<SourceOutcome> {
       const requestedAt = now().toISOString();
       try {
-        const response = await fetcher(new URL(routePath(route), upstreamOrigin), {
+        const response = await fetcher(new URL(routePath(route, parameters), upstreamOrigin), {
           method: "GET",
           headers: { accept: "application/json" },
           redirect: "manual",
-          signal: AbortSignal.timeout(20_000)
+          signal: AbortSignal.timeout(timeoutMs(route))
         });
         return {
           kind: "source_response",

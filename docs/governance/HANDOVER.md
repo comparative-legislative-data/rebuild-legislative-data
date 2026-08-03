@@ -454,6 +454,14 @@ retention, the two existing project services, and one-at-a-time owner frontend
 tests. It does not broaden the Nginx, Cloudflare, database, source, or public
 access boundary.
 
+DEC-0072 supersedes the serial route-qualification pacing for the private raw
+proxy only. The owner has approved authenticated, source-faithful, no-retention
+relay access across the 64 selected DEC-0045 route forms, with fixed-host route
+allowlisting, parameter grammar checks, streamed response handling, and a
+separate direct Scottish Parliament option. It does not change the stricter
+gates for capture/DB1, DB2/canonical variables, public release, or analytical
+claims.
+
 ## Repository state at handover
 
 - Default branch: `main`

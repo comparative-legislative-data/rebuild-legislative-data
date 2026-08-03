@@ -166,10 +166,9 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     if (!route) return reply.code(404).send({ code: "ROUTE_NOT_FOUND" });
     const issue = validateParameters(route, body(request.body).parameters ?? {});
     if (issue) return reply.code(400).send({ code: "PARAMETER_REJECTED", message: issue });
-    return reply.code(409).send({
-      code: route.availability,
+    return reply.send({
       route_id: route.id,
-      message: "No upstream request has been made. This route is not available for pass-through access."
+      message: "The source route is available through the authenticated raw relay. No upstream request has been made by this confirmation."
     });
   });
 
@@ -180,9 +179,11 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     const route = id ? findGbSctRoute(id) : undefined;
     if (!route) return reply.code(404).send({ code: "ROUTE_NOT_FOUND" });
     if (route.availability !== "RELAYED_PRIVATE_BETA") return reply.code(409).send({ code: route.availability, route_id: route.id, message: "This route is not available for pass-through access." });
-    if (Object.keys((request.query ?? {}) as Record<string, unknown>).length > 0) return reply.code(400).send({ code: "SOURCE_PARAMETERS_NOT_ALLOWED", route_id: route.id });
+    const parameters = (request.query ?? {}) as Record<string, unknown>;
+    const issue = validateParameters(route, parameters);
+    if (issue) return reply.code(400).send({ code: "PARAMETER_REJECTED", route_id: route.id, message: issue });
 
-    const outcome = await sourcePassThrough.relay(route);
+    const outcome = await sourcePassThrough.relay(route, parameters as Record<string, string>);
     if (outcome.kind === "transport_failure") {
       return reply.code(outcome.code === "SOURCE_TIMEOUT" ? 504 : 502).send({
         code: "SOURCE_TRANSPORT_FAILURE",

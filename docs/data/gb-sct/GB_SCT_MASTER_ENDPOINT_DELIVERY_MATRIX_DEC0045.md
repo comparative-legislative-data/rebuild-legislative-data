@@ -1,9 +1,8 @@
 # GB-SCT Master Endpoint Delivery Matrix — DEC-0045
 
-**Status:** Approved planning control — no source request, proxy, capture,
-database, application, or public action authorised
+**Status:** Approved planning control with DEC-0072 private raw-access overlay
 
-**Version:** 1.11.0
+**Version:** 1.12.0
 
 **Prepared:** 2 August 2026
 
@@ -25,6 +24,16 @@ it. Retirement needs an explicit owner decision with recorded evidence.
 This document is the active route-level planning control. It does not modify
 DEC-0007's selected inventory, create a new source claim, or authorise any
 external interaction.
+
+### 1.2 DEC-0072 private raw-access overlay
+
+DEC-0072 now authorises all 64 selected forms for authenticated private-beta,
+source-faithful, no-retention access through the fixed-host CLD relay, with a
+direct Scottish Parliament alternative. This overrides the **Pass-through**
+availability implication of the historic row-level qualification entries below;
+it does not rewrite their evidence, nor does it authorise capture/DB1, DB2,
+public output, or a research-variable claim. The table remains the durable
+inventory and future data-management roadmap.
 
 ### 1.1 Controlled additions
 

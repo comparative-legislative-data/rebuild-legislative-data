@@ -7,20 +7,10 @@ import { gbSctRoutes, validateParameters } from "../apps/api/dist/catalogue/gb-s
 import { registerAccessRoutes } from "../apps/api/dist/access/routes.js";
 import { createSourcePassThrough } from "../apps/api/dist/catalogue/source-pass-through.js";
 
-const relayedRoutes = [
-  ["bill-stage-types.collection", "/api/billstagetypes"],
-  ["bill-types.collection", "/api/billtypes"],
-  ["sessions.collection", "/api/sessions"],
-  ["constituencies.collection", "/api/constituencies"],
-  ["regions.collection", "/api/regions"],
-  ["committee-types.collection", "/api/committeetypes"],
-  ["committee-type-links.collection", "/api/committeetypelinks"],
-  ["mqa-event-types.collection", "/api/motionsquestionsanswerseventtypes"],
-  ["mqa-event-links.collection", "/api/motionsquestionsanswerseventlinks"]
-];
+const relayedRoutes = gbSctRoutes.map((route) => [route.id, route.template]);
 const relayedIds = relayedRoutes.map(([id]) => id);
 
-test("GB-SCT catalogue represents all selected route forms with exactly the approved private relay cohort", () => {
+test("GB-SCT catalogue represents all selected route forms as owner-approved private raw relay routes", () => {
   assert.equal(gbSctRoutes.length, 64);
   assert.equal(new Set(gbSctRoutes.map((route) => route.id)).size, 64);
   assert.deepEqual(gbSctRoutes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").map((route) => route.id).sort(), relayedIds.sort());
@@ -46,16 +36,17 @@ test("catalogue parameter rules reject unlisted and malformed input", () => {
   assert.equal(validateParameters(annualVotes, { year: "2025" }), undefined);
 });
 
-test("fixed relay transport uses only the nine approved paths and preserves synthetic redirect and source-error responses", async () => {
+test("fixed relay transport uses the controlled route template and preserves synthetic redirect and source-error responses", async () => {
   const calls = [];
   const relay = createSourcePassThrough(async (url, init) => {
     calls.push({ url: url.toString(), init });
     return new Response(Buffer.from("redirect-body"), { status: 302, headers: { "content-type": "application/json", location: "/other" } });
   }, () => new Date("2026-08-03T12:02:00.000Z"));
-  for (const [id, path] of relayedRoutes) {
+  for (const [id, template] of relayedRoutes.filter(([id]) => ["bill-stage-types.collection", "mqa-business-motions.consideration", "bills.detail", "motion-votes.year"].includes(id))) {
     const route = gbSctRoutes.find((entry) => entry.id === id);
     assert.ok(route);
-    const redirect = await relay.relay(route);
+    const parameters = Object.fromEntries(route.parameters.map((rule) => [rule.name, rule.grammar === "year" ? "2025" : rule.grammar === "fixed_value" ? rule.allowedValues[0] : "42"]));
+    const redirect = await relay.relay(route, parameters);
     assert.equal(redirect.kind, "source_response");
     if (redirect.kind !== "source_response") throw new Error("expected a source response");
     assert.equal(redirect.status, 302);
@@ -64,7 +55,7 @@ test("fixed relay transport uses only the nine approved paths and preserves synt
     for await (const chunk of redirect.body) bytes.push(chunk);
     assert.equal(Buffer.concat(bytes).toString("utf8"), "redirect-body");
     const call = calls.at(-1);
-    assert.equal(call.url, `https://data.parliament.scot${path}`);
+    assert.equal(call.url, `https://data.parliament.scot${template.replace(":id", "42")}`);
     assert.equal(call.init.method, "GET");
     assert.equal(call.init.headers.accept, "application/json");
     assert.equal(call.init.redirect, "manual");
@@ -88,7 +79,7 @@ async function catalogueApp(sourcePassThrough) {
   return app;
 }
 
-test("catalogue denies unauthenticated access and leaves unavailable routes fail-closed", async () => {
+test("catalogue denies unauthenticated access and keeps malformed route parameters fail-closed", async () => {
   let calls = 0;
   const app = await catalogueApp({ relay: async () => { calls += 1; throw new Error("relay must not run"); } });
   const denied = await app.inject({ method: "GET", url: "/catalogue/gb-sct" });
@@ -98,11 +89,11 @@ test("catalogue denies unauthenticated access and leaves unavailable routes fail
   assert.equal(catalogue.statusCode, 200);
   assert.equal(catalogue.json().route_count, 64);
   assert.equal(catalogue.json().source_requests_enabled, true);
-  assert.equal(catalogue.json().enabled_route_count, 9);
+  assert.equal(catalogue.json().enabled_route_count, 64);
 
-  const refused = await app.inject({ method: "GET", url: "/catalogue/gb-sct/motion-votes.year/source", headers: { cookie: "cld_access_session=accepted" } });
-  assert.equal(refused.statusCode, 409);
-  assert.equal(refused.json().code, "UNAVAILABLE_EXTREME_VOLUME");
+  const refused = await app.inject({ method: "GET", url: "/catalogue/gb-sct/motion-votes.year/source?year=1988", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(refused.statusCode, 400);
+  assert.equal(refused.json().code, "PARAMETER_REJECTED");
   assert.equal(calls, 0);
   await app.close();
 });
@@ -137,12 +128,12 @@ test("approved DEC-0064 source route streams the synthetic source response witho
   await app.close();
 });
 
-test("source endpoint rejects a query and shows a synthetic transport failure without fallback", async () => {
+test("source endpoint rejects malformed parameters and shows a synthetic transport failure without fallback", async () => {
   let calls = 0;
   const app = await catalogueApp({ relay: async () => ({ kind: "transport_failure", code: "SOURCE_TIMEOUT", requestedAt: "2026-08-03T12:01:00.000Z" }) });
   const query = await app.inject({ method: "GET", url: "/catalogue/gb-sct/sessions.collection/source?unexpected=1", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(query.statusCode, 400);
-  assert.equal(query.json().code, "SOURCE_PARAMETERS_NOT_ALLOWED");
+  assert.equal(query.json().code, "PARAMETER_REJECTED");
   assert.equal(calls, 0);
   const timeout = await app.inject({ method: "GET", url: "/catalogue/gb-sct/sessions.collection/source", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(timeout.statusCode, 504);

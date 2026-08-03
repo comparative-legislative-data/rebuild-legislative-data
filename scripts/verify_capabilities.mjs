@@ -59,18 +59,11 @@ const sourceRelay = readFileSync(sourceRelayFile, "utf8");
 for (const term of [
   "https://data.parliament.scot",
   "redirect: \"manual\"",
-  "AbortSignal.timeout(20_000)",
-  "bill-stage-types.collection",
-  "bill-types.collection",
-  "sessions.collection",
-  "constituencies.collection",
-  "regions.collection",
-  "committee-types.collection",
-  "committee-type-links.collection",
-  "mqa-event-types.collection",
-  "mqa-event-links.collection"
+  "AbortSignal.timeout(timeoutMs(route))",
+  "route.template",
+  "encodeURIComponent"
 ]) {
-  if (!sourceRelay.includes(term)) throw new Error(`${sourceRelayFile}: required fixed relay control is missing: ${term}`);
+  if (!sourceRelay.includes(term)) throw new Error(`${sourceRelayFile}: required relay control is missing: ${term}`);
 }
 for (const term of ["process.env", "request.query", "searchparams", "node:fs", "node:http", "node:https", "undici", "axios", "/db1/", "/db2/", "cache", "writefile", ".json()", ".text()"] ) {
   if (sourceRelay.toLowerCase().includes(term.toLowerCase())) throw new Error(`${sourceRelayFile}: prohibited source relay capability ${term}`);
@@ -105,4 +98,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: only the nine approved fixed no-retention relay routes and nine user-triggered official-source links are present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use only an authenticated, fixed-host, no-retention relay contract; DB1, DB2, research export, and outbound paths outside the route registry are absent.\n");
