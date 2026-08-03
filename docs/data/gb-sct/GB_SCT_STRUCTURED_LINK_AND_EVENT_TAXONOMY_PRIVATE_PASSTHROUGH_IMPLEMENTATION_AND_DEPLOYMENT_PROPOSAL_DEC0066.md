@@ -1,7 +1,9 @@
 # GB-SCT Structured-Link and Event-Taxonomy Private Pass-Through
 # Implementation and Deployment Proposal — DEC-0066
 
-**Status:** PROPOSED — no route is enabled
+**Status:** APPROVED — EXECUTED PASS
+
+**Result:** [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md)
 
 **Version:** 1.0.0
 
