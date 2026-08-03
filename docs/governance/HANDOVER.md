@@ -21,6 +21,12 @@
   content, semantics, handling, relay eligibility, or availability. See
   [`GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md).
   The next proposed package is the independent high-volume operational batch.
+- DEC-0071 is that proposed operational-control framework. It covers all 17
+  remaining high-volume MQA, motion, question, official-report, and
+  votes-on-motions forms using existing audit evidence only. It preserves
+  source-window, streaming, failure, DB1, and vote-meaning boundaries without
+  enabling a route. Review
+  [`GB_SCT_HIGH_VOLUME_OPERATIONAL_CONTROL_PROPOSAL_DEC0071.md`](../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_CONTROL_PROPOSAL_DEC0071.md).
 
 - DEC-0062 is approved and has passed its local implementation stage. Exactly
   three small reference collections now have fixed, private-beta-only,

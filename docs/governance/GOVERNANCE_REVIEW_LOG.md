@@ -1698,3 +1698,19 @@ Next review due:
 | Affected work blocked | All 12 forms remain unavailable pending further route decisions. The high-volume operational batch, DB1, and DB2 remain separately blocked. |
 | Owner decision required | Approve a separate high-volume operational-batch design proposal before further planning or source work for those routes. |
 | Next review due | On operational-batch decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0103
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0071 high-volume operational-control proposal preparation |
+| Reviewer role | Maintainer; converting existing audit evidence into an operational-control gate without treating it as data availability |
+| Documents and records reviewed | DEC-0045 matrix; DEC-0055 reconnaissance boundary; DEC-0057 proxy contract; DEC-0067 triage; high-volume route audit; MQA first pass; votes-on-motions first pass; update-signal reconnaissance. |
+| Active phase and authorising decision | Documentation-only operational-control proposal preparation; DEC-0071 is not approved. |
+| Checks performed | Covered all 17 DEC-0067 operational forms; separated whole-history, filtered, annual-window, empty-detail, and extreme-unfiltered behaviours; retained explicit response-budget, no-buffering, failure, updateability, and DB1 prerequisites. |
+| Findings | Existing audits support a shared operational-control framework, but do not establish handling, terms, route availability, mirror completeness, updateability, or research semantics. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | All 17 scoped forms remain unavailable. DB1, DB2, public output, and all other unqualified routes remain separately blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0071. |
+| Next review due | On DEC-0071 decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
