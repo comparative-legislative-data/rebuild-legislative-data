@@ -2082,3 +2082,19 @@ Next review due:
 | Affected work blocked | Any route/input beyond the three named manifests; source/timer work; raw access; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
 | Owner decision required | None for the contained DEC-0079 package. A new decision is required for any stop condition or scope expansion. |
 | Next review due | On D4B result, a D4A operational event, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0127
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0079 implementation/deployment result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0079 proposal; local and VPS verification output; deployment/rollback evidence; DB1 narrative; handover; decision register; and GOV-REV-0126. |
+| Active phase and authorising decision | DEC-0079 D4B contained implementation package. |
+| Checks performed | Verified exact-manifest binding, 47 total preserved records/zero rejections, fixed reader route, separate reader grants, anonymous denial, active API/web/D4A services, and unchanged D4A timer. The first deployment's immediate health-check failure triggered rollback; the correction waited for readiness, preserved the scope, and passed. |
+| Findings | D4B now provides a narrow retained-baseline catalogue, not a generic mirror. The user-facing grouped/expandable acceptance has not yet been completed by an eligible user. |
+| Outcome | `PASS — OWNER FRONT-END ACCEPTANCE PENDING`. |
+| Affected work blocked | Any expansion beyond the three manifests; source/timer work; raw access; generic query/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
+| Owner decision required | No new decision for the remaining owner acceptance test. A new decision is required for any expansion after closure. |
+| Next review due | On owner front-end acceptance, a D4A operational event, or 1 September 2026, whichever is earlier. |

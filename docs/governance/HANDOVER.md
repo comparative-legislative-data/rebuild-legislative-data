@@ -66,9 +66,10 @@ has passed as the bounded three-route reference-cohort reconciliation pilot.
 Its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 records the initial/repeat observations, false-positive correction, and active
 03:17 UTC timer. [D4B](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
-is approved for its contained build/deployment/acceptance package: three fixed
-baseline projections and a private catalogue. Download expansion, DB2, and a
-research release remain excluded.
+has deployed its three fixed baseline projections and private catalogue. Read
+its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
+before any next DB1 work. Owner front-end acceptance remains pending; download
+expansion, DB2, and a research release remain excluded.
 
 ## Documentation hygiene
 

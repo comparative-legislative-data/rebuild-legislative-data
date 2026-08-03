@@ -107,10 +107,12 @@ verification. The next DB1 work is proposal-only D4B, not an automatic source
 or interface expansion.
 
 The [D4B proposal — DEC-0079](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
-is approved for a contained build: three fixed baseline projections from named
-D4A manifests and a private DB1 catalogue in the proxy’s compact
-grouped/expandable layout. It keeps later timer observations separate from
-displayed records; its result must pass before any new DB1 claim is made.
+has deployed three fixed baseline projections from named D4A manifests and a
+private DB1 catalogue in the proxy’s compact grouped/expandable layout. Its
+[result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
+records the one readiness-check rollback and corrected deployment. It keeps
+later timer observations separate from displayed records; owner front-end
+acceptance remains pending.
 
 ## 6. Detailed records
 
