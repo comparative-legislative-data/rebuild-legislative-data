@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1 synthetic-only foundation passed; D2 first-source-batch proposal awaiting owner review
+**Status:** D1 foundation and D2 first restricted source capture passed; D3 projection/explorer proposal is next
 
 ## 1. Purpose and user value
 
@@ -20,11 +20,12 @@ DB1 capture priorities, schema, retention, or success criteria.
 
 ## 2. Current boundary
 
-No source response has been captured. D1 has created an internal `db1` schema
-and a single synthetic-only raw/manifest/projection/rejection chain; it is a
-technical proof, not DB1 source content. No DB1 data service, capture worker,
-projection of a source route, or researcher access surface exists. The
-completed proxy remains separate because it retains no source response.
+D1 created an internal `db1` schema and one synthetic-only proof chain. D2 has
+now captured exactly one restricted source object: `/api/billtypes`, with a
+manifest and raw-object digest. It is one dated source observation, not a
+mirror, projection, data service, capture worker, or researcher-access
+surface. The completed proxy remains separate because it retains no source
+response.
 
 The current inventory and route evidence are inputs to DB1 planning, not
 authority to collect data. See the [GB-SCT source-controls guide](../../data/gb-sct/README.md).
@@ -72,10 +73,10 @@ only. Every later source action must evaluate these gaps openly and specify
 review triggers for source drift, failed runs, schema changes, and renewal of
 source/update assumptions.
 
-The proposed [D2 first-source-batch package](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
-selects only `/api/billtypes`: one fixed, no-query source request with a
-restricted handling class. It includes no schedule, user access, projection,
-or DB2 use, and remains unapproved until the owner decides.
+The owner-approved [D2 first-source batch](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
+passed as one fixed `/api/billtypes` request. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
+records the restricted raw object and manifest only: no schedule, user access,
+projection, or DB2 use occurred.
 
 ## 6. Detailed records
 

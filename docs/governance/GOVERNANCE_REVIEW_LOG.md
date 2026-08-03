@@ -1890,3 +1890,19 @@ Next review due:
 | Affected work blocked | All source requests/capture, scheduled reconciliation, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked pending DEC-0076 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0076 before the one named source request or its capture implementation. |
 | Next review due | On DEC-0076 decision, any scope/handling/target change, a D2 result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0115
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0076 D2 first-source-batch result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0076, local tests/capability scan, preflight/postflight, batch result, DB1 narrative, handover, decision register, and D1 result. |
+| Active phase and authorising decision | DEC-0076, owner-approved one-request restricted DB1 source capture. |
+| Checks performed | Confirmed no prior D2 route run; verified the hard-coded no-query request controls, one successful source run/manifest, restricted handling class, byte count/digest, restored raw/project modes, and unchanged API/web service activity. |
+| Findings | D2 establishes one retained source observation only. It does not establish a current mirror, recurring ingestion, source projection, user access, or any DB2/research claim. |
+| Outcome | `PASS` — `/api/billtypes` is retained as one restricted raw object with its manifest. |
+| Affected work blocked | Further source requests/capture, scheduling, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | Approve D3 before any source-backed DB1 projection or private explorer. |
+| Next review due | Before D3 approval, on any source/handling/target change, a D3 result, or 1 September 2026, whichever is earlier. |

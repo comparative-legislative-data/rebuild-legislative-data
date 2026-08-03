@@ -30,9 +30,10 @@ completed record is archived at
   handling for capture or release.
 - DEC-0045 keeps the complete selected inventory and its controlled
   addition/retirement path.
-- DB1 has no source content. D1 has passed with one explicitly synthetic test
-  object and its internal manifest/projection lineage; no source response,
-  DB1 mirror/projection, canonical variable, or research claim exists.
+- DB1 contains D1's synthetic fixture plus exactly one restricted D2
+  `/api/billtypes` source object and manifest. No source projection, DB1
+  mirror, canonical variable, download, user data access, or research claim
+  exists.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -51,14 +52,13 @@ the archive. It is not the next DB1 package.
 
 ## Next owner decision
 
-DEC-0075 D1 has passed; its [result](../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
-records the synthetic-only raw-object, manifest, and projection/rejection
-lineage proof. The current owner decision is [DEC-0076 D2](../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md):
-one exact first-source-batch proposal.
+DEC-0075 D1 and DEC-0076 D2 have passed. The [D2 result](../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
+records the single restricted source capture. The current owner decision is
+D3: a first source-backed DB1 projection and private-explorer proposal.
 
-D2 and every later capture package retain their own separate approval. No
-source request/capture, scheduled reconciliation, DB1 interface/download,
-DB2, or research release is currently authorised.
+D3 and every later capture package retain their own separate approval. No
+further source request/capture, scheduled reconciliation, DB1 interface/
+download, DB2, or research release is currently authorised.
 
 ## Documentation hygiene
 

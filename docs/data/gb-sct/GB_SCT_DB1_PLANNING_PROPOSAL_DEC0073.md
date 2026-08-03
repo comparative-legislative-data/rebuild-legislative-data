@@ -1,6 +1,6 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Approved strategic plan — D1 passed; D2 first-source-batch proposal is next; no source/capture action authorised
+**Status:** Approved strategic plan — D1 and D2 passed; D3 projection/explorer proposal is next; no further source/capture action authorised
 
 **Version:** 1.1.0
 **Prepared:** 3 August 2026
