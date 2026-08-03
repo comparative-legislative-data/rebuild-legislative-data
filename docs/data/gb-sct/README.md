@@ -16,10 +16,11 @@ and [D2 first source batch](GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08
 have passed. The only source content remains D2's one restricted
 `/api/billtypes` object. D3 has passed as its one named, unscheduled DB1
 projection/private preview; it is not a general DB1 release. The next
-owner-review document is the proposed [D4A reference-cohort reconciliation
-pilot — DEC-0078](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md).
-It requests a bounded daily source-preservation cycle for three small
-collections, not a generic mirror or new user-facing DB1 release.
+current D4A [reference-cohort reconciliation pilot — DEC-0078](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md)
+has passed its initial three-route cycle and enabled its daily timer. Its
+[initial result](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
+awaits one scheduled-cycle verification; it is not a generic mirror or new
+user-facing DB1 release.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

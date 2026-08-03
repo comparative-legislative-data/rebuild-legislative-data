@@ -1,6 +1,6 @@
 # GB-SCT DB1 Reference-Cohort Reconciliation Pilot — DEC-0078
 
-**Status:** Approved — implementation in progress
+**Status:** Approved — deployed; initial cycle passed; scheduled-cycle verification pending
 **Version:** 1.0.0
 **Prepared:** 3 August 2026
 **Decision requested:** DEC-0078

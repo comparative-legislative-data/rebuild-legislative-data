@@ -98,6 +98,12 @@ collections while deliberately leaving the D3 interface unchanged. A later
 D4B proposal would decide whether the expanded capture/projection history is
 suitable for a proxy-aligned DB1 catalogue.
 
+D4A is now deployed. Its [initial result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
+records one successful three-route cycle: Bill Types is `UNCHANGED` against
+D2, while Bill Stage Types and Sessions correctly begin at `INITIAL`. The
+daily timer is active, but D4A remains open until its first independently
+scheduled cycle completes.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

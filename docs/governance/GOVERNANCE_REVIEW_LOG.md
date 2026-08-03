@@ -2002,3 +2002,19 @@ Next review due:
 | Affected work blocked | All routes outside the fixed cohort; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
 | Owner decision required | No additional decision for contained DEC-0078 implementation. A separate decision is required before D4B or any scope expansion. |
 | Next review due | On D4A local/deployment/initial-cycle result, a stop condition, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0122
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0078 local/deployment/initial-cycle result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0078 proposal; local build/tests/capability/package/doc checks; project-target preflight/deployment/postflight; DB1 narrative; handover; decision register; and GOV-REV-0121. |
+| Active phase and authorising decision | DEC-0078 owner-approved D4A reference-cohort reconciliation. |
+| Checks performed | Confirmed fixed three-route transport code and capability boundary; target-local verification; isolated DB1 migration; dedicated DB1 writer role; unchanged API/web/Nginx state; one successful serial initial cycle; exactly three fixed observations; D2 digest comparison for Bill Types; `INITIAL` state for the two new routes; and an enabled 03:17 UTC project timer. No source body was retained in this result record. |
+| Findings | The initial cycle demonstrates a bounded append-only reconciliation action, not recurrence or source freshness. The timer is enabled only because the cycle succeeded. D4A's existing D3 interface remains unchanged. |
+| Outcome | `PASS — SCHEDULED-CYCLE VERIFICATION PENDING`. |
+| Affected work blocked | Any route outside the fixed cohort; DB1 interface/download expansion; generic access; DB2; charts; research claims; public data access; and shared-host change remain blocked. |
+| Owner decision required | None to inspect/record the first scheduled D4A cycle under DEC-0078. A separate decision remains required for D4B or any scope change. |
+| Next review due | On the first scheduled-cycle outcome, a D4A stop condition, or 1 September 2026, whichever is earlier. |
