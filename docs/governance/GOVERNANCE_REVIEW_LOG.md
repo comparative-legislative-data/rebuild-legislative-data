@@ -1634,3 +1634,19 @@ Next review due:
 | Affected work blocked | All 24 forms remain unavailable. The contract and operational backlogs, DB1, and DB2 remain separately blocked. |
 | Owner decision required | Approve a later shared handling-policy design proposal before any source-inspection or route-qualification package. |
 | Next review due | On that shared policy decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0099
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0069 shared handling-policy design proposal preparation |
+| Reviewer role | Maintainer; defining a reusable assessment gate without converting it into a route decision |
+| Documents and records reviewed | DEC-0008 policy and handling template; DEC-0045 matrix; DEC-0067 triage; DEC-0068 result; member/representation, roles/committees, and MQA reconnaissance records. |
+| Active phase and authorising decision | Documentation-only proposal preparation after the completed DEC-0068 assessment; DEC-0069 is not approved. |
+| Checks performed | Limited the framework to six route-level tests: scope/purpose, evidence boundary, content/linkage screen, processing/minimisation, controls/lifecycle, and stop/outcome. Confirmed the four workstreams do not transfer an outcome between route forms. |
+| Findings | A shared framework can reduce serial repetition while retaining the DEC-0008 requirement for completed, route-specific handling records and explicit operational decisions. |
+| Outcome | `PASS` for proposal preparation only. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | Every scoped route remains unavailable. Contract and operational batches, DB1, and DB2 remain separately blocked. |
+| Owner decision required | Approve, amend, or reject DEC-0069. |
+| Next review due | On DEC-0069 decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |

@@ -13,6 +13,11 @@
   [`GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_REMAINING_ROUTE_HANDLING_BATCH_RESULT_2026-08-03.md).
   The next proposed step is a shared handling-policy design; contract and
   operational work remain separate.
+- DEC-0069 is the proposed shared handling-policy framework for those four
+  workstreams. It would standardise later route-level evidence and stop
+  conditions without classifying a field, enabling a route, or authorising
+  source access. Review
+  [`GB_SCT_SHARED_HANDLING_POLICY_DESIGN_PROPOSAL_DEC0069.md`](../data/gb-sct/GB_SCT_SHARED_HANDLING_POLICY_DESIGN_PROPOSAL_DEC0069.md).
 
 - DEC-0062 is approved and has passed its local implementation stage. Exactly
   three small reference collections now have fixed, private-beta-only,
