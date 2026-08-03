@@ -139,7 +139,9 @@ The owner-approved [D5 formal-stages cohort — DEC-0083](../../data/gb-sct/GB_S
 is limited to `/api/billstages` and uses access-plan-first rather than assuming
 a collection browser. Its [restricted handling record](../../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
 keeps raw content and individual records private while the fixed baseline is
-first established.
+first established. Its [deployment result](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
+records the one `INITIAL` capture and private access-plan release; the remaining
+step is owner front-end acceptance.
 
 ## 6. Detailed records
 

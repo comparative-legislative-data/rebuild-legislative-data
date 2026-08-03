@@ -40,6 +40,8 @@ The owner-approved [D5 formal-stages cohort — DEC-0083](GB_SCT_DB1_FORMAL_STAG
 is limited to `/api/billstages`, using an access-plan-first presentation under
 DEC-0082. Its [restricted handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
 records the no-public-output, no-download, no-semantic-transformation gate.
+Its [deployment result](GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
+records the initial fixed release; owner front-end acceptance remains pending.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

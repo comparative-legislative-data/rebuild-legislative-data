@@ -2210,3 +2210,19 @@ Next review due:
 | Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
 | Owner decision required | Owner acceptance is required after restricted verification and private-beta interface test; any scope change needs a new decision. |
 | Next review due | On D5 deployment/result, owner front-end acceptance, an unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0135
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — D5 deployment result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0083; D5 handling/result records; project design; handover; decision/risk registers; DB1 narrative; and GOV-REV-0134. |
+| Active phase and authorising decision | D5 contained package deployed under DEC-0083; owner acceptance pending. |
+| Checks performed | Verified one `INITIAL` manifest, digest/byte/content-type metadata, 1,754 projected/zero rejected records, fixed release binding, reader raw/write denial, anonymous endpoint denial, active API/web/D4A/D4C/D5 units, and separate D5 scheduling. |
+| Findings | The deployment passed its one-route source-preservation and access-plan boundary. Two loopback health probes failed during the API restart window, then readiness passed; this created no source retry, service interruption, or scope expansion. No semantic, completeness, freshness, DB2, download, or public claim is justified. |
+| Outcome | `PASS — D5 RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for owner interface acceptance. A new decision is required for any route, access, projection-refresh, or scope expansion. |
+| Next review due | On owner front-end acceptance, D5 drift/failure, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

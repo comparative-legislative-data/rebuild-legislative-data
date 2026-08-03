@@ -83,7 +83,10 @@ The owner-approved [D5 formal-stages cohort — DEC-0083](../data/gb-sct/GB_SCT_
 is limited to `/api/billstages` and uses an access-plan-first retained release.
 Its [restricted handling record](../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
 limits the package to source-preserving DB1 work; no download, public output,
-generic browser/query, semantic variable, or other route is included.
+generic browser/query, semantic variable, or other route is included. Its
+[deployment result](../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
+records the initial retained release and active D5 timer; owner front-end
+acceptance is still required before closure.
 
 ## Documentation hygiene
 
