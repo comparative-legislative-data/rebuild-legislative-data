@@ -3,7 +3,7 @@
 **Status:** Approved planning control — no source request, proxy, capture,
 database, application, or public action authorised
 
-**Version:** 1.8.0
+**Version:** 1.9.0
 
 **Prepared:** 2 August 2026
 
@@ -59,11 +59,11 @@ and silent scope expansion.
 | Bills | `/api/bills/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` bill detail fields; no field claim yet | `P1` | `TERMS_PARTIAL; OBSERVATION_PASS; HANDLING_DO_NOT_CAPTURE_OR_RELEASE; GAP_RESOLUTION_APPROVED_DEC0050; DOC_INSPECTION_PARTIAL_DEC0052; G4_BLOCKED_DEC0053` |
 | Formal stages | `/api/billstages` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `OBSERVATION_PASS; HANDLING_REQUIRED; WORK_PACKAGE_STOPPED_DEC0054` |
 | Formal stages | `/api/billstages/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; possible `CANDIDATE_T2` ordering only after rules | `P1` | `OBSERVATION_PASS; HANDLING_REQUIRED; WORK_PACKAGE_STOPPED_DEC0054` |
-| Stage types | `/api/billstagetypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Stage types | `/api/billstagetypes` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061` |
 | Stage types | `/api/billstagetypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Bill types | `/api/billtypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Bill types | `/api/billtypes` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061; NO_HTTP_UPDATE_VALIDATOR_OBSERVED` |
 | Bill types | `/api/billtypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` source-defined types | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Sessions | `/api/sessions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Sessions | `/api/sessions` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0061; NO_HTTP_UPDATE_VALIDATOR_OBSERVED` |
 | Sessions | `/api/sessions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identifiers/boundaries; `CANDIDATE_T2` assignment only after rules | `P1` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Members | `/api/members` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Members | `/api/members/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` identity fields | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |

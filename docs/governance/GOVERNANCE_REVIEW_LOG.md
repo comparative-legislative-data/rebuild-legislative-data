@@ -1378,3 +1378,19 @@ Next review due:
 | Affected work blocked | All source requests, source relay, deployment, DB1, DB2, research output, and public access remain blocked pending explicit DEC-0061 approval and its bounded result. |
 | Owner decision required | Approve, amend, or reject DEC-0061. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0083
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0061 qualification completion |
+| Reviewer role | Maintainer; recording the owner-approved published-basis and handling assessment |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0045, DEC-0055–DEC-0057, DEC-0060, DEC-0061, the existing Bills-foundation and update-signal results, and the named published Scottish Parliament pages |
+| Active phase and authorising decision | DEC-0061 three-route qualification only |
+| Checks performed | Reused existing structural/transport evidence for Bill Stage Types, Bill Types, and Sessions. Inspected the Open Data portal root and published copyright licence; recorded attribution, non-endorsement, personal-data exclusion, third-party-rights, and no-warranty limitations. No API endpoint was requested. |
+| Findings | Each collection is a candidate for a later private no-retention pass-through, not a current relay or data release. The licence position is a source-published statement rather than legal advice; route-specific licence wording and a comprehensive personal-data determination remain unavailable. |
+| Outcome | `PASS` — three `QUALIFIED_FOR_PRIVATE_PASSTHROUGH_CANDIDATE` results. No API endpoint response, source-data retention, source relay, implementation, VPS action, deployment, DB1, DB2, cache, or public action occurred. |
+| Affected work blocked | Every relay, deployment, DB1, DB2, research output, and public-access action remains blocked pending a new exact private implementation/deployment decision. |
+| Owner decision required | Approve a later exact implementation/deployment package if the three candidates should be made available for private beta testing. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |

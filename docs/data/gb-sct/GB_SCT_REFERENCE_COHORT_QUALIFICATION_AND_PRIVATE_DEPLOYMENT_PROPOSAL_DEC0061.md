@@ -1,12 +1,14 @@
 # GB-SCT Reference Cohort Qualification and Private-Deployment Proposal — DEC-0061
 
-**Status:** PROPOSED — no source request, implementation, deployment, or public action authorised
+**Status:** APPROVED — EXECUTED PASS (published-basis and handling assessment only)
 
-**Version:** 0.1.0
+**Version:** 1.0.0
 
 **Prepared:** 3 August 2026
 
-**Decision requested:** DEC-0061, following DEC-0042, DEC-0043, DEC-0045, DEC-0055, DEC-0056, DEC-0057, and DEC-0060.
+**Authority:** Owner instruction to proceed, 3 August 2026; DEC-0061,
+following DEC-0042, DEC-0043, DEC-0045, DEC-0055, DEC-0056, DEC-0057, and
+DEC-0060.
 
 ## 1. Decision requested
 
@@ -121,3 +123,8 @@ outcomes. If a route is a candidate, the smallest next step is a separate
 private implementation/deployment proposal for that exact route or cohort. If
 it is unresolved, the next step is a route-specific evidence plan, not a
 relay workaround. DB1 remains blocked until full proxy-phase beta acceptance.
+
+## 8. Result
+
+The completed evidence and route-handling result is
+[`GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md).
