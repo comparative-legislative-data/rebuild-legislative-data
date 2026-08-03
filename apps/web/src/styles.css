@@ -71,6 +71,7 @@ button { cursor: pointer; }
 .official-action:hover { background: rgba(229, 237, 247, .08); }
 .route-card { border: 1px solid rgba(220, 229, 239, .13); border-radius: .75rem; background: rgba(5, 13, 25, .38); overflow: hidden; }
 .route-card-relayed { border-color: rgba(232, 189, 104, .48); }
+.route-card-db1 { border-color: rgba(120, 181, 207, .45); }
 .route-card summary { cursor: pointer; list-style: none; }
 .route-card summary::-webkit-details-marker { display: none; }
 .route-badge { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5.2rem; padding: .9rem 1.1rem; transition: background .16s ease; }

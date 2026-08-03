@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, persistSyntheticRawObject, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
+import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, persistSyntheticRawObject, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -52,4 +52,18 @@ test("D4 transport accepts only the three fixed no-query reference routes", asyn
 test("D4 structural comparison ignores JSON-object key order", () => {
   assert.equal(signaturesEqual({ Name: ["string"], ID: ["number"] }, { ID: ["number"], Name: ["string"] }), true);
   assert.equal(signaturesEqual({ ID: ["number"] }, { ID: ["string"] }), false);
+});
+
+test("D4B catalogue is bound to exactly three named D4A manifests", () => {
+  assert.equal(D4B_REFERENCE_CATALOGUE_ID, "gb_sct_reference_cohort_d4a_v1");
+  assert.deepEqual(D4B_REFERENCE_PROJECTIONS.map((item) => item.manifestId), [
+    "6a414dbf-973a-4aa5-9aae-b217fc18c1e3",
+    "2315af79-5903-4540-904c-0eb3f95e99c4",
+    "e94719fb-f686-48ce-b652-d22f3b532ac3"
+  ]);
+  assert.deepEqual(D4B_REFERENCE_PROJECTIONS.map((item) => item.projectionName), [
+    "gb_sct_bill_types_d4a_v1",
+    "gb_sct_bill_stage_types_d4a_v1",
+    "gb_sct_sessions_d4a_v1"
+  ]);
 });

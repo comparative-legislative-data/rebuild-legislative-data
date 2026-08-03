@@ -65,7 +65,10 @@ before any proposed next DB1 work.
 has passed as the bounded three-route reference-cohort reconciliation pilot.
 Its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 records the initial/repeat observations, false-positive correction, and active
-03:17 UTC timer. The next owner-review document is [D4B](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md): three fixed baseline projections and a private catalogue proposal. No interface/download expansion, DB2, or research release is currently authorised.
+03:17 UTC timer. [D4B](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
+is approved for its contained build/deployment/acceptance package: three fixed
+baseline projections and a private catalogue. Download expansion, DB2, and a
+research release remain excluded.
 
 ## Documentation hygiene
 

@@ -67,6 +67,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.post("/catalogue/gb-sct/:id/request", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/catalogue/gb-sct/:id/source", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/bill-types/d2-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/reference-cohort/d4a-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -226,6 +227,18 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     reply.header("x-cld-db1-source-route", response.source.route_id);
     reply.header("x-cld-db1-manifest", response.source.manifest_id);
     reply.header("x-cld-db1-projection-build", response.projection.build_id);
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/reference-cohort/d4a-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const response = await db1Explorer.referenceCohortD4a();
+    if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_CATALOGUE");
+    reply.header("x-cld-db1-catalogue", response.catalogue.id);
     reply.header("vary", "Cookie");
     return reply.send(response);
   });

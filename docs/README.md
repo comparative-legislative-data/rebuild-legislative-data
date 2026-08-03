@@ -20,7 +20,7 @@ value and a different kind of research claim.
 | Workstream | Purpose | Current status | Start here |
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1/D2/D3/D4A passed; D4B fixed-baseline projection/catalogue proposal awaits owner review. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1/D2/D3/D4A passed; D4B fixed-baseline projection/catalogue build is authorised and underway. | [DB1 narrative](workstreams/db1/README.md) |
 | DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable

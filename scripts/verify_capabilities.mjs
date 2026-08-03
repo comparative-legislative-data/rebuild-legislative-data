@@ -60,15 +60,16 @@ for (const directory of directories) {
 }
 
 const db1RouteSource = readFileSync("apps/api/src/access/routes.ts", "utf8");
-const fixedDb1Route = "/db1/gb-sct/bill-types/d2-v1";
-if ((db1RouteSource.match(new RegExp(fixedDb1Route, "g")) ?? []).length !== 2) {
-  throw new Error("DB1 reader must expose exactly one fixed route in configured and unavailable states");
+const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1"];
+const declaredDb1Routes = [...db1RouteSource.matchAll(/app\.get\("(\/db1\/[^\"]+)/g)].map((match) => match[1]);
+for (const route of fixedDb1Routes) {
+  if (declaredDb1Routes.filter((item) => item === route).length !== 2) throw new Error(`DB1 fixed route must appear in configured and unavailable states: ${route}`);
 }
-if (/app\.get\("\/db1\/(?!gb-sct\/bill-types\/d2-v1)/.test(db1RouteSource)) {
+if (declaredDb1Routes.length !== fixedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !fixedDb1Routes.includes(route))) {
   throw new Error("DB1 reader must not expose a generic or alternate DB1 route");
 }
 const db1Explorer = readFileSync("apps/api/src/db1/explorer.ts", "utf8");
-for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "begin read only", "fetch(", "node:fs", "raw_object"]) {
+for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4B_REFERENCE_CATALOGUE_ID", "D4B_REFERENCE_PROJECTIONS", "catalogue_releases", "begin read only", "fetch(", "node:fs", "raw_object"]) {
   if (term === "fetch(" || term === "node:fs" || term === "raw_object") {
     if (db1Explorer.toLowerCase().includes(term.toLowerCase())) throw new Error(`DB1 explorer contains prohibited capability ${term}`);
   } else if (!db1Explorer.includes(term)) {
@@ -121,4 +122,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to its separately scanned foundation, one fixed D2 capture, and one fixed private D3 projection route.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to its separately scanned foundation, one fixed D3 route, and one fixed D4A-baseline catalogue route.\n");

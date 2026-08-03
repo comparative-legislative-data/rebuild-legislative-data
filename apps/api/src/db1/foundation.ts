@@ -17,10 +17,17 @@ export const D4_REFERENCE_ROUTES = [
   { id: "gb-sct.sessions.collection", path: "/api/sessions", url: "https://data.parliament.scot/api/sessions" }
 ] as const;
 export const D4_MAX_BYTES = 1_048_576;
+export const D4B_REFERENCE_CATALOGUE_ID = "gb_sct_reference_cohort_d4a_v1";
+export const D4B_REFERENCE_PROJECTIONS = [
+  { routeId: "gb-sct.bill-types.collection", sourcePath: "/api/billtypes", manifestId: "6a414dbf-973a-4aa5-9aae-b217fc18c1e3", projectionName: "gb_sct_bill_types_d4a_v1" },
+  { routeId: "gb-sct.bill-stage-types.collection", sourcePath: "/api/billstagetypes", manifestId: "2315af79-5903-4540-904c-0eb3f95e99c4", projectionName: "gb_sct_bill_stage_types_d4a_v1" },
+  { routeId: "gb-sct.sessions.collection", sourcePath: "/api/sessions", manifestId: "e94719fb-f686-48ce-b652-d22f3b532ac3", projectionName: "gb_sct_sessions_d4a_v1" }
+] as const;
 const D1_MIGRATION_ID = "001_foundation";
 const D2_MIGRATION_ID = "002_first_source_batch";
 const D3_MIGRATION_ID = "003_first_source_projection";
 const D4_MIGRATION_ID = "004_reference_reconciliation";
+const D4B_MIGRATION_ID = "005_reference_catalogue";
 
 export interface RawObjectReference { digest: string; byteLength: number; relativePath: string; }
 export interface Db1FoundationOptions { databaseUrl: string; rawRoot: string; migrationRole?: string; }
@@ -41,6 +48,8 @@ export type D4RouteState = "INITIAL" | "CHANGED" | "UNCHANGED" | "FAILED" | "BLO
 export interface D4ReferenceCaptureOptions extends Db1FoundationOptions { request?: typeof fetch; now?: () => Date; wait?: (milliseconds: number) => Promise<void>; }
 export interface D4ReferenceRouteResult { routeId: string; state: D4RouteState; manifestId?: string; raw?: RawObjectReference; failureCode?: string; }
 export interface D4ReferenceCaptureResult { cycleId: string; status: "SUCCEEDED" | "PARTIAL" | "FAILED" | "BLOCKED_BY_SOURCE_DRIFT" | "SKIPPED_OVERLAP"; routes: D4ReferenceRouteResult[]; }
+export interface D4BProjectionOptions extends Db1FoundationOptions { codeRevision: string; now?: () => Date; }
+export interface D4BProjectionResult { catalogueId: string; projectionBuildIds: string[]; projectedRecords: number; rejectedRecords: number; }
 
 class D2CaptureFailure extends Error {
   constructor(readonly code: string) { super(code); }
@@ -134,6 +143,11 @@ async function migrate(client: PoolClient, migrationRole: string): Promise<void>
     }
     await client.query("insert into db1.schema_migrations (id) values ($1)", [D4_MIGRATION_ID]);
   }
+  const d4b = await client.query("select 1 from db1.schema_migrations where id = $1", [D4B_MIGRATION_ID]);
+  if (!d4b.rowCount) {
+    await client.query("create table db1.catalogue_releases (id text primary key, bill_types_projection_build_id uuid not null references db1.projection_builds(id), bill_stage_types_projection_build_id uuid not null references db1.projection_builds(id), sessions_projection_build_id uuid not null references db1.projection_builds(id), integrity_status text not null check (integrity_status = 'PASS'), created_at timestamptz not null default now())");
+    await client.query("insert into db1.schema_migrations (id) values ($1)", [D4B_MIGRATION_ID]);
+  }
 }
 
 async function withDb<T>(options: Db1FoundationOptions, action: (client: PoolClient) => Promise<T>, runMigrations = true): Promise<T> {
@@ -158,6 +172,10 @@ async function withDb<T>(options: Db1FoundationOptions, action: (client: PoolCli
 }
 
 export async function migrateD4ReferenceReconciliation(options: Db1FoundationOptions): Promise<void> {
+  await withDb(options, async () => undefined);
+}
+
+export async function migrateD4BReferenceCatalogue(options: Db1FoundationOptions): Promise<void> {
   await withDb(options, async () => undefined);
 }
 
@@ -389,5 +407,77 @@ export async function runD3BillTypesProjection(options: D3ProjectionOptions): Pr
       projectedRecords,
       rejectedRecords
     };
+  });
+}
+
+type D4BProjectionSpec = (typeof D4B_REFERENCE_PROJECTIONS)[number];
+
+async function d4bProjectionBuild(client: PoolClient, options: D4BProjectionOptions, spec: D4BProjectionSpec): Promise<{ buildId: string; projectedRecords: number; rejectedRecords: number }> {
+  const existing = await client.query<{ id: string; projected_records: number; rejected_records: number }>(
+    "select id, projected_records, rejected_records from db1.projection_builds where projection_name = $1 and manifest_id = $2 and origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS' order by created_at asc limit 1",
+    [spec.projectionName, spec.manifestId]
+  );
+  if (existing.rows[0]) {
+    return { buildId: existing.rows[0].id, projectedRecords: existing.rows[0].projected_records, rejectedRecords: existing.rows[0].rejected_records };
+  }
+  const source = await client.query<{
+    manifest_id: string; raw_digest: string; byte_length: number; relative_path: string; content_type: string; route_id: string; origin_class: string; handling_class: string | null;
+  }>(
+    "select m.id as manifest_id, m.raw_digest, m.byte_length, r.relative_path, m.content_type, s.id as route_id, m.origin_class, s.handling_class from db1.manifest_entries m join db1.raw_objects r on r.digest = m.raw_digest join db1.capture_runs c on c.id = m.capture_run_id join db1.source_routes s on s.id = c.source_route_id where m.id = $1 and m.status = 'SUCCEEDED'",
+    [spec.manifestId]
+  );
+  const item = source.rows[0];
+  if (!item || item.manifest_id !== spec.manifestId || item.route_id !== spec.routeId || item.origin_class !== DB1_SOURCE_ORIGIN || item.handling_class !== "RESTRICTED_PROJECT") {
+    throw new Error(`D4B input manifest identity does not match ${spec.projectionName}`);
+  }
+  const root = resolve(options.rawRoot);
+  const target = resolve(root, item.relative_path);
+  if (!insideRoot(root, target)) throw new Error("D4B raw-object path escapes configured root");
+  const bytes = await readFile(target);
+  if (bytes.byteLength !== Number(item.byte_length) || sha256(bytes) !== item.raw_digest) throw new Error(`D4B raw-object integrity check failed for ${spec.projectionName}`);
+  let parsed: unknown;
+  try { parsed = JSON.parse(bytes.toString("utf8")); } catch { throw new Error(`D4B raw object is not valid JSON for ${spec.projectionName}`); }
+  if (!Array.isArray(parsed)) throw new Error(`D4B raw object is not a JSON array for ${spec.projectionName}`);
+
+  const buildId = randomUUID();
+  await client.query(
+    "insert into db1.projection_builds (id, manifest_id, origin_class, projection_name, schema_version, code_revision, integrity_status) values ($1, $2, $3, $4, 'd4b-loss-aware-v1', $5, 'PASS')",
+    [buildId, spec.manifestId, DB1_SOURCE_ORIGIN, spec.projectionName, options.codeRevision]
+  );
+  let projectedRecords = 0; let rejectedRecords = 0;
+  for (const [sourcePosition, record] of parsed.entries()) {
+    if (record && typeof record === "object" && !Array.isArray(record)) {
+      await client.query("insert into db1.projection_records (id, projection_build_id, manifest_id, source_position, preserved_record) values ($1, $2, $3, $4, $5)", [randomUUID(), buildId, spec.manifestId, sourcePosition, record]);
+      projectedRecords += 1;
+    } else {
+      await client.query("insert into db1.projection_rejections (id, projection_build_id, manifest_id, source_position, reason_code) values ($1, $2, $3, $4, 'NOT_AN_OBJECT')", [randomUUID(), buildId, spec.manifestId, sourcePosition]);
+      rejectedRecords += 1;
+    }
+  }
+  await client.query("update db1.projection_builds set projected_records = $2, rejected_records = $3 where id = $1", [buildId, projectedRecords, rejectedRecords]);
+  return { buildId, projectedRecords, rejectedRecords };
+}
+
+export async function runD4BReferenceCatalogueProjections(options: D4BProjectionOptions): Promise<D4BProjectionResult> {
+  return withDb(options, async (client) => {
+    const existing = await client.query<{ bill_types_projection_build_id: string; bill_stage_types_projection_build_id: string; sessions_projection_build_id: string }>(
+      "select bill_types_projection_build_id, bill_stage_types_projection_build_id, sessions_projection_build_id from db1.catalogue_releases where id = $1 and integrity_status = 'PASS'",
+      [D4B_REFERENCE_CATALOGUE_ID]
+    );
+    if (existing.rows[0]) {
+      const buildIds = Object.values(existing.rows[0]);
+      const counts = await client.query<{ projected_records: number; rejected_records: number }>("select projected_records, rejected_records from db1.projection_builds where id = any($1::uuid[])", [buildIds]);
+      if (counts.rowCount !== 3) throw new Error("D4B catalogue release does not retain all three projection builds");
+      return { catalogueId: D4B_REFERENCE_CATALOGUE_ID, projectionBuildIds: buildIds, projectedRecords: counts.rows.reduce((total, item) => total + item.projected_records, 0), rejectedRecords: counts.rows.reduce((total, item) => total + item.rejected_records, 0) };
+    }
+    const results = [] as Array<{ buildId: string; projectedRecords: number; rejectedRecords: number }>;
+    for (const spec of D4B_REFERENCE_PROJECTIONS) results.push(await d4bProjectionBuild(client, options, spec));
+    if (results.length !== D4B_REFERENCE_PROJECTIONS.length) throw new Error("D4B fixed projection count is incomplete");
+    const [billTypes, billStageTypes, sessions] = results as [{ buildId: string; projectedRecords: number; rejectedRecords: number }, { buildId: string; projectedRecords: number; rejectedRecords: number }, { buildId: string; projectedRecords: number; rejectedRecords: number }];
+    await client.query(
+      "insert into db1.catalogue_releases (id, bill_types_projection_build_id, bill_stage_types_projection_build_id, sessions_projection_build_id, integrity_status, created_at) values ($1, $2, $3, $4, 'PASS', $5)",
+      [D4B_REFERENCE_CATALOGUE_ID, billTypes.buildId, billStageTypes.buildId, sessions.buildId, options.now?.() ?? new Date()]
+    );
+    return { catalogueId: D4B_REFERENCE_CATALOGUE_ID, projectionBuildIds: results.map((result) => result.buildId), projectedRecords: results.reduce((total, result) => total + result.projectedRecords, 0), rejectedRecords: results.reduce((total, result) => total + result.rejectedRecords, 0) };
   });
 }

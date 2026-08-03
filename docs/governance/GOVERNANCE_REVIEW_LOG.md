@@ -2066,3 +2066,19 @@ Next review due:
 | Affected work blocked | D4B implementation; all new source/capture/timer action; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked pending a decision. |
 | Owner decision required | Approve, amend, or reject DEC-0079 before any D4B projection, reader-role/API/frontend, or deployment work. |
 | Next review due | On DEC-0079 decision, a D4A operational event, D4B result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0126
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0079 approval and D4B implementation pre-flight |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; decision/risk registers; DEC-0042, DEC-0073, DEC-0077–DEC-0079; D4A result; DB1 narrative; D3 reader/API boundary; and GOV-REV-0125. |
+| Active phase and authorising decision | DEC-0079 owner-approved D4B contained build/deployment/acceptance package. |
+| Checks performed | Confirmed the scope remains three named retained D4A manifests, three fixed projections, one beta/superuser catalogue response and grouped interface, one narrowly extended read-only role, and the two existing project services. Confirmed no source request/capture, timer change, raw-object route, generic query/download, DB2, public access, Nginx, or shared-host scope. Local build/test/capability checks are retained before target action. |
+| Findings | The proposed catalogue can use the existing separate DB1 reader and application/auth gateway while preserving the distinct proxy and DB1 data pipes. D4B must stop on manifest/integrity/role/access/service boundary failure. |
+| Outcome | `PASS — IMPLEMENTATION AUTHORISED`. |
+| Affected work blocked | Any route/input beyond the three named manifests; source/timer work; raw access; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
+| Owner decision required | None for the contained DEC-0079 package. A new decision is required for any stop condition or scope expansion. |
+| Next review due | On D4B result, a D4A operational event, or 1 September 2026, whichever is earlier. |

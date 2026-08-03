@@ -20,6 +20,8 @@ const allowed = [
   "ops/nginx",
   "scripts/run_db1_d4_reference_reconciliation.mjs",
   "scripts/migrate_db1_d4_reference_reconciliation.mjs",
+  "scripts/run_db1_d4b_reference_catalogue.mjs",
+  "scripts/migrate_db1_d4b_reference_catalogue.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",

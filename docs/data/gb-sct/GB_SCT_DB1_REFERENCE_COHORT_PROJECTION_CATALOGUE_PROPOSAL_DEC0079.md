@@ -1,15 +1,15 @@
 # GB-SCT DB1 Reference-Cohort Projection and Catalogue Proposal — DEC-0079
 
-**Status:** Proposed — owner approval required
+**Status:** Approved — implementation authorised
 **Version:** 1.0.0
 **Prepared:** 3 August 2026
-**Decision requested:** DEC-0079
+**Decision:** DEC-0079 — owner approved implementation on 3 August 2026
 
 ## 1. Decision requested
 
-Approve D4B: create three loss-aware operational projections from only the
-named, already-retained D4A manifests below, then expose them through one fixed
-private-beta catalogue response and screen.
+The owner approved D4B: create three loss-aware operational projections from
+only the named, already-retained D4A manifests below, then expose them through
+one fixed private-beta catalogue response and screen.
 
 | Projection | Input manifest | Route |
 | --- | --- | --- |

@@ -1,5 +1,7 @@
 import { Pool } from "pg";
 import {
+  D4B_REFERENCE_CATALOGUE_ID,
+  D4B_REFERENCE_PROJECTIONS,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
   D3_BILL_TYPES_ROUTE_ID
@@ -12,7 +14,7 @@ export type Db1ExplorerRecord = { source_position: number; preserved_record: Rec
 export type Db1ExplorerResponse = {
   layer: "DB1_OPERATIONAL_PROJECTION";
   availability: "RESTRICTED_PRIVATE_BETA";
-  reconciliation_state: "NOT_SCHEDULED";
+  reconciliation_state: string;
   raw_access: "NOT_EXPOSED";
   source: {
     route_id: string;
@@ -38,6 +40,15 @@ export type Db1ExplorerResponse = {
   observed_structure: Array<{ key: string; observed_types: string[]; record_count: number }>;
   limitations: string[];
   records: Db1ExplorerRecord[];
+};
+
+export type Db1ReferenceCatalogueResponse = {
+  layer: "DB1_OPERATIONAL_PROJECTION_CATALOGUE";
+  availability: "RESTRICTED_PRIVATE_BETA";
+  baseline: "FIXED_D4A_RETAINED_BASELINE";
+  catalogue: { id: string; integrity_status: string; built_at: string; };
+  limitations: string[];
+  panels: Db1ExplorerResponse[];
 };
 
 function requiredEnvironment(name: string): string {
@@ -138,5 +149,97 @@ export class Db1Explorer {
     } finally {
       client.release();
     }
+  }
+
+  async referenceCohortD4a(): Promise<Db1ReferenceCatalogueResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{
+        id: string; integrity_status: string; created_at: Date; bill_types_projection_build_id: string; bill_stage_types_projection_build_id: string; sessions_projection_build_id: string;
+      }>(
+        "select id, integrity_status, created_at, bill_types_projection_build_id, bill_stage_types_projection_build_id, sessions_projection_build_id from db1.catalogue_releases where id = $1 and integrity_status = 'PASS'",
+        [D4B_REFERENCE_CATALOGUE_ID]
+      );
+      const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const buildIds: [string, string, string] = [item.bill_types_projection_build_id, item.bill_stage_types_projection_build_id, item.sessions_projection_build_id];
+      const panels = await Promise.all(D4B_REFERENCE_PROJECTIONS.map((spec, index) => this.referencePanel(client, spec, buildIds[index]!)));
+      if (panels.some((panel) => !panel)) throw new Error("D4B catalogue release does not match its fixed projection contract");
+      await client.query("commit");
+      return {
+        layer: "DB1_OPERATIONAL_PROJECTION_CATALOGUE",
+        availability: "RESTRICTED_PRIVATE_BETA",
+        baseline: "FIXED_D4A_RETAINED_BASELINE",
+        catalogue: { id: item.id, integrity_status: item.integrity_status, built_at: item.created_at.toISOString() },
+        limitations: [
+          "This is a fixed retained D4A baseline, not a live Scottish Parliament response or a general DB1 mirror.",
+          "Later D4A timer observations do not alter these projection records. A later projection requires its own named build and decision.",
+          "The catalogue has no raw-object route, source action, generic query, download, canonical variable, chart, or research-release claim."
+        ],
+        panels: panels as Db1ExplorerResponse[]
+      };
+    } catch (error) {
+      await client.query("rollback").catch(() => undefined);
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  private async referencePanel(client: import("pg").PoolClient, spec: (typeof D4B_REFERENCE_PROJECTIONS)[number], buildId: string): Promise<Db1ExplorerResponse | undefined> {
+    const build = await client.query<{
+      build_id: string; projection_name: string; schema_version: string; code_revision: string; built_at: Date; integrity_status: string; projected_records: number; rejected_records: number;
+      route_id: string; source_path: string; capture_run_id: string; manifest_id: string; retrieved_at: Date; raw_sha256: string; raw_byte_length: number; content_type: string; handling_class: string;
+    }>(
+      "select p.id as build_id, p.projection_name, p.schema_version, p.code_revision, p.created_at as built_at, p.integrity_status, p.projected_records, p.rejected_records, s.id as route_id, s.source_path, c.id as capture_run_id, m.id as manifest_id, m.retrieved_at, m.raw_digest as raw_sha256, m.byte_length as raw_byte_length, m.content_type, s.handling_class from db1.projection_builds p join db1.manifest_entries m on m.id = p.manifest_id join db1.capture_runs c on c.id = m.capture_run_id join db1.source_routes s on s.id = c.source_route_id where p.id = $1 and p.projection_name = $2 and p.manifest_id = $3 and s.id = $4 and p.origin_class = 'SOURCE_CAPTURE' and p.integrity_status = 'PASS'",
+      [buildId, spec.projectionName, spec.manifestId, spec.routeId]
+    );
+    const item = build.rows[0];
+    if (!item) return undefined;
+    const records = await client.query<Db1ExplorerRecord>(
+      "select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc",
+      [item.build_id, spec.manifestId]
+    );
+    const reconciliation = await client.query<{ state: string; observed_at: Date }>(
+      "select state, observed_at from db1.reconciliation_observations where source_route_id = $1 order by observed_at desc limit 1",
+      [spec.routeId]
+    );
+    const latest = reconciliation.rows[0];
+    return {
+      layer: "DB1_OPERATIONAL_PROJECTION",
+      availability: "RESTRICTED_PRIVATE_BETA",
+      reconciliation_state: latest?.state ?? "NOT_RECORDED",
+      raw_access: "NOT_EXPOSED",
+      source: {
+        route_id: item.route_id,
+        source_path: item.source_path,
+        capture_run_id: item.capture_run_id,
+        manifest_id: item.manifest_id,
+        retrieved_at: item.retrieved_at.toISOString(),
+        raw_sha256: item.raw_sha256,
+        raw_byte_length: Number(item.raw_byte_length),
+        content_type: item.content_type,
+        handling_class: item.handling_class
+      },
+      projection: {
+        build_id: item.build_id,
+        name: item.projection_name,
+        schema_version: item.schema_version,
+        code_revision: item.code_revision,
+        built_at: item.built_at.toISOString(),
+        integrity_status: item.integrity_status,
+        projected_records: item.projected_records,
+        rejected_records: item.rejected_records
+      },
+      observed_structure: observedStructure(records.rows),
+      limitations: [
+        "This is a retained fixed D4A baseline projection, not a live Scottish Parliament response or an unqualified mirror.",
+        "The raw object is not exposed through this interface. Preserved records are the loss-aware projection representation.",
+        "Observed keys and types are structural evidence from this named projection, not a semantic codebook or DB2 variable definition.",
+        `The latest D4A reconciliation state is ${latest?.state ?? "NOT_RECORDED"}; it does not alter this fixed baseline projection or establish freshness or completeness.`
+      ],
+      records: records.rows
+    };
   }
 }
