@@ -53,6 +53,12 @@
   parameterised form remains unavailable. See
   [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_QUALIFICATION_RESULT_2026-08-03.md).
   No additional source-facing action is authorised by that result.
+- DEC-0066 is the proposed exact implementation/deployment package for those
+  three candidates. It keeps raw source access distinct from relationship or
+  semantic claims and requires a visible historical size/source-window warning
+  for MQA Event Links. Review
+  [`GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0066.md`](../data/gb-sct/GB_SCT_STRUCTURED_LINK_AND_EVENT_TAXONOMY_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0066.md)
+  before any code, VPS, or source-facing action.
 
 ## Latest reconnaissance update — 2 August 2026
 
