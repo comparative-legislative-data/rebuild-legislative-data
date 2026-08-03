@@ -1538,3 +1538,19 @@ Next review due:
 | Affected work blocked | Target deployment and owner acceptance remain pending. The four `Notes`-bearing collections, all other unavailable routes, DB1, and DB2 remain blocked. |
 | Owner decision required | None for the already approved DEC-0064 project-only target release; owner route-by-route beta acceptance is required after a passing release. |
 | Next review due | On target deployment result, owner acceptance, a deployment stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0093
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0064 project-only target release result |
+| Reviewer role | Maintainer; recording a target deployment result without treating it as source or owner-acceptance evidence |
+| Documents and records reviewed | DEC-0064 package/local result; target build/test/capability-scan output; project-only deployment script outcome; existing two-service deployment boundary. |
+| Active phase and authorising decision | DEC-0064 project-only target release, approved by the owner on 3 August 2026. |
+| Checks performed | Verified pinned-runtime target build, all 16 tests, six-route capability scan, archive creation, two-service immutable release, bounded readiness, unauthenticated source-route denial, unchanged Nginx syntax, and public shell HTTP 200. |
+| Findings | The two initial readiness polls were connection-refused while the API started; the subsequent bounded readiness check passed. No source body was requested. The release remained within the two-project-service scope. |
+| Outcome | `PASS` — target deployment complete; owner route-by-route beta acceptance pending. No source data, database/DB1/DB2, cache, email, Nginx, Cloudflare, public data access, or shared-service change occurred. |
+| Affected work blocked | DEC-0064 is not complete until owner acceptance of all three new actions. The four `Notes`-bearing collections, all other unavailable routes, DB1, and DB2 remain blocked. |
+| Owner decision required | No further deployment decision. Owner acceptance is required after testing Constituencies, Regions, and Committee Types one at a time. |
+| Next review due | On owner acceptance, a route failure, or 1 September 2026, whichever is earlier. |

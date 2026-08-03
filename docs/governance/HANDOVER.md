@@ -40,10 +40,11 @@
   Review
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_IMPLEMENTATION_AND_DEPLOYMENT_PROPOSAL_DEC0064.md).
 - DEC-0064 is approved and has passed its local implementation verification.
-  The three qualified collection routes are local-only until the approved
-  project-only VPS preflight/release and owner route-by-route beta acceptance
-  pass. See
+  Its target release has also passed. The three qualified collection routes
+  now await owner route-by-route beta acceptance only. See
   [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
+  The target result is
+  [`GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md).
 
 ## Latest reconnaissance update — 2 August 2026
 
