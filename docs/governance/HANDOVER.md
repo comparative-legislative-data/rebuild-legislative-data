@@ -27,10 +27,13 @@
 - DEC-0062 is now fully accepted for its three-route cohort. The next
   substantive work is a separately proposed next proxy cohort; DB1 remains
   blocked until the broader proxy phase has its own completed acceptance.
-- The proposed next cohort is DEC-0063, restricted to seven institutional
-  reference/taxonomy collections and existing evidence only. Review
-  [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_PROPOSAL_DEC0063.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_PROPOSAL_DEC0063.md)
-  before any further source-facing action.
+- DEC-0063 is complete as an evidence-only qualification. Constituencies,
+  Regions, and Committee Types are candidates for a separately proposed
+  private no-retention pass-through cohort. Parties, Party Roles, Government
+  Roles, and Committee Roles remain unavailable because existing evidence does
+  not safely resolve their `Notes`-field handling. See
+  [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md).
+  No additional source-facing action is authorised by that result.
 
 ## Latest reconnaissance update — 2 August 2026
 

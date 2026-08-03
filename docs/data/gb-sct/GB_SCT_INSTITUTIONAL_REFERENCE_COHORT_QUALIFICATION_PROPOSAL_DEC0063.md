@@ -1,6 +1,7 @@
 # GB-SCT Institutional Reference Cohort Qualification Proposal — DEC-0063
 
-**Status:** PROPOSED — no additional source route is enabled
+**Status:** APPROVED — EXECUTED PASS (partial candidate outcome; no additional
+source route is enabled)
 
 **Version:** 1.0.0
 
@@ -135,3 +136,5 @@ separate exact private implementation/deployment proposal for those routes.
 If none qualify, the catalogue states that outcome transparently and the next
 step is a route-specific evidence plan. DB1 remains blocked pending broader
 proxy-phase acceptance.
+
+**Result:** [`GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](GB_SCT_INSTITUTIONAL_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md).

@@ -3,7 +3,7 @@
 **Status:** Approved planning control — no source request, proxy, capture,
 database, application, or public action authorised
 
-**Version:** 1.9.0
+**Version:** 1.10.0
 
 **Prepared:** 2 August 2026
 
@@ -71,27 +71,27 @@ and silent scope expansion.
 | Member constituency status | `/api/memberelectionconstituencystatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member region status | `/api/memberelectionregionstatuses` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member region status | `/api/memberelectionregionstatuses/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; date-state `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Constituencies | `/api/constituencies` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Constituencies | `/api/constituencies` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` |
 | Constituencies | `/api/constituencies/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Regions | `/api/regions` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Regions | `/api/regions` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` |
 | Regions | `/api/regions/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Parties | `/api/parties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Parties | `/api/parties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD` |
 | Parties | `/api/parties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member parties | `/api/memberparties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member parties | `/api/memberparties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Party roles | `/api/partyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Party roles | `/api/partyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD` |
 | Party roles | `/api/partyroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member party roles | `/api/memberpartyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member party roles | `/api/memberpartyroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Government roles | `/api/governmentroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Government roles | `/api/governmentroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD` |
 | Government roles | `/api/governmentroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member government roles | `/api/membergovernmentroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member government roles | `/api/membergovernmentroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Committees | `/api/committees` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; no membership/assignment inference | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Committees | `/api/committees/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; no membership/assignment inference | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Committee roles | `/api/committeeroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Committee roles | `/api/committeeroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD` |
 | Committee roles | `/api/committeeroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Committee types | `/api/committeetypes` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
+| Committee types | `/api/committeetypes` | `CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_CANDIDATE_PRIVATE_PASSTHROUGH_DEC0063` |
 | Committee types | `/api/committeetypes/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Committee type links | `/api/committeetypelinks` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; relationship semantics unknown | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | MQA events | `/api/motionsquestionsanswersevents` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `FUTURE_T1_FIELD_ASSESSMENT; NO_CURRENT_BILL_T1_T2` | `P3` | `COLLECTION_LATENCY_PROFILE_PASS_DEC0055; HANDLING_REQUIRED` |

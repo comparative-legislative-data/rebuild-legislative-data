@@ -1490,3 +1490,19 @@ Next review due:
 | Affected work blocked | Every DEC-0063 route remains unavailable. Implementation/deployment, DB1, DB2, capture, variables, research output, and public data access remain blocked pending owner decision and later exact packages. |
 | Owner decision required | Approve, amend, or reject DEC-0063. |
 | Next review due | On DEC-0063 decision/result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0090
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0063 evidence-only qualification execution |
+| Reviewer role | Maintainer; recording route-by-route candidate and handling-blocked outcomes without new source access |
+| Documents and records reviewed | DEC-0063 proposal; DEC-0061 published-basis result; contextual-reference and roles/committees reconnaissance results; DEC-0045 matrix; retention/publication controls. |
+| Active phase and authorising decision | DEC-0063 evidence-only institutional-reference cohort qualification |
+| Checks performed | Reused only the recorded fixed collection forms and structural field profiles. Applied the published licence limits and did not infer that a reference/taxonomy label resolves handling. Treated every observed `Notes` field as a material unresolved handling concern. |
+| Findings | Constituencies, Regions, and Committee Types meet the narrow candidate threshold. Parties, Party Roles, Government Roles, and Committee Roles do not: existing evidence cannot safely resolve `Notes`-field handling. |
+| Outcome | `PASS` — partial candidate result. No source/API/portal/document request, source data, relay, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | No DEC-0063 route is enabled. The four `Notes`-bearing collections remain unavailable pending route-specific terms/handling evidence. DB1 and DB2 remain blocked. |
+| Owner decision required | Approve, amend, or reject a later exact implementation/deployment proposal limited to the three candidates. |
+| Next review due | On a candidate implementation proposal/result, a blocked-route handling plan, or 1 September 2026, whichever is earlier. |
