@@ -126,10 +126,12 @@ separate from displayed records; DB1 remains a deliberately narrow baseline,
 not a general mirror claim.
 
 The active [D4C institutional-reference cohort](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
-authorises only four bounded source-preserving collections—Constituencies,
-Regions, Committee Types, and Committee Type Links—before any more sensitive
-or high-volume route. It keeps DB1’s no-semantic-transformation rule explicit
-and requires its own source, timer, projection, access, and acceptance proof.
+has completed its restricted deployment checks for only four bounded
+source-preserving collections—Constituencies, Regions, Committee Types, and
+Committee Type Links—before any more sensitive or high-volume route. Its
+[result](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
+records the source/timer/projection/access proof; owner front-end acceptance
+remains the final D4C package gate.
 
 ## 6. Detailed records
 

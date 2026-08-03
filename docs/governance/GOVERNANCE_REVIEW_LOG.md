@@ -2146,3 +2146,19 @@ Next review due:
 | Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; routes outside D4C; charts/research release; and shared-host changes. |
 | Owner decision required | Owner acceptance is required after restricted verification and beta-user interface test; any scope change needs a new decision. |
 | Next review due | On D4C deployment/result, owner front-end acceptance, an unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0131
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — D4C deployment result and pre-source worker stops |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0081; D4C result; project design; handover; decision/risk registers; GOV-REV-0130; and D4C metadata-only service/database checks. |
+| Active phase and authorising decision | D4C deployment complete within DEC-0081; owner front-end acceptance pending. |
+| Checks performed | Confirmed three initial worker faults occurred before any D4C observation, each rollback preserved existing services, and the final cycle retained exactly four `INITIAL` observations, one fixed release, zero rejections, active D4A/D4C timers, anonymous denial, and reader raw/write denial. |
+| Findings | The four-route capture/projection/reconciliation boundary passed within its fixed scope. The pre-source faults are an implementation lesson, not source retries; RSK-0041 records the added worker-preflight control. No completeness, freshness, semantic, DB2, download, public-access, or research claim is justified. |
+| Outcome | `PASS — D4C RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; routes outside D4C; charts/research release; and shared-host changes. |
+| Owner decision required | Owner front-end acceptance is required to close DEC-0081. A new decision is required for a new cohort, later named refresh, or any scope change. |
+| Next review due | On owner front-end acceptance, D4C drift/failure, a proposed refresh/new cohort, or 1 September 2026, whichever is earlier. |

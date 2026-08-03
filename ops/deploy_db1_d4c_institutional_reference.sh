@@ -95,6 +95,9 @@ GRANT USAGE ON SCHEMA db1 TO cld_gb_sct_db1_reader;
 GRANT SELECT ON db1.institutional_catalogue_releases, db1.reconciliation_observations TO cld_gb_sct_db1_reader;
 SQL
 
+d4c_writer_proof="$(PGPASSWORD="$d4c_password" psql -h 127.0.0.1 -p 5434 -U cld_gb_sct_d4c_runner -d "$database" -Atqc "select has_database_privilege(current_user, current_database(), 'CONNECT') and has_schema_privilege(current_user, 'db1', 'USAGE') and has_table_privilege(current_user, 'db1.source_routes', 'SELECT') and has_table_privilege(current_user, 'db1.capture_runs', 'INSERT,UPDATE') and has_table_privilege(current_user, 'db1.institutional_catalogue_releases', 'INSERT')")"
+[[ "$d4c_writer_proof" == "t" ]]
+
 install -d -o root -g cld-gb-sct -m 0750 /etc/cld-gb-sct/secrets
 umask 027
 printf 'CLD_DB1_DATABASE_URL=postgresql://cld_gb_sct_d4c_runner:%s@127.0.0.1:5434/%s\nCLD_DB1_RAW_ROOT=%s\n' "$d4c_password" "$database" "$project_root/raw/db1" > "$d4c_env"
