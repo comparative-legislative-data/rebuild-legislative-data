@@ -76,3 +76,8 @@ These cards are route-access guidance, not a DB1 schema, canonical codebook,
 field definition, data-quality finding, or research-variable release. They are
 intended to make raw upstream material navigable while preserving the distinction
 between source-observed structure and interpreted data.
+
+The parameter-substitution correction (`7876ebf`) and the route-profile
+presentation (`56dc1cd`) both passed local and VPS verification and were
+deployed through the unchanged two-service procedure. In particular, templates
+now substitute named parameters such as `:year`, not only `:id`.
