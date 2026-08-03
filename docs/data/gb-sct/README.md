@@ -13,8 +13,9 @@ or [DB2](../../workstreams/db2/README.md) narrative.
 The [approved DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
 sets the DB1 product boundary. Its [D1 synthetic foundation](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 has passed without source data. The next owner-review document must be D2, an
-exact first-source-batch proposal; no source request, capture, schedule, or
-researcher-facing DB1 access is currently authorised.
+exact first-source-batch proposal: [DEC-0076](GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md).
+No source request, capture, schedule, or researcher-facing DB1 access is
+currently authorised.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

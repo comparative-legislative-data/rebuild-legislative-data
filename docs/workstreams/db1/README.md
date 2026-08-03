@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1 synthetic-only foundation passed; D2 first-source-batch proposal is next
+**Status:** D1 synthetic-only foundation passed; D2 first-source-batch proposal awaiting owner review
 
 ## 1. Purpose and user value
 
@@ -71,6 +71,11 @@ design; and a front-end acceptance boundary. D1 defines synthetic verification
 only. Every later source action must evaluate these gaps openly and specify
 review triggers for source drift, failed runs, schema changes, and renewal of
 source/update assumptions.
+
+The proposed [D2 first-source-batch package](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
+selects only `/api/billtypes`: one fixed, no-query source request with a
+restricted handling class. It includes no schedule, user access, projection,
+or DB2 use, and remains unapproved until the owner decides.
 
 ## 6. Detailed records
 

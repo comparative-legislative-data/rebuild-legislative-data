@@ -1874,3 +1874,19 @@ Next review due:
 | Affected work blocked | All source requests/capture, scheduled reconciliation, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | Approve an exact D2 first-source-batch proposal before any source capture. |
 | Next review due | Before D2 approval, on a DB1 target/access change, a source/capture proposal, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0114
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0076 D2 first-source-batch proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0008, DEC-0045, DEC-0061, DEC-0073–DEC-0075, the capture template, DB1 narrative, handover, and decision register. |
+| Active phase and authorising decision | Documentation preparation after D1; no source action authorised. |
+| Checks performed | Selected the smallest P1 reference candidate from existing evidence: one no-query `/api/billtypes` request. Completed a proposed action-specific handling record; fixed the request, byte/time/retry limits, restricted class, no-projection/no-user boundary, and stop conditions. |
+| Findings | Existing evidence supports a narrowly proposed restricted capture test, but not a broad or recurring mirror claim. D1 did not create a production capture worker, so the proposal limits D2 to one fixed-use command and rejects any generic/scheduled importer. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. DEC-0076 is ready; no source request, capture, DB1 source data, schedule, interface, or DB2 work has occurred. |
+| Affected work blocked | All source requests/capture, scheduled reconciliation, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked pending DEC-0076 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0076 before the one named source request or its capture implementation. |
+| Next review due | On DEC-0076 decision, any scope/handling/target change, a D2 result, or 1 September 2026, whichever is earlier. |

@@ -53,8 +53,8 @@ the archive. It is not the next DB1 package.
 
 DEC-0075 D1 has passed; its [result](../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 records the synthetic-only raw-object, manifest, and projection/rejection
-lineage proof. The current owner decision is now D2: an exact first
-source-batch proposal.
+lineage proof. The current owner decision is [DEC-0076 D2](../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md):
+one exact first-source-batch proposal.
 
 D2 and every later capture package retain their own separate approval. No
 source request/capture, scheduled reconciliation, DB1 interface/download,
