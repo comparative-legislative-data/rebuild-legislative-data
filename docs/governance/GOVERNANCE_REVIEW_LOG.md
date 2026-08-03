@@ -1826,3 +1826,19 @@ Next review due:
 | Affected work blocked | Source-data capture, scheduled polling, DB1 implementation, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
 | Owner decision required | Owner review of revised DEC-0073, including the PostgreSQL/raw-object architecture and continuous reconciliation/access model. |
 | Next review due | Before DEC-0073 approval, on a route-cadence or storage/access design change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0111
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner approval of DEC-0073 |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0073 v1.1, DEC-0042/DEC-0074 relationship, DB1 narrative, handover, decision register, and the latest risk/review records. |
+| Active phase and authorising decision | DEC-0073 strategic DB1 plan, approved by owner. |
+| Checks performed | Confirmed the approval applies only to the DB1 strategic plan and D1 proposal preparation; confirmed source/capture, database/VPS, code, scheduled reconciliation, front-end, DB2, download, release, and research-claim actions remain separately gated. |
+| Findings | The approved plan provides a clear continuous-mirror and researcher-access target while retaining route-level cadence, source, handling, raw-storage, database, implementation, and capture decisions for later exact packages. |
+| Outcome | `PASS` — D1 proposal preparation is the next permitted documentation activity. |
+| Affected work blocked | Source-data capture, scheduled polling, DB1 implementation, database/VPS action, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | Approve D1 before any synthetic-only DB1 foundation implementation; approve D2 before any source capture. |
+| Next review due | Before D1 approval, on a material DB1 design change, or 1 September 2026, whichever is earlier. |

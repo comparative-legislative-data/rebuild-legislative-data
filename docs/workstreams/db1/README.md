@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** DB1 planning proposal awaiting owner review; no implementation authorised
+**Status:** Strategic plan approved; D1 source-free foundation proposal is next
 
 ## 1. Purpose and user value
 
@@ -44,11 +44,11 @@ are starting constraints, not a capture authorisation.
 ## 4. Decision and implementation path
 
 The proposed [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-now sets out the strategic product shape, routine-reconciliation model,
+is now approved. It sets out the strategic product shape, routine-reconciliation model,
 PostgreSQL/raw-object architecture, researcher-access product, staged execution
 path, first-batch selection criteria, front-end acceptance, and stop
-conditions. It is awaiting owner review. It does not authorise source-data
-requests, capture, database changes, or implementation.
+conditions. It authorises preparation of D1 only; it does not authorise
+source-data requests, capture, database changes, or implementation.
 
 The earlier DEC-0018 plan is retained as an
 [unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),

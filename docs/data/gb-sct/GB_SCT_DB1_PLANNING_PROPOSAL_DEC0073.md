@@ -1,20 +1,21 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Proposed for owner review — planning only; no source, database, VPS, or implementation action authorised
+**Status:** Approved strategic plan — D1 foundation proposal is next; no source/capture action authorised
 
 **Version:** 1.1.0
 **Prepared:** 3 August 2026
 **Decision requested:** DEC-0073
 
+**Decision:** Approved by the project owner on 3 August 2026
+
 ## 1. Decision requested
 
-Approve the strategic plan for the GB-SCT DB1 workstream and authorise the
-preparation of the bounded packages described in section 10. Approval would
-adopt the intended DB1 product shape, evidence standard, delivery sequence,
-and decision gates. It would **not** authorise a source request, raw capture,
-retention of source material, database connection or schema change, VPS work,
-application code, scheduled job, interface change, download, DB2 variable,
-chart, public release, or research claim.
+This approved strategic plan adopts the intended DB1 product shape, evidence
+standard, delivery sequence, and decision gates. It authorises preparation of
+the bounded packages described in section 10. It does **not** authorise a
+source request, raw capture, retention of source material, database connection
+or schema change, VPS work, application code, scheduled job, interface change,
+download, DB2 variable, chart, public release, or research claim.
 
 Every execution package remains separately owner-approved. A capture batch
 also requires a completed
@@ -354,7 +355,7 @@ cap, source/handling basis, retention/access class, transfer and retry budget,
 manifest format, reconciliation cadence, success/failure criteria, and its own
 front-end hand-off.
 
-Review DEC-0073 before approval against these questions:
+The owner approved DEC-0073 after review against these questions:
 
 1. Does the proposed DB1 product boundary remain distinct from the proxy and
    any later analytical work?

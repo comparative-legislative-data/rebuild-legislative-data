@@ -50,17 +50,18 @@ the archive. It is not the next DB1 package.
 
 ## Next owner decision
 
-The next step is to review the proposed
+DEC-0073 is approved. The next step is to prepare the source-free D1 foundation
+implementation proposal under the
 [DB1 planning/implementation plan — DEC-0073](../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md).
 It sets the DB1 product boundary, staged D1–D5 delivery model, capture-slice
 selection criteria, manifest/retention model, isolated-target constraint,
 drift/reconciliation position, verification, and front-end acceptance
 boundary.
 
-DEC-0073 authorises nothing while proposed. If approved, D1 (synthetic-only
-DB1 foundation) and every later execution/capture package retain separate
-owner approvals. No source-data request, capture, DB1 schema/database write,
-service change, or implementation is currently authorised.
+DEC-0073 authorises D1 proposal preparation only. D1 (synthetic-only DB1
+foundation) and every later execution/capture package retain separate owner
+approvals. No source-data request, capture, DB1 schema/database write, service
+change, or implementation is currently authorised.
 
 ## Documentation hygiene
 
