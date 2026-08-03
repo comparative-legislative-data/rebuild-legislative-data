@@ -16,12 +16,11 @@
   `DO_NOT_CAPTURE_OR_RELEASE` for the current action set; none is retired
   from the intended inventory. See
   [`GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md`](../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md).
-  The next proposed package is the separate contract batch for detail and
-  parameterised forms.
-- DEC-0070 is that proposed 12-form contract batch. It limits later work to
-  transient, value-free observations of exact detail/parameter forms and does
-  not enable a source relay, capture, DB1/DB2, or any system action. Review
-  [`GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_PROPOSAL_DEC0070.md`](../data/gb-sct/GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_PROPOSAL_DEC0070.md).
+- DEC-0070 is now complete. All 12 exact forms returned a JSON response once
+  under its value-free transport/shape boundary; this does not establish terms,
+  content, semantics, handling, relay eligibility, or availability. See
+  [`GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md).
+  The next proposed package is the independent high-volume operational batch.
 
 - DEC-0062 is approved and has passed its local implementation stage. Exactly
   three small reference collections now have fixed, private-beta-only,

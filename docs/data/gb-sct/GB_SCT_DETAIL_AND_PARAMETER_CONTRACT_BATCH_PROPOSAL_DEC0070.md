@@ -1,6 +1,8 @@
 # GB-SCT Detail and Parameter Contract-Batch Proposal — DEC-0070
 
-**Status:** PROPOSED — evidence-only contract qualification; no route enabled
+**Status:** APPROVED — EXECUTED PASS; no route enabled
+
+**Result:** [`GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md`](GB_SCT_DETAIL_AND_PARAMETER_CONTRACT_BATCH_RESULT_2026-08-03.md)
 
 ## 1. Decision requested
 
