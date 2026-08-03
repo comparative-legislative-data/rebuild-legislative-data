@@ -2114,3 +2114,19 @@ Next review due:
 | Affected work blocked | New source/capture/timer work; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked pending a new decision. |
 | Owner decision required | A new DB1 proposal is required before further expansion. |
 | Next review due | Before the next DB1 proposal, a D4A operational event, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0129
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0081 D4C institutional-reference proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; decision/risk registers; DB1 strategy/narrative; DEC-0045, DEC-0063–DEC-0066, DEC-0073–DEC-0080; and GOV-REV-0128. |
+| Active phase and authorising decision | Documentation-only D4C proposal preparation after closed D4B. |
+| Checks performed | Selected only four bounded no-query collections with existing institutional-reference route evidence, separated them from handling-blocked/sensitive and high-volume cohorts, fixed one-attempt/cap/timeout/reconciliation controls, and preserved the raw archive → loss-aware projection → DB2 separation. |
+| Findings | A small institutional-reference increment can expand DB1 source coverage without creating a semantic data model. It does not establish source values, response sizes, completeness, updateability, or capture authority. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. No source, database, code, service, timer, or interface action occurred. |
+| Affected work blocked | D4C implementation; all D4C source/capture/timer action; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked pending a decision. |
+| Owner decision required | Approve, amend, or reject DEC-0081 before any D4C action. |
+| Next review due | On DEC-0081 decision, a D4A operational event, D4C result, or 1 September 2026, whichever is earlier. |

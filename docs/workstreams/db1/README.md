@@ -125,6 +125,12 @@ has accepted the front-end catalogue. It keeps later timer observations
 separate from displayed records; DB1 remains a deliberately narrow baseline,
 not a general mirror claim.
 
+The next owner-review document is [D4C — institutional-reference cohort](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md).
+It proposes only four bounded source-preserving collections—Constituencies,
+Regions, Committee Types, and Committee Type Links—before any more sensitive
+or high-volume route. It keeps DB1’s no-semantic-transformation rule explicit
+and requires its own source, timer, projection, access, and acceptance proof.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

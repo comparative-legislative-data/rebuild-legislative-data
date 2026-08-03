@@ -72,6 +72,8 @@ is owner accepted. DEC-0080 clarifies that DB1 is source-preserving and has no
 semantic transformation role; download expansion, DB2, and a research release
 remain excluded.
 
+The current owner-review document is [D4C](../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md): a four-route institutional-reference, source-preserving mirror increment. No D4C source, database, code, service, or interface action is authorised until the owner decides.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their
