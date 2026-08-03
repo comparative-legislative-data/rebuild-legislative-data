@@ -2098,3 +2098,19 @@ Next review due:
 | Affected work blocked | Any expansion beyond the three manifests; source/timer work; raw access; generic query/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked. |
 | Owner decision required | No new decision for the remaining owner acceptance test. A new decision is required for any expansion after closure. |
 | Next review due | On owner front-end acceptance, a D4A operational event, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0128
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0079 owner front-end acceptance and DB1/DB2 boundary clarification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0073–DEC-0080; D4B result; DB1 narrative; handover; decision register; and GOV-REV-0127. |
+| Active phase and authorising decision | Closed DEC-0079 D4B; DEC-0080 recorded clarification. |
+| Checks performed | Recorded the owner's successful front-end test and checked its DB1 source-preservation direction against the raw/archive/projection distinction and DB2 one-way constraint. |
+| Findings | DB1 may add provenance, integrity, and access metadata but may not make semantic transformations. Raw bytes remain the source record; loss-aware DB1 projections make source objects queryable without becoming DB2 variables. “Mirror” must remain scoped to retained/reconciled evidence, never an unsupported completeness claim. |
+| Outcome | `PASS — DEC-0079 CLOSED; DEC-0080 RECORDED`. |
+| Affected work blocked | New source/capture/timer work; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked pending a new decision. |
+| Owner decision required | A new DB1 proposal is required before further expansion. |
+| Next review due | Before the next DB1 proposal, a D4A operational event, or 1 September 2026, whichever is earlier. |

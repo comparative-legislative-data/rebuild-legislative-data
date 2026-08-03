@@ -66,10 +66,11 @@ has passed as the bounded three-route reference-cohort reconciliation pilot.
 Its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 records the initial/repeat observations, false-positive correction, and active
 03:17 UTC timer. [D4B](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
-has deployed its three fixed baseline projections and private catalogue. Read
-its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
-before any next DB1 work. Owner front-end acceptance remains pending; download
-expansion, DB2, and a research release remain excluded.
+has deployed its three fixed baseline projections and private catalogue. Its
+[result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
+is owner accepted. DEC-0080 clarifies that DB1 is source-preserving and has no
+semantic transformation role; download expansion, DB2, and a research release
+remain excluded.
 
 ## Documentation hygiene
 

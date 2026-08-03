@@ -1,6 +1,6 @@
 # GB-SCT DB1 Reference-Cohort Projection and Catalogue Result — DEC-0079
 
-**Status:** `PASS — OWNER FRONT-END ACCEPTANCE PENDING`  
+**Status:** `PASS — OWNER ACCEPTED`
 **Date:** 3 August 2026  
 **Decision:** DEC-0079  
 **Scope:** Three named retained D4A manifests; three fixed DB1 loss-aware
@@ -46,9 +46,9 @@ download, canonical dataset, chart, or research release.
 No raw response body, secret, account value, or source content is retained in
 this result record.
 
-## Remaining acceptance
+## Owner front-end acceptance
 
-An eligible beta user must confirm the deployed **DB1 catalogue** screen:
+An eligible beta user confirmed that the deployed **DB1 catalogue** screen:
 
 1. it appears after sign-in and loads the three fixed panels;
 2. the two grouped headings and expandable endpoint badges are usable;
@@ -70,5 +70,5 @@ separate named build and decision.
 
 ## Next review
 
-Record the owner’s front-end acceptance or issue, then close DEC-0079 within
-this narrow scope. Any DB1 expansion requires a new proposal.
+DEC-0079 is closed within this narrow scope. Any DB1 expansion requires a new
+proposal.

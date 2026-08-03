@@ -18,6 +18,17 @@ DB1 is an independent mini-project. DB2 is a later, separate workstream that
 must work within the declared DB1 record if it proceeds; DB2 does not determine
 DB1 capture priorities, schema, retention, or success criteria.
 
+### Source-preservation rule
+
+DB1 is being built as the source-preserving mirror layer: its raw archive keeps
+the received bytes, while its operational projection retains every source
+object/value with source position and manifest lineage. DB1 may add only
+operational provenance, integrity, and access metadata; it must not rename,
+reclassify, infer, aggregate, filter, fill, or otherwise semantically transform
+source data. Any decoding/re-serialisation limit, non-object rejection, or
+projection loss must be explicit and testable. Defined variables and every
+semantic transformation belong to the later, independently governed DB2 layer.
+
 ## 2. Current boundary
 
 D1 created an internal `db1` schema and one synthetic-only proof chain. D2
@@ -92,27 +103,27 @@ consistent navigation, while keeping retained capture/projection provenance,
 version, and reconciliation state visually and semantically distinct from the
 proxy's live no-retention access.
 
-The immediate next proposal is [D4A — reference-cohort reconciliation](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md).
-It tests daily append-only source preservation for the three small P1 reference
-collections while deliberately leaving the D3 interface unchanged. A later
-D4B proposal would decide whether the expanded capture/projection history is
-suitable for a proxy-aligned DB1 catalogue.
+The completed [D4A reference-cohort reconciliation](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md)
+tested daily append-only source preservation for three small P1 reference
+collections while deliberately leaving the D3 interface unchanged. D4B then
+used its named retained manifests for the first proxy-aligned DB1 catalogue.
 
 D4A has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 records an initial three-route cycle and a repaired immediate verification
 cycle, with all later comparisons `UNCHANGED`; the daily timer is active. The
 record also preserves a false structural-drift positive caused by JSON-object
 key order, the timer pause, the code correction, and the successful corrected
-verification. The next DB1 work is proposal-only D4B, not an automatic source
-or interface expansion.
+verification. It did not itself authorise an automatic source or interface
+expansion.
 
 The [D4B proposal — DEC-0079](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
 has deployed three fixed baseline projections from named D4A manifests and a
 private DB1 catalogue in the proxy’s compact grouped/expandable layout. Its
 [result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
-records the one readiness-check rollback and corrected deployment. It keeps
-later timer observations separate from displayed records; owner front-end
-acceptance remains pending.
+records the one readiness-check rollback and corrected deployment. The owner
+has accepted the front-end catalogue. It keeps later timer observations
+separate from displayed records; DB1 remains a deliberately narrow baseline,
+not a general mirror claim.
 
 ## 6. Detailed records
 

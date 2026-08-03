@@ -22,10 +22,10 @@ timer. Its [result](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_20
 records the correction of one false structural-drift positive. It is not a
 generic mirror or new user-facing DB1 release.
 
-The next owner-review document is [D4B — reference-cohort projection and
-catalogue](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md).
-It proposes no source activity: only fixed projections from named D4A captures
-and a private provenance-first catalogue if separately approved.
+D4B's [reference-cohort projection and catalogue proposal](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
+has passed. Its [result](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
+records the three fixed retained projections and owner-accepted private
+provenance-first catalogue, without any new source activity.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
