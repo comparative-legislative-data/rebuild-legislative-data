@@ -4,6 +4,8 @@ import {
   D4B_REFERENCE_PROJECTIONS,
   D4C_INSTITUTIONAL_CATALOGUE_ID,
   D4C_INSTITUTIONAL_ROUTES,
+  D5_FORMAL_STAGES_RELEASE_ID,
+  D5_FORMAL_STAGES_ROUTE,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -52,6 +54,11 @@ export type Db1ReferenceCatalogueResponse = {
   catalogue: { id: string; integrity_status: string; built_at: string; };
   limitations: string[];
   panels: Db1ExplorerResponse[];
+};
+
+export type Db1AccessPlanResponse = Omit<Db1ExplorerResponse, "records"> & {
+  access_mode: "ACCESS_PLAN_FIRST";
+  record_lineage: { projected_record_count: number; access_note: string; };
 };
 
 function requiredEnvironment(name: string): string {
@@ -209,6 +216,37 @@ export class Db1Explorer {
       }
       await client.query("commit");
       return { layer: "DB1_OPERATIONAL_PROJECTION_CATALOGUE", availability: "RESTRICTED_PRIVATE_BETA", baseline: "FIXED_D4C_RETAINED_BASELINE", catalogue: { id: item.id, integrity_status: item.integrity_status, built_at: item.created_at.toISOString() }, limitations: ["This is a fixed retained D4C institutional-reference baseline, not a live Scottish Parliament response or a general DB1 mirror.", "Later D4C timer observations do not alter these projection records. A later projection requires its own named build and decision.", "The catalogue has no raw-object route, source action, generic query, download, canonical variable, chart, or research-release claim."], panels };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  async formalStagesD5(): Promise<Db1AccessPlanResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; projection_build_id: string }>("select id, integrity_status, projection_build_id from db1.formal_stages_releases where id = $1 and integrity_status = 'PASS'", [D5_FORMAL_STAGES_RELEASE_ID]);
+      const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id]);
+      const build = projection.rows[0];
+      if (!build) throw new Error("D5 formal-stages release build is unavailable");
+      const panel = await this.referencePanel(client, { routeId: D5_FORMAL_STAGES_ROUTE.id, sourcePath: D5_FORMAL_STAGES_ROUTE.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id);
+      if (!panel) throw new Error("D5 formal-stages release does not match its fixed projection contract");
+      await client.query("commit");
+      const { records, ...response } = panel;
+      return {
+        ...response,
+        access_mode: "ACCESS_PLAN_FIRST",
+        record_lineage: {
+          projected_record_count: panel.projection.projected_records,
+          access_note: "Record-level provenance is retained in DB1, but individual records are not exposed through this first access-plan release."
+        },
+        limitations: [
+          "This is a fixed retained D5 formal-stages projection, not a live Scottish Parliament response, Bills dataset, or general DB1 mirror.",
+          "The raw object and individual projected records are not exposed through this access-plan release. A later access mode requires its own named decision.",
+          "Observed keys and types are structural evidence from this named projection, not a semantic codebook, stage interpretation, or DB2 variable definition.",
+          `The latest D5 reconciliation state is ${panel.reconciliation_state}; it does not alter this fixed baseline projection or establish freshness or completeness.`
+        ]
+      };
     } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 

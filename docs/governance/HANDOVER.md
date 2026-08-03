@@ -79,11 +79,11 @@ increment passed restricted deployment and owner front-end acceptance. Read its
 before proposing a new DB1 cohort. The owner has also approved the
 [DB1 retained-data access direction](../data/gb-sct/GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md): access mode must fit source volume and shape rather than defaulting to an in-browser table. DB2, generic access/download, public data access, and every new route remain excluded pending a new package.
 
-The next owner decision is the proposed [D5 formal-stages cohort —
-DEC-0083](../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md).
-It is limited to `/api/billstages` and proposes an access-plan-first retained
-release. No D5 source request, capture, database action, timer, deployment, or
-interface action is authorised unless the owner approves it.
+The owner-approved [D5 formal-stages cohort — DEC-0083](../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
+is limited to `/api/billstages` and uses an access-plan-first retained release.
+Its [restricted handling record](../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
+limits the package to source-preserving DB1 work; no download, public output,
+generic browser/query, semantic variable, or other route is included.
 
 ## Documentation hygiene
 

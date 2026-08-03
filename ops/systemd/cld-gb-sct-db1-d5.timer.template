@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Comparative Legislative Data DB1 D5 formal-stages reconciliation
+
+[Timer]
+OnCalendar=*-*-* 03:47:00 UTC
+Persistent=true
+Unit=cld-gb-sct-db1-d5.service
+
+[Install]
+WantedBy=timers.target

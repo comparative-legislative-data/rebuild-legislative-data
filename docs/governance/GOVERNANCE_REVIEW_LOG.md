@@ -2194,3 +2194,19 @@ Next review due:
 | Affected work blocked | D5 source/capture/timer/deployment work; all generic DB1 access/download; DB2; semantic variables; public data access; and shared-host changes remain blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0083 before any D5 action. |
 | Next review due | On DEC-0083 decision, D4A/D4C drift or failure, D5 result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0134
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0083 approval and D5 implementation start |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0083; D5 handling record; DB1 narrative; and GOV-REV-0133. |
+| Active phase and authorising decision | D5 formal-stages contained implementation and owner-acceptance package under DEC-0083. |
+| Checks performed | Confirmed the exact one-route no-query boundary, restrictive handling class, one-attempt/cap/timeout controls, separate D5 writer/timer, fixed release, reader-only access-plan response, and continuing proxy/DB1, DB1/DB2, public-access, and shared-host separations. |
+| Findings | The package is authorised only for `/api/billstages` and its stated contained implementation/deployment/acceptance activities. The handling record is restrictive and does not assert route-specific legal permission, source semantics, completeness, or freshness. |
+| Outcome | `PASS — D5 IMPLEMENTATION AUTHORISED WITHIN DEC-0083`. |
+| Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
+| Owner decision required | Owner acceptance is required after restricted verification and private-beta interface test; any scope change needs a new decision. |
+| Next review due | On D5 deployment/result, owner front-end acceptance, an unexpected stop, or 1 September 2026, whichever is earlier. |

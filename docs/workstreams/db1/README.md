@@ -135,11 +135,11 @@ records source/timer/projection/access proof and owner acceptance. The
 now requires an explicit volume-appropriate access mode for every later DB1
 cohort; the small-collection browser is not a universal template.
 
-The [D5 formal-stages cohort proposal — DEC-0083](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
-is the next owner decision. It is limited to `/api/billstages` and proposes
-access-plan-first rather than assuming a collection browser. No D5 source,
-capture, database, timer, or interface work is authorised while it remains
-proposed.
+The owner-approved [D5 formal-stages cohort — DEC-0083](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
+is limited to `/api/billstages` and uses access-plan-first rather than assuming
+a collection browser. Its [restricted handling record](../../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
+keeps raw content and individual records private while the fixed baseline is
+first established.
 
 ## 6. Detailed records
 

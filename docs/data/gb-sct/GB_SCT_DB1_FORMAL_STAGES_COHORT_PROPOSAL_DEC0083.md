@@ -1,8 +1,8 @@
 # GB-SCT DB1 Formal-Stages Cohort Proposal — DEC-0083
 
-**Status:** Proposed — owner approval required
+**Status:** Approved — implementation and owner-acceptance package authorised
 **Prepared:** 3 August 2026
-**Decision requested:** DEC-0083
+**Decision:** DEC-0083 approved by project owner, 3 August 2026
 
 ## 1. Decision requested
 
@@ -34,9 +34,10 @@ historical coverage, update behaviour, or a research interpretation.
 | P1 programme priority | Formal stages are a justified next DB1 research-infrastructure subject. | A decision that a source stage represents a comparative legislative outcome. |
 | DEC-0082 access direction | A volume-appropriate access mode can be declared before UI design. | A generic table, download, query grammar, or release capability. |
 
-The D5 implementation must stop if its required handling/terms basis cannot
-be demonstrated from the authorised evidence or if the route does not satisfy
-the fixed transport/shape contract below.
+The approved restricted handling basis is recorded in the
+[D5 formal-stages handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md).
+It is not a source-terms conclusion: D5 must stop if the fixed handling gate or
+transport/shape contract below fails.
 
 ## 3. Fixed source-preservation contract
 
@@ -135,4 +136,5 @@ harder legislative or relationship questions are solved.
 - [DB1 access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
 - [Endpoint matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [Route handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
+- [D5 formal-stages handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
 - [DB1 narrative](../../workstreams/db1/README.md)

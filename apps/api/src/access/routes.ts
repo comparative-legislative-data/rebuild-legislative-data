@@ -69,6 +69,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/db1/gb-sct/bill-types/d2-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/reference-cohort/d4a-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/institutional-reference/d4c-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/formal-stages/d5-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -252,6 +253,18 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
     reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_CATALOGUE");
     reply.header("x-cld-db1-catalogue", response.catalogue.id);
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/formal-stages/d5-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const response = await db1Explorer.formalStagesD5();
+    if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_ACCESS_PLAN");
+    reply.header("x-cld-db1-release", "gb_sct_formal_stages_d5_v1");
     reply.header("vary", "Cookie");
     return reply.send(response);
   });
