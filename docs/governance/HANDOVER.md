@@ -362,6 +362,13 @@ DEC-0060 has completed its local fail-closed catalogue implementation. Neither
 authorises a source relay. Guest invitations remain a later, separately
 unexercised access path.
 
+DEC-0061 is proposed as the smallest next source-facing step. It uses existing
+route-shape evidence and targeted published policy/terms inspection to assess
+the Bill Stage Types, Bill Types, and Sessions collection routes. It permits no
+endpoint request, source relay, deployment, or retained source data; any later
+private implementation/deployment remains conditional on its result and a
+separate owner approval.
+
 ## Repository state at handover
 
 - Default branch: `main`

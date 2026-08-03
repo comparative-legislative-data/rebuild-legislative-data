@@ -1362,3 +1362,19 @@ Next review due:
 | Affected work blocked | Upstream relay, source requests, capture, DB1, DB2, research output, deployment, and public access remain blocked pending a later exact route-qualification/deployment package. |
 | Owner decision required | A new named-cohort route-qualification and private deployment proposal is required before any source route can be exposed. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0082
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Daily hygiene assessment and triggered DEC-0061 source-facing proposal preparation |
+| Reviewer role | Maintainer; recording a documentation-only proposed next phase |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0045, DEC-0055–DEC-0057, DEC-0060, the endpoint matrix, Bills-foundation reconnaissance, and update-signal result |
+| Active phase and authorising decision | Documentation-only proposal preparation after DEC-0060; DEC-0061 is not approved |
+| Checks performed | Confirmed the repository working state and documentation reading path, retained the active data/application/governance separation, and added no stale/generated artefact. Compared candidate P1 routes against existing observation and update-signal records. Confirmed that Bills remains blocked and that the three named collection forms are small reference candidates but remain handling-unqualified. |
+| Findings | The next work must establish route-level published basis and handling before a relay can be implemented or deployed. A combined automatic qualification-to-relay transition would be too broad because an unresolved result must remain visible and unavailable. |
+| Outcome | `PASS` for preparation of DEC-0061 only. No source request, source retention, implementation, VPS action, deployment, DB1, DB2, cache, or public action occurred. |
+| Affected work blocked | All source requests, source relay, deployment, DB1, DB2, research output, and public access remain blocked pending explicit DEC-0061 approval and its bounded result. |
+| Owner decision required | Approve, amend, or reject DEC-0061. |
+| Next review due | 1 September 2026, or earlier if a review trigger occurs. |
