@@ -8,7 +8,10 @@ const routePaths = new Map<string, string>([
   ["sessions.collection", "/api/sessions"],
   ["constituencies.collection", "/api/constituencies"],
   ["regions.collection", "/api/regions"],
-  ["committee-types.collection", "/api/committeetypes"]
+  ["committee-types.collection", "/api/committeetypes"],
+  ["committee-type-links.collection", "/api/committeetypelinks"],
+  ["mqa-event-types.collection", "/api/motionsquestionsanswerseventtypes"],
+  ["mqa-event-links.collection", "/api/motionsquestionsanswerseventlinks"]
 ]);
 
 export type SourceTransportFailure = {

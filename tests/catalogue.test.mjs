@@ -13,7 +13,10 @@ const relayedRoutes = [
   ["sessions.collection", "/api/sessions"],
   ["constituencies.collection", "/api/constituencies"],
   ["regions.collection", "/api/regions"],
-  ["committee-types.collection", "/api/committeetypes"]
+  ["committee-types.collection", "/api/committeetypes"],
+  ["committee-type-links.collection", "/api/committeetypelinks"],
+  ["mqa-event-types.collection", "/api/motionsquestionsanswerseventtypes"],
+  ["mqa-event-links.collection", "/api/motionsquestionsanswerseventlinks"]
 ];
 const relayedIds = relayedRoutes.map(([id]) => id);
 
@@ -43,7 +46,7 @@ test("catalogue parameter rules reject unlisted and malformed input", () => {
   assert.equal(validateParameters(annualVotes, { year: "2025" }), undefined);
 });
 
-test("fixed relay transport uses only the six approved paths and preserves synthetic redirect and source-error responses", async () => {
+test("fixed relay transport uses only the nine approved paths and preserves synthetic redirect and source-error responses", async () => {
   const calls = [];
   const relay = createSourcePassThrough(async (url, init) => {
     calls.push({ url: url.toString(), init });
@@ -95,7 +98,7 @@ test("catalogue denies unauthenticated access and leaves unavailable routes fail
   assert.equal(catalogue.statusCode, 200);
   assert.equal(catalogue.json().route_count, 64);
   assert.equal(catalogue.json().source_requests_enabled, true);
-  assert.equal(catalogue.json().enabled_route_count, 6);
+  assert.equal(catalogue.json().enabled_route_count, 9);
 
   const refused = await app.inject({ method: "GET", url: "/catalogue/gb-sct/motion-votes.year/source", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(refused.statusCode, 409);

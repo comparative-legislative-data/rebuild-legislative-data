@@ -65,7 +65,10 @@ for (const term of [
   "sessions.collection",
   "constituencies.collection",
   "regions.collection",
-  "committee-types.collection"
+  "committee-types.collection",
+  "committee-type-links.collection",
+  "mqa-event-types.collection",
+  "mqa-event-links.collection"
 ]) {
   if (!sourceRelay.includes(term)) throw new Error(`${sourceRelayFile}: required fixed relay control is missing: ${term}`);
 }
@@ -81,6 +84,9 @@ for (const term of [
   "https://data.parliament.scot/api/constituencies",
   "https://data.parliament.scot/api/regions",
   "https://data.parliament.scot/api/committeetypes",
+  "https://data.parliament.scot/api/committeetypelinks",
+  "https://data.parliament.scot/api/motionsquestionsanswerseventtypes",
+  "https://data.parliament.scot/api/motionsquestionsanswerseventlinks",
   "Open official Scottish Parliament API directly",
   "Open via CLD no-retention relay"
 ]) {
@@ -99,4 +105,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: only the six approved fixed no-retention relay routes and six user-triggered official-source links are present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");
+process.stdout.write("Runtime scope scan passed: only the nine approved fixed no-retention relay routes and nine user-triggered official-source links are present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");

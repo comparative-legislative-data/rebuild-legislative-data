@@ -77,6 +77,24 @@ const sourceGuides: Record<string, SourceGuide> = {
       { name: "Recorded structure", note: "Existing evidence records identifier and name fields, but does not retain stable field names/types. Inspect the raw source response." }
     ],
     caution: "This is source-defined taxonomy only. Do not infer committee classification, historical meaning, completeness, or freshness."
+  },
+  "committee-type-links.collection": {
+    officialUrl: "https://data.parliament.scot/api/committeetypelinks",
+    observedStructure: "Previously observed as a 168-record JSON collection with committee/type identifiers. This is dated structural evidence, not a check of the response you are about to open.",
+    variables: [{ name: "Recorded structure", note: "Existing evidence records committee/type identifiers only. Their relation, timing, membership, and classification are not interpreted." }],
+    caution: "This is source-defined link material only. Do not infer a committee/type relationship, coverage, completeness, or freshness."
+  },
+  "mqa-event-types.collection": {
+    officialUrl: "https://data.parliament.scot/api/motionsquestionsanswerseventtypes",
+    observedStructure: "Previously observed as a 2-record JSON collection. This is dated structural evidence, not a check of the response you are about to open.",
+    variables: [{ name: "EventTypeID", note: "Previously observed source identifier; its meaning is not independently interpreted." }, { name: "EventType", note: "Previously observed source label; it is not a validated event classification." }],
+    caution: "This is source-defined event-type taxonomy only. Do not infer event meaning, coverage, completeness, or freshness."
+  },
+  "mqa-event-links.collection": {
+    officialUrl: "https://data.parliament.scot/api/motionsquestionsanswerseventlinks",
+    observedStructure: "Previously observed as a 5,721-record JSON collection (406,192 bytes). This historical observation is not a response-size guarantee.",
+    variables: [{ name: "ChildUniqueID / MainUniqueID / ParentUniqueID", note: "Previously observed source identifiers. CLD does not identify the entities or interpret link direction or relationship." }],
+    caution: "The raw response may be larger or slower than the prior observation. Do not infer identifier identity, link direction, event meaning, coverage, completeness, or freshness."
   }
 };
 
@@ -214,7 +232,7 @@ function App() {
       {view === "settings" && identity.authenticated ? <section className="access-panel" aria-labelledby="settings-heading"><h2 id="settings-heading">Settings</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password/change", { password }, "Your password has been changed."); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Change password</button></form><button className="secondary-button" type="button" onClick={() => { void request("/auth/logout", { method: "POST", body: JSON.stringify({ logout_proof: identity.logout_proof ?? "" }) }).then(async (response) => { const outcome = await response.json().catch(() => undefined) as { signed_out?: unknown } | undefined; const nextIdentity = await refreshIdentity(); setView("login"); setMessage(response.ok && outcome?.signed_out === true && !nextIdentity?.authenticated ? "You are signed out." : "We could not confirm sign-out. Please try again."); }); }}>Log out</button></section> : null}
       {view === "admin" && identity.roles.includes("SUPERUSER") ? <section className="access-panel" aria-labelledby="admin-heading"><h2 id="admin-heading">Superuser review</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}{applications.length === 0 ? <p>No pending applications.</p> : <ul>{applications.map((application) => <li key={application.id}><p><strong>{application.email}</strong></p><p>{application.requestText}</p><button type="button" onClick={() => void approve(application.id)}>Approve</button></li>)}</ul>}</section> : null}
       {view === "catalogue" && identity.authenticated ? <section className="catalogue-panel" aria-labelledby="catalogue-heading"><p className="eyebrow">GB-SCT route inventory</p><h2 id="catalogue-heading">Transparent upstream access catalogue</h2><p className="panel-copy">This catalogue is not a project dataset or snapshot. Select an endpoint badge to inspect its route-level evidence and access boundary.</p>{catalogueFeedback ? <p className="form-feedback" role="status">{catalogueFeedback}</p> : null}{catalogue ? <><p className="catalogue-summary"><strong>{catalogue.route_count} selected route forms</strong> · {catalogue.enabled_route_count} fixed private no-retention pass-through routes currently enabled.</p><div className="catalogue-sections">{catalogueSections.map((section) => { const routes = catalogue.routes.filter((route) => (section.groups as readonly string[]).includes(route.group)); const enabled = routes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").length; return <section className="catalogue-section" key={section.id} aria-labelledby={`${section.id}-heading`}><header className="catalogue-section-heading"><div><p className="eyebrow">Source family</p><h3 id={`${section.id}-heading`}>{section.title}</h3></div><p>{routes.length} route forms{enabled > 0 ? ` · ${enabled} live private route${enabled === 1 ? "" : "s"}` : ""}</p></header><div className="catalogue-list">{routes.map((route) => <RouteBadge key={route.id} route={route} onUnavailable={requestRoute} />)}</div></section>; })}</div></> : <p className="panel-copy">Loading the route registry…</p>}</section> : null}
-      <p className="boundary">Current boundary: only six fixed live source pass-through routes are available to private beta users. No DB1 storage, canonical dataset, chart, export, or research release is available.</p>
+      <p className="boundary">Current boundary: only nine fixed live source pass-through routes are available to private beta users. No DB1 storage, canonical dataset, chart, export, or research release is available.</p>
     </main>
   );
 }

@@ -49,6 +49,9 @@ const privatePassThroughLimitation = "A private-beta action opens the fixed Scot
 const constituencyPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined constituency reference only; CLD makes no geographic, validity-date, coverage, or temporal-semantic claim.`;
 const regionPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined regional reference only; CLD makes no date-boundary, coverage, or temporal-semantic claim.`;
 const committeeTypePassThroughLimitation = `${privatePassThroughLimitation} This is source-defined taxonomy only; CLD makes no classification, completeness, or historical-meaning claim.`;
+const committeeTypeLinkPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined link material only; CLD makes no committee/type relation, timing, membership, classification, completeness, or freshness claim.`;
+const eventTypePassThroughLimitation = `${privatePassThroughLimitation} This is source-defined event-type taxonomy only; CLD makes no event meaning, classification, coverage, completeness, or freshness claim.`;
+const eventLinkPassThroughLimitation = `${privatePassThroughLimitation} This is source-defined event-link material only; CLD makes no identifier identity, link direction, relationship, event meaning, coverage, completeness, or freshness claim.`;
 
 export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("bills.collection", "Bills", "/api/bills", "P1", "STRUCTURED_MEDIUM", pending, [], "HANDLING_DO_NOT_CAPTURE_OR_RELEASE", "Terms, handling, and output fit remain unresolved."),
@@ -89,14 +92,14 @@ export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("committee-roles.detail", "Committee roles", "/api/committeeroles/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("committee-types.collection", "Committee types", "/api/committeetypes", "P2", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0064", committeeTypePassThroughLimitation),
   entry("committee-types.detail", "Committee types", "/api/committeetypes/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("committee-type-links.collection", "Committee type links", "/api/committeetypelinks", "P2", "STRUCTURED_MEDIUM", pending),
+  entry("committee-type-links.collection", "Committee type links", "/api/committeetypelinks", "P2", "STRUCTURED_MEDIUM", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0066", committeeTypeLinkPassThroughLimitation),
   entry("mqa-events.collection", "MQA events", "/api/motionsquestionsanswersevents", "P3", "EXTREME_OR_UNRESOLVED", extreme, [], "COLLECTION_LATENCY_PROFILE_PASS_DEC0055", "Observed as a high-latency whole collection; no lower-cost relay contract is approved."),
   entry("mqa-events.detail", "MQA events", "/api/motionsquestionsanswersevents/:id", "P3", "EXTREME_OR_UNRESOLVED", detail, [sourceIdentifier], "OBSERVATION_REQUIRED", "The detail identifier contract is not established."),
-  entry("mqa-event-types.collection", "MQA event types", "/api/motionsquestionsanswerseventtypes", "P3", "REFERENCE_SMALL", pending),
+  entry("mqa-event-types.collection", "MQA event types", "/api/motionsquestionsanswerseventtypes", "P3", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0066", eventTypePassThroughLimitation),
   entry("mqa-event-types.detail", "MQA event types", "/api/motionsquestionsanswerseventtypes/:id", "P3", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("mqa-event-subtypes.collection", "MQA event subtypes", "/api/motionsquestionsanswerseventsubtypes", "P3", "REFERENCE_SMALL", pending),
   entry("mqa-event-subtypes.detail", "MQA event subtypes", "/api/motionsquestionsanswerseventsubtypes/:id", "P3", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("mqa-event-links.collection", "MQA event links", "/api/motionsquestionsanswerseventlinks", "P3", "STRUCTURED_MEDIUM", pending),
+  entry("mqa-event-links.collection", "MQA event links", "/api/motionsquestionsanswerseventlinks", "P3", "STRUCTURED_MEDIUM", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0066", eventLinkPassThroughLimitation),
   entry("mqa-event-links.child", "MQA event links", "/api/motionsquestionsanswerseventlinks?childUniqueId=:id", "P3", "STRUCTURED_MEDIUM", pending, [{ name: "childUniqueId", grammar: "source_identifier", required: true }]),
   entry("mqa-event-links.main", "MQA event links", "/api/motionsquestionsanswerseventlinks?mainUniqueId=:id", "P3", "STRUCTURED_MEDIUM", pending, [{ name: "mainUniqueId", grammar: "source_identifier", required: true }]),
   entry("mqa-event-links.parent", "MQA event links", "/api/motionsquestionsanswerseventlinks?parentUniqueId=:id", "P3", "STRUCTURED_MEDIUM", pending, [{ name: "parentUniqueId", grammar: "source_identifier", required: true }]),
