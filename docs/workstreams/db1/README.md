@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1 foundation and D2 first restricted source capture passed; D3 projection/explorer proposal is next
+**Status:** D1 foundation and D2 first restricted source capture passed; D3 projection/explorer proposal awaits owner review
 
 ## 1. Purpose and user value
 
@@ -77,6 +77,13 @@ The owner-approved [D2 first-source batch](../../data/gb-sct/GB_SCT_DB1_FIRST_SO
 passed as one fixed `/api/billtypes` request. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
 records the restricted raw object and manifest only: no schedule, user access,
 projection, or DB2 use occurred.
+
+The proposed [D3 package — DEC-0077](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md)
+would make the next boundary explicit: one loss-aware projection from that
+named D2 manifest and one authenticated researcher preview. It excludes new
+source activity, generic access, downloads, and DB2. If approved and passed,
+its result—not this proposal—will establish what the first private interface
+actually demonstrates.
 
 ## 6. Detailed records
 

@@ -1906,3 +1906,19 @@ Next review due:
 | Affected work blocked | Further source requests/capture, scheduling, DB1 explorer/query/download access, DB2 variables, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | Approve D3 before any source-backed DB1 projection or private explorer. |
 | Next review due | Before D3 approval, on any source/handling/target change, a D3 result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0116
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0077 D3 projection/private-explorer proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; DEC-0008, DEC-0042, DEC-0073–DEC-0076; D2 result; DB1 narrative; application status; handover; decision register; and risk register. |
+| Active phase and authorising decision | Documentation-only D3 proposal preparation after D2; no source-backed projection, database, role, service, or interface action is authorised. |
+| Checks performed | Bound the proposed output to one named D2 manifest/digest; separated retained raw object, loss-aware projection, observed structure, and later DB2 variables; specified a fixed authenticated response and beta/superuser-only interface; required a new project-local read-only role rather than broader application access; excluded all source activity, schedules, downloads, generic query, and public access. |
+| Findings | The D2 capture can support a small, honest DB1 usability test, but it cannot support a current-mirror, schema-semantic, coverage, freshness, or canonical-data claim. The access role and provenance-first interface are material D3 controls and require owner approval. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. DEC-0077 is ready for review; no new source request, raw-object inspection, database/schema/role action, code, deployment, service restart, or user-data access occurred during preparation. |
+| Affected work blocked | Further source requests/capture, scheduling, DB1 projection/explorer implementation, reader-role creation, download/generic access, DB2, charts, research claims, public data access, and shared-host changes remain blocked pending DEC-0077. |
+| Owner decision required | Approve, amend, or reject DEC-0077 before any source-backed DB1 projection, project DB1 reader role, service release, or private explorer action. |
+| Next review due | On DEC-0077 decision, a material input/handling/access change, a D3 result, or 1 September 2026, whichever is earlier. |

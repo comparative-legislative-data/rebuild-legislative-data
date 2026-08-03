@@ -54,7 +54,7 @@ the archive. It is not the next DB1 package.
 
 DEC-0075 D1 and DEC-0076 D2 have passed. The [D2 result](../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
 records the single restricted source capture. The current owner decision is
-D3: a first source-backed DB1 projection and private-explorer proposal.
+[DEC-0077](../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md): a first source-backed DB1 projection and private explorer.
 
 D3 and every later capture package retain their own separate approval. No
 further source request/capture, scheduled reconciliation, DB1 interface/

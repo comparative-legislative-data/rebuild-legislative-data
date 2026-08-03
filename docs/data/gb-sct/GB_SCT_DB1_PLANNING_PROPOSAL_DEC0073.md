@@ -348,11 +348,12 @@ D1 passed as a source-free, synthetic-only foundation. Its
 the isolated target, raw-object/manifest/projection interfaces, synthetic
 fixture, verification, and rollback boundary without a source request.
 
-The immediate decision is now D2: an exact first source-capture batch proposal.
-It must name the route(s), window(s), request cap, source/handling basis,
-retention/access class, transfer and retry budget, manifest format,
-reconciliation cadence, success/failure criteria, and its own front-end
-hand-off. D2 must be owner-approved before any source action begins.
+The D2 first source-capture batch has passed as one fixed restricted capture.
+The immediate decision is now [D3](GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md): an exact first source-backed projection and
+private-explorer package. It must name its sole input manifest, raw-versus-
+projection contract, reader access boundary, user-facing provenance/limit
+record, acceptance test, and stop conditions. D3 must be owner-approved before
+any source-backed projection or DB1 interface begins.
 
 The owner approved DEC-0073 after review against these questions:
 
