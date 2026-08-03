@@ -106,6 +106,12 @@ key order, the timer pause, the code correction, and the successful corrected
 verification. The next DB1 work is proposal-only D4B, not an automatic source
 or interface expansion.
 
+The [D4B proposal — DEC-0079](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
+would build three fixed baseline projections from named D4A manifests and a
+private DB1 catalogue in the proxy’s compact grouped/expandable layout. It
+keeps later timer observations separate from displayed records and requires a
+new owner approval before any code, reader-role, interface, or release action.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

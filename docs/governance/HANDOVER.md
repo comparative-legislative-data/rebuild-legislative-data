@@ -30,10 +30,11 @@ completed record is archived at
   handling for capture or release.
 - DEC-0045 keeps the complete selected inventory and its controlled
   addition/retirement path.
-- DB1 contains D1's synthetic fixture plus exactly one restricted D2
-  `/api/billtypes` source object and manifest. No source projection, DB1
-  mirror, canonical variable, download, user data access, or research claim
-  exists.
+- DB1 contains D1's synthetic fixture, exactly one restricted D2
+  `/api/billtypes` source object and manifest, the accepted D3 Bill Types
+  operational projection/private preview, and D4A's three-route reconciliation
+  evidence. It is not a general DB1 mirror, canonical variable dataset,
+  download, or research release.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -64,8 +65,7 @@ before any proposed next DB1 work.
 has passed as the bounded three-route reference-cohort reconciliation pilot.
 Its [result](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 records the initial/repeat observations, false-positive correction, and active
-03:17 UTC timer. The next DB1 step is a D4B proposal only; interface/download
-expansion, DB2, and research release remain excluded.
+03:17 UTC timer. The next owner-review document is [D4B](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md): three fixed baseline projections and a private catalogue proposal. No interface/download expansion, DB2, or research release is currently authorised.
 
 ## Documentation hygiene
 
