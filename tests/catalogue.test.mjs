@@ -15,6 +15,9 @@ test("GB-SCT catalogue represents all selected route forms as owner-approved pri
   assert.equal(new Set(gbSctRoutes.map((route) => route.id)).size, 64);
   assert.deepEqual(gbSctRoutes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").map((route) => route.id).sort(), relayedIds.sort());
   assert.equal(gbSctRoutes.some((route) => route.template.includes(":id") && route.parameters.length === 0), false);
+  assert.equal(gbSctRoutes.find((route) => route.id === "plenary-reports.year")?.sourcePresentation, "DOWNLOADS_RAW_JSON");
+  assert.equal(gbSctRoutes.find((route) => route.id === "bill-types.collection")?.sourcePresentation, "OPENS_RAW_JSON");
+  assert.equal(gbSctRoutes.find((route) => route.id === "bills.collection")?.sourcePresentation, "SOURCE_PRESENTATION_UNESTABLISHED");
 });
 
 test("runtime catalogue templates match the approved DEC-0045 route matrix", () => {
@@ -110,6 +113,7 @@ test("approved DEC-0064 source route streams the synthetic source response witho
         kind: "source_response",
         status: 207,
         contentType: "application/json; charset=utf-8",
+        contentDisposition: null,
         body: (await import("node:stream")).Readable.from([Buffer.from('{"synthetic":true}\n')]),
         requestedAt: "2026-08-03T12:00:00.000Z"
       };
@@ -128,6 +132,23 @@ test("approved DEC-0064 source route streams the synthetic source response witho
   assert.equal(response.headers.vary, "Cookie");
   assert.equal(response.body, '{"synthetic":true}\n');
   assert.deepEqual(calls, ["constituencies.collection"]);
+  await app.close();
+});
+
+test("source endpoint retains a source-declared attachment disposition", async () => {
+  const app = await catalogueApp({
+    relay: async () => ({
+      kind: "source_response",
+      status: 200,
+      contentType: "application/octet-stream",
+      contentDisposition: "attachment; filename=source.json",
+      body: (await import("node:stream")).Readable.from([Buffer.from("[]")]),
+      requestedAt: "2026-08-03T12:00:00.000Z"
+    })
+  });
+  const response = await app.inject({ method: "GET", url: "/catalogue/gb-sct/plenary-reports.year/source?year=2025", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.headers["content-disposition"], "attachment; filename=source.json");
   await app.close();
 });
 

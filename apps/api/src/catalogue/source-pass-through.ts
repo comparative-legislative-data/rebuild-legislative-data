@@ -13,6 +13,7 @@ export type SourceResponse = {
   kind: "source_response";
   status: number;
   contentType: string | null;
+  contentDisposition: string | null;
   body: Readable;
   requestedAt: string;
 };
@@ -55,6 +56,7 @@ export function createSourcePassThrough(fetcher: SourceFetcher = fetch, now: () 
           kind: "source_response",
           status: response.status,
           contentType: response.headers.get("content-type"),
+          contentDisposition: response.headers.get("content-disposition"),
           body: response.body ? Readable.fromWeb(response.body as never) : Readable.from([]),
           requestedAt
         };

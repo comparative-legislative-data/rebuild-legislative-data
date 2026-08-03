@@ -81,3 +81,14 @@ The parameter-substitution correction (`7876ebf`) and the route-profile
 presentation (`56dc1cd`) both passed local and VPS verification and were
 deployed through the unchanged two-service procedure. In particular, templates
 now substitute named parameters such as `:year`, not only `:id`.
+
+## Source presentation labels
+
+The catalogue now labels each route’s expected source action before the user
+opens it. The annual committee-report, plenary-report, and vote forms are
+labelled as downloads because a body-cancelled header observation found
+`application/octet-stream` plus a Scottish Parliament attachment disposition;
+the CLD relay forwards that disposition unchanged. Routes previously observed
+as normal JSON responses are labelled as browser views. The two Bills forms and
+the three unresponsive whole-history MQA collections remain explicitly
+`SOURCE_PRESENTATION_UNESTABLISHED` pending a successful header observation.

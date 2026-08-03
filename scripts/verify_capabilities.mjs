@@ -80,8 +80,10 @@ for (const term of [
   "https://data.parliament.scot/api/committeetypelinks",
   "https://data.parliament.scot/api/motionsquestionsanswerseventtypes",
   "https://data.parliament.scot/api/motionsquestionsanswerseventlinks",
-  "Open official Scottish Parliament API directly",
-  "Open via CLD no-retention relay"
+  "Source action",
+  "Downloads raw JSON from the Scottish Parliament source",
+  "via CLD no-retention relay",
+  "from Scottish Parliament API directly"
 ]) {
   if (!directSourceLinks.includes(term)) throw new Error(`${directSourceLinkFile}: required fixed direct-source disclosure is missing: ${term}`);
 }

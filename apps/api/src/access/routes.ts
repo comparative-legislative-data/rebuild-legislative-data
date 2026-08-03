@@ -202,6 +202,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     reply.header("x-accel-buffering", "no");
     reply.header("vary", "Cookie");
     if (outcome.contentType) reply.type(outcome.contentType);
+    if (outcome.contentDisposition) reply.header("content-disposition", outcome.contentDisposition);
     return reply.code(outcome.status).send(outcome.body);
   });
 }

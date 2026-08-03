@@ -17,6 +17,7 @@ export type RouteDefinition = {
   template: string;
   priority: "P1" | "P2" | "P3" | "P4";
   operatingClass: "REFERENCE_SMALL" | "REFERENCE_GEOGRAPHY" | "STRUCTURED_MEDIUM" | "WHOLE_HISTORY_LARGE" | "ANNUAL_FIREHOSE" | "EXTREME_OR_UNRESOLVED";
+  sourcePresentation: "OPENS_RAW_JSON" | "DOWNLOADS_RAW_JSON" | "SOURCE_PRESENTATION_UNESTABLISHED";
   availability: Availability;
   parameters: readonly ParameterRule[];
   qualification: string;
@@ -38,6 +39,11 @@ function entry(
   qualification = "HANDLING_REQUIRED",
   limitation = "Route-level qualification is required before a source request can be made."
 ): RouteDefinition {
+  const sourcePresentation = ["committee-reports.year", "plenary-reports.year", "motion-votes.year"].includes(id)
+    ? "DOWNLOADS_RAW_JSON" as const
+    : ["bills.collection", "bills.detail", "mqa-events.collection", "mqa-questions.collection", "mqa-supports.collection"].includes(id)
+      ? "SOURCE_PRESENTATION_UNESTABLISHED" as const
+      : "OPENS_RAW_JSON" as const;
   if (availability === "RELAYED_PRIVATE_BETA") {
     return {
       id,
@@ -45,13 +51,14 @@ function entry(
       template,
       priority,
       operatingClass,
+      sourcePresentation,
       availability,
       parameters,
       qualification: "PRIVATE_RAW_RELAY_OWNER_APPROVED_DEC0072",
       limitation: `${privatePassThroughLimitation} The displayed route and parameter contract control the request; CLD does not interpret, retain, index, or republish the response.`
     };
   }
-  return { id, group, template, priority, operatingClass, availability, parameters, qualification, limitation };
+  return { id, group, template, priority, operatingClass, sourcePresentation, availability, parameters, qualification, limitation };
 }
 
 const relayed = "RELAYED_PRIVATE_BETA" as const;
