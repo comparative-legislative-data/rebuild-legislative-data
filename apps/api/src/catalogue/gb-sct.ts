@@ -41,7 +41,7 @@ function entry(
 ): RouteDefinition {
   const sourcePresentation = ["committee-reports.year", "plenary-reports.year", "motion-votes.year"].includes(id)
     ? "DOWNLOADS_RAW_JSON" as const
-    : ["bills.collection", "bills.detail", "mqa-events.collection", "mqa-questions.collection", "mqa-supports.collection"].includes(id)
+    : ["mqa-events.collection", "mqa-questions.collection", "mqa-supports.collection"].includes(id)
       ? "SOURCE_PRESENTATION_UNESTABLISHED" as const
       : "OPENS_RAW_JSON" as const;
   if (availability === "RELAYED_PRIVATE_BETA") {

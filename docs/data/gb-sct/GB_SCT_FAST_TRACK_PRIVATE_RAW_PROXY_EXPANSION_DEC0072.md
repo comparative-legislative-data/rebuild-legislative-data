@@ -93,6 +93,14 @@ as normal JSON responses are labelled as browser views. The two Bills forms and
 the three unresponsive whole-history MQA collections remain explicitly
 `SOURCE_PRESENTATION_UNESTABLISHED` pending a successful header observation.
 
+A controlled 3 August 2026 Bills structural observation closes the prior Bills
+profile gap: `/api/bills` returned a 473-element JSON array with `ID`,
+`Reference`, `ShortName`, `FullName`, `BillTypeID`, `PersonID`, and
+`ThirdPartyOrganisation`; one collection-derived detail request returned the
+same top-level field set. The retained result is structural metadata only. It
+does not establish field definitions, completeness, legal classification, or
+research use.
+
 The source-presentation release (`a85511a`) passed the 17-test local and VPS
 verification suites and was deployed through the unchanged two-service
 procedure. Owner acceptance remains the final proxy-phase gate.

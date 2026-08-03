@@ -17,7 +17,7 @@ test("GB-SCT catalogue represents all selected route forms as owner-approved pri
   assert.equal(gbSctRoutes.some((route) => route.template.includes(":id") && route.parameters.length === 0), false);
   assert.equal(gbSctRoutes.find((route) => route.id === "plenary-reports.year")?.sourcePresentation, "DOWNLOADS_RAW_JSON");
   assert.equal(gbSctRoutes.find((route) => route.id === "bill-types.collection")?.sourcePresentation, "OPENS_RAW_JSON");
-  assert.equal(gbSctRoutes.find((route) => route.id === "bills.collection")?.sourcePresentation, "SOURCE_PRESENTATION_UNESTABLISHED");
+  assert.equal(gbSctRoutes.find((route) => route.id === "bills.collection")?.sourcePresentation, "OPENS_RAW_JSON");
 });
 
 test("runtime catalogue templates match the approved DEC-0045 route matrix", () => {
