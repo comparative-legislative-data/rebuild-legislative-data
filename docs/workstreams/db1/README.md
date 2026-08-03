@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** Not started; a new planning/implementation proposal is required
+**Status:** DB1 planning proposal awaiting owner review; no implementation authorised
 
 ## 1. Purpose and user value
 
@@ -38,14 +38,14 @@ are starting constraints, not a capture authorisation.
 
 ## 4. Decision and implementation path
 
-The next package must first state the strategic DB1 shape: intended users,
-capture/projection boundary, first bounded slice, source windows, retention,
-provenance, database isolation, reconciliation, and acceptance criteria. Only
-then should it specify schemas, schedules, services, or commands.
+The proposed [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
+now sets out the strategic product shape, staged execution path, first-batch
+selection criteria, provenance/reconciliation model, front-end acceptance, and
+stop conditions. It is awaiting owner review. It does not authorise source-data
+requests, capture, database changes, or implementation.
 
-It must secure a new owner decision before source-data requests, capture,
-database changes, or implementation. The earlier DEC-0018 plan is retained as
-an [unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
+The earlier DEC-0018 plan is retained as an
+[unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
 not the governing plan.
 
 ## 5. Initial gaps and review approach

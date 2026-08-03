@@ -10,6 +10,10 @@ or [DB2](../../workstreams/db2/README.md) narrative.
 
 ## Current controls
 
+The [proposed DB1 planning record — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
+is the current owner-review document for the next workstream. It is planning
+only and does not authorise a source or database action.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

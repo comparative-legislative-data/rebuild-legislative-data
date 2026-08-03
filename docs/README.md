@@ -20,7 +20,7 @@ value and a different kind of research claim.
 | Workstream | Purpose | Current status | Start here |
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Not started; a new planning/implementation proposal is required. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Planning proposal awaiting owner review; no implementation authorised. | [DB1 narrative](workstreams/db1/README.md) |
 | DB2 canonical variables | Create validated Tier 1/2 research variables, codebooks, downloads, and later charts from declared DB1 inputs. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
@@ -34,8 +34,8 @@ another.
 The proxy MVP is the only completed data-access workstream. It is private,
 no-retention access to source-style routes and direct source URLs; it is not a
 dataset, capture, DB1, DB2, export, chart, or research release. The next
-proposed programme step is DB1 planning. It needs a new owner decision before
-any source-data capture, database change, or implementation.
+owner-review item is the proposed DB1 plan. It needs approval and later exact
+packages before any source-data capture, database change, or implementation.
 
 ## How to use these documents
 
