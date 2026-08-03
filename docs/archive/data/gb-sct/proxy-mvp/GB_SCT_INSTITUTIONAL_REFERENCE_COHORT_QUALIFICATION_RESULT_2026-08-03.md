@@ -49,13 +49,13 @@ semantic, completeness, and freshness limitations.
 - [`GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md)
   — published Open Data/copyright-licence basis and its limits, recorded under
   DEC-0061.
-- [`GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md`](GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [`../reconnaissance/GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md)
   — existing non-content observations for Constituencies, Regions, and
   Parties.
-- [`GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md`](GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [`../reconnaissance/GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md)
   — existing non-content observations for Party Roles, Government Roles,
   Committee Roles, and Committee Types.
-- [`GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+- [`../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
   and the retention/publication policy proposed under DEC-0008 — route-scope
   and no-capture/publication controls.
 

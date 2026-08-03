@@ -1,14 +1,19 @@
 # GB-SCT High-Volume Operational Register — 3 August 2026
 
-**Status:** PASS — 17 operational records completed from existing evidence; no route enabled  
+**Status:** Historical DB1/capture-planning evidence — 17 operational records completed; no DB1/capture route enabled
 **Authority:** DEC-0071
 
 ## 1. Boundary
 
 This register applies the DEC-0071 operational controls to all 17 remaining
-high-volume forms using completed reconnaissance only. No source/API/portal
-request, source body, relay, code, VPS, database, DB1, DB2, cache, download,
-or public action occurred.
+high-volume forms using completed reconnaissance only. At the time of this
+record, no source/API/portal request, source body, relay, code, VPS, database,
+DB1, DB2, cache, download, or public action occurred.
+
+The later DEC-0072 private raw-proxy MVP is closed and separately archived. It
+does not change these DB1/capture operational states: its fixed source-style
+actions retain nothing and do not establish a capture method or a DB1-ready
+route.
 
 Each state below is an operational availability state, not a statement about
 source completeness, content, terms, handling class, or research meaning.

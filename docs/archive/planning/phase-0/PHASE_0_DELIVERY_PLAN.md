@@ -13,8 +13,8 @@ select a source slice, or prove that any future system will meet the project
 standards.
 
 This plan implements the working agreement in
-[`PROJECT_DESIGN.md`](../governance/PROJECT_DESIGN.md) and must be read with the active
-handover note in [`HANDOVER.md`](../governance/HANDOVER.md).
+[`PROJECT_DESIGN.md`](../../../governance/PROJECT_DESIGN.md) and must be read with the active
+handover note in [`HANDOVER.md`](../../../governance/HANDOVER.md).
 
 ## 2. Authorised scope
 
@@ -91,6 +91,6 @@ infrastructure work, source capture, databases, or application implementation.
 ## 7. Next owner decisions
 
 The next decision should be selected from the open items in
-[`DECISION_REGISTER.md`](../governance/DECISION_REGISTER.md). Before any implementation,
+[`DECISION_REGISTER.md`](../../../governance/DECISION_REGISTER.md). Before any implementation,
 the owner must still approve the decisions listed in section 12 of
-[`PROJECT_DESIGN.md`](../governance/PROJECT_DESIGN.md), at the point they become relevant.
+[`PROJECT_DESIGN.md`](../../../governance/PROJECT_DESIGN.md), at the point they become relevant.

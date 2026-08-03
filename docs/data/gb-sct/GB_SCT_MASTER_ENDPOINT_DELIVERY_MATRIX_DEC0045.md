@@ -1,8 +1,8 @@
 # GB-SCT Master Endpoint Delivery Matrix — DEC-0045
 
-**Status:** Approved planning control with DEC-0072 private raw-access overlay
+**Status:** Approved endpoint-inventory and DB1-planning control; private raw-proxy MVP closed
 
-**Version:** 1.12.0
+**Version:** 1.13.0
 
 **Prepared:** 2 August 2026
 
@@ -25,15 +25,19 @@ This document is the active route-level planning control. It does not modify
 DEC-0007's selected inventory, create a new source claim, or authorise any
 external interaction.
 
-### 1.2 DEC-0072 private raw-access overlay
+### 1.2 Current state: DEC-0072 private raw-access MVP closed
 
-DEC-0072 now authorises all 64 selected forms for authenticated private-beta,
-source-faithful, no-retention access through the fixed-host CLD relay, with a
-direct Scottish Parliament alternative. This overrides the **Pass-through**
-availability implication of the historic row-level qualification entries below;
-it does not rewrite their evidence, nor does it authorise capture/DB1, DB2,
-public output, or a research-variable claim. The table remains the durable
-inventory and future data-management roadmap.
+The owner accepted the private raw-proxy MVP on 3 August 2026. It provides
+authenticated, source-faithful, no-retention access for the complete selected
+inventory using fixed source-style routes, plus a direct Scottish Parliament
+alternative. The implementation records are retained in the
+[`proxy-MVP archive`](../../archive/data/gb-sct/proxy-mvp/).
+
+This supersedes the **Pass-through** availability implication of the historic
+row-level qualification entries below. It does not rewrite their evidence, or
+authorise source capture, DB1, DB2, a downloadable project dataset, a public
+release, or a research-variable claim. The table remains the durable inventory
+and future data-management roadmap.
 
 ### 1.1 Controlled additions
 
@@ -54,7 +58,7 @@ and silent scope expansion.
 
 | Field | Meaning |
 | --- | --- |
-| Pass-through | `INTENDED_AFTER_QUALIFICATION` means the route is intended for the direct, visibly labelled upstream-access layer after its own approval and beta acceptance. |
+| Pass-through | Historical planned state. The closed private raw-proxy MVP now provides the selected source-style actions; this column remains relevant to later data-management/release design. |
 | DB1 | `INCLUDED` means the route remains in the intended selected scope for immutable raw capture/projection after a future capture-batch approval. |
 | Tier 1/2 position | A research-variable roadmap, never a field-level claim. `CANDIDATE` requires observed fields and a later specification; `DEFERRED` means no current Tier 1/2 analytical variable is proposed. |
 | Priority | Delivery order only: `P1` bill/session foundation, `P2` contextual structured data, `P3` high-volume/future structured material, `P4` report/vote material whose immediate analytical use is deferred. It never means exclusion. |
@@ -141,10 +145,9 @@ pagination behaviour; route-level handling classification; retention decision;
 and the resulting pass-through and DB1 contract. Tier 1/2 variables require
 their own later field-level specification and validation.
 
-The current first operational-data candidate remains a separately proposed
-limited observation of `/api/bills`. It must not expand to the other 63 forms,
-DB1, or a proxy without a new explicit package. It will update this matrix with
-evidence, not change its inclusion-first scope.
+The proxy MVP is complete. The next substantive layer is a separately approved
+DB1 planning package: it must name the proposed capture scope and method, and
+may not treat the proxy as either a retained source record or a DB1 precursor.
 
 ## 5. Owner decision
 

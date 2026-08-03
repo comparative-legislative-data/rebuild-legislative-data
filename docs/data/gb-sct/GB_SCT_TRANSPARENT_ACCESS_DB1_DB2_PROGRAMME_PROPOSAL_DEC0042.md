@@ -22,7 +22,10 @@ DEC-0042 adopts this three-layer programme and its shared transparency contract 
 
 It does not authorise a source-documentation inspection, source request, proxy request, capture, retention, database write, DB1/DB2 build, application or frontend implementation, download/API publication, VPS/secret change, public routing, dataset release, chart, or public claim. Tier 3–7 work, including document extraction and bill-amendment work, remains out of scope.
 
-Every implementation needs a separately approved, exact package. The selected endpoint inventory and exclusions remain governed by [the roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md), [the inventory decision](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md), and the retention policy.
+Every implementation needs a separately approved, exact package. The selected
+endpoint inventory and exclusions remain governed by [the roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md),
+the [master endpoint delivery matrix](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
+and the retention policy.
 
 ## 3. Non-negotiable distinctions
 

@@ -43,15 +43,15 @@ carry the published licence limits and these route-specific limits visibly.
 
 - [`GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md`](GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md)
   — published Open Data/copyright-licence basis and limits under DEC-0061.
-- [`GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md`](GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [`../reconnaissance/GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_ROLES_COMMITTEES_RECONNAISSANCE_RESULT_2026-08-02.md)
   — existing non-content observation for Committee Type Links.
-- [`GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [`../reconnaissance/GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md)
   — existing non-content/volume observations for MQA Event Types and Event
   Links.
-- [`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md)
+- [`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md)
   — existing detail/filter structural observations and explicit link-direction
   limitation.
-- [`GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+- [`../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md`](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
   and the DEC-0008 retention/publication controls — route scope and no-capture
   boundary.
 

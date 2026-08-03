@@ -20,12 +20,13 @@ database, storage, proxy, code, infrastructure, public native access, or
 release. A source-documentation/terms inspection requires its own bounded
 reconnaissance authorisation; every source-data request or capture requires a
 later, batch-specific authorisation using
-[`CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`](CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
+[`CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md`](../../../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
 
 ## 2. Scope and non-goals
 
-The final intended coverage is the complete selected route inventory in
-[`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md),
+The final intended coverage is the complete selected route inventory in the
+[`master endpoint delivery matrix`](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+and [`endpoint and variable roadmap`](../../../../data/gb-sct/ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md),
 not merely a small bill-core subset. Work is deliberately sequenced because
 route semantics, response shapes, pagination, volume, licence/reuse terms, and
 personal-data treatment have not been established.

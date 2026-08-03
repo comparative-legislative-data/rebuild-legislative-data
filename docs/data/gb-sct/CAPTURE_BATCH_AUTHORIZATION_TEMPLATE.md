@@ -7,7 +7,8 @@
 **Last updated:** 31 July 2026
 
 Use one completed, owner-approved record for each proposed source-request or
-capture batch under `GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`. A general
+capture batch under a newly approved DB1 implementation package. The earlier
+DEC-0018 plan is an archived reference, not current authority. A general
 implementation approval, an approved inventory, or a completed source
 assessment does not substitute for this record.
 

@@ -42,7 +42,7 @@ The completed reconnaissance shows why the layer needs explicit route controls:
   hide or repair.
 
 The evidence is in
-[`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md).
+[`GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md`](../reconnaissance/GB_SCT_HIGH_VOLUME_ROUTE_AUDIT_RESULT_2026-08-02.md).
 
 ## 3. Scope and non-goals
 

@@ -2,7 +2,7 @@
 
 **Status:** APPROVED — EXECUTED PASS; no additional source request or route enabled
 
-**Result:** [`GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md`](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
+**Result:** [`../../../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md`](../../../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 
 ## 1. Decision requested
 

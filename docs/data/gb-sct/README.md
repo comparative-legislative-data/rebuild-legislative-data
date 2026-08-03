@@ -1,0 +1,35 @@
+# GB-SCT data documentation
+
+## Current position
+
+The selected Scottish Parliament API inventory remains approved. The private
+raw proxy MVP is closed: it provides authenticated, no-retention access to
+source-style routes, but it creates no project dataset. DB1 has not begun.
+
+## Read in this order
+
+1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
+2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
+3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+4. [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
+5. [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
+6. [Update-signal evidence](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
+
+## Controls and templates
+
+- [Retention and publication policy — DEC-0008](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
+- [Source assessment protocol](SOURCE_ASSESSMENT_PROTOCOL.md)
+- [Source handling record template](SOURCE_HANDLING_RECORD_TEMPLATE.md)
+- [Capture-batch authorisation template](CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md)
+
+## Archive
+
+Completed endpoint-inventory, Bills qualification, reconnaissance, and proxy
+MVP records are organised under
+[`docs/archive/data/gb-sct/`](../../archive/data/gb-sct/). They retain the
+underlying evidence and implementation history used by the current registers;
+they do not authorise new capture or DB1 work.
+
+The former DEC-0018 capture/DB1 execution plan is an
+[archived planning reference](../../archive/data/gb-sct/db1-planning/GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL_DEC0018.md),
+not the pending DB1 proposal.

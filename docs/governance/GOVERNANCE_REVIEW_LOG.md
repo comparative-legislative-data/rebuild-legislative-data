@@ -1762,3 +1762,19 @@ Next review due:
 | Affected work blocked | DB1, DB2, capture, canonical variables, downloads, charts, public source/data access, research release, and shared-host changes remain blocked. |
 | Owner decision required | No new decision. Owner acceptance is required after representative private-beta testing. |
 | Next review due | On owner acceptance, a route failure, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0107
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner closure of DEC-0072 proxy MVP and documentation hygiene review |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, `docs/README.md`, active GB-SCT data records, and the completed proxy MVP record. |
+| Active phase and authorising decision | Proxy MVP closed under DEC-0072; documentation cleanse expressly approved by the owner. |
+| Checks performed | Confirmed the owner’s representative private-beta acceptance, the deployed source-style catalogue boundary, and that the MVP creates no capture, DB1, DB2, export, chart, research release, or public data access. Separated active decision-facing records from completed implementation, qualification, and reconnaissance material; moved the latter to a labelled archive and refreshed the current reading path. |
+| Findings | The proxy has a valid MVP closure, but it requires a later review before expansion or public-release change. DB1 remains unstarted and requires a new owner-approved package. The prior flat document layout materially obscured current state; RSK-0039 now records the strategic-shape/documentation-drift control. |
+| Outcome | `PASS` — governance records and current documentation are aligned with the closed proxy MVP and proposed DB1-planning next step. |
+| Affected work blocked | Source-data capture, DB1 schema/build, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own package. |
+| Owner decision required | Approve, amend, or reject a new DB1 planning/implementation proposal before any DB1 action. |
+| Next review due | Before DB1 package approval, on a proxy-MVP review trigger, a material source/API change, or 1 September 2026, whichever is earlier. |

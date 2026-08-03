@@ -2,7 +2,7 @@
 
 **Status:** APPROVED — EXECUTED PASS; no route, content, or system action is authorised
 
-**Result:** [`GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md`](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
+**Result:** [`../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md`](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 
 ## 1. Decision requested
 

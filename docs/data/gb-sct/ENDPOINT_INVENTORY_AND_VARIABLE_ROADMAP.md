@@ -1,17 +1,21 @@
 # Endpoint Inventory and Variable Roadmap
 
-**Status:** Approved framework and selected endpoint inventory (DEC-0007)
+**Status:** Approved framework and selected endpoint inventory (DEC-0007); private raw-proxy MVP closed
 
-**Version:** 1.0.0
-**Last updated:** 31 July 2026
+**Version:** 1.1.0
+**Last updated:** 3 August 2026
 
 ## 1. Delivery model
 
-The project will first approve a complete, research-relevant GB-SCT endpoint
-inventory. Each selected endpoint family will be available through a versioned
-native-access surface and represented in DB1, the source-faithful operational
-projection. Canonical variables, charts, and public analytical claims will be
-released only after separate Tier 1/2 specification and validation.
+The project has approved a complete, research-relevant GB-SCT endpoint
+inventory. The private raw-proxy MVP is closed: authenticated users can inspect
+fixed Scottish Parliament source-style responses through the no-retention CLD
+relay or directly at the source. It is neither DB1 nor a project dataset.
+
+The next data layer is DB1, a source-faithful operational projection governed
+by a new, separately approved planning and implementation package. Canonical
+variables, charts, and public analytical claims remain subject to separate Tier
+1/2 specification and validation.
 
 This separates **what we preserve for future research** from **what we can
 currently publish as a validated research variable**.
@@ -30,12 +34,14 @@ currently publish as a validated research variable**.
 | `Votesmotion` | Vote-on-motion evidence. | Candidate future-scope inventory retained from the outset. | Unresolved; relationship to bill stages/amendments is unassessed. |
 | Petitions | Not part of the intended initial research direction. | Outside proposed initial inventory. | Not assessed. |
 
-The list above is a family-level roadmap, not the final approved endpoint
-inventory. The exact proposed route set, allowed parameters, and exclusions are
-now recorded in
-[`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
-DEC-0007 approved that inventory on 31 July 2026. Capture/proxy/DB1 work still
-requires DEC-0008 and a separate implementation proposal.
+The list above is a family-level roadmap, not a substitute for the approved
+exact route set and exclusions in the
+[`master endpoint delivery matrix`](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md).
+The original endpoint-inventory proposal is retained in the
+[`implementation archive`](../../archive/data/gb-sct/endpoint-inventory/GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
+DEC-0007 approved that inventory on 31 July 2026. The proxy MVP did not
+authorise DB1 work; DB1 requires a new owner-approved planning and
+implementation package.
 
 ### 2.1 Deferred document corpus
 
@@ -80,7 +86,9 @@ for a canonical dataset or chart.
 
 ## 5. Required next decision
 
-DEC-0007 must approve or reject the exact selected endpoint inventory and its
-per-family roadmap. It does not authorise source-data capture, proxying, DB1
-implementation, or public release. Those require a later capture/proxy/DB1
-proposal, a retention/publication decision, and their own verification plan.
+DEC-0007 is complete and the raw-proxy MVP is closed. The required next
+decision is whether to approve a new DB1 planning package. It must define the
+proposed DB1 operating model, phased capture/copy strategy, provenance and
+reconciliation controls, retention/publication boundary, and verification plan
+before it authorises any source-data capture, database implementation, or
+release.

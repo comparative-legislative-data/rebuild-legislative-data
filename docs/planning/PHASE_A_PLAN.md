@@ -1,106 +1,44 @@
-# Phase A Planning Pack: Endpoint Inventory, Reconnaissance, and Specification
+# Phase A: GB-SCT scope and evidence planning
 
-**Status:** Approved for planning documentation only (DEC-0012)
+**Status:** Completed planning baseline; retained as current scope reference
 
-**Version:** 0.1.0
-**Last updated:** 31 July 2026
+**Last updated:** 3 August 2026
 
-## 1. Purpose
+## Outcome
 
-This pack prepares an owner decision about a complete, research-relevant
-endpoint inventory for the Scottish Parliament (`GB-SCT`) and a separate,
-narrow first canonical dataset. It defines the evidence that a future,
-separately approved source-reconnaissance action must produce. It does not make
-that action, select an endpoint, or establish any fact about a source.
+Phase A established the approved GB-SCT endpoint inventory, the intended
+Tier 1/2 roadmap, the distinction between API and document-based sources, and
+the evidence gates for later work. Its completed working papers are archived;
+the current data reading path is maintained in
+[`docs/data/gb-sct/README.md`](../data/gb-sct/README.md).
 
-The pack implements Phase A in `PROJECT_DESIGN.md` only at the planning level.
-Actual Phase A reconnaissance begins only after the owner approves a separate,
-bounded reconnaissance decision (proposed as DEC-0013), with named target(s)
-and success criteria.
+## Governing outputs
 
-## 2. Approved scope and exclusions
+- DEC-0007 — approved complete endpoint inventory and variable roadmap.
+- DEC-0008 — approved retention, publication, and restrictive-default handling
+  policy.
+- DEC-0042 — approved three-layer programme: upstream proxy, DB1, then DB2.
+- DEC-0045 — approved 64-form endpoint delivery matrix and controlled route
+  addition/retirement process.
 
-This approval permits only the creation and review of:
+## Current boundary
 
-- this plan;
-- [`SOURCE_ASSESSMENT_PROTOCOL.md`](../data/gb-sct/SOURCE_ASSESSMENT_PROTOCOL.md); and
-- [`SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md`](../data/gb-sct/SOURCE_SLICE_DECISION_MEMO_TEMPLATE.md);
-- [`ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md`](../data/gb-sct/ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md); and
-- [`ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md`](../data/gb-sct/ENDPOINT_INVENTORY_DECISION_MEMO_TEMPLATE.md).
+The private raw-proxy MVP has closed. It does not create captured source data,
+DB1, DB2, canonical variables, downloads, charts, or a public data release.
+The next work is DB1 planning only. Any source-data request, capture, database
+schema/build, or DB1 interface implementation still requires a new,
+owner-approved package.
 
-The owner later authorised a narrowly bounded, metadata-only catalogue-route
-inspection under DEC-0015 to prepare the DEC-0007 proposal. Its retained
-outputs are
-[`GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md`](../data/gb-sct/GB_SCT_API_CATALOGUE_ROUTE_METADATA_2026-07-31.md)
-and [`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`](../data/gb-sct/GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md).
+## Deferred work
 
-It does not permit browsing or querying a source, receiving a source response,
-accessing a VPS or database, using credentials, capturing or storing data,
-creating code or infrastructure, or selecting a source endpoint by assumption.
-The documents may define future evidence requirements, but contain no asserted
-source findings.
+Bill-amendment evidence remains a later document-based programme. Votes on
+motions must not be represented as bill-amendment evidence. Tier 3+ extraction,
+human coding, AI-derived material, other legislatures, and public release each
+need separate designs and approvals.
 
-## 3. Required future decision sequence
+## Archive
 
-### 3.1 Bounded reconnaissance proposal
-
-A proposed DEC-0013 must be submitted before any source inspection. It must
-state:
-
-- the candidate source host(s), URL(s), and why each is believed to be an
-  appropriate official authority, labelled as a candidate until assessed;
-- the narrow unit of analysis, date/session boundary, and exact fields sought;
-- permitted actions, request volume/rate, retrieval window, and any prohibited
-  actions;
-- expected licence, terms, access, retention, and personal-data questions;
-- expected identifiers, pagination, schema, and availability risks;
-- evidence to retain and how it will be separated from raw capture;
-- clear stop conditions, including source drift or authority uncertainty; and
-- acceptance criteria for the reconnaissance evidence; and
-- a requirement to stop after reconnaissance and submit a completed source-slice
-  decision memo before proposing capture.
-
-The owner’s approval must name the allowed target(s) and action. General
-approval of this planning pack is not sufficient, and the approval must not
-permit raw capture, ingestion, database work, or publication.
-
-### 3.2 Source-slice decision
-
-After the approved reconnaissance activity ends, DEC-0007 can be submitted
-with a completed endpoint-inventory decision memo. It must select or reject the
-complete research-relevant endpoint inventory, its native-access/DB1 status,
-and its Tier 1/2 versus deferred-variable roadmap. The first canonical dataset
-must still be narrow. DEC-0007 does not authorise raw capture: a later capture
-proposal must also satisfy the approved retention and publication policy in
-DEC-0008.
-
-## 4. Assessment standard
-
-The future assessment uses the protocol linked above. It must distinguish:
-
-- **observed evidence** from a recorded reconnaissance action;
-- **source statements** such as a licence or field definition;
-- **candidate interpretations** not yet supported by evidence; and
-- **unresolved or unavailable information**.
-
-No assessment result may call a source complete, authoritative for a research
-purpose, stable, current, or suitable for capture without an explicit scope and
-retained evidence.
-
-## 5. Phase A planning exit criteria
-
-This planning pack is ready for owner review when:
-
-- its scope and prohibitions agree with the design, handover, and governance
-  records;
-- the protocol covers authority, access, licence, identifiers, pagination,
-  schema, retention, and personal-data questions;
-- the decision-memo template requires a bounded source-slice definition,
-  evidence, stop conditions, and acceptance criteria; and
-- DEC-0012 and a governance-review entry record the planning-only approval.
-
-Meeting these criteria completes the planning pack, not Phase A. DEC-0007 has
-approved the endpoint inventory and variable roadmap in
-`GB_SCT_ENDPOINT_INVENTORY_PROPOSAL_2026-07-31.md`. DEC-0008 approved the
-policy in `RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md`; the proposed
-next gate is DEC-0018 in `GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL.md`.
+The completed Phase 0 pack is in
+[`docs/archive/planning/phase-0/`](../archive/planning/phase-0/). Completed
+Phase A reconnaissance and implementation records are grouped under
+[`docs/archive/data/gb-sct/`](../archive/data/gb-sct/).
