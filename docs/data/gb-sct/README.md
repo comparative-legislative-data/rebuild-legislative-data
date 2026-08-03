@@ -27,10 +27,11 @@ has passed. Its [result](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT
 records the three fixed retained projections and owner-accepted private
 provenance-first catalogue, without any new source activity.
 
-The next owner-review document is [D4C — institutional-reference cohort](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md).
-It proposes four bounded no-query collection captures, a separate daily
-reconciliation service, and a fixed private source-preserving catalogue; it
-does not authorise any action until approved.
+The active [D4C institutional-reference cohort](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
+authorises four bounded no-query collection captures, a separate daily
+reconciliation service, and a fixed private source-preserving catalogue. It
+does not authorise DB2, generic access/download, public data access, or any
+route outside its fixed cohort.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

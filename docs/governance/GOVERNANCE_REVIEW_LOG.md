@@ -2130,3 +2130,19 @@ Next review due:
 | Affected work blocked | D4C implementation; all D4C source/capture/timer action; generic DB1 access/download; DB2; charts; research claims; public data access; and shared-host changes remain blocked pending a decision. |
 | Owner decision required | Approve, amend, or reject DEC-0081 before any D4C action. |
 | Next review due | On DEC-0081 decision, a D4A operational event, D4C result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0130
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0081 approval and D4C implementation start |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0081; DB1 narrative; and GOV-REV-0129. |
+| Active phase and authorising decision | D4C institutional-reference implementation and owner-acceptance package under DEC-0081. |
+| Checks performed | Confirmed fixed four-route, no-query, source-preserving scope; separate D4C writer/timer; fixed named release; reader-only private catalogue; and the continuing DB1/DB2, proxy/DB1, public-access, and shared-host boundaries. |
+| Findings | Scope is authorised only for the four named institutional-reference collections and the stated contained implementation/deployment/acceptance activities. No result or source-completeness claim exists yet. |
+| Outcome | `PASS — D4C IMPLEMENTATION AUTHORISED WITHIN DEC-0081`. |
+| Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; routes outside D4C; charts/research release; and shared-host changes. |
+| Owner decision required | Owner acceptance is required after restricted verification and beta-user interface test; any scope change needs a new decision. |
+| Next review due | On D4C deployment/result, owner front-end acceptance, an unexpected stop, or 1 September 2026, whichever is earlier. |

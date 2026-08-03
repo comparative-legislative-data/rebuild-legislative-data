@@ -1,8 +1,8 @@
 # GB-SCT DB1 Institutional-Reference Cohort Proposal — DEC-0081
 
-**Status:** Proposed — owner approval required
+**Status:** Approved — implementation and owner-acceptance package authorised
 **Prepared:** 3 August 2026
-**Decision requested:** DEC-0081
+**Decision:** DEC-0081 approved by project owner, 3 August 2026
 
 ## 1. Decision requested
 

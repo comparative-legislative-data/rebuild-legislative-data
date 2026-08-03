@@ -2,6 +2,9 @@ import { Pool } from "pg";
 import {
   D4B_REFERENCE_CATALOGUE_ID,
   D4B_REFERENCE_PROJECTIONS,
+  D4C_INSTITUTIONAL_CATALOGUE_ID,
+  D4C_INSTITUTIONAL_ROUTES,
+  type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
   D3_BILL_TYPES_ROUTE_ID
@@ -45,7 +48,7 @@ export type Db1ExplorerResponse = {
 export type Db1ReferenceCatalogueResponse = {
   layer: "DB1_OPERATIONAL_PROJECTION_CATALOGUE";
   availability: "RESTRICTED_PRIVATE_BETA";
-  baseline: "FIXED_D4A_RETAINED_BASELINE";
+  baseline: string;
   catalogue: { id: string; integrity_status: string; built_at: string; };
   limitations: string[];
   panels: Db1ExplorerResponse[];
@@ -187,7 +190,29 @@ export class Db1Explorer {
     }
   }
 
-  private async referencePanel(client: import("pg").PoolClient, spec: (typeof D4B_REFERENCE_PROJECTIONS)[number], buildId: string): Promise<Db1ExplorerResponse | undefined> {
+  async institutionalReferenceD4c(): Promise<Db1ReferenceCatalogueResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; created_at: Date; constituencies_projection_build_id: string; regions_projection_build_id: string; committee_types_projection_build_id: string; committee_type_links_projection_build_id: string }>("select id, integrity_status, created_at, constituencies_projection_build_id, regions_projection_build_id, committee_types_projection_build_id, committee_type_links_projection_build_id from db1.institutional_catalogue_releases where id = $1 and integrity_status = 'PASS'", [D4C_INSTITUTIONAL_CATALOGUE_ID]);
+      const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const buildIds = [item.constituencies_projection_build_id, item.regions_projection_build_id, item.committee_types_projection_build_id, item.committee_type_links_projection_build_id];
+      const panels = [] as Db1ExplorerResponse[];
+      for (const [index, route] of D4C_INSTITUTIONAL_ROUTES.entries()) {
+        const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [buildIds[index]!]);
+        const row = projection.rows[0];
+        if (!row) throw new Error("D4C catalogue build is unavailable");
+        const panel = await this.referencePanel(client, { routeId: route.id, sourcePath: route.path, manifestId: row.manifest_id, projectionName: row.projection_name }, buildIds[index]!);
+        if (!panel) throw new Error("D4C catalogue release does not match its fixed projection contract");
+        panels.push(panel);
+      }
+      await client.query("commit");
+      return { layer: "DB1_OPERATIONAL_PROJECTION_CATALOGUE", availability: "RESTRICTED_PRIVATE_BETA", baseline: "FIXED_D4C_RETAINED_BASELINE", catalogue: { id: item.id, integrity_status: item.integrity_status, built_at: item.created_at.toISOString() }, limitations: ["This is a fixed retained D4C institutional-reference baseline, not a live Scottish Parliament response or a general DB1 mirror.", "Later D4C timer observations do not alter these projection records. A later projection requires its own named build and decision.", "The catalogue has no raw-object route, source action, generic query, download, canonical variable, chart, or research-release claim."], panels };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  private async referencePanel(client: import("pg").PoolClient, spec: SourcePreservingProjectionSpec, buildId: string): Promise<Db1ExplorerResponse | undefined> {
     const build = await client.query<{
       build_id: string; projection_name: string; schema_version: string; code_revision: string; built_at: Date; integrity_status: string; projected_records: number; rejected_records: number;
       route_id: string; source_path: string; capture_run_id: string; manifest_id: string; retrieved_at: Date; raw_sha256: string; raw_byte_length: number; content_type: string; handling_class: string;
