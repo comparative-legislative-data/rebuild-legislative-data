@@ -109,3 +109,19 @@ source non-response/contract finding; no generic profile-gap card remains.
 The source-presentation release (`a85511a`) passed the 17-test local and VPS
 verification suites and was deployed through the unchanged two-service
 procedure. Owner acceptance remains the final proxy-phase gate.
+
+## Source-catalogue interaction correction
+
+The Scottish Parliament API catalogue was rechecked on 3 August 2026. It does
+not present a free-form lookup interface: it publishes concrete example URLs.
+Detail forms use a fixed example identifier (usually `1`, with source-published
+official-report and vote examples where supplied), and annual forms appear as
+separate URLs with the year already embedded.
+
+The CLD catalogue therefore follows that source pattern. It removes its
+previous free-form ID/year entry controls. A user first opens a subject family,
+then an endpoint card, then its fixed source-style example URL or individually
+listed source-year URLs. Each still offers the same two raw actions: the
+no-retention CLD relay and the exact official Scottish Parliament URL. This is
+navigation and provenance guidance only; it introduces no captured source data,
+identifier index, query builder, DB1/DB2 content, or research output.
