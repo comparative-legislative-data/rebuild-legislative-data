@@ -92,3 +92,7 @@ the CLD relay forwards that disposition unchanged. Routes previously observed
 as normal JSON responses are labelled as browser views. The two Bills forms and
 the three unresponsive whole-history MQA collections remain explicitly
 `SOURCE_PRESENTATION_UNESTABLISHED` pending a successful header observation.
+
+The source-presentation release (`a85511a`) passed the 17-test local and VPS
+verification suites and was deployed through the unchanged two-service
+procedure. Owner acceptance remains the final proxy-phase gate.
