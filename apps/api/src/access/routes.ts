@@ -2,6 +2,7 @@ import type { FastifyInstance, FastifyRequest } from "fastify";
 import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavailableSchema, activationRejectedSchema, approvalRejectedSchema, approvalResultSchema, genericAcceptedSchema, logoutResultSchema } from "./contracts.js";
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
+import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -39,8 +40,12 @@ function hasCatalogueAccess(identity: Awaited<ReturnType<AccessRuntime["identity
   return Boolean(identity?.roles.some((role) => role === "SUPERUSER" || role === "BETA_USER" || role === "GUEST"));
 }
 
-export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime }): Promise<void> {
+type SourcePassThrough = ReturnType<typeof createSourcePassThrough>;
+
+export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime; sourcePassThrough?: SourcePassThrough; proxyVersion?: string }): Promise<void> {
   const runtime = options.runtime;
+  const sourcePassThrough = options.sourcePassThrough ?? createSourcePassThrough();
+  const proxyVersion = options.proxyVersion ?? "development";
   app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
     status: runtime ? ACCESS_READY : ACCESS_NOT_CONFIGURED,
     authentication_available: Boolean(runtime),
@@ -53,6 +58,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     }
     app.get("/catalogue/gb-sct", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.post("/catalogue/gb-sct/:id/request", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/catalogue/gb-sct/:id/source", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -145,7 +151,8 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     return reply.send({
       legislature: "GB-SCT",
       layer: "UPSTREAM_PASSTHROUGH_DESIGN",
-      source_requests_enabled: false,
+      source_requests_enabled: true,
+      enabled_route_count: gbSctRoutes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").length,
       route_count: gbSctRoutes.length,
       routes: gbSctRoutes
     });
@@ -164,5 +171,36 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
       route_id: route.id,
       message: "No upstream request has been made. This route is not available for pass-through access."
     });
+  });
+
+  app.get("/catalogue/gb-sct/:id/source", { config: { rateLimit: { max: 6, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasCatalogueAccess(identity)) return reply.code(403).send({ code: "CATALOGUE_ACCESS_DENIED" });
+    const id = requiredText((request.params as Record<string, unknown>).id, 128);
+    const route = id ? findGbSctRoute(id) : undefined;
+    if (!route) return reply.code(404).send({ code: "ROUTE_NOT_FOUND" });
+    if (route.availability !== "RELAYED_PRIVATE_BETA") return reply.code(409).send({ code: route.availability, route_id: route.id, message: "This route is not available for pass-through access." });
+    if (Object.keys((request.query ?? {}) as Record<string, unknown>).length > 0) return reply.code(400).send({ code: "SOURCE_PARAMETERS_NOT_ALLOWED", route_id: route.id });
+
+    const outcome = await sourcePassThrough.relay(route);
+    if (outcome.kind === "transport_failure") {
+      return reply.code(outcome.code === "SOURCE_TIMEOUT" ? 504 : 502).send({
+        code: "SOURCE_TRANSPORT_FAILURE",
+        failure_class: outcome.code,
+        route_id: route.id,
+        requested_at: outcome.requestedAt,
+        no_fallback: true
+      });
+    }
+    reply.header("x-cld-layer", "UPSTREAM_PASSTHROUGH");
+    reply.header("x-cld-route-id", route.id);
+    reply.header("x-cld-source-template", route.template);
+    reply.header("x-cld-requested-at", outcome.requestedAt);
+    reply.header("x-cld-proxy-version", proxyVersion);
+    reply.header("cache-control", "no-store");
+    reply.header("x-accel-buffering", "no");
+    reply.header("vary", "Cookie");
+    if (outcome.contentType) reply.type(outcome.contentType);
+    return reply.code(outcome.status).send(outcome.body);
   });
 }

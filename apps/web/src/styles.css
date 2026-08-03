@@ -25,6 +25,9 @@ button { cursor: pointer; }
 .catalogue-panel h2 { margin: 0; color: #f7f9fc; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.75rem, 4vw, 2.35rem); letter-spacing: -.035em; }
 .catalogue-summary { margin: 1.35rem 0; color: #c8d3df; }
 .catalogue-list { display: grid; gap: .9rem; }
+.source-disclosure { margin-top: 1rem; padding: .9rem; border: 1px solid rgba(232, 189, 104, .32); border-radius: .65rem; background: rgba(232, 189, 104, .07); color: #d9e1eb; line-height: 1.5; }
+.source-disclosure p { margin: 0 0 .85rem; }
+.source-action { display: inline-block; text-decoration: none; }
 .route-card { padding: 1.1rem; border: 1px solid rgba(220, 229, 239, .13); border-radius: .75rem; background: rgba(5, 13, 25, .38); }
 .route-card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .route-group { margin: 0; color: #e8bd68; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }

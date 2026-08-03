@@ -1,4 +1,5 @@
 export type Availability =
+  | "RELAYED_PRIVATE_BETA"
   | "UNAVAILABLE_PENDING_QUALIFICATION"
   | "UNAVAILABLE_PENDING_DETAIL_CONTRACT"
   | "UNAVAILABLE_EXTREME_VOLUME";
@@ -43,17 +44,19 @@ function entry(
 const pending = "UNAVAILABLE_PENDING_QUALIFICATION" as const;
 const detail = "UNAVAILABLE_PENDING_DETAIL_CONTRACT" as const;
 const extreme = "UNAVAILABLE_EXTREME_VOLUME" as const;
+const relayed = "RELAYED_PRIVATE_BETA" as const;
+const privatePassThroughLimitation = "A private-beta action opens the fixed Scottish Parliament response at request time. It is not a project dataset, snapshot, endorsement, warranty, or claim of semantic completeness or freshness; source licence exceptions and third-party or personal-data rights remain applicable.";
 
 export const gbSctRoutes: readonly RouteDefinition[] = [
   entry("bills.collection", "Bills", "/api/bills", "P1", "STRUCTURED_MEDIUM", pending, [], "HANDLING_DO_NOT_CAPTURE_OR_RELEASE", "Terms, handling, and output fit remain unresolved."),
   entry("bills.detail", "Bills", "/api/bills/:id", "P1", "EXTREME_OR_UNRESOLVED", pending, [id], "HANDLING_DO_NOT_CAPTURE_OR_RELEASE", "Terms, handling, detail-key semantics, and output fit remain unresolved."),
   entry("bill-stages.collection", "Formal stages", "/api/billstages", "P1", "STRUCTURED_MEDIUM", pending),
   entry("bill-stages.detail", "Formal stages", "/api/billstages/:id", "P1", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("bill-stage-types.collection", "Stage types", "/api/billstagetypes", "P1", "REFERENCE_SMALL", pending),
+  entry("bill-stage-types.collection", "Stage types", "/api/billstagetypes", "P1", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0062", privatePassThroughLimitation),
   entry("bill-stage-types.detail", "Stage types", "/api/billstagetypes/:id", "P1", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("bill-types.collection", "Bill types", "/api/billtypes", "P1", "REFERENCE_SMALL", pending),
+  entry("bill-types.collection", "Bill types", "/api/billtypes", "P1", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0062", privatePassThroughLimitation),
   entry("bill-types.detail", "Bill types", "/api/billtypes/:id", "P1", "EXTREME_OR_UNRESOLVED", pending, [id]),
-  entry("sessions.collection", "Sessions", "/api/sessions", "P1", "REFERENCE_SMALL", pending),
+  entry("sessions.collection", "Sessions", "/api/sessions", "P1", "REFERENCE_SMALL", relayed, [], "PRIVATE_PASSTHROUGH_APPROVED_DEC0062", privatePassThroughLimitation),
   entry("sessions.detail", "Sessions", "/api/sessions/:id", "P1", "EXTREME_OR_UNRESOLVED", pending, [id]),
   entry("members.collection", "Members", "/api/members", "P2", "STRUCTURED_MEDIUM", pending),
   entry("members.detail", "Members", "/api/members/:id", "P2", "EXTREME_OR_UNRESOLVED", pending, [id]),

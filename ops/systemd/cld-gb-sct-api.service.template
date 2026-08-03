@@ -8,6 +8,7 @@ ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node dist/server.js
 EnvironmentFile=/etc/cld-gb-sct/secrets/access-api.env
 Environment=HOST=127.0.0.1
 Environment=PORT=3210
+Environment=CLD_RELEASE_ID=RELEASE_ID
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true

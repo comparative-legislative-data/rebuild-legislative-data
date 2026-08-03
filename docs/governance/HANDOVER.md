@@ -3,6 +3,21 @@
 **Status:** Active handover note  
 **Date:** 31 July 2026
 
+## Latest implementation update — 3 August 2026
+
+- DEC-0062 is approved and has passed its local implementation stage. Exactly
+  three small reference collections now have fixed, private-beta-only,
+  no-retention source-pass-through code and pre-action provenance/limitation
+  disclosure. The local result is
+  [`GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
+- Local verification used only synthetic source responses. No Scottish
+  Parliament endpoint, VPS, database, DB1, DB2, cache, Nginx, Cloudflare, or
+  public data route has been used or changed under DEC-0062.
+- The next approved step is a project-only read-only VPS preflight. If it
+  passes, release only the existing loopback API/web services using the new
+  no-database/no-Nginx-change script, then obtain owner beta acceptance of the
+  three visible source actions one at a time.
+
 ## Latest reconnaissance update — 2 August 2026
 
 - The Bills-foundation and contextual-reference results now contain aggregate

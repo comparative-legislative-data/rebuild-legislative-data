@@ -1410,3 +1410,19 @@ Next review due:
 | Affected work blocked | All local source-client code, source relay, VPS deployment, and user-facing source response remain blocked pending DEC-0062 approval. DB1, DB2, research output, and public access remain independently blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0062. |
 | Next review due | 1 September 2026, or earlier if a review trigger occurs. |
+
+### GOV-REV-0085
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0062 approved local implementation completion |
+| Reviewer role | Maintainer; recording the completed local package and narrower release control |
+| Documents and records reviewed | `PROJECT_DESIGN.md`, `HANDOVER.md`, `GOVERNANCE.md`, `AGENTS.md`, `DECISION_REGISTER.md`, `RISK_AND_DEPENDENCY_REGISTER.md`, DEC-0042, DEC-0043, DEC-0056, DEC-0057, DEC-0059–DEC-0062, the three-route qualification result, and the existing deployment script/unit templates |
+| Active phase and authorising decision | DEC-0062 exact local pass-through implementation |
+| Checks performed | Verified the exact three-ID fixed-path allowlist, beta-only denial, no query route, synthetic redirect/source-error/timeout handling, byte-preserving response stream, required headers, static scope gate, production build, 16 passing tests, and deterministic release package. Rejected reuse of the older cutover script because it writes database credentials and Nginx; added a two-project-service release path that reuses existing configuration instead. |
+| Findings | Local code can expose only the approved request-time source boundary without DB1/DB2, cache, source persistence, or a project dataset display. The result does not evidence a real source response, deployment, or frontend acceptance. |
+| Outcome | `PASS` — local DEC-0062 scope complete. No source endpoint, VPS, database write/migration, DB1, DB2, cache, email, Nginx write/reload, Cloudflare, or public data action occurred. |
+| Affected work blocked | Deployment and owner source-action acceptance remain pending their approved next steps. DB1, DB2, capture, canonical variables, research output, and public data access remain independently blocked. |
+| Owner decision required | None for the already approved DEC-0062 preflight/deployment sequence; stop if that project-only check finds a required non-project change. |
+| Next review due | On VPS preflight/deployment outcome, or 1 September 2026, whichever is earlier. |

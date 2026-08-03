@@ -2,12 +2,12 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const directories = ["apps", "packages"];
+const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const prohibited = [
   "node:net",
   "node:tls",
   "node:child_process",
   "axios",
-  "data.parliament.scot",
   "/proxy/",
   "/db1/",
   "/db2/",
@@ -17,7 +17,8 @@ const prohibited = [
 
 const localCatalogueFiles = [
   "apps/api/src/catalogue/gb-sct.ts",
-  "apps/api/src/access/routes.ts"
+  "apps/api/src/access/routes.ts",
+  sourceRelayFile
 ];
 const localCatalogueProhibited = [
   "fetch(",
@@ -47,7 +48,25 @@ for (const directory of directories) {
         findings.push(`${path}: prohibited capability or claim token ${term}`);
       }
     }
+    if (path !== sourceRelayFile && content.includes("data.parliament.scot")) {
+      findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
+    }
   }
+}
+
+const sourceRelay = readFileSync(sourceRelayFile, "utf8");
+for (const term of [
+  "https://data.parliament.scot",
+  "redirect: \"manual\"",
+  "AbortSignal.timeout(20_000)",
+  "bill-stage-types.collection",
+  "bill-types.collection",
+  "sessions.collection"
+]) {
+  if (!sourceRelay.includes(term)) throw new Error(`${sourceRelayFile}: required fixed relay control is missing: ${term}`);
+}
+for (const term of ["process.env", "request.query", "searchparams", "node:fs", "node:http", "node:https", "undici", "axios", "/db1/", "/db2/", "cache", "writefile", ".json()", ".text()"] ) {
+  if (sourceRelay.toLowerCase().includes(term.toLowerCase())) throw new Error(`${sourceRelayFile}: prohibited source relay capability ${term}`);
 }
 
 if (findings.length > 0) {
@@ -55,10 +74,11 @@ if (findings.length > 0) {
 }
 
 for (const path of localCatalogueFiles) {
+  if (path === sourceRelayFile) continue;
   const content = readFileSync(path, "utf8").toLowerCase();
   for (const term of localCatalogueProhibited) {
     if (content.includes(term)) throw new Error(`${path}: local catalogue contains prohibited outbound capability ${term}`);
   }
 }
 
-process.stdout.write("Runtime scope scan passed: no source, DB1, DB2, research-export, or outbound catalogue route is present.\n");
+process.stdout.write("Runtime scope scan passed: only the approved fixed no-retention source relay is present; DB1, DB2, research-export, and all other outbound catalogue routes are absent.\n");

@@ -36,7 +36,7 @@ export function createApiServer() {
     schema: { response: { 200: healthResponseSchema } }
   }, async (_request, reply) => reply.type("application/json").code(200).send(healthResponse));
 
-  void app.register(registerAccessRoutes, runtime ? { runtime } : {});
+  void app.register(registerAccessRoutes, runtime ? { runtime, proxyVersion: process.env.CLD_RELEASE_ID ?? "development" } : {});
   app.addHook("onClose", async () => runtime?.close());
 
   if (runtime) app.addHook("onReady", async () => runtime.bootstrapInitialSuperuser());

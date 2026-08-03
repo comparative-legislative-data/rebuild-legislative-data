@@ -152,7 +152,7 @@ writeFileSync(archivePath, gzipSync(tarBytes, { mtime: 0 }));
 const manifest = {
   build_id: "private-beta-access",
   capability_status: [
-    "NO_SOURCE_DATA",
+    "PRIVATE_NO_RETENTION_UPSTREAM_PASSTHROUGH",
     "NO_RESEARCH_DATA_ROUTE",
     "NO_PUBLIC_LISTENER",
     "NOT_A_RESEARCH_RELEASE"

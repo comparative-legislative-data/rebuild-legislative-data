@@ -5,11 +5,14 @@ import Fastify from "fastify";
 import cookie from "@fastify/cookie";
 import { gbSctRoutes, validateParameters } from "../apps/api/dist/catalogue/gb-sct.js";
 import { registerAccessRoutes } from "../apps/api/dist/access/routes.js";
+import { createSourcePassThrough } from "../apps/api/dist/catalogue/source-pass-through.js";
 
-test("GB-SCT catalogue represents all selected route forms without a relayed state", () => {
+const relayedIds = ["bill-stage-types.collection", "bill-types.collection", "sessions.collection"];
+
+test("GB-SCT catalogue represents all selected route forms with exactly the approved private relay cohort", () => {
   assert.equal(gbSctRoutes.length, 64);
   assert.equal(new Set(gbSctRoutes.map((route) => route.id)).size, 64);
-  assert.equal(gbSctRoutes.some((route) => route.availability === "RELAYED"), false);
+  assert.deepEqual(gbSctRoutes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").map((route) => route.id).sort(), relayedIds.sort());
   assert.equal(gbSctRoutes.some((route) => route.template.includes(":id") && route.parameters.length === 0), false);
 });
 
@@ -32,43 +35,107 @@ test("catalogue parameter rules reject unlisted and malformed input", () => {
   assert.equal(validateParameters(annualVotes, { year: "2025" }), undefined);
 });
 
-async function catalogueApp() {
+test("fixed relay transport uses no caller input and preserves synthetic redirect and source-error responses", async () => {
+  const calls = [];
+  const relay = createSourcePassThrough(async (url, init) => {
+    calls.push({ url: url.toString(), init });
+    return new Response(Buffer.from("redirect-body"), { status: 302, headers: { "content-type": "application/json", location: "/other" } });
+  }, () => new Date("2026-08-03T12:02:00.000Z"));
+  const route = gbSctRoutes.find((entry) => entry.id === "bill-stage-types.collection");
+  assert.ok(route);
+  const redirect = await relay.relay(route);
+  assert.equal(redirect.kind, "source_response");
+  if (redirect.kind !== "source_response") throw new Error("expected a source response");
+  assert.equal(redirect.status, 302);
+  assert.equal(redirect.contentType, "application/json");
+  const bytes = [];
+  for await (const chunk of redirect.body) bytes.push(chunk);
+  assert.equal(Buffer.concat(bytes).toString("utf8"), "redirect-body");
+  assert.equal(calls[0].url, "https://data.parliament.scot/api/billstagetypes");
+  assert.equal(calls[0].init.method, "GET");
+  assert.equal(calls[0].init.headers.accept, "application/json");
+  assert.equal(calls[0].init.redirect, "manual");
+
+  const sourceError = createSourcePassThrough(async () => new Response(Buffer.from("not-found"), { status: 404, headers: { "content-type": "application/json" } }));
+  const outcome = await sourceError.relay(route);
+  assert.equal(outcome.kind, "source_response");
+  if (outcome.kind === "source_response") assert.equal(outcome.status, 404);
+});
+
+async function catalogueApp(sourcePassThrough) {
   const app = Fastify();
   await app.register(cookie);
   const runtime = {
     identity: async (token) => token === "accepted" ? { userId: "test-user", email: "beta@example.test", roles: ["BETA_USER"], logoutProof: "proof" } : undefined
   };
-  await app.register(registerAccessRoutes, { runtime });
+  await app.register(registerAccessRoutes, { runtime, sourcePassThrough, proxyVersion: "test-revision" });
   return app;
 }
 
-test("catalogue denies unauthenticated access and refuses an allowed request without a network call", async () => {
-  const app = await catalogueApp();
+test("catalogue denies unauthenticated access and leaves unavailable routes fail-closed", async () => {
+  let calls = 0;
+  const app = await catalogueApp({ relay: async () => { calls += 1; throw new Error("relay must not run"); } });
   const denied = await app.inject({ method: "GET", url: "/catalogue/gb-sct" });
   assert.equal(denied.statusCode, 403);
 
   const catalogue = await app.inject({ method: "GET", url: "/catalogue/gb-sct", headers: { cookie: "cld_access_session=accepted" } });
   assert.equal(catalogue.statusCode, 200);
   assert.equal(catalogue.json().route_count, 64);
-  assert.equal(catalogue.json().source_requests_enabled, false);
+  assert.equal(catalogue.json().source_requests_enabled, true);
+  assert.equal(catalogue.json().enabled_route_count, 3);
 
-  const previousFetch = globalThis.fetch;
-  globalThis.fetch = async () => { throw new Error("outbound request attempted"); };
-  try {
-    const refused = await app.inject({
-      method: "POST",
-      url: "/catalogue/gb-sct/motion-votes.year/request",
-      headers: { cookie: "cld_access_session=accepted" },
-      payload: { parameters: { year: "2025" } }
-    });
-    assert.equal(refused.statusCode, 409);
-    assert.deepEqual(refused.json(), {
-      code: "UNAVAILABLE_EXTREME_VOLUME",
-      route_id: "motion-votes.year",
-      message: "No upstream request has been made. This route is not available for pass-through access."
-    });
-  } finally {
-    globalThis.fetch = previousFetch;
-  }
+  const refused = await app.inject({ method: "GET", url: "/catalogue/gb-sct/motion-votes.year/source", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(refused.statusCode, 409);
+  assert.equal(refused.json().code, "UNAVAILABLE_EXTREME_VOLUME");
+  assert.equal(calls, 0);
+  await app.close();
+});
+
+test("approved source route streams the synthetic source response without rewriting it", async () => {
+  const calls = [];
+  const app = await catalogueApp({
+    relay: async (route) => {
+      calls.push(route.id);
+      return {
+        kind: "source_response",
+        status: 207,
+        contentType: "application/json; charset=utf-8",
+        body: (await import("node:stream")).Readable.from([Buffer.from('{"synthetic":true}\n')]),
+        requestedAt: "2026-08-03T12:00:00.000Z"
+      };
+    }
+  });
+  const response = await app.inject({ method: "GET", url: "/catalogue/gb-sct/bill-types.collection/source", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(response.statusCode, 207);
+  assert.equal(response.headers["content-type"], "application/json; charset=utf-8");
+  assert.equal(response.headers["x-cld-layer"], "UPSTREAM_PASSTHROUGH");
+  assert.equal(response.headers["x-cld-route-id"], "bill-types.collection");
+  assert.equal(response.headers["x-cld-source-template"], "/api/billtypes");
+  assert.equal(response.headers["x-cld-requested-at"], "2026-08-03T12:00:00.000Z");
+  assert.equal(response.headers["x-cld-proxy-version"], "test-revision");
+  assert.equal(response.headers["cache-control"], "no-store");
+  assert.equal(response.headers["x-accel-buffering"], "no");
+  assert.equal(response.headers.vary, "Cookie");
+  assert.equal(response.body, '{"synthetic":true}\n');
+  assert.deepEqual(calls, ["bill-types.collection"]);
+  await app.close();
+});
+
+test("source endpoint rejects a query and shows a synthetic transport failure without fallback", async () => {
+  let calls = 0;
+  const app = await catalogueApp({ relay: async () => ({ kind: "transport_failure", code: "SOURCE_TIMEOUT", requestedAt: "2026-08-03T12:01:00.000Z" }) });
+  const query = await app.inject({ method: "GET", url: "/catalogue/gb-sct/sessions.collection/source?unexpected=1", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(query.statusCode, 400);
+  assert.equal(query.json().code, "SOURCE_PARAMETERS_NOT_ALLOWED");
+  assert.equal(calls, 0);
+  const timeout = await app.inject({ method: "GET", url: "/catalogue/gb-sct/sessions.collection/source", headers: { cookie: "cld_access_session=accepted" } });
+  assert.equal(timeout.statusCode, 504);
+  assert.deepEqual(timeout.json(), {
+    code: "SOURCE_TRANSPORT_FAILURE",
+    failure_class: "SOURCE_TIMEOUT",
+    route_id: "sessions.collection",
+    requested_at: "2026-08-03T12:01:00.000Z",
+    no_fallback: true
+  });
   await app.close();
 });
