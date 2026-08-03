@@ -101,6 +101,11 @@ same top-level field set. The retained result is structural metadata only. It
 does not establish field definitions, completeness, legal classification, or
 research use.
 
+The Bills profile release (`eacf160`) passed the 17-test local and VPS suites
+and was deployed through the unchanged two-service procedure. All catalogue
+families now have either a substantive observed source profile or a specific
+source non-response/contract finding; no generic profile-gap card remains.
+
 The source-presentation release (`a85511a`) passed the 17-test local and VPS
 verification suites and was deployed through the unchanged two-service
 procedure. Owner acceptance remains the final proxy-phase gate.
