@@ -1,6 +1,6 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Approved strategic plan — D1 and D2 passed; D3 projection/explorer proposal is next; no further source/capture action authorised
+**Status:** Approved strategic plan — D1/D2/D3 passed; DEC-0078 D4A reconciliation pilot proposed; no further action authorised
 
 **Version:** 1.1.0
 **Prepared:** 3 August 2026
@@ -348,12 +348,12 @@ D1 passed as a source-free, synthetic-only foundation. Its
 the isolated target, raw-object/manifest/projection interfaces, synthetic
 fixture, verification, and rollback boundary without a source request.
 
-The D2 first source-capture batch has passed as one fixed restricted capture.
-The immediate decision is now [D3](GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md): an exact first source-backed projection and
-private-explorer package. It must name its sole input manifest, raw-versus-
-projection contract, reader access boundary, user-facing provenance/limit
-record, acceptance test, and stop conditions. D3 must be owner-approved before
-any source-backed projection or DB1 interface begins.
+The D2 first source-capture batch and D3 first source-backed
+projection/private-preview have passed. The next proposed package is
+[D4A — reference-cohort reconciliation pilot](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md): three fixed small collections and a
+bounded daily source-preservation comparison. It must be owner-approved before
+any new source request, scheduler, repeated capture, or reconciliation action
+begins. A later D4B interface/catalogue increment remains separately gated.
 
 The owner approved DEC-0073 after review against these questions:
 

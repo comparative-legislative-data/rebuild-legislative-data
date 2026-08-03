@@ -1970,3 +1970,19 @@ Next review due:
 | Affected work blocked | New source requests/capture, scheduling, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | A separate explicit decision is required before any next DB1 source/capture, reconciliation, projection, access, download, or interface increment. |
 | Next review due | Before a next DB1 proposal, on a privilege/data-pipe/target deviation, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0120
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0078 D4A reconciliation-pilot proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0008, DEC-0045, DEC-0061, DEC-0073–DEC-0077; DB1 narrative; capture-batch template; and GOV-REV-0119. |
+| Active phase and authorising decision | Documentation-only D4A proposal preparation after closed DEC-0077; no source, scheduler, database, code, service, or interface work is authorised. |
+| Checks performed | Bound the proposal to three fixed no-query P1 collections and a declared one-attempt-per-route daily cycle; separated raw digest comparison from source-update claims; required append-only manifests, drift/partial/failure disclosure, no-overlap handling, an isolated project-only scheduler, and no D3 interface change. |
+| Findings | A small reference cohort can test DB1's routine reconciliation model without entering bills, detail routes, relationship/content-sensitive routes, or high-volume sources. A recurring source action and scheduler are material changes and remain blocked pending explicit owner approval. |
+| Outcome | `PASS — OWNER REVIEW REQUIRED`. DEC-0078 is ready for review; proposal preparation made no external request or operational change. |
+| Affected work blocked | All new source requests/capture, schedule, DB1 interface/download expansion, DB2, charts, research claims, public data access, and shared-host changes remain blocked pending a decision. |
+| Owner decision required | Approve, amend, or reject DEC-0078 before any D4A implementation, initial capture, or daily reconciliation run. |
+| Next review due | On DEC-0078 decision, an input/handling/target change, D4A result, or 1 September 2026, whichever is earlier. |

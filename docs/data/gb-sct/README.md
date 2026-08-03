@@ -13,11 +13,13 @@ or [DB2](../../workstreams/db2/README.md) narrative.
 The [approved DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
 sets the DB1 product boundary. Its [D1 synthetic foundation](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 and [D2 first source batch](GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
-have passed. The only source content is D2's one restricted `/api/billtypes`
-object; no schedule or researcher-facing DB1 access exists. The next
-owner-review document was D3. Its [technical result — DEC-0077](GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
-now awaits one independent private-beta acceptance test; it remains one named,
-unscheduled projection rather than a general DB1 release.
+have passed. The only source content remains D2's one restricted
+`/api/billtypes` object. D3 has passed as its one named, unscheduled DB1
+projection/private preview; it is not a general DB1 release. The next
+owner-review document is the proposed [D4A reference-cohort reconciliation
+pilot — DEC-0078](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md).
+It requests a bounded daily source-preservation cycle for three small
+collections, not a generic mirror or new user-facing DB1 release.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

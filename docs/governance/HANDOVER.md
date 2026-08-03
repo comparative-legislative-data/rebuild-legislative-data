@@ -60,9 +60,10 @@ proxy and DB1 are independent data pipes sharing only the
 application/authentication gateway. Read its [result](../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
 before any proposed next DB1 work.
 
-D3 and every later capture package retain their own separate approval. No
-further source request/capture, scheduled reconciliation, DB1 interface/
-download, DB2, or research release is currently authorised.
+The next owner-review document is [DEC-0078](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md): a proposed three-route
+reference-cohort, daily reconciliation pilot. It is not approved. No further
+source request/capture, scheduled reconciliation, DB1 interface/download, DB2,
+or research release is currently authorised.
 
 ## Documentation hygiene
 

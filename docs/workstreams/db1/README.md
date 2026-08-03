@@ -92,6 +92,12 @@ consistent navigation, while keeping retained capture/projection provenance,
 version, and reconciliation state visually and semantically distinct from the
 proxy's live no-retention access.
 
+The immediate next proposal is [D4A — reference-cohort reconciliation](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md).
+It tests daily append-only source preservation for the three small P1 reference
+collections while deliberately leaving the D3 interface unchanged. A later
+D4B proposal would decide whether the expanded capture/projection history is
+suitable for a proxy-aligned DB1 catalogue.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
