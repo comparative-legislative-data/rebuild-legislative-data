@@ -3,7 +3,7 @@ import { ACCESS_NOT_CONFIGURED, ACCESS_READY, accessStatusSchema, accessUnavaila
 import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
-import { type Db1Explorer } from "../db1/explorer.js";
+import { Db1Explorer, loadDb1ExplorerConfig } from "../db1/explorer.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -47,10 +47,11 @@ function hasDb1Access(identity: Awaited<ReturnType<AccessRuntime["identity"]>>):
 
 type SourcePassThrough = ReturnType<typeof createSourcePassThrough>;
 
-export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime; sourcePassThrough?: SourcePassThrough; db1Explorer?: Db1Explorer; proxyVersion?: string }): Promise<void> {
+export async function registerAccessRoutes(app: FastifyInstance, options: { runtime?: AccessRuntime; sourcePassThrough?: SourcePassThrough; proxyVersion?: string }): Promise<void> {
   const runtime = options.runtime;
   const sourcePassThrough = options.sourcePassThrough ?? createSourcePassThrough();
-  const db1Explorer = options.db1Explorer;
+  const db1Config = loadDb1ExplorerConfig();
+  const db1Explorer = db1Config ? new Db1Explorer(db1Config) : undefined;
   const proxyVersion = options.proxyVersion ?? "development";
   app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
     status: runtime ? ACCESS_READY : ACCESS_NOT_CONFIGURED,
@@ -68,6 +69,8 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/db1/gb-sct/bill-types/d2-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
+
+  app.addHook("onClose", async () => db1Explorer?.close());
 
   app.post("/auth/login", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
     const input = body(request.body);
