@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1 foundation and D2 first restricted source capture passed; D3 projection/explorer proposal awaits owner review
+**Status:** D1/D2 passed; D3 restricted projection and private explorer deployed, awaiting owner acceptance
 
 ## 1. Purpose and user value
 
@@ -84,6 +84,12 @@ named D2 manifest and one authenticated researcher preview. It excludes new
 source activity, generic access, downloads, and DB2. If approved and passed,
 its result—not this proposal—will establish what the first private interface
 actually demonstrates.
+
+DEC-0077 is now technically deployed. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
+records one seven-record/zero-rejection source-backed projection, a DB1-only
+reader credential, an anonymous denial, and the separate proxy/DB1 data pipes.
+It remains a one-capture, `NOT_SCHEDULED` increment until an owner confirms the
+independent private-beta acceptance test.
 
 ## 6. Detailed records
 

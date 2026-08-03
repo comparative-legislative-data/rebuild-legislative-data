@@ -1938,3 +1938,19 @@ Next review due:
 | Affected work blocked | Further source requests/capture, schedule, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | No additional decision for the contained DEC-0077 implementation. Any route/input/privilege/exposure expansion requires a new decision. |
 | Next review due | On D3 result, a data-pipe/privilege/target deviation, a deployment failure, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0118
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0077 technical deployment result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0077, D2 result, local build/tests/capability/doc checks, project-target preflight/postflight, reader-role proof, deployment checks, DB1 narrative, application status, handover, and decision/risk registers. |
+| Active phase and authorising decision | DEC-0077 owner-approved D3 implementation. |
+| Checks performed | Confirmed the exact D2 manifest/digest/route/handling input; one source projection build with seven records and zero rejections; no outbound source request; reader `SELECT` privilege and denial of raw/rejection tables; enabled application state; anonymous DB1 denial; active project services; and restored project raw/runtime modes. Recorded two stopped permission/configuration attempts and their contained corrections. |
+| Findings | D3 technically proves the named private projection/access increment only. The proxy and DB1 pipes remain separate. The temporary execution-path changes were restored. The old status schema was corrected because it falsely serialised DB1 availability as false; the final service state is truthful. |
+| Outcome | `PASS — OWNER ACCEPTANCE PENDING`. Technical deployment and containment pass; independent beta/superuser interface acceptance remains necessary before D3 closure. |
+| Affected work blocked | New source requests/capture, scheduling, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | Owner acceptance or rejection of the D3 private-beta interface test. Any next source/capture or DB1 scope requires a separate decision. |
+| Next review due | On owner acceptance, a D3 interface issue, a privilege/data-pipe deviation, or 1 September 2026, whichever is earlier. |
