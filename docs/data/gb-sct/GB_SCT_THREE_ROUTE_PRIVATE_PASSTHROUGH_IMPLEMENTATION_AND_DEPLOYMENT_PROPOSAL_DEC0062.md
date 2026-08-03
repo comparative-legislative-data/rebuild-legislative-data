@@ -1,6 +1,6 @@
 # GB-SCT Three-Route Private Pass-Through Implementation and Deployment Proposal — DEC-0062
 
-**Status:** APPROVED — local and VPS deployment `PASS`; owner beta acceptance pending
+**Status:** APPROVED — EXECUTED PASS
 
 **Version:** 0.1.0
 

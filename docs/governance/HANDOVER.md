@@ -10,9 +10,10 @@
   no-retention source-pass-through code and pre-action provenance/limitation
   disclosure. The local result is
   [`GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_LOCAL_IMPLEMENTATION_RESULT_2026-08-03.md).
-- Local verification used only synthetic source responses. No Scottish
-  Parliament endpoint, VPS, database, DB1, DB2, cache, Nginx, Cloudflare, or
-  public data route has been used or changed under DEC-0062.
+- Local verification used only synthetic source responses. The later approved
+  private-beta owner acceptance viewed the three live source responses
+  transiently; CLD retained none of them. No database, DB1, DB2, cache, Nginx,
+  Cloudflare, or public data route has been changed under DEC-0062.
 - The next approved step is a project-only read-only VPS preflight. If it
   passes, release only the existing loopback API/web services using the new
   no-database/no-Nginx-change script, then obtain owner beta acceptance of the
@@ -23,6 +24,9 @@
   made during deployment. The next action is owner testing of the three
   disclosed source actions one at a time; see
   [`GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md`](../data/gb-sct/GB_SCT_THREE_ROUTE_PRIVATE_PASSTHROUGH_DEPLOYMENT_RESULT_2026-08-03.md).
+- DEC-0062 is now fully accepted for its three-route cohort. The next
+  substantive work is a separately proposed next proxy cohort; DB1 remains
+  blocked until the broader proxy phase has its own completed acceptance.
 
 ## Latest reconnaissance update — 2 August 2026
 

@@ -1458,3 +1458,19 @@ Next review due:
 | Affected work blocked | Owner route-by-route acceptance remains pending. DB1, DB2, capture, canonical variables, research output, and public data access remain separately blocked. |
 | Owner decision required | No new decision; continue the existing DEC-0062 owner acceptance with the revised interface. |
 | Next review due | On owner acceptance outcome, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0088
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0062 owner route acceptance completion |
+| Reviewer role | Maintainer; recording the owner-confirmed result without recasting a live source response as project data |
+| Documents and records reviewed | DEC-0062 package, local/deployment results, approved three-route registry, route disclosures, and owner confirmation |
+| Active phase and authorising decision | DEC-0062 three-route private pass-through acceptance |
+| Checks performed | Owner confirmed the three approved route forms behave as expected in the final compact grouped interface. The accepted boundary presents pre-action provenance/limitation disclosure and raw source-response access through the no-retention relay; the separate official API links remain explicit navigation alternatives. |
+| Findings | The accepted result proves controlled private source access behaviour, not an immutable project snapshot, schema validation, semantic interpretation, source completeness, freshness, or a research release. The source bodies were viewed transiently and are not retained by CLD. |
+| Outcome | `PASS` — DEC-0062 complete for Bill Stage Types, Bill Types, and Sessions. No DB1/DB2 content, database write/migration, cache, canonical variable, chart, export, public data release, or shared-host change is created. |
+| Affected work blocked | The other selected route forms remain unavailable pending their own cohort qualification, implementation, and owner acceptance. DB1 and DB2 remain separately blocked. |
+| Owner decision required | Approve a proposed next proxy cohort before another route is enabled. |
+| Next review due | On next-cohort proposal preparation, or 1 September 2026, whichever is earlier. |

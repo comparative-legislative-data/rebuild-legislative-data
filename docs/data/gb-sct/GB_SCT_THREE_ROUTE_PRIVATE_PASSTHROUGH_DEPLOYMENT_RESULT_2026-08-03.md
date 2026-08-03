@@ -1,6 +1,6 @@
 # GB-SCT Three-Route Private Pass-Through Deployment Result — 3 August 2026
 
-**Status:** PASS — private project release deployed; owner source-action acceptance pending
+**Status:** PASS — private project release and owner acceptance complete
 
 **Authority:** DEC-0062 and the local implementation result of 3 August 2026
 
@@ -34,13 +34,10 @@ The deployment script's first API probes occurred immediately after service rest
 
 This deployment made no Scottish Parliament source request. It created no source response retention, cache, DB1/DB2 content, canonical variable, chart, export, research release, email, public data access, or shared-host change.
 
-## Owner acceptance now required
+## Owner acceptance
 
-Sign in at [legislativedata.org](https://legislativedata.org), choose **Route catalogue**, and test the three `RELAYED PRIVATE BETA` cards one at a time:
+The owner confirmed that all three approved route forms behave as expected in the private-beta interface. The compact source-family catalogue, route-level disclosure, CLD no-retention relay action, and raw source-response presentation were accepted. This is acceptance of source access behaviour, not a claim that CLD has stored, validated, interpreted, or released the displayed source data.
 
-1. confirm the disclosure appears before the action;
-2. distinguish **Open via CLD no-retention relay** from **Open official Scottish Parliament API directly**, then test the relevant one;
-3. confirm the new tab shows the raw response rather than a project table or transformed display; and
-4. report the result before opening the next route.
+The user-facing direct official API option remains a navigation alternative for the same fixed public source paths. It is not a project dataset or a substitute for the beta-gated relay.
 
-`PASS` for DEC-0062 still requires those three owner observations. DB1 remains blocked until the full proxy phase receives its separate beta acceptance.
+DEC-0062 is complete. DB1 remains blocked until the broader proxy phase has its separate owner-approved cohort and acceptance sequence.
