@@ -19,6 +19,8 @@ No non-project listener, site, database, service, credential, or firewall change
 
 Release `45e9ceab652da9df61f8d9e94d0d8e9bde3a78ac` built and verified on the VPS target runtime. The production build, 16 tests, capability scan, and deterministic release package passed there. The new immutable release replaced only `cld-gb-sct-api.service` and `cld-gb-sct-web.service`; it reused the existing project environment/session pepper. It did not write a database, migrate a schema, rotate a credential, write/reload Nginx, change Cloudflare, or change any shared service.
 
+The authorised transparency refinement was subsequently released as `5e76611c0571b6c73c79975b7475b1f89dd6d9fe`. It adds a visibly bordered **Open via CLD no-retention relay** action, a separate **Open official Scottish Parliament API directly** action for the same fixed path, and a dated non-live response guide. The guide presents only prior structural observations, variable names, semantic cautions, and citation guidance; it does not parse, count, or summarise the live response.
+
 The release readiness and post-release checks passed:
 
 - API access status: `ACCESS_CONTROL_READY`.
@@ -37,7 +39,7 @@ This deployment made no Scottish Parliament source request. It created no source
 Sign in at [legislativedata.org](https://legislativedata.org), choose **Route catalogue**, and test the three `RELAYED PRIVATE BETA` cards one at a time:
 
 1. confirm the disclosure appears before the action;
-2. select **Open source response in a new tab**;
+2. distinguish **Open via CLD no-retention relay** from **Open official Scottish Parliament API directly**, then test the relevant one;
 3. confirm the new tab shows the raw response rather than a project table or transformed display; and
 4. report the result before opening the next route.
 

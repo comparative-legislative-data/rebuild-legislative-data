@@ -1442,3 +1442,19 @@ Next review due:
 | Affected work blocked | Owner source-action acceptance remains pending. DB1, DB2, capture, canonical variables, research output, and public data access remain separately blocked. |
 | Owner decision required | No new decision for DEC-0062 acceptance; owner observation of the three already-approved actions is required. |
 | Next review due | On owner acceptance outcome, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0087
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner-approved DEC-0062 transparency/interface refinement |
+| Reviewer role | Maintainer; recording a limited presentation change to the already approved three-route boundary |
+| Documents and records reviewed | DEC-0062 package/results, the three-route qualification result, existing relay implementation, capability gate, response-guide text, and two-service release control |
+| Active phase and authorising decision | DEC-0062 private-beta acceptance interface refinement |
+| Checks performed | Added only three fixed, user-triggered official-source links matching the approved relay paths; made the relay action visibly bordered and labelled; added dated non-live schema/variable/citation disclosures; corrected the health capability labels to distinguish no retained source data from private source pass-through. Verified local and target-runtime production builds, 16 tests, capability scan, two-service release, health response, unauthenticated 403 boundary, and public shell HTTP 200. |
+| Findings | The interface makes the difference between source-faithful CLD relay access and direct official API access explicit. No live response is parsed, counted, stored, or transformed by the guide. |
+| Outcome | `PASS` — limited transparency refinement deployed as release `5e76611`. No source retrieval by the maintainer, database write/migration, DB1, DB2, cache, Nginx write/reload, Cloudflare, public data release, or shared-host change occurred. |
+| Affected work blocked | Owner route-by-route acceptance remains pending. DB1, DB2, capture, canonical variables, research output, and public data access remain separately blocked. |
+| Owner decision required | No new decision; continue the existing DEC-0062 owner acceptance with the revised interface. |
+| Next review due | On owner acceptance outcome, or 1 September 2026, whichever is earlier. |
