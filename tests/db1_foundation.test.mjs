@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, persistSyntheticRawObject } from "../apps/api/dist/db1/foundation.js";
+import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, persistSyntheticRawObject, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -47,4 +47,9 @@ test("D4 transport accepts only the three fixed no-query reference routes", asyn
   assert.deepEqual(calls.map(({ url }) => url), D4_REFERENCE_ROUTES.map(({ url }) => url));
   assert.ok(calls.every(({ init }) => init.method === "GET" && init.redirect === "manual"));
   await assert.rejects(fetchD4ReferenceCollection({ id: "other", path: "/api/other", url: "https://example.invalid/other" }, async () => new Response("[]", { status: 200, headers: { "content-type": "application/json" } })), /fixed reference cohort/);
+});
+
+test("D4 structural comparison ignores JSON-object key order", () => {
+  assert.equal(signaturesEqual({ Name: ["string"], ID: ["number"] }, { ID: ["number"], Name: ["string"] }), true);
+  assert.equal(signaturesEqual({ ID: ["number"] }, { ID: ["string"] }), false);
 });

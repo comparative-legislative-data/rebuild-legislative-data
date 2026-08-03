@@ -249,8 +249,12 @@ function structureSignature(bytes: Buffer): Record<string, string[]> {
   return Object.fromEntries([...signature.entries()].sort(([left], [right]) => left.localeCompare(right)).map(([key, types]) => [key, [...types].sort()]));
 }
 
-function signaturesEqual(left: Record<string, string[]> | null, right: Record<string, string[]>): boolean {
-  return Boolean(left) && JSON.stringify(left) === JSON.stringify(right);
+export function signaturesEqual(left: Record<string, string[]> | null, right: Record<string, string[]>): boolean {
+  if (!left) return false;
+  const canonical = (signature: Record<string, string[]>) => Object.fromEntries(
+    Object.keys(signature).sort().map((key) => [key, [...signature[key] ?? []].sort()])
+  );
+  return JSON.stringify(canonical(left)) === JSON.stringify(canonical(right));
 }
 
 function failureCode(error: unknown): string { return error instanceof D2CaptureFailure ? error.code : "TRANSPORT_FAILURE"; }
