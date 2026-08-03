@@ -1714,3 +1714,19 @@ Next review due:
 | Affected work blocked | All 17 scoped forms remain unavailable. DB1, DB2, public output, and all other unqualified routes remain separately blocked. |
 | Owner decision required | Approve, amend, or reject DEC-0071. |
 | Next review due | On DEC-0071 decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0104
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0071 operational-register application |
+| Reviewer role | Maintainer; applying the operational controls without converting route profiles into data availability |
+| Documents and records reviewed | DEC-0071 framework; DEC-0045 matrix; DEC-0067 triage; high-volume route audit; MQA first pass; votes-on-motions first pass; update-signal reconnaissance. |
+| Active phase and authorising decision | DEC-0071 repository-only operational-register application, approved by the owner on 3 August 2026. |
+| Checks performed | Recorded one operational state and one future action gate for all 17 scoped forms. Preserved separate whole-history, filter, annual-window, annual-firehose, empty-detail, and unestablished-detail boundaries. |
+| Findings | Existing evidence supports a complete operational planning register but no route availability. Terms, handling, contract, updateability, and semantic questions remain route/action-specific. |
+| Outcome | `PASS` — operational register complete. No source/API/portal/document request, source data, relay, code, VPS, database, DB1, DB2, cache, email, Nginx, Cloudflare, or public action occurred. |
+| Affected work blocked | All 17 routes remain unavailable. DB1, DB2, public output, and every other unqualified route remain separately blocked. |
+| Owner decision required | Approve a later small combined route-qualification package before any new source-facing action or route implementation. |
+| Next review due | On that combined package decision/result, a material evidence change, or 1 September 2026, whichever is earlier. |

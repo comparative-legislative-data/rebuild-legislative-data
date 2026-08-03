@@ -1,6 +1,8 @@
 # GB-SCT High-Volume Operational-Control Proposal — DEC-0071
 
-**Status:** PROPOSED — design only; no additional source request or route enabled
+**Status:** APPROVED — EXECUTED PASS; no additional source request or route enabled
+
+**Result:** [`GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md`](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 
 ## 1. Decision requested
 
