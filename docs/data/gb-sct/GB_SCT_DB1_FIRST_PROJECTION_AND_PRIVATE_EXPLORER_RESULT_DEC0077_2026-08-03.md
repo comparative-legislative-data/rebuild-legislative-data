@@ -1,6 +1,6 @@
 # GB-SCT DB1 First Projection and Private Explorer Result — DEC-0077
 
-**Status:** Technical deployment passed — owner private-beta acceptance pending
+**Status:** Passed — owner private-beta acceptance complete
 
 **Completed:** 3 August 2026  
 **Authority:** DEC-0077, owner-approved on 3 August 2026
@@ -66,7 +66,7 @@ correction changed that declaration to a boolean. The final release reports
 the truthful enabled state. No data or privilege scope changed in that
 correction.
 
-## Remaining boundary and owner acceptance
+## Owner acceptance and remaining boundary
 
 The technical result proves one named input, one projection build, one
 least-privilege private reader, and an anonymous denial. It does not prove
@@ -74,9 +74,13 @@ source field semantics, historical coverage, freshness, route parity, a
 scheduled mirror, generic DB1 query access, downloads, DB2 variables, charts,
 or a research release.
 
-The remaining D3 gate is an independent owner private-beta test. As an active
-beta user or superuser, confirm that `DB1 preview` appears after login and that
-the view makes the following understandable without reading code:
+The owner completed the independent private-beta browser test on 3 August 2026
+and confirmed that the DB1 preview is visible and its provenance panel,
+`NOT SCHEDULED` limitation, observed-structure explanation, and record display
+are clear and behave as expected. This closes the narrowly scoped D3
+acceptance gate.
+
+The accepted view makes the following understandable without reading code:
 
 1. it is a retained DB1 projection, not the live proxy or raw-object download;
 2. the source route, capture/run/manifest/digest/build, record/rejection
@@ -85,15 +89,25 @@ the view makes the following understandable without reading code:
 4. preserved records can be inspected; and
 5. the citation guidance and limitations are clear.
 
-Guest and unauthenticated access must remain unavailable. On owner acceptance,
-the decision can be closed as a narrowly passed D3 increment.
+Guest and unauthenticated access remain unavailable under the verified fixed
+route boundary. D3 is therefore closed as a narrowly passed increment; it does
+not widen any of the remaining exclusions above.
+
+## Future interface design direction
+
+For a later, separately approved DB1 researcher interface, use the proxy
+catalogue's compact, grouped, expandable information architecture so users can
+navigate data sources consistently. The state and wording must remain distinct:
+DB1 panels must foreground retained capture/projection lineage, version and
+reconciliation status, while proxy panels foreground live no-retention source
+access. Shared layout must never collapse those different data claims.
 
 ## What next
 
-**Requires owner acceptance:** complete the one private-beta browser test
-above. If it passes, the next proposed documentation task is a D3 closure and
-DB1 next-slice proposal; it does not authorise another source request or
-capture.
+**Proposed documentation-only next step:** prepare the next DB1-slice proposal,
+including its exact source/capture, reconciliation, projection, and
+researcher-access boundaries. It does not authorise another source request,
+capture, schedule, download, or interface implementation.
 
 ## Related records
 

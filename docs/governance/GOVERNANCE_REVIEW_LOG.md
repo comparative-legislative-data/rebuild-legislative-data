@@ -1954,3 +1954,19 @@ Next review due:
 | Affected work blocked | New source requests/capture, scheduling, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
 | Owner decision required | Owner acceptance or rejection of the D3 private-beta interface test. Any next source/capture or DB1 scope requires a separate decision. |
 | Next review due | On owner acceptance, a D3 interface issue, a privilege/data-pipe deviation, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0119
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0077 owner private-beta acceptance and closure |
+| Reviewer role | Maintainer, recording the owner's completed browser acceptance |
+| Documents and records reviewed | DEC-0077 proposal/result; DB1 narrative; project/handover/decision/risk records; GOV-REV-0118. |
+| Active phase and authorising decision | DEC-0077 D3 first source-backed DB1 projection/private explorer. |
+| Checks performed | Recorded the owner's confirmation that the DB1 preview is visible and that its provenance panel, `NOT SCHEDULED` limitation, observed-structure explanation, and record display are clear and behave as expected. Confirmed that the closure changes documentation only and preserves the prior verified fixed-route/reader-role/anonymous-denial evidence. |
+| Findings | D3 is accepted as one manifest-bound private usability increment. It remains neither a scheduled mirror, generic DB1 service/query interface, download service, DB2 dataset, nor research release. The owner set a future design direction to align later DB1 navigation with the proxy's compact grouped expandable layout, while visibly preserving different data-layer semantics. |
+| Outcome | `PASS — DEC-0077 CLOSED`. |
+| Affected work blocked | New source requests/capture, scheduling, generic DB1 access/download, DB2, charts, research claims, public data access, and shared-host changes remain blocked. |
+| Owner decision required | A separate explicit decision is required before any next DB1 source/capture, reconciliation, projection, access, download, or interface increment. |
+| Next review due | Before a next DB1 proposal, on a privilege/data-pipe/target deviation, or 1 September 2026, whichever is earlier. |

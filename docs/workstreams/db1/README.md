@@ -1,6 +1,6 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1/D2 passed; D3 restricted projection and private explorer deployed, awaiting owner acceptance
+**Status:** D1/D2/D3 passed; one restricted projection and private explorer accepted
 
 ## 1. Purpose and user value
 
@@ -20,11 +20,13 @@ DB1 capture priorities, schema, retention, or success criteria.
 
 ## 2. Current boundary
 
-D1 created an internal `db1` schema and one synthetic-only proof chain. D2 has
-now captured exactly one restricted source object: `/api/billtypes`, with a
-manifest and raw-object digest. It is one dated source observation, not a
-mirror, projection, data service, capture worker, or researcher-access
-surface. The completed proxy remains separate because it retains no source
+D1 created an internal `db1` schema and one synthetic-only proof chain. D2
+captured exactly one restricted source object: `/api/billtypes`, with a
+manifest and raw-object digest. D3 then built one loss-aware seven-record,
+zero-rejection projection from that exact object and exposed one authenticated
+private preview. This remains one dated source observation, not a mirror,
+data service, capture worker, generic researcher-access surface, or canonical
+dataset. The completed proxy remains separate because it retains no source
 response.
 
 The current inventory and route evidence are inputs to DB1 planning, not
@@ -78,18 +80,17 @@ passed as one fixed `/api/billtypes` request. Its [result](../../data/gb-sct/GB_
 records the restricted raw object and manifest only: no schedule, user access,
 projection, or DB2 use occurred.
 
-The proposed [D3 package — DEC-0077](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md)
-would make the next boundary explicit: one loss-aware projection from that
-named D2 manifest and one authenticated researcher preview. It excludes new
-source activity, generic access, downloads, and DB2. If approved and passed,
-its result—not this proposal—will establish what the first private interface
-actually demonstrates.
+The owner-approved [D3 package — DEC-0077](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md)
+has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
+records the seven-record/zero-rejection source-backed projection, DB1-only
+reader credential, anonymous denial, separate proxy/DB1 data pipes, and owner
+private-beta acceptance. It remains a one-capture, `NOT_SCHEDULED` increment.
 
-DEC-0077 is now technically deployed. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
-records one seven-record/zero-rejection source-backed projection, a DB1-only
-reader credential, an anonymous denial, and the separate proxy/DB1 data pipes.
-It remains a one-capture, `NOT_SCHEDULED` increment until an owner confirms the
-independent private-beta acceptance test.
+For a later separately approved DB1 interface, the owner has set a design
+direction: use the proxy catalogue's compact, grouped, expandable layout for
+consistent navigation, while keeping retained capture/projection provenance,
+version, and reconciliation state visually and semantically distinct from the
+proxy's live no-retention access.
 
 ## 6. Detailed records
 

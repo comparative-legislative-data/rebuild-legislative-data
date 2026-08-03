@@ -20,7 +20,7 @@ value and a different kind of research claim.
 | Workstream | Purpose | Current status | Start here |
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1 foundation and D2 first restricted capture passed; D3 projection/explorer proposal awaits owner review. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1 foundation, D2 first restricted capture, and D3 first private projection/preview passed. | [DB1 narrative](workstreams/db1/README.md) |
 | DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
@@ -36,9 +36,9 @@ no-retention access to source-style routes and direct source URLs; it is not a
 dataset, capture, DB1, DB2, export, chart, or research release. The D1
 [synthetic DB1 foundation](data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 has passed without source data. D2 then passed as one restricted source
-observation. The next owner decision is [D3](data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md), an exact
-single-manifest projection and private-explorer package; it is required before
-any source-backed DB1 projection or researcher interface.
+observation. D3 has now passed as one exact single-manifest source-backed
+projection and private preview. It establishes neither a current mirror nor a
+general DB1 interface; the next DB1 slice requires its own decision.
 
 ## How to use these documents
 
