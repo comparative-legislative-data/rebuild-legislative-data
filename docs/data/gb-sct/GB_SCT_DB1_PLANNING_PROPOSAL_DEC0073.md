@@ -1,8 +1,8 @@
-# GB-SCT DB1 Source-Faithful Projection Plan — DEC-0073
+# GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
 **Status:** Proposed for owner review — planning only; no source, database, VPS, or implementation action authorised
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 **Prepared:** 3 August 2026
 **Decision requested:** DEC-0073
 
@@ -28,15 +28,22 @@ That is useful for source access, but it cannot provide a stable research
 object, a reproducible input, a documented failure history, or an efficient
 way to analyse high-volume source material.
 
-DB1 is the intervening data-management product. It will preserve only
-approved source requests as immutable raw captures with manifests, then create
-a loss-aware operational projection that points back to those captures. It is
-intended to make the following possible without overstating what it has proved:
+DB1 is a living, versioned source-preservation and research-access product. It
+will routinely reconcile approved source routes, preserve authorised requests
+as immutable raw captures with manifests, and create loss-aware operational
+projections that point back to those captures. It is not a single snapshot in
+time: each capture is an immutable observation, while a declared projection can
+represent the most recently reconciled state *as of* a stated time.
+
+It is intended to make the following possible without overstating what it has
+proved:
 
 - inspect a named project capture rather than rely on a changing upstream URL;
 - identify its exact source route, window, time, byte digest, schema/drift
   state, and known retrieval failures;
 - query a declared, reproducible projection without claiming it is raw data;
+- inspect its capture/run history, freshness, coverage, change, failure, and
+  schema-drift state rather than infer that a quiet source has not changed;
 - provide a declared, inspectable source-preservation layer in its own right;
   any later DB2 work must adapt to its stated scope and limitations; and
 - make a constrained capture or projection gap visible rather than silently
@@ -135,6 +142,59 @@ DB1 therefore begins with an **independent reconciliation position**:
 This is a bounded, defensible basis for a future mirror/projection; it is not a
 claim that all upstream additions, corrections, or deletions will be detected.
 
+### 4.4 Continuous mirror and refresh model
+
+DB1 is intended to check approved source routes routinely, with a **24-hour
+default reconciliation target** for routes where that is operationally and
+source-appropriately supportable. A completed run is an observation of a named
+route/window at a named time; it does not overwrite the prior observation.
+
+The exact cadence is a route-level control, not a global promise. Before a
+route is scheduled, its package must assign one of these declared patterns:
+
+| Route pattern | Proposed reconciliation approach | Required disclosure |
+| --- | --- | --- |
+| Small, bounded collection/reference route | Full declared retrieval at the scheduled interval, normally daily; compare manifest and raw digest with the prior successful run. | Last successful check, current-as-of time, changed/unchanged/failed state, and prior comparison scope. |
+| Bounded current-period or annual route | Scheduled retrieval of the exact declared window, with a documented overlap/lookback and later recheck policy. | Window, lookback, interval, coverage, and whether older material has been revalidated. |
+| Large or high-volume route | A separately approved rolling-window and periodic full-revalidation method, with explicit transfer, streaming, cancellation, and storage budgets. | Current window, next full revalidation, incomplete/failed windows, and no completeness claim outside the declared method. |
+| Unbounded or unresolved route | Not scheduled until a source-supported bounded method is established. | `NOT_SCHEDULED` state and the exact missing condition. |
+
+A run may record `CHANGED`, `UNCHANGED`, `FAILED`, `PARTIAL`,
+`BLOCKED_BY_DRIFT`, or `NOT_SCHEDULED`. `UNCHANGED` means only that the
+declared comparison found no difference within the completed retrieval scope;
+it never means the source has made no change. `FAILED` and `PARTIAL` never
+become an absence, deletion, or unchanged assertion.
+
+Where source identifiers are available and their role is documented, DB1 may
+produce a record-level change report alongside the raw-digest comparison. An
+absence from one completed run is a reconciliation signal, not an automatic
+deletion: the declared route/window, source behaviour, and confirmation rule
+must support any stronger conclusion. No source date, response date, or HTTP
+header becomes an update watermark without documented evidence.
+
+### 4.5 PostgreSQL and raw-object storage
+
+PostgreSQL is the proposed **primary DB1 operational database**. It is the
+right fit for manifest/provenance records and source-faithful projections
+because it provides transactional integrity, indexed relational and JSON
+querying, robust constraints, controlled roles, reproducible server-side
+queries, and mature backup/recovery tooling on the project’s existing isolated
+PostgreSQL foundation.
+
+PostgreSQL is not itself the raw-source format. The intended division is:
+
+| Layer | Primary representation | Reason |
+| --- | --- | --- |
+| Immutable raw capture | Unaltered source bytes in project-owned raw-object storage, addressed by digest and manifest. | Preserves the received source object without forcing it into a database representation. |
+| Manifest, reconciliation, and provenance | PostgreSQL metadata tables. | Provides durable run history, constraints, links, and queryable audit information. |
+| Operational projection | PostgreSQL typed/indexed tables with a raw-object/manifest reference and, where useful, loss-aware JSON representation. | Gives researchers fast, stable, documented interrogation without relabelling the projection as raw source. |
+| Researcher exports | Declared build-specific JSON/NDJSON, CSV with loss/encoding statement, Parquet, and SQLite where appropriate. | Meets different research workflows without changing the authoritative DB1 capture/projection record. |
+
+Direct PostgreSQL access is not presumed for every user. The initial access
+surface should be an authenticated DB1 explorer, documented read-only API, and
+versioned download bundles. A later read-only SQL service or database-access
+offering would require its own access, capacity, and security decision.
+
 ## 5. Evidence available now and its limits
 
 The plan relies on existing non-retentive evidence only:
@@ -198,7 +258,26 @@ vote-on-motion route. Bills may be a later first **substantive** slice only
 after their unresolved capture/handling basis is addressed. This is a planning
 preference, not an approval to request any listed route.
 
-## 8. Transparency and front-end acceptance
+## 8. Researcher access product and front-end acceptance
+
+DB1 should be materially more useful to researchers than the Scottish
+Parliament API or the no-retention proxy. The proxy provides transparent access
+to a current source response; DB1 provides a stable, documented, queryable
+research object with a visible acquisition and change history.
+
+The intended researcher journey is to **discover, understand, interrogate,
+reproduce, obtain, and cite** a declared DB1 object without needing to infer
+its provenance from an opaque API response.
+
+| Researcher need | DB1 capability | Transparency requirement |
+| --- | --- | --- |
+| Discover | Route catalogue, coverage calendar, freshness indicator, capture/run history, and current-as-of projection list. | Show whether an object is current-as-of, changed, failed, partial, blocked, or not scheduled. |
+| Understand | Field/schema explorer showing source names, projection names/types, structural/null signals, nested-object treatment, and semantic unknowns. | Distinguish observed structure from a validated field definition; link every projection field to its source/capture lineage. |
+| Interrogate | Stable documented server-side filters, sorting, pagination, and explicitly supported relationship navigation over the declared projection. | Publish the exact supported grammar and limits; reject unsupported queries rather than imitate unproven upstream API behaviour. |
+| Reproduce | Capture/projection IDs, manifest/digest, as-of time, query recipe, and copyable examples for curl, Python, R, JavaScript, and supported SQL/DuckDB workflows. | Every example names the exact route/window/build and carries its limitations. |
+| Obtain | Preview plus filtered extracts and whole declared-route/build downloads in appropriate formats. | State selection, row count, schema, source window, build ID, checksum, format loss/encoding limits, and access class. |
+| Audit change | Route/window comparison, schema-drift notices, changed/unchanged/failed run history, and visible coverage gaps. | Never conceal a failed reconciliation or infer a deletion from an unobserved run. |
+| Cite | Human-readable citation and machine-readable manifest/citation metadata. | Identify the Scottish Parliament source, DB1 capture/projection ID, retrieval window, and access date. |
 
 Before any DB1 beta surface is accepted, it must let a user distinguish source
 route, capture, raw object, and projection without reading implementation code.
@@ -220,6 +299,28 @@ coverage, expose unapproved raw content, or offer generic upstream API
 compatibility. Any download proposal needs its own declared format, selection,
 lineage, and access decision.
 
+### 8.1 World-class DB1 acceptance criteria
+
+The first DB1 interface can be deliberately narrow, but it is not acceptable
+merely to display rows from PostgreSQL. Before a DB1 increment is called
+researcher-ready, its acceptance record must demonstrate, within the approved
+scope:
+
+1. a user can identify the exact source route/window, capture run, raw-object
+   digest, projection build, and current-as-of time for an object;
+2. changed, unchanged, failed, partial, drifted, and unscheduled states are
+   distinct and visible;
+3. a user can inspect a documented field/schema view without mistaking it for
+   a semantic codebook or DB2 variable definition;
+4. supported query and pagination behaviour is reproducible through the UI,
+   API, and at least one copyable programmatic recipe;
+5. each offered export is generated from a declared build, includes the
+   required manifest/schema/citation material, and has a verified checksum;
+6. limits, gaps, retention/access boundary, and source/update uncertainty are
+   visible at the point of access; and
+7. an independent front-end acceptance test confirms the interface supports a
+   researcher’s stated task without hiding the provenance record.
+
 ## 9. Gap analysis and stop conditions
 
 | Gap or risk | Current position | Required response before affected action |
@@ -228,6 +329,7 @@ lineage, and access decision.
 | Terms and source conditions | General/published evidence is not a route-specific capture licence or rate commitment. | State the applicable evidence and unresolved limitation; stop if it cannot support the proposed action. |
 | IDs, parameters, pagination | Source examples and limited observations do not establish general semantics or full retrieval grammar. | Declare only observed/authorised grammar; reject/stop on anything else. |
 | Updates, corrections, deletions | No general reliable upstream watermark demonstrated. | Use manifests, digests, windows, overlap/reconciliation design, and visible uncertainty. |
+| Routine refresh | A 24-hour target cannot be universal for high-volume/unbounded routes. | Assign each route a declared cadence pattern, capacity budget, and coverage/freshness disclosure before scheduling. |
 | High volume | Some routes are whole-history or annual firehoses. | Separate operational package with explicit transfer, streaming, cancellation, and storage budgets. |
 | Data quality/meaning | Fields and relationships are not automatically research variables. | Preserve source representation; make no semantic or Tier 1/2 claim in DB1. |
 | Security/isolation | DB1 will be retained project data on a shared VPS. | Use only the isolated project target, least privilege, non-interference checks, and no-payload log controls. |
@@ -249,7 +351,8 @@ fixtures, verification, and rollback.
 Only after D1 is accepted should the owner review D2, an exact first
 source-capture batch proposal. D2 must name the route(s), window(s), request
 cap, source/handling basis, retention/access class, transfer and retry budget,
-manifest format, success/failure criteria, and its own front-end hand-off.
+manifest format, reconciliation cadence, success/failure criteria, and its own
+front-end hand-off.
 
 Review DEC-0073 before approval against these questions:
 
@@ -258,10 +361,14 @@ Review DEC-0073 before approval against these questions:
 2. Is the staged route approach transparent without quietly shrinking the
    approved inventory?
 3. Are the proposed raw-capture, manifest, projection, access, and
-   reconciliation controls sufficient for academic-grade provenance?
+   continuous-reconciliation controls sufficient for academic-grade provenance?
 4. Is D1 appropriately source-free, and are D2/D3 properly gated?
-5. Are the listed gaps and stop conditions adequate, especially for high-volume
-   routes and source drift?
+5. Does the PostgreSQL/raw-object/export division provide the right durable,
+   secure, and researcher-friendly DB1 foundation?
+6. Are the researcher-access and acceptance criteria ambitious enough for a
+   world-class mirrored-data product, while keeping every claim scoped?
+7. Are the listed gaps and stop conditions adequate, especially for high-volume
+   routes, routine refresh, and source drift?
 
 ## 11. Narrative and detailed evidence
 

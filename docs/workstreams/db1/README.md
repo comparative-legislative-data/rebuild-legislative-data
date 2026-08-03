@@ -4,11 +4,12 @@
 
 ## 1. Purpose and user value
 
-DB1 is the future retained data-management layer. It will preserve approved
-source responses with immutable manifests and generate a loss-aware,
-reproducible operational projection for transparent, efficient source access.
+DB1 is the future retained data-management layer. It will routinely reconcile
+approved source routes, preserve immutable capture history, and generate a
+loss-aware reproducible projection for transparent, efficient source access.
 Its value is to turn the mutable, sometimes firehose-like upstream API into a
-versioned research resource with explicit capture lineage and failure records.
+living versioned research resource with explicit capture lineage, freshness,
+change, and failure records.
 
 DB1 is not yet a proven full mirror. Until scope and parity are evidenced, it
 must be described as an intended source-faithful projection.
@@ -43,9 +44,10 @@ are starting constraints, not a capture authorisation.
 ## 4. Decision and implementation path
 
 The proposed [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-now sets out the strategic product shape, staged execution path, first-batch
-selection criteria, provenance/reconciliation model, front-end acceptance, and
-stop conditions. It is awaiting owner review. It does not authorise source-data
+now sets out the strategic product shape, routine-reconciliation model,
+PostgreSQL/raw-object architecture, researcher-access product, staged execution
+path, first-batch selection criteria, front-end acceptance, and stop
+conditions. It is awaiting owner review. It does not authorise source-data
 requests, capture, database changes, or implementation.
 
 The earlier DEC-0018 plan is retained as an

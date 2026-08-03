@@ -1810,3 +1810,19 @@ Next review due:
 | Affected work blocked | Source-data capture, DB1 implementation, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
 | Owner decision required | Owner review of revised DEC-0073 before any DB1 foundation package. |
 | Next review due | Before DEC-0073 approval, on a material DB1/DB2 scope change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0110
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — owner clarification of continuous DB1 mirror and researcher-access standard |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Proposed DEC-0073, DB1 narrative, DEC-0042 programme design, update-signal evidence, high-volume operational register, retention policy, and decision register. |
+| Active phase and authorising decision | DEC-0073 remains proposed for owner review. The clarification revises the proposal only; no data, database, VPS, application, or source action is authorised. |
+| Checks performed | Replaced a static-snapshot implication with immutable capture history plus declared current-as-of projection; specified a 24-hour default reconciliation target subject to route-level cadence/volume controls; defined change/failure/drift states; selected PostgreSQL for DB1 manifests/projections with raw objects retained separately; and added researcher-access/acceptance requirements for query, exports, recipes, change audit, and citation. |
+| Findings | DB1 must offer more than retained bytes or a database table. The declared model can support a world-class research-access mirror only if each route’s cadence, coverage, limitations, and reconciliation outcome remain visible and if researcher-facing outputs retain build/manifest provenance. No current evidence establishes a universal daily source-update guarantee. |
+| Outcome | `PASS` — revised DEC-0073 preserves the no-overclaim boundary while defining a continuous mirror and researcher-access product for owner review. |
+| Affected work blocked | Source-data capture, scheduled polling, DB1 implementation, DB2 variables, downloads, charts, research claims, public data access, and shared-host changes remain blocked pending their own packages. |
+| Owner decision required | Owner review of revised DEC-0073, including the PostgreSQL/raw-object architecture and continuous reconciliation/access model. |
+| Next review due | Before DEC-0073 approval, on a route-cadence or storage/access design change, or 1 September 2026, whichever is earlier. |
