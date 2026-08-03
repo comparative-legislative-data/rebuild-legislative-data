@@ -1746,3 +1746,19 @@ Next review due:
 | Affected work blocked | Source capture, DB1, DB2, canonical variables, downloads, charts, public source/data access, research release, and shared-host changes remain blocked. |
 | Owner decision required | No new decision is required for the bounded implementation and existing project-only deployment. Owner acceptance is required after representative private-beta testing. |
 | Next review due | On local verification result, deployment result, owner acceptance, a material failure, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0106
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 3 August 2026 |
+| Review type | Triggered — DEC-0072 project-only deployment result |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0072 scope, commit `4f11adf`, deployment script output, VPS verification output, and project service boundary. |
+| Active phase and authorising decision | DEC-0072 authenticated private raw no-retention proxy access. |
+| Checks performed | VPS-pinned-runtime build; 16 tests; capability scan; deterministic package; two-service release; bounded readiness; unauthenticated source-route denial; Nginx syntax; and public-shell HTTP check. |
+| Findings | The first two API readiness polls were connection refused while the restarted service initialized. A later bounded poll passed. The deployment did not request a source response body. |
+| Outcome | `PASS — DEPLOYED, OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | DB1, DB2, capture, canonical variables, downloads, charts, public source/data access, research release, and shared-host changes remain blocked. |
+| Owner decision required | No new decision. Owner acceptance is required after representative private-beta testing. |
+| Next review due | On owner acceptance, a route failure, or 1 September 2026, whichever is earlier. |

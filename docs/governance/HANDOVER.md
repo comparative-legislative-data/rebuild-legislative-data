@@ -462,6 +462,11 @@ separate direct Scottish Parliament option. It does not change the stricter
 gates for capture/DB1, DB2/canonical variables, public release, or analytical
 claims.
 
+The DEC-0072 release at commit `4f11adf` has passed local and VPS verification
+and is deployed through the existing two project services. Owner representative
+private-beta acceptance remains pending; the release must not be represented as
+a capture, DB1/DB2 dataset, public data release, or analytical output.
+
 ## Repository state at handover
 
 - Default branch: `main`

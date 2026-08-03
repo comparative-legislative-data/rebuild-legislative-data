@@ -1,6 +1,6 @@
 # GB-SCT fast-track private raw proxy expansion (DEC-0072)
 
-**Status:** Approved — executing
+**Status:** Deployed — owner acceptance pending
 
 **Date:** 3 August 2026
 
@@ -48,3 +48,18 @@ an analytical data claim.
 Run the local verification suite, deploy the bounded release if it passes, and
 ask the owner to test the representative route set. DB1 and DB2 remain a later,
 separately approved data-management stage.
+
+## Deployment result
+
+Commit `4f11adf705be44c921a9051ff8443efc15c799d9` was pushed and deployed on 3
+August 2026 using the existing project-only two-service release procedure. The
+VPS-pinned runtime passed the full verification suite (16 tests, build,
+capability scan, and deterministic package). The release readiness check passed
+after two expected connection-refused polls during API startup; an unauthenticated
+source-route request was denied, Nginx syntax was unchanged and valid, and the
+public shell returned HTTP `200`.
+
+No source body was requested by this deployment check, and no database,
+capture/DB1, DB2, Nginx configuration, Cloudflare, secret, package, or
+shared-host change occurred. Owner acceptance of representative private-beta
+route tests remains pending.
