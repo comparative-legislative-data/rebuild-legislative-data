@@ -24,6 +24,12 @@ button { cursor: pointer; }
 .catalogue-panel { margin-top: 1rem; padding: clamp(1.35rem, 4vw, 2.25rem); border: 1px solid rgba(229, 237, 247, .14); border-radius: 1rem; background: rgba(13, 27, 47, .79); box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .2); }
 .catalogue-panel h2 { margin: 0; color: #f7f9fc; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.75rem, 4vw, 2.35rem); letter-spacing: -.035em; }
 .catalogue-summary { margin: 1.35rem 0; color: #c8d3df; }
+.catalogue-sections { display: grid; gap: 2rem; }
+.catalogue-section { display: grid; gap: .9rem; }
+.catalogue-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding-bottom: .75rem; border-bottom: 1px solid rgba(220, 229, 239, .14); }
+.catalogue-section-heading .eyebrow { margin-bottom: .35rem; }
+.catalogue-section-heading h3 { margin: 0; color: #f4f7fb; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.25rem, 3vw, 1.55rem); letter-spacing: -.02em; }
+.catalogue-section-heading > p { margin: 0; color: #aab8ca; font-size: .8rem; text-align: right; }
 .catalogue-list { display: grid; gap: .9rem; }
 .source-disclosure { margin-top: 1rem; padding: .9rem; border: 1px solid rgba(232, 189, 104, .32); border-radius: .65rem; background: rgba(232, 189, 104, .07); color: #d9e1eb; line-height: 1.5; }
 .source-disclosure p { margin: 0 0 .85rem; }
@@ -77,4 +83,4 @@ button { cursor: pointer; }
 .activation-panel { margin: 0; }
 .boundary { max-width: 48rem; margin: 2.5rem 0 0; color: #93a3b8; font-size: .84rem; line-height: 1.55; }
 ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; } li p { margin: .35rem 0; }
-@media (max-width: 42rem) { .site-shell { width: min(100% - 1.25rem, 70rem); } .site-header { align-items: flex-start; flex-direction: column; } .intro { padding-top: 3.5rem; } .access-nav button { flex: 1 1 10rem; } .route-badge { align-items: flex-start; } .route-badge-state { justify-items: start; } .route-state { text-align: left; } }
+@media (max-width: 42rem) { .site-shell { width: min(100% - 1.25rem, 70rem); } .site-header { align-items: flex-start; flex-direction: column; } .intro { padding-top: 3.5rem; } .access-nav button { flex: 1 1 10rem; } .catalogue-section-heading { align-items: flex-start; flex-direction: column; } .catalogue-section-heading > p { text-align: left; } .route-badge { align-items: flex-start; } .route-badge-state { justify-items: start; } .route-state { text-align: left; } }
