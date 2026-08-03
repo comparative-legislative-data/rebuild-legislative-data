@@ -8,7 +8,7 @@ export const accessStatusSchema = {
   properties: {
     status: { enum: [ACCESS_NOT_CONFIGURED, ACCESS_READY] },
     authentication_available: { type: "boolean" },
-    data_layers_available: { const: false }
+    data_layers_available: { type: "boolean" }
   }
 } as const;
 
