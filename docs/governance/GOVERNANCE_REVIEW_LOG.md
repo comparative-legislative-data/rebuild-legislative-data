@@ -2226,3 +2226,19 @@ Next review due:
 | Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for owner interface acceptance. A new decision is required for any route, access, projection-refresh, or scope expansion. |
 | Next review due | On owner front-end acceptance, D5 drift/failure, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0136
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D5 navigation sanity-check correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Owner screenshot/feedback; D5 result; DB1 narrative; risk register; web implementation; deployment script; and GOV-REV-0135. |
+| Active phase and authorising decision | Contained D5 owner-acceptance correction under DEC-0083. |
+| Checks performed | Confirmed the fault was duplicated top-level presentation only: two existing D4A fixed projections and the D5 access-plan release had the same research-subject heading. Corrected the UI to one subject group, added a source-level rendered-navigation regression test, and expanded the web-only deployment verification to include the active D5 timer. |
+| Findings | The prior checks verified data, capability, and service boundaries but missed a basic user-navigation sanity check. RSK-0043 now requires a subject-first grouping and direct rendered-navigation check for later DB1 presentation changes. No source, database, API, role, timer, or data boundary changed. |
+| Outcome | `PASS — WEB-ONLY CORRECTION DEPLOYED; OWNER RECHECK PENDING`. |
+| Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision is required for this contained D5 presentation correction. Owner recheck is required before DEC-0083 can close. |
+| Next review due | On owner recheck, D5 drift/failure, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

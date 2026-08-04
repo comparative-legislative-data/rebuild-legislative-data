@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createWebServer, startWebServer } from "../apps/web/dist/server/server.js";
 
@@ -23,4 +24,12 @@ test("web rejects non-loopback configuration", async () => {
   await assert.rejects(startWebServer(), /PORT must be 3220/);
   if (previousPort === undefined) delete process.env.PORT;
   else process.env.PORT = previousPort;
+});
+
+test("DB1 navigation presents one Bills and formal stages group", () => {
+  const source = readFileSync("apps/web/src/main.tsx", "utf8");
+  assert.equal((source.match(/<h3>Bills and formal stages<\/h3>/g) ?? []).length, 1);
+  assert.match(source, /billsPanels\.length\} fixed projection/);
+  assert.match(source, /1 access-plan release/);
+  assert.match(source, /fixed retained DB1 releases with route-specific access modes/);
 });

@@ -63,6 +63,14 @@ and **formal stages · collection**. Confirm that the provenance, structure,
 access-plan, and limits are intelligible, and that the absence of a large
 record browser/download is clear.
 
+On 4 August 2026, owner feedback identified that the D5 access-plan release
+had been rendered as a second top-level **Bills and formal stages** group,
+alongside the existing Bill Types/Bill Stage Types group. This was a navigation
+defect, not a data or access-control defect. The web-only correction merged
+them into one group that states `2 fixed projections · 1 access-plan release`.
+It changed no capture, raw object, database role, timer, API contract, or
+source request. A regression test now checks that the heading is rendered once.
+
 ## Boundary and next review
 
 This does not establish stage meaning, Bills linkage, bill outcomes, ordering,

@@ -141,7 +141,11 @@ a collection browser. Its [restricted handling record](../../data/gb-sct/GB_SCT_
 keeps raw content and individual records private while the fixed baseline is
 first established. Its [deployment result](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
 records the one `INITIAL` capture and private access-plan release; the remaining
-step is owner front-end acceptance.
+step is owner front-end acceptance. Owner feedback then identified and the
+web-only correction removed a duplicate top-level Bills/formal-stages group:
+that group now contains both existing fixed projections and the D5 access-plan
+release. The correction changed neither data nor access boundary; a regression
+test protects the one-group navigation rule.
 
 ## 6. Detailed records
 
