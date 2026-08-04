@@ -160,7 +160,7 @@ private-beta acceptance is complete. It includes no committee membership, assign
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
 
-The next owner decision is [DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md): a proposed two-route, source-preserving MQA Event types/Event links batch. It is documentation only until explicit approval; all other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
+[DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md) is owner-approved for a contained D13 deployment: only MQA Event types and Event links, each as an independent source-preserving release in one serial 06:15 UTC service and the existing MQA category. Deployment verification and owner private-beta acceptance are the remaining steps. All other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
 
 ## Documentation hygiene
 
