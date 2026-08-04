@@ -129,6 +129,13 @@ recurring comparison of successful releases is pending remediation. The [coverag
 states the current retained/remaining boundary without implying a complete
 mirror or DB2 release.
 
+D19's 2025 Official Reports releases and D20's now-complete 1999–2024/2026
+annual expansion are source-preserving only. The D20 2006 Committee response
+is retained but unreleased after a `NOT_AN_OBJECT` projection outcome. The
+[proposed DB1 completion and researcher-access plan — DEC-0100](GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
+sets the next ordered evidence-closure and access-design decision; it does not
+authorise an interface rewrite, re-fetch, download, DB2, or public access.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
@@ -136,6 +143,7 @@ mirror or DB2 release.
 5. [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 6. [Update-signal evidence](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
 7. [Current DB1 coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
+8. [Proposed DB1 completion and researcher-access plan — DEC-0100](GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
 
 ## Controls and templates
 

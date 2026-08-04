@@ -119,6 +119,7 @@ const D17_MIGRATION_ID = "019_mqa_annual_window_collection_batch";
 const D18_MIGRATION_ID = "020_mqa_annual_window_historical_expansion";
 const D19_MIGRATION_ID = "021_official_reports_2025_collection_batch";
 const D20_MIGRATION_ID = "022_official_reports_historical_current_expansion";
+const D21_MIGRATION_ID = "023_projection_structure_profiles";
 
 export interface RawObjectReference { digest: string; byteLength: number; relativePath: string; }
 export interface Db1FoundationOptions { databaseUrl: string; rawRoot: string; migrationRole?: string; }
@@ -505,6 +506,11 @@ async function migrate(client: PoolClient, migrationRole: string): Promise<void>
     for (const route of D20_OFFICIAL_REPORTS_ROUTES) await client.query("insert into db1.source_routes (id, origin_class, source_path, handling_class) values ($1, $2, $3, 'RESTRICTED_PROJECT') on conflict (id) do nothing", [route.id, DB1_SOURCE_ORIGIN, route.path]);
     await client.query("insert into db1.schema_migrations (id) values ($1)", [D20_MIGRATION_ID]);
   }
+  const d21 = await client.query("select 1 from db1.schema_migrations where id = $1", [D21_MIGRATION_ID]);
+  if (!d21.rowCount) {
+    await client.query("create table db1.projection_structure_profiles (projection_build_id uuid primary key references db1.projection_builds(id), observed_structure jsonb not null, profiled_at timestamptz not null default now(), profile_method text not null check (profile_method = 'DB1_JSON_OBJECT_FIELD_SCAN_V1'))");
+    await client.query("insert into db1.schema_migrations (id) values ($1)", [D21_MIGRATION_ID]);
+  }
 }
 
 async function withDb<T>(options: Db1FoundationOptions, action: (client: PoolClient) => Promise<T>, runMigrations = true): Promise<T> {
@@ -567,6 +573,19 @@ export async function migrateD17MqaAnnualWindow(options: Db1FoundationOptions): 
 export async function migrateD18MqaAnnualWindow(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD19OfficialReports(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD20OfficialReports(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
+
+/**
+ * Stores structural evidence once against each retained projection.  Readers
+ * consume this small profile instead of re-scanning a large release on every
+ * first page request.  The profile remains descriptive, not a DB2 codebook.
+ */
+export async function buildProjectionStructureProfiles(options: Db1FoundationOptions): Promise<number> {
+  return withDb(options, async (client) => {
+    const builds = await client.query<{ id: string }>("select id from db1.projection_builds where origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS' order by created_at asc");
+    for (const build of builds.rows) await writeProjectionStructureProfile(client, build.id);
+    return builds.rowCount ?? 0;
+  });
+}
 
 export async function runSyntheticFoundation(options: Db1FoundationOptions): Promise<Db1FoundationResult> {
   const bytes = createSyntheticFixture();
@@ -1605,7 +1624,15 @@ async function d4bProjectionBuild(client: PoolClient, options: D4BProjectionOpti
     }
   }
   await client.query("update db1.projection_builds set projected_records = $2, rejected_records = $3 where id = $1", [buildId, projectedRecords, rejectedRecords]);
+  await writeProjectionStructureProfile(client, buildId);
   return { buildId, projectedRecords, rejectedRecords };
+}
+
+async function writeProjectionStructureProfile(client: PoolClient, buildId: string): Promise<void> {
+  await client.query(
+    "insert into db1.projection_structure_profiles (projection_build_id, observed_structure, profiled_at, profile_method) select $1, coalesce(jsonb_agg(jsonb_build_object('key', key, 'observed_types', to_jsonb(observed_types), 'record_count', record_count) order by key), '[]'::jsonb), now(), 'DB1_JSON_OBJECT_FIELD_SCAN_V1' from (select field.key, array_agg(distinct jsonb_typeof(field.value) order by jsonb_typeof(field.value)) as observed_types, count(*) as record_count from db1.projection_records record cross join lateral jsonb_each(record.preserved_record) as field(key, value) where record.projection_build_id = $1 group by field.key) fields on conflict (projection_build_id) do update set observed_structure = excluded.observed_structure, profiled_at = excluded.profiled_at, profile_method = excluded.profile_method",
+    [buildId]
+  );
 }
 
 export async function runD4BReferenceCatalogueProjections(options: D4BProjectionOptions): Promise<D4BProjectionResult> {

@@ -37,7 +37,11 @@ dataset, capture, DB1, DB2, export, chart, or research release. The D1
 [synthetic DB1 foundation](data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 has passed without source data. D2 then passed as one restricted source
 observation. Later named DB1 cohorts have established scheduled,
-source-preserving releases across the currently declared coverage. They do not
+source-preserving releases across the currently declared coverage. D20's
+Official Reports initial capture is complete, subject to one explicit
+unreleased projection exception; the proposed [DB1 completion and
+researcher-access plan](data/gb-sct/GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
+sets the next decision. These records do not
 establish a current complete mirror, general query service, DB2 dataset, or
 research release. See the [DB1 coverage snapshot](data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md).
 

@@ -1,4 +1,5 @@
 import { Pool } from "pg";
+import { createHash } from "node:crypto";
 import {
   D4B_REFERENCE_CATALOGUE_ID,
   D4B_REFERENCE_PROJECTIONS,
@@ -89,6 +90,14 @@ export type Db1PagedResponse = Omit<Db1ExplorerResponse, "records"> & {
   record_page: { offset: number; limit: number; total_records: number; records: Db1ExplorerRecord[]; };
 };
 
+export type Db1JsonlRelease = {
+  filename: string;
+  body: string;
+  byteLength: number;
+  sha256: string;
+  recordCount: number;
+};
+
 function requiredEnvironment(name: string): string {
   const value = process.env[name]?.trim();
   if (!value) throw new Error(`missing required DB1 explorer configuration: ${name}`);
@@ -98,25 +107,6 @@ function requiredEnvironment(name: string): string {
 export function loadDb1ExplorerConfig(): Db1ExplorerConfig | undefined {
   if (!process.env.CLD_DB1_READER_DB?.trim()) return undefined;
   return { databaseUrl: requiredEnvironment("CLD_DB1_READER_DB") };
-}
-
-function observedType(value: unknown): string {
-  if (value === null) return "null";
-  if (Array.isArray(value)) return "array";
-  return typeof value;
-}
-
-function observedStructure(records: Db1ExplorerRecord[]): Db1ExplorerResponse["observed_structure"] {
-  const values = new Map<string, { types: Set<string>; count: number }>();
-  for (const record of records) {
-    for (const [key, value] of Object.entries(record.preserved_record)) {
-      const item = values.get(key) ?? { types: new Set<string>(), count: 0 };
-      item.types.add(observedType(value));
-      item.count += 1;
-      values.set(key, item);
-    }
-  }
-  return [...values.entries()].sort(([left], [right]) => left.localeCompare(right)).map(([key, item]) => ({ key, observed_types: [...item.types].sort(), record_count: item.count }));
 }
 
 export class Db1Explorer {
@@ -172,7 +162,7 @@ export class Db1Explorer {
           projected_records: item.projected_records,
           rejected_records: item.rejected_records
         },
-        observed_structure: observedStructure(records.rows),
+        observed_structure: await this.profileForBuild(client, item.build_id),
         limitations: [
           "This is a retained DB1 operational projection, not a live Scottish Parliament response or an unqualified mirror.",
           "The raw object is not exposed through this interface. Preserved records are the loss-aware projection representation.",
@@ -414,13 +404,9 @@ export class Db1Explorer {
     );
     const item = build.rows[0];
     if (!item) return undefined;
-    const allRecords = await client.query<Db1ExplorerRecord>(
-      "select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc",
-      [item.build_id, spec.manifestId]
-    );
     const records = page
       ? await client.query<Db1ExplorerRecord>("select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc offset $3 limit $4", [item.build_id, spec.manifestId, page.offset, page.limit])
-      : allRecords;
+      : await client.query<Db1ExplorerRecord>("select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc", [item.build_id, spec.manifestId]);
     const reconciliation = await client.query<{ state: string; observed_at: Date }>(
       "select state, observed_at from db1.reconciliation_observations where source_route_id = $1 order by observed_at desc limit 1",
       [spec.routeId]
@@ -452,7 +438,7 @@ export class Db1Explorer {
         projected_records: item.projected_records,
         rejected_records: item.rejected_records
       },
-      observed_structure: observedStructure(allRecords.rows),
+      observed_structure: await this.profileForBuild(client, item.build_id),
       limitations: [
         "This is a retained fixed D4A baseline projection, not a live Scottish Parliament response or an unqualified mirror.",
         "The raw object is not exposed through this interface. Preserved records are the loss-aware projection representation.",
@@ -461,6 +447,16 @@ export class Db1Explorer {
       ],
       records: records.rows
     };
+  }
+
+  private async profileForBuild(client: import("pg").PoolClient, buildId: string): Promise<Db1ExplorerResponse["observed_structure"]> {
+    const profile = await client.query<{ observed_structure: Db1ExplorerResponse["observed_structure"] }>(
+      "select observed_structure from db1.projection_structure_profiles where projection_build_id = $1",
+      [buildId]
+    );
+    const observed = profile.rows[0]?.observed_structure;
+    if (!observed) throw new Error(`DB1 structural profile is unavailable for projection ${buildId}`);
+    return observed;
   }
 
   async memberContextD11(route: (typeof D11_MEMBER_CONTEXT_ROUTES)[number], offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
@@ -531,5 +527,37 @@ export class Db1Explorer {
   async officialReportsD20(route: AnnualWindowRoute, offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
     const client = await this.pool.connect();
     try { await client.query("begin read only"); const release = await client.query<{ projection_build_id: string }>("select projection_build_id from db1.official_reports_releases where id = $1 and source_route_id = $2 and integrity_status = 'PASS'", [route.releaseId, route.id]); const item = release.rows[0]; if (!item) { await client.query("commit"); return undefined; } const build = (await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id])).rows[0]; if (!build) throw new Error("D20 Official Reports release build is unavailable"); const panel = await this.referencePanel(client, { routeId: route.id, sourcePath: route.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit }); if (!panel) throw new Error("D20 Official Reports release contract mismatch"); await client.query("commit"); return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D20 Official Reports annual projection, not a live source response, complete proceedings record, or an unqualified mirror.", "The source-year is part of the fixed URL. Pagination is the only selection contract; no year selector, generic query, raw object, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence only; no stage, bill, amendment, speaker, committee, contribution, date, or text semantics are asserted.", `The latest reconciliation state is ${panel.reconciliation_state}; it does not establish freshness, completeness, or cross-route consistency.`] }; } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  async officialReportsD20Jsonl(route: AnnualWindowRoute): Promise<Db1JsonlRelease | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ projection_build_id: string; manifest_id: string }>(
+        "select r.projection_build_id, p.manifest_id from db1.official_reports_releases r join db1.projection_builds p on p.id = r.projection_build_id where r.id = $1 and r.source_route_id = $2 and r.integrity_status = 'PASS' and p.integrity_status = 'PASS'",
+        [route.releaseId, route.id]
+      );
+      const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const records = await client.query<Db1ExplorerRecord>(
+        "select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc",
+        [item.projection_build_id, item.manifest_id]
+      );
+      await client.query("commit");
+      const body = records.rows.map((record) => JSON.stringify({ source_position: record.source_position, preserved_record: record.preserved_record })).join("\n") + (records.rowCount ? "\n" : "");
+      const bytes = Buffer.byteLength(body, "utf8");
+      return {
+        filename: `${route.releaseId}.jsonl`,
+        body,
+        byteLength: bytes,
+        sha256: createHash("sha256").update(body).digest("hex"),
+        recordCount: records.rowCount ?? 0
+      };
+    } catch (error) {
+      await client.query("rollback").catch(() => undefined);
+      throw error;
+    } finally {
+      client.release();
+    }
   }
 }

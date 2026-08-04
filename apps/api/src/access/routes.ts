@@ -101,6 +101,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     for (const route of D18_MQA_ANNUAL_WINDOW_ROUTES) app.get(annualWindowPath(route, "d18"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     for (const route of D19_OFFICIAL_REPORTS_ROUTES) app.get(annualWindowPath(route, "d19"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     for (const route of D20_OFFICIAL_REPORTS_ROUTES) app.get(annualWindowPath(route, "d20"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -424,4 +425,20 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     const identity = await session(runtime, request); if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" }); if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" }); const query = request.query as Record<string, unknown>; const offset = pageNumber(query.offset, 0, 100_000); const limit = pageNumber(query.limit, 20, 50); if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED" }); const response = await db1Explorer.officialReportsD20(route, offset, limit); if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" }); reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION"); reply.header("x-cld-db1-release", route.releaseId); reply.header("x-cld-db1-offset", String(offset)); reply.header("x-cld-db1-limit", String(limit)); reply.header("vary", "Cookie"); return reply.send(response);
   };
   for (const route of D20_OFFICIAL_REPORTS_ROUTES) app.get(annualWindowPath(route, "d20"), { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => d20OfficialReportsPaged(request, reply, route));
+  const d20Plenary2026 = D20_OFFICIAL_REPORTS_ROUTES.find((route) => route.id === "gb-sct.plenary-official-reports-2026.collection");
+  if (!d20Plenary2026) throw new Error("D20 2026 Plenary Official Reports route is missing from the fixed registry");
+  app.get("/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl", { config: { rateLimit: { max: 2, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const release = await db1Explorer.officialReportsD20Jsonl(d20Plenary2026);
+    if (!release) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_JSONL_RELEASE");
+    reply.header("x-cld-db1-release", d20Plenary2026.releaseId);
+    reply.header("x-cld-db1-record-count", String(release.recordCount));
+    reply.header("x-cld-db1-sha256", release.sha256);
+    reply.header("content-disposition", `attachment; filename=\"${release.filename}\"`);
+    reply.header("vary", "Cookie");
+    return reply.type("application/x-ndjson; charset=utf-8").send(release.body);
+  });
 }

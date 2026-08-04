@@ -50,7 +50,9 @@ semantic transformation belong to the later, independently governed DB2 layer.
 
 DB1 now has private, named source-preserving releases across bounded bills,
 stages, reference, context, committee, MQA, annual Questions/Votes source
-windows, and the two 2025 Official Reports source windows. Every included
+windows, and annual Official Reports windows 1999–2026. The D20 Official
+Reports result has 53 passing releases and one explicit retained-but-unreleased
+2006 Committee exception; D19's 2025 pair remains separately scheduled. Every included
 release has a manifest, source-position lineage, projection/rejection record,
 declared reader boundary, and a route-specific reconciliation position. The
 complete proxy remains separate because it retains no source response.
@@ -60,7 +62,9 @@ interim: its first page derives a structural summary from the whole retained
 projection, creating a material first-open delay. The owner has directed that
 performance, structural transparency, snippets, and download/release design
 be addressed together once the planned DB1 ingests are complete—not piecemeal
-within individual cohorts.
+within individual cohorts. The approved [DEC-0100 access plan](../../data/gb-sct/GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
+and its [design specification](../../data/gb-sct/GB_SCT_DB1_RESEARCHER_ACCESS_DESIGN_SPECIFICATION_DEC0100.md)
+now define that next implementation decision.
 
 This is still not a complete mirror, general query service, download service,
 canonical dataset, or research release. The [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)

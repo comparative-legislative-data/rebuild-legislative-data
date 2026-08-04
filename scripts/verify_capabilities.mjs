@@ -61,11 +61,13 @@ for (const directory of directories) {
 
 const db1RouteSource = readFileSync("apps/api/src/access/routes.ts", "utf8");
 const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1", "/db1/gb-sct/institutional-reference/d4c-v1", "/db1/gb-sct/formal-stages/d5-v1", "/db1/gb-sct/bills/d6-v1", "/db1/gb-sct/government-roles/d7-v1", "/db1/gb-sct/committee-roles/d8-v1", "/db1/gb-sct/party-roles/d9-v1", "/db1/gb-sct/parties/d10-v1", "/db1/gb-sct/members/d11-v1", "/db1/gb-sct/member-constituency-statuses/d11-v1", "/db1/gb-sct/member-region-statuses/d11-v1", "/db1/gb-sct/member-parties/d11-v1", "/db1/gb-sct/member-party-roles/d11-v1", "/db1/gb-sct/member-government-roles/d11-v1", "/db1/gb-sct/committees/d12-v1", "/db1/gb-sct/mqa-event-types/d13-v1", "/db1/gb-sct/mqa-event-links/d13-v1", "/db1/gb-sct/mqa-event-subtypes/d14-v1", "/db1/gb-sct/mqa-business-consideration/d15-v1", "/db1/gb-sct/mqa-business-programme/d16-v1", "/db1/gb-sct/mqa-questions-2026/d17-v1", "/db1/gb-sct/votes-on-motions-2026/d17-v1"];
+const fixedDb1DownloadRoutes = ["/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl"];
+const declaredAllowedDb1Routes = [...fixedDb1Routes, ...fixedDb1DownloadRoutes];
 const declaredDb1Routes = [...db1RouteSource.matchAll(/app\.get\("(\/db1\/[^\"]+)/g)].map((match) => match[1]);
-for (const route of fixedDb1Routes) {
+for (const route of declaredAllowedDb1Routes) {
   if (declaredDb1Routes.filter((item) => item === route).length !== 2) throw new Error(`DB1 fixed route must appear in configured and unavailable states: ${route}`);
 }
-if (declaredDb1Routes.length !== fixedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !fixedDb1Routes.includes(route))) {
+if (declaredDb1Routes.length !== declaredAllowedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !declaredAllowedDb1Routes.includes(route))) {
   throw new Error("DB1 reader must not expose a generic or alternate DB1 route");
 }
 if ((db1RouteSource.match(/for \(const route of D18_MQA_ANNUAL_WINDOW_ROUTES\)/g) ?? []).length !== 2 || !db1RouteSource.includes("annualWindowPath(route, \"d18\")")) {
@@ -73,6 +75,9 @@ if ((db1RouteSource.match(/for \(const route of D18_MQA_ANNUAL_WINDOW_ROUTES\)/g
 }
 if ((db1RouteSource.match(/for \(const route of D20_OFFICIAL_REPORTS_ROUTES\)/g) ?? []).length !== 2 || !db1RouteSource.includes("annualWindowPath(route, \"d20\")")) {
   throw new Error("DB1 Official Reports reader must be limited to the closed D20 annual-window registry");
+}
+if (!db1RouteSource.includes("d20Plenary2026") || !db1RouteSource.includes("application/x-ndjson")) {
+  throw new Error("DB1 JSONL pilot must be bound to the named 2026 Plenary D20 release");
 }
 const db1Explorer = readFileSync("apps/api/src/db1/explorer.ts", "utf8");
 for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4B_REFERENCE_CATALOGUE_ID", "D4B_REFERENCE_PROJECTIONS", "D4C_INSTITUTIONAL_CATALOGUE_ID", "D4C_INSTITUTIONAL_ROUTES", "D5_FORMAL_STAGES_RELEASE_ID", "D5_FORMAL_STAGES_ROUTE", "D6_BILLS_COLLECTION_RELEASE_ID", "D6_BILLS_COLLECTION_ROUTE", "D7_GOVERNMENT_ROLES_RELEASE_ID", "D7_GOVERNMENT_ROLES_ROUTE", "D8_COMMITTEE_ROLES_RELEASE_ID", "D8_COMMITTEE_ROLES_ROUTE", "D9_PARTY_ROLES_RELEASE_ID", "D9_PARTY_ROLES_ROUTE", "D10_PARTIES_RELEASE_ID", "D10_PARTIES_ROUTE", "D11_MEMBER_CONTEXT_ROUTES", "D12_COMMITTEES_RELEASE_ID", "D12_COMMITTEES_ROUTE", "D13_MQA_TAXONOMY_LINK_ROUTES", "D14_MQA_EVENT_SUBTYPES_RELEASE_ID", "D14_MQA_EVENT_SUBTYPES_ROUTE", "D15_MQA_CONSIDERATION_RELEASE_ID", "D16_MQA_PROGRAMME_RELEASE_ID", "D17_MQA_ANNUAL_WINDOW_ROUTES", "AnnualWindowRoute", "mqaAnnualWindow", "member_context_releases", "committees_releases", "mqa_taxonomy_link_releases", "mqa_event_subtypes_releases", "mqa_consideration_releases", "mqa_programme_releases", "mqa_annual_window_releases", "catalogue_releases", "institutional_catalogue_releases", "formal_stages_releases", "bills_collection_releases", "government_roles_releases", "committee_roles_releases", "party_roles_releases", "parties_releases", "begin read only", "fetch(", "node:fs", "raw_object"]) {
