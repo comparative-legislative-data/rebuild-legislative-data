@@ -2514,3 +2514,19 @@ Next review due:
 | Affected work blocked | Every D11 source request/capture/schedule/database/code/deployment/interface change; all detail/parameter routes; all joins, interval/status logic, DB2, download, generic query/search, public output, and shared-host changes remain blocked pending DEC-0090 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0090's six-route source-preserving D11 batch. |
 | Next review due | On DEC-0090 decision, D11 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0154
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0090 approval and D11 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0089, DEC-0090; D11 implementation/release checks; and GOV-REV-0153. |
+| Active phase and authorising decision | D11 Member-context collection batch under owner-approved DEC-0090. |
+| Checks performed | Confirmed six fixed no-query clients; manual redirect/no-retry/30-second/2 MiB/JSON-array gates; one serial D11 runner/timer; per-route raw/manifest/projection/release lineage; private fixed pagination; reader raw/write denial; anonymous denial; proxy/DB1 separation; continuity of D4A–D10; and exclusion of detail, joins, relationship/interval interpretation, DB2, public access, generic query/download, and shared-host changes. Ran one initial and one immediate same-route comparison for every named route. |
+| Findings | All six initial captures passed and projected 4,218 source-preserved objects with zero rejections. Every immediate comparison was `UNCHANGED`; D11 is active/enabled for 05:30 UTC daily. Two loopback health probes failed during expected API restart, then bounded readiness passed without a source retry. |
+| Outcome | `PASS — D11 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | All D11 detail/parameter routes; cross-route joins; status, relationship, and interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the stated private-beta acceptance journey. Any D11 route, source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
+| Next review due | On owner acceptance, D11 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

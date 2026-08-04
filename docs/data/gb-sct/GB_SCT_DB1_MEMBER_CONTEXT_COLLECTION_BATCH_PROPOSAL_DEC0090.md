@@ -1,6 +1,6 @@
 # GB-SCT DB1 Member-Context Collection Batch — DEC-0090
 
-**Status:** Proposed — owner approval required before implementation, source access, or deployment  
+**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0090
 
@@ -28,7 +28,7 @@ same raw-preservation objective. They do **not** share semantic meaning:
 each has its own raw object, manifest, projection, release, reconciliation
 state, and field guide.
 
-Approval would authorise the complete contained D11 loop: route-specific
+Approval authorised the complete contained D11 loop: route-specific
 handling gate, implementation, one initial and one immediate reconciliation
 request per route, daily serial reconciliation, fixed source-preserving
 projection, private fixed-pagination reader, deployment, and one owner
@@ -160,8 +160,8 @@ expansion.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 source-preserving mirror increment after closed D10 Parties collection. |
-| Authority for proposal preparation | Owner instruction to proceed on 4 August 2026. It authorises documentation preparation only, not D11 execution. |
-| Proposed authorising decision | DEC-0090, if approved. |
+| Authority for proposal preparation | Owner instruction to proceed on 4 August 2026; owner then approved DEC-0090. |
+| Authorising decision | DEC-0090, approved 4 August 2026. |
 | Affected systems/records if approved | Six new isolated DB1 releases, D11 service/timer, raw archive/manifests/projections, private DB1 catalogue, D11 result, DB1 narrative, endpoint matrix, decision/risk registers, and governance review. |
 | Known uncertainty | Current source size/shape, update behaviour, complete temporal coverage, field meaning, personal-data classification, validity semantics, relationship direction, and cross-route consistency remain unestablished. |
 | Smallest change | One six-route, collection-only, serial batch; no detail/parameter route, no joins, and no new access class. |

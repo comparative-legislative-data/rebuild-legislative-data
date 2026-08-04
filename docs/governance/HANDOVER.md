@@ -135,14 +135,16 @@ independent daily 05:02 UTC timer, and private fixed-pagination reader. Owner
 accepted the private-beta journey; DEC-0089 is closed. It does not include
 Party detail, Member/relationship routes, DB2, or public access.
 
-The proposed [D11 Member-context collection batch —
+The [D11 Member-context collection batch —
 DEC-0090](../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
-would test a faster, but still contained, cadence: six named no-query member
-and relationship collections as separate source-preserving releases in one
-serial package. It is not approved for source access, implementation, or
-deployment. It does not authorise any relationship/interval interpretation,
-cross-route join, DB2 use, download, public access, detail route, or shared
-host change.
+has passed restricted deployment: six named no-query member and relationship
+collections were retained as separate source-preserving releases in one serial
+package. Its
+[result](../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
+records one initial and immediate unchanged comparison per route and the daily
+05:30 UTC D11 service. Owner private-beta acceptance remains required. It does
+not authorise any relationship/interval interpretation, cross-route join, DB2
+use, download, public access, detail route, or shared-host change.
 
 ## Documentation hygiene
 

@@ -88,11 +88,14 @@ records the private paginated reader and completed owner interface acceptance;
 DEC-0089 is closed. Party detail, member/relationship routes, DB2, and public
 access remain excluded.
 
-The proposed [D11 Member-context collection batch — DEC-0090](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
-would replace the recent single-route cadence with six separately preserved,
-collection-only releases in one serial package. It is documentation only until
-the owner decides it: no source request, capture, implementation, deployment,
-or interface change is authorised by the proposal.
+The [D11 Member-context collection batch — DEC-0090](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
+has passed restricted deployment: six separately preserved, collection-only
+releases were tested in one serial package, with one initial and one immediate
+unchanged comparison per route. Its
+[result](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
+records the six fixed releases, the daily 05:30 UTC service, and the pending
+private-beta acceptance. It creates no member/relationship/interval claim,
+join, DB2 input, download, or public access.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
