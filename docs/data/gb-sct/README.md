@@ -124,8 +124,8 @@ and 19,473 objects respectively, under one serial daily timer. Its reusable
 annual-window mechanism allows a later named year-expansion decision without a
 new bespoke pipeline. [D18 — DEC-0097](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md)
 has now added fixed source-preserving annual Questions and Votes-on-Motions
-releases for every year 2011–2025, with a separate weekly reconciliation
-timer. The [coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
+releases for every year 2011–2025, with a separate weekly failure-retry timer;
+recurring comparison of successful releases is pending remediation. The [coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
 states the current retained/remaining boundary without implying a complete
 mirror or DB2 release.
 

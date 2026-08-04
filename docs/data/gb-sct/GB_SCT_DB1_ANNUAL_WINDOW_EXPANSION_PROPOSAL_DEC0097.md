@@ -49,11 +49,17 @@ database writes, code, deployment, scheduling, or interface changes.
 
 ## Implementation record
 
+**Post-implementation correction (4 August 2026):** the deployed D18 timer
+retries source-years that do not yet have a successful observation; it does not
+re-fetch successful historical releases. Accordingly, the earlier proposed
+weekly-recheck wording records the intended model, not current recurring
+comparison behaviour. See the [D18 result correction](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md#correction-recorded-4-august-2026).
+
 Owner approval was recorded before capture. All 30 fixed source-year releases
 were captured and projected on 2026-08-04 with zero projection rejections.
 The private DB1 catalogue exposes them only through a closed, fixed-path
 registry, grouped as 2011–2025 annual MQA Questions and Votes on motions
-releases. The weekly D18 reconciliation timer is enabled for Sundays at 07:30
+releases. The weekly D18 failure-retry timer is enabled for Sundays at 07:30
 UTC. See
 [the D18 result record](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md)
 for the release counts and remaining limitation.

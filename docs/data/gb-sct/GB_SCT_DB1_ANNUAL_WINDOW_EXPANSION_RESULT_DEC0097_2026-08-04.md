@@ -30,20 +30,30 @@ source year and family before the corresponding page is read.
 
 The D18 job is independent of both the direct source relay and the daily 2026
 D17 annual-window job. It is enabled as a serial weekly systemd timer for
-Sundays at 07:30 UTC. A run compares the closed D18 registry only; it cannot
-accept a user-supplied year or source path.
+Sundays at 07:30 UTC. It cannot accept a user-supplied year or source path.
+
+### Correction recorded 4 August 2026
+
+Code review after deployment established that the current D18 scheduled runner
+retries only source-years without a successful prior observation. It does not
+re-fetch successful 2011–2025 source-years and therefore does **not** currently
+provide recurring comparison evidence for those releases. The timer is active,
+but it is a failure-retry schedule rather than full historical reconciliation.
+The older wording below about the first weekly comparison is superseded by this
+correction. A later named remediation decision is required before that claim can
+be restored.
 
 ## Limits and review trigger
 
 These are fixed retained initial historical baselines, not live Scottish
 Parliament responses and not an assertion that all source history is complete,
 fresh, semantically interpreted, or free of later correction. Unlike D17,
-there is no D18 immediate comparison claim. The first scheduled weekly run
-will provide the first later route-level comparison evidence.
+there is no D18 immediate comparison claim or scheduled successful-route
+comparison evidence at present.
 
-Review DEC-0097 after that run, or sooner if a source route fails, exceeds its
-route-specific resource limit, changes its representation, or a new required
-historical window is approved.
+Review DEC-0097 when the scheduled-comparison remediation is proposed, or
+sooner if a source route fails, exceeds its route-specific resource limit,
+changes its representation, or a new required historical window is approved.
 
 ## Deployment maintenance resolution
 

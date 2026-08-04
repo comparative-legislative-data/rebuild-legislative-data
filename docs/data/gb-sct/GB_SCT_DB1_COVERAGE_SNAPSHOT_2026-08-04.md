@@ -24,7 +24,7 @@ complete selected source-route inventory.
 | Members, parties and roles | Members; member constituency/region status; member parties; member party/government roles; Parties; Party roles; Government roles | Daily | No point-in-time membership, affiliation, role, interval, or occupancy claim. |
 | Committees | Committees and Committee roles | Daily | No membership, assignment, status, date, contact, or free-text interpretation. |
 | MQA reference and bounded motion material | Event types, Event links, Event subtypes, consideration motions, programme motions | Daily | No event, motion, bill, stage, vote, or amendment semantics. |
-| Questions and Votes on motions | Fixed annual windows for 2011–2025 plus 2026 | D17 2026 daily; D18 historical years weekly (Sunday 07:30 UTC) | Questions and votes are source-preserved only. Votes on motions may include motion-amendment votes; they are not bill-amendment votes. |
+| Questions and Votes on motions | Fixed annual windows for 2011–2025 plus 2026 | D17 2026 daily; D18 historical failure-retry timer weekly (Sunday 07:30 UTC), with recurring successful-route comparison pending remediation | Questions and votes are source-preserved only. Votes on motions may include motion-amendment votes; they are not bill-amendment votes. |
 
 Each retained release has route-specific raw bytes, digest, manifest,
 source-position lineage, a projection/rejection record, a declared schedule,
@@ -52,8 +52,8 @@ interpretation of bill amendments.
 
 ## Recommended next decision
 
-The next DB1 proposal should address **annual Official Reports**, beginning
-with one declared year for each of the Committee and Plenary source families.
+The next DB1 proposal is [DEC-0098: annual Official Reports](GB_SCT_DB1_OFFICIAL_REPORTS_2025_COHORT_PROPOSAL_DEC0098.md),
+beginning with one declared year for each of the Committee and Plenary source families.
 They are the principal remaining API material for Stage 1/2/3 proceedings, but
 their observed annual sizes (approximately 150 MB and 124 MB respectively for
 2025) require an explicit transfer, memory, failure, retention, and
