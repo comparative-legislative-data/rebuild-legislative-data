@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# This deployment deliberately installs D19 without running, enabling, or
-# scheduling a D19 source reconciliation. Live source capture is a separate
-# explicit operator action after the release has passed its local checks.
+# This deployment never runs, enables, disables, or otherwise changes D19
+# reconciliation scheduling. It preserves the already-approved timer state
+# while replacing only the release-linked service and web/API units.
 if [[ "${1:-}" != "--from-clone" ]]; then
   [[ "${EUID}" -eq 0 ]] || { echo "This deployment must run as root." >&2; exit 1; }
   outer_stage="$(mktemp -d /srv/cld-gb-sct/staging/db1-d19-source.XXXXXX)"
@@ -75,8 +75,9 @@ for attempt in $(seq 1 30); do curl -fsS --max-time 5 http://127.0.0.1:3210/heal
 curl -fsS --max-time 5 http://127.0.0.1:3210/healthz >/dev/null
 curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null
 for path in committee-official-reports-2025 plenary-official-reports-2025; do curl -sS --max-time 5 -o /dev/null -w '%{http_code}' "http://127.0.0.1:3210/db1/gb-sct/${path}/d19-v1" | grep -qx '403'; done
-systemctl is-enabled --quiet cld-gb-sct-db1-d19.timer && { echo "D19 timer must remain disabled after deployment." >&2; exit 1; } || true
+systemctl is-enabled --quiet cld-gb-sct-db1-d19.timer
+systemctl is-active --quiet cld-gb-sct-db1-d19.timer
 
 cleanup
 trap - ERR
-printf 'D19 deployment passed for %s without starting, enabling, or scheduling D19 reconciliation.\n' "$commit"
+printf 'D19 deployment passed for %s without changing D19 reconciliation scheduling.\n' "$commit"
