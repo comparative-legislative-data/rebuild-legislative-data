@@ -584,7 +584,7 @@ export async function buildProjectionStructureProfiles(options: Db1FoundationOpt
     const builds = await client.query<{ id: string }>("select id from db1.projection_builds where origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS' order by created_at asc");
     for (const build of builds.rows) await writeProjectionStructureProfile(client, build.id);
     return builds.rowCount ?? 0;
-  });
+  }, false);
 }
 
 export async function runSyntheticFoundation(options: Db1FoundationOptions): Promise<Db1FoundationResult> {
