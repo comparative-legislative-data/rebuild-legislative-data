@@ -213,6 +213,15 @@ is closed. It is not evidence of party affiliation, validity, continuity,
 history, or a transferable handling basis for detail, relationship, or other
 `Notes`-bearing routes.
 
+The proposed [D11 Member-context collection batch — DEC-0090](../../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
+is the first planned shift from a one-route cadence to a compatible,
+collection-only batch. It would keep six raw/manifests/projections/releases
+separate while using one serial delivery package: Members, Member constituency
+statuses, Member region statuses, Member parties, Member party roles, and
+Member government roles. It deliberately creates no member, representation,
+party, office, role, relationship, or interval claim, and remains a proposal
+until owner approval.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

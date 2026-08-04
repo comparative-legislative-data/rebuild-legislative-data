@@ -2498,3 +2498,19 @@ Next review due:
 | Affected work blocked | Party detail; every member/relationship route; Party roles changes; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | A new decision is required for any D10 route, source-contract, projection-refresh, access, semantic, or scope change, or for the next cohort. |
 | Next review due | On D10 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0153
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D11 faster-cadence collection-batch proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 plan/narrative; DEC-0082 and DEC-0085–DEC-0089; master endpoint matrix; route-level handling register; contextual-reference and roles/committees reconnaissance; GOV-REV-0152; and the owner’s request to test ingest a bigger compatible set at each cycle. |
+| Active phase and authorising scope | Documentation-only D11 proposal preparation after owner acceptance of DEC-0089. The owner asked to proceed, but no source, VPS, database, implementation, deployment, or interface action is authorised before a D11 decision. |
+| Checks performed | Compared remaining collection routes for shared fixed no-query contracts, historic collection scale, common member/relationship handling risks, source-preserving value, access-mode fit, and the need to keep separate route lineage rather than use batch delivery as a shortcut to semantic integration. |
+| Findings | Six collection routes form a coherent bounded member-context batch: Members; Member constituency statuses; Member region statuses; Member parties; Member party roles; and Member government roles. Historic reconnaissance indicates each is a collection, while person identifiers, protected-content indicators, free text, relationship records, and validity periods keep their meanings and handling unresolved. Detail routes, committees, and high-volume routes are not compatible with this package. |
+| Outcome | `PASS — DEC-0090 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Every D11 source request/capture/schedule/database/code/deployment/interface change; all detail/parameter routes; all joins, interval/status logic, DB2, download, generic query/search, public output, and shared-host changes remain blocked pending DEC-0090 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0090's six-route source-preserving D11 batch. |
+| Next review due | On DEC-0090 decision, D11 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
