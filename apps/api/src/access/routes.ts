@@ -4,7 +4,7 @@ import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
 import { Db1Explorer, loadDb1ExplorerConfig } from "../db1/explorer.js";
-import { D11_MEMBER_CONTEXT_ROUTES, D13_MQA_TAXONOMY_LINK_ROUTES, D14_MQA_EVENT_SUBTYPES_RELEASE_ID, D15_MQA_CONSIDERATION_RELEASE_ID, D16_MQA_PROGRAMME_RELEASE_ID, D17_MQA_ANNUAL_WINDOW_ROUTES } from "../db1/foundation.js";
+import { D11_MEMBER_CONTEXT_ROUTES, D13_MQA_TAXONOMY_LINK_ROUTES, D14_MQA_EVENT_SUBTYPES_RELEASE_ID, D15_MQA_CONSIDERATION_RELEASE_ID, D16_MQA_PROGRAMME_RELEASE_ID, D17_MQA_ANNUAL_WINDOW_ROUTES, D18_MQA_ANNUAL_WINDOW_ROUTES, type AnnualWindowRoute } from "../db1/foundation.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -26,6 +26,7 @@ function pageNumber(value: unknown, fallback: number, maximum: number): number |
   const parsed = Number(value);
   return Number.isSafeInteger(parsed) && parsed <= maximum ? parsed : undefined;
 }
+function annualWindowPath(route: AnnualWindowRoute, decision: string): string { return `/db1/gb-sct/${route.id.replace("gb-sct.", "").replace(".collection", "")}/${decision}-v1`; }
 
 function setSession(reply: { setCookie: Function }, token: string): void {
   reply.setCookie(cookieName, token, {
@@ -97,6 +98,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/db1/gb-sct/mqa-business-programme/d16-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/mqa-questions-2026/d17-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/votes-on-motions-2026/d17-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    for (const route of D18_MQA_ANNUAL_WINDOW_ROUTES) app.get(annualWindowPath(route, "d18"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -406,9 +408,10 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
   app.get("/db1/gb-sct/mqa-business-programme/d16-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
     const identity = await session(runtime, request); if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" }); if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" }); const query = request.query as Record<string, unknown>; const offset = pageNumber(query.offset, 0, 100_000); const limit = pageNumber(query.limit, 20, 50); if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED" }); const response = await db1Explorer.mqaProgrammeD16(offset, limit); if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" }); reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION"); reply.header("x-cld-db1-release", D16_MQA_PROGRAMME_RELEASE_ID); reply.header("vary", "Cookie"); return reply.send(response);
   });
-  const d17Paged = async (request: FastifyRequest, reply: any, route: (typeof D17_MQA_ANNUAL_WINDOW_ROUTES)[number]) => {
-    const identity = await session(runtime, request); if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" }); if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" }); const query = request.query as Record<string, unknown>; const offset = pageNumber(query.offset, 0, 100_000); const limit = pageNumber(query.limit, 20, 50); if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED" }); const response = await db1Explorer.mqaAnnualWindowD17(route, offset, limit); if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" }); reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION"); reply.header("x-cld-db1-release", route.releaseId); reply.header("vary", "Cookie"); return reply.send(response);
+  const annualWindowPaged = async (request: FastifyRequest, reply: any, route: AnnualWindowRoute, decision: "D17" | "D18") => {
+    const identity = await session(runtime, request); if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" }); if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" }); const query = request.query as Record<string, unknown>; const offset = pageNumber(query.offset, 0, 100_000); const limit = pageNumber(query.limit, 20, 50); if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED" }); const response = await db1Explorer.mqaAnnualWindow(route, decision, offset, limit); if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" }); reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION"); reply.header("x-cld-db1-release", route.releaseId); reply.header("x-cld-db1-offset", String(offset)); reply.header("x-cld-db1-limit", String(limit)); reply.header("vary", "Cookie"); return reply.send(response);
   };
-  app.get("/db1/gb-sct/mqa-questions-2026/d17-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => d17Paged(request, reply, D17_MQA_ANNUAL_WINDOW_ROUTES[0]));
-  app.get("/db1/gb-sct/votes-on-motions-2026/d17-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => d17Paged(request, reply, D17_MQA_ANNUAL_WINDOW_ROUTES[1]));
+  app.get("/db1/gb-sct/mqa-questions-2026/d17-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => annualWindowPaged(request, reply, D17_MQA_ANNUAL_WINDOW_ROUTES[0], "D17"));
+  app.get("/db1/gb-sct/votes-on-motions-2026/d17-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => annualWindowPaged(request, reply, D17_MQA_ANNUAL_WINDOW_ROUTES[1], "D17"));
+  for (const route of D18_MQA_ANNUAL_WINDOW_ROUTES) app.get(annualWindowPath(route, "d18"), { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => annualWindowPaged(request, reply, route, "D18"));
 }

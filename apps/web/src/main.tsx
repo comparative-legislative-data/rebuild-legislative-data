@@ -186,6 +186,10 @@ const mqaAnnualWindowDb1Routes = [
   { key: "mqa-questions-2026", title: "MQA questions · 2026", endpoint: "/db1/gb-sct/mqa-questions-2026/d17-v1" },
   { key: "votes-on-motions-2026", title: "Votes on motions · 2026", endpoint: "/db1/gb-sct/votes-on-motions-2026/d17-v1" }
 ] as const;
+const d18AnnualWindowDb1Routes = Array.from({ length: 15 }, (_, index) => 2011 + index).flatMap((year) => [
+  { key: `mqa-questions-${year}`, title: `MQA questions · ${year}`, endpoint: `/db1/gb-sct/mqa-questions-${year}/d18-v1` },
+  { key: `votes-on-motions-${year}`, title: `Votes on motions · ${year}`, endpoint: `/db1/gb-sct/votes-on-motions-${year}/d18-v1` }
+]);
 
 // Retained only while the prior DB1 render branch remains in the source tree;
 // the active DB1 view below derives its headings from catalogueSections.
@@ -296,6 +300,7 @@ function App() {
   const [db1MqaConsideration, setDb1MqaConsideration] = useState<Db1Paged | undefined>();
   const [db1MqaProgramme, setDb1MqaProgramme] = useState<Db1Paged | undefined>();
   const [db1MqaAnnualWindow, setDb1MqaAnnualWindow] = useState<Partial<Record<(typeof mqaAnnualWindowDb1Routes)[number]["key"], Db1Paged>>>({});
+  const [db1D18AnnualWindow, setDb1D18AnnualWindow] = useState<Record<string, Db1Paged | undefined>>({});
   const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
 
   async function refreshIdentity() {
@@ -441,6 +446,7 @@ function App() {
   async function loadDb1MqaConsideration(offset: number) { const response = await request(`/db1/gb-sct/mqa-business-consideration/d15-v1?offset=${offset}&limit=20`); if (response.ok) setDb1MqaConsideration(await response.json() as Db1Paged); }
   async function loadDb1MqaProgramme(offset: number) { const response = await request(`/db1/gb-sct/mqa-business-programme/d16-v1?offset=${offset}&limit=20`); if (response.ok) setDb1MqaProgramme(await response.json() as Db1Paged); }
   async function loadDb1MqaAnnualWindow(route: (typeof mqaAnnualWindowDb1Routes)[number], offset: number) { const response = await request(`${route.endpoint}?offset=${offset}&limit=20`); if (!response.ok) return; const panel = await response.json() as Db1Paged; setDb1MqaAnnualWindow((current) => ({ ...current, [route.key]: panel })); }
+  async function loadDb1D18AnnualWindow(route: (typeof d18AnnualWindowDb1Routes)[number], offset: number) { const response = await request(`${route.endpoint}?offset=${offset}&limit=20`); if (!response.ok) return; const panel = await response.json() as Db1Paged; setDb1D18AnnualWindow((current) => ({ ...current, [route.key]: panel })); }
 
   const db1ReferencePanels = db1Catalogue?.panels ?? [];
   const db1InstitutionalPanels = db1InstitutionalCatalogue?.panels ?? [];
@@ -449,6 +455,7 @@ function App() {
     const panel = db1MemberContext[route.key];
     return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MemberContext(route, offset)} /> : null;
   });
+  const d18AnnualWindowPanel = <details className="route-card route-card-db1"><summary><div className="route-badge"><div><p className="route-group">Retained DB1 historical annual windows · D18</p><h3>MQA questions and votes on motions · 2011–2025</h3><code>30 fixed source-year projections</code></div><div className="route-badge-state"><span className="route-state">weekly reconciliation scheduled</span><span className="route-expand-label">Show source years</span></div></div></summary><div className="route-details"><p className="panel-copy">Each source-year release is a fixed retained DB1 projection of the named Scottish Parliament annual URL. Choose a year and source family to inspect it; this is server-side page selection, not a year-input API, generic query, download, or DB2 dataset.</p><div className="source-example-list">{Array.from({ length: 15 }, (_, index) => 2011 + index).map((year) => { const questions = d18AnnualWindowDb1Routes.find((route) => route.key === `mqa-questions-${year}`); const votes = d18AnnualWindowDb1Routes.find((route) => route.key === `votes-on-motions-${year}`); const questionPanel = questions ? db1D18AnnualWindow[questions.key] : undefined; const votePanel = votes ? db1D18AnnualWindow[votes.key] : undefined; return <section className="source-example" key={year}><div><strong>{year}</strong><p>Two fixed retained source-year releases.</p></div><div className="source-actions">{questions ? <button type="button" className="secondary-button" onClick={() => void loadDb1D18AnnualWindow(questions, 0)}>MQA questions</button> : null}{votes ? <button type="button" className="secondary-button" onClick={() => void loadDb1D18AnnualWindow(votes, 0)}>Votes on motions</button> : null}</div>{questionPanel ? <Db1PagedPanel panel={questionPanel} title={questions!.title} onPage={(offset) => void loadDb1D18AnnualWindow(questions!, offset)} /> : null}{votePanel ? <Db1PagedPanel panel={votePanel} title={votes!.title} onPage={(offset) => void loadDb1D18AnnualWindow(votes!, offset)} /> : null}</section>; })}</div></div></details>;
   const mqaTaxonomyLinkPanels = [
     ...mqaTaxonomyLinkDb1Routes.map((route) => {
     const panel = db1MqaTaxonomyLink[route.key];
@@ -456,7 +463,8 @@ function App() {
     }),
     db1MqaConsideration ? <Db1PagedPanel key="mqa-business-consideration" panel={db1MqaConsideration} title="MQA business motions · consideration" onPage={(offset) => void loadDb1MqaConsideration(offset)} /> : null,
     db1MqaProgramme ? <Db1PagedPanel key="mqa-business-programme" panel={db1MqaProgramme} title="MQA business motions · programme" onPage={(offset) => void loadDb1MqaProgramme(offset)} /> : null,
-    ...mqaAnnualWindowDb1Routes.map((route) => { const panel = db1MqaAnnualWindow[route.key]; return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MqaAnnualWindow(route, offset)} /> : null; })
+    ...mqaAnnualWindowDb1Routes.map((route) => { const panel = db1MqaAnnualWindow[route.key]; return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MqaAnnualWindow(route, offset)} /> : null; }),
+    d18AnnualWindowPanel
   ];
 
   if (view === "db1" && identity.authenticated && identity.data_layers_available) {
