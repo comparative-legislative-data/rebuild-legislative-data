@@ -22,4 +22,4 @@ sed \
   -e 's/Member-context/MQA taxonomy\/link/g' \
   -e 's/Member context/MQA taxonomy\/link/g' \
   -e 's/KEEP_ELEVEN/d11/g' \
-  "$template_root/source/ops/deploy_db1_d11_member_context.sh" | bash
+  "$template_root/source/ops/deploy_db1_d11_member_context.sh" | bash -s -- --from-clone
