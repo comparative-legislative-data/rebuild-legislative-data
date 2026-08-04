@@ -26,6 +26,12 @@ phase was then run once against the already retained captures, with the
 installed release identifier; it made no second source request. Both
 projections passed with zero rejects.
 
+The first private-reader check then exposed a separate omission: the API's
+dedicated DB1 reader role had not been granted `SELECT` on D19's new release
+table. That role now has that one table permission, verified by reading the
+two release rows. The interface reports an in-page failure if a D19 reader
+request cannot be loaded rather than failing silently.
+
 ## Boundary
 
 These are retained operational projections, not live source responses, an
