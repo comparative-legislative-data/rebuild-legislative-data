@@ -1,6 +1,6 @@
 # GB-SCT DB1 Official Reports expansion — DEC-0099
 
-**Status:** `PROPOSED — OWNER APPROVAL REQUIRED`
+**Status:** `APPROVED — IMPLEMENTATION IN PROGRESS`
 **Date:** 4 August 2026
 
 ## Decision in brief

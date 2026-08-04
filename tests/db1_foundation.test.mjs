@@ -3,7 +3,7 @@ import { mkdtemp, readFile, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4C_INSTITUTIONAL_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, D6_BILLS_COLLECTION_ROUTE, D6_MAX_BYTES, D7_GOVERNMENT_ROLES_ROUTE, D7_MAX_BYTES, D8_COMMITTEE_ROLES_ROUTE, D8_MAX_BYTES, D13_MQA_TAXONOMY_LINK_ROUTES, D13_MAX_BYTES, D16_MQA_PROGRAMME_ROUTE, D16_MAX_BYTES, D19_OFFICIAL_REPORTS_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, fetchD4CInstitutionalCollection, fetchD6BillsCollection, fetchD7GovernmentRoles, fetchD8CommitteeRoles, fetchD13MqaTaxonomyLinkCollection, fetchD16MqaProgramme, fetchD19OfficialReportsToRawObject, persistSyntheticRawObject, runD19SyntheticStreamingProof, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
+import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4C_INSTITUTIONAL_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, D6_BILLS_COLLECTION_ROUTE, D6_MAX_BYTES, D7_GOVERNMENT_ROLES_ROUTE, D7_MAX_BYTES, D8_COMMITTEE_ROLES_ROUTE, D8_MAX_BYTES, D13_MQA_TAXONOMY_LINK_ROUTES, D13_MAX_BYTES, D16_MQA_PROGRAMME_ROUTE, D16_MAX_BYTES, D19_OFFICIAL_REPORTS_ROUTES, D20_OFFICIAL_REPORTS_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, fetchD4CInstitutionalCollection, fetchD6BillsCollection, fetchD7GovernmentRoles, fetchD8CommitteeRoles, fetchD13MqaTaxonomyLinkCollection, fetchD16MqaProgramme, fetchD19OfficialReportsToRawObject, fetchD20OfficialReportsToRawObject, persistSyntheticRawObject, runD19SyntheticStreamingProof, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -153,6 +153,24 @@ test("D19 collector accepts only a fixed route and streams synthetic bytes into 
     assert.deepEqual(await readFile(join(root, result.raw.relativePath)), bytes);
     await assert.rejects(fetchD19OfficialReportsToRawObject({ ...D19_OFFICIAL_REPORTS_ROUTES[0], id: "other" }, root, async () => new Response("[]", { status: 200 })), /fixed cohort/);
     await assert.rejects(fetchD19OfficialReportsToRawObject(D19_OFFICIAL_REPORTS_ROUTES[0], root, async () => new Response("[]", { status: 200, headers: { "content-length": String(D19_OFFICIAL_REPORTS_ROUTES[0].maxBytes + 1) } })), /BODY_TOO_LARGE/);
+    assert.deepEqual(await readdir(join(root, ".staging")), []);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("D20 has exactly the approved 54 fixed annual URLs and rejects outside-year input without source traffic", async () => {
+  const root = await mkdtemp(join(tmpdir(), "cld-d20-collector-"));
+  try {
+    assert.equal(D20_OFFICIAL_REPORTS_ROUTES.length, 54);
+    assert.equal(D20_OFFICIAL_REPORTS_ROUTES.some((route) => route.path.includes("year=2025")), false);
+    assert.equal(D20_OFFICIAL_REPORTS_ROUTES[0].path, "/api/orscommitteemeeting?year=1999");
+    assert.equal(D20_OFFICIAL_REPORTS_ROUTES.at(-1)?.path, "/api/orsplenarymeeting?year=2026");
+    let calls = 0;
+    await assert.rejects(fetchD20OfficialReportsToRawObject({ ...D20_OFFICIAL_REPORTS_ROUTES[0], id: "gb-sct.committee-official-reports-2099.collection", path: "/api/orscommitteemeeting?year=2099", url: "https://data.parliament.scot/api/orscommitteemeeting?year=2099" }, root, async () => { calls += 1; return new Response("[]", { status: 200 }); }), /closed DEC-0099 registry/);
+    assert.equal(calls, 0);
+    await fetchD20OfficialReportsToRawObject(D20_OFFICIAL_REPORTS_ROUTES[0], root, async () => new Response("[]", { status: 200, headers: { "content-type": "application/json" } }));
+    await assert.rejects(fetchD20OfficialReportsToRawObject(D20_OFFICIAL_REPORTS_ROUTES[0], root, async () => new Response("[]", { status: 200, headers: { "content-length": String(D20_OFFICIAL_REPORTS_ROUTES[0].maxBytes + 1) } })), /BODY_TOO_LARGE/);
     assert.deepEqual(await readdir(join(root, ".staging")), []);
   } finally {
     await rm(root, { recursive: true, force: true });

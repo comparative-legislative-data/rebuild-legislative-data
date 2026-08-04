@@ -71,6 +71,9 @@ if (declaredDb1Routes.length !== fixedDb1Routes.length * 2 || declaredDb1Routes.
 if ((db1RouteSource.match(/for \(const route of D18_MQA_ANNUAL_WINDOW_ROUTES\)/g) ?? []).length !== 2 || !db1RouteSource.includes("annualWindowPath(route, \"d18\")")) {
   throw new Error("DB1 historical reader must be limited to the closed D18 annual-window registry");
 }
+if ((db1RouteSource.match(/for \(const route of D20_OFFICIAL_REPORTS_ROUTES\)/g) ?? []).length !== 2 || !db1RouteSource.includes("annualWindowPath(route, \"d20\")")) {
+  throw new Error("DB1 Official Reports reader must be limited to the closed D20 annual-window registry");
+}
 const db1Explorer = readFileSync("apps/api/src/db1/explorer.ts", "utf8");
 for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4B_REFERENCE_CATALOGUE_ID", "D4B_REFERENCE_PROJECTIONS", "D4C_INSTITUTIONAL_CATALOGUE_ID", "D4C_INSTITUTIONAL_ROUTES", "D5_FORMAL_STAGES_RELEASE_ID", "D5_FORMAL_STAGES_ROUTE", "D6_BILLS_COLLECTION_RELEASE_ID", "D6_BILLS_COLLECTION_ROUTE", "D7_GOVERNMENT_ROLES_RELEASE_ID", "D7_GOVERNMENT_ROLES_ROUTE", "D8_COMMITTEE_ROLES_RELEASE_ID", "D8_COMMITTEE_ROLES_ROUTE", "D9_PARTY_ROLES_RELEASE_ID", "D9_PARTY_ROLES_ROUTE", "D10_PARTIES_RELEASE_ID", "D10_PARTIES_ROUTE", "D11_MEMBER_CONTEXT_ROUTES", "D12_COMMITTEES_RELEASE_ID", "D12_COMMITTEES_ROUTE", "D13_MQA_TAXONOMY_LINK_ROUTES", "D14_MQA_EVENT_SUBTYPES_RELEASE_ID", "D14_MQA_EVENT_SUBTYPES_ROUTE", "D15_MQA_CONSIDERATION_RELEASE_ID", "D16_MQA_PROGRAMME_RELEASE_ID", "D17_MQA_ANNUAL_WINDOW_ROUTES", "AnnualWindowRoute", "mqaAnnualWindow", "member_context_releases", "committees_releases", "mqa_taxonomy_link_releases", "mqa_event_subtypes_releases", "mqa_consideration_releases", "mqa_programme_releases", "mqa_annual_window_releases", "catalogue_releases", "institutional_catalogue_releases", "formal_stages_releases", "bills_collection_releases", "government_roles_releases", "committee_roles_releases", "party_roles_releases", "parties_releases", "begin read only", "fetch(", "node:fs", "raw_object"]) {
   if (term === "fetch(" || term === "node:fs" || term === "raw_object") {
@@ -125,4 +128,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3–D19 releases and closed registries.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3–D20 releases and closed registries.\n");

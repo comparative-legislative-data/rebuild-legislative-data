@@ -81,6 +81,16 @@ export const D19_OFFICIAL_REPORTS_ROUTES = [
   { id: "gb-sct.committee-official-reports-2025.collection", path: "/api/orscommitteemeeting?year=2025", url: "https://data.parliament.scot/api/orscommitteemeeting?year=2025", releaseId: "gb_sct_committee_official_reports_2025_d19_v1", maxBytes: 201_326_592, timeoutMs: 600_000, observedBytes: 150_496_374 },
   { id: "gb-sct.plenary-official-reports-2025.collection", path: "/api/orsplenarymeeting?year=2025", url: "https://data.parliament.scot/api/orsplenarymeeting?year=2025", releaseId: "gb_sct_plenary_official_reports_2025_d19_v1", maxBytes: 167_772_160, timeoutMs: 600_000, observedBytes: 123_955_194 }
 ] as const;
+/**
+ * DEC-0099 is a closed historic/current annual registry.  It deliberately
+ * excludes 2025: that year remains the independently scheduled D19 cohort.
+ * Budgets are conservative ceilings inferred from the already-retained 2025
+ * windows; a larger future response fails safely rather than being truncated.
+ */
+export const D20_OFFICIAL_REPORTS_ROUTES: readonly AnnualWindowRoute[] = [...Array.from({ length: 26 }, (_, index) => 1999 + index), 2026].flatMap((year) => [
+  { id: `gb-sct.committee-official-reports-${year}.collection`, path: `/api/orscommitteemeeting?year=${year}`, url: `https://data.parliament.scot/api/orscommitteemeeting?year=${year}`, releaseId: `gb_sct_committee_official_reports_${year}_d20_v1`, maxBytes: 201_326_592, timeoutMs: 600_000 },
+  { id: `gb-sct.plenary-official-reports-${year}.collection`, path: `/api/orsplenarymeeting?year=${year}`, url: `https://data.parliament.scot/api/orsplenarymeeting?year=${year}`, releaseId: `gb_sct_plenary_official_reports_${year}_d20_v1`, maxBytes: 167_772_160, timeoutMs: 600_000 }
+]);
 export const D4B_REFERENCE_CATALOGUE_ID = "gb_sct_reference_cohort_d4a_v1";
 export const D4B_REFERENCE_PROJECTIONS = [
   { routeId: "gb-sct.bill-types.collection", sourcePath: "/api/billtypes", manifestId: "6a414dbf-973a-4aa5-9aae-b217fc18c1e3", projectionName: "gb_sct_bill_types_d4a_v1" },
@@ -108,6 +118,7 @@ const D16_MIGRATION_ID = "018_mqa_business_programme_collection";
 const D17_MIGRATION_ID = "019_mqa_annual_window_collection_batch";
 const D18_MIGRATION_ID = "020_mqa_annual_window_historical_expansion";
 const D19_MIGRATION_ID = "021_official_reports_2025_collection_batch";
+const D20_MIGRATION_ID = "022_official_reports_historical_current_expansion";
 
 export interface RawObjectReference { digest: string; byteLength: number; relativePath: string; }
 export interface Db1FoundationOptions { databaseUrl: string; rawRoot: string; migrationRole?: string; }
@@ -153,6 +164,8 @@ export interface D19StreamingProofResult { routeId: string; observedBytes: numbe
 export interface D19StreamCaptureResult { raw: RawObjectReference; created: boolean; contentType: string; status: number; }
 export interface D19OfficialReportsResult extends D4ReferenceCaptureResult {}
 export interface D19OfficialReportsProjectionResult { releases: D4BProjectionResult[]; }
+export interface D20OfficialReportsResult extends D4ReferenceCaptureResult {}
+export interface D20OfficialReportsProjectionResult { releases: D4BProjectionResult[]; }
 
 class D2CaptureFailure extends Error {
   constructor(readonly code: string) { super(code); }
@@ -307,6 +320,17 @@ export async function runD19SyntheticStreamingProof(scratchRoot: string): Promis
 
 export async function fetchD19OfficialReportsToRawObject(route: typeof D19_OFFICIAL_REPORTS_ROUTES[number], rawRoot: string, request: typeof fetch = fetch): Promise<D19StreamCaptureResult> {
   if (!D19_OFFICIAL_REPORTS_ROUTES.some((candidate) => candidate.id === route.id && candidate.url === route.url)) throw new Error("D19 official-reports route is not in the fixed cohort");
+  const response = await request(route.url, { method: "GET", headers: { accept: "application/json" }, redirect: "manual", signal: AbortSignal.timeout(route.timeoutMs) });
+  if (response.status < 200 || response.status >= 300) throw new D2CaptureFailure("HTTP_STATUS");
+  const declared = Number(response.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > route.maxBytes) throw new D2CaptureFailure("BODY_TOO_LARGE");
+  if (!response.body) throw new D2CaptureFailure("EMPTY_BODY");
+  const stored = await streamToRawObject(rawRoot, response.body, route.maxBytes);
+  return { ...stored, contentType: response.headers.get("content-type") ?? "", status: response.status };
+}
+
+export async function fetchD20OfficialReportsToRawObject(route: AnnualWindowRoute, rawRoot: string, request: typeof fetch = fetch): Promise<D19StreamCaptureResult> {
+  if (!D20_OFFICIAL_REPORTS_ROUTES.some((candidate) => candidate.id === route.id && candidate.url === route.url)) throw new Error("D20 official-reports route is not in the closed DEC-0099 registry");
   const response = await request(route.url, { method: "GET", headers: { accept: "application/json" }, redirect: "manual", signal: AbortSignal.timeout(route.timeoutMs) });
   if (response.status < 200 || response.status >= 300) throw new D2CaptureFailure("HTTP_STATUS");
   const declared = Number(response.headers.get("content-length"));
@@ -476,6 +500,11 @@ async function migrate(client: PoolClient, migrationRole: string): Promise<void>
     await client.query("create table db1.official_reports_releases (id text primary key, source_route_id text not null unique references db1.source_routes(id), projection_build_id uuid not null references db1.projection_builds(id), integrity_status text not null check (integrity_status = 'PASS'), created_at timestamptz not null default now())");
     await client.query("insert into db1.schema_migrations (id) values ($1)", [D19_MIGRATION_ID]);
   }
+  const d20 = await client.query("select 1 from db1.schema_migrations where id = $1", [D20_MIGRATION_ID]);
+  if (!d20.rowCount) {
+    for (const route of D20_OFFICIAL_REPORTS_ROUTES) await client.query("insert into db1.source_routes (id, origin_class, source_path, handling_class) values ($1, $2, $3, 'RESTRICTED_PROJECT') on conflict (id) do nothing", [route.id, DB1_SOURCE_ORIGIN, route.path]);
+    await client.query("insert into db1.schema_migrations (id) values ($1)", [D20_MIGRATION_ID]);
+  }
 }
 
 async function withDb<T>(options: Db1FoundationOptions, action: (client: PoolClient) => Promise<T>, runMigrations = true): Promise<T> {
@@ -537,6 +566,7 @@ export async function migrateD16MqaProgramme(options: Db1FoundationOptions): Pro
 export async function migrateD17MqaAnnualWindow(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD18MqaAnnualWindow(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD19OfficialReports(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
+export async function migrateD20OfficialReports(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 
 export async function runSyntheticFoundation(options: Db1FoundationOptions): Promise<Db1FoundationResult> {
   const bytes = createSyntheticFixture();
@@ -1417,6 +1447,51 @@ export async function runD19OfficialReportsReconciliation(options: D4ReferenceCa
   }, options.migrate ?? true);
 }
 
+/**
+ * Runs only unseeded fixed D20 routes, in registry order.  Re-running an
+ * initial batch therefore resumes rather than re-fetching successful years.
+ * The later 2026 comparison schedule will use its own explicit runner.
+ */
+export async function runD20OfficialReportsInitialBatch(options: D4ReferenceCaptureOptions & { migrate?: boolean; routeLimit?: number }): Promise<D20OfficialReportsResult> {
+  const now = options.now ?? (() => new Date()); const request = options.request ?? fetch; const wait = options.wait ?? (async (milliseconds: number) => new Promise<void>((resolveWait) => setTimeout(resolveWait, milliseconds)));
+  const routeLimit = options.routeLimit ?? 2;
+  if (!Number.isSafeInteger(routeLimit) || routeLimit < 1 || routeLimit > D20_OFFICIAL_REPORTS_ROUTES.length) throw new Error("D20 routeLimit must be a positive bounded integer");
+  return withDb(options, async (client) => {
+    const cycleId = randomUUID(); const startedAt = now(); const results: D4ReferenceRouteResult[] = [];
+    const lock = await client.query<{ acquired: boolean }>("select pg_try_advisory_xact_lock(hashtext('cld-gb-sct-d20-official-reports-initial-batch')) as acquired");
+    if (!lock.rows[0]?.acquired) { await client.query("insert into db1.reconciliation_cycles (id, started_at, finished_at, status) values ($1, $2, $2, 'SKIPPED_OVERLAP')", [cycleId, startedAt]); return { cycleId, status: "SKIPPED_OVERLAP", routes: [] }; }
+    await client.query("insert into db1.reconciliation_cycles (id, started_at, status) values ($1, $2, 'IN_PROGRESS')", [cycleId, startedAt]);
+    const candidates: AnnualWindowRoute[] = [];
+    for (const route of D20_OFFICIAL_REPORTS_ROUTES) {
+      const settled = await client.query("select 1 from db1.reconciliation_observations where source_route_id = $1 and state in ('INITIAL', 'CHANGED', 'UNCHANGED', 'BLOCKED_BY_SOURCE_DRIFT', 'FAILED') limit 1", [route.id]);
+      if (!settled.rowCount) candidates.push(route);
+      if (candidates.length === routeLimit) break;
+    }
+    for (const [index, route] of candidates.entries()) {
+      if (index > 0) await wait(1_000);
+      const runId = randomUUID(); await client.query("insert into db1.capture_runs (id, source_route_id, origin_class, started_at, status) values ($1, $2, $3, $4, 'IN_PROGRESS')", [runId, route.id, DB1_SOURCE_ORIGIN, now()]);
+      let captured: D19StreamCaptureResult | undefined;
+      try {
+        captured = await fetchD20OfficialReportsToRawObject(route, options.rawRoot, request);
+        const signature = structureSignature(await readFile(resolve(options.rawRoot, captured.raw.relativePath)));
+        const manifestId = randomUUID();
+        try {
+          await client.query("insert into db1.raw_objects (digest, origin_class, relative_path, byte_length, content_type) values ($1, $2, $3, $4, $5) on conflict (digest) do nothing", [captured.raw.digest, DB1_SOURCE_ORIGIN, captured.raw.relativePath, captured.raw.byteLength, captured.contentType]);
+          await client.query("insert into db1.manifest_entries (id, capture_run_id, raw_digest, origin_class, content_type, byte_length, status, retrieved_at) values ($1, $2, $3, $4, $5, $6, 'SUCCEEDED', $7)", [manifestId, runId, captured.raw.digest, DB1_SOURCE_ORIGIN, captured.contentType, captured.raw.byteLength, now()]);
+          await client.query("update db1.capture_runs set finished_at = $2, status = 'SUCCEEDED' where id = $1", [runId, now()]);
+          await client.query("insert into db1.reconciliation_observations (id, cycle_id, source_route_id, capture_run_id, manifest_id, state, raw_digest, structure_signature, observed_at) values ($1, $2, $3, $4, $5, 'INITIAL', $6, $7, $8)", [randomUUID(), cycleId, route.id, runId, manifestId, captured.raw.digest, signature, now()]);
+        } catch (error) { if (captured.created) await unlink(resolve(options.rawRoot, captured.raw.relativePath)).catch(() => undefined); throw error; }
+        results.push({ routeId: route.id, state: "INITIAL", manifestId, raw: captured.raw });
+      } catch (error) {
+        if (captured?.created) await unlink(resolve(options.rawRoot, captured.raw.relativePath)).catch(() => undefined);
+        const code = failureCode(error); await client.query("insert into db1.manifest_entries (id, capture_run_id, origin_class, status, retrieved_at, failure_code) values ($1, $2, $3, 'FAILED', $4, $5)", [randomUUID(), runId, DB1_SOURCE_ORIGIN, now(), code]); await client.query("update db1.capture_runs set finished_at = $2, status = 'FAILED' where id = $1", [runId, now()]); await client.query("insert into db1.reconciliation_observations (id, cycle_id, source_route_id, capture_run_id, state, failure_code, observed_at) values ($1, $2, $3, $4, 'FAILED', $5, $6)", [randomUUID(), cycleId, route.id, runId, code, now()]); results.push({ routeId: route.id, state: "FAILED", failureCode: code });
+      }
+    }
+    const failed = results.filter((result) => result.state === "FAILED").length; const status: D4ReferenceCaptureResult["status"] = failed === results.length && results.length > 0 ? "FAILED" : failed ? "PARTIAL" : "SUCCEEDED";
+    await client.query("update db1.reconciliation_cycles set finished_at = $2, status = $3 where id = $1", [cycleId, now(), status]); return { cycleId, status, routes: results };
+  }, options.migrate ?? true);
+}
+
 export async function runD12CommitteesReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D12CommitteesResult> {
   const now = options.now ?? (() => new Date()); const request = options.request ?? fetch;
   return withDb(options, async (client) => {
@@ -1799,6 +1874,27 @@ export async function runD19OfficialReportsProjections(options: D4BProjectionOpt
       }
       const initial = await client.query<{ manifest_id: string }>("select manifest_id from db1.reconciliation_observations where source_route_id = $1 and state = 'INITIAL' and manifest_id is not null order by observed_at asc limit 1", [route.id]); const manifestId = initial.rows[0]?.manifest_id;
       if (!manifestId) throw new Error(`D19 initial Official Reports manifest is unavailable: ${route.id}`);
+      const projection = await d4bProjectionBuild(client, options, { routeId: route.id, sourcePath: route.path, manifestId, projectionName: route.releaseId });
+      await client.query("insert into db1.official_reports_releases (id, source_route_id, projection_build_id, integrity_status, created_at) values ($1, $2, $3, 'PASS', $4)", [route.releaseId, route.id, projection.buildId, options.now?.() ?? new Date()]);
+      releases.push({ catalogueId: route.releaseId, projectionBuildIds: [projection.buildId], projectedRecords: projection.projectedRecords, rejectedRecords: projection.rejectedRecords });
+    }
+    return { releases };
+  }, options.migrate ?? true);
+}
+
+export async function runD20OfficialReportsProjections(options: D4BProjectionOptions): Promise<D20OfficialReportsProjectionResult> {
+  return withDb(options, async (client) => {
+    const releases: D4BProjectionResult[] = [];
+    for (const route of D20_OFFICIAL_REPORTS_ROUTES) {
+      const existing = await client.query<{ projection_build_id: string }>("select projection_build_id from db1.official_reports_releases where id = $1 and source_route_id = $2 and integrity_status = 'PASS'", [route.releaseId, route.id]);
+      if (existing.rows[0]) {
+        const count = (await client.query<{ projected_records: number; rejected_records: number }>("select projected_records, rejected_records from db1.projection_builds where id = $1", [existing.rows[0].projection_build_id])).rows[0];
+        if (!count) throw new Error(`D20 release build is unavailable: ${route.id}`);
+        releases.push({ catalogueId: route.releaseId, projectionBuildIds: [existing.rows[0].projection_build_id], projectedRecords: count.projected_records, rejectedRecords: count.rejected_records });
+        continue;
+      }
+      const initial = await client.query<{ manifest_id: string }>("select manifest_id from db1.reconciliation_observations where source_route_id = $1 and state = 'INITIAL' and manifest_id is not null order by observed_at asc limit 1", [route.id]); const manifestId = initial.rows[0]?.manifest_id;
+      if (!manifestId) continue;
       const projection = await d4bProjectionBuild(client, options, { routeId: route.id, sourcePath: route.path, manifestId, projectionName: route.releaseId });
       await client.query("insert into db1.official_reports_releases (id, source_route_id, projection_build_id, integrity_status, created_at) values ($1, $2, $3, 'PASS', $4)", [route.releaseId, route.id, projection.buildId, options.now?.() ?? new Date()]);
       releases.push({ catalogueId: route.releaseId, projectionBuildIds: [projection.buildId], projectedRecords: projection.projectedRecords, rejectedRecords: projection.rejectedRecords });
