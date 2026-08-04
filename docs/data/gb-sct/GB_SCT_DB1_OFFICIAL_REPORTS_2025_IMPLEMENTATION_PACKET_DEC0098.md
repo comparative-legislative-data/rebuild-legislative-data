@@ -64,9 +64,14 @@ corrected in local code: it now states that the job is a weekly failure retry,
 not recurring successful-route comparison. This is a transparency correction;
 it is not the separate D18 remediation.
 
-The remaining local work is to add the two fixed D19 private-reader routes and
-the volume-appropriate catalogue badges, then package the release. No D19
-database migration or live source action has occurred.
+The two fixed D19 private-reader routes and a deployment package are now also
+present locally. The deployment procedure is deliberately non-capturing: it
+creates a separate D19 runner environment by copying the already restricted
+D18 runner environment without displaying its values, installs the D19 unit and
+weekly 08:15 UTC timer definition, restarts only the CLD API/web services, and
+proves anonymous denial. It does not run, enable, or schedule D19 and does not
+apply the D19 database migration. No D19 database migration or live source
+action has occurred.
 
 ## What next
 
