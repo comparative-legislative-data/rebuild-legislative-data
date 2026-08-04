@@ -107,6 +107,12 @@ private fixed-pagination reader. The owner accepted the private-beta journey;
 DEC-0086 is closed. It does not include the person-linked ministerial-occupancy
 route, Bills detail, DB2, or public access.
 
+The next proposed package is the collection-only [D8 Committee roles cohort —
+DEC-0087](../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0087.md).
+It has no implementation authority: it asks the owner whether to adopt an
+exact route-specific restrictive handling basis and contained DB1 loop for the
+historically small, undated `Notes`-bearing taxonomy.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their

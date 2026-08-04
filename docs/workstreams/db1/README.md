@@ -185,6 +185,12 @@ records the private paginated reader and completed owner acceptance; DEC-0086
 is closed. It is not evidence of ministerial occupancy or a transfer of the
 handling decision to person/relationship or other `Notes`-bearing routes.
 
+The next proposed [D8 Committee roles cohort — DEC-0087](../../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0087.md)
+is a separate, documentation-only decision. It selects only the historically
+small, undated source-defined taxonomy and makes no committee-membership,
+history, DB2, public-access, or transferable-`Notes` claim. No D8 source,
+database, code, service, or user-interface action may begin without approval.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

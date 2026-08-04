@@ -2354,3 +2354,19 @@ Next review due:
 | Affected work blocked | Government roles detail; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | A new decision is required for any subsequent DB1 cohort or D7 route/access/projection change. |
 | Next review due | On D7 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0144
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — next DB1 cohort selection and DEC-0087 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 plan/narrative; DEC-0082, DEC-0085, DEC-0086; master endpoint matrix; route-level handling register; and roles/committees reconnaissance. |
+| Active phase and authorising scope | Documentation-only D8 proposal preparation after owner acceptance of DEC-0086. The owner asked to proceed with the next proposal; no source, VPS, database, code, deployment, or interface action is authorised. |
+| Checks performed | Compared remaining candidates against bounded source-preserving DB1 value, historic response shape, route-specific handling gaps, relationship/temporal risks, and the requirement not to let prospective DB2 use determine DB1 scope. |
+| Findings | `/api/committeeroles` has historic evidence of eight identifier/name/`Notes` records and no dates. It is the smallest remaining committee-context taxonomy, but remains `DO_NOT_CAPTURE_OR_RELEASE` absent a new route-specific basis. Committee, detail, party, person, and relationship routes retain broader handling or semantic gaps. |
+| Outcome | `PASS — DEC-0087 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Any Committee roles source request, capture, schedule, database/code/deployment action, private release, detail/relationship action, DB2, generic query/download, public output, and all other new routes remain blocked pending DEC-0087 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0087. |
+| Next review due | On the DEC-0087 decision, D8 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |
