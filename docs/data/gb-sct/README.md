@@ -79,11 +79,12 @@ records the private paginated reader and completed owner interface acceptance;
 DEC-0088 is closed. Party roles detail, parties, member/relationship routes,
 DB2, and public access remain excluded.
 
-The next proposed package is the collection-only [Parties cohort —
-DEC-0089](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md). It has no
-implementation authority: it asks whether to adopt an exact route-specific
-private handling basis and contained DB1 loop for the small source-defined
-party collection, without a party-affiliation, validity, or history claim.
+The collection-only [Parties cohort — DEC-0089](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
+has passed restricted deployment: one exact initial capture and immediate
+unchanged comparison produced a fixed 14-object source-preserving release with
+an active daily 05:02 UTC reconciliation timer. Its
+[result](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
+records the private paginated reader and owner interface-acceptance boundary.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

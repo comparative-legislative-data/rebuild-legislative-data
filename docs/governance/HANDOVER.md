@@ -126,12 +126,14 @@ owner accepted the private-beta journey; DEC-0088 is closed. It does not
 include Party roles detail, parties, member/relationship routes, DB2, or public
 access.
 
-The next proposed package is the collection-only [D10 Parties cohort —
-DEC-0089](../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md).
-It has no implementation authority: it asks the owner whether to adopt an
-exact route-specific restrictive handling basis and contained DB1 loop for the
-small source-defined party collection, without an affiliation, validity, or
-party-history claim.
+The collection-only [D10 Parties cohort —
+DEC-0089](../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
+has passed restricted deployment. Its
+[result](../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
+records the exact two-request capture/reconciliation, fixed 14-record release,
+independent daily 05:02 UTC timer, and private fixed-pagination reader. Owner
+acceptance remains required. It does not include Party detail,
+Member/relationship routes, DB2, or public access.
 
 ## Documentation hygiene
 

@@ -2466,3 +2466,19 @@ Next review due:
 | Affected work blocked | Any Parties source request, capture, schedule, database/code/deployment action, private release, detail/relationship action, DB2, generic query/download, public output, and all other new routes remain blocked pending DEC-0089 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0089. |
 | Next review due | On the DEC-0089 decision, D10 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0151
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0089 approval and D10 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0088, DEC-0089; D10 implementation/release checks; and GOV-REV-0150. |
+| Active phase and authorising decision | D10 Parties collection package under owner-approved DEC-0089. |
+| Checks performed | Confirmed fixed no-query client, manual redirect/no-retry/30-second/2 MiB/JSON-array gates, dedicated writer/timer, restrictive handling, raw/manifest/projection lineage, private fixed pagination, raw/write reader denial, anonymous denial, proxy/DB1 separation, continuity of D4A–D9, and exclusion of detail, member/relationship routes, DB2, public access, generic query/download, and shared-host changes. Ran one initial request and one immediate same-route comparison only. |
+| Findings | The first request produced a 3,171-byte collection capture and fixed 14-record/zero-rejection release. The second request was `UNCHANGED`; the D10 timer is active/enabled for 05:02 UTC. An initial non-root wrapper invocation stopped before change or source activity. A second invocation stopped before source activity because the package omitted the D10 migration script; its pre-source rollback ran. The package was corrected and verified before the successful deployment. Two early loopback health probes failed during API restart, then readiness passed without a source retry. |
+| Outcome | `PASS — D10 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Party detail; every member/relationship route; Party roles changes; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for stated private-beta acceptance. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
+| Next review due | On owner acceptance, D10 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

@@ -1,6 +1,6 @@
 # GB-SCT DB1 Parties Collection Cohort — DEC-0089
 
-**Status:** Proposed — owner approval required  
+**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0089
 
@@ -103,7 +103,7 @@ party, or relationship policy, or authorise a future scope expansion.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 contained-cohort planning after DEC-0088 closure. |
-| Current authority | The owner authorised preparation of this proposal only. No D10 source, database, code, service, deployment, or interface action is authorised. |
+| Current authority | The owner approved DEC-0089 on 4 August 2026. Its contained D10 implementation/deployment passed; owner private-beta acceptance remains. |
 | Affected records if approved | D10 source-route registry, isolated DB1 raw archive/projection, named private reader, timer, D10 result, DB1 narrative, matrix, decision register, and governance review. |
 | Known uncertainty | Current source shape/size and all field semantics remain unobserved by D10; historic evidence does not establish party-system coverage, validity meaning, completeness, update behaviour, or party affiliation. |
 | Smallest change | One exact collection route and one named fixed release only. |
