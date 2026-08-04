@@ -73,8 +73,8 @@ export const D17_MQA_ANNUAL_WINDOW_ROUTES = [
   { id: "gb-sct.votes-on-motions-2026.collection", path: "/api/votesmotion?year=2026", url: "https://data.parliament.scot/api/votesmotion?year=2026", releaseId: "gb_sct_votes_on_motions_2026_d17_v1", maxBytes: 25_165_824, timeoutMs: 90_000 }
 ] as const satisfies readonly AnnualWindowRoute[];
 export const D18_MQA_ANNUAL_WINDOW_ROUTES: readonly AnnualWindowRoute[] = Array.from({ length: 15 }, (_, index) => 2011 + index).flatMap((year) => [
-  { id: `gb-sct.mqa-questions-${year}.collection`, path: `/api/motionsquestionsanswersquestions?year=${year}`, url: `https://data.parliament.scot/api/motionsquestionsanswersquestions?year=${year}`, releaseId: `gb_sct_mqa_questions_${year}_d18_v1`, maxBytes: 8_388_608, timeoutMs: 60_000 },
-  { id: `gb-sct.votes-on-motions-${year}.collection`, path: `/api/votesmotion?year=${year}`, url: `https://data.parliament.scot/api/votesmotion?year=${year}`, releaseId: `gb_sct_votes_on_motions_${year}_d18_v1`, maxBytes: 25_165_824, timeoutMs: 90_000 }
+  { id: `gb-sct.mqa-questions-${year}.collection`, path: `/api/motionsquestionsanswersquestions?year=${year}`, url: `https://data.parliament.scot/api/motionsquestionsanswersquestions?year=${year}`, releaseId: `gb_sct_mqa_questions_${year}_d18_v1`, maxBytes: 33_554_432, timeoutMs: 90_000 },
+  { id: `gb-sct.votes-on-motions-${year}.collection`, path: `/api/votesmotion?year=${year}`, url: `https://data.parliament.scot/api/votesmotion?year=${year}`, releaseId: `gb_sct_votes_on_motions_${year}_d18_v1`, maxBytes: 50_331_648, timeoutMs: 120_000 }
 ]);
 export const D4B_REFERENCE_CATALOGUE_ID = "gb_sct_reference_cohort_d4a_v1";
 export const D4B_REFERENCE_PROJECTIONS = [
@@ -1209,7 +1209,7 @@ export async function runD16MqaProgrammeReconciliation(options: D4ReferenceCaptu
   }, options.migrate ?? true);
 }
 
-async function runAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }, routes: readonly AnnualWindowRoute[], lockKey: string): Promise<D4ReferenceCaptureResult> {
+async function runAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }, routes: readonly AnnualWindowRoute[], lockKey: string, retryFailuresOnly = false): Promise<D4ReferenceCaptureResult> {
   const now = options.now ?? (() => new Date()); const request = options.request ?? fetch; const wait = options.wait ?? (async (milliseconds: number) => new Promise<void>((resolveWait) => setTimeout(resolveWait, milliseconds)));
   return withDb(options, async (client) => {
     const cycleId = randomUUID(); const startedAt = now(); const results: D4ReferenceRouteResult[] = [];
@@ -1217,6 +1217,7 @@ async function runAnnualWindowReconciliation(options: D4ReferenceCaptureOptions 
     if (!lock.rows[0]?.acquired) { await client.query("insert into db1.reconciliation_cycles (id, started_at, finished_at, status) values ($1, $2, $2, 'SKIPPED_OVERLAP')", [cycleId, startedAt]); return { cycleId, status: "SKIPPED_OVERLAP", routes: [] }; }
     await client.query("insert into db1.reconciliation_cycles (id, started_at, status) values ($1, $2, 'IN_PROGRESS')", [cycleId, startedAt]);
     for (const [index, route] of routes.entries()) {
+      if (retryFailuresOnly) { const successful = await client.query<{ present: boolean }>("select exists(select 1 from db1.reconciliation_observations where source_route_id = $1 and state in ('INITIAL', 'CHANGED', 'UNCHANGED', 'BLOCKED_BY_SOURCE_DRIFT')) as present", [route.id]); if (successful.rows[0]?.present) continue; }
       if (index > 0) await wait(1_000);
       const runId = randomUUID(); await client.query("insert into db1.capture_runs (id, source_route_id, origin_class, started_at, status) values ($1, $2, $3, $4, 'IN_PROGRESS')", [runId, route.id, DB1_SOURCE_ORIGIN, now()]);
       const previous = await client.query<{ manifest_id: string; raw_digest: string; structure_signature: Record<string, string[]> | null }>("select o.manifest_id, o.raw_digest, o.structure_signature from db1.reconciliation_observations o where o.source_route_id = $1 and o.state in ('INITIAL', 'CHANGED', 'UNCHANGED', 'BLOCKED_BY_SOURCE_DRIFT') and o.manifest_id is not null order by o.observed_at desc limit 1", [route.id]);
@@ -1234,7 +1235,7 @@ async function runAnnualWindowReconciliation(options: D4ReferenceCaptureOptions 
 }
 
 export async function runD17MqaAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D17MqaAnnualWindowResult> { return runAnnualWindowReconciliation(options, D17_MQA_ANNUAL_WINDOW_ROUTES, "cld-gb-sct-d17-mqa-annual-window-reconciliation"); }
-export async function runD18MqaAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D18MqaAnnualWindowResult> { return runAnnualWindowReconciliation(options, D18_MQA_ANNUAL_WINDOW_ROUTES, "cld-gb-sct-d18-mqa-annual-window-reconciliation"); }
+export async function runD18MqaAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D18MqaAnnualWindowResult> { return runAnnualWindowReconciliation(options, D18_MQA_ANNUAL_WINDOW_ROUTES, "cld-gb-sct-d18-mqa-annual-window-reconciliation", true); }
 
 export async function runD12CommitteesReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D12CommitteesResult> {
   const now = options.now ?? (() => new Date()); const request = options.request ?? fetch;
