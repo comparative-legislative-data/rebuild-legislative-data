@@ -57,9 +57,9 @@ or retry.
 ## Private-beta acceptance required
 
 An eligible user should hard-refresh, open **DB1 catalogue**, expand
-**Institutional reference**, and inspect **committees · collection**. The user
-should see one Institutional reference group containing the existing fixed
-institutional projections and this separate Committees release; capture,
+**Committees and committee roles**, and inspect **committees · collection**.
+The user should see the Committees collection alongside the separately retained
+Committee roles, Committee types, and Committee type links releases; capture,
 manifest/digest/byte, build, reconciliation, observed-structure, limitation,
 and citation disclosures; and working fixed pagination.
 
@@ -67,6 +67,21 @@ The interface must not imply a committee membership, committee-to-bill
 assignment, status/history, validity-date, contact, description, free-text, or
 identity claim. It must not show a detail route, join, raw-object route,
 download, generic search/filter, DB2 claim, or public-access action.
+
+## Web-only navigation correction
+
+Before owner acceptance, the owner identified that DB1 had drifted from the
+proxy's subject taxonomy: an internal **Institutional reference** ingestion
+cohort was shown as a top-level user category, while Committee roles appeared
+under a different heading. The owner approved a presentation-only correction.
+
+Revision `d1696e7` deployed successfully on 4 August 2026. The active DB1
+view now derives its headings from the proxy taxonomy and places all retained
+committee releases under **Committees and committee roles**. The release check
+passed 27 tests, including a regression test for the shared taxonomy, and the
+deployment preflight confirmed the API and D4A–D12 timers before and after the
+web restart. No source request, DB1 write, raw object, projection, schedule,
+reader API contract, privilege, or access boundary changed.
 
 ## Boundary and review
 

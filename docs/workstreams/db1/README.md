@@ -227,8 +227,10 @@ The [D12 Committees collection cohort — DEC-0091](../../data/gb-sct/GB_SCT_DB1
 has passed restricted deployment. Its [result](../../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
 records one exact `/api/committees` initial capture, one immediate unchanged
 comparison, a fixed 169-object release, an independent daily 06:00 UTC timer,
-and a private paginated panel within the existing **Institutional reference**
-group. Owner interface acceptance remains pending. It creates no membership,
+and a private paginated panel within the shared **Committees and committee
+roles** category. A 4 August web-only correction made the active DB1 catalogue
+derive its top-level subject headings from the proxy taxonomy, rather than
+from DB1 ingestion cohorts. Owner interface acceptance remains pending. It creates no membership,
 assignment, status, date, or free-text interpretation.
 
 ## 6. Detailed records

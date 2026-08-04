@@ -153,9 +153,10 @@ has passed restricted deployment. Its
 [result](../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
 records one source-preserving `/api/committees` release (169 objects/zero
 rejections), initial/immediate unchanged checks, the active daily 06:00 UTC
-D12 timer, and a beta/superuser-only paginated panel in the existing
-**Institutional reference** group. Owner private-beta acceptance remains
-required. It includes no committee membership, assignment,
+D12 timer, and a beta/superuser-only paginated panel in the shared
+**Committees and committee roles** category. The 4 August web-only navigation
+correction makes DB1 derive its subject headings from the proxy taxonomy; owner
+private-beta acceptance remains required. It includes no committee membership, assignment,
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
 

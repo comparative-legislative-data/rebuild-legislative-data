@@ -103,7 +103,10 @@ passed restricted deployment: one exact initial capture and immediate unchanged
 comparison produced a fixed 169-object source-preserving release with an active
 daily 06:00 UTC reconciliation timer. Its
 [result](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
-records the private paginated reader and pending owner interface acceptance.
+records the private paginated reader and pending owner interface acceptance in
+the shared **Committees and committee roles** category. The active DB1
+catalogue derives its top-level subject headings from the proxy taxonomy; DB1
+ingestion cohorts are not user-facing categories.
 Committee detail, membership/assignment, date/status, contact/free-text
 interpretation, DB2, and public access remain excluded.
 

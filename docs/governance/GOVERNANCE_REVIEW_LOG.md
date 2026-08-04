@@ -2578,3 +2578,19 @@ Next review due:
 | Affected work blocked | Committee detail; all membership, assignment, status, interval, and content interpretation; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for the stated private-beta acceptance journey. Any D12 route, source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
 | Next review due | On owner acceptance, D12 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0158
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — owner-approved DB1/proxy taxonomy alignment correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 workstream narrative; DEC-0082, DEC-0083, DEC-0090, DEC-0091; active proxy taxonomy; web implementation; and D12 result. |
+| Active phase and authorising scope | Existing private DB1 presentation scope. The owner confirmed that DB1 must use the proxy's research-subject taxonomy and approved the contained correction. |
+| Checks performed | Mapped retained D4A–D12 releases to the active proxy subject headings; replaced the active DB1 top-level rendering with headings derived from the proxy taxonomy; added a regression check; passed 27 tests, capability checks, packaging, and `d1696e7` web-only deployment. The strengthened deployment preflight confirmed the API and every D4A–D12 timer before and after the web restart. |
+| Findings | Prior grouping used internal ingestion cohorts (`Members and representation`, `Institutional reference`, and a standalone sessions group), creating navigation drift despite no duplicate heading. The correction presents retained releases under the matching Bills; Sessions/members/constituencies/regions; Parties/government roles; and Committees/committee roles subjects. No source request, database write, timer, reader contract, privilege, or data claim changed. |
+| Outcome | `PASS — WEB-ONLY CORRECTION DEPLOYED; D12 OWNER ACCEPTANCE REMAINS PENDING`. |
+| Affected work blocked | All existing cohort exclusions remain unchanged, including new routes, joins, semantic interpretation, DB2, generic query/download, public access, charts, research release, and shared-host changes. |
+| Owner decision required | No new decision for the corrected D12 private-beta acceptance journey. A new decision is required for any data, route, source-contract, access, semantic, or scope change. |
+| Next review due | On owner acceptance, navigation regression, D12 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
