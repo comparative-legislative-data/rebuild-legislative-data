@@ -44,3 +44,12 @@ will provide the first later route-level comparison evidence.
 Review DEC-0097 after that run, or sooner if a source route fails, exceeds its
 route-specific resource limit, changes its representation, or a new required
 historical window is approved.
+
+## Legacy implementation issue
+
+The original D18 deployment wrapper did not provision the D18 systemd timer
+unit. The active service and timer were installed and enabled directly on
+2026-08-04; the next scheduled run is Sunday 2026-08-09 at 07:30 UTC. Replace
+that wrapper with a direct, reviewable D18 deployment procedure before any
+future D18 infrastructure change. This does not affect the retained releases
+or the active reader routes, but it is a deployment-maintenance item.
