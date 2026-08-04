@@ -181,9 +181,9 @@ has passed restricted deployment: the exact `/api/governmentroles` collection
 has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
 251-record/zero-rejection source-preserving release, and an independent daily
 04:17 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
-records the private paginated reader and remaining owner acceptance. It is not
-evidence of ministerial occupancy or a transfer of the handling decision to
-person/relationship or other `Notes`-bearing routes.
+records the private paginated reader and completed owner acceptance; DEC-0086
+is closed. It is not evidence of ministerial occupancy or a transfer of the
+handling decision to person/relationship or other `Notes`-bearing routes.
 
 ## 6. Detailed records
 

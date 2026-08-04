@@ -1,6 +1,6 @@
 # GB-SCT DB1 Government Roles Collection Cohort Result — DEC-0086
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`
+**Status:** `PASS — DEC-0086 CLOSED; OWNER ACCEPTED`
 **Date:** 4 August 2026
 **Decision:** DEC-0086
 **Scope:** The fixed `/api/governmentroles` collection only: its approved
@@ -51,16 +51,17 @@ DB2 variable set, download, chart, or research release.
   service restart window. The readiness loop then passed; no source retry,
   timer interruption, or rollback occurred.
 
-## Private-beta acceptance still required
+## Private-beta acceptance
 
-An eligible private-beta user should open **DB1 catalogue**, expand **Parties
-and government roles**, then open **Government roles collection**. The user
-should see the retained-DB1/proxy distinction, capture/build/reconciliation
-provenance, observed structure, limits that deny role-history or ministerial
-occupancy meaning, and the first 20 preserved records. **Next page** and
-**Previous page** should work; source position must remain visibly technical
-lineage rather than a substantive variable. No detail route, person/relationship
-route, download, generic search/filter, or DB2 claim should appear.
+On 4 August 2026, the owner confirmed that the defined private-beta journey
+behaved as expected: **DB1 catalogue** → **Parties and government roles** →
+**Government roles collection**. This accepted the retained-DB1/proxy
+distinction, capture/build/reconciliation provenance, observed structure,
+limits that deny role-history or ministerial-occupancy meaning, and the first
+20 preserved records with working **Next page** and **Previous page** controls.
+Source position remains visibly technical lineage rather than a substantive
+variable. No detail route, person/relationship route, download, generic
+search/filter, or DB2 claim was accepted or introduced.
 
 ## Boundary and review
 
@@ -68,9 +69,9 @@ This does not establish the meaning of Government role names, `Notes`, source
 identifiers, completeness, historical coverage, ministerial occupancy, update/
 deletion detection, source licence conditions, personal-data classification,
 DB2, or public/research release. The route-specific private handling basis does
-not transfer to any other `Notes`-bearing route. Review is required on owner
-acceptance, D7 failure/change/drift, proposed projection refresh/access
-expansion, source behaviour change, or before 1 September 2026.
+not transfer to any other `Notes`-bearing route. Review is required on D7
+failure/change/drift, proposed projection refresh/access expansion, source
+behaviour change, or before 1 September 2026.
 
 ## Related records
 

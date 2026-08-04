@@ -1,6 +1,6 @@
 # GB-SCT DB1 Government Roles Collection Cohort — DEC-0086
 
-**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
+**Status:** Closed — restricted deployment passed; owner private-beta accepted
 **Date:** 4 August 2026
 **Decision requested:** DEC-0086
 
@@ -100,8 +100,8 @@ Only the D7 loop above, including ordinary contained implementation and
 deployment corrections that do not alter route, request contract, retention/
 access class, schedule, project target, public boundary, or claim. It does not
 authorise a future Government roles expansion or establish a transferable
-`Notes` policy. The deployment result is linked below; the remaining package
-step is owner private-beta acceptance.
+`Notes` policy. The deployment result is linked below; the owner completed the
+defined private-beta acceptance check on 4 August 2026.
 
 ## Related records
 
