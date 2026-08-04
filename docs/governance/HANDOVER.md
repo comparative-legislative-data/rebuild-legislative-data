@@ -147,6 +147,14 @@ closed. It does
 not authorise any relationship/interval interpretation, cross-route join, DB2
 use, download, public access, detail route, or shared-host change.
 
+The next proposed decision is the [D12 Committees collection cohort —
+DEC-0091](../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md).
+It is documentation-only until explicit owner approval. It proposes one exact
+private source-preserving `/api/committees` release in the existing
+**Institutional reference** group; no committee membership, assignment,
+contact/description/free-text, date/status, detail, DB2, download, public, or
+shared-host claim/action is included.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their

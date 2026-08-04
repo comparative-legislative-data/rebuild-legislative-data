@@ -2546,3 +2546,19 @@ Next review due:
 | Affected work blocked | All D11 detail/parameter routes; cross-route joins; status, relationship, and interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | A new decision is required for any D11 route, source-contract, projection-refresh, access, semantic, or scope change, or for the next cohort. |
 | Next review due | On D11 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0156
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Daily hygiene assessment and triggered DEC-0091 D12 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; D11 proposal/result; DB1 narrative and strategy; DB1 access direction; master endpoint matrix; route-level handling register; committee reconnaissance; and daily read-only repository hygiene assessment. |
+| Active phase and authorising scope | Documentation-only next-cohort proposal preparation after closed DEC-0090. No source, VPS, database, implementation, deployment, or interface action is authorised. |
+| Checks performed | Confirmed links and a clean worktree before preparation; compared remaining routes against DB1 source-preserving value, existing coverage, route-specific handling signals, volume/shape evidence, independent data-pipe controls, and the closed D11 batch. Confirmed no duplicate UI group: an eventual Committees release belongs only under the existing Institutional reference group. The hygiene assessment found no proposed repository tidy-up. |
+| Findings | `/api/committees` is the remaining small committee-entity collection: historic evidence records 169 objects and source identifiers/names alongside contact/description/free-text and validity signals. It is useful for eventual committee-source coverage but cannot support membership, bill assignment, status, historical, date, or content interpretation. Its current route-level handling default is `DO_NOT_CAPTURE_OR_RELEASE`; D12 therefore asks for a new route-specific restrictive basis rather than treating past cohorts as authority. |
+| Outcome | `PASS — DEC-0091 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Every D12 source request/capture/schedule/database/code/deployment/interface change; committee detail; all joins, membership/assignment/status/interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | Approve, amend, or reject the contained DEC-0091 Committees collection cohort. |
+| Next review due | On DEC-0091 decision, D12 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |

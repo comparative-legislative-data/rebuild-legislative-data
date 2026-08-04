@@ -97,6 +97,13 @@ records the six fixed releases, the daily 05:30 UTC service, and completed
 owner interface acceptance; DEC-0090 is closed. It creates no member/relationship/interval claim,
 join, DB2 input, download, or public access.
 
+The next documentation-only decision is the [D12 Committees collection cohort
+— DEC-0091](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md). It
+proposes one route-specific private, source-preserving collection release under
+the existing **Institutional reference** group. It remains unapproved: no
+source request, capture, database, implementation, deployment, or interface
+change is authorised.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

@@ -223,6 +223,13 @@ parties, Member party roles, and Member government roles. It deliberately
 creates no member, representation, party, office, role, relationship, or
 interval claim; completed owner acceptance closes DEC-0090.
 
+The proposed [D12 Committees collection cohort — DEC-0091](../../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md)
+is the next documentation-only decision. It would add only the exact
+`/api/committees` collection to the existing **Institutional reference** group,
+with raw source preservation and no membership, assignment, status, date, or
+free-text interpretation. It has no authority for source, database, code,
+deployment, or interface action unless the owner approves it.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
