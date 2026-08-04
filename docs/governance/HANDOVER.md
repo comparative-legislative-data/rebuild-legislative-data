@@ -132,8 +132,8 @@ has passed restricted deployment. Its
 [result](../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
 records the exact two-request capture/reconciliation, fixed 14-record release,
 independent daily 05:02 UTC timer, and private fixed-pagination reader. Owner
-acceptance remains required. It does not include Party detail,
-Member/relationship routes, DB2, or public access.
+accepted the private-beta journey; DEC-0089 is closed. It does not include
+Party detail, Member/relationship routes, DB2, or public access.
 
 ## Documentation hygiene
 

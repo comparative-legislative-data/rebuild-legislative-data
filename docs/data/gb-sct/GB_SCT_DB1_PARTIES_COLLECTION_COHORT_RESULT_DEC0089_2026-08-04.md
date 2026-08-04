@@ -1,6 +1,6 @@
 # GB-SCT DB1 Parties Collection Cohort Result — DEC-0089
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`
+**Status:** `PASS — DEC-0089 CLOSED; OWNER ACCEPTED`
 **Date:** 4 August 2026
 **Decision:** DEC-0089  
 **Scope:** Fixed `/api/parties` collection only: approved restrictive handling,
@@ -33,15 +33,16 @@ corrected and its contents verified locally before the successful deployment.
 Two loopback API health probes received connection-refused during the expected
 API restart window; bounded readiness then passed without a source retry.
 
-## Private-beta acceptance still required
+## Private-beta acceptance
 
-An eligible private-beta user should hard-refresh, open **DB1 catalogue**,
-expand **Parties and government roles**, then open **Parties collection**. The
-user should see three retained releases in that single group, the retained-DB1/
-proxy distinction, capture/build/reconciliation provenance, observed structure,
-limits denying party affiliation, validity, continuity, and history meaning,
-and working fixed pagination. No Party detail, Member party, Member party-role,
-download, generic search/filter, or DB2 claim should appear.
+On 4 August 2026, the owner confirmed the defined private-beta journey behaved
+as expected: hard-refresh, open **DB1 catalogue**, expand **Parties and
+government roles**, then open **Parties collection**. This accepted the three
+retained releases in that single group, the retained-DB1/proxy distinction,
+capture/build/reconciliation provenance, observed structure, limits denying
+party affiliation, validity, continuity, and history meaning, and working
+fixed pagination. No Party detail, Member party, Member party-role, download,
+generic search/filter, or DB2 claim was accepted or introduced.
 
 ## Boundary and review
 
@@ -50,8 +51,8 @@ continuity, party history, field semantics, completeness, freshness,
 update/deletion detection, licence, personal-data classification, DB2, or
 public/research release. It does not transfer the route-specific handling basis
 to any other `Notes`, date, party, or relationship route. Review is required on
-owner acceptance, D10 failure/change/drift, a proposed access or projection
-change, source behaviour change, or before 1 September 2026.
+D10 failure/change/drift, a proposed access or projection change, source
+behaviour change, or before 1 September 2026.
 
 ## Related records
 

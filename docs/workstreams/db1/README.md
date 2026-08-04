@@ -208,10 +208,10 @@ has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
 14-record/zero-rejection source-preserving release, and an independent daily
 05:02 UTC timer. Its
 [result](../../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
-records the private paginated reader and remaining owner acceptance. It is not
-evidence of party affiliation, validity, continuity, history, or a
-transferable handling basis for detail, relationship, or other `Notes`-bearing
-routes.
+records the private paginated reader and completed owner acceptance; DEC-0089
+is closed. It is not evidence of party affiliation, validity, continuity,
+history, or a transferable handling basis for detail, relationship, or other
+`Notes`-bearing routes.
 
 ## 6. Detailed records
 
