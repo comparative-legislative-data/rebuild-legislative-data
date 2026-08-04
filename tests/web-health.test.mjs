@@ -29,7 +29,7 @@ test("web rejects non-loopback configuration", async () => {
 test("DB1 navigation presents one Bills and formal stages group", () => {
   const source = readFileSync("apps/web/src/main.tsx", "utf8");
   assert.equal((source.match(/<h3>Bills and formal stages<\/h3>/g) ?? []).length, 1);
-  assert.match(source, /billsPanels\.length\} fixed projection/);
-  assert.match(source, /1 access-plan release/);
+  assert.match(source, /releaseCount\} retained release/);
+  assert.match(source, /Db1BillsPanel/);
   assert.match(source, /fixed retained DB1 releases with route-specific access modes/);
 });

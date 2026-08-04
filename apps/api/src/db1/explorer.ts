@@ -6,6 +6,8 @@ import {
   D4C_INSTITUTIONAL_ROUTES,
   D5_FORMAL_STAGES_RELEASE_ID,
   D5_FORMAL_STAGES_ROUTE,
+  D6_BILLS_COLLECTION_RELEASE_ID,
+  D6_BILLS_COLLECTION_ROUTE,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -59,6 +61,11 @@ export type Db1ReferenceCatalogueResponse = {
 export type Db1AccessPlanResponse = Omit<Db1ExplorerResponse, "records"> & {
   access_mode: "ACCESS_PLAN_FIRST";
   record_lineage: { projected_record_count: number; access_note: string; };
+};
+
+export type Db1PagedResponse = Omit<Db1ExplorerResponse, "records"> & {
+  access_mode: "SERVER_SIDE_SELECTION";
+  record_page: { offset: number; limit: number; total_records: number; records: Db1ExplorerRecord[]; };
 };
 
 function requiredEnvironment(name: string): string {
@@ -250,7 +257,34 @@ export class Db1Explorer {
     } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 
-  private async referencePanel(client: import("pg").PoolClient, spec: SourcePreservingProjectionSpec, buildId: string): Promise<Db1ExplorerResponse | undefined> {
+  async billsCollectionD6(offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; projection_build_id: string }>("select id, integrity_status, projection_build_id from db1.bills_collection_releases where id = $1 and integrity_status = 'PASS'", [D6_BILLS_COLLECTION_RELEASE_ID]);
+      const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id]);
+      const build = projection.rows[0];
+      if (!build) throw new Error("D6 Bills collection release build is unavailable");
+      const panel = await this.referencePanel(client, { routeId: D6_BILLS_COLLECTION_ROUTE.id, sourcePath: D6_BILLS_COLLECTION_ROUTE.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit });
+      if (!panel) throw new Error("D6 Bills collection release does not match its fixed projection contract");
+      await client.query("commit");
+      return {
+        ...panel,
+        access_mode: "SERVER_SIDE_SELECTION",
+        record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records },
+        limitations: [
+          "This is a fixed retained D6 Bills collection projection, not a live Scottish Parliament response, Bills detail route, or unqualified mirror.",
+          "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, or DB2 variable is offered.",
+          "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, or DB2 variable definition.",
+          `The latest Bills reconciliation state is ${panel.reconciliation_state}; it is evidence for the fixed route comparison only and does not establish freshness or completeness beyond that scope.`
+        ]
+      };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  private async referencePanel(client: import("pg").PoolClient, spec: SourcePreservingProjectionSpec, buildId: string, page?: { offset: number; limit: number }): Promise<Db1ExplorerResponse | undefined> {
     const build = await client.query<{
       build_id: string; projection_name: string; schema_version: string; code_revision: string; built_at: Date; integrity_status: string; projected_records: number; rejected_records: number;
       route_id: string; source_path: string; capture_run_id: string; manifest_id: string; retrieved_at: Date; raw_sha256: string; raw_byte_length: number; content_type: string; handling_class: string;
@@ -260,10 +294,13 @@ export class Db1Explorer {
     );
     const item = build.rows[0];
     if (!item) return undefined;
-    const records = await client.query<Db1ExplorerRecord>(
+    const allRecords = await client.query<Db1ExplorerRecord>(
       "select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc",
       [item.build_id, spec.manifestId]
     );
+    const records = page
+      ? await client.query<Db1ExplorerRecord>("select source_position, preserved_record from db1.projection_records where projection_build_id = $1 and manifest_id = $2 order by source_position asc offset $3 limit $4", [item.build_id, spec.manifestId, page.offset, page.limit])
+      : allRecords;
     const reconciliation = await client.query<{ state: string; observed_at: Date }>(
       "select state, observed_at from db1.reconciliation_observations where source_route_id = $1 order by observed_at desc limit 1",
       [spec.routeId]
@@ -295,7 +332,7 @@ export class Db1Explorer {
         projected_records: item.projected_records,
         rejected_records: item.rejected_records
       },
-      observed_structure: observedStructure(records.rows),
+      observed_structure: observedStructure(allRecords.rows),
       limitations: [
         "This is a retained fixed D4A baseline projection, not a live Scottish Parliament response or an unqualified mirror.",
         "The raw object is not exposed through this interface. Preserved records are the loss-aware projection representation.",

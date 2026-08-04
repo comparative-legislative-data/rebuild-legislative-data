@@ -26,6 +26,8 @@ const allowed = [
   "scripts/run_db1_d4c_institutional_reconciliation.mjs",
   "scripts/migrate_db1_d5_formal_stages.mjs",
   "scripts/run_db1_d5_formal_stages_reconciliation.mjs",
+  "scripts/migrate_db1_d6_bills_collection.mjs",
+  "scripts/run_db1_d6_bills_collection_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",

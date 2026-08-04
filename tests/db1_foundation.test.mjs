@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4C_INSTITUTIONAL_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, fetchD4CInstitutionalCollection, persistSyntheticRawObject, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
+import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4C_INSTITUTIONAL_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, D6_BILLS_COLLECTION_ROUTE, D6_MAX_BYTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, fetchD4CInstitutionalCollection, fetchD6BillsCollection, persistSyntheticRawObject, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -60,6 +60,18 @@ test("D4C transport accepts only the four fixed no-query institutional-reference
   assert.deepEqual(calls.map(({ url }) => url), D4C_INSTITUTIONAL_ROUTES.map(({ url }) => url));
   assert.ok(calls.every(({ init }) => init.method === "GET" && init.redirect === "manual"));
   await assert.rejects(fetchD4CInstitutionalCollection({ id: "other", path: "/api/other", url: "https://example.invalid/other" }, async () => new Response("[]", { status: 200, headers: { "content-type": "application/json" } })), /fixed institutional cohort/);
+});
+
+test("D6 transport is fixed to the Bills collection and enforces its 2 MiB boundary", async () => {
+  const calls = [];
+  await fetchD6BillsCollection(async (url, init) => {
+    calls.push({ url, init });
+    return new Response("[]", { status: 200, headers: { "content-type": "application/json" } });
+  });
+  assert.deepEqual(calls.map(({ url }) => url), [D6_BILLS_COLLECTION_ROUTE.url]);
+  assert.equal(calls[0].init.method, "GET");
+  assert.equal(calls[0].init.redirect, "manual");
+  await assert.rejects(fetchD6BillsCollection(async () => new Response("[]", { status: 200, headers: { "content-type": "application/json", "content-length": String(D6_MAX_BYTES + 1) } })), /BODY_TOO_LARGE/);
 });
 
 test("D4 structural comparison ignores JSON-object key order", () => {

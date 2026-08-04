@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Comparative Legislative Data DB1 D6 Bills collection reconciliation
+
+[Timer]
+OnCalendar=*-*-* 04:02:00 UTC
+Persistent=true
+Unit=cld-gb-sct-db1-d6.service
+
+[Install]
+WantedBy=timers.target

@@ -60,7 +60,7 @@ for (const directory of directories) {
 }
 
 const db1RouteSource = readFileSync("apps/api/src/access/routes.ts", "utf8");
-const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1", "/db1/gb-sct/institutional-reference/d4c-v1", "/db1/gb-sct/formal-stages/d5-v1"];
+const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1", "/db1/gb-sct/institutional-reference/d4c-v1", "/db1/gb-sct/formal-stages/d5-v1", "/db1/gb-sct/bills/d6-v1"];
 const declaredDb1Routes = [...db1RouteSource.matchAll(/app\.get\("(\/db1\/[^\"]+)/g)].map((match) => match[1]);
 for (const route of fixedDb1Routes) {
   if (declaredDb1Routes.filter((item) => item === route).length !== 2) throw new Error(`DB1 fixed route must appear in configured and unavailable states: ${route}`);
@@ -69,7 +69,7 @@ if (declaredDb1Routes.length !== fixedDb1Routes.length * 2 || declaredDb1Routes.
   throw new Error("DB1 reader must not expose a generic or alternate DB1 route");
 }
 const db1Explorer = readFileSync("apps/api/src/db1/explorer.ts", "utf8");
-for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4B_REFERENCE_CATALOGUE_ID", "D4B_REFERENCE_PROJECTIONS", "D4C_INSTITUTIONAL_CATALOGUE_ID", "D4C_INSTITUTIONAL_ROUTES", "D5_FORMAL_STAGES_RELEASE_ID", "D5_FORMAL_STAGES_ROUTE", "catalogue_releases", "institutional_catalogue_releases", "formal_stages_releases", "begin read only", "fetch(", "node:fs", "raw_object"]) {
+for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4B_REFERENCE_CATALOGUE_ID", "D4B_REFERENCE_PROJECTIONS", "D4C_INSTITUTIONAL_CATALOGUE_ID", "D4C_INSTITUTIONAL_ROUTES", "D5_FORMAL_STAGES_RELEASE_ID", "D5_FORMAL_STAGES_ROUTE", "D6_BILLS_COLLECTION_RELEASE_ID", "D6_BILLS_COLLECTION_ROUTE", "catalogue_releases", "institutional_catalogue_releases", "formal_stages_releases", "bills_collection_releases", "begin read only", "fetch(", "node:fs", "raw_object"]) {
   if (term === "fetch(" || term === "node:fs" || term === "raw_object") {
     if (db1Explorer.toLowerCase().includes(term.toLowerCase())) throw new Error(`DB1 explorer contains prohibited capability ${term}`);
   } else if (!db1Explorer.includes(term)) {
@@ -122,4 +122,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3, D4A, D4C, and D5 routes.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3, D4A, D4C, D5, and D6 routes.\n");
