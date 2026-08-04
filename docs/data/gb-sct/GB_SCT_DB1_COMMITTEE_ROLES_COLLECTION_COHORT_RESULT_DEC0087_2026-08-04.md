@@ -1,6 +1,6 @@
 # GB-SCT DB1 Committee Roles Collection Cohort Result — DEC-0087
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`
+**Status:** `PASS — DEC-0087 CLOSED; OWNER ACCEPTED`
 **Date:** 4 August 2026
 **Decision:** DEC-0087
 **Scope:** The fixed `/api/committeeroles` collection only: its approved
@@ -38,18 +38,18 @@ API health probes received connection-refused during the expected API restart
 window; the bounded readiness check then passed. This did not add a source
 request, alter the source contract, or interrupt the D8 timer.
 
-## Private-beta acceptance still required
+## Private-beta acceptance
 
-An eligible private-beta user should hard-refresh, open **DB1 catalogue**,
-expand **Committees and committee roles**, then open **Committee roles
-collection**. The user should see the retained-DB1/proxy distinction,
-capture/build/reconciliation provenance, observed structure, limits denying
-committee-membership or history meaning, and all eight preserved records.
-The paging controls may be disabled because the fixed 20-record page contains
-the whole accepted release. Source position must remain visibly technical
-lineage rather than a substantive variable. No detail route, committee/member
-relationship route, download, generic search/filter, or DB2 claim should
-appear.
+On 4 August 2026, the owner confirmed that the defined private-beta journey
+behaved as expected: **DB1 catalogue** → **Committees and committee roles** →
+**Committee roles collection**. This accepted the retained-DB1/proxy
+distinction, capture/build/reconciliation provenance, observed structure,
+limits denying committee-membership or history meaning, and all eight
+preserved records. Disabled paging is expected because the fixed 20-record
+page contains the whole accepted release. Source position remains visibly
+technical lineage rather than a substantive variable. No detail route,
+committee/member relationship route, download, generic search/filter, or DB2
+claim was accepted or introduced.
 
 ## Boundary and review
 
@@ -57,9 +57,9 @@ This does not establish the meaning of Committee role names, `Notes`, source
 identifiers, completeness, historical coverage, committee membership, update/
 deletion detection, source licence conditions, personal-data classification,
 DB2, or public/research release. The route-specific private handling basis does
-not transfer to any other `Notes`-bearing route. Review is required on owner
-acceptance, D8 failure/change/drift, proposed projection refresh/access
-expansion, source behaviour change, or before 1 September 2026.
+not transfer to any other `Notes`-bearing route. Review is required on D8
+failure/change/drift, proposed projection refresh/access expansion, source
+behaviour change, or before 1 September 2026.
 
 ## Related records
 

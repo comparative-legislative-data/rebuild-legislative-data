@@ -66,8 +66,9 @@ has passed restricted deployment: one exact initial capture and immediate
 unchanged comparison produced a fixed eight-object source-preserving release
 with an active daily 04:32 UTC reconciliation timer. Its
 [result](GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_RESULT_DEC0087_2026-08-04.md)
-records the private paginated reader and owner interface-acceptance boundary.
-Its detail, committee, and person-linked relationship routes remain excluded.
+records the private paginated reader and completed owner interface acceptance;
+DEC-0087 is closed. Its detail, committee, and person-linked relationship
+routes remain excluded.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

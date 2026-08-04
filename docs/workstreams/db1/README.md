@@ -189,9 +189,9 @@ The collection-only [D8 Committee roles cohort — DEC-0087](../../data/gb-sct/G
 has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
 eight-record/zero-rejection source-preserving release, and an independent daily
 04:32 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_RESULT_DEC0087_2026-08-04.md)
-records the private paginated reader and remaining owner acceptance. It is not
-evidence of committee membership/history or a transfer of the handling
-decision to detail, relationship, or other `Notes`-bearing routes.
+records the private paginated reader and completed owner acceptance; DEC-0087
+is closed. It is not evidence of committee membership/history or a transfer of
+the handling decision to detail, relationship, or other `Notes`-bearing routes.
 
 ## 6. Detailed records
 

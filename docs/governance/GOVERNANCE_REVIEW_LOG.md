@@ -2386,3 +2386,19 @@ Next review due:
 | Affected work blocked | Committee roles detail; committees; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for the stated private-beta acceptance journey. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
 | Next review due | On owner acceptance, D8 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0146
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0087 private-beta acceptance and closure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0087 proposal and result; DB1 workstream narrative; master endpoint matrix; decision register; and the owner’s private-beta confirmation. |
+| Active phase and authorising decision | Closure of the already deployed D8 Committee roles collection package under DEC-0087. |
+| Checks performed | Recorded the owner’s confirmation that the stated Committee roles journey behaved as expected: one subject group, retained-versus-proxy distinction, provenance and limits, and the complete eight-record page. |
+| Findings | The interface acceptance criteria passed. No source request, capture, database mutation, service change, access expansion, data transformation, or scope change occurred during acceptance. |
+| Outcome | `PASS — DEC-0087 CLOSED; OWNER ACCEPTED`. |
+| Affected work blocked | Committee roles detail; committees; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | A new decision is required for any subsequent DB1 cohort or D8 route/access/projection change. |
+| Next review due | On D8 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

@@ -112,8 +112,8 @@ has passed restricted deployment. Its
 [result](../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_RESULT_DEC0087_2026-08-04.md)
 records the exact two-request initial/immediate reconciliation, fixed
 source-preserving eight-record release, independent daily 04:32 UTC timer,
-and private fixed-pagination reader. Owner private-beta interface acceptance
-is the remaining package step. It does not include Committee roles detail,
+and private fixed-pagination reader. The owner accepted the private-beta
+journey; DEC-0087 is closed. It does not include Committee roles detail,
 committees, relationship routes, DB2, or public access.
 
 ## Documentation hygiene

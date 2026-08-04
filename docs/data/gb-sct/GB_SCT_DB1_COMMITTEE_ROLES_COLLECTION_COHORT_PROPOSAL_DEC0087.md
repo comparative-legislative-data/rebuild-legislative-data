@@ -1,7 +1,6 @@
 # GB-SCT DB1 Committee Roles Collection Cohort — DEC-0087
 
-**Status:** Approved and executed — restricted deployment passed; owner
-private-beta acceptance pending
+**Status:** Closed — restricted deployment passed; owner private-beta accepted
 **Date:** 4 August 2026
 **Decision requested:** DEC-0087
 
@@ -106,7 +105,7 @@ authorise future Committee roles expansion.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 contained-cohort planning after DEC-0086 closure. |
-| Current authority | The owner approved DEC-0087 on 4 August 2026. Its contained D8 implementation/deployment passed; owner private-beta acceptance remains. |
+| Current authority | The owner approved DEC-0087 on 4 August 2026. Its contained D8 implementation/deployment passed and the owner accepted the stated private-beta journey. |
 | Affected records if approved | D8 source-route registry, isolated DB1 raw archive/projection, named private reader, timer, D8 result, DB1 narrative, matrix, decision register, and governance review. |
 | Known uncertainty | Current source shape/size and `Notes` content remain unobserved in this package; historical evidence does not establish semantics, coverage, update behaviour, or membership history. |
 | Smallest change | One exact collection route and one named fixed release only. |
