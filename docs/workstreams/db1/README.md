@@ -199,6 +199,13 @@ identifier/party/name/`Notes` taxonomy and makes no party-membership,
 role-history, DB2, public-access, or transferable-`Notes` claim. No D9 source,
 database, code, service, or user-interface action may begin without approval.
 
+D9 Party roles has now passed restricted deployment: one `INITIAL` capture,
+one immediate `UNCHANGED` reconciliation, a fixed 548-record/zero-rejection
+release, and daily 04:47 UTC timer. Its
+[result](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_RESULT_DEC0088_2026-08-04.md)
+records the private paginated reader and remaining owner acceptance. It is not
+evidence of party membership, role history, or a transferable handling basis.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

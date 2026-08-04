@@ -2418,3 +2418,19 @@ Next review due:
 | Affected work blocked | Any Party roles source request, capture, schedule, database/code/deployment action, private release, detail/relationship action, DB2, generic query/download, public output, and all other new routes remain blocked pending DEC-0088 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0088. |
 | Next review due | On the DEC-0088 decision, D9 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0148
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0088 approval and D9 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0087, DEC-0088; D9 implementation/release checks; and GOV-REV-0147. |
+| Active phase and authorising decision | D9 Party roles collection package under owner-approved DEC-0088. |
+| Checks performed | Confirmed fixed no-query client, manual redirect/no-retry/30-second/2 MiB/JSON-array gates, dedicated writer/timer, restrictive handling, raw/manifest/projection lineage, private fixed pagination, raw/write reader denial, anonymous denial, proxy/DB1 separation, and exclusion of detail, parties, relationship routes, DB2, public access, generic query/download, and shared-host changes. Ran one initial request and one immediate same-route comparison only. |
+| Findings | The first request produced a 44,636-byte collection capture and fixed 548-record/zero-rejection release. The second request was `UNCHANGED`; the D9 timer is active/enabled for 04:47 UTC. An initial wrapper path error stopped before any source activity; its correction was committed/pushed before deployment. Two early loopback health probes failed during API restart, then readiness passed without a source retry. |
+| Outcome | `PASS — D9 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Party roles detail; parties; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for stated private-beta acceptance. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
+| Next review due | On owner acceptance, D9 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

@@ -122,6 +122,11 @@ It has no implementation authority: it asks the owner whether to adopt an
 exact route-specific restrictive handling basis and contained DB1 loop for the
 historically undated party-role taxonomy.
 
+The collection-only D9 Party roles cohort has passed restricted deployment.
+Its [result](../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_RESULT_DEC0088_2026-08-04.md)
+records the two-request capture/reconciliation, fixed 548-record release,
+daily 04:47 UTC timer, and private reader. Owner acceptance remains required.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their

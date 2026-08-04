@@ -1,13 +1,13 @@
 # GB-SCT DB1 Party Roles Collection Cohort — DEC-0088
 
-**Status:** Proposed — owner approval required before any source, database,
-code, deployment, or interface action
+**Status:** Approved and executed — restricted deployment passed; owner
+private-beta acceptance pending
 **Date:** 4 August 2026
 **Decision requested:** DEC-0088
 
 ## Decision requested
 
-Approve one contained D9 DB1 package for
+The owner approved one contained D9 DB1 package for
 `GET https://data.parliament.scot/api/partyroles`, with no query string. For
 this route only, it would establish a restrictive private DB1
 source-preserving handling basis and authorise an initial capture, one
@@ -88,7 +88,7 @@ and shared VPS/database/Nginx changes.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 contained-cohort planning after DEC-0087 closure. |
-| Current authority | The owner asked to proceed with the next proposal. No implementation authority exists until DEC-0088 is approved. |
+| Current authority | The owner approved DEC-0088 on 4 August 2026. Its contained D9 implementation/deployment passed; owner private-beta acceptance remains. |
 | Affected records if approved | D9 source route, isolated DB1 raw archive/projection, named private reader, timer, D9 result, DB1 narrative, matrix, decision register, and governance review. |
 | Known uncertainty | Current source shape/size and all field semantics remain unobserved by D9; historic evidence does not establish membership, role history, coverage, or update behaviour. |
 | Smallest change | One exact collection route and one named fixed release only. |
