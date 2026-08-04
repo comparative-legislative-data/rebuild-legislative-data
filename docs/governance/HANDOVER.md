@@ -142,7 +142,8 @@ collections were retained as separate source-preserving releases in one serial
 package. Its
 [result](../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
 records one initial and immediate unchanged comparison per route and the daily
-05:30 UTC D11 service. Owner private-beta acceptance remains required. It does
+05:30 UTC D11 service. The owner accepted the private-beta journey; DEC-0090 is
+closed. It does
 not authorise any relationship/interval interpretation, cross-route join, DB2
 use, download, public access, detail route, or shared-host change.
 

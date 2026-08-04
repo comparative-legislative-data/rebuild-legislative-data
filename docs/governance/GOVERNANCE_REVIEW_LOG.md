@@ -2530,3 +2530,19 @@ Next review due:
 | Affected work blocked | All D11 detail/parameter routes; cross-route joins; status, relationship, and interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for the stated private-beta acceptance journey. Any D11 route, source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
 | Next review due | On owner acceptance, D11 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0155
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0090 private-beta acceptance and closure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0090 proposal and result; DB1 workstream narrative; GB-SCT data index; master endpoint matrix; decision register; handover; GOV-REV-0154; and the owner’s stated private-beta acceptance. |
+| Active phase and authorising decision | D11 Member-context collection batch under owner-approved DEC-0090, restricted deployment complete. |
+| Checks performed | Recorded the owner’s confirmation that the defined journey behaved as expected: hard-refresh, **DB1 catalogue**, **Members and representation**, and all six retained releases. Confirmed that this accepts one subject group, separate retained DB1 releases, provenance/structure/limits, and fixed pagination only. |
+| Findings | The stated acceptance adds no source request, database write, service change, access expansion, or semantic claim. It does not qualify a person identity, protected-content classification, representation, party affiliation, office, role, relationship, validity, interval, cross-route join, DB2, public access, download, generic query/search, raw-object access, charts, or research release. |
+| Outcome | `PASS — DEC-0090 CLOSED; OWNER ACCEPTED`. |
+| Affected work blocked | All D11 detail/parameter routes; cross-route joins; status, relationship, and interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | A new decision is required for any D11 route, source-contract, projection-refresh, access, semantic, or scope change, or for the next cohort. |
+| Next review due | On D11 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

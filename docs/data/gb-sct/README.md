@@ -93,8 +93,8 @@ has passed restricted deployment: six separately preserved, collection-only
 releases were tested in one serial package, with one initial and one immediate
 unchanged comparison per route. Its
 [result](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
-records the six fixed releases, the daily 05:30 UTC service, and the pending
-private-beta acceptance. It creates no member/relationship/interval claim,
+records the six fixed releases, the daily 05:30 UTC service, and completed
+owner interface acceptance; DEC-0090 is closed. It creates no member/relationship/interval claim,
 join, DB2 input, download, or public access.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)

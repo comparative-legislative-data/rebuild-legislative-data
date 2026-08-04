@@ -1,6 +1,6 @@
 # GB-SCT DB1 Member-Context Collection Batch — DEC-0090
 
-**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
+**Status:** Closed — restricted deployment passed; owner private-beta accepted
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0090
 

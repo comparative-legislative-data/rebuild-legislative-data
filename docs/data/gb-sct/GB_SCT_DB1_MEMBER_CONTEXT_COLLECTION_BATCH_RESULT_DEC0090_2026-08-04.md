@@ -1,6 +1,6 @@
 # GB-SCT DB1 Member-Context Collection Batch Result — DEC-0090
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`
+**Status:** `PASS — DEC-0090 CLOSED; OWNER ACCEPTED`
 **Date:** 4 August 2026  
 **Decision:** DEC-0090  
 **Scope:** Six fixed, no-query member-context collections only; restrictive
@@ -34,18 +34,19 @@ Two loopback API health probes received connection-refused during the expected
 API restart window. Bounded readiness subsequently passed; no source retry was
 made because of that restart condition.
 
-## Private-beta acceptance still required
+## Private-beta acceptance
 
-An eligible user should hard-refresh, open **DB1 catalogue**, expand **Members
-and representation**, and inspect all six releases. The user should see one
-subject group containing six distinct retained DB1 collections, source route
-and capture/build/reconciliation provenance, observed structure, explicit
+On 4 August 2026, the owner confirmed the defined private-beta journey behaved
+as expected: hard-refresh, open **DB1 catalogue**, expand **Members and
+representation**, and inspect all six releases. This accepted one subject
+group containing six distinct retained DB1 collections, source-route and
+capture/build/reconciliation provenance, observed structure, explicit
 non-interpretation limits, and working fixed pagination.
 
-The interface must not imply a current or historical MSP, representation,
-party, role, government office, relationship, validity-period, or identity
-claim. It must not show a detail route, cross-route join, raw-object route,
-download, generic search/filter, DB2 claim, or public-access action.
+No current or historical MSP, representation, party, role, government office,
+relationship, validity-period, or identity claim was accepted or introduced.
+No detail route, cross-route join, raw-object route, download, generic
+search/filter, DB2 claim, or public-access action was accepted or introduced.
 
 ## Boundary and review
 
@@ -56,9 +57,8 @@ update/deletion detection, licence, DB2 input, or public/research release.
 `UNCHANGED` means only that each named immediate route comparison had the same
 raw digest within its completed request scope.
 
-Review is required on owner acceptance, D11 failure/change/drift, a proposed
-access or projection change, source behaviour change, or before 1 September
-2026.
+Review is required on D11 failure/change/drift, a proposed access or projection
+change, source behaviour change, or before 1 September 2026.
 
 ## Related records
 

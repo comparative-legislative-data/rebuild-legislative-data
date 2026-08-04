@@ -221,7 +221,7 @@ records six separate raw/manifests/projections/releases in one serial delivery
 package: Members, Member constituency statuses, Member region statuses, Member
 parties, Member party roles, and Member government roles. It deliberately
 creates no member, representation, party, office, role, relationship, or
-interval claim; owner private-beta acceptance remains pending.
+interval claim; completed owner acceptance closes DEC-0090.
 
 ## 6. Detailed records
 
