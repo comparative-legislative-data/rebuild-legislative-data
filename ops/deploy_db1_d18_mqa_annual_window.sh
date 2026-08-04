@@ -9,7 +9,7 @@ if [[ "${1:-}" != "--from-clone" ]]; then
   outer_stage="$(mktemp -d /srv/cld-gb-sct/staging/db1-d18-source.XXXXXX)"
   trap 'rm -rf "$outer_stage"' EXIT
   git clone --depth 1 https://github.com/comparative-legislative-data/rebuild-legislative-data.git "$outer_stage/source"
-  exec "$outer_stage/source/ops/deploy_db1_d18_mqa_annual_window.sh" --from-clone
+  exec bash "$outer_stage/source/ops/deploy_db1_d18_mqa_annual_window.sh" --from-clone
 fi
 
 project_root=/srv/cld-gb-sct
