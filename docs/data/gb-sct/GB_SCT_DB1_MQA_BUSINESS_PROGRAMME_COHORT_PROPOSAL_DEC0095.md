@@ -1,6 +1,6 @@
 # GB-SCT DB1 MQA Business Motions — Programme Cohort — DEC-0095
 
-**Status:** `PROPOSED — OWNER APPROVAL REQUIRED`  
+**Status:** `APPROVED — IMPLEMENTATION IN PROGRESS`
 **Decision requested:** DEC-0095  
 **Date:** 4 August 2026
 
@@ -54,9 +54,9 @@ access/download, public release, and all shared-host changes remain excluded.
 
 ## Decision requested
 
-Approve or amend DEC-0095 as the single fixed `motionfilter=programme` D16
-cohort. Approval is required before any source request, database write, code,
-deployment, schedule, or user-interface change.
+The owner approved DEC-0095 on 4 August 2026. The contained implementation,
+deployment, initial/unchanged verification, and private-beta acceptance remain
+the only authorised D16 actions.
 
 ## Related records
 

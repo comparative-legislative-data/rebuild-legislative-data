@@ -290,6 +290,7 @@ function App() {
   const [db1MqaTaxonomyLink, setDb1MqaTaxonomyLink] = useState<Partial<Record<(typeof mqaTaxonomyLinkDb1Routes)[number]["key"], Db1Paged>>>({});
   const [db1MqaEventSubtypes, setDb1MqaEventSubtypes] = useState<Db1Paged | undefined>();
   const [db1MqaConsideration, setDb1MqaConsideration] = useState<Db1Paged | undefined>();
+  const [db1MqaProgramme, setDb1MqaProgramme] = useState<Db1Paged | undefined>();
   const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
 
   async function refreshIdentity() {
@@ -380,6 +381,7 @@ function App() {
     await Promise.all(mqaTaxonomyLinkDb1Routes.map((route) => loadDb1MqaTaxonomyLink(route, 0)));
     await loadDb1MqaEventSubtypes(0);
     await loadDb1MqaConsideration(0);
+    await loadDb1MqaProgramme(0);
   }
 
   async function loadDb1Bills(offset: number) {
@@ -431,6 +433,7 @@ function App() {
     if (response.ok) setDb1MqaEventSubtypes(await response.json() as Db1Paged);
   }
   async function loadDb1MqaConsideration(offset: number) { const response = await request(`/db1/gb-sct/mqa-business-consideration/d15-v1?offset=${offset}&limit=20`); if (response.ok) setDb1MqaConsideration(await response.json() as Db1Paged); }
+  async function loadDb1MqaProgramme(offset: number) { const response = await request(`/db1/gb-sct/mqa-business-programme/d16-v1?offset=${offset}&limit=20`); if (response.ok) setDb1MqaProgramme(await response.json() as Db1Paged); }
 
   const db1ReferencePanels = db1Catalogue?.panels ?? [];
   const db1InstitutionalPanels = db1InstitutionalCatalogue?.panels ?? [];
@@ -445,6 +448,7 @@ function App() {
     return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MqaTaxonomyLink(route, offset)} /> : null;
     }),
     db1MqaConsideration ? <Db1PagedPanel key="mqa-business-consideration" panel={db1MqaConsideration} title="MQA business motions · consideration" onPage={(offset) => void loadDb1MqaConsideration(offset)} /> : null,
+    db1MqaProgramme ? <Db1PagedPanel key="mqa-business-programme" panel={db1MqaProgramme} title="MQA business motions · programme" onPage={(offset) => void loadDb1MqaProgramme(offset)} /> : null,
   ];
 
   if (view === "db1" && identity.authenticated && identity.data_layers_available) {
