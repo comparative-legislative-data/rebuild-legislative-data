@@ -2434,3 +2434,19 @@ Next review due:
 | Affected work blocked | Party roles detail; parties; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for stated private-beta acceptance. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
 | Next review due | On owner acceptance, D9 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0149
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0088 private-beta acceptance and closure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0088 proposal and result; DB1 workstream narrative; GB-SCT data index; master endpoint matrix; decision register; handover; GOV-REV-0148; and the owner's stated private-beta acceptance. |
+| Active phase and authorising decision | D9 Party roles collection package under owner-approved DEC-0088, restricted deployment complete. |
+| Checks performed | Recorded the owner's confirmation that the defined journey behaved as expected: hard-refresh, **DB1 catalogue**, **Parties and government roles**, then **Party roles collection**. Confirmed that this accepts the two releases in the existing group, private retained-data presentation, provenance/structure/limits, and fixed pagination only. |
+| Findings | The stated acceptance adds no source request, database write, service change, access expansion, or semantic claim. It does not qualify Party roles detail, parties, member/relationship routes, party membership, role history, DB2, public access, download, generic query/search, raw-object access, charts, or research release. |
+| Outcome | `PASS — DEC-0088 CLOSED; OWNER ACCEPTED`. |
+| Affected work blocked | Party roles detail; parties; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | A new decision is required for any D9 route, source-contract, projection-refresh, access, semantic, or scope change, or for the next cohort. |
+| Next review due | On D9 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

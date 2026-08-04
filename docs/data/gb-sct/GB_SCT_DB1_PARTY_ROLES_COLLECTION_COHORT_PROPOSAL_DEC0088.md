@@ -1,7 +1,6 @@
 # GB-SCT DB1 Party Roles Collection Cohort — DEC-0088
 
-**Status:** Approved and executed — restricted deployment passed; owner
-private-beta acceptance pending
+**Status:** Closed — restricted deployment passed; owner private-beta accepted
 **Date:** 4 August 2026
 **Decision requested:** DEC-0088
 
@@ -88,7 +87,7 @@ and shared VPS/database/Nginx changes.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 contained-cohort planning after DEC-0087 closure. |
-| Current authority | The owner approved DEC-0088 on 4 August 2026. Its contained D9 implementation/deployment passed; owner private-beta acceptance remains. |
+| Current authority | The owner approved DEC-0088 on 4 August 2026. Its contained D9 implementation/deployment passed and the owner accepted the stated private-beta journey. |
 | Affected records if approved | D9 source route, isolated DB1 raw archive/projection, named private reader, timer, D9 result, DB1 narrative, matrix, decision register, and governance review. |
 | Known uncertainty | Current source shape/size and all field semantics remain unobserved by D9; historic evidence does not establish membership, role history, coverage, or update behaviour. |
 | Smallest change | One exact collection route and one named fixed release only. |

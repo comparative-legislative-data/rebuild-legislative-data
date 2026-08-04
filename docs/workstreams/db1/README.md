@@ -193,18 +193,15 @@ records the private paginated reader and completed owner acceptance; DEC-0087
 is closed. It is not evidence of committee membership/history or a transfer of
 the handling decision to detail, relationship, or other `Notes`-bearing routes.
 
-The next proposed [D9 Party roles cohort — DEC-0088](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
-is a separate documentation-only decision. It selects a source-defined
-identifier/party/name/`Notes` taxonomy and makes no party-membership,
-role-history, DB2, public-access, or transferable-`Notes` claim. No D9 source,
-database, code, service, or user-interface action may begin without approval.
-
-D9 Party roles has now passed restricted deployment: one `INITIAL` capture,
-one immediate `UNCHANGED` reconciliation, a fixed 548-record/zero-rejection
-release, and daily 04:47 UTC timer. Its
+The collection-only [D9 Party roles cohort — DEC-0088](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
+has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
+548-record/zero-rejection source-preserving release, and an independent daily
+04:47 UTC timer. Its
 [result](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_RESULT_DEC0088_2026-08-04.md)
-records the private paginated reader and remaining owner acceptance. It is not
-evidence of party membership, role history, or a transferable handling basis.
+records the private paginated reader and completed owner acceptance; DEC-0088
+is closed. It is not evidence of party membership, role history, or a
+transferable handling basis for detail, relationship, or other `Notes`-bearing
+routes.
 
 ## 6. Detailed records
 
