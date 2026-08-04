@@ -79,6 +79,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/db1/gb-sct/formal-stages/d5-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/bills/d6-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/government-roles/d7-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/committee-roles/d8-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -308,6 +309,24 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
     reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION");
     reply.header("x-cld-db1-release", "gb_sct_government_roles_d7_v1");
+    reply.header("x-cld-db1-offset", String(offset));
+    reply.header("x-cld-db1-limit", String(limit));
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/committee-roles/d8-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const query = request.query as Record<string, unknown>;
+    const offset = pageNumber(query.offset, 0, 100_000);
+    const limit = pageNumber(query.limit, 20, 50);
+    if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED", message: "Only non-negative offset and limit 1–50 are supported." });
+    const response = await db1Explorer.committeeRolesD8(offset, limit);
+    if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION");
+    reply.header("x-cld-db1-release", "gb_sct_committee_roles_d8_v1");
     reply.header("x-cld-db1-offset", String(offset));
     reply.header("x-cld-db1-limit", String(limit));
     reply.header("vary", "Cookie");

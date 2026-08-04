@@ -32,6 +32,7 @@ systemctl is-active --quiet cld-gb-sct-db1-d4c.timer
 systemctl is-active --quiet cld-gb-sct-db1-d5.timer
 systemctl is-active --quiet cld-gb-sct-db1-d6.timer
 systemctl is-active --quiet cld-gb-sct-db1-d7.timer
+systemctl is-active --quiet cld-gb-sct-db1-d8.timer
 test -x "$runtime/node"
 test -f "$web_unit"
 cp "$web_unit" "$web_backup"
@@ -64,6 +65,7 @@ systemctl is-active --quiet cld-gb-sct-db1-d4c.timer
 systemctl is-active --quiet cld-gb-sct-db1-d5.timer
 systemctl is-active --quiet cld-gb-sct-db1-d6.timer
 systemctl is-active --quiet cld-gb-sct-db1-d7.timer
+systemctl is-active --quiet cld-gb-sct-db1-d8.timer
 
 cleanup
 trap - ERR
