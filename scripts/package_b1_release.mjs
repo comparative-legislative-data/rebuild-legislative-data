@@ -48,6 +48,8 @@ const allowed = [
   "scripts/run_db1_d15_mqa_consideration_reconciliation.mjs",
   "scripts/migrate_db1_d16_mqa_programme.mjs",
   "scripts/run_db1_d16_mqa_programme_reconciliation.mjs",
+  "scripts/migrate_db1_d17_mqa_annual_window.mjs",
+  "scripts/run_db1_d17_mqa_annual_window_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",

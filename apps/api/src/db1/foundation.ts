@@ -67,6 +67,10 @@ export const D15_MAX_BYTES = 2_097_152;
 export const D16_MQA_PROGRAMME_ROUTE = { id: "gb-sct.mqa-business-programme.collection", path: "/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme", url: "https://data.parliament.scot/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme" } as const;
 export const D16_MQA_PROGRAMME_RELEASE_ID = "gb_sct_mqa_business_programme_d16_v1";
 export const D16_MAX_BYTES = 4_194_304;
+export const D17_MQA_ANNUAL_WINDOW_ROUTES = [
+  { id: "gb-sct.mqa-questions-2026.collection", path: "/api/motionsquestionsanswersquestions?year=2026", url: "https://data.parliament.scot/api/motionsquestionsanswersquestions?year=2026", releaseId: "gb_sct_mqa_questions_2026_d17_v1", maxBytes: 8_388_608, timeoutMs: 60_000 },
+  { id: "gb-sct.votes-on-motions-2026.collection", path: "/api/votesmotion?year=2026", url: "https://data.parliament.scot/api/votesmotion?year=2026", releaseId: "gb_sct_votes_on_motions_2026_d17_v1", maxBytes: 25_165_824, timeoutMs: 90_000 }
+] as const;
 export const D4B_REFERENCE_CATALOGUE_ID = "gb_sct_reference_cohort_d4a_v1";
 export const D4B_REFERENCE_PROJECTIONS = [
   { routeId: "gb-sct.bill-types.collection", sourcePath: "/api/billtypes", manifestId: "6a414dbf-973a-4aa5-9aae-b217fc18c1e3", projectionName: "gb_sct_bill_types_d4a_v1" },
@@ -91,6 +95,7 @@ const D13_MIGRATION_ID = "015_mqa_taxonomy_link_collection_batch";
 const D14_MIGRATION_ID = "016_mqa_event_subtypes_collection";
 const D15_MIGRATION_ID = "017_mqa_business_consideration_collection";
 const D16_MIGRATION_ID = "018_mqa_business_programme_collection";
+const D17_MIGRATION_ID = "019_mqa_annual_window_collection_batch";
 
 export interface RawObjectReference { digest: string; byteLength: number; relativePath: string; }
 export interface Db1FoundationOptions { databaseUrl: string; rawRoot: string; migrationRole?: string; }
@@ -128,6 +133,8 @@ export interface D13MqaTaxonomyLinkProjectionResult { releases: D4BProjectionRes
 export interface D14MqaEventSubtypesResult extends D4ReferenceCaptureResult {}
 export interface D15MqaConsiderationResult extends D4ReferenceCaptureResult {}
 export interface D16MqaProgrammeResult extends D4ReferenceCaptureResult {}
+export interface D17MqaAnnualWindowResult extends D4ReferenceCaptureResult {}
+export interface D17MqaAnnualWindowProjectionResult { releases: D4BProjectionResult[]; }
 
 class D2CaptureFailure extends Error {
   constructor(readonly code: string) { super(code); }
@@ -306,6 +313,12 @@ async function migrate(client: PoolClient, migrationRole: string): Promise<void>
     await client.query("create table db1.mqa_programme_releases (id text primary key, projection_build_id uuid not null references db1.projection_builds(id), integrity_status text not null check (integrity_status = 'PASS'), created_at timestamptz not null default now())");
     await client.query("insert into db1.schema_migrations (id) values ($1)", [D16_MIGRATION_ID]);
   }
+  const d17 = await client.query("select 1 from db1.schema_migrations where id = $1", [D17_MIGRATION_ID]);
+  if (!d17.rowCount) {
+    for (const route of D17_MQA_ANNUAL_WINDOW_ROUTES) await client.query("insert into db1.source_routes (id, origin_class, source_path, handling_class) values ($1, $2, $3, 'RESTRICTED_PROJECT') on conflict (id) do nothing", [route.id, DB1_SOURCE_ORIGIN, route.path]);
+    await client.query("create table db1.mqa_annual_window_releases (id text primary key, source_route_id text not null unique references db1.source_routes(id), projection_build_id uuid not null references db1.projection_builds(id), integrity_status text not null check (integrity_status = 'PASS'), created_at timestamptz not null default now())");
+    await client.query("insert into db1.schema_migrations (id) values ($1)", [D17_MIGRATION_ID]);
+  }
 }
 
 async function withDb<T>(options: Db1FoundationOptions, action: (client: PoolClient) => Promise<T>, runMigrations = true): Promise<T> {
@@ -364,6 +377,7 @@ export async function migrateD13MqaTaxonomyLink(options: Db1FoundationOptions): 
 export async function migrateD14MqaEventSubtypes(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD15MqaConsideration(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 export async function migrateD16MqaProgramme(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
+export async function migrateD17MqaAnnualWindow(options: Db1FoundationOptions): Promise<void> { await withDb(options, async () => undefined); }
 
 export async function runSyntheticFoundation(options: Db1FoundationOptions): Promise<Db1FoundationResult> {
   const bytes = createSyntheticFixture();
@@ -671,6 +685,23 @@ export async function fetchD16MqaProgramme(request: typeof fetch = fetch): Promi
   if (!response.body) throw new D2CaptureFailure("EMPTY_BODY");
   const reader = response.body.getReader(); const chunks: Uint8Array[] = []; let total = 0;
   while (true) { const { done, value } = await reader.read(); if (done) break; total += value.byteLength; if (total > D16_MAX_BYTES) { await reader.cancel(); throw new D2CaptureFailure("BODY_TOO_LARGE"); } chunks.push(value); }
+  if (total === 0) throw new D2CaptureFailure("EMPTY_BODY");
+  const bytes = Buffer.concat(chunks); let parsed: unknown;
+  try { parsed = JSON.parse(bytes.toString("utf8")); } catch { throw new D2CaptureFailure("INVALID_JSON"); }
+  if (!Array.isArray(parsed)) throw new D2CaptureFailure("TOP_LEVEL_NOT_ARRAY");
+  return { bytes, contentType, status: response.status };
+}
+
+export async function fetchD17MqaAnnualWindow(route: (typeof D17_MQA_ANNUAL_WINDOW_ROUTES)[number], request: typeof fetch = fetch): Promise<D2TransportResult> {
+  const response = await request(route.url, { method: "GET", headers: { accept: "application/json" }, redirect: "manual", signal: AbortSignal.timeout(route.timeoutMs) });
+  const contentType = response.headers.get("content-type") ?? "";
+  if (response.status < 200 || response.status >= 300) throw new D2CaptureFailure("HTTP_STATUS");
+  if (!contentType.toLowerCase().includes("application/json")) throw new D2CaptureFailure("CONTENT_TYPE");
+  const declared = Number(response.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > route.maxBytes) throw new D2CaptureFailure("BODY_TOO_LARGE");
+  if (!response.body) throw new D2CaptureFailure("EMPTY_BODY");
+  const reader = response.body.getReader(); const chunks: Uint8Array[] = []; let total = 0;
+  while (true) { const { done, value } = await reader.read(); if (done) break; total += value.byteLength; if (total > route.maxBytes) { await reader.cancel(); throw new D2CaptureFailure("BODY_TOO_LARGE"); } chunks.push(value); }
   if (total === 0) throw new D2CaptureFailure("EMPTY_BODY");
   const bytes = Buffer.concat(chunks); let parsed: unknown;
   try { parsed = JSON.parse(bytes.toString("utf8")); } catch { throw new D2CaptureFailure("INVALID_JSON"); }
@@ -1162,6 +1193,30 @@ export async function runD16MqaProgrammeReconciliation(options: D4ReferenceCaptu
   }, options.migrate ?? true);
 }
 
+export async function runD17MqaAnnualWindowReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D17MqaAnnualWindowResult> {
+  const now = options.now ?? (() => new Date()); const request = options.request ?? fetch; const wait = options.wait ?? (async (milliseconds: number) => new Promise<void>((resolveWait) => setTimeout(resolveWait, milliseconds)));
+  return withDb(options, async (client) => {
+    const cycleId = randomUUID(); const startedAt = now(); const results: D4ReferenceRouteResult[] = [];
+    const lock = await client.query<{ acquired: boolean }>("select pg_try_advisory_xact_lock(hashtext('cld-gb-sct-d17-mqa-annual-window-reconciliation')) as acquired");
+    if (!lock.rows[0]?.acquired) { await client.query("insert into db1.reconciliation_cycles (id, started_at, finished_at, status) values ($1, $2, $2, 'SKIPPED_OVERLAP')", [cycleId, startedAt]); return { cycleId, status: "SKIPPED_OVERLAP", routes: [] }; }
+    await client.query("insert into db1.reconciliation_cycles (id, started_at, status) values ($1, $2, 'IN_PROGRESS')", [cycleId, startedAt]);
+    for (const [index, route] of D17_MQA_ANNUAL_WINDOW_ROUTES.entries()) {
+      if (index > 0) await wait(1_000);
+      const runId = randomUUID(); await client.query("insert into db1.capture_runs (id, source_route_id, origin_class, started_at, status) values ($1, $2, $3, $4, 'IN_PROGRESS')", [runId, route.id, DB1_SOURCE_ORIGIN, now()]);
+      const previous = await client.query<{ manifest_id: string; raw_digest: string; structure_signature: Record<string, string[]> | null }>("select o.manifest_id, o.raw_digest, o.structure_signature from db1.reconciliation_observations o where o.source_route_id = $1 and o.state in ('INITIAL', 'CHANGED', 'UNCHANGED', 'BLOCKED_BY_SOURCE_DRIFT') and o.manifest_id is not null order by o.observed_at desc limit 1", [route.id]);
+      const prior = previous.rows[0] ?? (await client.query<{ manifest_id: string; raw_digest: string }>("select m.id as manifest_id, m.raw_digest from db1.manifest_entries m join db1.capture_runs c on c.id = m.capture_run_id where c.source_route_id = $1 and m.status = 'SUCCEEDED' order by m.retrieved_at desc limit 1", [route.id])).rows[0];
+      try {
+        const captured = await fetchD17MqaAnnualWindow(route, request); const stored = await persistRawObject(options.rawRoot, captured.bytes); const manifestId = randomUUID(); const signature = structureSignature(captured.bytes); const priorSignature = "structure_signature" in (prior ?? {}) ? (prior as { structure_signature?: Record<string, string[]> | null }).structure_signature ?? null : null;
+        let state: D4RouteState = prior ? (prior.raw_digest === stored.raw.digest ? "UNCHANGED" : "CHANGED") : "INITIAL"; if (priorSignature && !signaturesEqual(priorSignature, signature)) state = "BLOCKED_BY_SOURCE_DRIFT";
+        try { await client.query("insert into db1.raw_objects (digest, origin_class, relative_path, byte_length, content_type) values ($1, $2, $3, $4, $5) on conflict (digest) do nothing", [stored.raw.digest, DB1_SOURCE_ORIGIN, stored.raw.relativePath, stored.raw.byteLength, captured.contentType]); await client.query("insert into db1.manifest_entries (id, capture_run_id, raw_digest, origin_class, content_type, byte_length, status, retrieved_at) values ($1, $2, $3, $4, $5, $6, 'SUCCEEDED', $7)", [manifestId, runId, stored.raw.digest, DB1_SOURCE_ORIGIN, captured.contentType, stored.raw.byteLength, now()]); await client.query("update db1.capture_runs set finished_at = $2, status = 'SUCCEEDED' where id = $1", [runId, now()]); await client.query("insert into db1.reconciliation_observations (id, cycle_id, source_route_id, capture_run_id, manifest_id, previous_manifest_id, state, raw_digest, previous_raw_digest, structure_signature, previous_structure_signature, observed_at) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", [randomUUID(), cycleId, route.id, runId, manifestId, prior?.manifest_id ?? null, state, stored.raw.digest, prior?.raw_digest ?? null, signature, priorSignature, now()]); } catch (error) { if (stored.created) await unlink(resolve(options.rawRoot, stored.raw.relativePath)).catch(() => undefined); throw error; }
+        results.push({ routeId: route.id, state, manifestId, raw: stored.raw });
+      } catch (error) { const code = failureCode(error); await client.query("insert into db1.manifest_entries (id, capture_run_id, origin_class, status, retrieved_at, failure_code) values ($1, $2, $3, 'FAILED', $4, $5)", [randomUUID(), runId, DB1_SOURCE_ORIGIN, now(), code]); await client.query("update db1.capture_runs set finished_at = $2, status = 'FAILED' where id = $1", [runId, now()]); await client.query("insert into db1.reconciliation_observations (id, cycle_id, source_route_id, capture_run_id, state, failure_code, observed_at) values ($1, $2, $3, $4, 'FAILED', $5, $6)", [randomUUID(), cycleId, route.id, runId, code, now()]); results.push({ routeId: route.id, state: "FAILED", failureCode: code }); }
+    }
+    const failed = results.filter((result) => result.state === "FAILED").length; const drifted = results.some((result) => result.state === "BLOCKED_BY_SOURCE_DRIFT"); const status: D17MqaAnnualWindowResult["status"] = failed === results.length ? "FAILED" : drifted ? "BLOCKED_BY_SOURCE_DRIFT" : failed ? "PARTIAL" : "SUCCEEDED";
+    await client.query("update db1.reconciliation_cycles set finished_at = $2, status = $3 where id = $1", [cycleId, now(), status]); return { cycleId, status, routes: results };
+  }, options.migrate ?? true);
+}
+
 export async function runD12CommitteesReconciliation(options: D4ReferenceCaptureOptions & { migrate?: boolean }): Promise<D12CommitteesResult> {
   const now = options.now ?? (() => new Date()); const request = options.request ?? fetch;
   return withDb(options, async (client) => {
@@ -1510,5 +1565,21 @@ export async function runD16MqaProgrammeProjection(options: D4BProjectionOptions
     const projection = await d4bProjectionBuild(client, options, { routeId: D16_MQA_PROGRAMME_ROUTE.id, sourcePath: D16_MQA_PROGRAMME_ROUTE.path, manifestId, projectionName: D16_MQA_PROGRAMME_RELEASE_ID });
     await client.query("insert into db1.mqa_programme_releases (id, projection_build_id, integrity_status, created_at) values ($1, $2, 'PASS', $3)", [D16_MQA_PROGRAMME_RELEASE_ID, projection.buildId, options.now?.() ?? new Date()]);
     return { catalogueId: D16_MQA_PROGRAMME_RELEASE_ID, projectionBuildIds: [projection.buildId], projectedRecords: projection.projectedRecords, rejectedRecords: projection.rejectedRecords };
+  }, options.migrate ?? true);
+}
+
+export async function runD17MqaAnnualWindowProjections(options: D4BProjectionOptions): Promise<D17MqaAnnualWindowProjectionResult> {
+  return withDb(options, async (client) => {
+    const releases: D4BProjectionResult[] = [];
+    for (const route of D17_MQA_ANNUAL_WINDOW_ROUTES) {
+      const existing = await client.query<{ projection_build_id: string }>("select projection_build_id from db1.mqa_annual_window_releases where id = $1 and source_route_id = $2 and integrity_status = 'PASS'", [route.releaseId, route.id]);
+      if (existing.rows[0]) { const count = (await client.query<{ projected_records: number; rejected_records: number }>("select projected_records, rejected_records from db1.projection_builds where id = $1", [existing.rows[0].projection_build_id])).rows[0]; if (!count) throw new Error(`D17 release build is unavailable: ${route.id}`); releases.push({ catalogueId: route.releaseId, projectionBuildIds: [existing.rows[0].projection_build_id], projectedRecords: count.projected_records, rejectedRecords: count.rejected_records }); continue; }
+      const initial = await client.query<{ manifest_id: string }>("select manifest_id from db1.reconciliation_observations where source_route_id = $1 and state = 'INITIAL' and manifest_id is not null order by observed_at asc limit 1", [route.id]); const manifestId = initial.rows[0]?.manifest_id;
+      if (!manifestId) throw new Error(`D17 initial manifest is unavailable: ${route.id}`);
+      const projection = await d4bProjectionBuild(client, options, { routeId: route.id, sourcePath: route.path, manifestId, projectionName: route.releaseId });
+      await client.query("insert into db1.mqa_annual_window_releases (id, source_route_id, projection_build_id, integrity_status, created_at) values ($1, $2, $3, 'PASS', $4)", [route.releaseId, route.id, projection.buildId, options.now?.() ?? new Date()]);
+      releases.push({ catalogueId: route.releaseId, projectionBuildIds: [projection.buildId], projectedRecords: projection.projectedRecords, rejectedRecords: projection.rejectedRecords });
+    }
+    return { releases };
   }, options.migrate ?? true);
 }
