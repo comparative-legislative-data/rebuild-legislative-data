@@ -2306,3 +2306,19 @@ Next review due:
 | Affected work blocked | Bills detail route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | A new decision is required for any subsequent DB1 cohort or D6 route/access/projection change. |
 | Next review due | On a D6 failure/change/drift event, a proposed new cohort or access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0141
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — next DB1 cohort selection and DEC-0086 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 plan/narrative; DEC-0082, DEC-0085; route matrix; route-level handling register; and the existing contextual/roles-committees reconnaissance records. |
+| Active phase and authorising decision | Documentation-only DEC-0086 preparation after the owner asked for the next bounded DB1 cohort proposal. No source, VPS, database, code, or deployment action is authorised by this review. |
+| Checks performed | Compared the remaining P2 candidates against existing handling evidence, expected research value, source shape, access-mode direction, and the requirement not to let hoped-for DB2 use drive DB1 scope. Rejected person/relationship and committee routes as currently blocked. Chose the collection-only Government roles taxonomy as the smallest useful candidate and explicitly retained the `Notes` handling gap. |
+| Findings | `/api/governmentroles` has historic structural evidence of a bounded 251-record taxonomy but remains `DO_NOT_CAPTURE_OR_RELEASE` because of `Notes`. DEC-0086 therefore makes one explicit owner choice: adopt a route-specific restrictive private handling basis and, only if approved, execute its contained D7 loop. It does not transfer to the detail, member-government-role, party, committee, or other `Notes` routes. |
+| Outcome | `PASS — DEC-0086 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Any Government roles source request, capture, schedule, database/code/deployment action, private release, public output, detail/relationship action, DB2, generic query/download, and all other new routes remain blocked pending DEC-0086 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0086. |
+| Next review due | On the DEC-0086 decision, D6 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |

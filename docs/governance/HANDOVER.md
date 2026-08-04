@@ -98,6 +98,13 @@ source-preserving 473-record release, independent daily 04:02 UTC timer, and
 private fixed-pagination reader. The owner accepted the private-beta journey;
 DEC-0085 is closed. The Bills detail route remains blocked.
 
+The next owner decision is the proposed [D7 Government roles collection
+cohort — DEC-0086](../data/gb-sct/GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md).
+It deliberately selects only the bounded source-defined taxonomy and combines
+its exact restrictive handling basis with a contained DB1 execution loop. It
+does not include the person-linked ministerial-occupancy route, Bills detail,
+DB2, or public access.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their

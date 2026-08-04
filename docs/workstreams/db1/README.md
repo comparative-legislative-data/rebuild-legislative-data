@@ -176,6 +176,12 @@ records the restricted private paginated reader and owner acceptance. The
 owner confirmed the front-end journey behaved as expected, so DEC-0085 is
 closed. The Bills detail route remains blocked.
 
+The next proposed D7 increment is the collection-only
+[Government roles cohort — DEC-0086](../../data/gb-sct/GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md).
+It is intentionally a route-specific, private, source-preserving taxonomy
+package—not evidence of ministerial occupancy or a transfer of the handling
+decision to person/relationship or other `Notes`-bearing routes.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
