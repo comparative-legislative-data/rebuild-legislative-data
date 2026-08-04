@@ -2594,3 +2594,35 @@ Next review due:
 | Affected work blocked | All existing cohort exclusions remain unchanged, including new routes, joins, semantic interpretation, DB2, generic query/download, public access, charts, research release, and shared-host changes. |
 | Owner decision required | No new decision for the corrected D12 private-beta acceptance journey. A new decision is required for any data, route, source-contract, access, semantic, or scope change. |
 | Next review due | On owner acceptance, navigation regression, D12 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0159
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0091 private-beta acceptance and closure |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0091 proposal/result; DB1 workstream narrative; GB-SCT data index; decision/risk registers; handover; GOV-REV-0157–0158; and the owner's stated private-beta acceptance. |
+| Active phase and authorising decision | D12 Committees collection cohort under owner-approved DEC-0091, restricted deployment and web-only taxonomy correction complete. |
+| Checks performed | Recorded the owner's confirmation that **committees · collection** behaves as expected in the shared **Committees and committee roles** category. Confirmed this accepts the private paginated release and declared disclosure/limits, not a new source, query, or data capability. |
+| Findings | The acceptance adds no source request, database write, service change, access expansion, or semantic claim. It does not qualify committee membership, assignment, status, dates, contact/description/free-text, detail, DB2, download, generic query/search, public access, charts, or research release. |
+| Outcome | `PASS — DEC-0091 CLOSED; OWNER ACCEPTED`. |
+| Affected work blocked | All D12 exclusions remain, plus every other new route, DB2, semantic variables, generic query/download, public access, charts/research release, and shared-host changes. |
+| Owner decision required | A new decision is required for any D12 route, source-contract, projection-refresh, access, semantic, or scope change, or for the next cohort. |
+| Next review due | On D12 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0160
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D13 structured-MQA batch proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 plan/narrative; DEC-0065, DEC-0071, DEC-0082, DEC-0091; master endpoint matrix; MQA reconnaissance; high-volume register; and active proxy taxonomy. |
+| Active phase and authorising scope | Documentation-only proposal preparation after closed D12. The owner asked to continue toward the DB1 mirror and agreed to a compatible structured-MQA approach; no source, VPS, database, code, deployment, or interface action is authorised. |
+| Checks performed | Compared remaining MQA forms against historic response scale/shape, text and relationship signals, high-volume operational states, proxy subject taxonomy, source-preservation value, access-mode fit, and the requirement not to infer event/link meaning. |
+| Findings | Event types (2 objects/81 bytes in the prior observation) and Event links (5,721 objects/406,192 bytes) form a coherent two-route no-query collection proposal. Event subtypes contain `IntroText`; unfiltered MQA forms, business filters, annual windows, reports, and votes retain their distinct high-volume/windowed gates. D13 uses the existing MQA category and preserves per-route lineage. |
+| Outcome | `PASS — DEC-0092 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Any D13 source request, capture, schedule, database/code/deployment/interface change; Event subtypes; all unfiltered/windowed MQA, report, and vote routes; DB2; semantic variables; download; generic query/search; public output; and shared-host changes remain blocked pending DEC-0092 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0092. |
+| Next review due | On DEC-0092 decision, D13 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |

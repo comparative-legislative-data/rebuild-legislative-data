@@ -230,8 +230,10 @@ comparison, a fixed 169-object release, an independent daily 06:00 UTC timer,
 and a private paginated panel within the shared **Committees and committee
 roles** category. A 4 August web-only correction made the active DB1 catalogue
 derive its top-level subject headings from the proxy taxonomy, rather than
-from DB1 ingestion cohorts. Owner interface acceptance remains pending. It creates no membership,
+from DB1 ingestion cohorts. Owner interface acceptance is complete. It creates no membership,
 assignment, status, date, or free-text interpretation.
+
+The next proposed package is [D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md): two compatible MQA collections, Event types and Event links, under the existing shared MQA category. It deliberately does not treat the rest of the MQA, official-report, or vote inventory as a small-collection problem. Owner approval is required before source access or implementation.
 
 ## 6. Detailed records
 

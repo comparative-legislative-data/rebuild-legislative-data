@@ -110,6 +110,13 @@ ingestion cohorts are not user-facing categories.
 Committee detail, membership/assignment, date/status, contact/free-text
 interpretation, DB2, and public access remain excluded.
 
+The next proposed increment is the [D13 MQA taxonomy/link batch —
+DEC-0092](GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md).
+It proposes only the small Event types and modest Event links collections in
+the existing MQA category. Event subtypes, unfiltered MQA feeds, business
+filters, annual windows, official reports, and votes remain outside that
+proposed scope.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

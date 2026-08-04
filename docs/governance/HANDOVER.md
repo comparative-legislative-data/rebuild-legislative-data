@@ -156,9 +156,11 @@ rejections), initial/immediate unchanged checks, the active daily 06:00 UTC
 D12 timer, and a beta/superuser-only paginated panel in the shared
 **Committees and committee roles** category. The 4 August web-only navigation
 correction makes DB1 derive its subject headings from the proxy taxonomy; owner
-private-beta acceptance remains required. It includes no committee membership, assignment,
+private-beta acceptance is complete. It includes no committee membership, assignment,
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
+
+The next owner decision is [DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md): a proposed two-route, source-preserving MQA Event types/Event links batch. It is documentation only until explicit approval; all other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
 
 ## Documentation hygiene
 

@@ -1,6 +1,6 @@
 # GB-SCT DB1 Committees Collection Cohort Result — DEC-0091
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`  
+**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTED`
 **Date:** 4 August 2026  
 **Decision:** DEC-0091  
 **Scope:** One fixed `/api/committees` collection only; source-preserving
@@ -82,6 +82,15 @@ passed 27 tests, including a regression test for the shared taxonomy, and the
 deployment preflight confirmed the API and D4A–D12 timers before and after the
 web restart. No source request, DB1 write, raw object, projection, schedule,
 reader API contract, privilege, or access boundary changed.
+
+## Owner acceptance
+
+On 4 August 2026, the owner confirmed that **committees · collection** behaves
+as expected in the corrected shared **Committees and committee roles** category.
+This accepts the declared private paginated reader, source-preservation and
+provenance disclosures, and access-plan limits only. It does not expand D12 to
+membership, assignment, contact/description/free-text, date/status, detail,
+DB2, download, generic query, public access, or any other route.
 
 ## Boundary and review
 
