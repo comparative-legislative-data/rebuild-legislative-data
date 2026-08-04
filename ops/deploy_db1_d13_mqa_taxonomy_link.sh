@@ -7,6 +7,7 @@ template_root="$(mktemp -d /srv/cld-gb-sct/staging/db1-d13-template.XXXXXX)"
 cleanup_template() { rm -rf "$template_root"; }
 trap cleanup_template EXIT
 git clone --depth 1 https://github.com/comparative-legislative-data/rebuild-legislative-data.git "$template_root/source"
+generated="$template_root/source/ops/.deploy_db1_d13_body.sh"
 sed \
   -e '/  gb-sct.members.collection/,/  gb-sct.member-government-roles.collection/c\
   gb-sct.mqa-event-types.collection\
@@ -22,4 +23,6 @@ sed \
   -e 's/Member-context/MQA taxonomy\/link/g' \
   -e 's/Member context/MQA taxonomy\/link/g' \
   -e 's/KEEP_ELEVEN/d11/g' \
-  "$template_root/source/ops/deploy_db1_d11_member_context.sh" | bash -s -- --from-clone
+  "$template_root/source/ops/deploy_db1_d11_member_context.sh" > "$generated"
+chmod 0700 "$generated"
+"$generated" --from-clone
