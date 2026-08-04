@@ -2674,3 +2674,19 @@ Next review due:
 | Affected work blocked | Every D17 source request/capture/schedule/database/code/deployment/interface action; every other year, unfiltered MQA, detail, official-report, semantic interpretation, DB2, download, generic query/search, public output, and shared-host change remains blocked pending DEC-0096 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0096's two fixed 2026 annual windows and their separate gates. |
 | Next review due | On DEC-0096 decision, D17 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0164
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D19 functional reader acceptance, performance finding, and D20 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0073, DEC-0082, DEC-0097–DEC-0099; D19 proposal/result; DB1 narrative; coverage snapshot; source matrix; and high-volume controls. |
+| Active phase and authorising scope | D19 acceptance recording and documentation-only preparation of the next cohort proposal. The owner directed continued ingestion and deferred final DB1 access design; no new source, VPS, database, code, deployment, schedule, or interface action is authorised by this review. |
+| Checks performed | Recorded that both D19 fixed retained-projection readers work and page. Traced the approximately nine-second first-open delay to the interim reader deriving structural evidence from all retained records. Confirmed that no change to the source-preserving release, proxy, DB2 boundary, or public access follows. Compared the remaining annual Official Reports windows against D19's closed annual contract and drafted one registry-based expansion proposal rather than a year-by-year package. |
+| Findings | The D19 reader is functionally sufficient for interim private acceptance but not the final researcher-access design. A single future access-design sweep is required for performance, structural transparency, snippets, and download/release choices. DEC-0099 proposes 54 fixed remaining annual windows (1999–2024 and 2026); D19's 2025 releases and timer remain unchanged. |
+| Outcome | `PASS — D19 FUNCTIONAL ACCEPTANCE RECORDED; DEC-0099 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Every DEC-0099 source request/capture/schedule/database/code/deployment/interface action; final reader optimisation; all other route families; DB2; semantic variables; generic query/search; downloads; public access; charts/research release; and shared-host changes. |
+| Owner decision required | Approve, amend, or reject DEC-0099. A separate later decision is required for the post-ingestion DB1 access-design sweep. |
+| Next review due | On DEC-0099 decision, D19/D20 failure or source drift, proposed access-design work, or 1 September 2026, whichever is earlier. |

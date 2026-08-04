@@ -1,6 +1,6 @@
 # GB-SCT DB1 Official Reports 2025 cohort — DEC-0098 result
 
-**Status:** `IMPLEMENTED — PRIVATE READER ACCEPTANCE PENDING`
+**Status:** `IMPLEMENTED — FUNCTIONAL READER ACCEPTED; ACCESS DESIGN DEFERRED`
 **Date:** 4 August 2026
 
 ## Result
@@ -39,9 +39,22 @@ unqualified mirror, a complete proceedings record, or DB2 data. They make no
 bill, stage, amendment, speaker, committee, contribution, text, date, or other
 semantic claim. The raw object is not exposed.
 
+## Private-reader acceptance and deferred access design
+
+The owner confirmed that both fixed retained-projection readers open and page
+as expected. The first reveal takes about nine seconds because the interim
+reader derives its observed-structure summary by loading every record in the
+named release before returning the selected page. That is functional but not
+the intended final researcher-access design.
+
+The owner directed that this performance/access issue be addressed once, after
+the planned DB1 ingests are complete, in a single access-design sweep covering
+precomputed structural profiles, transparency surfaces, snippets, and
+download/release options. No standalone optimisation, new query, download,
+DB2 variable, or access expansion is authorised by this acceptance.
+
 ## What next
 
-Deploy the two fixed private-beta DB1 catalogue badges under **Official
-reports**, test their paginated reader journey, and record the user-facing
-acceptance. No new source route, generic query, download, or DB2 work is
-proposed.
+Prepare the next contained DB1 ingestion proposal. Treat the current D19
+reader as a functional interim interface; defer its performance and fuller
+researcher-access design to the single post-ingestion access-design sweep.

@@ -25,6 +25,7 @@ complete selected source-route inventory.
 | Committees | Committees and Committee roles | Daily | No membership, assignment, status, date, contact, or free-text interpretation. |
 | MQA reference and bounded motion material | Event types, Event links, Event subtypes, consideration motions, programme motions | Daily | No event, motion, bill, stage, vote, or amendment semantics. |
 | Questions and Votes on motions | Fixed annual windows for 2011–2025 plus 2026 | D17 2026 daily; D18 historical failure-retry timer weekly (Sunday 07:30 UTC), with recurring successful-route comparison pending remediation | Questions and votes are source-preserved only. Votes on motions may include motion-amendment votes; they are not bill-amendment votes. |
+| Official reports | Committee and Plenary Official Reports, fixed 2025 annual releases | D19 re-fetches and compares both 2025 URLs weekly (Sunday 08:15 UTC) | No proceedings, bill, stage, amendment, speaker, committee, contribution, text, date, or other semantic claim; the private reader is interim pending the post-ingestion access-design sweep. |
 
 Each retained release has route-specific raw bytes, digest, manifest,
 source-position lineage, a projection/rejection record, a declared schedule,
@@ -36,7 +37,7 @@ source path or year.
 
 - Bills, formal-stage, member, committee, MQA, and vote detail routes.
 - Unfiltered MQA events, motions, questions, and supports routes.
-- Annual Committee and Plenary Official Reports.
+- Committee and Plenary Official Reports for years other than the retained 2025 releases.
 - Any source route not named in a closed DB1 cohort.
 - All document-based bill/amendment material.
 
@@ -52,14 +53,11 @@ interpretation of bill amendments.
 
 ## Recommended next decision
 
-The next DB1 proposal is [DEC-0098: annual Official Reports](GB_SCT_DB1_OFFICIAL_REPORTS_2025_COHORT_PROPOSAL_DEC0098.md),
-beginning with one declared year for each of the Committee and Plenary source families.
-They are the principal remaining API material for Stage 1/2/3 proceedings, but
-their observed annual sizes (approximately 150 MB and 124 MB respectively for
-2025) require an explicit transfer, memory, failure, retention, and
-volume-appropriate researcher-access design. A proposal should remain strictly
-source-preserving and make no stage, bill, amendment, speaker, or contribution
-claim.
+The 2025 Official Reports cohort is now functionally accepted. The next DB1
+proposal should decide whether and how the remaining annual Official Reports
+windows are expanded, using D19's streaming and serial-capture evidence while
+keeping the access design deliberately interim. The unfiltered MQA firehoses
+and all detail contracts remain later work.
 
 The unfiltered MQA firehoses and all detail contracts should remain later
 work: their current route evidence does not yet provide a bounded, useful

@@ -49,11 +49,18 @@ semantic transformation belong to the later, independently governed DB2 layer.
 ## 2. Current boundary
 
 DB1 now has private, named source-preserving releases across bounded bills,
-stages, reference, context, committee, MQA, and annual Questions/Votes source
-windows. Every included release has a manifest, source-position lineage,
-projection/rejection record, declared reader boundary, and a route-specific
-reconciliation position. The complete proxy remains separate because it
-retains no source response.
+stages, reference, context, committee, MQA, annual Questions/Votes source
+windows, and the two 2025 Official Reports source windows. Every included
+release has a manifest, source-position lineage, projection/rejection record,
+declared reader boundary, and a route-specific reconciliation position. The
+complete proxy remains separate because it retains no source response.
+
+The D19 Official Reports reader is functionally accepted but intentionally
+interim: its first page derives a structural summary from the whole retained
+projection, creating a material first-open delay. The owner has directed that
+performance, structural transparency, snippets, and download/release design
+be addressed together once the planned DB1 ingests are complete—not piecemeal
+within individual cohorts.
 
 This is still not a complete mirror, general query service, download service,
 canonical dataset, or research release. The [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
