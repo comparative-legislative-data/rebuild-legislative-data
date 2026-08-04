@@ -1,6 +1,6 @@
 # GB-SCT DB1 MQA Business Motions — Programme Cohort — DEC-0095
 
-**Status:** `APPROVED — IMPLEMENTATION IN PROGRESS`
+**Status:** Historical proposal — implemented and accepted as DEC-0095.
 **Decision requested:** DEC-0095  
 **Date:** 4 August 2026
 
@@ -54,9 +54,11 @@ access/download, public release, and all shared-host changes remain excluded.
 
 ## Decision requested
 
-The owner approved DEC-0095 on 4 August 2026. The contained implementation,
-deployment, initial/unchanged verification, and private-beta acceptance remain
-the only authorised D16 actions.
+The owner approved and accepted DEC-0095 on 4 August 2026. Its
+[result](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md)
+records the 1,620-object/zero-rejection release, immediate `UNCHANGED`
+comparison, active 07:00 UTC timer, and successful private-beta acceptance.
+The next proposed decision is [DEC-0096](GB_SCT_DB1_MQA_QUESTIONS_2026_COHORT_PROPOSAL_DEC0096.md).
 
 ## Related records
 

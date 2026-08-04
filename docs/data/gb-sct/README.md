@@ -118,8 +118,11 @@ serial reconciliation and an initial/immediate unchanged comparison for each.
 [D14 event subtypes — DEC-0093](GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md)
 and [D15 business motions — consideration — DEC-0094](GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md)
 are also closed in that subject group. They retain 18 and 1,461 source objects
-respectively, with no semantic MQA, bill, vote, or amendment claim. The next
-proposed cohort is [D16 business motions — programme — DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_PROPOSAL_DEC0095.md), which requires explicit owner approval before any action.
+respectively, with no semantic MQA, bill, vote, or amendment claim. [D16
+business motions — programme — DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md)
+is also closed: 1,620 source objects, an initial/immediate unchanged comparison,
+and a 07:00 UTC timer under its route-specific 4 MiB gate. The next proposed
+cohort is [D17 MQA annual windows — DEC-0096](GB_SCT_DB1_MQA_QUESTIONS_2026_COHORT_PROPOSAL_DEC0096.md), which requires explicit owner approval before any action.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

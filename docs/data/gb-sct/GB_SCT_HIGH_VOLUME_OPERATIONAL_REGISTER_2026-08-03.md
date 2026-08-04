@@ -1,6 +1,6 @@
 # GB-SCT High-Volume Operational Register — 3 August 2026
 
-**Status:** Historical DB1/capture-planning evidence — 17 operational records completed; no DB1/capture route enabled
+**Status:** Historical DB1/capture-planning evidence, superseded route-by-route only by later named decisions
 **Authority:** DEC-0071
 
 ## 1. Boundary
@@ -14,6 +14,13 @@ The later DEC-0072 private raw-proxy MVP is closed and separately archived. It
 does not change these DB1/capture operational states: its fixed source-style
 actions retain nothing and do not establish a capture method or a DB1-ready
 route.
+
+Later decisions supersede only their exact rows: DEC-0094 made the
+`motionfilter=consideration` form D15, and DEC-0095 made the
+`motionfilter=programme` form D16. DEC-0096 is a proposed (not enabled)
+two-route annual-window cohort for Questions 2026 and Votes on Motions 2026.
+The decision register and delivery matrix are the current controls for those
+forms; all other rows below remain historical operational gates.
 
 Each state below is an operational availability state, not a statement about
 source completeness, content, terms, handling class, or research meaning.

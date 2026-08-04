@@ -2658,3 +2658,19 @@ Next review due:
 | Affected work blocked | Every D16 source request/capture/schedule/database/code/deployment/interface action; all unfiltered or annual MQA, votes, official reports, details, semantic interpretation, DB2, downloads, generic query/search, public output, and shared-host changes remain blocked pending DEC-0095 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0095's one fixed `motionfilter=programme` cohort and its route-specific 4 MiB gate. |
 | Next review due | On DEC-0095 decision, D16 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0163
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D16 acceptance closure and accelerated D17 annual-window batch proposal |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 workstream narrative; D16 proposal/result; high-volume register; master endpoint matrix; and route-level vote limitation. |
+| Active phase and authorising scope | Documentation closure after owner acceptance of D16, plus a documentation-only next-cohort recommendation. No new source, VPS, database, implementation, deployment, schedule, or interface action is authorised. |
+| Checks performed | Recorded the accepted D16 1,620-object/zero-rejection release and 07:00 UTC timer. Compared the remaining known annual source windows by response scale, source-window stability, existing MQA subject placement, serial execution fit, and the requirement to retain the distinction between motion-amendment votes and bill amendments. |
+| Findings | Questions 2026 (about 6.5 MiB) and Votes on Motions 2026 (about 19.4 MiB) are compatible as one serial annual-window delivery batch only if each retains a separate literal URL, response budget, source record, reconciliation/projection/release lineage, and user-facing limitation. This reduces procedural overhead without combining their meanings. |
+| Outcome | `PASS — DEC-0096 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Every D17 source request/capture/schedule/database/code/deployment/interface action; every other year, unfiltered MQA, detail, official-report, semantic interpretation, DB2, download, generic query/search, public output, and shared-host change remains blocked pending DEC-0096 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0096's two fixed 2026 annual windows and their separate gates. |
+| Next review due | On DEC-0096 decision, D17 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
