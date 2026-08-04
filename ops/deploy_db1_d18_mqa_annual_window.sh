@@ -67,9 +67,9 @@ tar -xzf "$archive" -C "$release_path"
 chown -R root:cld-gb-sct "$release_path"
 chmod -R g+rX,o-rwx "$release_path"
 
-sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-api.service.template" > "$api_unit"
+sed -e "s#releases/RELEASE_ID/#releases/${release_id}/#g" -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-api.service.template" > "$api_unit"
 sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-web.service.template" > "$web_unit"
-sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-d18.service.template" > "$d18_unit"
+sed -e "s#releases/RELEASE_ID#releases/${release_id}#g" -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-d18.service.template" > "$d18_unit"
 cp "$source_root/ops/systemd/cld-gb-sct-db1-d18.timer.template" "$d18_timer"
 systemctl daemon-reload
 systemctl restart cld-gb-sct-api.service

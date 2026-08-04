@@ -65,7 +65,7 @@ tar -xzf "$archive" -C "$release_path"
 chown -R root:cld-gb-sct "$release_path"
 chmod -R g+rX,o-rwx "$release_path"
 
-sed "s#RELEASE_ID#${commit}-${archive_digest:0:12}#g" "$staging/source/ops/systemd/cld-gb-sct-api.service.template" > /etc/systemd/system/cld-gb-sct-api.service
+sed -e "s#releases/RELEASE_ID/#releases/${commit}-${archive_digest:0:12}/#g" -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${commit}-${archive_digest:0:12}#g" "$staging/source/ops/systemd/cld-gb-sct-api.service.template" > /etc/systemd/system/cld-gb-sct-api.service
 sed "s#RELEASE_ID#${commit}-${archive_digest:0:12}#g" "$staging/source/ops/systemd/cld-gb-sct-web.service.template" > /etc/systemd/system/cld-gb-sct-web.service
 systemctl daemon-reload
 systemctl restart cld-gb-sct-api.service
