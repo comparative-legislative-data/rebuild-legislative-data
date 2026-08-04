@@ -177,6 +177,11 @@ test("D20 has exactly the approved 54 fixed annual URLs and rejects outside-year
   }
 });
 
+test("D20 source-preserving releases are not permitted to treat a rejected projection as publishable", async () => {
+  const foundationSource = await readFile(new URL("../apps/api/src/db1/foundation.ts", import.meta.url), "utf8");
+  assert.match(foundationSource, /if \(projection\.rejectedRecords > 0\) continue;[\s\S]*?insert into db1\.official_reports_releases/);
+});
+
 test("D4B catalogue is bound to exactly three named D4A manifests", () => {
   assert.equal(D4B_REFERENCE_CATALOGUE_ID, "gb_sct_reference_cohort_d4a_v1");
   assert.deepEqual(D4B_REFERENCE_PROJECTIONS.map((item) => item.manifestId), [

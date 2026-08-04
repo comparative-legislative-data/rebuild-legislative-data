@@ -1896,6 +1896,9 @@ export async function runD20OfficialReportsProjections(options: D4BProjectionOpt
       const initial = await client.query<{ manifest_id: string }>("select manifest_id from db1.reconciliation_observations where source_route_id = $1 and state = 'INITIAL' and manifest_id is not null order by observed_at asc limit 1", [route.id]); const manifestId = initial.rows[0]?.manifest_id;
       if (!manifestId) continue;
       const projection = await d4bProjectionBuild(client, options, { routeId: route.id, sourcePath: route.path, manifestId, projectionName: route.releaseId });
+      // A projected rejection is evidence, not a publishable DB1 release.  The
+      // raw object, manifest, build and rejection remain retained for review.
+      if (projection.rejectedRecords > 0) continue;
       await client.query("insert into db1.official_reports_releases (id, source_route_id, projection_build_id, integrity_status, created_at) values ($1, $2, $3, 'PASS', $4)", [route.releaseId, route.id, projection.buildId, options.now?.() ?? new Date()]);
       releases.push({ catalogueId: route.releaseId, projectionBuildIds: [projection.buildId], projectedRecords: projection.projectedRecords, rejectedRecords: projection.rejectedRecords });
     }
