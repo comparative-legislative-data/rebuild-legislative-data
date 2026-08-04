@@ -1,6 +1,6 @@
 # GB-SCT DB1 Bills Collection Cohort — DEC-0085
 
-**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
+**Status:** Closed — restricted deployment passed; owner private-beta accepted
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0085
 
@@ -102,8 +102,9 @@ It does not authorise any exception to a stop condition.
 
 ## What next
 
-Implemented and deployed on 4 August 2026. The contained source cycle passed;
-the remaining step is owner private-beta acceptance of the stated DB1 journey.
+Implemented, deployed, and owner-accepted on 4 August 2026. The contained
+source cycle and stated private-beta journey passed. Any later change requires
+its own decision under the review triggers in the result record.
 
 ## Related records
 

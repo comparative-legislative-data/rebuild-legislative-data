@@ -49,8 +49,8 @@ has passed restricted deployment: one exact initial capture and immediate
 unchanged comparison produced a fixed source-preserving release with an active
 daily 04:02 UTC reconciliation timer. Its
 [result](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
-records the private paginated reader and owner interface-acceptance boundary.
-The Bills detail route remains blocked.
+records the private paginated reader and completed owner acceptance. The Bills
+detail route remains blocked.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

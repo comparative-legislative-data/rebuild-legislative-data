@@ -1,6 +1,6 @@
 # GB-SCT DB1 Bills Collection Cohort Result — DEC-0085
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`
+**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTED`
 **Date:** 4 August 2026
 **Decision:** DEC-0085
 **Scope:** The fixed `/api/bills` collection only: initial capture, one
@@ -53,16 +53,13 @@ canonical dataset, DB2 variable set, download, chart, or research release.
   service-restart window. The scripted readiness loop then passed; this caused
   no source retry, worker change, timer interruption, or rollback.
 
-## Private-beta acceptance still required
+## Owner private-beta acceptance
 
-An eligible private-beta user should open **DB1 catalogue**, expand the single
-**Bills and formal stages** source group, open the **Bills collection** retained
-release, and check that it clearly distinguishes retained DB1 material from the
-live proxy. The user should be able to see the capture/build/reconciliation
-provenance and the first 20 preserved records, use **Next page** and **Previous
-page**, and see that source position is technical lineage rather than a
-substantive variable. No detail route, download, generic search/filter, or
-DB2 claim should appear.
+The owner completed this journey and confirmed that it behaved as expected:
+the single **Bills and formal stages** group, retained DB1 distinction,
+provenance, first page, and Next/Previous pagination. DEC-0085 is therefore
+closed within its stated boundary. No detail route, download, generic
+search/filter, or DB2 claim was introduced.
 
 ## Boundary and review
 

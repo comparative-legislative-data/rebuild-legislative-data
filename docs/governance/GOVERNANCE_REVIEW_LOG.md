@@ -2290,3 +2290,19 @@ Next review due:
 | Affected work blocked | Bills detail route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for the stated private-beta acceptance journey. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
 | Next review due | On owner acceptance, D6 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0140
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0085 owner private-beta acceptance and closure |
+| Reviewer role | Maintainer, recording the owner's completed acceptance journey |
+| Documents and records reviewed | DEC-0085 proposal/result; DEC-0084 handling basis; DB1 narrative; handover; decision register; and GOV-REV-0139. |
+| Active phase and authorising decision | Closed D6 Bills collection package under DEC-0085. |
+| Checks performed | Recorded the owner's confirmation that the deployed private DB1 Bills collection journey behaved as expected. This confirmed the visible Bills/formal-stages grouping, retained-versus-proxy distinction, provenance display, and fixed Next/Previous pagination within the already deployed contract. |
+| Findings | The stated user-facing acceptance criteria passed. No source request, capture, database mutation, service change, access expansion, data transformation, or scope change occurred during acceptance. |
+| Outcome | `PASS — DEC-0085 CLOSED; OWNER ACCEPTED`. |
+| Affected work blocked | Bills detail route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | A new decision is required for any subsequent DB1 cohort or D6 route/access/projection change. |
+| Next review due | On a D6 failure/change/drift event, a proposed new cohort or access change, or 1 September 2026, whichever is earlier. |

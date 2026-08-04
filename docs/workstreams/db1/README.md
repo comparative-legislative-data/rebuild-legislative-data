@@ -172,8 +172,9 @@ has passed restricted deployment: the exact `/api/bills` collection route has
 one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
 473-record/zero-rejection source-preserving release, and an independent daily
 04:02 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
-records the restricted private paginated reader and remaining owner interface
-acceptance. The Bills detail route remains blocked.
+records the restricted private paginated reader and owner acceptance. The
+owner confirmed the front-end journey behaved as expected, so DEC-0085 is
+closed. The Bills detail route remains blocked.
 
 ## 6. Detailed records
 
