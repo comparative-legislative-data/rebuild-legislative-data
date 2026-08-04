@@ -52,4 +52,7 @@ unit. The active service and timer were installed and enabled directly on
 2026-08-04; the next scheduled run is Sunday 2026-08-09 at 07:30 UTC. The
 wrapper has been replaced with a direct, reviewable procedure that deploys the
 isolated CLD application and D18 units but does not start a D18 source
-reconciliation. This does not affect the retained releases or reader routes.
+reconciliation. The local D18 runner environment was provisioned from the
+existing DB1 D17 annual-window runner configuration without reading or
+recording secret values. This does not affect the retained releases or reader
+routes.
