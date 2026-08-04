@@ -581,9 +581,10 @@ export async function migrateD20OfficialReports(options: Db1FoundationOptions): 
  */
 export async function buildProjectionStructureProfiles(options: Db1FoundationOptions): Promise<number> {
   return withDb(options, async (client) => {
-    const builds = await client.query<{ id: string }>("select id from db1.projection_builds where origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS' order by created_at asc");
-    for (const build of builds.rows) await writeProjectionStructureProfile(client, build.id);
-    return builds.rowCount ?? 0;
+    const profiles = await client.query<{ projection_build_id: string }>(
+      "insert into db1.projection_structure_profiles (projection_build_id, observed_structure, profiled_at, profile_method) select projection_build_id, jsonb_agg(jsonb_build_object('key', key, 'observed_types', to_jsonb(observed_types), 'record_count', record_count) order by key), now(), 'DB1_JSON_OBJECT_FIELD_SCAN_V1' from (select record.projection_build_id, field.key, array_agg(distinct jsonb_typeof(field.value) order by jsonb_typeof(field.value)) as observed_types, count(*) as record_count from db1.projection_records record join db1.projection_builds build on build.id = record.projection_build_id cross join lateral jsonb_each(record.preserved_record) as field(key, value) where build.origin_class = 'SOURCE_CAPTURE' and build.integrity_status = 'PASS' group by record.projection_build_id, field.key) fields group by projection_build_id on conflict (projection_build_id) do update set observed_structure = excluded.observed_structure, profiled_at = excluded.profiled_at, profile_method = excluded.profile_method returning projection_build_id"
+    );
+    return profiles.rowCount ?? 0;
   }, false);
 }
 
