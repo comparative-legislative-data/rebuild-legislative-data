@@ -1,16 +1,17 @@
 # GB-SCT DB1 Bills Collection Cohort — DEC-0085
 
-**Status:** Proposed — owner approval required  
+**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0085
 
 ## Decision requested
 
-Approve one integrated `/api/bills` DB1 package: contained implementation,
+The owner approved one integrated `/api/bills` DB1 package: contained implementation,
 initial capture, one immediate reconciliation check, daily reconciliation,
 loss-aware projection, private researcher-facing DB1 release, and acceptance.
-It uses the DEC-0084 collection-only handling basis and includes ordinary
-implementation/deployment corrections within the stated boundary.
+It used the DEC-0084 collection-only handling basis and included ordinary
+implementation/deployment corrections within the stated boundary. The deployment
+result is recorded in the linked result record below.
 
 ## Pre-flight and scope
 
@@ -101,14 +102,13 @@ It does not authorise any exception to a stop condition.
 
 ## What next
 
-If approved, implement and deploy this one package, test it end-to-end, and
-return one concise result for owner acceptance. If it stops before the source
-request or discovers a changed source/access boundary, report that directly
-rather than inventing a replacement route or additional exploratory phase.
+Implemented and deployed on 4 August 2026. The contained source cycle passed;
+the remaining step is owner private-beta acceptance of the stated DB1 journey.
 
 ## Related records
 
 - [Bills restricted collection handling — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md)
+- [Bills collection cohort result — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
 - [DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
 - [DB1 access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
 - [Master route matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

@@ -44,9 +44,13 @@ Its [deployment result](GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-0
 records the initial fixed release and the owner-accepted correction to one
 subject-first Bills/formal-stages group. The owner has approved the
 [Bills collection handling basis — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md).
-The next proposed route package is
-[DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md): one
-bounded collection capture/reconciliation/projection/private-access loop.
+The [Bills collection package — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
+has passed restricted deployment: one exact initial capture and immediate
+unchanged comparison produced a fixed source-preserving release with an active
+daily 04:02 UTC reconciliation timer. Its
+[result](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
+records the private paginated reader and owner interface-acceptance boundary.
+The Bills detail route remains blocked.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

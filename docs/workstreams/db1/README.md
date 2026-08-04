@@ -167,11 +167,13 @@ a regression test protects the one-group navigation rule.
 
 The owner approved the collection-only Bills handling basis in
 [DEC-0084](../../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
-The next proposed DB1 decision is one integrated
-[Bills collection package — DEC-0085](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md):
-capture, immediate and daily reconciliation, source-preserving projection, and
-private researcher access in one bounded loop. The Bills detail route remains
-blocked.
+The resulting [Bills collection package — DEC-0085](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
+has passed restricted deployment: the exact `/api/bills` collection route has
+one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
+473-record/zero-rejection source-preserving release, and an independent daily
+04:02 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
+records the restricted private paginated reader and remaining owner interface
+acceptance. The Bills detail route remains blocked.
 
 ## 6. Detailed records
 

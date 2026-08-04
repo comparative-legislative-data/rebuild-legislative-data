@@ -1,7 +1,7 @@
 # Handover: Comparative Legislative Data
 
 **Status:** Active handover note  
-**Last updated:** 3 August 2026
+**Last updated:** 4 August 2026
 
 ## Current state
 
@@ -32,10 +32,11 @@ completed record is archived at
   addition/retirement path.
 - DB1 contains D1's synthetic fixture, exactly one restricted D2
   `/api/billtypes` source object and manifest, the accepted D3 Bill Types
-  operational projection/private preview, and D4A's three-route reconciliation
-  evidence, plus D4C's four retained institutional-reference collections and
-  their accepted private source-preserving catalogue. It is not a general DB1
-  mirror, canonical variable dataset, download, or research release.
+  operational projection/private preview, D4A's three-route reconciliation
+  evidence, D4C's four retained institutional-reference collections, D5's
+  formal-stages access-plan release, and D6's Bills collection fixed retained
+  release with daily reconciliation. It is not a general DB1 mirror, canonical
+  variable dataset, download, or research release.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -89,11 +90,13 @@ records the initial retained release, active D5 timer, and owner-accepted
 subject-first navigation correction. D5 is closed within its restricted scope.
 The owner has approved the restricted collection-only handling basis in
 [DEC-0084](../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
-The next owner decision is the integrated
-[Bills collection cohort — DEC-0085](../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md).
-It is the single proposed loop for capture, immediate/daily reconciliation,
-source-preserving projection, and private researcher access. The Bills detail
-route remains blocked.
+The integrated [Bills collection cohort — DEC-0085](../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
+has passed restricted deployment. Its
+[result](../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
+records the exact two-request initial/immediate reconciliation, fixed
+source-preserving 473-record release, independent daily 04:02 UTC timer, and
+private fixed-pagination reader. Owner private-beta interface acceptance is
+the remaining package step. The Bills detail route remains blocked.
 
 ## Documentation hygiene
 

@@ -2274,3 +2274,19 @@ Next review due:
 | Affected work blocked | The DEC-0085 source request, capture, schedule, database/code/deployment action, release, DB2 work, public output, generic query/download, Bills detail route, and all other new routes remain blocked pending approval. |
 | Owner decision required | Approve, amend, or reject DEC-0085 before implementation or any source/data action. |
 | Next review due | On DEC-0085 decision, a Bills package result/stop, an operational event in an existing cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0139
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0085 owner approval and D6 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0080–DEC-0085; DB1 narrative; D6 implementation/release checks; and GOV-REV-0138. |
+| Active phase and authorising decision | D6 Bills collection package under owner-approved DEC-0085. |
+| Checks performed | Confirmed the fixed no-query collection-only client, no-retry/manual-redirect/30-second/2 MiB/JSON-array gates, dedicated writer and timer, raw/manifest/projection lineage, private fixed-pagination reader, raw/write reader denial, anonymous denial, proxy/DB1 separation, and exclusion of the Bills detail route, DB2, public access, generic query/download, and shared-host changes. Ran one initial request and one immediate same-route comparison only. |
+| Findings | The first request produced a 99,823-byte collection capture and fixed 473-record/zero-rejection release. The second request was `UNCHANGED`. The D6 timer is active/enabled for 04:02 UTC and the named release remains bound to its initial manifest. Two early local health probes failed during the expected API restart window; readiness subsequently passed without any source retry or service-boundary change. |
+| Outcome | `PASS — D6 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Bills detail route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the stated private-beta acceptance journey. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
+| Next review due | On owner acceptance, D6 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
