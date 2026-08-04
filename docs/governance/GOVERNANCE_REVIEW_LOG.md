@@ -2370,3 +2370,19 @@ Next review due:
 | Affected work blocked | Any Committee roles source request, capture, schedule, database/code/deployment action, private release, detail/relationship action, DB2, generic query/download, public output, and all other new routes remain blocked pending DEC-0087 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0087. |
 | Next review due | On the DEC-0087 decision, D8 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0145
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0087 approval and D8 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0086, DEC-0087; D8 implementation/release checks; and GOV-REV-0144. |
+| Active phase and authorising decision | D8 Committee roles collection package under owner-approved DEC-0087. |
+| Checks performed | Confirmed the exact no-query collection-only client, manual redirect/no-retry/30-second/2 MiB/JSON-array gates, dedicated writer/timer, route-specific restrictive handling, raw/manifest/projection lineage, private fixed-pagination reader, raw/write reader denial, anonymous denial, proxy/DB1 separation, and exclusion of Committee roles detail, committees, relationship routes, DB2, public access, generic query/download, and shared-host changes. Ran one initial request and one immediate same-route comparison only. |
+| Findings | The first request produced a 350-byte collection capture and fixed 8-record/zero-rejection release. The second request was `UNCHANGED`. The D8 timer is active/enabled for 04:32 UTC and the named release remains bound to its initial manifest. Two early loopback health probes failed during the expected API restart window; readiness subsequently passed without a source retry or service-boundary change. |
+| Outcome | `PASS — D8 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Committee roles detail; committees; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the stated private-beta acceptance journey. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
+| Next review due | On owner acceptance, D8 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

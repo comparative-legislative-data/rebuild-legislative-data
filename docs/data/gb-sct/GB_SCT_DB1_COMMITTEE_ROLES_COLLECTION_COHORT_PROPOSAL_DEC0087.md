@@ -1,15 +1,15 @@
 # GB-SCT DB1 Committee Roles Collection Cohort — DEC-0087
 
-**Status:** Proposed — owner approval required before any source, database,
-code, deployment, or interface action
+**Status:** Approved and executed — restricted deployment passed; owner
+private-beta acceptance pending
 **Date:** 4 August 2026
 **Decision requested:** DEC-0087
 
 ## Decision requested
 
-Approve one contained D8 DB1 package for the collection-only route
+The owner approved one contained D8 DB1 package for the collection-only route
 `GET https://data.parliament.scot/api/committeeroles`, with no query string.
-This single decision would, for this exact route only:
+This single decision does, for this exact route only:
 
 1. replace its present `DO_NOT_CAPTURE_OR_RELEASE` default with a restrictive
    **private DB1 source-preserving handling basis**; and
@@ -57,7 +57,7 @@ decision.
 
 ## Handling and interpretive limits
 
-If approved, the successor handling basis permits complete-collection
+The successor handling basis permits complete-collection
 retention only in the isolated project DB1 raw archive and source-preserving
 projection, plus only the described private-beta reader. It does not settle
 the content-level meaning, personal-data classification, copyright,
@@ -95,7 +95,7 @@ integrity, or existing-cohort regression occurs.
 
 ## Approval scope
 
-Approval would authorise only the contained D8 loop above, including ordinary
+Approval authorised only the contained D8 loop above, including ordinary
 implementation and deployment corrections that do not alter the route,
 request contract, retention/access class, schedule, project target, public
 boundary, or claim. It does not establish a transferable `Notes` policy or
@@ -106,7 +106,7 @@ authorise future Committee roles expansion.
 | Item | Record |
 | --- | --- |
 | Active phase | DB1 contained-cohort planning after DEC-0086 closure. |
-| Current authority | The owner asked to proceed with preparation of the next proposal. No implementation authority exists until DEC-0087 is approved. |
+| Current authority | The owner approved DEC-0087 on 4 August 2026. Its contained D8 implementation/deployment passed; owner private-beta acceptance remains. |
 | Affected records if approved | D8 source-route registry, isolated DB1 raw archive/projection, named private reader, timer, D8 result, DB1 narrative, matrix, decision register, and governance review. |
 | Known uncertainty | Current source shape/size and `Notes` content remain unobserved in this package; historical evidence does not establish semantics, coverage, update behaviour, or membership history. |
 | Smallest change | One exact collection route and one named fixed release only. |
