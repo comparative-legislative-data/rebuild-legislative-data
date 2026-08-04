@@ -439,10 +439,13 @@ function App() {
     const panel = db1MemberContext[route.key];
     return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MemberContext(route, offset)} /> : null;
   });
-  const mqaTaxonomyLinkPanels = mqaTaxonomyLinkDb1Routes.map((route) => {
+  const mqaTaxonomyLinkPanels = [
+    ...mqaTaxonomyLinkDb1Routes.map((route) => {
     const panel = db1MqaTaxonomyLink[route.key];
     return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MqaTaxonomyLink(route, offset)} /> : null;
-  });
+    }),
+    db1MqaConsideration ? <Db1PagedPanel key="mqa-business-consideration" panel={db1MqaConsideration} title="MQA business motions · consideration" onPage={(offset) => void loadDb1MqaConsideration(offset)} /> : null,
+  ];
 
   if (view === "db1" && identity.authenticated && identity.data_layers_available) {
     const billsPanels = panelsFor(db1ReferencePanels, ["gb-sct.bill-types.collection", "gb-sct.bill-stage-types.collection"]);
