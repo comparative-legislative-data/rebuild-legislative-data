@@ -14,6 +14,8 @@ import {
   D8_COMMITTEE_ROLES_ROUTE,
   D9_PARTY_ROLES_RELEASE_ID,
   D9_PARTY_ROLES_ROUTE,
+  D10_PARTIES_RELEASE_ID,
+  D10_PARTIES_ROUTE,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -356,6 +358,21 @@ export class Db1Explorer {
       if (!panel) throw new Error("D9 Party roles release does not match its fixed projection contract");
       await client.query("commit");
       return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D9 Party roles projection, not a live Scottish Parliament response, role-detail route, party-membership history, or unqualified mirror.", "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, party-role history claim, or DB2 variable definition.", `The latest Party roles reconciliation state is ${panel.reconciliation_state}; it is evidence for the fixed route comparison only and does not establish freshness or completeness beyond that scope.`] };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  async partiesD10(offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; projection_build_id: string }>("select id, integrity_status, projection_build_id from db1.parties_releases where id = $1 and integrity_status = 'PASS'", [D10_PARTIES_RELEASE_ID]); const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id]); const build = projection.rows[0];
+      if (!build) throw new Error("D10 Parties release build is unavailable");
+      const panel = await this.referencePanel(client, { routeId: D10_PARTIES_ROUTE.id, sourcePath: D10_PARTIES_ROUTE.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit });
+      if (!panel) throw new Error("D10 Parties release does not match its fixed projection contract");
+      await client.query("commit");
+      return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D10 Parties projection, not a live Scottish Parliament response, party-detail route, party-affiliation history, or unqualified mirror.", "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, party-validity or party-history claim, or DB2 variable definition.", `The latest Parties reconciliation state is ${panel.reconciliation_state}; it is evidence for the fixed route comparison only and does not establish freshness or completeness beyond that scope.`] };
     } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 
