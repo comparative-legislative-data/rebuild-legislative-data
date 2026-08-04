@@ -2626,3 +2626,19 @@ Next review due:
 | Affected work blocked | Any D13 source request, capture, schedule, database/code/deployment/interface change; Event subtypes; all unfiltered/windowed MQA, report, and vote routes; DB2; semantic variables; download; generic query/search; public output; and shared-host changes remain blocked pending DEC-0092 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0092. |
 | Next review due | On DEC-0092 decision, D13 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0161
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0092 approval and D13 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0065, DEC-0071, DEC-0073, DEC-0080, DEC-0082, DEC-0091, DEC-0092; MQA register; D13 release checks; and GOV-REV-0160. |
+| Active phase and authorising decision | D13 MQA taxonomy/link collection batch under owner-approved DEC-0092. |
+| Checks performed | Confirmed exactly two fixed no-query clients; manual redirect/no-retry/30-second/2 MiB/JSON-array gates; one serial D13 non-overlap service; per-route raw/manifest/observation/projection/release lineage; private fixed pagination within the existing MQA subject; writer/reader separation; raw/write denial; anonymous denial; proxy/DB1 separation; and continuity of D4A–D12. Ran only one initial and one immediate same-route comparison for each approved route. |
+| Findings | Event types retained 2 objects/81 bytes and Event links 5,721 objects/406,192 bytes, both with zero rejections and immediate `UNCHANGED` comparisons. The D13 timer is active/enabled for 06:15 UTC. Four sequential wrapper/package defects stopped before migration, service creation, or source access; read-only checks confirmed zero D13 source-route records before the successful run. Two loopback probes failed during expected API restart, then bounded readiness passed without source retry. |
+| Outcome | `PASS — D13 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Event subtypes; every other MQA, report, vote, detail, filtered/windowed route; event/link semantic interpretation; DB2; semantic variables; download; generic query/search; raw-object access; public data access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the declared D13 private-beta acceptance journey. Any D13 source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
+| Next review due | On owner acceptance, D13 failure/change/drift, a proposed access/projection change, or 1 September 2026, whichever is earlier. |

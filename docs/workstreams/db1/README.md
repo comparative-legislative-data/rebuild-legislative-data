@@ -233,7 +233,7 @@ derive its top-level subject headings from the proxy taxonomy, rather than
 from DB1 ingestion cohorts. Owner interface acceptance is complete. It creates no membership,
 assignment, status, date, or free-text interpretation.
 
-[D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md) is owner-approved for restricted deployment: two compatible MQA collections, Event types and Event links, under the existing shared MQA category. The service must retain separate source lineage for each route and run serially at 06:15 UTC. It deliberately does not treat the rest of the MQA, official-report, or vote inventory as a small-collection problem. Deployment verification and owner interface acceptance remain outstanding.
+[D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md) has passed restricted deployment: Event types and Event links are separately retained source-preserving releases under the existing shared MQA category. The D13 service reconciles them serially at 06:15 UTC; each initial/immediate comparison passed with zero projection rejections. It deliberately does not treat the rest of the MQA, official-report, or vote inventory as a small-collection problem. Owner interface acceptance remains outstanding.
 
 ## 6. Detailed records
 

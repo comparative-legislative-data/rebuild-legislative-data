@@ -160,7 +160,7 @@ private-beta acceptance is complete. It includes no committee membership, assign
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
 
-[DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md) is owner-approved for a contained D13 deployment: only MQA Event types and Event links, each as an independent source-preserving release in one serial 06:15 UTC service and the existing MQA category. Deployment verification and owner private-beta acceptance are the remaining steps. All other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
+[D13 — DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md) has passed restricted deployment: MQA Event types (2 preserved objects) and Event links (5,721) are separate source-preserving releases, each with an initial/immediate unchanged comparison, one serial 06:15 UTC timer, and private fixed-pagination reader in the existing MQA category. Owner private-beta acceptance remains the next step. All other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
 
 ## Documentation hygiene
 

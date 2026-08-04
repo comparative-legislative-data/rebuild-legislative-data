@@ -111,12 +111,12 @@ Committee detail, membership/assignment, date/status, contact/free-text
 interpretation, DB2, and public access remain excluded.
 
 [D13 MQA taxonomy/link batch —
-DEC-0092](GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_PROPOSAL_DEC0092.md)
-is approved for restricted deployment. It covers only the small Event types
-and modest Event links collections in the existing MQA category, with separate
-source-preserving releases and serial reconciliation. Event subtypes,
-unfiltered MQA feeds, business filters, annual windows, official reports, and
-votes remain outside the approved scope.
+DEC-0092](GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md)
+has passed restricted deployment. Event types and Event links are separately
+retained under the existing MQA category, with serial reconciliation and an
+initial/immediate unchanged comparison for each. Event subtypes, unfiltered
+MQA feeds, business filters, annual windows, official reports, and votes remain
+outside scope; owner interface acceptance is the remaining D13 step.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
