@@ -103,7 +103,7 @@ passed restricted deployment: one exact initial capture and immediate unchanged
 comparison produced a fixed 169-object source-preserving release with an active
 daily 06:00 UTC reconciliation timer. Its
 [result](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
-records the private paginated reader and pending owner interface acceptance in
+records the private paginated reader and completed owner interface acceptance in
 the shared **Committees and committee roles** category. The active DB1
 catalogue derives its top-level subject headings from the proxy taxonomy; DB1
 ingestion cohorts are not user-facing categories.
@@ -112,11 +112,14 @@ interpretation, DB2, and public access remain excluded.
 
 [D13 MQA taxonomy/link batch —
 DEC-0092](GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md)
-has passed restricted deployment. Event types and Event links are separately
-retained under the existing MQA category, with serial reconciliation and an
-initial/immediate unchanged comparison for each. Event subtypes, unfiltered
-MQA feeds, business filters, annual windows, official reports, and votes remain
-outside scope; owner interface acceptance is the remaining D13 step.
+has passed restricted deployment and owner interface acceptance. Event types
+and Event links are separately retained under the existing MQA category, with
+serial reconciliation and an initial/immediate unchanged comparison for each.
+[D14 event subtypes — DEC-0093](GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md)
+and [D15 business motions — consideration — DEC-0094](GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md)
+are also closed in that subject group. They retain 18 and 1,461 source objects
+respectively, with no semantic MQA, bill, vote, or amendment claim. The next
+proposed cohort is [D16 business motions — programme — DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_PROPOSAL_DEC0095.md), which requires explicit owner approval before any action.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

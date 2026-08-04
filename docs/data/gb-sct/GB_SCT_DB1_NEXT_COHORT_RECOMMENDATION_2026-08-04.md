@@ -1,4 +1,6 @@
-# GB-SCT DB1 next-cohort recommendation — 4 August 2026
+# GB-SCT DB1 D15 recommendation — 4 August 2026
+
+**Status:** Historical recommendation — implemented and accepted as DEC-0094.
 
 ## Recommendation
 
@@ -51,7 +53,9 @@ later DB2 variables. If accepted, its outcome should decide the next design
 package: either a second fixed business-motion filter with a deliberate larger
 transfer budget, or an annual-window architecture for questions/votes.
 
-## Decision requested
+## Outcome
 
-Approve D15 as the one fixed `motionfilter=consideration` collection under the
-contract above, or direct a different next step.
+The owner approved D15. Its [accepted result — DEC-0094](GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md)
+records the 1,461-object, zero-rejection release, immediate `UNCHANGED`
+comparison, active 06:45 UTC timer, and private-beta acceptance. The next
+decision is [DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_PROPOSAL_DEC0095.md).

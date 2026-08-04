@@ -1,6 +1,6 @@
 # GB-SCT DB1 MQA Taxonomy and Link Collection Batch Result — DEC-0092
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`  
+**Status:** `PASS — DEC-0092 CLOSED; OWNER ACCEPTED`
 **Date:** 4 August 2026  
 **Decision:** DEC-0092  
 **Scope:** Only `/api/motionsquestionsanswerseventtypes` and
@@ -61,16 +61,16 @@ source request. Read-only checks confirmed zero D13 source-route records before
 the final deployment. The targeted corrections were committed and pushed before
 the successful run; no route, data, access, or semantic scope changed.
 
-## Owner private-beta acceptance required
+## Owner private-beta acceptance
 
-After a hard refresh, an eligible user should open **DB1 catalogue**, expand
-**Motions, questions, related records and votes on motions**, and see exactly
-two additional retained releases:
+The owner confirmed the defined private-beta journey: an eligible user opened
+**DB1 catalogue**, expanded **Motions, questions, related records and votes on
+motions**, and found exactly two retained releases:
 
 - **MQA event types · collection**; and
 - **MQA event links · collection**.
 
-Each must expose its own capture/manifest/digest/byte/build/reconciliation,
+Each exposes its own capture/manifest/digest/byte/build/reconciliation,
 observed-structure, limitation, citation, and fixed-pagination disclosures.
 The page must not imply event semantics, a link direction or relationship,
 event detail, a join, raw-object access, download, generic search/filter, DB2,
@@ -83,8 +83,8 @@ detection, source-field semantics, temporal coverage, a DB2 input, or a
 public/research release. Event subtypes (including `IntroText`), all other MQA
 collections/windows, official reports, and votes require separate decisions.
 
-Review is required on owner acceptance, D13 failure/change/drift, a proposed
-access/projection change, source behaviour change, or before 1 September 2026.
+Review is required on D13 failure/change/drift, a proposed access/projection
+change, source behaviour change, or before 1 September 2026.
 
 ## Related records
 

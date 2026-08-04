@@ -30,13 +30,11 @@ completed record is archived at
   handling for capture or release.
 - DEC-0045 keeps the complete selected inventory and its controlled
   addition/retirement path.
-- DB1 contains D1's synthetic fixture, exactly one restricted D2
-  `/api/billtypes` source object and manifest, the accepted D3 Bill Types
-  operational projection/private preview, D4A's three-route reconciliation
-  evidence, D4C's four retained institutional-reference collections, D5's
-  formal-stages access-plan release, and D6's Bills collection fixed retained
-  release with daily reconciliation. It is not a general DB1 mirror, canonical
-  variable dataset, download, or research release.
+- DB1 has accepted, named source-preserving releases through D15, including
+  Bills, roles/context, committees, reference collections, and bounded MQA
+  collections. Each included route has its own declared reconciliation and
+  access boundary. DB1 is not yet a general mirror, canonical variable
+  dataset, download, or research release.
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -160,7 +158,7 @@ private-beta acceptance is complete. It includes no committee membership, assign
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
 
-[D13 — DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md) has passed restricted deployment: MQA Event types (2 preserved objects) and Event links (5,721) are separate source-preserving releases, each with an initial/immediate unchanged comparison, one serial 06:15 UTC timer, and private fixed-pagination reader in the existing MQA category. Owner private-beta acceptance remains the next step. All other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
+[D13 — DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md) has passed restricted deployment and owner acceptance: MQA Event types (2 preserved objects) and Event links (5,721) are separate source-preserving releases, each with an initial/immediate unchanged comparison, one serial 06:15 UTC timer, and private fixed-pagination reader in the existing MQA category. [D14 — DEC-0093](../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md) adds 18 retained Event-subtype objects at 06:30 UTC; [D15 — DEC-0094](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md) adds 1,461 retained `motionfilter=consideration` objects at 06:45 UTC. Both are owner accepted and make no event, business-motion, bill, vote, or amendment claim. The next owner decision is [D16 — DEC-0095](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_PROPOSAL_DEC0095.md): a single `motionfilter=programme` cohort under a route-specific 4 MiB transport gate. All other MQA, official-report, vote, detail, DB2, download, public-access, and shared-host actions remain excluded.
 
 ## Documentation hygiene
 

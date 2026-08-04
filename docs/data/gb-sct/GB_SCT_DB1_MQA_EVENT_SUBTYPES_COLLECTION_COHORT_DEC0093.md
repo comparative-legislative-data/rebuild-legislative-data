@@ -1,6 +1,6 @@
 # GB-SCT DB1 MQA Event Subtypes Collection Cohort — DEC-0093
 
-**Status:** `APPROVED — IMPLEMENTATION IN PROGRESS`  
+**Status:** `APPROVED — EXECUTED PASS; OWNER ACCEPTED`
 **Date:** 4 August 2026  
 **Scope:** Exactly one no-query source route: `/api/motionsquestionsanswerseventsubtypes`.
 

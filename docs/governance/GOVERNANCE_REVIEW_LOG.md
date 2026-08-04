@@ -2642,3 +2642,19 @@ Next review due:
 | Affected work blocked | Event subtypes; every other MQA, report, vote, detail, filtered/windowed route; event/link semantic interpretation; DB2; semantic variables; download; generic query/search; raw-object access; public data access; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision for the declared D13 private-beta acceptance journey. Any D13 source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
 | Next review due | On owner acceptance, D13 failure/change/drift, a proposed access/projection change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0162
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — D13–D15 acceptance closure and D16 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 workstream narrative; GB-SCT guide; DEC-0092–DEC-0094 result evidence; master endpoint matrix; high-volume operational register; and active proxy taxonomy. |
+| Active phase and authorising scope | Documentation closure following the owner's D15 acceptance, plus documentation-only preparation of the next cohort recommendation. No new source, VPS, database, implementation, deployment, schedule, or interface action is authorised. |
+| Checks performed | Reconciled accepted private-beta outcomes against the result records, DB1 narrative, handover, decision register, source matrix, and shared MQA subject placement. Compared the remaining fixed `programme` business-motion form with the accepted D15 form and the stated high-volume evidence. |
+| Findings | D13, D14, and D15 are accepted fixed source-preserving releases under one MQA subject. D14 retains 18 objects; D15 retains 1,461; neither changes semantic, DB2, download, public-access, or generic-query boundaries. The remaining literal `programme` filter was previously observed at roughly 3.6 MiB, so it needs its own explicit route-specific response budget rather than inheriting D15's 2 MiB gate. |
+| Outcome | `PASS — ACCEPTED RESULTS RECORDED; DEC-0095 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Every D16 source request/capture/schedule/database/code/deployment/interface action; all unfiltered or annual MQA, votes, official reports, details, semantic interpretation, DB2, downloads, generic query/search, public output, and shared-host changes remain blocked pending DEC-0095 approval. |
+| Owner decision required | Approve, amend, or reject DEC-0095's one fixed `motionfilter=programme` cohort and its route-specific 4 MiB gate. |
+| Next review due | On DEC-0095 decision, D16 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
