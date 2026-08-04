@@ -122,7 +122,11 @@ respectively, with no semantic MQA, bill, vote, or amendment claim. [D16
 business motions — programme — DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md)
 is also closed: 1,620 source objects, an initial/immediate unchanged comparison,
 and a 07:00 UTC timer under its route-specific 4 MiB gate. The next proposed
-cohort is [D17 MQA annual windows — DEC-0096](GB_SCT_DB1_MQA_QUESTIONS_2026_COHORT_PROPOSAL_DEC0096.md), which requires explicit owner approval before any action.
+[D17 MQA annual windows — DEC-0096](GB_SCT_DB1_MQA_2026_ANNUAL_WINDOW_COHORT_RESULT_DEC0096_2026-08-04.md)
+is also accepted: the 2026 Questions and Votes-on-Motions releases retain 4,375
+and 19,473 objects respectively, under one serial daily timer. Its reusable
+annual-window mechanism allows a later named year-expansion decision without a
+new bespoke pipeline.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

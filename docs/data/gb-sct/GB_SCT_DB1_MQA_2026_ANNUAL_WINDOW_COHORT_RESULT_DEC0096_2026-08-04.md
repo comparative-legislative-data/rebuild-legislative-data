@@ -1,6 +1,6 @@
 # GB-SCT DB1 MQA 2026 annual-window cohort result — DEC-0096
 
-**Status:** `PASS — DEPLOYED; OWNER INTERFACE ACCEPTANCE PENDING`  
+**Status:** `PASS — DEPLOYED; OWNER INTERFACE ACCEPTED`
 **Scope:** Exactly the two approved 2026 source URLs; no other year is enabled.
 
 Questions retained 4,375 source objects and Votes on Motions retained 19,473,
@@ -22,6 +22,6 @@ Votes on motions do not establish votes on bill amendments.
 
 ## What next
 
-The smallest next step is owner testing of the two private DB1 panels. A later
-year may use the reusable annual-window mechanism only through a named approval
-and a literal source URL; it does not require another pipeline implementation.
+The owner accepted both private DB1 panels. A later year may use the reusable
+annual-window mechanism only through a named approval and a literal source URL;
+it does not require another pipeline implementation.
