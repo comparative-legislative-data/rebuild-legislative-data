@@ -92,7 +92,7 @@ and silent scope expansion.
 | Parties | `/api/parties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member parties | `/api/memberparties` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member parties | `/api/memberparties/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time party `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
-| Party roles | `/api/partyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD` |
+| Party roles | `/api/partyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_BLOCKED_DEC0063_NOTES_FIELD; D9_COHORT_PROPOSED_DEC0088_OWNER_APPROVAL_REQUIRED` |
 | Party roles | `/api/partyroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1` | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member party roles | `/api/memberpartyroles` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |
 | Member party roles | `/api/memberpartyroles/:id` | `INTENDED_AFTER_QUALIFICATION` | `INCLUDED` | `CANDIDATE_T1`; point-in-time role `CANDIDATE_T2` only after interval rules | `P2` | `OBSERVATION_PASS_DEC0055; HANDLING_REQUIRED` |

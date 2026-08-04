@@ -70,6 +70,11 @@ records the private paginated reader and completed owner interface acceptance;
 DEC-0087 is closed. Its detail, committee, and person-linked relationship
 routes remain excluded.
 
+The [Party roles collection cohort — DEC-0088](GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
+is the next proposed DB1 package. It is documentation only until explicitly
+approved: one source-defined taxonomy, route-specific `Notes` handling, and no
+party-membership, role-history, DB2, public-access, or expansion claim.
+
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
 3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

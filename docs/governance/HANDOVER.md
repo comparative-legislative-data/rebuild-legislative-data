@@ -116,6 +116,12 @@ and private fixed-pagination reader. The owner accepted the private-beta
 journey; DEC-0087 is closed. It does not include Committee roles detail,
 committees, relationship routes, DB2, or public access.
 
+The next proposed package is the collection-only [D9 Party roles cohort —
+DEC-0088](../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md).
+It has no implementation authority: it asks the owner whether to adopt an
+exact route-specific restrictive handling basis and contained DB1 loop for the
+historically undated party-role taxonomy.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their

@@ -193,6 +193,12 @@ records the private paginated reader and completed owner acceptance; DEC-0087
 is closed. It is not evidence of committee membership/history or a transfer of
 the handling decision to detail, relationship, or other `Notes`-bearing routes.
 
+The next proposed [D9 Party roles cohort — DEC-0088](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
+is a separate documentation-only decision. It selects a source-defined
+identifier/party/name/`Notes` taxonomy and makes no party-membership,
+role-history, DB2, public-access, or transferable-`Notes` claim. No D9 source,
+database, code, service, or user-interface action may begin without approval.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
