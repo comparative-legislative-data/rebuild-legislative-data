@@ -34,6 +34,8 @@ const allowed = [
   "scripts/run_db1_d8_committee_roles_reconciliation.mjs",
   "scripts/migrate_db1_d9_party_roles.mjs",
   "scripts/run_db1_d9_party_roles_reconciliation.mjs",
+  "scripts/migrate_db1_d10_parties.mjs",
+  "scripts/run_db1_d10_parties_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",
