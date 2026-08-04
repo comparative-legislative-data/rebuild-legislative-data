@@ -22,6 +22,8 @@ import {
   D13_MQA_TAXONOMY_LINK_ROUTES,
   D14_MQA_EVENT_SUBTYPES_RELEASE_ID,
   D14_MQA_EVENT_SUBTYPES_ROUTE,
+  D15_MQA_CONSIDERATION_RELEASE_ID,
+  D15_MQA_CONSIDERATION_ROUTE,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -499,5 +501,10 @@ export class Db1Explorer {
       await client.query("commit");
       return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D14 MQA Event subtypes projection, not a live Scottish Parliament response, detail route, event taxonomy, free-text interpretation, or unqualified mirror.", "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, event-subtype classification, IntroText interpretation, coverage, or DB2 variable definition.", `The latest reconciliation state is ${panel.reconciliation_state}; it is evidence for this fixed route comparison only and does not establish freshness, completeness, or cross-route consistency.`] };
     } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  async mqaConsiderationD15(offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
+    const client = await this.pool.connect();
+    try { await client.query("begin read only"); const release = await client.query<{ projection_build_id: string }>("select projection_build_id from db1.mqa_consideration_releases where id = $1 and integrity_status = 'PASS'", [D15_MQA_CONSIDERATION_RELEASE_ID]); const item = release.rows[0]; if (!item) { await client.query("commit"); return undefined; } const build = (await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id])).rows[0]; if (!build) throw new Error("D15 release build is unavailable"); const panel = await this.referencePanel(client, { routeId: D15_MQA_CONSIDERATION_ROUTE.id, sourcePath: D15_MQA_CONSIDERATION_ROUTE.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit }); if (!panel) throw new Error("D15 release contract mismatch"); await client.query("commit"); return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D15 source-defined consideration-motion projection, not a live source response, complete motion series, bill-stage/vote dataset, or unqualified mirror.", "The raw object is not exposed. Pagination is the only current selection contract; no filter, generic query, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence only; no motion, bill, vote, date, or text semantics are asserted.", `The latest reconciliation state is ${panel.reconciliation_state}; it does not establish freshness, completeness, or cross-route consistency.`] }; } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 }

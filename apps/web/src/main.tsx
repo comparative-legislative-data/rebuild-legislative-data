@@ -289,6 +289,7 @@ function App() {
   const [db1MemberContext, setDb1MemberContext] = useState<Partial<Record<(typeof memberContextDb1Routes)[number]["key"], Db1Paged>>>({});
   const [db1MqaTaxonomyLink, setDb1MqaTaxonomyLink] = useState<Partial<Record<(typeof mqaTaxonomyLinkDb1Routes)[number]["key"], Db1Paged>>>({});
   const [db1MqaEventSubtypes, setDb1MqaEventSubtypes] = useState<Db1Paged | undefined>();
+  const [db1MqaConsideration, setDb1MqaConsideration] = useState<Db1Paged | undefined>();
   const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
 
   async function refreshIdentity() {
@@ -378,6 +379,7 @@ function App() {
     await Promise.all(memberContextDb1Routes.map((route) => loadDb1MemberContext(route, 0)));
     await Promise.all(mqaTaxonomyLinkDb1Routes.map((route) => loadDb1MqaTaxonomyLink(route, 0)));
     await loadDb1MqaEventSubtypes(0);
+    await loadDb1MqaConsideration(0);
   }
 
   async function loadDb1Bills(offset: number) {
@@ -428,6 +430,7 @@ function App() {
     const response = await request(`/db1/gb-sct/mqa-event-subtypes/d14-v1?offset=${offset}&limit=20`);
     if (response.ok) setDb1MqaEventSubtypes(await response.json() as Db1Paged);
   }
+  async function loadDb1MqaConsideration(offset: number) { const response = await request(`/db1/gb-sct/mqa-business-consideration/d15-v1?offset=${offset}&limit=20`); if (response.ok) setDb1MqaConsideration(await response.json() as Db1Paged); }
 
   const db1ReferencePanels = db1Catalogue?.panels ?? [];
   const db1InstitutionalPanels = db1InstitutionalCatalogue?.panels ?? [];

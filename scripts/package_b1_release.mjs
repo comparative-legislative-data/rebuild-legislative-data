@@ -44,6 +44,8 @@ const allowed = [
   "scripts/run_db1_d13_mqa_taxonomy_link_reconciliation.mjs",
   "scripts/migrate_db1_d14_mqa_event_subtypes.mjs",
   "scripts/run_db1_d14_mqa_event_subtypes_reconciliation.mjs",
+  "scripts/migrate_db1_d15_mqa_consideration.mjs",
+  "scripts/run_db1_d15_mqa_consideration_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",
