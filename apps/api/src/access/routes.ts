@@ -4,7 +4,7 @@ import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
 import { Db1Explorer, loadDb1ExplorerConfig } from "../db1/explorer.js";
-import { D11_MEMBER_CONTEXT_ROUTES, D13_MQA_TAXONOMY_LINK_ROUTES } from "../db1/foundation.js";
+import { D11_MEMBER_CONTEXT_ROUTES, D13_MQA_TAXONOMY_LINK_ROUTES, D14_MQA_EVENT_SUBTYPES_RELEASE_ID } from "../db1/foundation.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
 const accepted = { accepted: true };
@@ -92,6 +92,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     app.get("/db1/gb-sct/committees/d12-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/mqa-event-types/d13-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/mqa-event-links/d13-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/mqa-event-subtypes/d14-v1", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
@@ -388,4 +389,11 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
   };
   app.get("/db1/gb-sct/mqa-event-types/d13-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => d13Paged(request, reply, D13_MQA_TAXONOMY_LINK_ROUTES[0]));
   app.get("/db1/gb-sct/mqa-event-links/d13-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => d13Paged(request, reply, D13_MQA_TAXONOMY_LINK_ROUTES[1]));
+  app.get("/db1/gb-sct/mqa-event-subtypes/d14-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request); if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" }); if (!db1Explorer) return reply.code(503).send({ code: "DB1_NOT_CONFIGURED" });
+    const query = request.query as Record<string, unknown>; const offset = pageNumber(query.offset, 0, 100_000); const limit = pageNumber(query.limit, 20, 50);
+    if (offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_PAGE_REJECTED", message: "Only non-negative offset and limit 1–50 are supported." });
+    const response = await db1Explorer.mqaEventSubtypesD14(offset, limit); if (!response) return reply.code(503).send({ code: "DB1_PROJECTION_UNAVAILABLE" });
+    reply.header("x-cld-layer", "DB1_OPERATIONAL_PROJECTION_SERVER_SIDE_SELECTION"); reply.header("x-cld-db1-release", D14_MQA_EVENT_SUBTYPES_RELEASE_ID); reply.header("x-cld-db1-offset", String(offset)); reply.header("x-cld-db1-limit", String(limit)); reply.header("vary", "Cookie"); return reply.send(response);
+  });
 }

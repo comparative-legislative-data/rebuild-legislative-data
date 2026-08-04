@@ -20,6 +20,8 @@ import {
   D12_COMMITTEES_RELEASE_ID,
   D12_COMMITTEES_ROUTE,
   D13_MQA_TAXONOMY_LINK_ROUTES,
+  D14_MQA_EVENT_SUBTYPES_RELEASE_ID,
+  D14_MQA_EVENT_SUBTYPES_ROUTE,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -481,6 +483,21 @@ export class Db1Explorer {
       if (!panel) throw new Error(`D13 release does not match fixed projection contract: ${route.id}`);
       await client.query("commit");
       return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: [`This is a fixed retained D13 MQA taxonomy/link projection for ${route.path}, not a live Scottish Parliament response, event-detail route, joined event record, semantic relationship table, or unqualified mirror.`, "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, event taxonomy, link direction, relationship, timing, coverage, or DB2 variable definition.", `The latest reconciliation state is ${panel.reconciliation_state}; it is evidence for this fixed route comparison only and does not establish freshness, completeness, or cross-route consistency.`] };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
+  }
+
+  async mqaEventSubtypesD14(offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; projection_build_id: string }>("select id, integrity_status, projection_build_id from db1.mqa_event_subtypes_releases where id = $1 and integrity_status = 'PASS'", [D14_MQA_EVENT_SUBTYPES_RELEASE_ID]); const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id]); const build = projection.rows[0];
+      if (!build) throw new Error("D14 MQA Event subtypes release build is unavailable");
+      const panel = await this.referencePanel(client, { routeId: D14_MQA_EVENT_SUBTYPES_ROUTE.id, sourcePath: D14_MQA_EVENT_SUBTYPES_ROUTE.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit });
+      if (!panel) throw new Error("D14 MQA Event subtypes release does not match its fixed projection contract");
+      await client.query("commit");
+      return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: ["This is a fixed retained D14 MQA Event subtypes projection, not a live Scottish Parliament response, detail route, event taxonomy, free-text interpretation, or unqualified mirror.", "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, event-subtype classification, IntroText interpretation, coverage, or DB2 variable definition.", `The latest reconciliation state is ${panel.reconciliation_state}; it is evidence for this fixed route comparison only and does not establish freshness, completeness, or cross-route consistency.`] };
     } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 }
