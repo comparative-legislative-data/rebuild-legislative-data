@@ -29,6 +29,7 @@ systemctl is-active --quiet postgresql@16-cld_gb_sct.service
 systemctl is-active --quiet cld-gb-sct-api.service
 systemctl is-active --quiet cld-gb-sct-db1-d4a.timer
 systemctl is-active --quiet cld-gb-sct-db1-d4c.timer
+systemctl is-active --quiet cld-gb-sct-db1-d5.timer
 test -x "$runtime/node"
 test -f "$web_unit"
 cp "$web_unit" "$web_backup"
@@ -58,8 +59,8 @@ curl -fsS --max-time 5 http://127.0.0.1:3220/ >/dev/null
 systemctl is-active --quiet cld-gb-sct-api.service
 systemctl is-active --quiet cld-gb-sct-db1-d4a.timer
 systemctl is-active --quiet cld-gb-sct-db1-d4c.timer
+systemctl is-active --quiet cld-gb-sct-db1-d5.timer
 
 cleanup
 trap - ERR
 printf 'Web presentation deployment passed for %s\n' "$commit"
-
