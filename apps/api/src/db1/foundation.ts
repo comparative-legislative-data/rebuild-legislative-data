@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from "node:crypto";
-import { mkdir, open, readFile, unlink } from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { link, mkdir, open, readFile, readdir, rm, unlink } from "node:fs/promises";
 import { dirname, relative, resolve, sep } from "node:path";
 import { Pool, type PoolClient } from "pg";
 
@@ -76,6 +77,10 @@ export const D18_MQA_ANNUAL_WINDOW_ROUTES: readonly AnnualWindowRoute[] = Array.
   { id: `gb-sct.mqa-questions-${year}.collection`, path: `/api/motionsquestionsanswersquestions?year=${year}`, url: `https://data.parliament.scot/api/motionsquestionsanswersquestions?year=${year}`, releaseId: `gb_sct_mqa_questions_${year}_d18_v1`, maxBytes: 33_554_432, timeoutMs: 90_000 },
   { id: `gb-sct.votes-on-motions-${year}.collection`, path: `/api/votesmotion?year=${year}`, url: `https://data.parliament.scot/api/votesmotion?year=${year}`, releaseId: `gb_sct_votes_on_motions_${year}_d18_v1`, maxBytes: 50_331_648, timeoutMs: 120_000 }
 ]);
+export const D19_OFFICIAL_REPORTS_ROUTES = [
+  { id: "gb-sct.committee-official-reports-2025.collection", path: "/api/orscommitteemeeting?year=2025", url: "https://data.parliament.scot/api/orscommitteemeeting?year=2025", releaseId: "gb_sct_committee_official_reports_2025_d19_v1", maxBytes: 201_326_592, timeoutMs: 600_000, observedBytes: 150_496_374 },
+  { id: "gb-sct.plenary-official-reports-2025.collection", path: "/api/orsplenarymeeting?year=2025", url: "https://data.parliament.scot/api/orsplenarymeeting?year=2025", releaseId: "gb_sct_plenary_official_reports_2025_d19_v1", maxBytes: 167_772_160, timeoutMs: 600_000, observedBytes: 123_955_194 }
+] as const;
 export const D4B_REFERENCE_CATALOGUE_ID = "gb_sct_reference_cohort_d4a_v1";
 export const D4B_REFERENCE_PROJECTIONS = [
   { routeId: "gb-sct.bill-types.collection", sourcePath: "/api/billtypes", manifestId: "6a414dbf-973a-4aa5-9aae-b217fc18c1e3", projectionName: "gb_sct_bill_types_d4a_v1" },
@@ -143,6 +148,8 @@ export interface D17MqaAnnualWindowResult extends D4ReferenceCaptureResult {}
 export interface D17MqaAnnualWindowProjectionResult { releases: D4BProjectionResult[]; }
 export interface D18MqaAnnualWindowResult extends D4ReferenceCaptureResult {}
 export interface D18MqaAnnualWindowProjectionResult { releases: D4BProjectionResult[]; }
+export interface D19StreamingProofResult { routeId: string; observedBytes: number; maxBytes: number; streamedBytes: number; sha256: string; temporaryFilesRemoved: boolean; }
+export interface D19StreamCaptureResult { raw: RawObjectReference; contentType: string; status: number; }
 
 class D2CaptureFailure extends Error {
   constructor(readonly code: string) { super(code); }
@@ -176,6 +183,132 @@ async function persistRawObject(rawRoot: string, bytes: Buffer): Promise<{ raw: 
     if (sha256(existing) !== digest) throw new Error("existing DB1 raw object does not match its digest path");
   }
   return { raw: { digest, byteLength: bytes.byteLength, relativePath: relative(root, target) }, created };
+}
+
+async function digestFile(path: string): Promise<string> {
+  const hash = createHash("sha256");
+  for await (const chunk of createReadStream(path)) hash.update(chunk);
+  return hash.digest("hex");
+}
+
+async function streamToRawObject(rawRoot: string, body: ReadableStream<Uint8Array>, maxBytes: number): Promise<RawObjectReference> {
+  const root = resolve(rawRoot);
+  const stagingRoot = resolve(root, ".staging");
+  const temporaryPath = resolve(stagingRoot, `${randomUUID()}.part`);
+  if (!insideRoot(root, temporaryPath)) throw new Error("DB1 raw-object staging path escapes configured root");
+  await mkdir(stagingRoot, { recursive: true, mode: 0o750 });
+  const handle = await open(temporaryPath, "wx", 0o640);
+  const reader = body.getReader();
+  const hash = createHash("sha256");
+  let byteLength = 0;
+  let complete = false;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      byteLength += value.byteLength;
+      if (byteLength > maxBytes) {
+        await reader.cancel().catch(() => undefined);
+        throw new D2CaptureFailure("BODY_TOO_LARGE");
+      }
+      hash.update(value);
+      await handle.write(value);
+    }
+    if (byteLength === 0) throw new D2CaptureFailure("EMPTY_BODY");
+    complete = true;
+  } finally {
+    await handle.close().catch(() => undefined);
+    if (!complete) await unlink(temporaryPath).catch(() => undefined);
+  }
+  const digest = hash.digest("hex");
+  const relativePath = joinRawObjectPath(digest);
+  const target = resolve(root, relativePath);
+  if (!insideRoot(root, target)) throw new Error("DB1 raw-object path escapes configured root");
+  await mkdir(dirname(target), { recursive: true, mode: 0o750 });
+  try {
+    await link(temporaryPath, target);
+  } catch (error: unknown) {
+    if (!(error instanceof Error) || !("code" in error) || error.code !== "EEXIST") throw error;
+    if (await digestFile(target) !== digest) throw new Error("existing DB1 raw object does not match its digest path");
+  } finally {
+    await unlink(temporaryPath).catch(() => undefined);
+  }
+  return { digest, byteLength, relativePath };
+}
+
+function joinRawObjectPath(digest: string): string { return `sha256/${digest}.json`; }
+
+function syntheticStream(byteLength: number): ReadableStream<Uint8Array> {
+  let remaining = byteLength;
+  return new ReadableStream<Uint8Array>({
+    pull(controller) {
+      if (remaining === 0) { controller.close(); return; }
+      const chunk = Buffer.alloc(Math.min(1_048_576, remaining), 0x61);
+      remaining -= chunk.byteLength;
+      controller.enqueue(chunk);
+    }
+  });
+}
+
+async function streamToTemporaryProofFile(scratchRoot: string, name: string, body: ReadableStream<Uint8Array>, maxBytes: number): Promise<{ byteLength: number; digest: string }> {
+  const proofRoot = resolve(scratchRoot, ".d19-streaming-proof");
+  const temporaryPath = resolve(proofRoot, `${name}-${randomUUID()}.part`);
+  if (!insideRoot(resolve(scratchRoot), temporaryPath)) throw new Error("D19 proof path escapes configured root");
+  await mkdir(proofRoot, { recursive: true, mode: 0o750 });
+  const handle = await open(temporaryPath, "wx", 0o600);
+  const hash = createHash("sha256");
+  const reader = body.getReader();
+  let byteLength = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      byteLength += value.byteLength;
+      if (byteLength > maxBytes) {
+        await reader.cancel().catch(() => undefined);
+        throw new D2CaptureFailure("BODY_TOO_LARGE");
+      }
+      hash.update(value);
+      await handle.write(value);
+    }
+    if (byteLength === 0) throw new D2CaptureFailure("EMPTY_BODY");
+    return { byteLength, digest: hash.digest("hex") };
+  } finally {
+    await handle.close().catch(() => undefined);
+    await unlink(temporaryPath).catch(() => undefined);
+  }
+}
+
+export async function runD19SyntheticStreamingProof(scratchRoot: string): Promise<D19StreamingProofResult[]> {
+  const results: D19StreamingProofResult[] = [];
+  for (const route of D19_OFFICIAL_REPORTS_ROUTES) {
+    const streamed = await streamToTemporaryProofFile(scratchRoot, route.id, syntheticStream(route.observedBytes), route.maxBytes);
+    const proofRoot = resolve(scratchRoot, ".d19-streaming-proof");
+    const temporaryFilesRemoved = (await readdir(proofRoot)).length === 0;
+    if (!temporaryFilesRemoved || streamed.byteLength !== route.observedBytes) throw new Error(`D19 streaming proof did not cleanly complete: ${route.id}`);
+    results.push({ routeId: route.id, observedBytes: route.observedBytes, maxBytes: route.maxBytes, streamedBytes: streamed.byteLength, sha256: streamed.digest, temporaryFilesRemoved });
+  }
+  try {
+    await streamToTemporaryProofFile(scratchRoot, "overflow", syntheticStream(1_048_577), 1_048_576);
+    throw new Error("D19 streaming proof overflow was unexpectedly accepted");
+  } catch (error) {
+    if (!(error instanceof D2CaptureFailure) || error.code !== "BODY_TOO_LARGE") throw error;
+  }
+  const proofRoot = resolve(scratchRoot, ".d19-streaming-proof");
+  if ((await readdir(proofRoot)).length !== 0) throw new Error("D19 streaming proof left temporary files after overflow");
+  await rm(proofRoot, { recursive: true, force: true });
+  return results;
+}
+
+export async function fetchD19OfficialReportsToRawObject(route: typeof D19_OFFICIAL_REPORTS_ROUTES[number], rawRoot: string, request: typeof fetch = fetch): Promise<D19StreamCaptureResult> {
+  if (!D19_OFFICIAL_REPORTS_ROUTES.some((candidate) => candidate.id === route.id && candidate.url === route.url)) throw new Error("D19 official-reports route is not in the fixed cohort");
+  const response = await request(route.url, { method: "GET", headers: { accept: "application/json" }, redirect: "manual", signal: AbortSignal.timeout(route.timeoutMs) });
+  if (response.status < 200 || response.status >= 300) throw new D2CaptureFailure("HTTP_STATUS");
+  const declared = Number(response.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > route.maxBytes) throw new D2CaptureFailure("BODY_TOO_LARGE");
+  if (!response.body) throw new D2CaptureFailure("EMPTY_BODY");
+  const raw = await streamToRawObject(rawRoot, response.body, route.maxBytes);
+  return { raw, contentType: response.headers.get("content-type") ?? "", status: response.status };
 }
 
 export async function persistSyntheticRawObject(rawRoot: string, bytes: Buffer): Promise<RawObjectReference> {

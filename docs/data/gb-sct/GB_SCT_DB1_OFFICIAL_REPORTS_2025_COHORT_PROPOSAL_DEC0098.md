@@ -1,6 +1,6 @@
 # GB-SCT DB1 Official Reports 2025 cohort — DEC-0098
 
-**Status:** `PROPOSED — OWNER APPROVAL REQUIRED`  
+**Status:** `APPROVED — IMPLEMENTATION IN PROGRESS`
 **Decision requested:** DEC-0098  
 **Date:** 4 August 2026
 
@@ -18,9 +18,10 @@ claim about bills, stages, amendments, speakers, committees, contributions, or
 any other analytical relationship. DB2 is not a purpose or dependency of this
 work.
 
-This is a planning proposal only. It authorises nothing until the owner
-explicitly approves it; no source request, capture, database write, deployment,
-schedule, or interface change follows from this document alone.
+The owner approved implementation on 4 August 2026. The source-free streaming
+proof is recorded in the [implementation packet](GB_SCT_DB1_OFFICIAL_REPORTS_2025_IMPLEMENTATION_PACKET_DEC0098.md).
+No live source request, capture, database write, deployment, schedule, or
+interface change has occurred at the time of that record.
 
 ## Why this is the right next bounded cohort
 
