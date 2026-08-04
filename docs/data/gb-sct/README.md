@@ -97,12 +97,15 @@ records the six fixed releases, the daily 05:30 UTC service, and completed
 owner interface acceptance; DEC-0090 is closed. It creates no member/relationship/interval claim,
 join, DB2 input, download, or public access.
 
-The next documentation-only decision is the [D12 Committees collection cohort
-— DEC-0091](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md). It
-proposes one route-specific private, source-preserving collection release under
-the existing **Institutional reference** group. It remains unapproved: no
-source request, capture, database, implementation, deployment, or interface
-change is authorised.
+The [D12 Committees collection cohort —
+DEC-0091](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md) has
+passed restricted deployment: one exact initial capture and immediate unchanged
+comparison produced a fixed 169-object source-preserving release with an active
+daily 06:00 UTC reconciliation timer. Its
+[result](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
+records the private paginated reader and pending owner interface acceptance.
+Committee detail, membership/assignment, date/status, contact/free-text
+interpretation, DB2, and public access remain excluded.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

@@ -1,6 +1,6 @@
 # GB-SCT DB1 Committees Collection Cohort — DEC-0091
 
-**Status:** Proposed — owner approval required before any source or system action  
+**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0091
 
@@ -101,7 +101,7 @@ charts; research release; and shared VPS/database/Nginx changes.
 | Item | Record |
 | --- | --- |
 | Active phase | Documentation-only DB1 cohort planning after closed D11. |
-| Current authority | No approval exists for D12. DEC-0091 requires explicit owner approval before any external, VPS, database, code, deployment, or interface action. |
+| Current authority | The owner approved DEC-0091 on 4 August 2026. Its contained restricted deployment passed; owner private-beta acceptance remains required. |
 | Affected records if approved | One exact source route; isolated D12 DB1 raw/archive/manifest/projection/release records; a D12 writer/service/timer; one private reader; D12 result; DB1 narrative; matrix; decision/risk registers; and governance review. |
 | Known uncertainty | Current response size/shape, update behaviour, field meanings, contact/free-text handling implications, validity semantics, and source coverage are not established by this proposal. Historic evidence does not support membership, assignment, status, or historical claims. |
 | Smallest change | One fixed collection route and one named fixed release, using the established D11 compatible-collection pattern. |

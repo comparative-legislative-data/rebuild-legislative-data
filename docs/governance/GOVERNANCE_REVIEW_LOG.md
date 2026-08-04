@@ -2562,3 +2562,19 @@ Next review due:
 | Affected work blocked | Every D12 source request/capture/schedule/database/code/deployment/interface change; committee detail; all joins, membership/assignment/status/interval logic; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
 | Owner decision required | Approve, amend, or reject the contained DEC-0091 Committees collection cohort. |
 | Next review due | On DEC-0091 decision, D12 operational event, unexpected stop, proposed scope/access change, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0157
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0091 approval and D12 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0087, DEC-0090, DEC-0091; D12 implementation/release checks; and GOV-REV-0156. |
+| Active phase and authorising decision | D12 Committees collection cohort under owner-approved DEC-0091. |
+| Checks performed | Confirmed one fixed no-query client; manual redirect/no-retry/30-second/2 MiB/JSON-array gates; a dedicated D12 role/timer; raw/manifest/projection/release lineage; private fixed pagination in the existing Institutional reference group; reader raw/write denial; anonymous denial; proxy/DB1 separation; continuity of D4A–D11; and exclusion of detail, membership/assignment/date/status/contact/free-text interpretation, DB2, public access, generic query/download, and shared-host changes. Ran one initial and one immediate same-route comparison only. |
+| Findings | An initial release preserved 169 source objects with zero rejections; the immediate comparison was `UNCHANGED`; D12 is active/enabled for 06:00 UTC daily. The first deployment wrapper stopped at preflight before any source request or target change because it expected the new timer to be active; the narrow preflight correction was pushed and the contained retry passed. Two loopback health probes failed during expected API restart, then bounded readiness passed without a source retry. |
+| Outcome | `PASS — D12 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Committee detail; all membership, assignment, status, interval, and content interpretation; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the stated private-beta acceptance journey. Any D12 route, source-contract, projection-refresh, access, semantic, or scope change requires a new decision. |
+| Next review due | On owner acceptance, D12 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
