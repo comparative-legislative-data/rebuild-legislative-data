@@ -1,23 +1,23 @@
 # GB-SCT Bills DB1 Readiness Decision — DEC-0084
 
-**Status:** Proposed — existing-evidence decision only; owner decision required  
+**Status:** Approved — restricted collection-only handling basis; execution
+requires DEC-0085
 **Date:** 4 August 2026  
 **Decision requested:** DEC-0084
 
 ## Decision in one sentence
 
-Existing evidence does **not** permit a Bills capture package under the current
-`DO_NOT_CAPTURE_OR_RELEASE` handling records. The owner must decide whether to
-retain that block or replace it with a narrowly defined, private,
-source-preserving collection-capture basis before any `/api/bills` DB1 package
-can be proposed.
+The owner has approved Option B: `/api/bills` may move to a narrowly defined,
+private, source-preserving **collection-only handling basis**. A separately
+approved execution package is still required before any request, capture,
+scheduling, database action, code, or release work.
 
 ## Pre-flight
 
 | Item | Record |
 | --- | --- |
 | Active phase and scope | DB1 planning only. No source request, source-data inspection, VPS/database access, code, scheduling, or release action is included. |
-| Authority | Owner instruction on 4 August 2026 to sanity-check DB1 plans against the agreed mirror vision and then prepare the planned lean Bills readiness decision. |
+| Authority | Owner instruction on 4 August 2026 to sanity-check DB1 plans against the agreed mirror vision, followed by approval to proceed with Option B. |
 | Records reviewed | DEC-0008, DEC-0042, DEC-0045, DEC-0073, DEC-0080–DEC-0083; the Bills collection/detail handling assessments; Bills G4 result; the DB1 workstream narrative; and the master matrix. |
 | Known uncertainty | The existing Bills records establish only a bounded, value-free structural observation and general published source/licence context. They do not establish route-specific terms, field definitions, content classes, identifier semantics, rate/caching conditions, or retention/release fit. |
 | Smallest proposed change | One owner decision on the collection route's handling approach. It changes no data, system, or access state. |
@@ -78,17 +78,15 @@ that every field is licensed, non-personal, or semantically understood. It
 would make a carefully limited DB1 capture proposal possible; it would not
 authorise that proposal's source request or implementation.
 
-## Recommended next action
+## Decision and next action
 
-Choose **Option B** if the owner is content to treat the public institutional
-collection as restricted project-held source material while retaining the
-explicit limitations above. If approved, the next single package will be a
-bounded Bills-collection capture/reconciliation proposal. It will reuse the
-proven D4/D5 pattern and contain ordinary implementation, deployment, and
-repair work inside one package, stopping only on a changed data/access boundary
-or unexpected source behaviour.
-
-No action follows from this record until the owner chooses an option.
+The owner chose **Option B** on 4 August 2026. The successor handling record
+is [Bills restricted collection handling — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md).
+The next proposed package is
+[DEC-0085 — Bills collection capture, reconciliation, projection, and private
+researcher access](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md).
+It contains one bounded implementation/deployment/acceptance loop, but it is
+not authorised by this decision.
 
 ## Evidence links
 

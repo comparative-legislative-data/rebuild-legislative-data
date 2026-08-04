@@ -42,9 +42,11 @@ DEC-0082. Its [restricted handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_
 records the no-public-output, no-download, no-semantic-transformation gate.
 Its [deployment result](GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
 records the initial fixed release and the owner-accepted correction to one
-subject-first Bills/formal-stages group. The next proposed route decision is
-the [Bills DB1 readiness decision](GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md),
-prepared from existing evidence only.
+subject-first Bills/formal-stages group. The owner has approved the
+[Bills collection handling basis — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md).
+The next proposed route package is
+[DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md): one
+bounded collection capture/reconciliation/projection/private-access loop.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)

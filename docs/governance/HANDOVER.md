@@ -87,10 +87,13 @@ generic browser/query, semantic variable, or other route is included. Its
 [deployment result](../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
 records the initial retained release, active D5 timer, and owner-accepted
 subject-first navigation correction. D5 is closed within its restricted scope.
-The next proposed DB1 route decision is the
-[Bills readiness decision — DEC-0084](../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md),
-which uses existing evidence only and requires an owner choice before any
-Bills collection package can be proposed.
+The owner has approved the restricted collection-only handling basis in
+[DEC-0084](../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
+The next owner decision is the integrated
+[Bills collection cohort — DEC-0085](../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md).
+It is the single proposed loop for capture, immediate/daily reconciliation,
+source-preserving projection, and private researcher access. The Bills detail
+route remains blocked.
 
 ## Documentation hygiene
 

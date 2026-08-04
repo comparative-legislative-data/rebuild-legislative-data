@@ -165,10 +165,13 @@ formal-stages group now contains both existing fixed projections and the D5
 access-plan release. The correction changed neither data nor access boundary;
 a regression test protects the one-group navigation rule.
 
-The next proposed DB1 decision is the
-[Bills readiness decision](../../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
-It uses existing evidence only and identifies the single policy/handling choice
-needed before an otherwise bounded Bills collection package can be proposed.
+The owner approved the collection-only Bills handling basis in
+[DEC-0084](../../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
+The next proposed DB1 decision is one integrated
+[Bills collection package — DEC-0085](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md):
+capture, immediate and daily reconciliation, source-preserving projection, and
+private researcher access in one bounded loop. The Bills detail route remains
+blocked.
 
 ## 6. Detailed records
 

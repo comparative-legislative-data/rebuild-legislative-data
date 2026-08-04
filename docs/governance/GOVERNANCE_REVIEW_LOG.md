@@ -2258,3 +2258,19 @@ Next review due:
 | Affected work blocked | Any `/api/bills` source request, capture, schedule, database/code/deployment action, release, DB2 work, generic access/download, public output, and every other new route remain blocked pending an owner decision and later exact package. |
 | Owner decision required | Approve either DEC-0084 Option A (retain block) or Option B (revised private collection-only handling basis). |
 | Next review due | On DEC-0084 decision, a D4A/D4C/D5 drift/failure, Bills package result, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0138
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0084 owner decision and DEC-0085 Bills package preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0008, DEC-0042, DEC-0045, DEC-0073, DEC-0080–DEC-0084; the Bills collection/detail handling records; DB1 access direction and narrative; and GOV-REV-0137. |
+| Active phase and authorising decision | DEC-0084 documentation/handling decision; DEC-0085 proposal preparation only. No source request, VPS/database action, code, deployment, or data retention occurred. |
+| Checks performed | Recorded the owner’s Option B decision as a collection-only successor handling record; retained the detail-route block; bounded DEC-0085 to a fixed no-query collection request, two-request initial comparison, daily schedule, source-preserving projection, beta-only access, and one user-journey acceptance. Checked that proxy and DB1 remain separate data pipes and that no DB2/public/generic-access claim is introduced. |
+| Findings | The approved handling basis supplies the accountable private-retention boundary required to propose, but not execute, the Bills collection package. The package is proportionate to the established D4/D5 pattern while including the mirror’s key behaviours in one delivery loop. |
+| Outcome | `PASS — DEC-0084 RECORDED; DEC-0085 OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | The DEC-0085 source request, capture, schedule, database/code/deployment action, release, DB2 work, public output, generic query/download, Bills detail route, and all other new routes remain blocked pending approval. |
+| Owner decision required | Approve, amend, or reject DEC-0085 before implementation or any source/data action. |
+| Next review due | On DEC-0085 decision, a Bills package result/stop, an operational event in an existing cohort, or 1 September 2026, whichever is earlier. |
