@@ -1,0 +1,8 @@
+[Unit]
+Description=Weekly CLD GB-SCT DB1 D18 historical annual-window reconciliation
+[Timer]
+OnCalendar=Sun *-*-* 07:30:00 UTC
+Persistent=true
+Unit=cld-gb-sct-db1-d18.service
+[Install]
+WantedBy=timers.target
