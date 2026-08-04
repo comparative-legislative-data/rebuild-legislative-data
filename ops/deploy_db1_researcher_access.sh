@@ -67,7 +67,7 @@ create table if not exists db1.projection_structure_profiles (
 );
 insert into db1.schema_migrations (id) values ('023_projection_structure_profiles') on conflict do nothing;
 grant select on db1.projection_structure_profiles to cld_gb_sct_db1_reader;
-grant select, insert, update on db1.projection_structure_profiles to cld_gb_sct_d19_runner;
+grant select, insert, update on db1.projection_structure_profiles to cld_gb_sct_d17_runner, cld_gb_sct_d18_runner;
 commit;
 SQL
 
