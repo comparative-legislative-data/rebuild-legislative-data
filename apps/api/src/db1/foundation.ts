@@ -696,7 +696,9 @@ export async function fetchD17MqaAnnualWindow(route: (typeof D17_MQA_ANNUAL_WIND
   const response = await request(route.url, { method: "GET", headers: { accept: "application/json" }, redirect: "manual", signal: AbortSignal.timeout(route.timeoutMs) });
   const contentType = response.headers.get("content-type") ?? "";
   if (response.status < 200 || response.status >= 300) throw new D2CaptureFailure("HTTP_STATUS");
-  if (!contentType.toLowerCase().includes("application/json")) throw new D2CaptureFailure("CONTENT_TYPE");
+  // The Votes-on-Motions annual route uses a download-style media type. The
+  // source declaration is retained unchanged; the bytes themselves must still
+  // pass the explicit JSON-array contract below.
   const declared = Number(response.headers.get("content-length"));
   if (Number.isFinite(declared) && declared > route.maxBytes) throw new D2CaptureFailure("BODY_TOO_LARGE");
   if (!response.body) throw new D2CaptureFailure("EMPTY_BODY");
