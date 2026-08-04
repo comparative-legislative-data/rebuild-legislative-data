@@ -50,6 +50,24 @@ or reconciliation.
 5. Only then use the two approved live 2025 URLs serially, on the VPS, and
    publish a separate capture result. No other URL is in scope.
 
+## Local implementation update
+
+Steps 1–3 are now implemented, typechecked, and capability-checked locally,
+but not operationally applied. The code contains a D19-only migration, two closed route definitions,
+serial weekly re-fetch reconciliation, manifest/projection logic, and scripts
+for later migration and reconciliation. The capture path streams the source
+response directly into a digest-addressed raw object before any later
+source-position projection reads it. It has no user-supplied URL, year, or ID.
+
+The currently deployed D18 interface also had its scheduled-status wording
+corrected in local code: it now states that the job is a weekly failure retry,
+not recurring successful-route comparison. This is a transparency correction;
+it is not the separate D18 remediation.
+
+The remaining local work is to add the two fixed D19 private-reader routes and
+the volume-appropriate catalogue badges, then package the release. No D19
+database migration or live source action has occurred.
+
 ## What next
 
 Implement and test the local D19 stream-to-raw-object collector and its fixed

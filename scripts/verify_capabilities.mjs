@@ -125,4 +125,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3–D18 releases and closed registries.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3–D19 releases and closed registries.\n");

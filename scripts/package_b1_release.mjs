@@ -52,6 +52,8 @@ const allowed = [
   "scripts/run_db1_d17_mqa_annual_window_reconciliation.mjs",
   "scripts/migrate_db1_d18_mqa_annual_window.mjs",
   "scripts/run_db1_d18_mqa_annual_window_reconciliation.mjs",
+  "scripts/migrate_db1_d19_official_reports.mjs",
+  "scripts/run_db1_d19_official_reports_reconciliation.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",
