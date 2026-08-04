@@ -1,12 +1,12 @@
 # GB-SCT DB1 Government Roles Collection Cohort — DEC-0086
 
-**Status:** Proposed — owner approval required
+**Status:** Approved and executed — restricted deployment passed; owner private-beta acceptance pending
 **Date:** 4 August 2026
 **Decision requested:** DEC-0086
 
 ## Decision requested
 
-Approve one contained D7 DB1 package for the collection-only route
+The owner approved one contained D7 DB1 package for the collection-only route
 `GET https://data.parliament.scot/api/governmentroles`, with no query string.
 The single decision would do two things for this exact route only:
 
@@ -94,18 +94,20 @@ times out, exceeds the cap, returns non-JSON/non-array content, reports an
 error, differs materially from the declared route, or any handling, service,
 access, integrity, or existing-cohort regression occurs.
 
-## What approval would authorise
+## What approval authorised
 
 Only the D7 loop above, including ordinary contained implementation and
 deployment corrections that do not alter route, request contract, retention/
 access class, schedule, project target, public boundary, or claim. It does not
 authorise a future Government roles expansion or establish a transferable
-`Notes` policy.
+`Notes` policy. The deployment result is linked below; the remaining package
+step is owner private-beta acceptance.
 
 ## Related records
 
 - [DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
 - [DB1 access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
 - [Bills collection result — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
+- [Government roles cohort result — DEC-0086](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
 - [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [Master endpoint matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

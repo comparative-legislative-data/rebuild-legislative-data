@@ -2322,3 +2322,19 @@ Next review due:
 | Affected work blocked | Any Government roles source request, capture, schedule, database/code/deployment action, private release, public output, detail/relationship action, DB2, generic query/download, and all other new routes remain blocked pending DEC-0086 approval. |
 | Owner decision required | Approve, amend, or reject DEC-0086. |
 | Next review due | On the DEC-0086 decision, D6 operational event, any unexpected stop, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0142
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DEC-0086 approval and D7 contained implementation/deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DEC-0082, DEC-0085, DEC-0086; D7 implementation/release checks; and GOV-REV-0141. |
+| Active phase and authorising decision | D7 Government roles collection package under owner-approved DEC-0086. |
+| Checks performed | Confirmed the exact no-query collection-only client, manual redirect/no-retry/30-second/2 MiB/JSON-array gates, dedicated writer/timer, route-specific restrictive handling, raw/manifest/projection lineage, private fixed-pagination reader, raw/write reader denial, anonymous denial, proxy/DB1 separation, and exclusion of Government roles detail, relationship routes, DB2, public access, generic query/download, and shared-host changes. Ran one initial request and one immediate same-route comparison only. |
+| Findings | The first request produced a 19,993-byte collection capture and fixed 251-record/zero-rejection release. The second request was `UNCHANGED`. The D7 timer is active/enabled for 04:17 UTC and the named release remains bound to its initial manifest. Two early loopback health probes failed during the expected API restart window; readiness subsequently passed without a source retry or service-boundary change. |
+| Outcome | `PASS — D7 RESTRICTED DEPLOYMENT; OWNER PRIVATE-BETA ACCEPTANCE PENDING`. |
+| Affected work blocked | Government roles detail; every person/relationship route; every other new route; DB2; semantic variables; public data access; download; generic query/search; raw-object access; charts/research release; and shared-host changes. |
+| Owner decision required | No new decision for the stated private-beta acceptance journey. Any route, access, source-contract, projection-refresh, or scope expansion requires a new decision. |
+| Next review due | On owner acceptance, D7 failure/change/drift, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |

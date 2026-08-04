@@ -52,11 +52,13 @@ daily 04:02 UTC reconciliation timer. Its
 records the private paginated reader and completed owner acceptance. The Bills
 detail route remains blocked.
 
-The next proposed DB1 decision is the collection-only
-[Government roles cohort — DEC-0086](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md).
-It is a proposed restrictive private handling and source-preserving D7 package
-for the bounded role taxonomy only; its detail and person-linked relationship
-routes remain excluded pending their own decisions.
+The collection-only [Government roles cohort — DEC-0086](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md)
+has passed restricted deployment: one exact initial capture and immediate
+unchanged comparison produced a fixed source-preserving release with an active
+daily 04:17 UTC reconciliation timer. Its
+[result](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
+records the private paginated reader and owner interface-acceptance boundary.
+Its detail and person-linked relationship routes remain excluded.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
