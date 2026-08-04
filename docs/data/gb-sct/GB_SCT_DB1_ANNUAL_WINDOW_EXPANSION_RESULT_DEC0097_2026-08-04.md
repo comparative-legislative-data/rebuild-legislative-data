@@ -45,11 +45,11 @@ Review DEC-0097 after that run, or sooner if a source route fails, exceeds its
 route-specific resource limit, changes its representation, or a new required
 historical window is approved.
 
-## Legacy implementation issue
+## Deployment maintenance resolution
 
 The original D18 deployment wrapper did not provision the D18 systemd timer
 unit. The active service and timer were installed and enabled directly on
-2026-08-04; the next scheduled run is Sunday 2026-08-09 at 07:30 UTC. Replace
-that wrapper with a direct, reviewable D18 deployment procedure before any
-future D18 infrastructure change. This does not affect the retained releases
-or the active reader routes, but it is a deployment-maintenance item.
+2026-08-04; the next scheduled run is Sunday 2026-08-09 at 07:30 UTC. The
+wrapper has been replaced with a direct, reviewable procedure that deploys the
+isolated CLD application and D18 units but does not start a D18 source
+reconciliation. This does not affect the retained releases or reader routes.
