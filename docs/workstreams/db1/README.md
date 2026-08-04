@@ -1,6 +1,7 @@
 # DB1 source-faithful projection workstream
 
-**Status:** D1/D2/D3 passed; one restricted projection and private explorer accepted
+**Status:** Bounded DB1 cohorts operating privately; source-preserving mirror
+architecture still being built route by route
 
 ## 1. Purpose and user value
 
@@ -11,12 +12,28 @@ Its value is to turn the mutable, sometimes firehose-like upstream API into a
 living versioned research resource with explicit capture lineage, freshness,
 change, and failure records.
 
-DB1 is not yet a proven full mirror. Until scope and parity are evidenced, it
-must be described as an intended source-faithful projection.
+DB1 is not yet a proven full mirror. Until route coverage and reconciliation
+evidence are published for a defined scope, it must be described as a
+source-faithful projection of declared captures. Its end-state ambition is a
+regularly reconciled, source-preserving mirror: each included route is checked
+on its declared schedule and the resulting comparison evidence says precisely
+what did, did not, or could not match the Scottish Parliament response within
+that declared request window.
 
 DB1 is an independent mini-project. DB2 is a later, separate workstream that
 must work within the declared DB1 record if it proceeds; DB2 does not determine
 DB1 capture priorities, schema, retention, or success criteria.
+
+### Relationship to the proxy
+
+DB1 should use the proxy's compact, subject-first, expandable catalogue as its
+researcher-facing navigation pattern. A researcher should be able to discover
+the same route families without learning two unrelated interfaces. The data
+contract is deliberately different: the proxy opens a transient upstream
+response, while DB1 serves a named retained capture or projection from the
+project database. DB1 must therefore lead with build, capture, coverage, and
+reconciliation state—not present itself as a live relay or silently substitute
+for the Scottish Parliament endpoint.
 
 ### Source-preservation rule
 
@@ -60,10 +77,12 @@ are starting constraints, not a capture authorisation.
 ## 4. Decision and implementation path
 
 The [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-is approved. It sets out the strategic product shape, routine-reconciliation model,
-PostgreSQL/raw-object architecture, researcher-access product, staged execution
-path, first-batch selection criteria, front-end acceptance, and stop
-conditions.
+is approved. It sets out the strategic product shape, route-specific
+routine-reconciliation model, PostgreSQL/raw-object architecture,
+researcher-access product, staged execution path, first-batch selection
+criteria, front-end acceptance, and stop conditions. The plan's researcher
+features are a staged target, not a claim that the current restricted catalogue
+already offers generic query, download, or programme examples.
 
 The owner-approved [DEC-0075 D1 synthetic foundation](../../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md)
 has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
@@ -140,12 +159,16 @@ is limited to `/api/billstages` and uses access-plan-first rather than assuming
 a collection browser. Its [restricted handling record](../../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
 keeps raw content and individual records private while the fixed baseline is
 first established. Its [deployment result](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
-records the one `INITIAL` capture and private access-plan release; the remaining
-step is owner front-end acceptance. Owner feedback then identified and the
-web-only correction removed a duplicate top-level Bills/formal-stages group:
-that group now contains both existing fixed projections and the D5 access-plan
-release. The correction changed neither data nor access boundary; a regression
-test protects the one-group navigation rule.
+records the one `INITIAL` capture and private access-plan release. The owner
+accepted the corrected subject-first navigation on 4 August: one Bills and
+formal-stages group now contains both existing fixed projections and the D5
+access-plan release. The correction changed neither data nor access boundary;
+a regression test protects the one-group navigation rule.
+
+The next proposed DB1 decision is the
+[Bills readiness decision](../../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
+It uses existing evidence only and identifies the single policy/handling choice
+needed before an otherwise bounded Bills collection package can be proposed.
 
 ## 6. Detailed records
 

@@ -2242,3 +2242,19 @@ Next review due:
 | Affected work blocked | DB2; semantic variables; generic query/search/download; public data access; Bills/detail routes and all other routes; charts/research release; and shared-host changes. |
 | Owner decision required | No new decision is required for this contained D5 presentation correction. Owner recheck is required before DEC-0083 can close. |
 | Next review due | On owner recheck, D5 drift/failure, a proposed access change/new cohort, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0137
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 4 August 2026 |
+| Review type | Triggered — DB1 architecture sanity sweep, D5 owner acceptance, and DEC-0084 Bills readiness preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; DB1 narrative and strategic plan; DEC-0080–DEC-0083; Bills handling assessments and G4 result; and GOV-REV-0136. |
+| Active phase and authorising decision | Documentation-only sweep and DEC-0084 preparation after owner instruction. No source, VPS, database, code, or deployment action. |
+| Checks performed | Compared the intended DB1 model against its current plans: separate proxy/DB1 data pipes, source-preserving raw/archive/projection boundary, PostgreSQL operational role, route-specific regular reconciliation, scoped upstream comparison, proxy-like subject navigation, researcher-oriented future access, and DB1/DB2 separation. Recorded D5 owner acceptance and corrected stale current-state references. |
+| Findings | The core DB1 plan already conforms to the agreed architecture. Two wording gaps were corrected: proxy-like navigation is now explicit, and reconciliation is stated as exact only for its named route/window rather than an unsupported general-parity claim. Existing Bills evidence remains blocked under the prior handling rule; DEC-0084 presents the one owner policy choice needed before a collection package can be proposed. |
+| Outcome | `PASS — DOCUMENTATION ALIGNMENT COMPLETE; DEC-0084 OWNER DECISION REQUIRED`. |
+| Affected work blocked | Any `/api/bills` source request, capture, schedule, database/code/deployment action, release, DB2 work, generic access/download, public output, and every other new route remain blocked pending an owner decision and later exact package. |
+| Owner decision required | Approve either DEC-0084 Option A (retain block) or Option B (revised private collection-only handling basis). |
+| Next review due | On DEC-0084 decision, a D4A/D4C/D5 drift/failure, Bills package result, or 1 September 2026, whichever is earlier. |

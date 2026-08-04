@@ -1,8 +1,9 @@
 # GB-SCT DB1 Continuous Source-Faithful Projection Plan — DEC-0073
 
-**Status:** Approved strategic plan — D1/D2/D3 passed; DEC-0078 D4A reconciliation pilot proposed; no further action authorised
+**Status:** Approved strategic plan — bounded private cohorts have passed;
+further route expansion remains separately approved
 
-**Version:** 1.1.0
+**Version:** 1.1.1
 **Prepared:** 3 August 2026
 **Decision requested:** DEC-0073
 
@@ -173,6 +174,13 @@ deletion: the declared route/window, source behaviour, and confirmation rule
 must support any stronger conclusion. No source date, response date, or HTTP
 header becomes an update watermark without documented evidence.
 
+The intended mirror test is therefore exact but scoped: for one named
+route/window and completed reconciliation run, DB1 can show whether its
+preserved response bytes and manifest agree with the response obtained from
+the Scottish Parliament under that same request contract. It must never turn
+that result into an unsupported assertion that all historical records,
+corrections, deletions, pages, or source changes are covered.
+
 ### 4.5 PostgreSQL and raw-object storage
 
 PostgreSQL is the proposed **primary DB1 operational database**. It is the
@@ -270,6 +278,13 @@ The intended researcher journey is to **discover, understand, interrogate,
 reproduce, obtain, and cite** a declared DB1 object without needing to infer
 its provenance from an opaque API response.
 
+The catalogue should reuse the proxy's compact subject-first, expandable
+navigation so that users can find the same source families in either layer.
+It must change the action and language at the point of access: a proxy action
+opens a transient upstream response, whereas a DB1 action opens a declared
+retained release from the project database with its capture and reconciliation
+evidence. Visual consistency must not conceal that different data pipe.
+
 | Researcher need | DB1 capability | Transparency requirement |
 | --- | --- | --- |
 | Discover | Route catalogue, coverage calendar, freshness indicator, capture/run history, and current-as-of projection list. | Show whether an object is current-as-of, changed, failed, partial, blocked, or not scheduled. |
@@ -349,11 +364,13 @@ the isolated target, raw-object/manifest/projection interfaces, synthetic
 fixture, verification, and rollback boundary without a source request.
 
 The D2 first source-capture batch and D3 first source-backed
-projection/private-preview have passed. The next proposed package is
-[D4A — reference-cohort reconciliation pilot](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md): three fixed small collections and a
-bounded daily source-preservation comparison. It must be owner-approved before
-any new source request, scheduler, repeated capture, or reconciliation action
-begins. A later D4B interface/catalogue increment remains separately gated.
+projection/private-preview have passed. D4A/D4B and D4C subsequently proved
+bounded daily reconciliation and retained catalogue patterns; D5 added an
+access-plan-first formal-stages release. These are route-specific proofs, not
+a general DB1 completion claim. The next route decision is the
+[Bills readiness decision](GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md),
+which uses the existing Bills evidence to state whether a bounded collection
+capture package may be proposed.
 
 The owner approved DEC-0073 after review against these questions:
 

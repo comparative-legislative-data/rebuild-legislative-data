@@ -1,7 +1,7 @@
 # GB-SCT DB1 Formal-Stages Cohort Result — DEC-0083
 
-**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTANCE PENDING`  
-**Date:** 3 August 2026  
+**Status:** `PASS — RESTRICTED DEPLOYMENT; OWNER ACCEPTED`
+**Date:** 3–4 August 2026
 **Decision:** DEC-0083  
 **Scope:** One named no-query source capture, loss-aware fixed projection, one
 private access-plan endpoint, and a separate D5 reconciliation timer.
@@ -56,12 +56,12 @@ exposed. This is the declared DEC-0082 **access-plan-first** treatment for a
 medium collection, not a claim that individual records cannot ever be made
 available under a later decision.
 
-## Owner front-end acceptance required
+## Owner front-end acceptance
 
-Please sign in, open **DB1 catalogue**, then expand **Bills and formal stages**
-and **formal stages · collection**. Confirm that the provenance, structure,
-access-plan, and limits are intelligible, and that the absence of a large
-record browser/download is clear.
+The owner completed the private-beta acceptance journey and confirmed that the
+access-plan presentation behaved as intended. On 4 August the owner also
+accepted the corrected unified subject navigation described below. DEC-0083 is
+therefore closed within its stated restricted boundary.
 
 On 4 August 2026, owner feedback identified that the D5 access-plan release
 had been rendered as a second top-level **Bills and formal stages** group,
