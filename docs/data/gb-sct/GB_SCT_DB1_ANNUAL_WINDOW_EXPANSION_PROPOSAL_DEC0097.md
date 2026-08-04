@@ -1,6 +1,6 @@
 # GB-SCT DB1 annual-window expansion — DEC-0097
 
-**Status:** `PROPOSED — OWNER APPROVAL REQUIRED`
+**Status:** `APPROVED AND IMPLEMENTED — 2026-08-04`
 
 ## Recommendation
 
@@ -23,14 +23,15 @@ remains a separate coverage decision rather than an assumption.
 
 Each literal URL retains separate raw bytes, manifest, digest, source positions,
 reconciliation state, projection, release, and limitation. The implementation
-is one serial runner with per-route gates inherited only where they match the
-existing D17 annual shape: Questions 8 MiB/60 seconds; Votes 24 MiB/90 seconds.
-It stops only the affected route on failure, retains the failure record, and
-does not vary the year or retry a source request.
+is one serial runner with per-route gates sized from the completed source
+capture: Questions 32 MiB/90 seconds; Votes 48 MiB/120 seconds.
+It stops only the affected route on failure and retains the failure record.
+It does not vary the year; an approved route-specific rerun is limited to a
+previously failed capture.
 
-Initial backfill would make one request per URL. A same-run immediate comparison
-would then establish a bounded baseline for each successful route. After that,
-2026 continues daily; historical windows would be rechecked weekly, serially,
+Initial backfill makes one request per URL. The retained initial captures are
+the historical baseline; an immediate comparison is not claimed for D18.
+2026 continues daily; historical windows are rechecked weekly, serially,
 so DB1 can detect late correction without pretending that old sessions never
 change. No one-year implementation or user approval loop is required.
 
@@ -45,3 +46,14 @@ download; DB2; public access; or new official-report route is included.
 Approve DEC-0097 as the 2011–2025 two-family annual-window expansion and its
 registry-based implementation. Approval is required before source requests,
 database writes, code, deployment, scheduling, or interface changes.
+
+## Implementation record
+
+Owner approval was recorded before capture. All 30 fixed source-year releases
+were captured and projected on 2026-08-04 with zero projection rejections.
+The private DB1 catalogue exposes them only through a closed, fixed-path
+registry, grouped as 2011–2025 annual MQA Questions and Votes on motions
+releases. The weekly D18 reconciliation timer is enabled for Sundays at 07:30
+UTC. See
+[the D18 result record](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md)
+for the release counts and remaining limitation.
