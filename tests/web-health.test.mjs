@@ -26,12 +26,14 @@ test("web rejects non-loopback configuration", async () => {
   else process.env.PORT = previousPort;
 });
 
-test("DB1 navigation presents one subject group for Bills, party/government roles, and committees", () => {
+test("DB1 navigation presents one subject group for Bills, members, party/government roles, and committees", () => {
   const source = readFileSync("apps/web/src/main.tsx", "utf8");
   assert.equal((source.match(/<h3>Bills and formal stages<\/h3>/g) ?? []).length, 1);
   assert.match(source, /releaseCount\} retained release/);
   assert.equal((source.match(/<h3>Parties and government roles<\/h3>/g) ?? []).length, 1);
   assert.match(source, /parties\/d10-v1/);
+  assert.equal((source.match(/<h3>Members and representation<\/h3>/g) ?? []).length, 1);
+  assert.match(source, /member-government-roles\/d11-v1/);
   assert.equal((source.match(/<h3>Committees and committee roles<\/h3>/g) ?? []).length, 1);
   assert.match(source, /Db1PagedPanel/);
   assert.match(source, /fixed retained DB1 releases with route-specific access modes/);

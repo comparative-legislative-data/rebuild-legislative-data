@@ -1,0 +1,18 @@
+[Unit]
+Description=Comparative Legislative Data DB1 D11 Member-context reconciliation
+
+[Service]
+Type=oneshot
+User=cld-gb-sct
+WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID
+EnvironmentFile=/etc/cld-gb-sct/secrets/db1-d11.env
+Environment=CLD_RELEASE_ID=RELEASE_ID
+ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node scripts/run_db1_d11_member_context_reconciliation.mjs
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/cld-gb-sct/raw/db1 /srv/cld-gb-sct/state
+CPUQuota=35%
+MemoryMax=768M
+TasksMax=128

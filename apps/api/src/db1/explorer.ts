@@ -16,6 +16,7 @@ import {
   D9_PARTY_ROLES_ROUTE,
   D10_PARTIES_RELEASE_ID,
   D10_PARTIES_ROUTE,
+  D11_MEMBER_CONTEXT_ROUTES,
   type SourcePreservingProjectionSpec,
   D3_BILL_TYPES_MANIFEST_ID,
   D3_BILL_TYPES_PROJECTION,
@@ -433,5 +434,20 @@ export class Db1Explorer {
       ],
       records: records.rows
     };
+  }
+
+  async memberContextD11(route: (typeof D11_MEMBER_CONTEXT_ROUTES)[number], offset: number, limit: number): Promise<Db1PagedResponse | undefined> {
+    const client = await this.pool.connect();
+    try {
+      await client.query("begin read only");
+      const release = await client.query<{ id: string; integrity_status: string; projection_build_id: string }>("select id, integrity_status, projection_build_id from db1.member_context_releases where id = $1 and source_route_id = $2 and integrity_status = 'PASS'", [route.releaseId, route.id]); const item = release.rows[0];
+      if (!item) { await client.query("commit"); return undefined; }
+      const projection = await client.query<{ manifest_id: string; projection_name: string }>("select manifest_id, projection_name from db1.projection_builds where id = $1 and integrity_status = 'PASS'", [item.projection_build_id]); const build = projection.rows[0];
+      if (!build) throw new Error(`D11 release build is unavailable: ${route.id}`);
+      const panel = await this.referencePanel(client, { routeId: route.id, sourcePath: route.path, manifestId: build.manifest_id, projectionName: build.projection_name }, item.projection_build_id, { offset, limit });
+      if (!panel) throw new Error(`D11 release does not match fixed projection contract: ${route.id}`);
+      await client.query("commit");
+      return { ...panel, access_mode: "SERVER_SIDE_SELECTION", record_page: { offset, limit, total_records: panel.projection.projected_records, records: panel.records }, limitations: [`This is a fixed retained D11 Member-context projection for ${route.path}, not a live Scottish Parliament response, detail route, joined member record, or unqualified mirror.`, "The raw object is not exposed. Pagination is the only current selection contract; no source-field filter, generic query, download, join, or DB2 variable is offered.", "Observed keys and types are structural evidence from this named projection, not a semantic codebook, source-field definition, person-status, relationship, validity-period, affiliation, office, or DB2 variable definition.", `The latest reconciliation state is ${panel.reconciliation_state}; it is evidence for this fixed route comparison only and does not establish freshness, completeness, or cross-route consistency.`] };
+    } catch (error) { await client.query("rollback").catch(() => undefined); throw error; } finally { client.release(); }
   }
 }
