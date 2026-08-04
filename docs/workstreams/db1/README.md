@@ -203,6 +203,12 @@ is closed. It is not evidence of party membership, role history, or a
 transferable handling basis for detail, relationship, or other `Notes`-bearing
 routes.
 
+The next proposed [D10 Parties cohort — DEC-0089](../../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
+is a separate documentation-only decision. It selects the small source-defined
+party collection while making no party-affiliation, validity, continuity,
+history, DB2, public-access, or transferable-`Notes` claim. No D10 source,
+database, code, service, or user-interface action may begin without approval.
+
 ## 6. Detailed records
 
 Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),

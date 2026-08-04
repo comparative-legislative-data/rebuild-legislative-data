@@ -126,6 +126,13 @@ owner accepted the private-beta journey; DEC-0088 is closed. It does not
 include Party roles detail, parties, member/relationship routes, DB2, or public
 access.
 
+The next proposed package is the collection-only [D10 Parties cohort —
+DEC-0089](../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md).
+It has no implementation authority: it asks the owner whether to adopt an
+exact route-specific restrictive handling basis and contained DB1 loop for the
+small source-defined party collection, without an affiliation, validity, or
+party-history claim.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Current records are kept in their
