@@ -48,17 +48,18 @@ semantic transformation belong to the later, independently governed DB2 layer.
 
 ## 2. Current boundary
 
-D1 created an internal `db1` schema and one synthetic-only proof chain. D2
-captured exactly one restricted source object: `/api/billtypes`, with a
-manifest and raw-object digest. D3 then built one loss-aware seven-record,
-zero-rejection projection from that exact object and exposed one authenticated
-private preview. This remains one dated source observation, not a mirror,
-data service, capture worker, generic researcher-access surface, or canonical
-dataset. The completed proxy remains separate because it retains no source
-response.
+DB1 now has private, named source-preserving releases across bounded bills,
+stages, reference, context, committee, MQA, and annual Questions/Votes source
+windows. Every included release has a manifest, source-position lineage,
+projection/rejection record, declared reader boundary, and a route-specific
+reconciliation position. The complete proxy remains separate because it
+retains no source response.
 
-The current inventory and route evidence are inputs to DB1 planning, not
-authority to collect data. See the [GB-SCT source-controls guide](../../data/gb-sct/README.md).
+This is still not a complete mirror, general query service, download service,
+canonical dataset, or research release. The [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
+states the actual retained and remaining route boundary. The current inventory
+and route evidence are planning controls, not automatic authority to collect a
+new source route.
 
 ## 3. Existing evidence and design constraints
 
@@ -95,15 +96,14 @@ The earlier DEC-0018 plan is retained as an
 [unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
 not the governing plan.
 
-## 5. Initial gaps and review approach
+## 5. Foundation history and review approach
 
-DB1 still needs a separately approved first capture slice; route-specific
-source and handling basis; source-derived manifest/raw objects; a precise first
-projection contract; update/reconciliation method; capture-worker access
-design; and a front-end acceptance boundary. D1 defines synthetic verification
-only. Every later source action must evaluate these gaps openly and specify
-review triggers for source drift, failed runs, schema changes, and renewal of
-source/update assumptions.
+The following paragraphs preserve the initial route-by-route delivery record.
+That foundation is now operating through D18, but every future source action
+still requires its own route-specific handling, capture/projection contract,
+update/reconciliation method, access design, and approval. Review triggers
+remain source drift, failed runs, schema changes, resource-limit changes, and
+renewal of source/update assumptions.
 
 The owner-approved [D2 first-source batch](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
 passed as one fixed `/api/billtypes` request. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
@@ -233,7 +233,7 @@ derive its top-level subject headings from the proxy taxonomy, rather than
 from DB1 ingestion cohorts. Owner interface acceptance is complete. It creates no membership,
 assignment, status, date, or free-text interpretation.
 
-[D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md), [D14 — DEC-0093](../../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md), [D15 — DEC-0094](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md), and [D16 — DEC-0095](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md) are closed source-preserving increments in the shared MQA category. D13 retains Event types and Event links; D14 retains 18 Event-subtype objects; D15 retains 1,461 consideration-motion objects; D16 retains 1,620 programme-motion objects. Each has initial/immediate unchanged evidence, its own daily reconciliation position, fixed pagination, and owner interface acceptance. None assigns MQA, business-motion, bill, stage, vote, or amendment semantics. The next proposed increment, [D17 — DEC-0096](../../data/gb-sct/GB_SCT_DB1_MQA_QUESTIONS_2026_COHORT_PROPOSAL_DEC0096.md), is a two-route 2026 annual-window batch; it requires explicit owner approval before any action.
+[D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md), [D14 — DEC-0093](../../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md), [D15 — DEC-0094](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md), and [D16 — DEC-0095](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md) are closed source-preserving increments in the shared MQA category. D13 retains Event types and Event links; D14 retains 18 Event-subtype objects; D15 retains 1,461 consideration-motion objects; D16 retains 1,620 programme-motion objects. D17 then retained the 2026 annual Questions and Votes-on-Motions windows with daily reconciliation. [D18 — DEC-0097](../../data/gb-sct/GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md) retained both fixed annual source windows for every year 2011–2025, with weekly historical reconciliation. None assigns MQA, business-motion, bill, stage, vote, or amendment semantics. See the [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md) for the current boundary and recommended next decision.
 
 ## 6. Detailed records
 

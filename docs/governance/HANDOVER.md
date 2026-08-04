@@ -30,11 +30,12 @@ completed record is archived at
   handling for capture or release.
 - DEC-0045 keeps the complete selected inventory and its controlled
   addition/retirement path.
-- DB1 has accepted, named source-preserving releases through D15, including
-  Bills, roles/context, committees, reference collections, and bounded MQA
-  collections. Each included route has its own declared reconciliation and
-  access boundary. DB1 is not yet a general mirror, canonical variable
-  dataset, download, or research release.
+- DB1 has accepted, named source-preserving releases through D18, including
+  Bills, roles/context, committees, reference collections, bounded MQA
+  collections, and annual Questions/Votes windows for 2011–2026. Each included
+  route has its own declared reconciliation and access boundary. DB1 is not
+  yet a general mirror, canonical variable dataset, download, or research
+  release. See the [coverage snapshot](../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md).
 - The existing VPS application/cluster foundation is isolated and operational,
   but no DB1 action is authorised merely because that foundation exists.
 
@@ -158,7 +159,7 @@ private-beta acceptance is complete. It includes no committee membership, assign
 contact/description/free-text, date/status, detail, DB2, download, public, or
 shared-host claim/action.
 
-[D13 — DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md), [D14 — DEC-0093](../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md), [D15 — DEC-0094](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md), and [D16 — DEC-0095](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md) are accepted fixed source-preserving releases in the existing MQA category. They respectively retain Event types/links, 18 Event-subtype objects, 1,461 consideration-motion objects, and 1,620 programme-motion objects; each has initial/immediate unchanged evidence, a dedicated daily reconciliation position, and private fixed pagination. No event, motion, bill, stage, vote, or amendment semantic claim is made. The next owner decision is [D17 — DEC-0096](../data/gb-sct/GB_SCT_DB1_MQA_QUESTIONS_2026_COHORT_PROPOSAL_DEC0096.md): a compatible two-route 2026 annual-window batch for Questions and Votes on Motions, with separate fixed response limits. All other MQA, official-report, vote/detail forms beyond this proposal, DB2, download, public-access, and shared-host actions remain excluded.
+[D13 — DEC-0092](../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md), [D14 — DEC-0093](../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md), [D15 — DEC-0094](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md), and [D16 — DEC-0095](../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md) are accepted fixed source-preserving releases in the existing MQA category. D17 added the 2026 annual Questions and Votes-on-Motions windows; [D18 — DEC-0097](../data/gb-sct/GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md) added fixed annual releases for both families in every year 2011–2025. D17 reconciles daily and D18 weekly; neither creates a bill-stage, bill-amendment, or other semantic claim. The next owner decision is the next DB1 cohort proposed from the [coverage snapshot](../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md). All remaining MQA, official-report, vote/detail forms, DB2, download, public-access, and shared-host actions remain excluded pending their own package.
 
 ## Documentation hygiene
 

@@ -16,11 +16,11 @@ actions retain nothing and do not establish a capture method or a DB1-ready
 route.
 
 Later decisions supersede only their exact rows: DEC-0094 made the
-`motionfilter=consideration` form D15, and DEC-0095 made the
-`motionfilter=programme` form D16. DEC-0096 is a proposed (not enabled)
-two-route annual-window cohort for Questions 2026 and Votes on Motions 2026.
-The decision register and delivery matrix are the current controls for those
-forms; all other rows below remain historical operational gates.
+`motionfilter=consideration` form D15, DEC-0095 made the
+`motionfilter=programme` form D16, DEC-0096 made the two 2026 annual windows
+D17, and DEC-0097 expanded those two annual windows to 2011–2025 as D18. The
+decision register and delivery matrix are the current controls for those forms;
+all other rows below remain historical operational gates.
 
 Each state below is an operational availability state, not a statement about
 source completeness, content, terms, handling class, or research meaning.
@@ -33,11 +33,11 @@ source completeness, content, terms, handling class, or research meaning.
 | `/api/motionsquestionsanswersevents/:id` | `UNAVAILABLE_DETAIL_CONTRACT` | Detail-key contract remains unestablished. | Separate contract evidence, then handling/terms and action-specific operational controls. |
 | `/api/motionsquestionsanswersmotions` | `UNAVAILABLE_WHOLE_HISTORY_LARGE` | One complete response was about 110 MB. | Exact source window, transfer/cancellation budget, streaming/no-buffering verification, handling/terms, and action package. |
 | `/api/motionsquestionsanswersmotions/:id` | `UNAVAILABLE_DETAIL_CONTRACT` | Detail-key contract remains unestablished. | Separate contract evidence, then handling/terms and action-specific operational controls. |
-| `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=consideration` | `UNAVAILABLE_FILTERED_MEDIUM` | One prior response was about 1.3 MB. | Treat as its own exact filter; resolve handling/terms, source-window, response budget, and action-specific controls. |
-| `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme` | `UNAVAILABLE_FILTERED_MEDIUM` | One complete response was about 3.6 MB. | Treat as its own exact filter; resolve handling/terms, source-window, response budget, and action-specific controls. |
+| `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=consideration` | `D15_RETAINED_DAILY` | D15 captured 1,461 objects with initial/immediate unchanged evidence. | Closed D15 scope only; all semantic claims, generic access, and other route forms remain gated. |
+| `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme` | `D16_RETAINED_DAILY` | D16 captured 1,620 objects with initial/immediate unchanged evidence. | Closed D16 scope only; all semantic claims, generic access, and other route forms remain gated. |
 | `/api/motionsquestionsanswersquestions` | `UNAVAILABLE_EXTREME_UNFILTERED` | No headers within the prior 30-second bounded observation; full audit did not complete. | A source-supported bounded retrieval method, response budget, handling/terms, and exact action package. |
 | `/api/motionsquestionsanswersquestions/:id` | `UNAVAILABLE_DETAIL_CONTRACT` | Detail-key contract remains unestablished. | Separate contract evidence, then handling/terms and action-specific operational controls. |
-| `/api/motionsquestionsanswersquestions?year=:year` | `UNAVAILABLE_ANNUAL_WINDOW` | The documented 2026 year form completed once at about 6.5 MB. | Define year as the exact source window; resolve handling/terms, transfer budget, cancellation/failure treatment, and action package. |
+| `/api/motionsquestionsanswersquestions?year=:year` | `D17_D18_FIXED_ANNUAL_WINDOWS` | D17 retains 2026 daily; D18 retains 2011–2025 weekly. | Closed named years only; no generic year input, semantic claim, or automatic expansion. |
 | `/api/motionsquestionsanswerssupports` | `UNAVAILABLE_EXTREME_UNFILTERED` | No headers within the prior 30-second bounded observation; full audit did not complete. | A source-supported bounded retrieval method, response budget, handling/terms, and exact action package. |
 | `/api/motionsquestionsanswerssupports/:id` | `UNAVAILABLE_DETAIL_CONTRACT` | Detail-key contract remains unestablished. | Separate contract evidence, then handling/terms and action-specific operational controls. |
 | `/api/Orscommitteemeeting/:id` | `UNAVAILABLE_EMPTY_DETAIL_OBSERVED` | One transient candidate returned an empty JSON object. | Do not infer detail-key meaning. A later action needs its own contract, handling/terms, and operational package. |
@@ -45,7 +45,7 @@ source completeness, content, terms, handling class, or research meaning.
 | `/api/orsplenarymeeting/:id` | `UNAVAILABLE_EMPTY_DETAIL_OBSERVED` | One transient candidate returned an empty JSON object. | Do not infer detail-key meaning. A later action needs its own contract, handling/terms, and operational package. |
 | `/api/orsplenarymeeting?year=:year` | `UNAVAILABLE_ANNUAL_FIREHOSE` | One annual response was about 124 MB; earlier annual samples ranged about 35–65 MB. | One declared year unit; streaming/no-buffering, transfer budget, manifest/reconciliation design, handling/terms, and action package. |
 | `/api/votesmotion/:id` | `UNAVAILABLE_DETAIL_CONTRACT` | Transient candidates returned either a source error or an empty JSON object. | Detail-key contract, handling/terms, and an action-specific operational package; do not infer a usable detail route. |
-| `/api/votesmotion?year=:year` | `UNAVAILABLE_ANNUAL_WINDOW` | Annual samples were about 13.3 MB (2011) and 19.4 MB (2026); 2010 failed. | One declared year unit; preserve failure states; resolve handling/terms and operational controls. No bill-amendment or stage-vote claim. |
+| `/api/votesmotion?year=:year` | `D17_D18_FIXED_ANNUAL_WINDOWS` | D17 retains 2026 daily; D18 retains 2011–2025 weekly; 2010 remains outside coverage. | Closed named years only; no generic year input, semantic claim, or automatic expansion. No bill-amendment or stage-vote claim. |
 
 ## 3. Shared operational controls now fixed for later packages
 

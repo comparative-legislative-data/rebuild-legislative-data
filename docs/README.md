@@ -20,7 +20,7 @@ value and a different kind of research claim.
 | Workstream | Purpose | Current status | Start here |
 | --- | --- | --- | --- |
 | Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | D1/D2/D3/D4A/D4B passed; three fixed retained baseline projections have a private catalogue. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Private, scheduled source-preserving releases now cover bounded reference, bills, context, committees, MQA, and annual Questions/Votes windows through D18; it is not yet a complete mirror. | [DB1 narrative](workstreams/db1/README.md) |
 | DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
 
 The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
@@ -31,14 +31,15 @@ DB1. No layer may be described as another.
 
 ## Current programme position
 
-The proxy MVP is the only completed data-access workstream. It is private,
+The proxy MVP is complete and DB1 has operating private retained releases. The proxy is private,
 no-retention access to source-style routes and direct source URLs; it is not a
 dataset, capture, DB1, DB2, export, chart, or research release. The D1
 [synthetic DB1 foundation](data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 has passed without source data. D2 then passed as one restricted source
-observation. D3 has now passed as one exact single-manifest source-backed
-projection and private preview. It establishes neither a current mirror nor a
-general DB1 interface; the next DB1 slice requires its own decision.
+observation. Later named DB1 cohorts have established scheduled,
+source-preserving releases across the currently declared coverage. They do not
+establish a current complete mirror, general query service, DB2 dataset, or
+research release. See the [DB1 coverage snapshot](data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md).
 
 ## How to use these documents
 

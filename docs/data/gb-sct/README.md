@@ -11,16 +11,12 @@ or [DB2](../../workstreams/db2/README.md) narrative.
 ## Current controls
 
 The [approved DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-sets the DB1 product boundary. Its [D1 synthetic foundation](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
-and [D2 first source batch](GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
-have passed. The only source content remains D2's one restricted
-`/api/billtypes` object. D3 has passed as its one named, unscheduled DB1
-projection/private preview; it is not a general DB1 release. The next
-current D4A [reference-cohort reconciliation pilot — DEC-0078](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md)
-has passed its initial and immediate verification cycles and enabled its daily
-timer. Its [result](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
-records the correction of one false structural-drift positive. It is not a
-generic mirror or new user-facing DB1 release.
+sets the DB1 product boundary. D1 and D2 remain the foundational proof and
+first-source records; later named cohorts have added private scheduled
+source-preserving releases. The [current DB1 coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
+is the quickest accurate account of retained coverage and remaining scope.
+It is not a generic mirror, new user-facing public data service, or DB2
+release.
 
 D4B's [reference-cohort projection and catalogue proposal](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
 has passed. Its [result](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
@@ -126,7 +122,12 @@ and a 07:00 UTC timer under its route-specific 4 MiB gate. The next proposed
 is also accepted: the 2026 Questions and Votes-on-Motions releases retain 4,375
 and 19,473 objects respectively, under one serial daily timer. Its reusable
 annual-window mechanism allows a later named year-expansion decision without a
-new bespoke pipeline.
+new bespoke pipeline. [D18 — DEC-0097](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md)
+has now added fixed source-preserving annual Questions and Votes-on-Motions
+releases for every year 2011–2025, with a separate weekly reconciliation
+timer. The [coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
+states the current retained/remaining boundary without implying a complete
+mirror or DB2 release.
 
 1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
@@ -134,6 +135,7 @@ new bespoke pipeline.
 4. [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 5. [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 6. [Update-signal evidence](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
+7. [Current DB1 coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
 
 ## Controls and templates
 
