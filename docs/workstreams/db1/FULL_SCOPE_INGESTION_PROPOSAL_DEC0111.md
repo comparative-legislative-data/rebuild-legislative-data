@@ -158,13 +158,21 @@ parent response may add or remove candidates; additions are captured, removals
 remain historically evidenced, and a changed existing candidate is never
 silently overwritten.
 
-`bills.detail` is a special governance case. The master delivery matrix records
-the earlier `HANDLING_DO_NOT_CAPTURE_OR_RELEASE` / `G4_BLOCKED_DEC0053`
-constraint. DEC-0110 establishes that bills detail remains in the desired
-64-form DB1 scope; it does **not** erase that earlier handling block. F0 must
-therefore produce a route-level handling reassessment for owner approval
-before an F1 request for `bills.detail`. If it cannot be approved, it is a
-named full-scope exception rather than an invisible omission.
+#### Legacy-control reconciliation
+
+The early Bills-detail handling record is historical context, not an active
+F1 exception. The present governing position is the owner-approved 64-form
+scope and the owner direction in DEC-0110 that requires full-scope ingestion
+before further DB1 work. `bills.detail` therefore follows the same
+parent-derived capture pattern as the other F1 detail forms.
+
+Before F1 begins, the implementation record will make one concise
+legacy-control reconciliation: it will list any historic route restriction,
+state whether it identifies a current technical/source condition, and record
+why it does or does not affect the current implementation. A historic
+precaution cannot become a new blocker merely because it exists in the archive.
+Only an actual observed source/technical condition encountered during the
+approved work package may stop an individual form.
 
 ### 6.2 Unfiltered high-volume MQA collections (F2)
 
@@ -249,8 +257,7 @@ touching unrelated VPS services—when any of the following occurs:
   limit;
 - available project DB1 capacity is insufficient;
 - source availability/error condition is returned;
-- a raw object, manifest or PostgreSQL link cannot be recorded; or
-- the inherited `bills.detail` handling block has not been explicitly resolved.
+- a raw object, manifest or PostgreSQL link cannot be recorded.
 
 The stop record must identify the affected source form, parent universe and
 last safe state. It must not delete earlier captures, retry indefinitely,
@@ -300,7 +307,6 @@ approved, the next step is an implementation-ready work package that names the
 exact F0/F1/F2/F3/F4 commands, source routes, resource controls, write targets,
 schedule changes, expected output records and rollback/stop behaviour.
 
-The implementation work package must separately surface the `bills.detail`
-handling reassessment and the F4 detail-contract check before either source
-action is made. Approval of this document alone does not contact the source or
-change DB1.
+The implementation work package must include the short legacy-control
+reconciliation and the F4 detail-contract check before source action begins.
+Approval of this document alone does not contact the source or change DB1.

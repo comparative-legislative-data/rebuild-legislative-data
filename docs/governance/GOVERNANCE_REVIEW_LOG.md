@@ -3146,9 +3146,25 @@ Next review due:
 | Reviewer role | Maintainer |
 | Documents and records reviewed | Governing baseline; handover; DEC-0045 source inventory; DEC-0108–DEC-0110; DB1 expected-scope and update-control registers; current DB1 Backend Assurance narrative. |
 | Active phase and authorising scope | Owner authorised proposal preparation only. No source contact, source-body reading, DB1/VPS access, raw-object/database/timer/service mutation, application/frontend work or deployment is authorised. |
-| Checks performed | Classified all 35 future-capture forms by request pattern and dependency; distinguished fixed collection, parent-derived detail, parameterised filter, high-volume collection and unresolved annual-detail contracts; retained the historic `bills.detail` handling block and the 2006 availability condition as explicit controls. |
+| Checks performed | Classified all 35 future-capture forms by request pattern and dependency; distinguished fixed collection, parent-derived detail, parameterised filter, high-volume collection and unresolved annual-detail contracts; retained the 2006 availability condition as an explicit control. The original draft incorrectly treated a historic Bills-detail precaution as a live exception; GOV-REV-0194 records the owner-directed correction. |
 | Findings | Full scope cannot be truthfully described as 35 new requests: detail and filter forms require a finite, versioned literal input universe. Parent collection retention alone does not satisfy the detail form. The current 29-form subset remains a useful foundation but not a complete Database mirror. |
 | Outcome | `PASS — DEC-0111 PREPARED; OWNER APPROVAL REQUIRED`. |
 | Affected work blocked | All source requests/capture, raw-store and database changes, timer/service changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked. |
 | Owner decision required | Approve, amend or decline DEC-0111 before any DB1 full-scope ingestion activity. |
+| Next review due | On DEC-0111 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0194
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-directed correction of DEC-0111 legacy-control drift |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0045; DEC-0110; DEC-0111 draft; historic Bills qualification records; current risk register and DB1 narrative. |
+| Active phase and authorising scope | Owner authorised repository-only correction of the proposal. No source contact, DB1/VPS access, raw-object/database/timer/service mutation, frontend work or deployment is authorised. |
+| Checks performed | Compared the historic Bills-detail precaution with the current full-scope direction. Removed its treatment as an F1 precondition, retained it as archival context, and added a single legacy-control reconciliation rule applicable across the programme. |
+| Findings | The historic record documented an earlier evidence gap; it did not establish a present Scottish Parliament API, technical or data condition. Letting it survive as a live bespoke blocker contradicted the current 64-form scope and would recreate the project-drift problem. |
+| Outcome | `PASS — DEC-0111 CORRECTED; BILLS DETAIL RETURNS TO NORMAL F1 SCOPE`. |
+| Affected work blocked | All source requests/capture, raw-store and database changes, timer/service changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked pending owner approval of DEC-0111. |
+| Owner decision required | Approve, amend or decline the corrected DEC-0111 full-scope ingestion programme. |
 | Next review due | On DEC-0111 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |
