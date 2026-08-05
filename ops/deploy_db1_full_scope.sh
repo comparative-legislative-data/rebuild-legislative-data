@@ -94,7 +94,7 @@ printf 'CLD_DB1_DATABASE_URL=postgresql://cld_gb_sct_fullscope_runner:%s@127.0.0
 chown root:cld-gb-sct "$secret_file"
 chmod 0640 "$secret_file"
 for cohort in a b c d; do
-  sed -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" -e "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-fullscope-${cohort}.service.template" > "/etc/systemd/system/cld-gb-sct-db1-fullscope-${cohort}.service"
+  sed "s#__CLD_RELEASE__#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-fullscope-${cohort}.service.template" > "/etc/systemd/system/cld-gb-sct-db1-fullscope-${cohort}.service"
 done
 systemctl daemon-reload
 for unit in "${units[@]}"; do systemctl cat "$unit" >/dev/null; systemctl is-enabled --quiet "$unit" && exit 1 || true; done

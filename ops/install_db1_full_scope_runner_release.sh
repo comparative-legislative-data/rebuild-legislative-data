@@ -43,7 +43,7 @@ install -d -o root -g cld-gb-sct -m 0750 "$release_path"
 tar -xzf "$archive" -C "$release_path"
 chown -R root:cld-gb-sct "$release_path"; chmod -R g+rX,o-rwx "$release_path"
 for cohort in "${units[@]}"; do
-  sed -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" -e "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-fullscope-${cohort}.service.template" > "/etc/systemd/system/cld-gb-sct-db1-fullscope-${cohort}.service"
+  sed "s#__CLD_RELEASE__#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-fullscope-${cohort}.service.template" > "/etc/systemd/system/cld-gb-sct-db1-fullscope-${cohort}.service"
 done
 systemctl daemon-reload
 for cohort in "${units[@]}"; do systemctl cat "cld-gb-sct-db1-fullscope-${cohort}.service" >/dev/null; done
