@@ -82,7 +82,4 @@ DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_A
 
 ## Next decision
 
-Approve a narrow correction proposal to create the expected DB1 scope and
-schedule register, resolve stale target references, and define the first
-bounded “as-of” claim. No source request, capture, database mutation, schedule
-change or Research Portal implementation is authorised by the audit result.
+The next owner decision is [DEC-0109](DB1_EXPECTED_SCOPE_AND_UPDATE_CONTROL_PROPOSAL_DEC0109.md), a repository-only correction proposal to create the expected DB1 scope and schedule register and define the first bounded “as-of” claim. No source request, capture, database mutation, schedule change or Research Portal implementation is authorised by the audit result.

@@ -83,7 +83,7 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage but `CHANGES_REQUIRED` for expected scope and reconciliation controls. The next substantive decision is a narrow correction package: create a controlled expected DB1 scope/schedule register and resolve stale operations references. Research Portal design and implementation remain blocked until the resulting assurance position is accepted.
+DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage but `CHANGES_REQUIRED` for expected scope and reconciliation controls. The next substantive decision is [DEC-0109](../workstreams/db1/DB1_EXPECTED_SCOPE_AND_UPDATE_CONTROL_PROPOSAL_DEC0109.md), a narrow repository-only correction package to create a controlled expected DB1 scope/schedule register. Research Portal design and implementation remain blocked until the resulting assurance position is accepted.
 
 ## Documentation hygiene
 

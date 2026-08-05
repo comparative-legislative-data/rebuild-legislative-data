@@ -24,7 +24,7 @@ PostgreSQL services, plus 17 DB1 timers, were inspected for status only.
 | Exception preservation | Pass | The 2006 Committee Official Reports response remains retained and classified as an upstream availability condition, rather than silently omitted or treated as empty. |
 | Update controls | Partial | 17 enabled timers are waiting. Most daily timers ran successfully on 5 August; D18 is weekly and D19 is enabled but had not yet run. The metadata does not itself supply a complete route/window schedule matrix or prove that all initial states will be rechecked. |
 | Scope assurance | Gap | The operational registry contains 113 routes, but the repository lacks one controlled expected-DB1 inventory that maps the approved 64 source forms, inclusion/exclusion decisions and annual windows to those routes. The current registry therefore cannot by itself prove no intended DB1 item is missing. |
-| Operational documentation | Gap | Some generic deployment scripts still refer to nonexistent database `cld_gb_sct`; the live DB1 target is `cld_gb_sct_db1`. This did not affect the audited live target, but must be corrected under a separate scoped change. |
+| Target identification | Pass after correction | `cld_gb_sct` is the valid isolated PostgreSQL cluster/service name; `cld_gb_sct_db1` is the DB1 database. The initial audit probe used the former as a database name and stopped safely. A repository scan found no stale deployment database selector requiring remediation. |
 
 ## What the audit establishes
 
@@ -47,7 +47,7 @@ also retains reconciliation history rather than rewriting it.
 ## Required next decision
 
 Before a content-integrity or live-parity audit, approve a small Backend
-Assurance correction package to: create the expected DB1 scope register;
-classify every route/window's reconciliation cadence and review trigger;
-and repair stale operational documentation. It must not alter captures,
-objects, database rows, timers or services unless separately authorised.
+Assurance correction package to create the expected DB1 scope register and
+classify every route/window's reconciliation cadence and review trigger. It
+must not alter captures, objects, database rows, timers or services unless
+separately authorised.

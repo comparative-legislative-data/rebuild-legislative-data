@@ -66,7 +66,9 @@ unchanging, or semantically correct.
   cadence beyond the separately scheduled 2025 pair.
 - Generic original-archive, JSONL, CSV and Parquet capabilities remain absent.
 - Fresh raw-byte integrity and live parity require distinct approvals.
-- Stale operation-script target references need a contained hygiene correction.
+- Future operational commands must identify both the isolated cluster and the
+  DB1 database explicitly; the DEC-0108 target ambiguity was resolved without
+  finding a stale deployment database selector.
 
 ## Exit gate
 
