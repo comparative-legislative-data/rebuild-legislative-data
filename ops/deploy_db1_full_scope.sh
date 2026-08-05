@@ -84,7 +84,7 @@ DO \$\$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'cld_gb_sct_
 ALTER ROLE cld_gb_sct_fullscope_runner LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT PASSWORD '${runner_password}';
 GRANT CONNECT ON DATABASE cld_gb_sct_db1 TO cld_gb_sct_fullscope_runner;
 GRANT USAGE ON SCHEMA db1 TO cld_gb_sct_fullscope_runner;
-GRANT SELECT, INSERT, UPDATE ON db1.source_routes, db1.source_forms, db1.capture_runs, db1.raw_objects, db1.manifest_entries, db1.reconciliation_cycles, db1.reconciliation_observations, db1.projection_builds, db1.projection_records, db1.projection_rejections, db1.projection_structure_profiles, db1.capture_universes, db1.capture_universe_members, db1.source_conditions, db1.form_update_controls TO cld_gb_sct_fullscope_runner;
+GRANT SELECT, INSERT, UPDATE ON db1.schema_migrations, db1.source_routes, db1.source_forms, db1.capture_runs, db1.raw_objects, db1.manifest_entries, db1.reconciliation_cycles, db1.reconciliation_observations, db1.projection_builds, db1.projection_records, db1.projection_rejections, db1.projection_structure_profiles, db1.capture_universes, db1.capture_universe_members, db1.source_conditions, db1.form_update_controls TO cld_gb_sct_fullscope_runner;
 SQL
 proof="$(PGPASSWORD="$runner_password" psql -h 127.0.0.1 -p 5434 -U cld_gb_sct_fullscope_runner -d "$database" -Atqc "select has_table_privilege(current_user, 'db1.capture_universes', 'INSERT') and has_table_privilege(current_user, 'db1.capture_universes', 'UPDATE') and has_table_privilege(current_user, 'db1.projection_records', 'INSERT')")"
 [[ "$proof" == "t" ]]
