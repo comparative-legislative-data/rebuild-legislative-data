@@ -6,9 +6,15 @@ set -euo pipefail
 if [[ "${1:-}" != "--from-clone" ]]; then
   [[ "${EUID}" -eq 0 ]] || { echo "This deployment must run as root." >&2; exit 1; }
   outer_stage="$(mktemp -d /srv/cld-gb-sct/staging/db1-access-source.XXXXXX)"
-  trap 'rm -rf "$outer_stage"' EXIT
   git clone --depth 1 https://github.com/comparative-legislative-data/rebuild-legislative-data.git "$outer_stage/source"
-  exec bash "$outer_stage/source/ops/deploy_db1_researcher_access.sh" --from-clone
+  # Do not exec into the staged script.  The caller owns this temporary
+  # directory and must remove it only after the child has completed; an exec
+  # combined with an EXIT trap can make that lifecycle ambiguous.
+  set +e
+  bash "$outer_stage/source/ops/deploy_db1_researcher_access.sh" --from-clone
+  deploy_status=$?
+  rm -rf "$outer_stage"
+  exit "$deploy_status"
 fi
 
 project_root=/srv/cld-gb-sct
@@ -58,6 +64,10 @@ install -d -o root -g cld-gb-sct -m 0750 "$release_path"
 tar -xzf "$archive" -C "$release_path"
 chown -R root:cld-gb-sct "$release_path"
 chmod -R g+rX,o-rwx "$release_path"
+test -d "$release_path/apps/api"
+test -d "$release_path/apps/web"
+test -f "$release_path/apps/api/dist/server.js"
+test -f "$release_path/apps/web/dist/server/server.js"
 
 # The profile table holds only derived structural metadata. The DB1 reader is
 # granted read-only access to the manifest lineage needed by the approved
@@ -103,7 +113,10 @@ chmod 0640 "$access_env_next"
 mv "$access_env_next" "$access_env"
 sudo -n -u cld-gb-sct test -x "$project_root/raw/db1"
 
-sed -e "s#releases/RELEASE_ID/#releases/${release_id}/#g" -e "s#CLD_RELEASE_ID=RELEASE_ID#CLD_RELEASE_ID=${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-api.service.template" > "$api_unit"
+sed -e "s#releases/RELEASE_ID/#releases/${release_id}/#g" -e '/^Environment=CLD_RELEASE_ID=/d' "$source_root/ops/systemd/cld-gb-sct-api.service.template" | awk -v release_id="$release_id" '
+  { print }
+  $0 == "Environment=PORT=3210" { print "Environment=CLD_RELEASE_ID=" release_id }
+' > "$api_unit"
 sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-web.service.template" > "$web_unit"
 systemctl daemon-reload
 systemctl restart cld-gb-sct-api.service
