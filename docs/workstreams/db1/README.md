@@ -84,8 +84,10 @@ DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_A
 
 The owner has confirmed that DB1 must become a mirror of the full approved
 64-form scope before any further DB1 QA, stored-object integrity, live-parity
-or Research Portal work. The next task is therefore a full-scope ingestion
-proposal, grouping the 35 outstanding forms by their capture pattern and
-stating any genuinely necessary exception. No new source request, capture,
-database mutation, schedule change or portal implementation is authorised until
-that proposal is explicitly approved.
+or Research Portal work. The resulting
+[full-scope ingestion proposal](FULL_SCOPE_INGESTION_PROPOSAL_DEC0111.md)
+groups the 35 outstanding forms by their capture pattern, requires a controlled
+literal input universe for every detail/filtered route, and preserves any
+genuinely unresolved source condition as a first-class gap. No new source
+request, capture, database mutation, schedule change or portal implementation
+is authorised unless that proposal is explicitly approved.

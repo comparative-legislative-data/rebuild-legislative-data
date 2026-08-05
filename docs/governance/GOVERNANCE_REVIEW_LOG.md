@@ -3136,3 +3136,19 @@ Next review due:
 | Affected work blocked | Further DB1 QA, raw-byte integrity, live parity, Research Portal implementation, DB2, public access and research release are blocked pending full-scope ingestion or explicit owner-approved exceptions. |
 | Owner decision required | Approve a full-scope ingestion proposal before any new source request, capture, database, timer/service, application or deployment action. |
 | Next review due | On full-scope ingestion proposal/decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0193
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — preparation of DEC-0111 full-scope DB1 ingestion proposal |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; DEC-0045 source inventory; DEC-0108–DEC-0110; DB1 expected-scope and update-control registers; current DB1 Backend Assurance narrative. |
+| Active phase and authorising scope | Owner authorised proposal preparation only. No source contact, source-body reading, DB1/VPS access, raw-object/database/timer/service mutation, application/frontend work or deployment is authorised. |
+| Checks performed | Classified all 35 future-capture forms by request pattern and dependency; distinguished fixed collection, parent-derived detail, parameterised filter, high-volume collection and unresolved annual-detail contracts; retained the historic `bills.detail` handling block and the 2006 availability condition as explicit controls. |
+| Findings | Full scope cannot be truthfully described as 35 new requests: detail and filter forms require a finite, versioned literal input universe. Parent collection retention alone does not satisfy the detail form. The current 29-form subset remains a useful foundation but not a complete Database mirror. |
+| Outcome | `PASS — DEC-0111 PREPARED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | All source requests/capture, raw-store and database changes, timer/service changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked. |
+| Owner decision required | Approve, amend or decline DEC-0111 before any DB1 full-scope ingestion activity. |
+| Next review due | On DEC-0111 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |

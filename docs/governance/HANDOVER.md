@@ -83,7 +83,7 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109's controlled expected-scope and route/window-control registers are owner accepted. The owner has directed that no further DB1 assurance, integrity, parity or Research Portal work proceed until the full approved 64-form scope is ingested, or a named owner-approved exception exists. The next task is a full-scope DB1 ingestion proposal.
+DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109's controlled expected-scope and route/window-control registers are owner accepted. The owner has directed that no further DB1 assurance, integrity, parity or Research Portal work proceed until the full approved 64-form scope is ingested, or a named owner-approved exception exists. The proposed [full-scope ingestion programme](../workstreams/db1/FULL_SCOPE_INGESTION_PROPOSAL_DEC0111.md) is ready for review; no operational source or DB1 action is authorised by it yet.
 
 ## Documentation hygiene
 

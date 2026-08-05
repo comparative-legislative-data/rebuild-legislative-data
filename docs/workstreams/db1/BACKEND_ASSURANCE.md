@@ -77,5 +77,6 @@ unchanging, or semantically correct.
 The owner has now set a stricter sequence: no further Backend Assurance,
 stored-object integrity, live-source parity or Research Portal work may proceed
 until DB1 has ingested the full approved 64-form scope, or an owner-approved
-exception explicitly states why a named form cannot yet be ingested. The next
-decision is a full-scope ingestion proposal.
+exception explicitly states why a named form cannot yet be ingested. The
+[full-scope ingestion proposal](FULL_SCOPE_INGESTION_PROPOSAL_DEC0111.md) is
+ready for owner review; it is not an operational authorisation.
