@@ -2930,3 +2930,19 @@ Next review due:
 | Affected work blocked | All source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
 | Owner decision required | Conduct the live Database mirror research journey and report any remaining usability, accessibility or access issue before a further DB1 feature decision. |
 | Next review due | On owner review; before any further DB1 feature; on an interface/accessibility finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0180
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-directed DEC-0106 presentation refinement and local verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; governance procedure; decision/risk registers; GOV-REV-0179; DEC-0106; owner live-review feedback; active web renderer, stylesheet and Database mirror interface-contract test. |
+| Active phase and authorising decision | Owner-directed DEC-0106 frontend-only refinement, confined to the existing private Database mirror presentation. |
+| Checks performed | Replaced the unintended light workspace with the project’s dark research surface; removed duplicate endpoint title and repeated mirror explainer; made each retained-response action explicit and paired it with keyboard/touch-accessible outcome help; made Browse expand its matching record panel; and renamed the catalogue refresh control. Ran production build, all 37 automated tests, capability checks, documentation-link check and whitespace check. |
+| Findings | The correction changes only `apps/web/src/main.tsx`, `apps/web/src/styles.css` and `tests/db1_workspace.test.mjs`. It adds no dependency, source request, capture, data transform, database/projection/schedule operation, API path/configuration, service or deployment action. The preceding `cbb5921` web release remains live; this local correction needs a separate web-only deployment decision. |
+| Outcome | `PASS — DEC-0106 REFINEMENT LOCAL VERIFIED; PRIVATE DEPLOYMENT PENDING`. |
+| Affected work blocked | All source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
+| Owner decision required | Approve or decline the bounded private web-presentation deployment of this verified refinement. |
+| Next review due | On deployment decision; after owner live review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |

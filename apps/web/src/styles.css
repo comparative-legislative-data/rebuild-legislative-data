@@ -280,5 +280,68 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .mirror-record summary { padding: .7rem .8rem; cursor: pointer; color: #273b52; font-weight: 800; }
 .mirror-record pre { overflow: auto; margin: 0; padding: .8rem; border-top: 1px solid #d6dce0; background: #17202d; color: #eef4fa; font-size: .78rem; }
 .mirror-record p { margin: 0; padding: .6rem .8rem; color: #59697a; font-size: .8rem; }
+
+/* Database mirror: retain the project’s dark research shell throughout. */
+.mirror-page-intro { padding-top: 2rem; padding-bottom: .5rem; }
+.mirror-surface { border-color: rgba(120, 181, 207, .42); background: rgba(8, 23, 40, .96); color: #dce5ef; box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .22); }
+.mirror-surface h1, .mirror-surface h2, .mirror-surface h3, .mirror-surface h4 { color: #f5f8fc; }
+.mirror-surface h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.75rem, 4vw, 2.6rem); letter-spacing: -.035em; }
+.mirror-directory-heading h1 { margin-bottom: .65rem; }
+.mirror-surface p { color: #c4d0de; }
+.mirror-kicker { color: #f0c86a !important; }
+.mirror-directory-heading, .mirror-endpoint-heading { border-color: rgba(220, 229, 239, .18); }
+.mirror-about { border-color: rgba(232, 189, 104, .7); background: rgba(232, 189, 104, .08); }
+.mirror-about summary, .mirror-secondary-details summary { color: #f4f7fb; }
+.mirror-directory-controls { border-color: rgba(220, 229, 239, .2); background: rgba(1, 9, 20, .28); }
+.mirror-directory-controls label { color: #dce5ef; }
+.mirror-directory-controls select, .mirror-directory-controls input { border-color: rgba(220, 229, 239, .35); background: #0b1a2b; color: #f4f7fb; }
+.mirror-directory-controls p { color: #b8c4d2; }
+.mirror-endpoint-row { border-color: rgba(120, 181, 207, .35); background: rgba(1, 9, 20, .2); }
+.mirror-endpoint-row:hover { border-color: #e8bd68; box-shadow: 0 .5rem 1.1rem rgba(0, 0, 0, .18); }
+.mirror-endpoint-row code, .mirror-endpoint-heading code { color: #b8d8e8; }
+.mirror-endpoint-row button, .mirror-back, .mirror-row-actions button { border-color: rgba(220, 229, 239, .4); background: #213650; color: #f7f9fc; }
+.mirror-endpoint-row button:hover, .mirror-back:hover, .mirror-row-actions button:hover { background: #344f70; }
+.mirror-back { border-color: rgba(232, 189, 104, .7); color: #f4d390; }
+.mirror-back:hover { background: rgba(232, 189, 104, .1); }
+.mirror-endpoint-heading > p { color: #c4d0de; }
+.mirror-all-years { border-color: rgba(232, 189, 104, .65); background: rgba(232, 189, 104, .08); }
+.mirror-action { border-color: rgba(220, 229, 239, .46); color: #f4f7fb; }
+.mirror-action:hover { background: rgba(220, 229, 239, .1); }
+.mirror-table-scroll { border-color: rgba(220, 229, 239, .2); background: #0a192a; }
+.mirror-release-table th, .mirror-release-table td { border-color: rgba(220, 229, 239, .16); }
+.mirror-release-table thead th { background: #13283d; color: #cbd9e6; }
+.mirror-release-table tbody > tr:not(.mirror-release-detail-row):hover { background: rgba(120, 181, 207, .09); }
+.mirror-release-table tbody > tr > th { color: #f4f7fb; }
+.mirror-status { border-color: rgba(184, 216, 232, .65); color: #c8e0ef; }
+.mirror-status-notice { border-color: rgba(232, 189, 104, .75); background: rgba(232, 189, 104, .11); color: #f4d390; }
+.mirror-row-actions { min-width: 29rem; }
+.mirror-action-control { display: inline-flex; align-items: center; gap: .28rem; }
+.mirror-row-actions a, .mirror-row-actions button { border-color: rgba(220, 229, 239, .45); background: transparent; color: #e5edf5; }
+.mirror-row-actions .mirror-table-primary { border-color: #e8bd68; background: #e8bd68; color: #101c2b; }
+.mirror-row-actions a:hover, .mirror-row-actions button:hover { background: rgba(220, 229, 239, .12); }
+.mirror-row-actions .mirror-table-primary:hover { background: #f0ca78; }
+.mirror-action-external { border-style: dashed !important; }
+.mirror-action-help { position: relative; flex: 0 0 auto; }
+.mirror-action-help > summary { display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border: 1px solid rgba(232, 189, 104, .75); border-radius: 50%; color: #f4d390; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: .9rem; font-weight: 800; list-style: none; }
+.mirror-action-help > summary::-webkit-details-marker { display: none; }
+.mirror-action-help > summary:focus-visible { outline: 3px solid #72bfe7; outline-offset: 3px; }
+.mirror-action-help > div { position: absolute; z-index: 3; top: calc(100% + .5rem); right: 0; width: min(19rem, calc(100vw - 3rem)); padding: .75rem .85rem; border: 1px solid rgba(120, 181, 207, .58); border-radius: .5rem; background: #13283d; box-shadow: 0 .75rem 1.75rem rgba(0, 0, 0, .34); }
+.mirror-action-help > div strong { color: #f5f8fc; font-size: .83rem; }
+.mirror-action-help > div p { margin: .3rem 0 0; color: #d0dbe7; font-size: .8rem; line-height: 1.4; }
+.mirror-release-detail-row > td { background: #0c1d2f; }
+.mirror-release-details, .mirror-browse-results { border-color: rgba(120, 181, 207, .42); background: rgba(1, 9, 20, .24); }
+.mirror-condition { border-left-color: #78b5cf; background: rgba(120, 181, 207, .09); }
+.mirror-condition-notice { border-left-color: #e8bd68; background: rgba(232, 189, 104, .1); }
+.mirror-secondary-details { border-color: rgba(220, 229, 239, .24); }
+.mirror-field-list li, .mirror-record { border-color: rgba(220, 229, 239, .22); }
+.mirror-field-list code { color: #b8d8e8; }
+.mirror-field-list span { color: #c4d0de; }
+.mirror-provenance-list dt { color: #aab8ca; }
+.mirror-provenance-list dd { color: #dce5ef; }
+.mirror-provenance-list a { color: #b8d8e8; }
+.mirror-citation-label { color: #f4f7fb !important; }
+.mirror-citation { border-color: rgba(220, 229, 239, .2); background: #071321; color: #dce5ef; }
+.mirror-record summary { color: #e5edf5; }
+.mirror-record p { color: #b8c4d2; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
 @media (max-width: 42rem) { .site-shell { width: min(100% - 1.25rem, 70rem); } .site-header { align-items: flex-start; flex-direction: column; } .intro { padding-top: 3.5rem; } .db1-intro { padding-top: 2.5rem; } .access-nav button { flex: 1 1 10rem; } .catalogue-section-heading { align-items: flex-start; flex-direction: column; } .catalogue-section-state { justify-items: start; } .catalogue-section-state p, .route-state { text-align: left; } .route-badge { align-items: flex-start; } .route-badge-state { justify-items: start; } .source-example { grid-template-columns: 1fr; } .primary-actions .source-action, .primary-actions button { flex: 1 1 100%; } .year-index .source-action { width: 100%; } .mirror-directory-heading, .mirror-directory-controls, .mirror-endpoint-row { grid-template-columns: 1fr; } .mirror-endpoint-heading, .mirror-all-years { align-items: flex-start; flex-direction: column; } .mirror-endpoint-heading > p { text-align: left; } .mirror-all-years .mirror-action { width: 100%; } .mirror-action-bar .mirror-action { flex: 1 1 100%; } }

@@ -1,6 +1,6 @@
 # DEC-0106: Database mirror directory and dedicated endpoint workspace
 
-**Status:** `APPROVED — PRIVATELY DEPLOYED; OWNER REVIEW PENDING`
+**Status:** `APPROVED — REFINEMENT LOCAL VERIFIED; PRIVATE DEPLOYMENT PENDING`
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror  
 **Prepared under:** owner direction to develop the next implementation proposal after review of three independent UX implementation responses
@@ -311,3 +311,32 @@ or unrelated VPS-service change occurred.
 Database mirror directory and a representative endpoint workspace, then report
 any residual usability, accessibility or data-access issue. No further DB1
 feature, data, source or infrastructure work is authorised by this decision.
+
+### Owner-directed presentation refinement
+
+The first live owner review found three concrete presentational defects:
+
+1. the large light workspace surface broke the established visual system;
+2. endpoint pages repeated the page title and the Database mirror explainer;
+   and
+3. users had to guess what view, download, browse, live-source and details
+   actions would do.
+
+The owner directed a contained frontend-only correction. The local revision
+restores a coherent dark research surface; keeps the general “how the Database
+mirror differs” explanation only in the directory; gives each endpoint one
+visible page title; renames the refresh control; adds an accessible disclosure
+beside every release action stating its outcome; and makes Browse open its
+associated retained-record panel. It removes duplicated access buttons from
+the secondary details panel so that the release row is the one clear access
+surface.
+
+The revision is limited to the existing web renderer, stylesheet and
+deterministic interface-contract test. Production build, all 37 tests,
+capability checks, documentation-link check and whitespace check pass. It has
+not been privately deployed: the prior `cbb5921` web release remains live.
+No source request, capture, database/projection/schedule/API/configuration,
+dependency or unrelated-service change occurred.
+
+**What next:** separately approve or decline the bounded web-only deployment
+of this verified refinement. No data or infrastructure action is requested.

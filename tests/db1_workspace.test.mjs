@@ -21,6 +21,18 @@ test("Database mirror workspace preserves source-first release actions and truth
   assert.match(webSource, /Upstream availability notice captured/);
 });
 
+test("Database mirror action controls state their result and endpoint pages do not repeat the directory explanation", () => {
+  const workspace = webSource.slice(webSource.indexOf("function DatabaseMirrorWorkspace"), webSource.indexOf("async function request"));
+  assert.match(webSource, /function MirrorActionHelp/);
+  for (const label of ["View original JSON", "Download original JSON", "Browse retained records", "Open live Scottish Parliament source", "Details and citation"]) {
+    assert.match(workspace, new RegExp(`MirrorActionHelp label="${label}"`));
+  }
+  assert.equal((workspace.match(/How the Database mirror differs from the live API/g) ?? []).length, 1);
+  assert.match(workspace, /Refresh available sources/);
+  assert.doesNotMatch(workspace, /Refresh mirror list/);
+  assert.match(webStyles, /\.mirror-action-help > summary/);
+});
+
 test("Database mirror no longer hides a summary while forcing a closed release body visible", () => {
   assert.doesNotMatch(webStyles, /\.access-data \.research-release > summary \{ display: none;/);
   assert.doesNotMatch(webStyles, /\.access-data \.research-release > \.route-details \{ display: grid;/);

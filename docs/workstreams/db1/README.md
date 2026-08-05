@@ -10,9 +10,11 @@ commission is ready to issue.
 
 The resulting external advice has been assessed and consolidated into the
 [dedicated endpoint workspace proposal (DEC-0106)](DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md).
-The owner approved its contained frontend-only package; it is now privately
-deployed following local and remote automated verification. The next required
-step is owner review of the rendered workspace.
+The owner approved its contained frontend-only package; it was privately
+deployed following local and remote automated verification. Owner review then
+identified a contained presentation refinement: one coherent dark palette,
+one explanation/title per journey and explicit action-result help. That
+refinement is locally verified and awaits a separate private web-only release.
 
 ## What DB1 is for
 
