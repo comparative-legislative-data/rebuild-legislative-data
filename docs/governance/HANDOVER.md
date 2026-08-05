@@ -36,8 +36,9 @@ annual windows, including Official Reports. The exact position is in the
 The architecture has raw response capture, manifests, hashes, source lineage,
 operational projections and route-specific reconciliation controls.
 
-The DB1 researcher interface is now being reset under owner-approved
-DEC-0101 Stages A–C. The earlier interface exposed internal delivery cohorts
+The DB1 researcher interface has been reset and privately deployed under
+owner-approved DEC-0101 Stages A–C; owner end-to-end acceptance remains pending.
+The earlier interface exposed internal delivery cohorts
 and projection/rejection mechanics rather than a coherent research resource.
 The approved work is limited to a source-first private research interface,
 release/manifest metadata and a database/manifest-only availability audit. The
@@ -81,8 +82,8 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-Review the [DB1 researcher-product reset proposal](../workstreams/db1/RESEARCHER_PRODUCT_RESET_PROPOSAL.md)
-(DEC-0101). It defines:
+Test and accept or identify defects in the deployed [DB1 researcher-product reset](../workstreams/db1/RESEARCHER_PRODUCT_RESET_PROPOSAL.md)
+(DEC-0101). It provides:
 
 - a source-first DB1 catalogue aligned to the proxy subject taxonomy;
 - first-class retained raw-response access, including upstream availability
@@ -93,8 +94,8 @@ Review the [DB1 researcher-product reset proposal](../workstreams/db1/RESEARCHER
   Committee Official Reports response; and
 - route-specific reconciliation/parity evidence and schedules.
 
-The proposal must distinguish what is already implemented from what is merely
-desired, preserve the DB1/DB2 boundary, and set a bounded verification plan.
+The acceptance review must distinguish what is now deployed from later desired
+work, preserve the DB1/DB2 boundary, and keep Stage D separately gated.
 
 ## Documentation hygiene
 

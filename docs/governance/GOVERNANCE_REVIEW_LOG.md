@@ -2738,3 +2738,19 @@ Next review due:
 | Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
 | Owner decision required | No additional decision is needed for the approved private deployment. Owner end-to-end acceptance is required before this interface is treated as accepted; Stage D remains separately gated. |
 | Next review due | Immediately after deployment verification; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0168
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0101 Stages A–C private deployment verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0101 approved record; availability-audit method; DB1 narrative; decision/risk registers; GOV-REV-0166–0167; deployed API/service configuration and deployment log. |
+| Active phase and authorising decision | Owner-approved DEC-0101 Stages A–C. Deployed private researcher access awaits owner end-to-end acceptance. |
+| Checks performed | Confirmed both CLD services are active on the named release; health endpoint responds; unauthenticated catalogue and raw-release requests return `403`; the API has a dedicated non-superuser DB1 reader role and a read-only raw-object path; all existing DB1 timers remain active and unaltered. The deployment log records passing build/test/capability checks and no source request or timer change. The first deployment attempt exposed a temporary-release cleanup defect and one redundant large profile recomputation; the app was restored to its prior release before correction, then the corrected deployment passed. |
+| Findings | The deployed surface uses existing retained records only: subject-first catalogue, named raw retrieval/download, bounded browsing, retained structural profile, citation/snippets, all-available-years access manifests and database/manifest-only availability evidence. The 2006 Committee condition remains a dated Scottish Parliament availability message; no recheck has occurred. No capture, source request, schedule change, DB2 or public access was introduced. |
+| Outcome | `PASS — DEC-0101 STAGES A–C PRIVATELY DEPLOYED; OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
+| Owner decision required | Test the authenticated DB1 catalogue. Accept it or identify specific interface/data-access defects. A separate explicit decision remains required for Stage D. |
+| Next review due | On owner acceptance or defect report; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |

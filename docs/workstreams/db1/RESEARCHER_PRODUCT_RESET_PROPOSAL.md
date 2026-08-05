@@ -1,7 +1,7 @@
 # DB1 researcher-product reset proposal
 
 **Decision:** DEC-0101
-**Status:** `APPROVED — STAGES A–C AUTHORISED`
+**Status:** `APPROVED — STAGES A–C IMPLEMENTED; OWNER ACCEPTANCE PENDING`
 **Date:** 5 August 2026
 
 ## 1. Approved decision and boundary
@@ -19,7 +19,7 @@ The proposal has three linked outcomes:
 3. an availability and reconciliation evidence model that says what the source
    returned, when it was checked, and what DB1 does or does not establish.
 
-Stages A–C are now authorised. This is a DB1 access/provenance implementation
+Stages A–C are now deployed for owner acceptance. This is a DB1 access/provenance implementation
 only. It creates no DB2 variable,
 semantic interpretation, chart, public release, new source-route scope or
 cross-route join.
