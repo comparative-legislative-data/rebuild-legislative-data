@@ -1,4 +1,4 @@
-# GB-SCT DB1 coverage snapshot — 2026-08-04
+# GB-SCT Database mirror coverage snapshot — 2026-08-05
 
 **Status:** `CURRENT IMPLEMENTATION SNAPSHOT — NOT A NEW CAPTURE AUTHORISATION`
 
@@ -10,12 +10,25 @@ currently retains. It complements, but does not replace, the route-by-route
 the [DB1 workstream narrative](README.md), and named
 decision/result records.
 
-DB1 remains a source-preserving retained-data service, not an unqualified
-complete mirror, live relay, canonical dataset, public release, or research
-finding. It must provide raw retained-response access even where an operational
-projection is unsuitable; the private interface has not yet reached that
-product standard. The proxy remains the separate no-retention layer for the
-complete selected source-route inventory.
+The Database mirror remains a source-preserving retained-data service, not an
+unqualified complete mirror, live relay, canonical dataset, public release or
+research finding. Its privately deployed directory and dedicated endpoint
+workspace provide dated original-JSON access first, then an appropriate record
+browser, data guide and provenance disclosure where available. The proxy
+remains the separate no-retention layer for the complete selected source-route
+inventory.
+
+## 5 August metadata-only audit
+
+The audit read existing Database mirror metadata only. It made no Scottish
+Parliament request, retained no new source body, altered no database row and
+changed no schedule. It found 113 latest retained GB-SCT source-route releases,
+published as 29 endpoint labels after annual-window normalisation. The current
+source-condition summary is 111 `RECORDS_RETURNED`, one
+`UPSTREAM_AVAILABILITY_MESSAGE` (2006 Committee Official Reports), and one
+`NOT_YET_ASSESSED` retained original JSON without a published record
+projection. The controlled endpoint descriptions are in the
+[endpoint description register](DB1_ENDPOINT_DESCRIPTION_REGISTER.md).
 
 ## Current retained coverage
 
@@ -55,13 +68,13 @@ release, or research finding exists. In particular, the current DB1 record
 does not establish bill linkage for MQA material, stage-vote meaning, or any
 interpretation of bill amendments.
 
-## Recommended next decision
+## Next decision boundary
 
-Prepare the DB1 researcher-product reset described in the
-[DB1 workstream narrative](README.md): a unified
-subject-first catalogue, first-class raw-response access, researcher tools and
-downloads, a wider availability audit, and a targeted recurring check of the
-2006 Committee availability response. The unfiltered MQA firehoses and all
-detail contracts remain later work because their current route evidence does
-not yet provide a bounded, useful source window comparable to the annual
-Questions/Votes or Official Report forms.
+The Database mirror MVP is now a coherent private access surface, but it does
+not yet provide convenience-format downloads, full field guides or a structured
+record browser for every retained response. A future owner-approved
+research-access package should prioritise those products by source shape and
+research value, and should separately decide any capture/reconciliation change.
+The unfiltered MQA firehoses and all detail contracts remain later work because
+their current route evidence does not yet provide a bounded useful source
+window comparable to the annual Questions/Votes or Official Report forms.

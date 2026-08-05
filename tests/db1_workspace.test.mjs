@@ -5,11 +5,11 @@ import { readFileSync } from "node:fs";
 const webSource = readFileSync(new URL("../apps/web/src/main.tsx", import.meta.url), "utf8");
 const webStyles = readFileSync(new URL("../apps/web/src/styles.css", import.meta.url), "utf8");
 
-test("Database mirror renders the DEC-0106 directory before legacy catalogue fallbacks", () => {
-  const workspace = webSource.indexOf("<DatabaseMirrorWorkspace");
-  const firstLegacyCatalogue = webSource.indexOf("Find a Scottish Parliament source, then view, download or browse");
-  assert.ok(workspace > -1, "DatabaseMirrorWorkspace is rendered for authenticated Database mirror access");
-  assert.ok(firstLegacyCatalogue > workspace, "workspace is selected before legacy catalogue fallbacks");
+test("Database mirror has one active workspace renderer and no legacy catalogue fallback", () => {
+  assert.equal((webSource.match(/if \(view === "db1" && identity\.authenticated && identity\.data_layers_available\)/g) ?? []).length, 1);
+  assert.match(webSource, /<DatabaseMirrorWorkspace/);
+  assert.doesNotMatch(webSource, /Fixed retained baselines/);
+  assert.doesNotMatch(webSource, /Retained DB1 historical annual windows/);
 });
 
 test("Database mirror workspace preserves source-first release actions and truthful labels", () => {
@@ -38,4 +38,17 @@ test("Database mirror no longer hides a summary while forcing a closed release b
   assert.doesNotMatch(webStyles, /\.access-data \.research-release > \.route-details \{ display: grid;/);
   assert.match(webSource, /aria-expanded=\{expanded\}/);
   assert.match(webSource, /scope="col">Source year\/window/);
+});
+
+test("Database mirror uses the same endpoint label for 1999 and later annual source windows", () => {
+  const accessSource = readFileSync(new URL("../apps/api/src/db1/research-access.ts", import.meta.url), "utf8");
+  assert.match(accessSource, /replace\(\/-\(\?:19\|20\)\\d\{2\}\$\//);
+  assert.match(accessSource, /sourceYearFor[\s\S]*\(\?:19\|20\)/);
+});
+
+test("Database mirror directory provides controlled descriptions for every retained endpoint family", () => {
+  for (const endpoint of ["bill stages", "committee official reports", "member parties", "mqa questions", "plenary official reports", "votes on motions"]) {
+    assert.match(webSource, new RegExp(`"${endpoint}":`));
+  }
+  assert.match(webSource, />Database mirror<\/button>/);
 });

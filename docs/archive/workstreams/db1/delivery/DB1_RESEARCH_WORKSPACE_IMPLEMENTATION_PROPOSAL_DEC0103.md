@@ -48,10 +48,10 @@ class research object; the record browser and field guide are access aids.
 ### In scope
 
 - Refactor DB1 rendering and UI copy in
-  [`apps/web/src/main.tsx`](../../../apps/web/src/main.tsx), using the existing
+  [`apps/web/src/main.tsx`](../../../../../apps/web/src/main.tsx), using the existing
   DB1 catalogue and release response types.
 - Replace the DB1-specific visual hierarchy in
-  [`apps/web/src/styles.css`](../../../apps/web/src/styles.css) with scoped,
+  [`apps/web/src/styles.css`](../../../../../apps/web/src/styles.css) with scoped,
   token-based styles for the research workspace.
 - Preserve existing authentication and all existing DB1 API paths,
   authorisation behaviour, raw stream/download behaviour, source URL and

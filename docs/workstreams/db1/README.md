@@ -1,20 +1,16 @@
 # DB1: Scottish Parliament source-preserving mirror
 
-**Status:** substantial private capture coverage exists. The first
-researcher-facing interface is privately deployed. Owner testing produced the
-focused [DEC-0104 accessibility correction](USER_TESTING_ACCESSIBILITY_CORRECTION_DEC0104.md)
-and the subsequent [DEC-0105 retained-response access correction](RETAINED_RESPONSE_ACCESS_CORRECTION_DEC0105.md).
-The latter is privately deployed; current owner feedback identifies a broader
-research-product usability problem, for which an independent external UX
-commission is ready to issue.
+**Status:** substantial private capture coverage exists. The Database mirror
+directory and dedicated endpoint workspace are privately deployed under
+[DEC-0106](DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md). They provide a
+single research-facing path to retained source responses; source data, capture
+schedules, database contents and proxy behaviour were not changed by that
+presentation work.
 
-The resulting external advice has been assessed and consolidated into the
-[dedicated endpoint workspace proposal (DEC-0106)](DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md).
-The owner approved its contained frontend-only package; it was privately
-deployed following local and remote automated verification. Owner review then
-identified a contained presentation refinement: one coherent dark palette,
-one explanation/title per journey and explicit action-result help. That
-refinement is privately deployed and awaits owner live review.
+The earlier accessibility corrections, access correction and external UX
+commission are preserved in the [DB1 delivery archive](../../archive/workstreams/db1/delivery/).
+They explain how the design evolved, but they are not the live implementation
+or a current decision gate.
 
 ## What DB1 is for
 
@@ -184,23 +180,20 @@ No source-data mutation, schedule change or public claim is authorised by this
 narrative. It remains a consolidation of the current evidence and the agreed
 direction for implementation.
 
-## Usability and accessibility overhaul
+## Current researcher access surface
 
-Owner testing confirmed that the DB1 access functions work, but that the
-presentation still reads as an internal delivery monitor: it foregrounds
-manifests, projections and implementation states ahead of the researcher’s
-task. The next design decision is therefore not another incremental interface
-patch. It is a task-first, accessible researcher workspace that places source,
-coverage and clear actions first and keeps the evidence available through
-progressive disclosure.
+The private Database mirror now uses a searchable subject-first directory and
+a dedicated endpoint workspace. An endpoint page presents its retained
+responses in a flat source-year/window table. Each action says what it does:
+view or download the dated original JSON held by CLD, browse retained records
+when a safe projection exists, open the live external Scottish Parliament
+source, or disclose source condition and provenance/citation details.
 
-[DEC-0102: DB1 usability and accessibility direction](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
-records the adopted information architecture, CSS/design direction,
-accessibility contract, research-repository references, future shared-shell
-principles, and acceptance tasks. Its exact follow-on
-[DEC-0103 implementation proposal](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
-has been privately deployed and awaits owner acceptance. The release changed
-only the web presentation; no source, database or schedule change occurred.
+This separation is intentional. The data and its source condition are primary;
+capture time, checksum and reconciliation evidence are available when a
+researcher needs to assess or cite the response. The workspace is an MVP, not
+a claim that every retained response already has a full record browser, field
+guide or convenience-format download.
 
 ## Current controls and detailed evidence
 
@@ -210,16 +203,14 @@ only the web presentation; no source, database or schedule change occurred.
 - [High-volume operational register](../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 - [Update-signal reconnaissance](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
 - [DB1 coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md)
+- [Endpoint description register](DB1_ENDPOINT_DESCRIPTION_REGISTER.md)
 - [Availability audit method](AVAILABILITY_AUDIT_METHOD.md)
-- [DB1 usability and accessibility direction (DEC-0102)](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
-- [DB1 research workspace implementation proposal (DEC-0103)](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
-- [External UX and accessibility research commission](EXTERNAL_UX_RESEARCH_COMMISSION_2026-08-05.md)
 - [Dedicated endpoint workspace proposal (DEC-0106)](DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md)
 - [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
 
 ## Review triggers
 
-Review this record before implementing the reset, changing a source request or
+Review this record before changing a source request or
 schedule, adding/retiring an endpoint, making a DB1 availability/freshness
 claim, enabling download/query access, discovering source drift, or starting
 DB2. Reconcile it with the [handover](../../governance/HANDOVER.md), decision

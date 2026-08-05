@@ -118,13 +118,13 @@ function endpointFor(routeId: string): string {
   return routeId
     .replace(/^gb-sct\./, "")
     .replace(/\.collection$/, "")
-    .replace(/-20\d{2}$/, "")
-    .replace(/\.year\.20\d{2}$/, "")
+    .replace(/-(?:19|20)\d{2}$/, "")
+    .replace(/\.year\.(?:19|20)\d{2}$/, "")
     .replace(/-/g, " ");
 }
 
 function sourceYearFor(routeId: string, sourcePath: string): number | null {
-  const match = routeId.match(/(?:-|\.year\.)(20\d{2})/) ?? sourcePath.match(/[?&]year=(20\d{2})/);
+  const match = routeId.match(/(?:-|\.year\.)((?:19|20)\d{2})/) ?? sourcePath.match(/[?&]year=((?:19|20)\d{2})/);
   return match ? Number(match[1]) : null;
 }
 
@@ -201,6 +201,7 @@ const latestReleaseSql = `
     limit 1
   ) ro on true
   where c.origin_class = 'SOURCE_CAPTURE' and c.status = 'SUCCEEDED'
+    and c.source_route_id like 'gb-sct.%'
     and m.status = 'SUCCEEDED' and m.raw_digest is not null
   order by c.source_route_id, m.retrieved_at desc
 `;

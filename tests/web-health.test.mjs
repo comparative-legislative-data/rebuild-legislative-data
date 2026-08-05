@@ -26,22 +26,15 @@ test("web rejects non-loopback configuration", async () => {
   else process.env.PORT = previousPort;
 });
 
-test("Database mirror navigation derives its retained groups from the proxy subject taxonomy", () => {
+test("Database mirror navigation uses the retained research catalogue's source taxonomy", () => {
   const source = readFileSync("apps/web/src/main.tsx", "utf8");
-  assert.match(source, /function Db1SubjectGroup/);
-  assert.match(source, /section=\{catalogueSections\[0\]\}/);
-  assert.match(source, /section=\{catalogueSections\[1\]\}/);
-  assert.match(source, /section=\{catalogueSections\[2\]\}/);
-  assert.match(source, /section=\{catalogueSections\[3\]\}/);
-  assert.match(source, /gb-sct\.sessions\.collection/);
-  assert.match(source, /gb-sct\.constituencies\.collection/);
-  assert.match(source, /gb-sct\.committee-types\.collection/);
-  assert.match(source, /memberContextDb1Routes\.slice\(3\)/);
-  assert.match(source, /parties\/d10-v1/);
-  assert.match(source, /db1ResearchCatalogue\.subjects\.map/);
+  assert.match(source, /catalogue\?\.subjects\.flatMap/);
+  assert.match(source, /catalogue\?\.subjects\.map/);
   assert.match(source, /databaseMirrorSubjectGuides/);
   assert.match(source, /databaseMirrorEndpointGuide/);
   assert.match(source, /How the Database mirror differs from the live API/);
-  assert.match(source, /Db1PagedPanel/);
-  assert.match(source, /fixed retained DB1 releases with route-specific access modes/);
+  assert.match(source, /Database mirror directory/);
+  assert.doesNotMatch(source, /function Db1SubjectGroup/);
+  assert.doesNotMatch(source, /Db1PagedPanel/);
+  assert.doesNotMatch(source, /fixed retained DB1 releases with route-specific access modes/);
 });

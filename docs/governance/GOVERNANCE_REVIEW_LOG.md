@@ -2962,3 +2962,19 @@ Next review due:
 | Affected work blocked | All source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
 | Owner decision required | Conduct the corrected live Database mirror research journey and report any residual usability, accessibility or access issue before a further DB1 feature decision. |
 | Next review due | On owner review; before any further DB1 feature; on an interface/accessibility finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0182
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-approved Database mirror catalogue, description and repository-hygiene package |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0181; DEC-0106; active DB1 narrative and coverage snapshot; Database mirror renderer; DB1 research-access contract; archive index. |
+| Active phase and authorising decision | Owner-approved bounded hygiene and completeness sweep following acceptance of the DEC-0106 MVP baseline. |
+| Checks performed | Read existing isolated DB1 metadata only: 113 latest GB-SCT retained releases were grouped into 29 researcher-facing endpoints; 111 had passing record projections, one was the retained 2006 Committee Official Reports upstream availability response, and one was raw JSON without a published record projection. Removed four unreachable legacy Database mirror renderer branches and their obsolete loaders/panels; excluded synthetic non-GB-SCT material from the reader query; normalised 1999 annual routes with later annual routes; added the controlled endpoint-description register; archived DEC-0102–DEC-0105 delivery records and the external UX commission. |
+| Findings | The prior active narrative and coverage snapshot were stale because they described a pre-DEC-0106 product reset and linked directly to superseded delivery documents. The metadata audit found no new source condition beyond the already recorded 2006 exception and one retained raw-only response. No raw source body was read, source request made, data captured, database row changed, schedule altered, dependency added or deployment performed. |
+| Outcome | `PASS — LOCAL CATALOGUE/HYGIENE PACKAGE VERIFIED; SEPARATE WEB-ONLY DEPLOYMENT DECISION REQUIRED`. |
+| Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside this package. |
+| Owner decision required | If the verified local changes are acceptable, explicitly authorise a private web-only deployment; otherwise the existing MVP baseline remains live. |
+| Next review due | On local verification result; on a deployment decision; before a new DB1 researcher-access feature; or 4 September 2026, whichever is earlier. |
