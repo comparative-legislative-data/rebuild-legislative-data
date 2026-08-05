@@ -93,8 +93,11 @@ SQL
 set -a
 source /etc/cld-gb-sct/secrets/db1-d19.env
 set +a
-PATH="$runtime:$PATH" node "$release_path/scripts/build_db1_projection_structure_profiles.mjs"
 profile_proof="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -Atqc "select count(*) = (select count(*) from db1.projection_builds where origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS') from db1.projection_structure_profiles")"
+if [[ "$profile_proof" != "t" ]]; then
+  PATH="$runtime:$PATH" node "$release_path/scripts/build_db1_projection_structure_profiles.mjs"
+  profile_proof="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -Atqc "select count(*) = (select count(*) from db1.projection_builds where origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS') from db1.projection_structure_profiles")"
+fi
 [[ "$profile_proof" == "t" ]]
 reader_proof="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -Atqc "select has_table_privilege('cld_gb_sct_db1_access_reader', 'db1.projection_structure_profiles', 'SELECT') and has_table_privilege('cld_gb_sct_db1_access_reader', 'db1.raw_objects', 'SELECT') and not has_table_privilege('cld_gb_sct_db1_access_reader', 'db1.raw_objects', 'INSERT,UPDATE,DELETE') and not has_table_privilege('cld_gb_sct_db1_access_reader', 'db1.projection_records', 'INSERT,UPDATE,DELETE')")"
 [[ "$reader_proof" == "t" ]]
