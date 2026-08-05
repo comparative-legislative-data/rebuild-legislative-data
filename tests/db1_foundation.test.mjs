@@ -166,6 +166,14 @@ test("full-scope runner registers the approved 64 forms and isolates the 35 new 
   assert.deepEqual(new Set(FULL_SCOPE_FORMS.map((form) => form.id)).size, 35);
 });
 
+test("full-scope dependent handling preserves an unavailable parent as a source condition", async () => {
+  const source = await readFile(new URL("../apps/api/src/db1/full-scope.ts", import.meta.url), "utf8");
+  const dependentRunner = source.slice(source.indexOf("export async function runFullScopeMqaDependents"), source.indexOf("async function annualParents"));
+  assert.match(source, /PARENT_COLLECTION_UNAVAILABLE_V1/);
+  assert.match(source, /PARENT_COLLECTION_UNAVAILABLE/);
+  assert.match(dependentRunner, /PARENT_PROJECTION_MISSING:[\s\S]*?createUnavailableParentUniverse[\s\S]*?continue;[\s\S]*?const universe = await createUniverse/);
+});
+
 test("D20 has exactly the approved 54 fixed annual URLs and rejects outside-year input without source traffic", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-d20-collector-"));
   try {

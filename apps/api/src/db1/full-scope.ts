@@ -183,6 +183,19 @@ async function createUniverse(client: PoolClient, form: SourceForm, parent: { ma
   return { id, paths };
 }
 
+/**
+ * A dependent route cannot be enumerated when its upstream collection was
+ * retained as an explicit source condition rather than a projectable JSON
+ * collection. Preserve that limitation at the dependent-form level and let
+ * the rest of the cohort continue; it is neither an empty universe nor an
+ * application failure.
+ */
+async function createUnavailableParentUniverse(client: PoolClient, form: SourceForm, parentRouteId: string): Promise<void> {
+  const universeId = randomUUID();
+  await client.query("insert into db1.capture_universes (id,source_form_id,parent_manifest_ids,extraction_rule,candidate_count,status) values ($1,$2,'[]'::jsonb,'PARENT_COLLECTION_UNAVAILABLE_V1',0,'UNRESOLVED')", [universeId, form.id]);
+  await client.query("insert into db1.source_conditions (id,source_form_id,source_route_id,condition_code,observed_at) values ($1,$2,$3,'PARENT_COLLECTION_UNAVAILABLE',now())", [randomUUID(), form.id, parentRouteId]);
+}
+
 interface CaptureResult { state: "SUCCEEDED" | "CONDITION"; manifestId?: string; raw?: { digest: string; byteLength: number; relativePath: string; contentType: string }; }
 
 async function writeProjectionStructureProfile(client: PoolClient, buildId: string): Promise<void> {
@@ -380,7 +393,14 @@ export async function runFullScopeMqaDependents(options: FullScopeOptions): Prom
     for (const form of forms) {
       const parentRouteId = form.parentRouteIds?.[0];
       if (!parentRouteId) throw new Error(`PARENT_ROUTE_MISSING:${form.id}`);
-      const parent = await latestParent(client, parentRouteId);
+      let parent: { manifestId: string; records: Record<string, unknown>[] };
+      try { parent = await latestParent(client, parentRouteId); }
+      catch (error) {
+        if (!(error instanceof Error) || !error.message.startsWith("PARENT_PROJECTION_MISSING:")) throw error;
+        await createUnavailableParentUniverse(client, form, parentRouteId);
+        conditions += 1;
+        continue;
+      }
       const universe = await createUniverse(client, form, parent);
       await concurrent(universe.paths, 4, async (path) => {
         attempted += 1;
