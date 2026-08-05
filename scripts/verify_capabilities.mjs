@@ -5,7 +5,8 @@ const directories = ["apps", "packages"];
 const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const directSourceLinkFile = "apps/web/src/main.tsx";
 const d2CaptureFile = "apps/api/src/db1/foundation.ts";
-const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx"];
+const db1ResearchFile = "apps/api/src/db1/research-access.ts";
+const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx", db1ResearchFile];
 const prohibited = [
   "node:net",
   "node:tls",
@@ -53,7 +54,7 @@ for (const directory of directories) {
     if (content.includes("/db1/") && !db1RouteFiles.includes(path)) {
       findings.push(`${path}: DB1 route capability is not permitted here`);
     }
-    if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && content.includes("data.parliament.scot")) {
+    if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && path !== db1ResearchFile && content.includes("data.parliament.scot")) {
       findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
     }
   }
@@ -62,13 +63,14 @@ for (const directory of directories) {
 const db1RouteSource = readFileSync("apps/api/src/access/routes.ts", "utf8");
 const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1", "/db1/gb-sct/institutional-reference/d4c-v1", "/db1/gb-sct/formal-stages/d5-v1", "/db1/gb-sct/bills/d6-v1", "/db1/gb-sct/government-roles/d7-v1", "/db1/gb-sct/committee-roles/d8-v1", "/db1/gb-sct/party-roles/d9-v1", "/db1/gb-sct/parties/d10-v1", "/db1/gb-sct/members/d11-v1", "/db1/gb-sct/member-constituency-statuses/d11-v1", "/db1/gb-sct/member-region-statuses/d11-v1", "/db1/gb-sct/member-parties/d11-v1", "/db1/gb-sct/member-party-roles/d11-v1", "/db1/gb-sct/member-government-roles/d11-v1", "/db1/gb-sct/committees/d12-v1", "/db1/gb-sct/mqa-event-types/d13-v1", "/db1/gb-sct/mqa-event-links/d13-v1", "/db1/gb-sct/mqa-event-subtypes/d14-v1", "/db1/gb-sct/mqa-business-consideration/d15-v1", "/db1/gb-sct/mqa-business-programme/d16-v1", "/db1/gb-sct/mqa-questions-2026/d17-v1", "/db1/gb-sct/votes-on-motions-2026/d17-v1"];
 const fixedDb1DownloadRoutes = ["/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl"];
-const declaredAllowedDb1Routes = [...fixedDb1Routes, ...fixedDb1DownloadRoutes];
+const declaredResearchDb1Routes = ["/db1/gb-sct/research/catalogue", "/db1/gb-sct/research/releases/:routeId/raw", "/db1/gb-sct/research/releases/:routeId/records", "/db1/gb-sct/research/all-years", "/db1/gb-sct/research/availability-audit"];
+const declaredAllowedDb1Routes = [...fixedDb1Routes, ...fixedDb1DownloadRoutes, ...declaredResearchDb1Routes];
 const declaredDb1Routes = [...db1RouteSource.matchAll(/app\.get\("(\/db1\/[^\"]+)/g)].map((match) => match[1]);
 for (const route of declaredAllowedDb1Routes) {
   if (declaredDb1Routes.filter((item) => item === route).length !== 2) throw new Error(`DB1 fixed route must appear in configured and unavailable states: ${route}`);
 }
 if (declaredDb1Routes.length !== declaredAllowedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !declaredAllowedDb1Routes.includes(route))) {
-  throw new Error("DB1 reader must not expose a generic or alternate DB1 route");
+  throw new Error("DB1 reader must expose only declared fixed releases and the approved DEC-0101 research-access contract");
 }
 if ((db1RouteSource.match(/for \(const route of D18_MQA_ANNUAL_WINDOW_ROUTES\)/g) ?? []).length !== 2 || !db1RouteSource.includes("annualWindowPath(route, \"d18\")")) {
   throw new Error("DB1 historical reader must be limited to the closed D18 annual-window registry");
@@ -85,6 +87,15 @@ for (const term of ["D3_BILL_TYPES_MANIFEST_ID", "D3_BILL_TYPES_PROJECTION", "D4
     if (db1Explorer.toLowerCase().includes(term.toLowerCase())) throw new Error(`DB1 explorer contains prohibited capability ${term}`);
   } else if (!db1Explorer.includes(term)) {
     throw new Error(`DB1 explorer control missing: ${term}`);
+  }
+}
+
+const db1Research = readFileSync(db1ResearchFile, "utf8");
+for (const term of ["begin read only", "createReadStream", "raw-object path escapes configured root", "UPSTREAM_AVAILABILITY_MESSAGE", "DB1_ALL_AVAILABLE_YEARS_MANIFEST", "DATABASE_AND_MANIFEST_ONLY_V1", "fetch("]) {
+  if (term === "fetch(") {
+    if (db1Research.toLowerCase().includes(term)) throw new Error("DB1 research access must not make a live source request");
+  } else if (!db1Research.includes(term)) {
+    throw new Error(`DB1 researcher-access control missing: ${term}`);
   }
 }
 
@@ -133,4 +144,4 @@ for (const path of localCatalogueFiles) {
   }
 }
 
-process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to fixed D3–D20 releases and closed registries.\n");
+process.stdout.write("Runtime scope scan passed: selected GB-SCT routes use an authenticated no-retention relay contract; DB2 and research export are absent. DB1 is limited to retained D3–D20 evidence and the approved private DEC-0101 research-access contract.\n");

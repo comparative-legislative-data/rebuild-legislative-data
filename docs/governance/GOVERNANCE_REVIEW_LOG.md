@@ -2690,3 +2690,51 @@ Next review due:
 | Affected work blocked | Every DEC-0099 source request/capture/schedule/database/code/deployment/interface action; final reader optimisation; all other route families; DB2; semantic variables; generic query/search; downloads; public access; charts/research release; and shared-host changes. |
 | Owner decision required | Approve, amend, or reject DEC-0099. A separate later decision is required for the post-ingestion DB1 access-design sweep. |
 | Next review due | On DEC-0099 decision, D19/D20 failure or source drift, proposed access-design work, or 1 September 2026, whichever is earlier. |
+
+### GOV-REV-0165
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered documentation hygiene completion and DEC-0101 proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; latest governance review; DB1 narrative, strategy, coverage and access direction; source-control guide and master endpoint matrix. |
+| Active phase and authorising scope | Documentation-only consolidation and owner-authorised preparation of a DB1 researcher-product reset proposal. No source request, raw capture, database/service/frontend mutation, schedule change, deployment, public access, DB2 or research release is authorised. |
+| Checks performed | Confirmed the workstream-centred documentation reading path; moved completed proxy/DB1 delivery evidence into indexed workstream archives; rechecked all local documentation links. Assessed the retained 2006 Committee Official Reports availability response, the interim reader performance finding, DB1/proxy separation, DB1/DB2 independence, and the agreed need to expose raw retained responses before projection aids. |
+| Findings | The prior DB1 interface presented implementation cohorts and a projection exception as primary user-facing states. The new DEC-0101 proposal defines a source-first private researcher product, distinct raw and research-access layers, a manifest-only availability audit, and a separately gated future source-recheck/schedule stage. The documentation check passed for 179 Markdown files. |
+| Outcome | `PASS — DEC-0101 PROPOSED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | All code, API/frontend, database, raw-capture, source recheck, schedule, deployment, public-access, DB2, semantic, download/release and research-claim changes remain blocked unless expressly included in a later owner approval. |
+| Owner decision required | Approve, amend or reject DEC-0101. |
+| Next review due | On DEC-0101 decision; before any implementation stage; on source-condition change; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0166
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0101 approval and contained Stages A–C implementation start |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; GOV-REV-0165; DB1 narrative; DEC-0101 approved record; current DB1 coverage and operations. |
+| Active phase and authorising decision | Owner-approved DEC-0101 Stages A–C: DB1 access-contract metadata, authenticated private researcher interface and database/manifest-only availability audit. |
+| Checks performed | Confirmed the approval does not alter the proxy/DB1 independent data-pipe boundary. Confirmed all work must use existing retained DB1 records; Stage D remains a separate decision for any live request, capture or schedule change. Recorded the product hierarchy: subject → endpoint → source year/window → raw response, research access, structure and citation. |
+| Findings | The approved scope can correct the interim monitor-style interface and present the dated 2006 Committee upstream availability message accurately without a source re-fetch or a DB2 claim. Manifest-backed all-available-years packages may be implemented only as explicitly labelled DB1 access artefacts, never as a single upstream response. |
+| Outcome | `PASS — DEC-0101 STAGES A–C AUTHORISED; IMPLEMENTATION ACTIVE`. |
+| Affected work blocked | All live Scottish Parliament re-fetches/captures, reconciliation schedule changes, new routes, public access, generic SQL/OData, DB2 variables, semantic transformation, charts and research releases remain blocked. |
+| Owner decision required | Separate explicit approval is required for DEC-0101 Stage D or any expansion beyond Stages A–C. Owner end-to-end acceptance is required before the private interface is treated as accepted. |
+| Next review due | On Stage A/B/C completion, any source-condition/presentation discrepancy, before deployment that alters data access, on a proposed Stage D request, or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0167
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0101 Stages A–C local implementation and release verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0101 approved record; availability-audit method; DB1 narrative; decision/risk registers; current API, private web and deployment changes; GOV-REV-0166. |
+| Active phase and authorising decision | Owner-approved DEC-0101 Stages A–C. Local implementation is complete; private deployment and owner end-to-end acceptance remain pending. |
+| Checks performed | Built the API and web application; ran the automated test suite, DB1/capability boundary scans, documentation-link check and whitespace check; packaged the release. Confirmed the new reader derives its catalogue from existing DB1 source-route, capture, manifest, raw-object metadata, projection/profile and reconciliation records only. Confirmed raw retrieval is a manifest-named filesystem stream and no code path makes a Scottish Parliament request. |
+| Findings | The new interface contract provides a source-first subject catalogue, dated raw retrieval, bounded browsing, precomputed structure, citation/snippet disclosure, all-available-years manifests and a database/manifest-only availability matrix. The 2006 Committee condition is presented as a retained upstream availability message, not as no data or a projection failure. Deployment will introduce a new read-only DB1 metadata role and read-only raw-object path for the authenticated API; it does not change capture services or schedules. |
+| Outcome | `PASS — LOCAL STAGES A–C IMPLEMENTATION VERIFIED; PRIVATE DEPLOYMENT AND OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
+| Owner decision required | No additional decision is needed for the approved private deployment. Owner end-to-end acceptance is required before this interface is treated as accepted; Stage D remains separately gated. |
+| Next review due | Immediately after deployment verification; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |

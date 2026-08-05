@@ -46,6 +46,27 @@ type Db1Paged = Omit<Db1Preview, "records"> & {
   access_mode: "SERVER_SIDE_SELECTION";
   record_page: { offset: number; limit: number; total_records: number; records: Array<{ source_position: number; preserved_record: Record<string, unknown> }> };
 };
+type Db1ResearchRelease = {
+  route_id: string;
+  subject: string;
+  endpoint: string;
+  source_year: number | null;
+  source_url: string;
+  source_path: string;
+  availability: "RECORDS_RETURNED" | "EMPTY_RESPONSE" | "UPSTREAM_AVAILABILITY_MESSAGE" | "UPSTREAM_ERROR_RESPONSE" | "NOT_YET_ASSESSED";
+  availability_note: string | null;
+  capture: { manifest_id: string; capture_run_id: string; retrieved_at: string; raw_sha256: string; raw_byte_length: number; content_type: string };
+  reconciliation: { state: string; observed_at: string | null };
+  research_access: { browse_available: boolean; record_count: number | null; observed_structure: Array<{ key: string; observed_types: string[]; record_count: number }> };
+};
+type Db1ResearchCatalogue = {
+  layer: "DB1_RETAINED_SOURCE_RESPONSES";
+  access: "PRIVATE_BETA";
+  generated_at: string;
+  limitations: string[];
+  subjects: Array<{ subject: string; endpoints: Array<{ endpoint: string; releases: Db1ResearchRelease[] }> }>;
+};
+type Db1ResearchRecords = { release: Db1ResearchRelease; page: { offset: number; limit: number; total_records: number; records: Array<{ source_position: number; preserved_record: Record<string, unknown> }> } };
 
 const sourceGuides: Record<string, SourceGuide> = {
   "bill-stage-types.collection": {
@@ -284,6 +305,17 @@ function Db1RetrievalExamples({ endpoint, downloadEndpoint }: { endpoint: string
   return <details className="source-examples"><summary>Show fixed retrieval examples</summary><p>These examples name this retained release and fixed pagination only. Replace the placeholder with your own authenticated private-beta session cookie; they do not provide a generic query interface.</p><dl className="response-guide"><div><dt>curl</dt><dd><pre>{`curl --cookie "cld_access_session=YOUR_SESSION_COOKIE" "${url}"`}</pre></dd></div><div><dt>Python</dt><dd><pre>{`requests.get("${url}", cookies={"cld_access_session": "YOUR_SESSION_COOKIE"})`}</pre></dd></div><div><dt>JavaScript</dt><dd><pre>{`fetch("${url}", { credentials: "include" })`}</pre></dd></div>{downloadUrl ? <div><dt>JSONL pilot</dt><dd><pre>{`curl --cookie "cld_access_session=YOUR_SESSION_COOKIE" -OJ "${downloadUrl}"`}</pre></dd></div> : null}</dl></details>;
 }
 
+function researchRouteUrl(routeId: string, suffix: "raw" | "records", query = ""): string {
+  return `/api/db1/gb-sct/research/releases/${encodeURIComponent(routeId)}/${suffix}${query}`;
+}
+
+function Db1ResearchReleaseCard({ release, records, onBrowse }: { release: Db1ResearchRelease; records?: Db1ResearchRecords | undefined; onBrowse: (routeId: string, offset: number) => void }) {
+  const rawUrl = researchRouteUrl(release.route_id, "raw");
+  const rawDownloadUrl = researchRouteUrl(release.route_id, "raw", "?download=1");
+  const page = records?.page;
+  return <details className="route-card route-card-db1 research-release"><summary><div className="route-badge"><div><p className="route-group">Retained DB1 source response{release.source_year ? ` · ${release.source_year}` : ""}</p><h3>{release.endpoint}</h3><code>{release.source_path}</code></div><div className="route-badge-state"><span className="route-state">{release.availability.replaceAll("_", " ")}</span><span className="route-expand-label">Show access and provenance</span></div></div></summary><div className="route-details"><dl><div><dt>Source condition</dt><dd>{release.availability_note ?? "The retained response produced a source-object record projection. This does not establish source completeness or current availability."}</dd></div><div><dt>Retained source capture</dt><dd>{new Date(release.capture.retrieved_at).toLocaleString()} · <code>{release.capture.content_type}</code> · {release.capture.raw_byte_length.toLocaleString()} bytes · SHA-256 <code>{release.capture.raw_sha256}</code></dd></div><div><dt>Reconciliation evidence</dt><dd>{release.reconciliation.state.replaceAll("_", " ")}{release.reconciliation.observed_at ? ` · last recorded ${new Date(release.reconciliation.observed_at).toLocaleString()}` : ""}. This is operational evidence only, not a general freshness claim.</dd></div></dl><section className="source-disclosure"><p><strong>Two separate DB1 access layers:</strong> the exact raw option returns the dated bytes received from the Scottish Parliament and named by this manifest. Browse and structure are DB1 research-access aids; they do not rename, interpret or turn fields into DB2 variables.</p><div className="source-actions"><a className="source-action relay-action" href={rawUrl} target="_blank" rel="noreferrer">View retained raw response</a><a className="source-action official-action" href={rawDownloadUrl}>Download exact retained raw response</a><a className="source-action official-action" href={release.source_url} target="_blank" rel="noreferrer">Open Scottish Parliament source URL</a></div></section><section className="db1-provenance"><h3>Response structure and fields</h3>{release.research_access.observed_structure.length > 0 ? <><p className="panel-copy">Precomputed from this named retained projection. These are observed field/type facts, not a semantic codebook or validated analytical-variable definition.</p><ul className="structure-list">{release.research_access.observed_structure.map((field) => <li key={field.key}><code>{field.key}</code> · {field.observed_types.join(", ")} · present in {field.record_count.toLocaleString()} retained object{field.record_count === 1 ? "" : "s"}</li>)}</ul></> : <p className="panel-copy">No object-record profile is asserted for this retained response. The exact raw response remains available above; this does not imply the source returned no data.</p>}</section><section className="db1-provenance"><h3>Browse mirrored records</h3>{release.research_access.browse_available ? <><p className="panel-copy">{release.research_access.record_count?.toLocaleString()} retained source object{release.research_access.record_count === 1 ? "" : "s"} are available through fixed server-side pages. Source position is technical lineage only, not a substantive ordering, category or DB2 variable.</p><div className="source-actions"><button type="button" className="secondary-button" onClick={() => onBrowse(release.route_id, 0)}>Browse retained records</button></div>{page ? <div className="db1-record-list"><p className="panel-copy">Showing {page.records.length ? `${page.offset + 1}–${page.offset + page.records.length}` : "no"} of {page.total_records.toLocaleString()} records.</p><div className="source-actions"><button type="button" className="secondary-button" disabled={page.offset === 0} onClick={() => onBrowse(release.route_id, Math.max(0, page.offset - page.limit))}>Previous page</button><button type="button" className="secondary-button" disabled={page.offset + page.records.length >= page.total_records} onClick={() => onBrowse(release.route_id, page.offset + page.limit)}>Next page</button></div>{page.records.map((record) => <details className="db1-record" key={record.source_position}><summary>Retained source object · source position {record.source_position}</summary><pre>{JSON.stringify(record.preserved_record, null, 2)}</pre></details>)}</div> : null}</> : <p className="panel-copy">This retained response is not being represented as an object-record browser. Retrieve its raw source response above. {release.availability_note}</p>}</section><section className="db1-provenance"><h3>Citation and reproducible access</h3><p className="panel-copy">Cite the Scottish Parliament source URL, this capture date, and DB1 manifest <code>{release.capture.manifest_id}</code>. Cite Comparative Legislative Data as the dated retention/provenance layer, not as the source-data publisher or a claim of an immutable source release.</p><details className="source-examples"><summary>Show request examples</summary><dl className="response-guide"><div><dt>curl</dt><dd><pre>{`curl --cookie "cld_access_session=YOUR_SESSION_COOKIE" -OJ "https://legislativedata.org${rawDownloadUrl}"`}</pre></dd></div><div><dt>Python</dt><dd><pre>{`requests.get("https://legislativedata.org${rawUrl}", cookies={"cld_access_session": "YOUR_SESSION_COOKIE"})`}</pre></dd></div><div><dt>R</dt><dd><pre>{`httr2::request("https://legislativedata.org${rawUrl}") |> httr2::req_perform()`}</pre></dd></div><div><dt>JavaScript</dt><dd><pre>{`fetch("${rawUrl}", { credentials: "include" })`}</pre></dd></div></dl></details></section></div></details>;
+}
+
 async function request(path: string, init: RequestInit = {}) {
   const headers = new Headers(init.headers);
   if (init.body !== undefined && !headers.has("content-type")) headers.set("content-type", "application/json");
@@ -318,6 +350,8 @@ function App() {
   const [db1D19OfficialReports, setDb1D19OfficialReports] = useState<Partial<Record<(typeof d19OfficialReportsDb1Routes)[number]["key"], Db1Paged>>>({});
   const [db1D20OfficialReports, setDb1D20OfficialReports] = useState<Record<string, Db1Paged | undefined>>({});
   const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
+  const [db1ResearchCatalogue, setDb1ResearchCatalogue] = useState<Db1ResearchCatalogue | undefined>();
+  const [db1ResearchRecords, setDb1ResearchRecords] = useState<Record<string, Db1ResearchRecords | undefined>>({});
 
   async function refreshIdentity() {
     const response = await request("/auth/me");
@@ -386,29 +420,24 @@ function App() {
   }
 
   async function loadDb1Catalogue() {
-    const response = await request("/db1/gb-sct/reference-cohort/d4a-v1");
+    const response = await request("/db1/gb-sct/research/catalogue");
     if (!response.ok) {
-      setDb1Feedback("The declared DB1 catalogue is unavailable for this account.");
+      setDb1Feedback("The retained DB1 catalogue is unavailable for this account.");
       return;
     }
-    setDb1Catalogue(await response.json() as Db1Catalogue);
+    setDb1ResearchCatalogue(await response.json() as Db1ResearchCatalogue);
     setDb1Feedback(undefined);
-    const institutional = await request("/db1/gb-sct/institutional-reference/d4c-v1");
-    if (institutional.ok) setDb1InstitutionalCatalogue(await institutional.json() as Db1Catalogue);
-    const formalStages = await request("/db1/gb-sct/formal-stages/d5-v1");
-    if (formalStages.ok) setDb1FormalStages(await formalStages.json() as Db1AccessPlan);
-    await loadDb1Bills(0);
-    await loadDb1GovernmentRoles(0);
-    await loadDb1PartyRoles(0);
-    await loadDb1Parties(0);
-    await loadDb1CommitteeRoles(0);
-    await loadDb1Committees(0);
-    await Promise.all(memberContextDb1Routes.map((route) => loadDb1MemberContext(route, 0)));
-    await Promise.all(mqaTaxonomyLinkDb1Routes.map((route) => loadDb1MqaTaxonomyLink(route, 0)));
-    await loadDb1MqaEventSubtypes(0);
-    await loadDb1MqaConsideration(0);
-    await loadDb1MqaProgramme(0);
-    await Promise.all(mqaAnnualWindowDb1Routes.map((route) => loadDb1MqaAnnualWindow(route, 0)));
+  }
+
+  async function loadDb1ResearchRecords(routeId: string, offset: number) {
+    const response = await request(`${researchRouteUrl(routeId, "records")}?offset=${offset}&limit=20`);
+    if (!response.ok) {
+      setDb1Feedback("The retained record page could not be loaded. The exact raw response remains available.");
+      return;
+    }
+    const result = await response.json() as Db1ResearchRecords;
+    setDb1ResearchRecords((current) => ({ ...current, [routeId]: result }));
+    setDb1Feedback(undefined);
   }
 
   async function loadDb1Bills(offset: number) {
@@ -488,6 +517,10 @@ function App() {
   ];
 
   if (view === "db1" && identity.authenticated && identity.data_layers_available) {
+    return <main className="site-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><section className="intro" aria-labelledby="page-title"><p className="eyebrow">Scottish Parliament · DB1 retained responses</p><h1 id="page-title">Research access to retained source data.</h1><p>DB1 preserves dated Scottish Parliament responses with their source request, capture manifest and checksum. It is distinct from both the live proxy and the later DB2 variables layer.</p></section><p className="identity">Signed in as <strong>{identity.email}</strong>.</p><nav className="access-nav" aria-label="Access options"><span className="signed-in-badge">Private beta active</span><button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Route catalogue</button><button type="button" onClick={() => void loadDb1Catalogue()}>Refresh DB1 catalogue</button><button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button>{identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}</nav><section className="catalogue-panel db1-panel" aria-labelledby="db1-heading"><p className="eyebrow">Private DB1 research catalogue</p><h2 id="db1-heading">Retained Scottish Parliament responses</h2><p className="panel-copy">Start with a research subject, then an endpoint and, where relevant, a fixed source year. Every release provides its exact retained source response; browsing and field profiles are explicitly separate aids.</p>{db1Feedback ? <p className="form-feedback" role="status">{db1Feedback}</p> : null}{db1ResearchCatalogue ? <><section className="source-disclosure"><p><strong>What this is:</strong> source-preserving retained data with manifest-backed provenance. It is not the live Scottish Parliament API, a statement that DB1 is complete/current, or a DB2 analytical dataset.</p><ul>{db1ResearchCatalogue.limitations.map((limit) => <li key={limit}>{limit}</li>)}</ul></section><div className="catalogue-sections">{db1ResearchCatalogue.subjects.map((subject) => <details className="catalogue-section" key={subject.subject}><summary className="catalogue-section-heading"><div><p className="eyebrow">Research subject</p><h3>{subject.subject}</h3></div><div className="catalogue-section-state"><p>{subject.endpoints.length} endpoint{subject.endpoints.length === 1 ? "" : "s"}</p><span>Show endpoints</span></div></summary><div className="catalogue-list">{subject.endpoints.map((endpoint) => { const allYears = endpoint.releases.filter((release) => release.source_year !== null).length > 1; const allYearsUrl = `/api/db1/gb-sct/research/all-years?${new URLSearchParams({ subject: subject.subject, endpoint: endpoint.endpoint }).toString()}`; return <details className="route-card route-card-db1" key={endpoint.endpoint}><summary><div className="route-badge"><div><p className="route-group">Retained source endpoint</p><h3>{endpoint.endpoint}</h3><code>{endpoint.releases.length} retained source year/window release{endpoint.releases.length === 1 ? "" : "s"}</code></div><div className="route-badge-state"><span className="route-state">DB1 retained source data</span><span className="route-expand-label">Show releases</span></div></div></summary><div className="route-details">{allYears ? <section className="source-disclosure"><p><strong>All available years:</strong> this package is a DB1 manifest identifying every compatible retained window, its capture ID/checksum and any exception. It is not a single Scottish Parliament response.</p><div className="source-actions"><a className="source-action official-action" href={allYearsUrl} target="_blank" rel="noreferrer">Open all-years access manifest</a></div></section> : null}<div className="catalogue-list">{endpoint.releases.map((release) => <Db1ResearchReleaseCard key={release.route_id} release={release} records={db1ResearchRecords[release.route_id]} onBrowse={(routeId, offset) => void loadDb1ResearchRecords(routeId, offset)} />)}</div></div></details>; })}</div></details>)}</div></> : <p className="panel-copy">Loading the declared retained-source catalogue…</p>}</section><p className="boundary">Current boundary: authenticated private access to existing DB1 retained Scottish Parliament source responses and their provenance. No live source request is made from this catalogue; no DB2 variable, chart, generic database query or public research release is available.</p></main>;
+  }
+
+  if (view === "db1" && identity.authenticated && identity.data_layers_available && !db1ResearchCatalogue) {
     const billsPanels = panelsFor(db1ReferencePanels, ["gb-sct.bill-types.collection", "gb-sct.bill-stage-types.collection"]);
     const sessionPanels = panelsFor(db1ReferencePanels, ["gb-sct.sessions.collection"]);
     const representationPanels = panelsFor(db1InstitutionalPanels, ["gb-sct.constituencies.collection", "gb-sct.regions.collection"]);

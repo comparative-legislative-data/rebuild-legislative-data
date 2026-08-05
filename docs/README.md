@@ -1,67 +1,45 @@
-# Comparative Legislative Data
+# Comparative Legislative Data documentation
 
 Comparative Legislative Data is research infrastructure for transparent,
-reproducible legislative data. The first legislature is the Scottish
-Parliament (`GB-SCT`). The project is designed so that a researcher can tell
-what was obtained, from where, when, how it was transformed, what has been
-validated, and what remains uncertain.
+reproducible legislative data. The first legislature is the Scottish Parliament
+(`GB-SCT`). The central promise is modest but demanding: a researcher should be
+able to establish what was obtained, from where, when, how it was handled, and
+what the project does **not** establish.
 
-The project does not present a convenient interface as proof of data quality.
-Each published layer must retain its own provenance, verification, limitations,
-and claim boundary. The governing standard is the
-[project design](governance/PROJECT_DESIGN.md).
+## Start here
 
-## The programme in three workstreams
+1. [Project design](governance/PROJECT_DESIGN.md) — governing methodology,
+   provenance model and research standard.
+2. [Current handover](governance/HANDOVER.md) — live programme position,
+   authority and the next decision.
+3. [Programme workstreams](workstreams/README.md) — the human account of the
+   proxy, DB1 and DB2 mini-projects.
 
-The first release programme consists of three deliberately separate
-mini-projects. They are sequenced because each creates a different kind of
-value and a different kind of research claim.
+## The three data layers
 
-| Workstream | Purpose | Current status | Start here |
-| --- | --- | --- | --- |
-| Upstream proxy | Give approved private-beta users transparent, source-faithful access to fixed Scottish Parliament API responses, without retaining them as project data. | MVP closed and deployed; later review required. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 source-faithful projection | Capture approved source responses with manifests and create a reproducible operational projection with capture lineage. | Private, scheduled source-preserving releases now cover bounded reference, bills, context, committees, MQA, annual Questions/Votes windows, and one 2025 Official Reports cohort; it is not yet a complete mirror. | [DB1 narrative](workstreams/db1/README.md) |
-| DB2 canonical variables | Later independent research-data workstream; may use declared DB1 records as constrained inputs to validated Tier 1/2 variables, codebooks, downloads, and charts. | Not started; no variables or research claims exist. | [DB2 narrative](workstreams/db2/README.md) |
-
-The proxy is **not** DB1, and DB1 is **not** DB2. The proxy opens mutable
-upstream material at request time; DB1 will be a retained, versioned,
-source-faithful projection; DB2 will be a separately planned research dataset
-which must work within declared DB1 scope and limitations. DB2 does not shape
-DB1. No layer may be described as another.
-
-## Current programme position
-
-The proxy MVP is complete and DB1 has operating private retained releases. The proxy is private,
-no-retention access to source-style routes and direct source URLs; it is not a
-dataset, capture, DB1, DB2, export, chart, or research release. The D1
-[synthetic DB1 foundation](data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
-has passed without source data. D2 then passed as one restricted source
-observation. Later named DB1 cohorts have established scheduled,
-source-preserving releases across the currently declared coverage. D20's
-Official Reports initial capture is complete, subject to one explicit
-unreleased projection exception; the proposed [DB1 completion and
-researcher-access plan](data/gb-sct/GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
-sets the next decision. These records do not
-establish a current complete mirror, general query service, DB2 dataset, or
-research release. See the [DB1 coverage snapshot](data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md).
-
-## How to use these documents
-
-1. Read the relevant [workstream narrative](workstreams/) for the human
-   account: purpose, evidence, decisions, implementation, gaps, legacy issues,
-   and review approach.
-2. Follow its links to current technical controls and detailed evidence only
-   where needed.
-3. Use [governance](governance/) for the authoritative decision, risk, and
-   handover record; use [archive](archive/) for completed or superseded
-   implementation evidence.
-
-## Supporting areas
-
-| Area | Purpose | Start with |
+| Layer | Purpose | Read |
 | --- | --- | --- |
-| [GB-SCT data controls](data/gb-sct/) | Source scope, route controls, handling, volume, and updateability evidence. | [GB-SCT guide](data/gb-sct/README.md) |
-| [Application](application/) | Private-beta access-control boundary. | [Application status](application/README.md) |
-| [Infrastructure](infrastructure/) | VPS isolation, deployment, and operational controls. | [Current VPS plan](infrastructure/CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md) |
-| [Governance](governance/) | Decisions, risks, reviews, and handover. | [Handover](governance/HANDOVER.md) |
-| [Archive](archive/) | Detailed completed records retained for auditability. | [Archive guide](archive/README.md) |
+| Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | [Proxy narrative](workstreams/proxy/README.md) |
+| DB1 | Retain dated, source-preserving responses with manifests and build research access tools over them. | [DB1 narrative](workstreams/db1/README.md) |
+| DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | [DB2 narrative](workstreams/db2/README.md) |
+
+These layers must never be conflated: a live proxy response is not a DB1
+capture, and a DB1 capture is not a DB2 variable or research finding.
+
+## Supporting records
+
+| Area | What it contains | Start with |
+| --- | --- | --- |
+| [GB-SCT source controls](data/gb-sct/) | Approved endpoint scope, handling, volume and updateability evidence shared by the workstreams. | [GB-SCT guide](data/gb-sct/README.md) |
+| [Application](application/) | Private-beta access boundary and current application status. | [Application overview](application/README.md) |
+| [Infrastructure](infrastructure/) | Current VPS/isolation and delivery controls. | [Infrastructure overview](infrastructure/README.md) |
+| [Governance](governance/) | Decisions, risks, handover and review record. | [Handover](governance/HANDOVER.md) |
+| [Archive](archive/) | Completed delivery packets retained for audit, not day-to-day navigation. | [Archive guide](archive/README.md) |
+
+## Documentation rule
+
+Active documents explain the current product, controls and next decision in
+plain language. Completed implementation packets are archived with an index.
+Every material change must preserve the link between the active narrative and
+its detailed evidence rather than forcing a reader to infer the project from
+implementation filenames.

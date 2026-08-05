@@ -1,16 +1,16 @@
 # Programme workstreams
 
-These narratives are the human-readable accounts of the project’s three
-initial data workstreams. Each starts with the strategic purpose and current
-boundary, then links to the detailed decisions, technical controls, and
-archived evidence that support it.
+Comparative Legislative Data has three separate initial mini-projects. They
+share the private application and authentication boundary, but have distinct
+data pipes, claims, evidence and approval gates.
 
-1. [Upstream proxy](proxy/README.md) — completed private-beta MVP.
-2. [DB1 source-faithful projection](db1/README.md) — D1 foundation and D2
-   first restricted source capture passed; D3 is the next decision.
-3. [DB2 canonical variables](db2/README.md) — later Tier 1/2 research-data
-   workstream.
+| Workstream | What a researcher receives | Current position |
+| --- | --- | --- |
+| [Proxy](proxy/README.md) | Live Scottish Parliament API responses through a no-retention CLD relay or direct source link. | Private MVP complete; later review required. |
+| [DB1](db1/README.md) | Retained, source-preserving responses and researcher access tools, each tied to a capture and manifest. | Significant private coverage exists; researcher-product reset is next. |
+| [DB2](db2/README.md) | Explicit Tier 1/2 canonical variables, codebooks and reproducible research releases. | Not started. |
 
-Do not infer that a later workstream is authorised because an earlier one is
-complete. Each has its own decision, implementation, verification, and
-release boundary.
+The programme's master methodology is the [project design](../governance/PROJECT_DESIGN.md).
+For current operational status read the [handover](../governance/HANDOVER.md).
+The detailed implementation trail is evidence in [the archive](../archive/),
+not the primary explanation of the project.

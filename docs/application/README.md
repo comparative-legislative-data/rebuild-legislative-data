@@ -1,18 +1,21 @@
-# Application status
+# Application and private-beta boundary
 
-The private-beta access MVP is deployed and owner-tested for application,
-approval, activation, password login, magic-link login, password change,
-sign-out, and superuser separation. It remains a private access-control layer,
-not a data release.
+The application is a private access gateway shared by the proxy and DB1. It is
+not itself a data layer or research release.
 
-The application exposes the accepted upstream-proxy MVP and one owner-accepted
-[restricted DB1 preview](../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
-for active beta users and superusers. It is a single retained projection, not
-generic DB1 or research-data access. The owner-accepted [D4B catalogue](../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
-adds exactly three fixed retained-baseline panels; it is not a generic DB1
-interface.
+The owner has tested the complete private-beta account journey: application,
+superuser review, approval email, password setup, password login, magic-link
+login, password change, sign-out and superuser separation. Access remains
+restricted to approved users and guests; ordinary accounts do not receive
+superuser controls.
 
-The detailed access-control and implementation records are retained in
-[`docs/archive/application/private-beta-mvp/`](../archive/application/private-beta-mvp/).
-Future DB1 interface work requires its own approved package and independent
-front-end acceptance.
+The current user interface exposes the completed proxy MVP and private DB1
+material. Its DB1 presentation is explicitly interim. The next DB1 package
+will replace internal cohort/projection-oriented panels with the researcher
+product described in the [DB1 narrative](../workstreams/db1/README.md):
+source-first navigation, raw retained-response access, research tools,
+downloads, structural explanation and citation/provenance.
+
+The detailed access-control and delivery evidence is retained in
+[the private-beta archive](../archive/application/private-beta-mvp/). It is
+not necessary reading for normal product or data work.

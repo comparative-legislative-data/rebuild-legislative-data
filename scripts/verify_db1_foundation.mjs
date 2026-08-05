@@ -22,11 +22,13 @@ if ((foundation.match(/https:\/\/data\.parliament\.scot\/api\/billtypes/g) ?? []
 if ((foundation.match(/request\(D2_BILL_TYPES_URL/g) ?? []).length !== 1) throw new Error("foundation.ts: D2 must contain exactly one source request capability");
 const routes = readFileSync(join(repositoryRoot, "apps/api/src/access/routes.ts"), "utf8");
 const fixedDb1Routes = ["/db1/gb-sct/bill-types/d2-v1", "/db1/gb-sct/reference-cohort/d4a-v1", "/db1/gb-sct/institutional-reference/d4c-v1", "/db1/gb-sct/formal-stages/d5-v1", "/db1/gb-sct/bills/d6-v1", "/db1/gb-sct/government-roles/d7-v1", "/db1/gb-sct/committee-roles/d8-v1", "/db1/gb-sct/party-roles/d9-v1", "/db1/gb-sct/parties/d10-v1", "/db1/gb-sct/members/d11-v1", "/db1/gb-sct/member-constituency-statuses/d11-v1", "/db1/gb-sct/member-region-statuses/d11-v1", "/db1/gb-sct/member-parties/d11-v1", "/db1/gb-sct/member-party-roles/d11-v1", "/db1/gb-sct/member-government-roles/d11-v1", "/db1/gb-sct/committees/d12-v1", "/db1/gb-sct/mqa-event-types/d13-v1", "/db1/gb-sct/mqa-event-links/d13-v1", "/db1/gb-sct/mqa-event-subtypes/d14-v1", "/db1/gb-sct/mqa-business-consideration/d15-v1", "/db1/gb-sct/mqa-business-programme/d16-v1", "/db1/gb-sct/mqa-questions-2026/d17-v1", "/db1/gb-sct/votes-on-motions-2026/d17-v1", "/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl"];
-for (const route of fixedDb1Routes) {
+const approvedResearchAccessRoutes = ["/db1/gb-sct/research/catalogue", "/db1/gb-sct/research/releases/:routeId/raw", "/db1/gb-sct/research/releases/:routeId/records", "/db1/gb-sct/research/all-years", "/db1/gb-sct/research/availability-audit"];
+const approvedDb1Routes = [...fixedDb1Routes, ...approvedResearchAccessRoutes];
+for (const route of approvedDb1Routes) {
   if ((routes.match(new RegExp(route, "g")) ?? []).length !== 2) throw new Error(`access routes: fixed private route missing or duplicated: ${route}`);
 }
 const declaredDb1Routes = [...routes.matchAll(/app\.get\("(\/db1\/[^\"]+)/g)].map((match) => match[1]);
-if (declaredDb1Routes.length !== fixedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !fixedDb1Routes.includes(route))) throw new Error("access routes: generic DB1 route is prohibited");
+if (declaredDb1Routes.length !== approvedDb1Routes.length * 2 || declaredDb1Routes.some((route) => !approvedDb1Routes.includes(route))) throw new Error("access routes: undeclared DB1 route is prohibited");
 if ((routes.match(/for \(const route of D18_MQA_ANNUAL_WINDOW_ROUTES\)/g) ?? []).length !== 2 || !routes.includes("annualWindowPath(route, \"d18\")")) throw new Error("access routes: D18 must register only the closed historical annual-window registry in configured and unavailable states");
 if ((routes.match(/for \(const route of D20_OFFICIAL_REPORTS_ROUTES\)/g) ?? []).length !== 2 || !routes.includes("annualWindowPath(route, \"d20\")")) throw new Error("access routes: D20 must register only the closed Official Reports annual-window registry in configured and unavailable states");
 if (!routes.includes("d20Plenary2026") || !routes.includes("application/x-ndjson")) throw new Error("access routes: JSONL pilot must remain a named 2026 Plenary D20 route");
@@ -46,4 +48,4 @@ if ((foundation.match(/await fetchD12Committees\(request\)/g) ?? []).length !== 
 if ((foundation.match(/await fetchD13MqaTaxonomyLinkCollection\(route, request\)/g) ?? []).length !== 1) throw new Error("foundation.ts: D13 must have one fixed batch fetch call site");
 if ((foundation.match(/await fetchD19OfficialReportsToRawObject\(route, options\.rawRoot, request\)/g) ?? []).length !== 1) throw new Error("foundation.ts: D19 must have one fixed serial batch fetch call site");
 if ((foundation.match(/await fetchD20OfficialReportsToRawObject\(route, options\.rawRoot, request\)/g) ?? []).length !== 1) throw new Error("foundation.ts: D20 must have one fixed serial batch fetch call site");
-process.stdout.write("DB1 capability scan passed: fixed D2–D20 capture routes and closed reader registries; no generic DB1 route.\n");
+process.stdout.write("DB1 capability scan passed: fixed D2–D20 capture routes and the approved private DEC-0101 researcher-access contract.\n");

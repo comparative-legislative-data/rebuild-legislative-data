@@ -60,7 +60,7 @@ grouped by subject family so that discoverability improves without pretending
 that CLD has replaced the source catalogue.
 
 The complete decision and delivery record is
-[DEC-0072](../../archive/data/gb-sct/proxy-mvp/GB_SCT_FAST_TRACK_PRIVATE_RAW_PROXY_EXPANSION_DEC0072.md).
+[DEC-0072](../../archive/workstreams/proxy/mvp/GB_SCT_FAST_TRACK_PRIVATE_RAW_PROXY_EXPANSION_DEC0072.md).
 
 ## 5. Technical implementation and acceptance
 
@@ -75,7 +75,7 @@ The MVP was exercised through the private-beta account flow, including account
 approval, password and magic-link access, sign-out, and superuser separation.
 Representative proxy routes were owner-tested. Detailed implementation and
 acceptance records are grouped in the
-[proxy-MVP archive](../../archive/data/gb-sct/proxy-mvp/) and the
+[proxy-MVP archive](../../archive/workstreams/proxy/mvp) and the
 [private-beta archive](../../archive/application/private-beta-mvp/).
 
 ## 6. Issues encountered and changes of approach

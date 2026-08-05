@@ -10,9 +10,9 @@ authority.
   completed Bills route qualification and handling work.
 - [`data/gb-sct/reconnaissance/`](data/gb-sct/reconnaissance/) — completed
   public-API reconnaissance.
-- [`data/gb-sct/proxy-mvp/`](data/gb-sct/proxy-mvp/) — completed raw-proxy
+- [`workstreams/proxy/mvp/`](workstreams/proxy/mvp) — completed raw-proxy
   design, implementation, deployment, and acceptance records.
-- [`data/gb-sct/db1-planning/`](data/gb-sct/db1-planning/) — unadopted
+- [`workstreams/db1/planning/`](workstreams/db1/planning) — unadopted
   pre-proxy DB1 planning reference.
 - [`application/private-beta-mvp/`](application/private-beta-mvp/) — completed
   private-beta access and shell implementation records.

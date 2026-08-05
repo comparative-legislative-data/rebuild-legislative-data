@@ -1,255 +1,191 @@
-# DB1 source-faithful projection workstream
+# DB1: Scottish Parliament source-preserving mirror
 
-**Status:** Bounded DB1 cohorts operating privately; source-preserving mirror
-architecture still being built route by route
+**Status:** substantial private capture coverage exists; the researcher-facing
+product is being reset before further implementation.
 
-## 1. Purpose and user value
+## What DB1 is for
 
-DB1 is the future retained data-management layer. It will routinely reconcile
-approved source routes, preserve immutable capture history, and generate a
-loss-aware reproducible projection for transparent, efficient source access.
-Its value is to turn the mutable, sometimes firehose-like upstream API into a
-living versioned research resource with explicit capture lineage, freshness,
-change, and failure records.
+DB1 is CLD's retained source layer for Scottish Parliament API material. Its
+purpose is not to create variables, reach conclusions, or replace the Scottish
+Parliament as publisher. It is to make a mutable and sometimes difficult-to-use
+API materially more useful to researchers while preserving exactly what was
+obtained, from where, and when.
 
-DB1 is not yet a proven full mirror. Until route coverage and reconciliation
-evidence are published for a defined scope, it must be described as a
-source-faithful projection of declared captures. Its end-state ambition is a
-regularly reconciled, source-preserving mirror: each included route is checked
-on its declared schedule and the resulting comparison evidence says precisely
-what did, did not, or could not match the Scottish Parliament response within
-that declared request window.
+For each included source request, DB1 is intended to provide two complementary
+forms of access:
 
-DB1 is an independent mini-project. DB2 is a later, separate workstream that
-must work within the declared DB1 record if it proceeds; DB2 does not determine
-DB1 capture priorities, schema, retention, or success criteria.
+1. the **retained source response**, accessible exactly as captured, with its
+   request, time, headers, content type, byte length and checksum; and
+2. **research access tools** over that retained material: navigable records
+   where a projection is suitable, filtering and structured inspection,
+   transparent schema views, reproducible downloads, code snippets, and a
+   citation/provenance record.
 
-### Relationship to the proxy
+The second layer must improve access; it must never become a condition for
+seeing the first. If a source response cannot safely be rendered as rows or
+objects, the raw retained response remains a first-class research object.
 
-DB1 should use the proxy's compact, subject-first, expandable catalogue as its
-researcher-facing navigation pattern. A researcher should be able to discover
-the same route families without learning two unrelated interfaces. The data
-contract is deliberately different: the proxy opens a transient upstream
-response, while DB1 serves a named retained capture or projection from the
-project database. DB1 must therefore lead with build, capture, coverage, and
-reconciliation state—not present itself as a live relay or silently substitute
-for the Scottish Parliament endpoint.
+DB1 is independent of both other programme layers:
 
-### Source-preservation rule
+- the [proxy](../proxy/README.md) is a live, no-retention route to the
+  Scottish Parliament API;
+- DB1 is retained, dated source material and access tooling; and
+- [DB2](../db2/README.md) is a later canonical-variable programme. DB2 does
+  not set DB1's collection, storage, or interface priorities.
 
-DB1 is being built as the source-preserving mirror layer: its raw archive keeps
-the received bytes, while its operational projection retains every source
-object/value with source position and manifest lineage. DB1 may add only
-operational provenance, integrity, and access metadata; it must not rename,
-reclassify, infer, aggregate, filter, fill, or otherwise semantically transform
-source data. Any decoding/re-serialisation limit, non-object rejection, or
-projection loss must be explicit and testable. Defined variables and every
-semantic transformation belong to the later, independently governed DB2 layer.
+## The journey so far
 
-## 2. Current boundary
+The project first established the full selected endpoint inventory and a
+source-preservation policy. It then built the isolated PostgreSQL/raw-capture
+foundation, proved the raw-response → manifest → operational-projection chain
+with a synthetic fixture, and introduced route-specific capture and
+reconciliation processes. A sequence of private cohorts expanded coverage from
+small reference collections to Bills, institutional context, committees,
+motions/questions/related records, annual Questions and Votes-on-Motions, and
+Official Reports.
 
-DB1 now has private, named source-preserving releases across bounded bills,
-stages, reference, context, committee, MQA, annual Questions/Votes source
-windows, and annual Official Reports windows 1999–2026. The D20 Official
-Reports result has 53 passing releases and one explicit retained-but-unreleased
-2006 Committee exception; D19's 2025 pair remains separately scheduled. Every included
-release has a manifest, source-position lineage, projection/rejection record,
-declared reader boundary, and a route-specific reconciliation position. The
-complete proxy remains separate because it retains no source response.
+The completed cohort-level packets are intentionally no longer the reading
+path. They are retained in the [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
+as audit evidence, indexed by the archive guide. The strategic authorities that
+remain active are the [DB1 plan (DEC-0073)](STRATEGY_AND_OPERATING_MODEL.md),
+[access direction (DEC-0082)](RESEARCH_ACCESS_DIRECTION.md),
+the [coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md),
+and the current source controls linked below.
 
-The D19 Official Reports reader is functionally accepted but intentionally
-interim: its first page derives a structural summary from the whole retained
-projection, creating a material first-open delay. The owner has directed that
-performance, structural transparency, snippets, and download/release design
-be addressed together once the planned DB1 ingests are complete—not piecemeal
-within individual cohorts. The approved [DEC-0100 access plan](../../data/gb-sct/GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
-and its [design specification](../../data/gb-sct/GB_SCT_DB1_RESEARCHER_ACCESS_DESIGN_SPECIFICATION_DEC0100.md)
-now define that next implementation decision.
+This implementation journey demonstrated real strengths: independent DB1 and
+proxy data pipes, immutable raw response storage, per-request manifests and
+hashes, separate reader/writer boundaries, named retained releases, and
+scheduled reconciliation for many included routes. It also exposed a central
+product-design defect: the private interface came to display the internal
+delivery process (cohorts, projections, rejections and access plans) rather
+than a coherent research resource. That is not an adequate end state.
 
-This is still not a complete mirror, general query service, download service,
-canonical dataset, or research release. The [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
-states the actual retained and remaining route boundary. The current inventory
-and route evidence are planning controls, not automatic authority to collect a
-new source route.
+## Current data position
 
-## 3. Existing evidence and design constraints
+The actual retained scope is stated in the dated [coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md).
+In brief, the 2025 Official Reports pair is retained and reconciled separately;
+the later Official Reports capture covers 1999–2024 and 2026, with 53 passing
+source-year releases and one availability exception. Existing collections and
+annual windows retain their own manifests and schedules.
 
-The project has an approved endpoint inventory and route-level evidence about
-parameters, high volumes, handling, and limited updateability. The critical
-constraints are: preserving raw bytes and manifests; explicit request windows;
-route-specific handling; visible failures; no silent retry expansion;
-record-to-capture lineage; and a reproducible rebuild from named captures.
+These are private, source-preserving captures—not a claim of a complete
+Scottish Parliament mirror, a canonical dataset, a public release, or an
+interpretation of the records. Every coverage or freshness statement must name
+its route, source window and capture/reconciliation evidence.
 
-High-volume annual official reports, MQA routes, and votes require especially
-careful source-window, transfer, cancellation, and reconciliation design. The
-[operational register](../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
-and [update-signal evidence](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
-are starting constraints, not a capture authorisation.
+### The 2006 Committee Official Reports exception
 
-## 4. Decision and implementation path
+The retained 2006 Committee Official Reports source response is a real source
+availability response, not evidence that DB1 lost records. Its captured body
+contains the Scottish Parliament message that data are presently unavailable.
+The owner independently checked the corresponding Scottish Parliament API and
+its JSON/CSV download paths on 4 August 2026 and observed the same result.
 
-The [DEC-0073 DB1 plan](../../data/gb-sct/GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-is approved. It sets out the strategic product shape, route-specific
-routine-reconciliation model, PostgreSQL/raw-object architecture,
-researcher-access product, staged execution path, first-batch selection
-criteria, front-end acceptance, and stop conditions. The plan's researcher
-features are a staged target, not a claim that the current restricted catalogue
-already offers generic query, download, or programme examples.
+The first DB1 projection treated the response as non-object input and the
+private interface consequently presented it as an internal shape/release
+problem. That was technically truthful about the projection, but wrong as
+research-facing design: it obscured the more important fact, namely what the
+source said. The replacement product contract must expose the retained raw
+response and clearly label it as a dated upstream availability response. It
+must not imply that the historical records do not exist.
 
-The owner-approved [DEC-0075 D1 synthetic foundation](../../data/gb-sct/GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md)
-has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
-proves the raw-object → manifest → projection/rejection chain using only a
-project-created fixture on the isolated project target. It did not request or
-retain source content, schedule reconciliation, expose DB1 to a user, or
-change the existing application services.
+## Architecture and data rules worth preserving
 
-The earlier DEC-0018 plan is retained as an
-[unadopted historical reference](../../archive/data/gb-sct/db1-planning/README.md),
-not the governing plan.
+- **Raw first.** Store unaltered response bytes and manifest metadata before
+  producing any query-optimised representation.
+- **Projection is an aid, not the source.** Operational projections add
+  lineage and technical access. They cannot rename, infer, fill, categorise or
+  discard source meaning; failures must be recorded without hiding the raw
+  response.
+- **No cross-layer leakage.** The proxy never populates DB1; DB1 is fed by its
+  own capture/reconciliation pipe. The shared application and authentication
+  gateway do not make the data pipes shared.
+- **Research navigation follows subject, not implementation.** The proxy's
+  subject taxonomy is the common researcher map. Internal cohort numbers,
+  timer names, migration states and projection mechanics belong in provenance
+  and operator records, not primary navigation.
+- **Update evidence is route-specific.** The API provides limited reliable
+  upstream update signals. DB1 therefore needs its own declared schedule,
+  request contract, comparison result and change record for each route/window.
+- **No semantic work in DB1.** Variables, joins, historical status claims and
+  analytical transformations are DB2 work, separately designed and governed.
 
-## 5. Foundation history and review approach
+## Known issues and lessons
 
-The following paragraphs preserve the initial route-by-route delivery record.
-That foundation is now operating through D18, but every future source action
-still requires its own route-specific handling, capture/projection contract,
-update/reconciliation method, access design, and approval. Review triggers
-remain source drift, failed runs, schema changes, resource-limit changes, and
-renewal of source/update assumptions.
+1. Early route-by-route governance made the execution record very granular.
+   It produced useful evidence but obscured the strategic product shape. The
+   archive keeps that evidence; this narrative and the coverage snapshot now
+   carry the human account.
+2. The first Official Reports reader scanned retained data to build its own
+   structural display, which caused a roughly nine-second first-open delay.
+   Structural profiles and other access aids should be built as deliberate
+   metadata/access services, not derived in the browser at click time.
+3. A rejected operational projection was allowed to become a user-facing
+   availability state. The correction is architectural: a retained response is
+   still accessible even when no row browser is appropriate.
+4. The interface split logically related source years into D19/D20 cards and
+   exposed exception mechanics. The final interface must present one source
+   subject and year structure, with capture/reconciliation status as secondary
+   provenance.
+5. The direct source-preserving download pilot emits a projection envelope.
+   The reset must specify distinct raw-response and researcher-convenience
+   download choices, their formats, manifests and checksums.
 
-The owner-approved [D2 first-source batch](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
-passed as one fixed `/api/billtypes` request. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
-records the restricted raw object and manifest only: no schedule, user access,
-projection, or DB2 use occurred.
+## Product reset before implementation
 
-The owner-approved [D3 package — DEC-0077](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_PROPOSAL_DEC0077.md)
-has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
-records the seven-record/zero-rejection source-backed projection, DB1-only
-reader credential, anonymous denial, separate proxy/DB1 data pipes, and owner
-private-beta acceptance. It remains a one-capture, `NOT_SCHEDULED` increment.
+The owner and maintainer agree that the next DB1 implementation must begin
+from a researcher product contract rather than add another diagnostic panel.
+The proposed interaction model is:
 
-For a later separately approved DB1 interface, the owner has set a design
-direction: use the proxy catalogue's compact, grouped, expandable layout for
-consistent navigation, while keeping retained capture/projection provenance,
-version, and reconciliation state visually and semantically distinct from the
-proxy's live no-retention access.
+```text
+Research subject → endpoint → source year/window
+  → browse mirrored records (where suitable)
+  → retrieve retained raw response
+  → download a named release
+  → inspect structure and fields
+  → use citation/provenance and code examples
+```
 
-The completed [D4A reference-cohort reconciliation](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_PROPOSAL_DEC0078.md)
-tested daily append-only source preservation for three small P1 reference
-collections while deliberately leaving the D3 interface unchanged. D4B then
-used its named retained manifests for the first proxy-aligned DB1 catalogue.
+The following product changes are now in the approved DEC-0101 Stages A–C
+implementation boundary:
 
-D4A has passed. Its [result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
-records an initial three-route cycle and a repaired immediate verification
-cycle, with all later comparisons `UNCHANGED`; the daily timer is active. The
-record also preserves a false structural-drift positive caused by JSON-object
-key order, the timer pause, the code correction, and the successful corrected
-verification. It did not itself authorise an automatic source or interface
-expansion.
+- a unified DB1 catalogue matching the proxy's subject headings;
+- raw-response access and availability-response presentation;
+- what a record browser, search/filter interface, schema view, citation card,
+  download bundle and framework snippets promise—and what they do not;
+- a full availability audit across the selected retained scope, distinguishing
+  successful data, empty collections, upstream availability messages and
+  retrieval failures;
+- a targeted recurring check of the 2006 Committee response, recording a
+  change without silently overwriting its earlier captured state; and
+- the reconciliation schedules and parity checks necessary to make bounded
+  freshness claims.
 
-The [D4B proposal — DEC-0079](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
-has deployed three fixed baseline projections from named D4A manifests and a
-private DB1 catalogue in the proxy’s compact grouped/expandable layout. Its
-[result](../../data/gb-sct/GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
-records the one readiness-check rollback and corrected deployment. The owner
-has accepted the front-end catalogue. It keeps later timer observations
-separate from displayed records; DB1 remains a deliberately narrow baseline,
-not a general mirror claim.
+The [researcher-product reset record](RESEARCHER_PRODUCT_RESET_PROPOSAL.md)
+defines these items as DEC-0101. The owner has authorised the private
+access-contract, interface and database/manifest-only availability-audit work
+(Stages A–C). Any live recheck, raw capture and schedule change remain
+separately approval-gated in Stage D.
 
-The [D4C institutional-reference cohort](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
-is closed after capturing only four bounded source-preserving collections—
-Constituencies, Regions, Committee Types, and Committee Type Links—before any
-more sensitive or high-volume route. Its
-[result](../../data/gb-sct/GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
-records source/timer/projection/access proof and owner acceptance. The
-[DB1 retained-data access direction](../../data/gb-sct/GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
-now requires an explicit volume-appropriate access mode for every later DB1
-cohort; the small-collection browser is not a universal template.
+No source-data mutation, schedule change or public claim is authorised by this
+narrative. It remains a consolidation of the current evidence and the agreed
+direction for implementation.
 
-The owner-approved [D5 formal-stages cohort — DEC-0083](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
-is limited to `/api/billstages` and uses access-plan-first rather than assuming
-a collection browser. Its [restricted handling record](../../data/gb-sct/GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
-keeps raw content and individual records private while the fixed baseline is
-first established. Its [deployment result](../../data/gb-sct/GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
-records the one `INITIAL` capture and private access-plan release. The owner
-accepted the corrected subject-first navigation on 4 August: one Bills and
-formal-stages group now contains both existing fixed projections and the D5
-access-plan release. The correction changed neither data nor access boundary;
-a regression test protects the one-group navigation rule.
+## Current controls and detailed evidence
 
-The owner approved the collection-only Bills handling basis in
-[DEC-0084](../../data/gb-sct/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md).
-The resulting [Bills collection package — DEC-0085](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
-has passed restricted deployment: the exact `/api/bills` collection route has
-one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
-473-record/zero-rejection source-preserving release, and an independent daily
-04:02 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
-records the restricted private paginated reader and owner acceptance. The
-owner confirmed the front-end journey behaved as expected, so DEC-0085 is
-closed. The Bills detail route remains blocked.
+- [GB-SCT source-control guide](../../data/gb-sct/README.md)
+- [Master endpoint delivery matrix (DEC-0045)](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+- [Route-level handling register](../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
+- [High-volume operational register](../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
+- [Update-signal reconnaissance](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [DB1 coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md)
+- [Availability audit method](AVAILABILITY_AUDIT_METHOD.md)
+- [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
 
-The collection-only [Government roles cohort — DEC-0086](../../data/gb-sct/GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md)
-has passed restricted deployment: the exact `/api/governmentroles` collection
-has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
-251-record/zero-rejection source-preserving release, and an independent daily
-04:17 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
-records the private paginated reader and completed owner acceptance; DEC-0086
-is closed. It is not evidence of ministerial occupancy or a transfer of the
-handling decision to person/relationship or other `Notes`-bearing routes.
+## Review triggers
 
-The collection-only [D8 Committee roles cohort — DEC-0087](../../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0087.md)
-has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
-eight-record/zero-rejection source-preserving release, and an independent daily
-04:32 UTC timer. Its [result](../../data/gb-sct/GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_RESULT_DEC0087_2026-08-04.md)
-records the private paginated reader and completed owner acceptance; DEC-0087
-is closed. It is not evidence of committee membership/history or a transfer of
-the handling decision to detail, relationship, or other `Notes`-bearing routes.
-
-The collection-only [D9 Party roles cohort — DEC-0088](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
-has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
-548-record/zero-rejection source-preserving release, and an independent daily
-04:47 UTC timer. Its
-[result](../../data/gb-sct/GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_RESULT_DEC0088_2026-08-04.md)
-records the private paginated reader and completed owner acceptance; DEC-0088
-is closed. It is not evidence of party membership, role history, or a
-transferable handling basis for detail, relationship, or other `Notes`-bearing
-routes.
-
-The collection-only [D10 Parties cohort — DEC-0089](../../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
-has one `INITIAL` capture, one immediate `UNCHANGED` reconciliation, a fixed
-14-record/zero-rejection source-preserving release, and an independent daily
-05:02 UTC timer. Its
-[result](../../data/gb-sct/GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
-records the private paginated reader and completed owner acceptance; DEC-0089
-is closed. It is not evidence of party affiliation, validity, continuity,
-history, or a transferable handling basis for detail, relationship, or other
-`Notes`-bearing routes.
-
-The [D11 Member-context collection batch — DEC-0090](../../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
-is the first completed shift from one-route cadence to a compatible,
-collection-only batch. Its
-[result](../../data/gb-sct/GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
-records six separate raw/manifests/projections/releases in one serial delivery
-package: Members, Member constituency statuses, Member region statuses, Member
-parties, Member party roles, and Member government roles. It deliberately
-creates no member, representation, party, office, role, relationship, or
-interval claim; completed owner acceptance closes DEC-0090.
-
-The [D12 Committees collection cohort — DEC-0091](../../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md)
-has passed restricted deployment. Its [result](../../data/gb-sct/GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
-records one exact `/api/committees` initial capture, one immediate unchanged
-comparison, a fixed 169-object release, an independent daily 06:00 UTC timer,
-and a private paginated panel within the shared **Committees and committee
-roles** category. A 4 August web-only correction made the active DB1 catalogue
-derive its top-level subject headings from the proxy taxonomy, rather than
-from DB1 ingestion cohorts. Owner interface acceptance is complete. It creates no membership,
-assignment, status, date, or free-text interpretation.
-
-[D13 — DEC-0092](../../data/gb-sct/GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md), [D14 — DEC-0093](../../data/gb-sct/GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md), [D15 — DEC-0094](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md), and [D16 — DEC-0095](../../data/gb-sct/GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md) are closed source-preserving increments in the shared MQA category. D13 retains Event types and Event links; D14 retains 18 Event-subtype objects; D15 retains 1,461 consideration-motion objects; D16 retains 1,620 programme-motion objects. D17 then retained the 2026 annual Questions and Votes-on-Motions windows with daily reconciliation. [D18 — DEC-0097](../../data/gb-sct/GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md) retained both fixed annual source windows for every year 2011–2025, with a weekly failure-retry timer; recurring comparison of successful historical releases is pending remediation. None assigns MQA, business-motion, bill, stage, vote, or amendment semantics. See the [coverage snapshot](../../data/gb-sct/GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md) for the current boundary and recommended next decision.
-
-## 6. Detailed records
-
-Use the [master endpoint matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md),
-[retention policy](../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md),
-and [capture authorisation template](../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md)
-as current controls. Completed reconnaissance and prior planning are preserved
-in the [data archive](../../archive/data/gb-sct/).
+Review this record before implementing the reset, changing a source request or
+schedule, adding/retiring an endpoint, making a DB1 availability/freshness
+claim, enabling download/query access, discovering source drift, or starting
+DB2. Reconcile it with the [handover](../../governance/HANDOVER.md), decision
+and risk registers, and the governance review log.

@@ -4,6 +4,7 @@ import { type AccessRuntime, sessionDays } from "./runtime.js";
 import { findGbSctRoute, gbSctRoutes, validateParameters } from "../catalogue/gb-sct.js";
 import { createSourcePassThrough } from "../catalogue/source-pass-through.js";
 import { Db1Explorer, loadDb1ExplorerConfig } from "../db1/explorer.js";
+import { Db1ResearchAccess, loadDb1ResearchAccessConfig } from "../db1/research-access.js";
 import { D11_MEMBER_CONTEXT_ROUTES, D13_MQA_TAXONOMY_LINK_ROUTES, D14_MQA_EVENT_SUBTYPES_RELEASE_ID, D15_MQA_CONSIDERATION_RELEASE_ID, D16_MQA_PROGRAMME_RELEASE_ID, D17_MQA_ANNUAL_WINDOW_ROUTES, D18_MQA_ANNUAL_WINDOW_ROUTES, D19_OFFICIAL_REPORTS_ROUTES, D20_OFFICIAL_REPORTS_ROUTES, type AnnualWindowRoute } from "../db1/foundation.js";
 
 const unavailable = { status: ACCESS_NOT_CONFIGURED };
@@ -61,11 +62,13 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
   const sourcePassThrough = options.sourcePassThrough ?? createSourcePassThrough();
   const db1Config = loadDb1ExplorerConfig();
   const db1Explorer = db1Config ? new Db1Explorer(db1Config) : undefined;
+  const db1ResearchConfig = loadDb1ResearchAccessConfig();
+  const db1Research = db1ResearchConfig ? new Db1ResearchAccess(db1ResearchConfig) : undefined;
   const proxyVersion = options.proxyVersion ?? "development";
   app.get("/auth/status", { schema: { response: { 200: accessStatusSchema } } }, async () => ({
     status: runtime ? ACCESS_READY : ACCESS_NOT_CONFIGURED,
     authentication_available: Boolean(runtime),
-    data_layers_available: Boolean(db1Explorer)
+    data_layers_available: Boolean(db1Research)
   }));
 
   if (!runtime) {
@@ -102,10 +105,16 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     for (const route of D19_OFFICIAL_REPORTS_ROUTES) app.get(annualWindowPath(route, "d19"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     for (const route of D20_OFFICIAL_REPORTS_ROUTES) app.get(annualWindowPath(route, "d20"), { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     app.get("/db1/gb-sct/plenary-official-reports-2026/d20-v1/download.jsonl", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/research/catalogue", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/research/releases/:routeId/raw", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/research/releases/:routeId/records", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/research/all-years", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
+    app.get("/db1/gb-sct/research/availability-audit", { schema: { response: { 503: accessUnavailableSchema } } }, async (_request, reply) => reply.code(503).send(unavailable));
     return;
   }
 
   app.addHook("onClose", async () => db1Explorer?.close());
+  app.addHook("onClose", async () => db1Research?.close());
 
   app.post("/auth/login", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
     const input = body(request.body);
@@ -154,7 +163,7 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
 
   app.get("/auth/me", async (request) => {
     const identity = await session(runtime, request);
-    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], logout_proof: identity?.logoutProof ?? null, data_layers_available: Boolean(db1Explorer) && hasDb1Access(identity) };
+    return { authenticated: Boolean(identity), email: identity?.email ?? null, roles: identity?.roles ?? [], logout_proof: identity?.logoutProof ?? null, data_layers_available: Boolean(db1Research) && hasDb1Access(identity) };
   });
 
   app.post("/auth/password/change", { config: { rateLimit: { max: 5, timeWindow: "1 minute" } }, schema: { response: { 200: genericAcceptedSchema } } }, async (request, reply) => {
@@ -249,6 +258,83 @@ export async function registerAccessRoutes(app: FastifyInstance, options: { runt
     if (outcome.contentType) reply.type(outcome.contentType);
     if (outcome.contentDisposition) reply.header("content-disposition", outcome.contentDisposition);
     return reply.code(outcome.status).send(outcome.body);
+  });
+
+  app.get("/db1/gb-sct/research/catalogue", { config: { rateLimit: { max: 30, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Research) return reply.code(503).send({ code: "DB1_RESEARCH_ACCESS_NOT_CONFIGURED" });
+    const response = await db1Research.catalogue();
+    reply.header("x-cld-layer", "DB1_RETAINED_SOURCE_RESPONSES");
+    reply.header("x-cld-access-contract", "DEC-0101-STAGES-A-C");
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/research/releases/:routeId/raw", { config: { rateLimit: { max: 12, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Research) return reply.code(503).send({ code: "DB1_RESEARCH_ACCESS_NOT_CONFIGURED" });
+    const routeId = requiredText((request.params as Record<string, unknown>).routeId, 256);
+    if (!routeId) return reply.code(404).send({ code: "DB1_RELEASE_NOT_FOUND" });
+    const result = await db1Research.rawStream(routeId);
+    if (!result) return reply.code(404).send({ code: "DB1_RELEASE_NOT_FOUND" });
+    const query = (request.query ?? {}) as Record<string, unknown>;
+    const download = query.download === "1";
+    reply.header("x-cld-layer", "DB1_RETAINED_SOURCE_RESPONSE");
+    reply.header("x-cld-db1-source-route", result.release.route_id);
+    reply.header("x-cld-db1-manifest", result.release.capture.manifest_id);
+    reply.header("x-cld-db1-raw-sha256", result.release.capture.raw_sha256);
+    reply.header("x-cld-db1-retrieved-at", result.release.capture.retrieved_at);
+    reply.header("x-cld-source-url", result.release.source_url);
+    reply.header("x-cld-availability", result.release.availability);
+    reply.header("vary", "Cookie");
+    reply.type(result.release.capture.content_type || "application/json");
+    if (download) reply.header("content-disposition", `attachment; filename="${routeId.replace(/[^a-z0-9._-]/gi, "_")}-${result.release.capture.manifest_id}.json"`);
+    return reply.send(result.stream);
+  });
+
+  app.get("/db1/gb-sct/research/releases/:routeId/records", { config: { rateLimit: { max: 30, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Research) return reply.code(503).send({ code: "DB1_RESEARCH_ACCESS_NOT_CONFIGURED" });
+    const routeId = requiredText((request.params as Record<string, unknown>).routeId, 256);
+    const query = (request.query ?? {}) as Record<string, unknown>;
+    const offset = pageNumber(query.offset, 0, 1_000_000);
+    const limit = pageNumber(query.limit, 20, 100);
+    if (!routeId || offset === undefined || limit === undefined || limit === 0) return reply.code(400).send({ code: "DB1_RECORD_PAGE_REJECTED" });
+    const response = await db1Research.records(routeId, offset, limit);
+    if (!response) return reply.code(404).send({ code: "DB1_RELEASE_NOT_FOUND" });
+    reply.header("x-cld-layer", "DB1_RESEARCH_ACCESS_LAYER");
+    reply.header("x-cld-db1-manifest", response.release.capture.manifest_id);
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/research/all-years", { config: { rateLimit: { max: 30, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Research) return reply.code(503).send({ code: "DB1_RESEARCH_ACCESS_NOT_CONFIGURED" });
+    const query = (request.query ?? {}) as Record<string, unknown>;
+    const subject = requiredText(query.subject, 160);
+    const endpoint = requiredText(query.endpoint, 160);
+    if (!subject || !endpoint) return reply.code(400).send({ code: "DB1_ALL_YEARS_QUERY_REJECTED" });
+    const response = await db1Research.allYearsManifest(subject, endpoint);
+    if (!response) return reply.code(404).send({ code: "DB1_ALL_YEARS_NOT_FOUND" });
+    reply.header("x-cld-layer", "DB1_ALL_AVAILABLE_YEARS_MANIFEST");
+    reply.header("vary", "Cookie");
+    return reply.send(response);
+  });
+
+  app.get("/db1/gb-sct/research/availability-audit", { config: { rateLimit: { max: 12, timeWindow: "1 minute" } } }, async (request, reply) => {
+    const identity = await session(runtime, request);
+    if (!hasDb1Access(identity)) return reply.code(403).send({ code: "DB1_ACCESS_DENIED" });
+    if (!db1Research) return reply.code(503).send({ code: "DB1_RESEARCH_ACCESS_NOT_CONFIGURED" });
+    const response = await db1Research.availabilityAudit();
+    reply.header("x-cld-layer", "DB1_AVAILABILITY_AUDIT");
+    reply.header("x-cld-audit-method", response.audit_method);
+    reply.header("vary", "Cookie");
+    return reply.send(response);
   });
 
   app.get("/db1/gb-sct/bill-types/d2-v1", { config: { rateLimit: { max: 20, timeWindow: "1 minute" } } }, async (request, reply) => {

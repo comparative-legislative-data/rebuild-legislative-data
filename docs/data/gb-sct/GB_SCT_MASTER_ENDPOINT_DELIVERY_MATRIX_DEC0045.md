@@ -31,7 +31,7 @@ The owner accepted the private raw-proxy MVP on 3 August 2026. It provides
 authenticated, source-faithful, no-retention access for the complete selected
 inventory using fixed source-style routes, plus a direct Scottish Parliament
 alternative. The implementation records are retained in the
-[`proxy-MVP archive`](../../archive/data/gb-sct/proxy-mvp/).
+[`proxy-MVP archive`](../../archive/workstreams/proxy/mvp).
 
 This supersedes the **Pass-through** availability implication of the historic
 row-level qualification entries below. It does not rewrite their evidence, or

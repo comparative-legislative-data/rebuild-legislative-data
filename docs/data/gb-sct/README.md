@@ -1,165 +1,39 @@
 # GB-SCT source controls and evidence
 
-This area holds the current source-scope, route-handling, operational, and
-updateability controls for the first legislature. It is supporting evidence,
-not the best starting point for understanding the programme.
+This directory contains current controls for Scottish Parliament source work.
+It is not the narrative of the product: begin with the [programme workstreams](../../workstreams/README.md),
+then use the records below to test a claim, inspect a source boundary or prepare
+a new proposal.
 
-For the human-readable workstream accounts, start with the
-[proxy](../../workstreams/proxy/README.md), [DB1](../../workstreams/db1/README.md),
-or [DB2](../../workstreams/db2/README.md) narrative.
+## Current source and DB1 controls
 
-## Current controls
+- [Programme design (DEC-0042)](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
+- [Approved endpoint/variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
+- [Master endpoint delivery matrix (DEC-0045)](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
+- [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
+- [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
+- [Update-signal reconnaissance](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
+- [DB1 strategic plan (DEC-0073)](../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 retained-data access direction (DEC-0082)](../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 coverage snapshot — 4 August 2026](../../workstreams/db1/CURRENT_COVERAGE_AND_OPERATIONS.md)
 
-The [approved DB1 strategic plan — DEC-0073](GB_SCT_DB1_PLANNING_PROPOSAL_DEC0073.md)
-sets the DB1 product boundary. D1 and D2 remain the foundational proof and
-first-source records; later named cohorts have added private scheduled
-source-preserving releases. The [current DB1 coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
-is the quickest accurate account of retained coverage and remaining scope.
-It is not a generic mirror, new user-facing public data service, or DB2
-release.
+The coverage snapshot records retained scope; it is not a complete-mirror,
+freshness, canonical-variable or public-release claim. The [DB1 workstream
+narrative](../../workstreams/db1/README.md) explains the architecture, known
+gaps and agreed research-product reset.
 
-D4B's [reference-cohort projection and catalogue proposal](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_PROPOSAL_DEC0079.md)
-has passed. Its [result](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
-records the three fixed retained projections and owner-accepted private
-provenance-first catalogue, without any new source activity.
+## Governance templates and policy
 
-The [D4C institutional-reference cohort](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_PROPOSAL_DEC0081.md)
-is closed. Its [result](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
-records four fixed no-query captures, a separate daily reconciliation service,
-and an owner-accepted private source-preserving catalogue. The approved
-[DB1 retained-data access direction — DEC-0082](GB_SCT_DB1_RETAINED_DATA_ACCESS_DIRECTION_DEC0082.md)
-requires each later cohort to select an access mode suited to its scale and
-shape. DB2, generic access/download, public data access, and every new route
-remain excluded pending a new package.
-
-The owner-approved [D5 formal-stages cohort — DEC-0083](GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
-is limited to `/api/billstages`, using an access-plan-first presentation under
-DEC-0082. Its [restricted handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
-records the no-public-output, no-download, no-semantic-transformation gate.
-Its [deployment result](GB_SCT_DB1_FORMAL_STAGES_COHORT_RESULT_DEC0083_2026-08-03.md)
-records the initial fixed release and the owner-accepted correction to one
-subject-first Bills/formal-stages group. The owner has approved the
-[Bills collection handling basis — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md).
-The [Bills collection package — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
-has passed restricted deployment: one exact initial capture and immediate
-unchanged comparison produced a fixed source-preserving release with an active
-daily 04:02 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
-records the private paginated reader and completed owner acceptance. The Bills
-detail route remains blocked.
-
-The collection-only [Government roles cohort — DEC-0086](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0086.md)
-has passed restricted deployment: one exact initial capture and immediate
-unchanged comparison produced a fixed source-preserving release with an active
-daily 04:17 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
-records the private paginated reader and completed owner interface acceptance;
-DEC-0086 is closed. Its detail and person-linked relationship routes remain
-excluded.
-
-The collection-only [Committee roles cohort — DEC-0087](GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0087.md)
-has passed restricted deployment: one exact initial capture and immediate
-unchanged comparison produced a fixed eight-object source-preserving release
-with an active daily 04:32 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_RESULT_DEC0087_2026-08-04.md)
-records the private paginated reader and completed owner interface acceptance;
-DEC-0087 is closed. Its detail, committee, and person-linked relationship
-routes remain excluded.
-
-The collection-only [Party roles cohort — DEC-0088](GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
-has passed restricted deployment: one exact initial capture and immediate
-unchanged comparison produced a fixed 548-object source-preserving release with
-an active daily 04:47 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_RESULT_DEC0088_2026-08-04.md)
-records the private paginated reader and completed owner interface acceptance;
-DEC-0088 is closed. Party roles detail, parties, member/relationship routes,
-DB2, and public access remain excluded.
-
-The collection-only [Parties cohort — DEC-0089](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
-has passed restricted deployment: one exact initial capture and immediate
-unchanged comparison produced a fixed 14-object source-preserving release with
-an active daily 05:02 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_RESULT_DEC0089_2026-08-04.md)
-records the private paginated reader and completed owner interface acceptance;
-DEC-0089 is closed. Party detail, member/relationship routes, DB2, and public
-access remain excluded.
-
-The [D11 Member-context collection batch — DEC-0090](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
-has passed restricted deployment: six separately preserved, collection-only
-releases were tested in one serial package, with one initial and one immediate
-unchanged comparison per route. Its
-[result](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_RESULT_DEC0090_2026-08-04.md)
-records the six fixed releases, the daily 05:30 UTC service, and completed
-owner interface acceptance; DEC-0090 is closed. It creates no member/relationship/interval claim,
-join, DB2 input, download, or public access.
-
-The [D12 Committees collection cohort —
-DEC-0091](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_PROPOSAL_DEC0091.md) has
-passed restricted deployment: one exact initial capture and immediate unchanged
-comparison produced a fixed 169-object source-preserving release with an active
-daily 06:00 UTC reconciliation timer. Its
-[result](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
-records the private paginated reader and completed owner interface acceptance in
-the shared **Committees and committee roles** category. The active DB1
-catalogue derives its top-level subject headings from the proxy taxonomy; DB1
-ingestion cohorts are not user-facing categories.
-Committee detail, membership/assignment, date/status, contact/free-text
-interpretation, DB2, and public access remain excluded.
-
-[D13 MQA taxonomy/link batch —
-DEC-0092](GB_SCT_DB1_MQA_TAXONOMY_LINK_COLLECTION_BATCH_RESULT_DEC0092_2026-08-04.md)
-has passed restricted deployment and owner interface acceptance. Event types
-and Event links are separately retained under the existing MQA category, with
-serial reconciliation and an initial/immediate unchanged comparison for each.
-[D14 event subtypes — DEC-0093](GB_SCT_DB1_MQA_EVENT_SUBTYPES_COLLECTION_COHORT_RESULT_DEC0093_2026-08-04.md)
-and [D15 business motions — consideration — DEC-0094](GB_SCT_DB1_MQA_BUSINESS_CONSIDERATION_COHORT_RESULT_DEC0094_2026-08-04.md)
-are also closed in that subject group. They retain 18 and 1,461 source objects
-respectively, with no semantic MQA, bill, vote, or amendment claim. [D16
-business motions — programme — DEC-0095](GB_SCT_DB1_MQA_BUSINESS_PROGRAMME_COHORT_RESULT_DEC0095_2026-08-04.md)
-is also closed: 1,620 source objects, an initial/immediate unchanged comparison,
-and a 07:00 UTC timer under its route-specific 4 MiB gate. The next proposed
-[D17 MQA annual windows — DEC-0096](GB_SCT_DB1_MQA_2026_ANNUAL_WINDOW_COHORT_RESULT_DEC0096_2026-08-04.md)
-is also accepted: the 2026 Questions and Votes-on-Motions releases retain 4,375
-and 19,473 objects respectively, under one serial daily timer. Its reusable
-annual-window mechanism allows a later named year-expansion decision without a
-new bespoke pipeline. [D18 — DEC-0097](GB_SCT_DB1_ANNUAL_WINDOW_EXPANSION_RESULT_DEC0097_2026-08-04.md)
-has now added fixed source-preserving annual Questions and Votes-on-Motions
-releases for every year 2011–2025, with a separate weekly failure-retry timer;
-recurring comparison of successful releases is pending remediation. The [coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
-states the current retained/remaining boundary without implying a complete
-mirror or DB2 release.
-
-D19's 2025 Official Reports releases and D20's now-complete 1999–2024/2026
-annual expansion are source-preserving only. The D20 2006 Committee response
-is retained but unreleased after a `NOT_AN_OBJECT` projection outcome. The
-[proposed DB1 completion and researcher-access plan — DEC-0100](GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
-sets the next ordered evidence-closure and access-design decision; it does not
-authorise an interface rewrite, re-fetch, download, DB2, or public access.
-
-1. [Programme design — DEC-0042](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
-2. [Approved endpoint and variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
-3. [Master endpoint delivery matrix — DEC-0045](GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
-4. [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
-5. [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
-6. [Update-signal evidence](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
-7. [Current DB1 coverage snapshot](GB_SCT_DB1_COVERAGE_SNAPSHOT_2026-08-04.md)
-8. [Proposed DB1 completion and researcher-access plan — DEC-0100](GB_SCT_DB1_COMPLETION_AND_RESEARCHER_ACCESS_PROPOSAL_DEC0100.md)
-
-## Controls and templates
-
-- [Retention and publication policy — DEC-0008](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
+- [Retention and publication policy (DEC-0008)](RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
 - [Source assessment protocol](SOURCE_ASSESSMENT_PROTOCOL.md)
 - [Source handling record template](SOURCE_HANDLING_RECORD_TEMPLATE.md)
 - [Capture-batch authorisation template](CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md)
 
-## Archive
+## Historical delivery evidence
 
-Completed endpoint-inventory, Bills qualification, reconnaissance, and proxy
-MVP records are organised under
-[`docs/archive/data/gb-sct/`](../../archive/data/gb-sct/). They retain the
-underlying evidence and implementation history used by the current registers;
-they do not authorise new capture or DB1 work.
-
-The former DEC-0018 capture/DB1 execution plan is an
-[archived planning reference](../../archive/data/gb-sct/db1-planning/GB_SCT_CAPTURE_PROXY_DB1_PLAN_PROPOSAL_DEC0018.md),
-not the pending DB1 proposal.
+Completed DB1 delivery records (DEC-0075–DEC-0100) have been moved to the
+[DB1 delivery archive](../../archive/workstreams/db1/delivery/). The earlier
+endpoint, reconnaissance, Bills qualification, proxy and planning evidence is
+also retained in the [GB-SCT archive](../../archive/data/gb-sct/). These files
+preserve the historical evidence trail but do not constitute current authority
+or a user-facing product description.
