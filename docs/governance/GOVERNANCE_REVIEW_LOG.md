@@ -2994,3 +2994,19 @@ Next review due:
 | Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside the deployment scope. |
 | Owner decision required | Any new DB1 feature or broader data/research scope requires a separate proposal and explicit approval. |
 | Next review due | Before a further DB1 feature, on a material defect or scope change, or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0184
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-reported Official Reports directory grouping defect and catalogue-label correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0183; DEC-0106; deployed `0307cd2` web-release procedure; current DB1 reader route-normalisation; Database mirror interface and tests. |
+| Active phase and authorising scope | Owner-directed private presentation and reader correction, limited to grouping previously retained annual Official Reports releases under their two source endpoints, consistent Live API catalogue wording, and a no-database-mutation API/web release path. |
+| Checks performed | Established that the existing reader normalises annual route identifiers, including 1999, but `ops/deploy_web_presentation.sh` releases only the web bundle. Added the controlled `deploy_private_reader_presentation.sh` path, which builds/packages the existing application, updates only the two CLD service units, restarts only API and web, and checks the private catalogue boundary. Updated the remaining user-facing Route catalogue text. Local production build, all 40 automated tests, capability scans and whitespace check passed. |
+| Findings | The duplicate 1999 directory entries are a release-composition defect: the private web-only release did not include the already-verified API reader change. They do not denote different Official Reports endpoint families or data conditions. The existing researcher-access installer is unsuitable for this correction because it can modify DB1 metadata, roles and reader configuration; the new release path intentionally excludes those operations. |
+| Outcome | `PASS — LOCAL PRIVATE READER/API + WEB CORRECTION VERIFIED; OWNER DEPLOYMENT APPROVAL REQUIRED`. |
+| Affected work blocked | Deployment until explicitly approved; source/capture, database/projection/schedule/configuration/secret mutation, DB2, chart, playground, public access and research release remain outside scope. |
+| Owner decision required | Approve or decline the exact private reader/API-plus-web deployment; it restarts only `cld-gb-sct-api.service` and `cld-gb-sct-web.service` and performs no source or database action. |
+| Next review due | Immediately after the deployment decision and any release; before a further DB1 feature; or 4 September 2026, whichever is earlier. |

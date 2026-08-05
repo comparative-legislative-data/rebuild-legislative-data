@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const webSource = readFileSync(new URL("../apps/web/src/main.tsx", import.meta.url), "utf8");
 const webStyles = readFileSync(new URL("../apps/web/src/styles.css", import.meta.url), "utf8");
+const readerPresentationDeploy = readFileSync(new URL("../ops/deploy_private_reader_presentation.sh", import.meta.url), "utf8");
 
 test("Database mirror has one active workspace renderer and no legacy catalogue fallback", () => {
   assert.equal((webSource.match(/if \(view === "db1" && identity\.authenticated && identity\.data_layers_available\)/g) ?? []).length, 1);
@@ -51,4 +52,15 @@ test("Database mirror directory provides controlled descriptions for every retai
     assert.match(webSource, new RegExp(`"${endpoint}":`));
   }
   assert.match(webSource, />Database mirror<\/button>/);
+  assert.match(webSource, />Live API catalogue<\/button>/);
+  assert.doesNotMatch(webSource, />Route catalogue<\/button>/);
+});
+
+test("private reader-presentation deployment never mutates DB1 or schedules", () => {
+  assert.match(readerPresentationDeploy, /cld-gb-sct-api\.service/);
+  assert.match(readerPresentationDeploy, /cld-gb-sct-web\.service/);
+  assert.match(readerPresentationDeploy, /research\/catalogue/);
+  assert.doesNotMatch(readerPresentationDeploy, /\bpsql\b/);
+  assert.doesNotMatch(readerPresentationDeploy, /db1-[a-z0-9]+\.timer/);
+  assert.doesNotMatch(readerPresentationDeploy, /nginx/);
 });

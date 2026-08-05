@@ -535,7 +535,7 @@ function App() {
   async function loadCatalogue() {
     const response = await request("/catalogue/gb-sct");
     if (!response.ok) {
-      setCatalogueFeedback("The route catalogue is unavailable for this account.");
+      setCatalogueFeedback("The Live API catalogue is unavailable for this account.");
       return;
     }
     setCatalogue(await response.json() as Catalogue);
@@ -594,7 +594,7 @@ function App() {
       <nav className="access-nav" aria-label="Access options">
         {!identity.authenticated ? <><button type="button" onClick={() => { setView("login"); setFormFeedback(undefined); }}>Log in</button><button type="button" onClick={() => { setView("apply"); setFormFeedback(undefined); }}>Apply for beta access</button></> : null}
         {identity.authenticated ? <span className="signed-in-badge">Private beta active</span> : null}
-        {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Route catalogue</button> : null}
+        {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Live API catalogue</button> : null}
         {identity.authenticated && identity.data_layers_available ? <button type="button" onClick={() => { setView("db1"); setFormFeedback(undefined); void loadDb1Catalogue(); }}>Database mirror</button> : null}
         {identity.authenticated ? <button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button> : null}
         {identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}
