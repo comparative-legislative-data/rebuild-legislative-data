@@ -119,6 +119,12 @@ export async function migrateFullScope(options: FullScopeOptions): Promise<void>
   });
 }
 
+async function assertFullScopeReady(client: PoolClient): Promise<void> {
+  const migration = await client.query("select 1 from db1.schema_migrations where id='024_full_scope_capture_universes'");
+  const forms = await client.query<{ count: string }>("select count(*)::text as count from db1.source_forms");
+  if (!migration.rowCount || forms.rows[0]?.count !== "64") throw new Error("FULL_SCOPE_MIGRATION_OR_REGISTER_MISSING");
+}
+
 function quote(value: string): string { return `"${value.replaceAll('"', '""')}"`; }
 
 async function persistResponse(rawRoot: string, response: Response, maxBytes: number): Promise<{ digest: string; byteLength: number; relativePath: string; contentType: string }> {
@@ -338,8 +344,9 @@ async function concurrent<T>(items: readonly T[], limit: number, action: (item: 
 }
 
 export async function runFullScopeReferenceDetails(options: FullScopeOptions): Promise<{ forms: number; attempted: number; conditions: number }> {
-  await migrateFullScope(options); let attempted = 0; let conditions = 0;
+  let attempted = 0; let conditions = 0;
   await withClient(options, async (client) => {
+    await assertFullScopeReady(client);
     const forms = FULL_SCOPE_FORMS.filter((form) => form.pattern === "DETAIL" && !["gb-sct.mqa-events.detail", "gb-sct.mqa-motions.detail", "gb-sct.mqa-questions.detail", "gb-sct.mqa-supports.detail"].includes(form.id));
     for (const form of forms) {
       const parentRouteId = form.parentRouteIds?.[0];
@@ -354,8 +361,9 @@ export async function runFullScopeReferenceDetails(options: FullScopeOptions): P
 }
 
 export async function runFullScopeMqaCollections(options: FullScopeOptions): Promise<{ forms: number; conditions: number }> {
-  await migrateFullScope(options); let conditions = 0;
+  let conditions = 0;
   await withClient(options, async (client) => {
+    await assertFullScopeReady(client);
     for (const form of FULL_SCOPE_FORMS.filter((item) => item.pattern === "FIXED_COLLECTION")) {
       const routeId = form.id; await client.query("insert into db1.source_routes (id,origin_class,source_path,handling_class) values ($1,$2,$3,'RESTRICTED_PROJECT') on conflict (id) do nothing", [routeId, ORIGIN, form.pathTemplate]);
       if ((await captureWithDedicatedClient(options, form, form.pathTemplate, routeId)).state !== "SUCCEEDED") conditions += 1;
@@ -365,9 +373,9 @@ export async function runFullScopeMqaCollections(options: FullScopeOptions): Pro
 }
 
 export async function runFullScopeMqaDependents(options: FullScopeOptions): Promise<{ forms: number; attempted: number; conditions: number }> {
-  await migrateFullScope(options);
   let attempted = 0; let conditions = 0;
   await withClient(options, async (client) => {
+    await assertFullScopeReady(client);
     const forms = FULL_SCOPE_FORMS.filter((form) => form.pattern === "FILTER" || ["gb-sct.mqa-events.detail", "gb-sct.mqa-motions.detail", "gb-sct.mqa-questions.detail", "gb-sct.mqa-supports.detail"].includes(form.id));
     for (const form of forms) {
       const parentRouteId = form.parentRouteIds?.[0];
@@ -413,9 +421,9 @@ async function createAnnualUniverse(client: PoolClient, form: SourceForm, parent
  * detail response is retained as a source condition and stops only that form.
  */
 export async function runFullScopeAnnualDetails(options: FullScopeOptions): Promise<{ forms: number; attempted: number; contractConditions: number }> {
-  await migrateFullScope(options);
   let attempted = 0; let contractConditions = 0;
   await withClient(options, async (client) => {
+    await assertFullScopeReady(client);
     for (const form of FULL_SCOPE_FORMS.filter((item) => item.pattern === "ANNUAL_DETAIL")) {
       if (!form.parentRoutePrefix) throw new Error(`ANNUAL_PARENT_PREFIX_MISSING:${form.id}`);
       const universe = await createAnnualUniverse(client, form, await annualParents(client, form.parentRoutePrefix));
