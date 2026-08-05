@@ -1,6 +1,7 @@
 # DB1: Scottish Parliament Database mirror
 
-**Status:** Reset in progress — Backend Assurance is the active priority.
+**Status:** Backend Assurance audited — controlled correction required before
+any mirror-completeness claim or Research Portal delivery.
 
 DB1 is the retained-source layer for selected Scottish Parliament API material.
 It is not DB2, an analytical dataset, or a claim of historical completeness.
@@ -54,10 +55,7 @@ without a published record projection. This is operational evidence only. It
 does not prove that every approved route/window is captured, reconciled or
 current.
 
-Read the [coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md) and
-[availability-audit method](AVAILABILITY_AUDIT_METHOD.md) for existing
-evidence. Backend Assurance will replace these partial views with a controlled
-assurance matrix and report.
+DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_ASSURANCE_REPORT_2026-08-05.md), [coverage matrix](assurance/GB_SCT_DB1_COVERAGE_AND_ASSURANCE_MATRIX_2026-08-05.md), [gap register](assurance/GB_SCT_DB1_GAP_REGISTER_2026-08-05.md), [update-control record](assurance/GB_SCT_DB1_RECONCILIATION_AND_UPDATE_CONTROL_2026-08-05.md) and [capability contract](assurance/GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md). Their outcome is `CHANGES_REQUIRED`: internal lineage is sound, but controlled expected scope and complete reconciliation declarations are not yet in place.
 
 ## Boundaries
 
@@ -72,8 +70,8 @@ assurance matrix and report.
 ## Reading order
 
 1. This overview.
-2. [Backend Assurance](BACKEND_ASSURANCE.md) and its
-   [proposed audit](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md).
+2. [Backend Assurance](BACKEND_ASSURANCE.md) and the
+   [DEC-0108 assurance evidence](assurance/README.md).
 3. [Research Portal](RESEARCH_PORTAL.md).
 4. [Current QA surface](QA_SURFACE.md).
 5. Supporting evidence: [coverage](CURRENT_COVERAGE_AND_OPERATIONS.md),
@@ -84,10 +82,7 @@ assurance matrix and report.
 
 ## Next decision
 
-The next substantive task is the [proposed read-only Backend Assurance
-audit](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md). It must establish expected
-route/window coverage, actual retained evidence, reconciliation/update controls,
-gaps, and the precise conditions under which DB1 may make an “as-of” mirror
-claim. No source request, capture, database mutation, schedule change, or
-Research Portal implementation is authorised unless the owner approves that
-proposal.
+Approve a narrow correction proposal to create the expected DB1 scope and
+schedule register, resolve stale target references, and define the first
+bounded “as-of” claim. No source request, capture, database mutation, schedule
+change or Research Portal implementation is authorised by the audit result.

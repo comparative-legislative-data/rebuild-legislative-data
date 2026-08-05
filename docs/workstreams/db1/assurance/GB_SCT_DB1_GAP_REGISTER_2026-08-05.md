@@ -1,0 +1,13 @@
+# GB-SCT DB1 Backend Assurance Gap Register — 5 August 2026
+
+| ID | Severity | Gap | Evidence | Required resolution / trigger |
+| --- | --- | --- | --- | --- |
+| DB1-BA-001 | High | No controlled expected-DB1 scope inventory independently maps the approved source forms and intended annual windows to the 113 operational route entries. | DEC-0108 audit found complete capture only for the operational registry. | Approve and create the expected-scope/schedule register before any completeness claim or portal build. |
+| DB1-BA-002 | High | 86 routes have `INITIAL` as their latest reconciliation state. | Latest DB1 metadata states. | Declare each route/window’s cadence or intentional baseline-only status; do not make currentness claims until then. |
+| DB1-BA-003 | Medium | Official Reports recurrence is only evidenced for 2025; wider annual coverage has initial evidence but no general declared cadence. | D19 timer and current annual-route metadata. | Decide and implement a future schedule under a separately approved change package. |
+| DB1-BA-004 | Medium | D19 is enabled but had not yet produced its first timer-run evidence at audit time. | Project timer state. | Review after its first scheduled run; record outcome without retrospectively changing this audit. |
+| DB1-BA-005 | Medium | Generic operational scripts still refer to nonexistent `cld_gb_sct`, rather than live target `cld_gb_sct_db1`. | Read-only target preflight and repository scan. | Correct or archive stale scripts in a scoped repository/operations hygiene package; verify no deploy path selects the wrong target. |
+| DB1-BA-006 | Medium | Bulk original-data archive and generated CSV/JSONL/Parquet formats do not exist. | Current capability audit. | Treat as later portal/backend product work, not as a QA-screen patch. |
+| DB1-BA-007 | Medium | Fresh raw-byte integrity and live-source parity are unverified. | Explicit DEC-0108 exclusion. | Separate owner decisions for a no-output rehash audit and a rate-bounded live comparison design. |
+| DB1-BA-008 | Low | Historical `FAILED` and `BLOCKED_BY_SOURCE_DRIFT` observations require durable review context even though no route’s latest state is exceptional. | 19 failed and 2 blocked historical observations. | Preserve them; include failure/retry and escalation handling in the future schedule register. |
+| DB1-BA-009 | Low | 2006 Committee Official Reports has an upstream availability condition. | Retained source condition, currently explicit. | Keep it as a first-class availability state; recheck only under a separate source-contact approval. |

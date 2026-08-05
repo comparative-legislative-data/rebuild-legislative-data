@@ -1,8 +1,12 @@
 # DB1 Backend Assurance
 
-**Status:** Planned active workstream — [DEC-0108 audit proposal](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md)
-awaits owner approval. This repository reset authorises no backend audit,
-remediation, source request, database mutation or schedule change.
+**Status:** DEC-0108 metadata audit completed — `CHANGES_REQUIRED`.
+
+The [assurance evidence](assurance/README.md) confirms a sound current
+registry-to-object lineage, but it does not establish controlled expected scope
+or complete route/window reconciliation. No remediation, source request,
+database mutation, schedule change, portal implementation or deployment is
+authorised by this result.
 
 ## Purpose
 
@@ -46,29 +50,26 @@ unchanging, or semantically correct.
 5. **Gap register** — every unavailable, failed, pending or excluded item,
    with route/window, reason, observed date and review trigger.
 
-## Existing evidence to assess
+## Assurance evidence
 
-- [Coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md).
-- [Availability-audit method](AVAILABILITY_AUDIT_METHOD.md).
-- [Endpoint description register](DB1_ENDPOINT_DESCRIPTION_REGISTER.md).
-- [Master endpoint delivery matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md).
-- [Update-signal reconnaissance](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md).
+- [DEC-0108 assurance report](assurance/GB_SCT_DB1_MIRROR_ASSURANCE_REPORT_2026-08-05.md).
+- [Coverage and assurance matrix](assurance/GB_SCT_DB1_COVERAGE_AND_ASSURANCE_MATRIX_2026-08-05.md).
+- [Gap register](assurance/GB_SCT_DB1_GAP_REGISTER_2026-08-05.md).
+- [Reconciliation/update-control record](assurance/GB_SCT_DB1_RECONCILIATION_AND_UPDATE_CONTROL_2026-08-05.md).
+- [Backend capability contract](assurance/GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md).
 
-## Known assurance gaps at reset
+## Current assurance gaps
 
-- The 113-release/29-endpoint observation is not proof of complete approved
-  DB1 coverage.
-- Reconciliation is uneven: Official Reports has a broader-cadence decision
-  outstanding; other route families need one auditable schedule matrix.
-- Current all-years output is an access manifest, not an original-source
-  archive or researcher download format.
-- Generic original-archive, JSONL, CSV and Parquet capabilities are not yet
-  established and must not be implied by the QA surface.
-- A plural-party taxonomy defect shows endpoint classification needs an
-  auditable backend contract and regression evidence.
+- No expected-scope inventory maps approved source forms/windows to current
+  DB1 route entries.
+- 86 latest states remain `INITIAL`; Official Reports needs a declared wider
+  cadence beyond the separately scheduled 2025 pair.
+- Generic original-archive, JSONL, CSV and Parquet capabilities remain absent.
+- Fresh raw-byte integrity and live parity require distinct approvals.
+- Stale operation-script target references need a contained hygiene correction.
 
 ## Exit gate
 
-Backend Assurance is complete only when the owner accepts the assurance report,
-coverage matrix, gap register and capability contract. Only then may a
-Research Portal implementation proposal be considered.
+Backend Assurance can move to acceptance only after the gap register is
+resolved or consciously bounded by owner decision. Only then may a Research
+Portal implementation proposal be considered.

@@ -3058,3 +3058,19 @@ Next review due:
 | Affected work blocked | The audit itself, all source/capture, database/projection/schedule/API/web-server/dependency change, deployment, Research Portal implementation, DB2, chart, playground, public access and research release remain blocked. |
 | Owner decision required | Approve, amend or decline the exact metadata-only audit in DEC-0108. |
 | Next review due | On DEC-0108 decision; before an operational audit; on any target/boundary ambiguity; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0188
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — completed DEC-0108 metadata-only Backend Assurance audit |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; DEC-0108; active DB1 narrative; DB1 source-route/capture/manifest/raw-object/projection/reconciliation metadata; project raw-object reference metadata; and project service/timer state. |
+| Active phase and authorising scope | Owner-approved DEC-0108 Question 1 only: project DB1 metadata, raw-object references (not bytes), and unit/timer state. |
+| Checks performed | Confirmed target `cld_gb_sct_db1` and read-only transaction state; checked registry/capture/manifest/object/projection/reconciliation links and aggregate exceptions; checked contained raw-file references for existence only; inspected project timer and service state. No source request, raw-body read, rehash, database/file/service/timer mutation, secret read, deployment or application work occurred. |
+| Findings | All 113 current registered routes have successful capture evidence and consistent manifest/object lineage. The strongest unresolved controls are absent controlled expected scope, 86 initial-only latest reconciliation states, undeclared broader Official Reports cadence and stale generic operations target references. |
+| Outcome | `CHANGES REQUIRED — INTERNAL LINEAGE PASS; SCOPE/CONTROL ASSURANCE INCOMPLETE`. |
+| Affected work blocked | Any complete/current mirror claim, raw-byte integrity claim, live-source parity claim, Research Portal implementation, DB2, capture, schedule change, database/service mutation, deployment, public access and research release remain blocked. |
+| Owner decision required | Approve a narrow correction package for controlled expected scope/schedule records and stale operations references, then decide whether to proceed to stored-object integrity and live-source parity audits. |
+| Next review due | On correction proposal/decision; before any DB1 completeness/currentness claim or Research Portal implementation; or 4 September 2026, whichever is earlier. |

@@ -43,10 +43,7 @@ it is retained to test backend completeness and capability, not incrementally
 polished into the final product. The deployed `22d23dc` release remains the
 current private baseline; no part of this repository reset is deployed.
 
-The active DB1 work is therefore strictly sequenced: first
-[Backend Assurance](../workstreams/db1/BACKEND_ASSURANCE.md), then an
-independent [Research Portal](../workstreams/db1/RESEARCH_PORTAL.md) built
-only against the accepted backend capability contract. The 2006 Committee
+The active DB1 work is therefore strictly sequenced: [Backend Assurance](../workstreams/db1/BACKEND_ASSURANCE.md) has completed its first metadata-only audit and requires a controlled correction; only then can an independent [Research Portal](../workstreams/db1/RESEARCH_PORTAL.md) be built against an accepted backend capability contract. The 2006 Committee
 Official Reports upstream availability response remains an explicit source
 condition, not a silent gap or a historical conclusion.
 
@@ -86,13 +83,7 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-The next substantive decision is DEC-0108, the [proposed bounded, read-only
-Backend Assurance audit](../workstreams/db1/BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md).
-It defines how existing DB1 evidence would be tested for coverage, lineage,
-reconciliation, update controls, exceptions and capability, without source
-requests or mutations. The [DB1 narrative](../workstreams/db1/README.md) is the
-active starting point. Research Portal design and implementation follow only
-after the owner accepts the resulting assurance artefacts.
+DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage but `CHANGES_REQUIRED` for expected scope and reconciliation controls. The next substantive decision is a narrow correction package: create a controlled expected DB1 scope/schedule register and resolve stale operations references. Research Portal design and implementation remain blocked until the resulting assurance position is accepted.
 
 ## Documentation hygiene
 

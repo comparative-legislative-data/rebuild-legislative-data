@@ -1,6 +1,6 @@
 # DB1 Backend Assurance Audit Proposal — DEC-0108
 
-**Status:** Proposed — owner approval required before any operational audit.
+**Status:** Approved and executed on 5 August 2026 — see the [assurance evidence](assurance/README.md).
 
 **Decision requested:** Approve one bounded, read-only audit of existing DB1
 operational evidence, followed by a decision on any content-integrity or live
@@ -21,7 +21,7 @@ three questions which cannot truthfully be answered by the current QA screen:
    Parliament responses match the retained/reconciled DB1 state under a
    declared comparison rule?
 
-DEC-0108 requests approval for question 1 only. Questions 2 and 3 are named
+DEC-0108 approved question 1 only. Questions 2 and 3 remain named
 future gates because they require, respectively, reading stored raw response
 bytes and contacting the Scottish Parliament API. Neither is implied by a
 metadata audit.
