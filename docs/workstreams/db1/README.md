@@ -72,7 +72,8 @@ assurance matrix and report.
 ## Reading order
 
 1. This overview.
-2. [Backend Assurance](BACKEND_ASSURANCE.md).
+2. [Backend Assurance](BACKEND_ASSURANCE.md) and its
+   [proposed audit](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md).
 3. [Research Portal](RESEARCH_PORTAL.md).
 4. [Current QA surface](QA_SURFACE.md).
 5. Supporting evidence: [coverage](CURRENT_COVERAGE_AND_OPERATIONS.md),
@@ -83,9 +84,10 @@ assurance matrix and report.
 
 ## Next decision
 
-The next substantive task is a read-only Backend Assurance audit and plan. It
-must establish expected route/window coverage, actual retained evidence,
-reconciliation/update controls, gaps, and the precise conditions under which
-DB1 may make an “as-of” mirror claim. No source request, capture, database
-mutation, schedule change, or Research Portal implementation is authorised by
-this overview.
+The next substantive task is the [proposed read-only Backend Assurance
+audit](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md). It must establish expected
+route/window coverage, actual retained evidence, reconciliation/update controls,
+gaps, and the precise conditions under which DB1 may make an “as-of” mirror
+claim. No source request, capture, database mutation, schedule change, or
+Research Portal implementation is authorised unless the owner approves that
+proposal.

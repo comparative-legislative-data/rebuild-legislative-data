@@ -1,8 +1,8 @@
 # DB1 Backend Assurance
 
-**Status:** Planned active workstream — this repository reset authorises no
-backend audit, remediation, source request, database mutation or schedule
-change.
+**Status:** Planned active workstream — [DEC-0108 audit proposal](BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md)
+awaits owner approval. This repository reset authorises no backend audit,
+remediation, source request, database mutation or schedule change.
 
 ## Purpose
 

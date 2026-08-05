@@ -3042,3 +3042,19 @@ Next review due:
 | Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, deployment, Research Portal implementation, DB2, chart, playground, public access and research release remain outside DEC-0107. |
 | Owner decision required | Approve a separately scoped, read-only Backend Assurance audit proposal before any audit of DB1 operational evidence. |
 | Next review due | On Backend Assurance proposal/decision; before any DB1 claim or Research Portal implementation; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0187
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — preparation of DEC-0108 Backend Assurance audit proposal |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0186; active DB1 overview, Backend Assurance narrative, current coverage snapshot, availability-audit method and endpoint-label register. |
+| Active phase and authorising scope | Owner authorised proposal preparation only. No operational audit, VPS/database/service access, source request, capture, mutation, deployment or application change is authorised. |
+| Checks performed | Distinguished metadata/operational assurance from stored-object integrity and live-source parity; set an exact read-only target/evidence boundary; specified controlled output records, stop conditions and separate follow-up gates. |
+| Findings | Existing metadata can support a bounded internal-evidence audit but cannot by itself prove raw-byte integrity or parity with the current upstream API. Those are separately material activities and must not be implied by the word “mirror”. |
+| Outcome | `PASS — DEC-0108 PREPARED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | The audit itself, all source/capture, database/projection/schedule/API/web-server/dependency change, deployment, Research Portal implementation, DB2, chart, playground, public access and research release remain blocked. |
+| Owner decision required | Approve, amend or decline the exact metadata-only audit in DEC-0108. |
+| Next review due | On DEC-0108 decision; before an operational audit; on any target/boundary ambiguity; or 4 September 2026, whichever is earlier. |

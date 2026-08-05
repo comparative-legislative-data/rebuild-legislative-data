@@ -86,12 +86,13 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-The next substantive decision is a bounded, read-only Backend Assurance audit
-proposal. It must define how existing DB1 evidence will be tested for coverage,
-lineage, reconciliation, update controls, exceptions and capability, without
-source requests or mutations. The [DB1 narrative](../workstreams/db1/README.md)
-is the active starting point. Research Portal design and implementation follow
-only after the owner accepts the resulting assurance artefacts.
+The next substantive decision is DEC-0108, the [proposed bounded, read-only
+Backend Assurance audit](../workstreams/db1/BACKEND_ASSURANCE_AUDIT_PROPOSAL_DEC0108.md).
+It defines how existing DB1 evidence would be tested for coverage, lineage,
+reconciliation, update controls, exceptions and capability, without source
+requests or mutations. The [DB1 narrative](../workstreams/db1/README.md) is the
+active starting point. Research Portal design and implementation follow only
+after the owner accepts the resulting assurance artefacts.
 
 ## Documentation hygiene
 
