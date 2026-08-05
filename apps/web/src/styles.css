@@ -126,6 +126,7 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .catalogue-section { gap: .65rem; }
 .catalogue-section-heading { padding: .85rem 0; border-top: 1px solid var(--cld-border); border-bottom: 1px solid var(--cld-border); }
 .catalogue-section-heading h3 { font-size: clamp(1.15rem, 2.5vw, 1.4rem); }
+.subject-description { max-width: 44rem; margin: .45rem 0 0; color: #b8c4d2; font-size: .9rem; font-weight: 400; line-height: 1.45; }
 .catalogue-section:first-child .catalogue-section-heading { border-top: 0; }
 .endpoint-list { gap: .65rem; padding-bottom: .35rem; }
 .endpoint-card { border-color: rgba(120, 181, 207, .35); border-radius: .6rem; background: rgba(5, 13, 25, .26); }
@@ -133,6 +134,7 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .endpoint-card .route-group { color: #b8d8e8; }
 .endpoint-card .route-state { color: #c8d3df; }
 .endpoint-card .route-details { padding: 0 1rem 1rem; }
+.endpoint-description { max-width: 44rem; margin: .3rem 0 .45rem; color: #c8d3df; font-size: .85rem; font-weight: 400; line-height: 1.4; }
 .year-index { display: grid; gap: .45rem; margin: 1rem 0; padding: .9rem; border: 1px solid rgba(232, 189, 104, .35); border-radius: .55rem; background: rgba(232, 189, 104, .07); }
 .year-index p { margin: 0; color: #d9e1eb; line-height: 1.45; }
 .year-index .source-action { width: fit-content; margin-top: .2rem; }
@@ -145,10 +147,21 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .primary-actions { gap: .6rem; }
 .primary-actions .source-action, .primary-actions button { min-height: 2.65rem; }
 .primary-actions .source-action:first-child { border-color: var(--cld-accent); }
+.access-explainer { padding: .85rem 1rem; border: 1px solid rgba(120, 181, 207, .36); border-radius: .55rem; background: rgba(120, 181, 207, .07); }
+.access-explainer > p { margin: 0; color: #e6eff8; }
+.access-explainer dl { display: grid; gap: .6rem; margin: .65rem 0 0; }
+.access-explainer dl div { display: grid; gap: .14rem; }
+.access-explainer dt { color: #b8d8e8; font-size: .76rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.access-explainer dd { margin: 0; color: #c8d3df; font-size: .88rem; line-height: 1.45; }
 .source-condition { margin: 0; border-color: rgba(184, 216, 232, .4); background: rgba(120, 181, 207, .1); }
 .source-condition p { margin: 0; }
 .source-condition p + p { margin-top: .35rem; }
 .source-condition-notice { border-color: rgba(232, 189, 104, .65); background: rgba(232, 189, 104, .12); }
+.inline-help { margin-top: .65rem; }
+.inline-help > summary { display: inline-flex; align-items: center; gap: .45rem; color: #e6eff8; cursor: pointer; font-size: .86rem; font-weight: 750; }
+.inline-help > summary span:first-child { display: inline-grid; width: 1.25rem; height: 1.25rem; place-items: center; border: 1px solid rgba(232, 189, 104, .7); border-radius: 50%; color: var(--cld-accent-strong); font-family: Georgia, "Times New Roman", serif; font-weight: 800; }
+.inline-help > div { margin-top: .55rem; color: #c8d3df; font-size: .86rem; line-height: 1.45; }
+.inline-help > div p { margin: 0; }
 .research-section { margin: 0; padding: 1rem; border: 1px solid var(--cld-border); border-radius: .6rem; background: rgba(4, 14, 26, .32); }
 .research-section > h4 { margin: 0; color: #f4f7fb; font-size: 1rem; }
 .research-section > summary { cursor: pointer; color: #f4f7fb; font-weight: 800; }

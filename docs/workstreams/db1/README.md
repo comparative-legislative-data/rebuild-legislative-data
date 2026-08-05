@@ -1,9 +1,8 @@
 # DB1: Scottish Parliament source-preserving mirror
 
 **Status:** substantial private capture coverage exists. The first
-researcher-facing interface is privately deployed, but its owner acceptance
-identified a usability and accessibility overhaul that must be agreed before
-further interface implementation.
+researcher-facing interface is privately deployed. Owner testing then produced
+the focused, frontend-only [DEC-0104 accessibility correction](USER_TESTING_ACCESSIBILITY_CORRECTION_DEC0104.md), which is ready for its private web release.
 
 ## What DB1 is for
 

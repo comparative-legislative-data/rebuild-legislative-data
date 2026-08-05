@@ -2834,3 +2834,19 @@ Next review due:
 | Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0103. |
 | Owner decision required | Test the live authenticated DB1 catalogue; accept it or report a specific usability/accessibility/access defect. |
 | Next review due | On owner acceptance or defect report; before any follow-on DB1 feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0174
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner live-user-testing accessibility feedback and DEC-0104 correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; GOV-REV-0173; DEC-0103; DEC-0104; modified web renderer, stylesheet and navigation test. |
+| Active phase and authorising decision | Owner-directed DEC-0104 frontend-only correction to the privately deployed DB1 interface. |
+| Checks performed | Replaced primary “DB1” terminology with “Database mirror”; added research-subject and endpoint explanations; made dated-retained versus live-upstream JSON actions explicit; restored browser-view original JSON; and added keyboard-accessible explanations for unpublished structured views and field guides. Ran production build, all 33 automated tests, capability scans, documentation-link check and whitespace check. |
+| Findings | The correction changes only the browser presentation, its test and its human-facing record. No DB1 source response, capture, API route, database, schedule, source request, configuration, dependency or access policy is changed. |
+| Outcome | `PASS — DEC-0104 LOCAL CORRECTION VERIFIED; PRIVATE WEB-PRESENTATION RELEASE PENDING`. |
+| Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0104. |
+| Owner decision required | No new design decision: the owner has directed this correction. Continue the live private review after the web-only release; report any remaining systemic research-workflow issue before a further broad UI iteration. |
+| Next review due | Immediately after private web-presentation release and owner review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |

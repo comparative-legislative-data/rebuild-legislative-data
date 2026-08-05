@@ -26,7 +26,7 @@ test("web rejects non-loopback configuration", async () => {
   else process.env.PORT = previousPort;
 });
 
-test("DB1 navigation derives its retained groups from the proxy subject taxonomy", () => {
+test("Database mirror navigation derives its retained groups from the proxy subject taxonomy", () => {
   const source = readFileSync("apps/web/src/main.tsx", "utf8");
   assert.match(source, /function Db1SubjectGroup/);
   assert.match(source, /section=\{catalogueSections\[0\]\}/);
@@ -38,7 +38,10 @@ test("DB1 navigation derives its retained groups from the proxy subject taxonomy
   assert.match(source, /gb-sct\.committee-types\.collection/);
   assert.match(source, /memberContextDb1Routes\.slice\(3\)/);
   assert.match(source, /parties\/d10-v1/);
-  assert.doesNotMatch(source.slice(source.indexOf("function Db1SubjectGroup"), source.indexOf("if (activationToken)")), /Members and representation|Institutional reference|Parliamentary sessions/);
+  assert.match(source, /db1ResearchCatalogue\.subjects\.map/);
+  assert.match(source, /databaseMirrorSubjectGuides/);
+  assert.match(source, /databaseMirrorEndpointGuide/);
+  assert.match(source, /How the Database mirror differs from the live API/);
   assert.match(source, /Db1PagedPanel/);
   assert.match(source, /fixed retained DB1 releases with route-specific access modes/);
 });
