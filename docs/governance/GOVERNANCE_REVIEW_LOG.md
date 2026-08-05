@@ -3106,3 +3106,18 @@ Next review due:
 | Affected work blocked | Stored-object integrity, source parity, capture, database/service/timer change, Research Portal implementation, DB2, public access and research release remain blocked. |
 | Owner decision required | Accept or amend the DEC-0109 registers; then decide the next Backend Assurance gate. |
 | Next review due | On owner acceptance/amendment; before an integrity/parity proposal or Research Portal implementation; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0191
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner acceptance of DEC-0109 control registers |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0108 assurance evidence; DEC-0109 scope/control registers; active DB1 narrative and registers. |
+| Active phase and authorising scope | Completed DEC-0109 repository-only register correction. |
+| Findings | The accepted registers make retained versus future-capture scope, annual windows, recurring controls, baseline-only conditions and the 2006 availability response explicit. They do not establish raw-byte integrity or current source parity. |
+| Outcome | `PASS — DB1 SCOPE/CONTROL REGISTERS OWNER ACCEPTED`. |
+| Affected work blocked | Source contact, raw-byte access, database/service/timer change, Research Portal implementation, DB2, public access and research release remain separately gated. |
+| Owner decision required | Choose the next Backend Assurance gate: stored-object integrity audit, live-source parity design, or a combined staged proposal. |
+| Next review due | Before that proposal/decision or Research Portal implementation; or 4 September 2026, whichever is earlier. |

@@ -83,7 +83,7 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109 has now created the controlled expected-scope and route/window-control registers. Owner acceptance of those records is the next decision. Research Portal design and implementation remain blocked until the resulting assurance position is accepted.
+DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109's controlled expected-scope and route/window-control registers are owner accepted. The next Backend Assurance decision is whether to verify stored-object integrity, design live-source parity checks, or both. Research Portal design and implementation remain separately gated.
 
 ## Documentation hygiene
 
