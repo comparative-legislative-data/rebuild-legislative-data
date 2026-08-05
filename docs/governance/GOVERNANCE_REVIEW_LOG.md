@@ -2882,3 +2882,19 @@ Next review due:
 | Affected work blocked | New-digest projection automation, source requests, capture, database mutation, schedule/permission/API-path changes, DB2, charts, playground and public access remain outside DEC-0105. |
 | Owner decision required | No new decision; proceed with the contained private release, then review the new subject → Access data journey. |
 | Next review due | Immediately after release and owner review. |
+
+### GOV-REV-0177
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — preparation of DEC-0106 Database mirror redesign proposal |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; governance procedure; decision/risk registers; GOV-REV-0176; DB1 narrative; DEC-0102–DEC-0105; external UX commission and three owner-supplied external implementation responses. |
+| Active phase and authorising scope | Owner authorised preparation of an implementation proposal only. No application, source, capture, database, schedule, deployment or external operational action is authorised by this review. |
+| Checks performed | Reconciled the three responses into four distinct product shapes; checked their terminology against raw-first DB1 constraints, source-availability treatment, high-volume annual releases, citation/release identity and accessibility requirements. Rejected an off-canvas drawer as the primary high-volume surface. Corrected unsupported assertions that a nested `details` element is necessarily inaccessible or that an endpoint URL itself creates a persistent research identifier. |
+| Findings | A searchable/filtered directory leading to a dedicated endpoint workspace is the most proportionate proposed shape. It gives source/release actions priority, supports a full-width release table, keeps provenance on demand and avoids the hidden-summary/forced-display navigation defect. The proposal must remain frontend-only and avoid any assumed router dependency or web-server change. |
+| Outcome | `PASS — DEC-0106 PREPARED; OWNER APPROVAL REQUIRED BEFORE IMPLEMENTATION`. |
+| Affected work blocked | All application/CSS mutation, deployment, source access/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain blocked. |
+| Owner decision required | Approve, amend or reject DEC-0106's contained frontend-only directory/endpoint-workspace package. |
+| Next review due | On DEC-0106 decision; before local implementation; on any routing/infrastructure boundary finding; or 4 September 2026, whichever is earlier. |
