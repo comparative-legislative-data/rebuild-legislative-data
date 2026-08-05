@@ -1,8 +1,8 @@
 # DB1 Full-Scope Ingestion Implementation Package — DEC-0112
 
-**Status:** Proposed — owner approval required before execution.
+**Status:** Approved — execution in progress.
 
-**Decision requested:** Authorise one bounded implementation package that
+**Decision record:** The owner authorised one bounded implementation package that
 extends the existing isolated GB-SCT DB1 service, captures the 35 remaining
 approved source forms, and records their recurring reconciliation controls.
 It delivers the data layer only. It does not implement or deploy a Research
@@ -292,11 +292,11 @@ audit is accepted.
 - No generic user-supplied route/ID querying or SQL/OData interface.
 - No deletion or replacement of existing DB1 evidence.
 
-## 9. Owner approval requested
+## 9. Owner decision record
 
-Approve, amend or decline this single **DEC-0112 full-scope DB1 ingestion
-implementation package**. Approval authorises only the stated project targets,
-source forms, additive DB1 code/schema/raw-evidence writes, project-owned
-schedule and restricted result records. Any new source family, different data
-target, capacity/resource-limit change, shared-service touch, public access or
-DB2/frontend scope requires a new decision.
+The owner approved this single **DEC-0112 full-scope DB1 ingestion
+implementation package** on 5 August 2026. Execution is confined to the
+stated project targets, source forms, additive DB1 code/schema/raw-evidence
+writes, project-owned schedule and restricted result records. Any new source
+family, different data target, capacity/resource-limit change, shared-service
+touch, public access or DB2/frontend scope requires a new decision.

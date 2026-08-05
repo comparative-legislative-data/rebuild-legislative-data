@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { createSyntheticFixture, D2_BILL_TYPES_URL, D4_REFERENCE_ROUTES, D4C_INSTITUTIONAL_ROUTES, D4B_REFERENCE_CATALOGUE_ID, D4B_REFERENCE_PROJECTIONS, D6_BILLS_COLLECTION_ROUTE, D6_MAX_BYTES, D7_GOVERNMENT_ROLES_ROUTE, D7_MAX_BYTES, D8_COMMITTEE_ROLES_ROUTE, D8_MAX_BYTES, D13_MQA_TAXONOMY_LINK_ROUTES, D13_MAX_BYTES, D16_MQA_PROGRAMME_ROUTE, D16_MAX_BYTES, D19_OFFICIAL_REPORTS_ROUTES, D20_OFFICIAL_REPORTS_ROUTES, DB1_SYNTHETIC_ORIGIN, fetchD2BillTypes, fetchD4ReferenceCollection, fetchD4CInstitutionalCollection, fetchD6BillsCollection, fetchD7GovernmentRoles, fetchD8CommitteeRoles, fetchD13MqaTaxonomyLinkCollection, fetchD16MqaProgramme, fetchD19OfficialReportsToRawObject, fetchD20OfficialReportsToRawObject, persistSyntheticRawObject, runD19SyntheticStreamingProof, signaturesEqual } from "../apps/api/dist/db1/foundation.js";
+import { FULL_DB1_SOURCE_FORM_COUNT, FULL_SCOPE_FORMS } from "../apps/api/dist/db1/full-scope.js";
 
 test("D1 raw-object writer is content-addressed, immutable, and synthetic-only", async () => {
   const root = await mkdtemp(join(tmpdir(), "cld-db1-foundation-"));
@@ -157,6 +158,12 @@ test("D19 collector accepts only a fixed route and streams synthetic bytes into 
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+test("full-scope runner registers the approved 64 forms and isolates the 35 new forms", () => {
+  assert.equal(FULL_DB1_SOURCE_FORM_COUNT, 64);
+  assert.equal(FULL_SCOPE_FORMS.length, 35);
+  assert.deepEqual(new Set(FULL_SCOPE_FORMS.map((form) => form.id)).size, 35);
 });
 
 test("D20 has exactly the approved 54 fixed annual URLs and rejects outside-year input without source traffic", async () => {

@@ -3184,3 +3184,19 @@ Next review due:
 | Affected work blocked | Source requests/capture, raw-store/database/schema/code/timer changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked pending DEC-0112. |
 | Owner decision required | Approve, amend or decline DEC-0112 before any operational full-scope ingestion activity. |
 | Next review due | On DEC-0112 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0196
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner approval and start of DEC-0112 execution |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; DEC-0045; DEC-0111/DEC-0112; DB1 expected-scope/update-control registers; risk register; current isolated-service boundary. |
+| Active phase and authorising scope | Owner-approved DEC-0112 full-scope DB1 ingestion package. |
+| Checks performed | Confirmed the approved target is the isolated `cld_gb_sct` DB1 cluster/database/raw root and direct Scottish Parliament source requests only; prepared a generic raw-retention, manifest, universe and source-condition path for the 35 missing forms; verified local type, build, test and documentation-link checks before source contact. |
+| Findings | The first implementation draft required two corrections before deployment: each concurrent capture now receives its own database client, and large raw JSON arrays are mechanically projected incrementally rather than being loaded as one response body. No proxy, frontend, DB2, shared-service or public-access change is included. |
+| Outcome | `PASS — DEC-0112 EXECUTION PREPARED; ISOLATED DEPLOYMENT AND PRE-FLIGHT NEXT`. |
+| Affected work blocked | Research Portal implementation, DB2, public release, general database query and further assurance/parity claims remain blocked. Full-scope source capture is authorised only within DEC-0112. |
+| Owner decision required | None for the approved DEC-0112 boundary. A new decision is required for any scope expansion or after the package closure if the next phase changes target/scope. |
+| Next review due | After the isolated deployment/preflight, at each named source-condition or contract stop, and before the 64-form closure/audit. |

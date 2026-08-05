@@ -43,7 +43,8 @@ it is retained to test backend completeness and capability, not incrementally
 polished into the final product. The deployed `22d23dc` release remains the
 current private baseline; no part of this repository reset is deployed.
 
-The active DB1 work is therefore strictly sequenced: [Backend Assurance](../workstreams/db1/BACKEND_ASSURANCE.md) has completed its first metadata-only audit and requires a controlled correction; only then can an independent [Research Portal](../workstreams/db1/RESEARCH_PORTAL.md) be built against an accepted backend capability contract. The 2006 Committee
+The active DB1 work is therefore strictly sequenced: the owner has approved the
+[DEC-0112 full-scope ingestion package](../workstreams/db1/FULL_SCOPE_INGESTION_IMPLEMENTATION_PACKAGE_DEC0112.md). It must complete before the read-only [Backend Assurance](../workstreams/db1/BACKEND_ASSURANCE.md) closure/audit and any independent [Research Portal](../workstreams/db1/RESEARCH_PORTAL.md) proposal. The 2006 Committee
 Official Reports upstream availability response remains an explicit source
 condition, not a silent gap or a historical conclusion.
 
@@ -83,7 +84,7 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109's controlled expected-scope and route/window-control registers are owner accepted. The owner has approved the [full-scope ingestion direction](../workstreams/db1/FULL_SCOPE_INGESTION_PROPOSAL_DEC0111.md): no further DB1 assurance, integrity, parity or Research Portal work proceeds until the full approved 64-form scope is ingested, or a named owner-approved exception exists. The exact [DEC-0112 implementation package](../workstreams/db1/FULL_SCOPE_INGESTION_IMPLEMENTATION_PACKAGE_DEC0112.md) is ready for review; no source or DB1 action is authorised until it is approved.
+DEC-0108's [metadata-only Backend Assurance evidence](../workstreams/db1/assurance/README.md) found sound internal lineage and DEC-0109's controlled expected-scope and route/window-control registers are owner accepted. DEC-0111 and DEC-0112 are approved: the full approved 64-form scope must be ingested, or a named owner-approved exception exists, before further DB1 assurance, integrity, parity or Research Portal work. Execution is currently in progress under the exact [DEC-0112 implementation package](../workstreams/db1/FULL_SCOPE_INGESTION_IMPLEMENTATION_PACKAGE_DEC0112.md).
 
 ## Documentation hygiene
 
