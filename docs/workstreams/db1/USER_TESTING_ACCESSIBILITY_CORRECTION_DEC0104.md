@@ -1,6 +1,6 @@
 # DEC-0104: Database mirror user-testing accessibility correction
 
-**Status:** `APPROVED — OWNER-DIRECTED IMPLEMENTATION COMPLETE; PRIVATE RELEASE PENDING`
+**Status:** `APPROVED — PRIVATELY DEPLOYED; OWNER REVIEW PENDING`
 
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror
@@ -61,3 +61,15 @@ open live source → inspect help/provenance. If that still exposes systemic
 research-workflow problems, pause broad frontend iteration and commission
 targeted external research-data UX/accessibility review before extending the
 interface.
+
+## Deployment record
+
+The correction was privately deployed on 5 August 2026 from commit
+`23a73e0` through the existing web-presentation path. That path created a new
+web release and restarted only `cld-gb-sct-web.service`. Its remote verification
+passed the production build, 33 automated tests, capability scans and B1
+packaging. The two brief health-check retries occurred while the web service was
+restarting; the deployment completed successfully. Read-only post-release
+checks confirmed `cld-gb-sct-api.service`, `cld-gb-sct-web.service` and
+`cld-gb-sct-db1-d19.timer` active, API and web health responses successful, and
+unauthenticated Database mirror catalogue access still denied with `403`.

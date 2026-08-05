@@ -2850,3 +2850,19 @@ Next review due:
 | Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0104. |
 | Owner decision required | No new design decision: the owner has directed this correction. Continue the live private review after the web-only release; report any remaining systemic research-workflow issue before a further broad UI iteration. |
 | Next review due | Immediately after private web-presentation release and owner review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0175
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0104 private web-presentation release verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0104; GOV-REV-0174; web-presentation deployment output; live service/timer state; health and anonymous-access boundary results. |
+| Active phase and authorising decision | Owner-directed DEC-0104 private, frontend-only release. |
+| Checks performed | Deployed commit `23a73e0` through `ops/deploy_web_presentation.sh`; the remote path passed production build, all 33 tests, capability scans and B1 packaging. Read-only post-release checks confirmed API, web and DB1 D19 timer active; API and web health successful; and unauthenticated Database mirror catalogue access still `403`. |
+| Findings | The two initial web-health connection failures occurred during the controlled web-service restart; the deployment script retried and completed successfully. No source request, capture, database, schedule/timer, API, dependency, secret/configuration or unrelated-service change occurred. |
+| Outcome | `PASS — DEC-0104 PRIVATELY DEPLOYED; OWNER REVIEW PENDING`. |
+| Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0104. |
+| Owner decision required | Perform the next short live research journey and report any residual UX/accessibility issue. |
+| Next review due | On owner review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |
