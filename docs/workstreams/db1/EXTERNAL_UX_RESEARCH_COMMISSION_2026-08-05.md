@@ -1,16 +1,16 @@
 # Commission: making the Scottish Parliament Database mirror a world-class research experience
 
-**Status:** ready to issue for independent product-design and accessibility advice  
-**Date:** 5 August 2026  
-**Commissioner:** Comparative Legislative Data (CLD)  
-**Materials supplied separately:** annotated screenshots of the current private-beta interface
+**Status:** ready to issue for independent implementation-option proposals
+**Date:** 5 August 2026
+**Commissioner:** Comparative Legislative Data (CLD)
+**Evidence supplied in this brief:** product context, current interaction and CSS excerpts, data model, constraints and acceptance questions
 
 ## The request
 
-We would value an expert critique and practical design recommendations for the
+We would value independent, practical implementation proposals for the
 research interface of a new legislative-data service. Please treat this brief
-and the accompanying screenshots as self-contained: you will not have access
-to the repository, database, production environment or user accounts.
+as self-contained: you will not have access to the repository, database,
+production environment, user accounts or further screenshots.
 
 We are not asking for a generic visual refresh. We want a credible,
 accessible, researcher-centred interaction model that makes a database mirror
@@ -18,20 +18,43 @@ of official legislative data easier to find, understand, inspect, cite and
 reuse than the live source API, without hiding uncertainty or altering the
 underlying source material.
 
-Please provide:
+Please provide **at least two, ideally three, distinct viable implementation
+options**, rather than one assumed solution. For each option, explain its
+researcher journey, information architecture, interaction model, accessibility
+properties, implementation implications and trade-offs. We will use that
+comparison to make the design decision ourselves.
+
+Across those options, please provide:
 
 1. a diagnosis of the current information architecture and interaction
    failures;
-2. a recommended end-to-end researcher journey, supported by a simple
-   wireframe or annotated hierarchy;
+2. an end-to-end researcher journey and annotated hierarchy for each option;
 3. concrete React/HTML/CSS suggestions or illustrative code for the main
    catalogue and release-access screens;
 4. guidance on visual hierarchy, typography, spacing, navigation and
    responsive presentation suitable for an academic research service; and
 5. an accessibility review and a pragmatic implementation sequence.
 
-We welcome frank criticism. We especially want advice that can be implemented
-without an unnecessary platform rewrite.
+We welcome frank criticism. We especially want proposals that can be
+implemented without an unnecessary platform rewrite.
+
+## Required response format
+
+Please structure the response so that a non-specialist project owner can
+compare proposals directly:
+
+| Section | What we need |
+| --- | --- |
+| **Option A / B / C** | A name, a short description, a researcher journey and an annotated hierarchy or rough wireframe. |
+| **Strengths and risks** | How each option improves discovery, data access, provenance, high-volume use, accessibility and visual quality; what it sacrifices or complicates. |
+| **Recommended components** | Semantic HTML/React state model, key CSS/layout patterns and a small illustrative code sample. |
+| **Best fit** | Which option you recommend, why, and what evidence would change that recommendation. |
+| **Implementation sequence** | A safe first release, later enhancements and acceptance tests. |
+
+Do not assume that the current nested-card/nested-disclosure implementation
+must be preserved. Equally, do not propose a framework migration or a design
+system merely because one exists: justify any new dependency or architectural
+change.
 
 ## The product in one page
 
@@ -167,7 +190,9 @@ the way those boundaries have been exposed.
    number of disclosure panels. It is readable, but it does not yet feel like
    a calm, confident research workspace.
 
-The attached screenshots show these issues in their current rendered form.
+The representative interaction and CSS excerpts below show the relevant
+structural problems. They should be treated as evidence of a failed approach,
+not as constraints on a replacement.
 
 ## Current interaction and code excerpt
 
@@ -370,20 +395,6 @@ careful, intelligent and generous with access:
 - **Implementable:** recommendations should work in a modest React/Vite/CSS
   application and should favour durable semantic HTML over visual tricks.
 
-## Evidence and screenshot appendix
-
-Please attach the supplied screenshots after this section. Suggested captions:
-
-1. **Current Database mirror landing/catalogue:** hierarchy and terminology.
-2. **Current subject and endpoint expansion:** repeated reveal steps before
-   access actions.
-3. **Current release card:** retained JSON, live-source action, field-guide
-   and provenance disclosures.
-4. **Current blank panel after selecting “Access data”:** the immediate defect
-   that should not dictate the long-term interaction model.
-5. **Any visual reference from the earlier pilot:** inspiration only; do not
-   copy its implementation.
-
 ## Scope boundary for this commission
 
 This is advice on the user experience, visual hierarchy, accessibility and
@@ -391,4 +402,3 @@ front-end implementation direction. It does **not** authorise a change to the
 Scottish Parliament data source, capture schedules, PostgreSQL schema,
 retained data, permissions, the proxy data pipe, or the future DB2 data model.
 Any later implementation will be separately scoped, reviewed and tested.
-
