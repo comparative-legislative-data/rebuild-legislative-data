@@ -214,7 +214,7 @@ It must not be assumed approved merely because D1 passes.
 
 ## 10. Related current records
 
-- [DEC-0073 strategic DB1 plan](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DEC-0073 strategic DB1 plan](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)
 - [programme design — DEC-0042](../../../../data/gb-sct/GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 - [retention and publication policy — DEC-0008](../../../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)

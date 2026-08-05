@@ -183,8 +183,8 @@ expansion.
 
 ## Related records
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [D10 Parties cohort — DEC-0089](GB_SCT_DB1_PARTIES_COLLECTION_COHORT_PROPOSAL_DEC0089.md)
 - [Master endpoint matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [Route-level handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)

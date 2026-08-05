@@ -3026,3 +3026,19 @@ Next review due:
 | Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside the correction scope. |
 | Owner decision required | Any new Database mirror feature or broader data/research scope requires a separate proposal and explicit approval. |
 | Next review due | Before a further DB1 feature, on a material defect or scope change, or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0186
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-approved DB1 reset and repository reconfiguration |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; decision/risk registers; GOV-REV-0185; active DB1 narrative, coverage snapshot, availability method, endpoint-label register and current QA renderer. |
+| Active phase and authorising decision | DEC-0107, confined to repository documentation/code organisation and local verification. |
+| Checks performed | Reclassified the existing Database mirror screen as a QA surface; created the active Backend Assurance and Research Portal narratives; moved superseded delivery/planning records to the DB1 archive; separated the QA renderer and shared types from the main application module; and updated current documentation to remove an implied researcher-product acceptance. No source body, source route, VPS, database, schedule, service, secret or deployment was accessed or changed. |
+| Findings | Existing retained-coverage metadata is useful operational evidence but does not yet prove full route/window coverage, uniform reconciliation, freshness or the delivery of research-facing formats. The temporary UI contains valuable QA controls but must not determine the later portal information architecture. |
+| Outcome | `PASS — REPOSITORY RESET VERIFIED LOCALLY; BACKEND ASSURANCE PROPOSAL REQUIRED`. |
+| Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, deployment, Research Portal implementation, DB2, chart, playground, public access and research release remain outside DEC-0107. |
+| Owner decision required | Approve a separately scoped, read-only Backend Assurance audit proposal before any audit of DB1 operational evidence. |
+| Next review due | On Backend Assurance proposal/decision; before any DB1 claim or Research Portal implementation; or 4 September 2026, whichever is earlier. |

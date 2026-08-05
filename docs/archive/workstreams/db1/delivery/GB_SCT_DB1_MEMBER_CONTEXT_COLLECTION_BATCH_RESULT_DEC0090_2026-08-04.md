@@ -63,6 +63,6 @@ change, source behaviour change, or before 1 September 2026.
 ## Related records
 
 - [D11 Member-context proposal — DEC-0090](GB_SCT_DB1_MEMBER_CONTEXT_COLLECTION_BATCH_PROPOSAL_DEC0090.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Master endpoint matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)

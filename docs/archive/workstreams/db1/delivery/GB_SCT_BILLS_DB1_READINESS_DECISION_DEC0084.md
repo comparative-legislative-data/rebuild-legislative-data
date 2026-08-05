@@ -90,7 +90,7 @@ not authorised by this decision.
 
 ## Evidence links
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [Master route matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [Bills G4 handling result](../../../data/gb-sct/bills-qualification/GB_SCT_BILLS_G4_HANDLING_ASSESSMENT_RESULT_2026-08-02.md)
 - [Bills collection handling assessment — DEC-0047](../../../data/gb-sct/bills-qualification/GB_SCT_BILLS_COLLECTION_ROUTE_HANDLING_ASSESSMENT_DEC0047.md)

@@ -124,8 +124,8 @@ party, or relationship policy, or authorise a future scope expansion.
 
 ## Related records
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Party roles cohort — DEC-0088](GB_SCT_DB1_PARTY_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0088.md)
 - [Route-level handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [Contextual-reference reconnaissance](../../../data/gb-sct/reconnaissance/GB_SCT_CONTEXTUAL_REFERENCE_RECONNAISSANCE_RESULT_2026-08-02.md)

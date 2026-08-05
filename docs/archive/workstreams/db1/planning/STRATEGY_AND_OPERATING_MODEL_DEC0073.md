@@ -20,7 +20,7 @@ download, DB2 variable, chart, public release, or research claim.
 
 Every execution package remains separately owner-approved. A capture batch
 also requires a completed
-[capture-batch authorisation](../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
+[capture-batch authorisation](../../../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md).
 
 ## 2. Why DB1 exists
 
@@ -65,7 +65,7 @@ captures**, never an unqualified 1:1 mirror.
 | A private-beta layer with its own front-end acceptance requirement. | A replacement for the Scottish Parliament source, its documentation, or its update process. |
 
 The complete research-relevant route inventory remains in scope under
-[DEC-0045](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md). Execution is
+[DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md). Execution is
 deliberately staged. A route’s inclusion in that inventory does not create a
 capture permission, a retention decision, or a DB1 availability claim.
 
@@ -120,7 +120,7 @@ separately approved DB1 explorer/route contract; raw-byte access is not
 presumed. Service accounts must be least-privilege, unable to alter unrelated
 VPS resources, and unable to log source bodies or credentials.
 
-The [retention and publication policy](../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
+The [retention and publication policy](../../../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
 and route-level handling records decide the permissible retention and exposure
 for each route. A project-wide policy does not replace a route-specific record.
 
@@ -209,18 +209,18 @@ offering would require its own access, capacity, and security decision.
 The plan relies on existing non-retentive evidence only:
 
 - the approved inventory and staged route roadmap in the
-  [master matrix](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md);
+  [master matrix](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md);
 - route handling constraints in the
-  [route-level handling register](../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md);
+  [route-level handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md);
 - high-volume states and later gates in the
-  [operational register](../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md);
+  [operational register](../../../../data/gb-sct/GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md);
 - the absence of a demonstrated general source update signal in the
-  [updateability result](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md);
-- the [source assessment protocol](../../data/gb-sct/SOURCE_ASSESSMENT_PROTOCOL.md),
-  [retention policy](../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md), and
-  [handling template](../../data/gb-sct/SOURCE_HANDLING_RECORD_TEMPLATE.md); and
+  [updateability result](../../../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md);
+- the [source assessment protocol](../../../../data/gb-sct/SOURCE_ASSESSMENT_PROTOCOL.md),
+  [retention policy](../../../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md), and
+  [handling template](../../../../data/gb-sct/SOURCE_HANDLING_RECORD_TEMPLATE.md); and
 - completed reconnaissance, qualification, and proxy records in the
-  [GB-SCT archive](../../archive/data/gb-sct).
+  [GB-SCT archive](../../../data/gb-sct).
 
 These records do **not** prove current source availability, a complete source
 schema, ID meaning, source-update behaviour, source terms for every proposed
@@ -359,7 +359,7 @@ to the proxy, silent coercion, or a DB2/public claim.
 ## 10. Approval and review path
 
 D1 passed as a source-free, synthetic-only foundation. Its
-[result](../../archive/workstreams/db1/delivery/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md) proves
+[result](../../../workstreams/db1/delivery/GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md) proves
 the isolated target, raw-object/manifest/projection interfaces, synthetic
 fixture, verification, and rollback boundary without a source request.
 
@@ -368,7 +368,7 @@ projection/private-preview have passed. D4A/D4B and D4C subsequently proved
 bounded daily reconciliation and retained catalogue patterns; D5 added an
 access-plan-first formal-stages release. These are route-specific proofs, not
 a general DB1 completion claim. The next route decision is the
-[Bills readiness decision](../../archive/workstreams/db1/delivery/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md),
+[Bills readiness decision](../../../workstreams/db1/delivery/GB_SCT_BILLS_DB1_READINESS_DECISION_DEC0084.md),
 which uses the existing Bills evidence to state whether a bounded collection
 capture package may be proposed.
 

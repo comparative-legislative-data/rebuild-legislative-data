@@ -187,7 +187,7 @@ D4B is not authorised by this proposal.
 
 ## 10. Related records
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [D2 first source result — DEC-0076](GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
 - [D3 projection/private-preview result — DEC-0077](GB_SCT_DB1_FIRST_PROJECTION_AND_PRIVATE_EXPLORER_RESULT_DEC0077_2026-08-03.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)

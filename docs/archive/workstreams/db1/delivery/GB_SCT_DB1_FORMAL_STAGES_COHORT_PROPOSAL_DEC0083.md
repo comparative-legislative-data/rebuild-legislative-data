@@ -131,9 +131,9 @@ harder legislative or relationship questions are solved.
 
 ## Related records
 
-- [DB1 plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [D4C result — DEC-0081](GB_SCT_DB1_INSTITUTIONAL_REFERENCE_COHORT_RESULT_DEC0081_2026-08-03.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Endpoint matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [Route handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [D5 formal-stages handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)

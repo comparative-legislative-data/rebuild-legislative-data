@@ -110,6 +110,6 @@ its own decision under the review triggers in the result record.
 
 - [Bills restricted collection handling — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md)
 - [Bills collection cohort result — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Master route matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

@@ -114,8 +114,8 @@ regression.
 
 ## Related records
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 retained-data access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 retained-data access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [D12 Committees cohort — DEC-0091](GB_SCT_DB1_COMMITTEES_COLLECTION_COHORT_RESULT_DEC0091_2026-08-04.md)
 - [Master endpoint matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [MQA reconnaissance](../../../data/gb-sct/reconnaissance/GB_SCT_MQA_FIRST_PASS_RECONNAISSANCE_RESULT_2026-08-02.md)

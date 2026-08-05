@@ -12,11 +12,10 @@ decision/result records.
 
 The Database mirror remains a source-preserving retained-data service, not an
 unqualified complete mirror, live relay, canonical dataset, public release or
-research finding. Its privately deployed directory and dedicated endpoint
-workspace provide dated original-JSON access first, then an appropriate record
-browser, data guide and provenance disclosure where available. The proxy
-remains the separate no-retention layer for the complete selected source-route
-inventory.
+research finding. The present private screen is an internal QA surface for
+checking dated original-JSON access, record projections and provenance. It is
+not the accepted researcher portal. The proxy remains the separate
+no-retention layer for the complete selected source-route inventory.
 
 ## 5 August metadata-only audit
 
@@ -70,11 +69,13 @@ interpretation of bill amendments.
 
 ## Next decision boundary
 
-The Database mirror MVP is now a coherent private access surface, but it does
-not yet provide convenience-format downloads, full field guides or a structured
-record browser for every retained response. A future owner-approved
-research-access package should prioritise those products by source shape and
-research value, and should separately decide any capture/reconciliation change.
-The unfiltered MQA firehoses and all detail contracts remain later work because
-their current route evidence does not yet provide a bounded useful source
-window comparable to the annual Questions/Votes or Official Report forms.
+This snapshot is input to the active [Backend Assurance](BACKEND_ASSURANCE.md)
+workstream. It cannot establish a full retained-coverage, reconciliation or
+freshness claim. The current screen must remain a QA aid while Backend
+Assurance produces the coverage matrix, gap register, reconciliation evidence
+and capability contract. A separate, later [Research Portal](RESEARCH_PORTAL.md)
+package will decide researcher features such as all-years archives, generated
+formats, field guides and high-volume access. The unfiltered MQA firehoses and
+all detail contracts remain later work because their current route evidence does
+not yet provide a bounded useful source window comparable to the annual
+Questions/Votes or Official Report forms.

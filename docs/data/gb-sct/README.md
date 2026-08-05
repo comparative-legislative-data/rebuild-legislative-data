@@ -13,8 +13,8 @@ a new proposal.
 - [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 - [Update-signal reconnaissance](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
-- [DB1 strategic plan (DEC-0073)](../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 retained-data access direction (DEC-0082)](../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan (DEC-0073)](../../archive/workstreams/db1/planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 retained-data access direction (DEC-0082)](../../archive/workstreams/db1/planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [DB1 coverage snapshot — 4 August 2026](../../workstreams/db1/CURRENT_COVERAGE_AND_OPERATIONS.md)
 
 The coverage snapshot records retained scope; it is not a complete-mirror,

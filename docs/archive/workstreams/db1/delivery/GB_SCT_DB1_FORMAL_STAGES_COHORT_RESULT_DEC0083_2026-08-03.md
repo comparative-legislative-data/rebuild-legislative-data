@@ -84,4 +84,4 @@ decision.
 
 - [D5 cohort — DEC-0083](GB_SCT_DB1_FORMAL_STAGES_COHORT_PROPOSAL_DEC0083.md)
 - [D5 handling record](GB_SCT_FORMAL_STAGES_HANDLING_RECORD_DEC0083.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)

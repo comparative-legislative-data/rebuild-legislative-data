@@ -20,7 +20,7 @@ what the project does **not** establish.
 | Layer | Purpose | Read |
 | --- | --- | --- |
 | Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 | Retain dated, source-preserving responses with manifests and build research access tools over them. | [DB1 narrative](workstreams/db1/README.md) |
+| DB1 | Retain dated, source-preserving responses with manifests; first prove Backend Assurance, then build an independent Research Portal. | [DB1 overview](workstreams/db1/README.md) |
 | DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | [DB2 narrative](workstreams/db2/README.md) |
 
 These layers must never be conflated: a live proxy response is not a DB1

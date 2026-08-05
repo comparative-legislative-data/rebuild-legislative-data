@@ -24,7 +24,7 @@ and the [GB-SCT source-control guide](../../../../data/gb-sct/README.md).
   accessibility corrections, retained-response assembly correction, and the
   external UX commission. Their lasting lessons are consolidated in the live
   [DB1 narrative](../../../../workstreams/db1/README.md) and the later
-  [DEC-0106 endpoint-workspace proposal](../../../../workstreams/db1/DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md).
+  [DEC-0106 endpoint-workspace proposal](DEDICATED_ENDPOINT_WORKSPACE_PROPOSAL_DEC0106.md).
 
 The current DB1 narrative records the lessons from these packets, including
 the distinction between raw retained responses and operational projections,

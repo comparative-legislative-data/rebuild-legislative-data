@@ -45,7 +45,7 @@ exception layered onto the nested-disclosure structure.
 ## 3. Evidence considered, and its limits
 
 The project owner commissioned three external implementation responses from
-the self-contained [external UX commission](../../archive/workstreams/db1/delivery/EXTERNAL_UX_RESEARCH_COMMISSION_2026-08-05.md).
+the self-contained [external UX commission](EXTERNAL_UX_RESEARCH_COMMISSION_2026-08-05.md).
 They are design advice, not governing authority or verified technical findings.
 Their terminology differed, but all three independently concluded that the
 existing nested-disclosure navigation is the wrong primary structure and that

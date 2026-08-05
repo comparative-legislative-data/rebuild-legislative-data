@@ -26,15 +26,16 @@ test("web rejects non-loopback configuration", async () => {
   else process.env.PORT = previousPort;
 });
 
-test("Database mirror navigation uses the retained research catalogue's source taxonomy", () => {
-  const source = readFileSync("apps/web/src/main.tsx", "utf8");
-  assert.match(source, /catalogue\?\.subjects\.flatMap/);
-  assert.match(source, /catalogue\?\.subjects\.map/);
-  assert.match(source, /databaseMirrorSubjectGuides/);
-  assert.match(source, /databaseMirrorEndpointGuide/);
-  assert.match(source, /How the Database mirror differs from the live API/);
-  assert.match(source, /Database mirror directory/);
-  assert.doesNotMatch(source, /function Db1SubjectGroup/);
-  assert.doesNotMatch(source, /Db1PagedPanel/);
-  assert.doesNotMatch(source, /fixed retained DB1 releases with route-specific access modes/);
+test("Database mirror QA navigation is isolated from the main application renderer", () => {
+  const appSource = readFileSync("apps/web/src/main.tsx", "utf8");
+  const qaSource = readFileSync("apps/web/src/db1-qa.tsx", "utf8");
+  assert.match(appSource, /DatabaseMirrorQaWorkspace/);
+  assert.match(qaSource, /catalogue\?\.subjects\.flatMap/);
+  assert.match(qaSource, /catalogue\?\.subjects\.map/);
+  assert.match(qaSource, /databaseMirrorEndpointGuide/);
+  assert.match(qaSource, /How the Database mirror differs from the live API/);
+  assert.match(qaSource, /Database mirror directory/);
+  assert.doesNotMatch(qaSource, /function Db1SubjectGroup/);
+  assert.doesNotMatch(qaSource, /Db1PagedPanel/);
+  assert.doesNotMatch(qaSource, /fixed retained DB1 releases with route-specific access modes/);
 });

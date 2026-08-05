@@ -50,16 +50,16 @@ The known 2006 Committee Official Reports window is reported as
 unavailable”. The raw response remains available through DB1, and a later live
 recheck requires DEC-0101 Stage D authority.
 
-## Researcher-facing use
+## QA use and future portal input
 
-The DB1 catalogue shows the relevant condition on each source-year/window
-release. Researchers can then inspect the exact retained response, use bounded
-record browsing when structurally suitable, inspect its field profile and cite
-the source URL, capture date and manifest.
+The current private QA surface shows the relevant condition on each
+source-year/window release. It allows the team to inspect the exact retained
+response, bounded record browsing where structurally suitable, field-profile
+evidence and capture metadata. It is not a researcher-product acceptance.
 
-The audit endpoint is a machine-readable matrix for reproducible review. It is
-not a public release, generic database interface, source-update service or DB2
-availability assessment.
+The audit endpoint is a machine-readable input to Backend Assurance and the
+later Research Portal capability contract. It is not a public release, generic
+database interface, source-update service or DB2 availability assessment.
 
 ## Review and change control
 

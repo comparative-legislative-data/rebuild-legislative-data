@@ -95,6 +95,6 @@ class; and success/failure criteria. D2 is not authorised by this result.
 ## Related records
 
 - [D1 proposal — DEC-0075](GB_SCT_DB1_FOUNDATION_IMPLEMENTATION_PROPOSAL_DEC0075.md)
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)
 - [capture-batch authorisation template](../../../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md)

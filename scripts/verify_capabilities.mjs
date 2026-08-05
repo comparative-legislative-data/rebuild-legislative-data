@@ -6,7 +6,7 @@ const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const directSourceLinkFile = "apps/web/src/main.tsx";
 const d2CaptureFile = "apps/api/src/db1/foundation.ts";
 const db1ResearchFile = "apps/api/src/db1/research-access.ts";
-const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx", db1ResearchFile];
+const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx", "apps/web/src/db1-qa.tsx", db1ResearchFile];
 const prohibited = [
   "node:net",
   "node:tls",

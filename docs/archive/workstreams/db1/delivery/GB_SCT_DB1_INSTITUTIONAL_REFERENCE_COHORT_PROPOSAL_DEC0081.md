@@ -140,7 +140,7 @@ out of scope.
 
 ## 10. Related records
 
-- [DB1 strategy — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategy — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [D4A reconciliation result — DEC-0078](GB_SCT_DB1_REFERENCE_COHORT_RECONCILIATION_RESULT_DEC0078_2026-08-03.md)
 - [D4B catalogue result — DEC-0079](GB_SCT_DB1_REFERENCE_COHORT_PROJECTION_CATALOGUE_RESULT_DEC0079_2026-08-03.md)
 - [Route inventory — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)

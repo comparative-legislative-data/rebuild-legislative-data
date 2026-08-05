@@ -30,40 +30,29 @@ detailed evidence is archived at [proxy MVP records](../archive/workstreams/prox
 
 ### DB1
 
-DB1 has substantial private retained coverage across approved collections and
-annual windows, including Official Reports. The exact position is in the
+DB1 has private retained coverage across approved collections and annual
+windows, including Official Reports. The exact dated observation is in the
 [coverage snapshot](../workstreams/db1/CURRENT_COVERAGE_AND_OPERATIONS.md).
-The architecture has raw response capture, manifests, hashes, source lineage,
+The backend records raw response capture, manifests, hashes, source lineage,
 operational projections and route-specific reconciliation controls.
 
-The DB1 researcher interface has been reset and privately deployed under
-owner-approved DEC-0101 Stages A–C. Owner testing of the DEC-0103 interface
-then directed the focused DEC-0104 Database mirror accessibility correction.
-DEC-0106's directory and dedicated endpoint workspace is privately deployed;
-the owner then directed a contained presentation refinement to remove the
-broken light/dark treatment, repeated explanation/title and opaque action
-labels. The owner has accepted that private interface as an MVP baseline. The
-subsequent catalogue-and-hygiene package was privately deployed from
-`0307cd2`: it reconciles retained metadata, controlled endpoint descriptions
-and obsolete renderer code only. It made no DB1 data, source, schedule or API
-change.
-Owner review then identified that the web-only release could not deploy the
-existing API-side annual-route normalisation, leaving 1999 Official Reports
-listed separately in the live directory. The private reader/API-plus-web
-correction was deployed from `22d23dc`: it groups 1999 with the later annual
-Official Reports releases and makes the “Live API catalogue” label consistent.
-It did not alter DB1, source access, schedules, secrets or Nginx.
-The earlier interface exposed internal delivery cohorts
-and projection/rejection mechanics rather than a coherent research resource.
-The approved work is limited to a source-first private research interface,
-release/manifest metadata and a database/manifest-only availability audit. The
-[DB1 narrative](../workstreams/db1/README.md) records the journey, strengths,
-gaps, 2006 Committee Official Reports upstream availability response, and
-remaining decisions.
+The private interface previously evolved alongside ingestion. The result is a
+useful backend QA tool, but not the world-class researcher portal the project
+requires. Under DEC-0107 it is now expressly classified as a QA surface:
+it is retained to test backend completeness and capability, not incrementally
+polished into the final product. The deployed `22d23dc` release remains the
+current private baseline; no part of this repository reset is deployed.
 
-No source request/re-fetch, raw capture, DB1 schedule change, public claim,
-DB2 work or semantic transformation is authorised. Stage D is a later owner
-decision.
+The active DB1 work is therefore strictly sequenced: first
+[Backend Assurance](../workstreams/db1/BACKEND_ASSURANCE.md), then an
+independent [Research Portal](../workstreams/db1/RESEARCH_PORTAL.md) built
+only against the accepted backend capability contract. The 2006 Committee
+Official Reports upstream availability response remains an explicit source
+condition, not a silent gap or a historical conclusion.
+
+No source request/re-fetch, raw capture, database mutation, DB1 schedule
+change, public claim, DB2 work, semantic transformation, portal implementation
+or deployment is authorised by the reset.
 
 ### DB2
 
@@ -76,8 +65,8 @@ downloads, charts or research claims require a later approved DB2 package.
 - DEC-0042 establishes the proxy → DB1 → DB2 programme.
 - DEC-0045 retains the selected 64 route forms and their controlled
   addition/retirement process.
-- DEC-0073 and DEC-0082 remain the DB1 strategic and access-direction controls;
-  their detailed delivery packets are archival evidence.
+- DEC-0073 and DEC-0082 remain historical DB1 planning/access evidence;
+  DEC-0107 now controls the active assurance-first/reset sequence.
 - The proxy and DB1 use independent data pipes. They share only application
   and authentication infrastructure.
 - Source responses, availability messages and missing data must not be silently
@@ -97,12 +86,12 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-The private Database mirror MVP, including the current reader/API correction,
-is deployed. Any wider DB1 researcher-access feature, coverage claim, source
-recheck/capture, schedule change, DB2 work, public access, chart, playground
-or research release requires its own proposal and explicit owner approval. The
-active [DB1 narrative](../workstreams/db1/README.md) records the present
-product, evidence and known gaps.
+The next substantive decision is a bounded, read-only Backend Assurance audit
+proposal. It must define how existing DB1 evidence will be tested for coverage,
+lineage, reconciliation, update controls, exceptions and capability, without
+source requests or mutations. The [DB1 narrative](../workstreams/db1/README.md)
+is the active starting point. Research Portal design and implementation follow
+only after the owner accepts the resulting assurance artefacts.
 
 ## Documentation hygiene
 

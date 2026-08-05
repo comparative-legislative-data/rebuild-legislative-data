@@ -64,6 +64,6 @@ behaviour change, or before 1 September 2026.
 ## Related records
 
 - [D8 Committee roles cohort — DEC-0087](GB_SCT_DB1_COMMITTEE_ROLES_COLLECTION_COHORT_PROPOSAL_DEC0087.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Route-level handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)

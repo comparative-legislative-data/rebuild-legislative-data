@@ -59,7 +59,7 @@ disclosure; individual source positions are retained inside record provenance,
 not presented as the primary interface or a substantive ordering.
 
 This is the accepted small-collection implementation under the DB1
-[retained-data access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md).
+[retained-data access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md).
 
 ## Boundary and next review
 

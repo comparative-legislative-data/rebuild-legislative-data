@@ -75,5 +75,5 @@ source behaviour change, or before 1 September 2026.
 
 - [D6 Bills collection cohort — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_PROPOSAL_DEC0085.md)
 - [Bills restricted collection handling — DEC-0084](GB_SCT_BILLS_RESTRICTED_COLLECTION_HANDLING_DEC0084.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)

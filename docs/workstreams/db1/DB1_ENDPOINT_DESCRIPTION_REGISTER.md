@@ -1,17 +1,18 @@
 # Database mirror endpoint description register
 
-**Status:** Current controlled presentation record  
+**Status:** Current controlled QA-label record
 **Last reconciled from retained metadata:** 5 August 2026  
-**Scope:** private GB-SCT Database mirror interface; no source request, capture,
-database mutation or schedule change
+**Scope:** private GB-SCT Database mirror QA surface and Backend Assurance
+input; no source request, capture, database mutation or schedule change
 
 ## Purpose
 
-This register is the controlled plain-language description source for the
-Database mirror directory. It names the researcher-facing endpoints, rather
-than the internal capture cohorts or individual source-year route identifiers.
-It does not define variables, relationships, historical facts or analytical
-uses; those belong to the later DB2 programme.
+This register is the controlled plain-language endpoint-label source for the
+Database mirror. It names endpoint families rather than internal capture
+cohorts or individual source-year route identifiers. It is QA/assurance input,
+not a settled Research Portal information architecture, and it does not define
+variables, relationships, historical facts or analytical uses; those belong to
+the later DB2 programme.
 
 The 5 August metadata-only audit found **113 latest retained GB-SCT
 source-route releases**, normalised into **29 researcher-facing endpoint
@@ -59,9 +60,10 @@ dated operational facts, not a completeness or freshness claim.
 - A source year/window is a release property, not a separate top-level endpoint.
   The grouping rule covers both 1999 and later annual route forms.
 - The private directory excludes non-GB-SCT synthetic test material.
-- Each endpoint page must keep the dated original JSON, direct live-source
-  link, source condition and capture/provenance distinct. A convenience
-  browser is available only where an appropriate projection exists.
+- Current QA views keep the dated original JSON, direct live-source link,
+  source condition and capture/provenance distinct. The later Research Portal
+  will use the accepted Backend Assurance capability contract instead of
+  treating current QA controls as its design.
 - The complete selected proxy inventory remains the 64 route forms in
   [DEC-0045](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md).
   DB1 retained coverage is a different, explicitly dated subset.

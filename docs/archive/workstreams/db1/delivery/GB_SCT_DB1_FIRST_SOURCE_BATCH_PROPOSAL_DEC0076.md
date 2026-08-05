@@ -137,7 +137,7 @@ D2 passes only if all conditions hold:
 
 - [D1 synthetic foundation result — DEC-0075](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
 - [reference cohort qualification result — DEC-0061](../../proxy/mvp/GB_SCT_REFERENCE_COHORT_QUALIFICATION_RESULT_2026-08-03.md)
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [retention policy — DEC-0008](../../../../data/gb-sct/RETENTION_PUBLICATION_POLICY_PROPOSAL_DEC0008.md)
 - [endpoint matrix — DEC-0045](../../../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
 - [capture-batch authorisation template](../../../../data/gb-sct/CAPTURE_BATCH_AUTHORIZATION_TEMPLATE.md)

@@ -3,28 +3,31 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 
 const webSource = readFileSync(new URL("../apps/web/src/main.tsx", import.meta.url), "utf8");
+const qaSource = readFileSync(new URL("../apps/web/src/db1-qa.tsx", import.meta.url), "utf8");
 const webStyles = readFileSync(new URL("../apps/web/src/styles.css", import.meta.url), "utf8");
 const readerPresentationDeploy = readFileSync(new URL("../ops/deploy_private_reader_presentation.sh", import.meta.url), "utf8");
 
-test("Database mirror has one active workspace renderer and no legacy catalogue fallback", () => {
+test("Database mirror QA surface is isolated from the main application renderer", () => {
   assert.equal((webSource.match(/if \(view === "db1" && identity\.authenticated && identity\.data_layers_available\)/g) ?? []).length, 1);
-  assert.match(webSource, /<DatabaseMirrorWorkspace/);
+  assert.match(webSource, /<DatabaseMirrorQaWorkspace/);
+  assert.match(webSource, /from "\.\/db1-qa\.js"/);
+  assert.match(qaSource, /export function DatabaseMirrorQaWorkspace/);
   assert.doesNotMatch(webSource, /Fixed retained baselines/);
   assert.doesNotMatch(webSource, /Retained DB1 historical annual windows/);
 });
 
 test("Database mirror workspace preserves source-first release actions and truthful labels", () => {
   for (const label of ["View original JSON", "Download original JSON", "Open live Scottish Parliament source", "View all-years access index"]) {
-    assert.match(webSource, new RegExp(label));
+    assert.match(qaSource, new RegExp(label));
   }
-  assert.match(webSource, /This index lists compatible retained releases and any availability exceptions/);
-  assert.match(webSource, /It is not one Scottish Parliament response or a combined download/);
-  assert.match(webSource, /Upstream availability notice captured/);
+  assert.match(qaSource, /This index lists compatible retained releases and any availability exceptions/);
+  assert.match(qaSource, /It is not one Scottish Parliament response or a combined download/);
+  assert.match(qaSource, /Upstream availability notice captured/);
 });
 
 test("Database mirror action controls state their result and endpoint pages do not repeat the directory explanation", () => {
-  const workspace = webSource.slice(webSource.indexOf("function DatabaseMirrorWorkspace"), webSource.indexOf("async function request"));
-  assert.match(webSource, /function MirrorActionHelp/);
+  const workspace = qaSource.slice(qaSource.indexOf("export function DatabaseMirrorQaWorkspace"));
+  assert.match(qaSource, /function MirrorActionHelp/);
   for (const label of ["View original JSON", "Download original JSON", "Browse retained records", "Open live Scottish Parliament source", "Details and citation"]) {
     assert.match(workspace, new RegExp(`MirrorActionHelp label="${label}"`));
   }
@@ -37,8 +40,8 @@ test("Database mirror action controls state their result and endpoint pages do n
 test("Database mirror no longer hides a summary while forcing a closed release body visible", () => {
   assert.doesNotMatch(webStyles, /\.access-data \.research-release > summary \{ display: none;/);
   assert.doesNotMatch(webStyles, /\.access-data \.research-release > \.route-details \{ display: grid;/);
-  assert.match(webSource, /aria-expanded=\{expanded\}/);
-  assert.match(webSource, /scope="col">Source year\/window/);
+  assert.match(qaSource, /aria-expanded=\{expanded\}/);
+  assert.match(qaSource, /scope="col">Source year\/window/);
 });
 
 test("Database mirror uses the same endpoint label for 1999 and later annual source windows", () => {
@@ -49,7 +52,7 @@ test("Database mirror uses the same endpoint label for 1999 and later annual sou
 
 test("Database mirror directory provides controlled descriptions for every retained endpoint family", () => {
   for (const endpoint of ["bill stages", "committee official reports", "member parties", "mqa questions", "plenary official reports", "votes on motions"]) {
-    assert.match(webSource, new RegExp(`"${endpoint}":`));
+    assert.match(qaSource, new RegExp(`"${endpoint}":`));
   }
   assert.match(webSource, />Database mirror<\/button>/);
   assert.match(webSource, />Live API catalogue<\/button>/);

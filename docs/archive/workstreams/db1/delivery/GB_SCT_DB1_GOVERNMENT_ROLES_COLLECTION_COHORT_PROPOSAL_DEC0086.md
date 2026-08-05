@@ -105,8 +105,8 @@ defined private-beta acceptance check on 4 August 2026.
 
 ## Related records
 
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
-- [DB1 access direction — DEC-0082](../../../../workstreams/db1/RESEARCH_ACCESS_DIRECTION.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
+- [DB1 access direction — DEC-0082](../planning/RESEARCH_ACCESS_DIRECTION_DEC0082.md)
 - [Bills collection result — DEC-0085](GB_SCT_DB1_BILLS_COLLECTION_COHORT_RESULT_DEC0085_2026-08-04.md)
 - [Government roles cohort result — DEC-0086](GB_SCT_DB1_GOVERNMENT_ROLES_COLLECTION_COHORT_RESULT_DEC0086_2026-08-04.md)
 - [Route-level handling register](../../../../data/gb-sct/GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)

@@ -246,7 +246,7 @@ successful build, or substitute an alternative route/capture.
 ## 10. Related records
 
 - [D2 first-source result — DEC-0076](GB_SCT_DB1_FIRST_SOURCE_BATCH_RESULT_DEC0076_2026-08-03.md)
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [DB1 workstream narrative](../../../../workstreams/db1/README.md)
 - [GB-SCT source controls](../../../../data/gb-sct/README.md)
 - [application status and private-beta boundary](../../../../application/README.md)

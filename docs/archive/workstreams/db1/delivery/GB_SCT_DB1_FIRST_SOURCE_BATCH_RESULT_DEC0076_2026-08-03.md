@@ -73,5 +73,5 @@ result.
 
 - [D2 proposal — DEC-0076](GB_SCT_DB1_FIRST_SOURCE_BATCH_PROPOSAL_DEC0076.md)
 - [D1 foundation result — DEC-0075](GB_SCT_DB1_SYNTHETIC_FOUNDATION_RESULT_DEC0075_2026-08-03.md)
-- [DB1 strategic plan — DEC-0073](../../../../workstreams/db1/STRATEGY_AND_OPERATING_MODEL.md)
+- [DB1 strategic plan — DEC-0073](../planning/STRATEGY_AND_OPERATING_MODEL_DEC0073.md)
 - [DB1 narrative](../../../../workstreams/db1/README.md)
