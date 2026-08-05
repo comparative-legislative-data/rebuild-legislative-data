@@ -2754,3 +2754,19 @@ Next review due:
 | Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
 | Owner decision required | Test the authenticated DB1 catalogue. Accept it or identify specific interface/data-access defects. A separate explicit decision remains required for Stage D. |
 | Next review due | On owner acceptance or defect report; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0169
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-reported authenticated DB1 catalogue denial |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0101; GOV-REV-0168; deployed API access checks; access-control membership record; DB1 reader-role privileges and deployment script. |
+| Active phase and authorising decision | Owner-approved DEC-0101 Stages A–C; private acceptance testing. |
+| Checks performed | Confirmed the reported account is active, activated and has the `BETA_USER` role. Ran the same deployed catalogue query using the configured reader identity; it failed with PostgreSQL `42501` because the dedicated role had table grants but lacked database `CONNECT`. Granted only `CONNECT` to that existing non-superuser reader role, then repeated the read-only catalogue query successfully: 7 subjects and 113 retained releases. Added the same grant to the deployment script. |
+| Findings | This was a configuration omission, not an account-approval defect, source-data defect or DB1 data absence. The UI's generic unavailable message did not distinguish the condition; the immediate access condition is corrected. No source request, raw capture, schedule change, DB2 change or public access occurred. |
+| Outcome | `PASS — DB1 READER CONNECT PRIVILEGE CORRECTED; OWNER RETEST REQUIRED`. |
+| Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
+| Owner decision required | Retest the authenticated DB1 catalogue after a hard refresh. Acceptance remains pending. |
+| Next review due | On owner retest; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |
