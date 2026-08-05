@@ -1,7 +1,9 @@
 # DB1: Scottish Parliament source-preserving mirror
 
-**Status:** substantial private capture coverage exists; the researcher-facing
-product is being reset before further implementation.
+**Status:** substantial private capture coverage exists. The first
+researcher-facing interface is privately deployed, but its owner acceptance
+identified a usability and accessibility overhaul that must be agreed before
+further interface implementation.
 
 ## What DB1 is for
 
@@ -171,6 +173,23 @@ No source-data mutation, schedule change or public claim is authorised by this
 narrative. It remains a consolidation of the current evidence and the agreed
 direction for implementation.
 
+## Usability and accessibility overhaul
+
+Owner testing confirmed that the DB1 access functions work, but that the
+presentation still reads as an internal delivery monitor: it foregrounds
+manifests, projections and implementation states ahead of the researcher’s
+task. The next design decision is therefore not another incremental interface
+patch. It is a task-first, accessible researcher workspace that places source,
+coverage and clear actions first and keeps the evidence available through
+progressive disclosure.
+
+[DEC-0102: DB1 usability and accessibility direction](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
+records the proposed information architecture, CSS/design direction,
+accessibility contract, research-repository references, future shared-shell
+principles, and acceptance tasks. It is a documentation/design proposal only:
+no application, source, database, schedule or deployment change follows until
+the owner approves a separate implementation package.
+
 ## Current controls and detailed evidence
 
 - [GB-SCT source-control guide](../../data/gb-sct/README.md)
@@ -180,6 +199,7 @@ direction for implementation.
 - [Update-signal reconnaissance](../../data/gb-sct/GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
 - [DB1 coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md)
 - [Availability audit method](AVAILABILITY_AUDIT_METHOD.md)
+- [DB1 usability and accessibility direction (DEC-0102)](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
 - [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
 
 ## Review triggers

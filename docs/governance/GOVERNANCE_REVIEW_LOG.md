@@ -2770,3 +2770,19 @@ Next review due:
 | Affected work blocked | All live source re-fetches/captures, schedule changes, new routes, public access, generic SQL/OData, DB2, semantic transformations, charts and research releases remain blocked. |
 | Owner decision required | Retest the authenticated DB1 catalogue after a hard refresh. Acceptance remains pending. |
 | Next review due | On owner retest; on any raw/manifest discrepancy or access-control failure; before Stage D; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0170
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DB1 researcher usability/accessibility direction preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; GOV-REV-0169; DB1 narrative, access direction and current private-access contract; a non-secret pilot CSS file as visual reference; GOV.UK focus/colour guidance; USWDS table guidance; and Dataverse research-repository guidance. |
+| Active phase and authorising scope | Documentation and design research only under DEC-0102. No application/CSS implementation, source request, capture, database change, schedule change, deployment, DB2, chart, playground, public access or research release is authorised. |
+| Checks performed | Traced the owner-reported confusion to information hierarchy rather than a failure of DB1's raw-retention/access boundary. Tested the proposed direction against the known source-availability case, source-first actions, provenance needs, and the future need for one coherent but layer-separated research environment. Reviewed accessible focus, contrast, semantic table/list and progressive-disclosure patterns. |
+| Findings | The current interface exposes too much internal delivery vocabulary before the researcher can identify source, coverage and action. A source-first workspace with explicit view/download/source actions, a separate data guide, and progressively disclosed provenance better preserves both usability and academic transparency. Accessibility must be an acceptance condition, not a visual-polish phase. |
+| Outcome | `PASS — DEC-0102 DIRECTION PREPARED; OWNER REVIEW REQUIRED BEFORE IMPLEMENTATION`. |
+| Affected work blocked | Any application/CSS mutation, external font/service use, deployment, source access, capture, database or schedule change, DB2, chart, playground, public access and research release remains blocked pending a separately approved implementation package. |
+| Owner decision required | Approve, amend or reject DEC-0102. |
+| Next review due | On DEC-0102 decision; before a usability implementation proposal; on an accessibility finding; or 4 September 2026, whichever is earlier. |
