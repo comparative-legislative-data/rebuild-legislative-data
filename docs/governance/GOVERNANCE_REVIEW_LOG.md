@@ -3010,3 +3010,19 @@ Next review due:
 | Affected work blocked | Deployment until explicitly approved; source/capture, database/projection/schedule/configuration/secret mutation, DB2, chart, playground, public access and research release remain outside scope. |
 | Owner decision required | Approve or decline the exact private reader/API-plus-web deployment; it restarts only `cld-gb-sct-api.service` and `cld-gb-sct-web.service` and performs no source or database action. |
 | Next review due | Immediately after the deployment decision and any release; before a further DB1 feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0185
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-authorised private reader/API and web correction deployment |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0184; DEC-0106; pushed commit `22d23dc`; `deploy_private_reader_presentation.sh`; remote deployment output; API/web health and anonymous-access boundary result. |
+| Active phase and authorising decision | Owner-approved, contained private reader/API-plus-web release of the verified correction in GOV-REV-0184. |
+| Checks performed | Deployed commit `22d23dc` through the dedicated no-database-mutation release procedure. The remote path passed production build, all 40 automated tests, capability scans and B1 packaging, then restarted only `cld-gb-sct-api.service` and `cld-gb-sct-web.service`. Read-only post-release checks confirmed both services active, API/web health successful, and unauthenticated `/db1/gb-sct/research/catalogue` still `403`. |
+| Findings | Three brief loopback connection failures occurred while the API restarted; the controlled retry completed successfully. The deployed reader includes the existing annual-route normalisation, so 1999 Official Reports are now classified with the corresponding annual endpoint rather than as a separate endpoint. No source request, capture, database/projection operation, timer/schedule, configuration/secret or Nginx change, or unrelated-service action occurred. |
+| Outcome | `PASS — PRIVATE READER/API + WEB CORRECTION DEPLOYED`. |
+| Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside the correction scope. |
+| Owner decision required | Any new Database mirror feature or broader data/research scope requires a separate proposal and explicit approval. |
+| Next review due | Before a further DB1 feature, on a material defect or scope change, or 4 September 2026, whichever is earlier. |

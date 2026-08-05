@@ -49,9 +49,10 @@ and obsolete renderer code only. It made no DB1 data, source, schedule or API
 change.
 Owner review then identified that the web-only release could not deploy the
 existing API-side annual-route normalisation, leaving 1999 Official Reports
-listed separately in the live directory. A verified local reader/API-plus-web
-correction also makes the “Live API catalogue” label consistent; it requires a
-separate, no-database-mutation private deployment.
+listed separately in the live directory. The private reader/API-plus-web
+correction was deployed from `22d23dc`: it groups 1999 with the later annual
+Official Reports releases and makes the “Live API catalogue” label consistent.
+It did not alter DB1, source access, schedules, secrets or Nginx.
 The earlier interface exposed internal delivery cohorts
 and projection/rejection mechanics rather than a coherent research resource.
 The approved work is limited to a source-first private research interface,
@@ -96,14 +97,12 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-The next bounded decision is whether to deploy the verified private reader/API
-and web correction described above. It restarts only the two CLD application
-services and does not request a source, alter DB1, change a schedule, rotate a
-secret, or touch Nginx. Any wider DB1 researcher-access feature, coverage
-claim, source recheck/capture, schedule change, DB2 work, public access, chart,
-playground or research release requires its own proposal and explicit owner
-approval. The active [DB1 narrative](../workstreams/db1/README.md) records the
-present product, evidence and known gaps.
+The private Database mirror MVP, including the current reader/API correction,
+is deployed. Any wider DB1 researcher-access feature, coverage claim, source
+recheck/capture, schedule change, DB2 work, public access, chart, playground
+or research release requires its own proposal and explicit owner approval. The
+active [DB1 narrative](../workstreams/db1/README.md) records the present
+product, evidence and known gaps.
 
 ## Documentation hygiene
 
