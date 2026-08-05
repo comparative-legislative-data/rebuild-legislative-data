@@ -3168,3 +3168,19 @@ Next review due:
 | Affected work blocked | All source requests/capture, raw-store and database changes, timer/service changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked pending owner approval of DEC-0111. |
 | Owner decision required | Approve, amend or decline the corrected DEC-0111 full-scope ingestion programme. |
 | Next review due | On DEC-0111 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0195
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner approval of DEC-0111 and preparation of DEC-0112 implementation package |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; DEC-0045; DEC-0108–DEC-0111; source-form scope/control records; DB1 foundation implementation; active risk register. |
+| Active phase and authorising scope | DEC-0111 is owner approved. Current authority is to prepare DEC-0112 only; no source contact, source-body reading, DB1/VPS action, raw-object/database/timer/service mutation, frontend work or deployment is authorised. |
+| Checks performed | Mapped the 35 outstanding forms to existing DB1 capture/manifest/reconciliation capabilities; identified the missing durable input-universe/source-condition/update-control metadata; grouped work into four dependency-ordered capture runs; and bounded targets to the isolated project DB1 service, database and raw root. |
+| Findings | The main implementation risk is volume and dynamic route enumeration, not endpoint relevance. A full-scope operation needs one generic raw-retention primitive and a versioned literal input universe for every detail/filter form; it must not be implemented as bespoke UI-driven routes. |
+| Outcome | `PASS — DEC-0112 PREPARED; OWNER APPROVAL REQUIRED`. |
+| Affected work blocked | Source requests/capture, raw-store/database/schema/code/timer changes, further DB1 assurance/integrity/parity, Research Portal implementation, DB2, public access and research release remain blocked pending DEC-0112. |
+| Owner decision required | Approve, amend or decline DEC-0112 before any operational full-scope ingestion activity. |
+| Next review due | On DEC-0112 decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |

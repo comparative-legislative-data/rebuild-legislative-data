@@ -1,13 +1,13 @@
 # DB1 Full-Scope Ingestion Proposal — DEC-0111
 
-**Status:** Proposed — owner approval required before operational work.
+**Status:** Approved — implementation package required before operational work.
 
-**Decision requested:** Authorise one controlled DB1 full-scope ingestion
+**Decision:** Authorise preparation of one controlled DB1 full-scope ingestion
 programme for the 35 approved GB-SCT source forms currently labelled
 `FUTURE_CAPTURE`, plus the route-universe, retention and update controls
 needed to make all 64 selected forms explicit DB1 holdings.
 
-This is a proposal only. It authorises no source request, payload inspection,
+This decision authorises no source request, payload inspection,
 capture, PostgreSQL change, raw-object write, timer/service change, frontend
 work or deployment unless the owner expressly approves the implementation
 package described below.
