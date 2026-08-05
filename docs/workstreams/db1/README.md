@@ -1,8 +1,12 @@
 # DB1: Scottish Parliament source-preserving mirror
 
 **Status:** substantial private capture coverage exists. The first
-researcher-facing interface is privately deployed. Owner testing then produced
-the focused, frontend-only [DEC-0104 accessibility correction](USER_TESTING_ACCESSIBILITY_CORRECTION_DEC0104.md), which is ready for its private web release.
+researcher-facing interface is privately deployed. Owner testing produced the
+focused [DEC-0104 accessibility correction](USER_TESTING_ACCESSIBILITY_CORRECTION_DEC0104.md)
+and the subsequent [DEC-0105 retained-response access correction](RETAINED_RESPONSE_ACCESS_CORRECTION_DEC0105.md).
+The latter is privately deployed; current owner feedback identifies a broader
+research-product usability problem, for which an independent external UX
+commission is ready to issue.
 
 ## What DB1 is for
 
@@ -201,6 +205,7 @@ only the web presentation; no source, database or schedule change occurred.
 - [Availability audit method](AVAILABILITY_AUDIT_METHOD.md)
 - [DB1 usability and accessibility direction (DEC-0102)](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
 - [DB1 research workspace implementation proposal (DEC-0103)](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
+- [External UX and accessibility research commission](EXTERNAL_UX_RESEARCH_COMMISSION_2026-08-05.md)
 - [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
 
 ## Review triggers
