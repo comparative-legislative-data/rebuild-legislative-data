@@ -1,6 +1,6 @@
 # DEC-0105: Retained-response access and Database mirror navigation correction
 
-**Status:** `APPROVED — OWNER-DIRECTED IMPLEMENTATION COMPLETE; PRIVATE RELEASE PENDING`
+**Status:** `APPROVED — PRIVATELY DEPLOYED; OWNER REVIEW PENDING`
 
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror
@@ -44,3 +44,12 @@ Required evidence: production build; automated tests; capability and document
 checks; read-only confirmation that the latest Bill Types capture resolves to
 the pre-existing passing seven-record/two-field projection by matching its raw
 digest; service health; anonymous catalogue `403`.
+
+## Deployment record
+
+Commit `7d0f958` was privately released on 5 August 2026. The existing
+web-presentation deployment created the verified web release; the existing API
+service was then pointed at that same release and restarted. No database,
+source, capture, timer or permission action occurred. The API became ready
+after its normal short restart window. Its final unit preserves the correct
+`CLD_RELEASE_ID` metadata and health endpoint reports `process_ready`.
