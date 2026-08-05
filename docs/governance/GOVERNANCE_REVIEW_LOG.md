@@ -2946,3 +2946,19 @@ Next review due:
 | Affected work blocked | All source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
 | Owner decision required | Approve or decline the bounded private web-presentation deployment of this verified refinement. |
 | Next review due | On deployment decision; after owner live review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0181
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0106 presentation-refinement private deployment verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; decision/risk registers; GOV-REV-0180; DEC-0106; pushed commit `8be6c59`; existing web-presentation deployment path; remote deployment output; service/timer state; health and anonymous-access boundary results. |
+| Active phase and authorising decision | Owner-approved DEC-0106 private deployment of the contained frontend-only presentation refinement. |
+| Checks performed | Deployed commit `8be6c59` using `ops/deploy_web_presentation.sh`. The remote path passed production build, all 37 automated tests, capability checks and B1 packaging; it created a new web release and restarted only `cld-gb-sct-web.service`. Read-only post-release checks confirmed API/web services and DB1 D4A–D12 timers active, API/web health successful, and unauthenticated `/db1/gb-sct/research/catalogue` still `403`. |
+| Findings | The two short loopback connection failures occurred during the controlled web-service restart; the deployment script retried and completed successfully. No source request, capture, database/projection operation, timer/schedule change, API/configuration/secret/dependency mutation or unrelated-service action occurred. |
+| Outcome | `PASS — DEC-0106 REFINEMENT PRIVATELY DEPLOYED; OWNER LIVE REVIEW PENDING`. |
+| Affected work blocked | All source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
+| Owner decision required | Conduct the corrected live Database mirror research journey and report any residual usability, accessibility or access issue before a further DB1 feature decision. |
+| Next review due | On owner review; before any further DB1 feature; on an interface/accessibility finding; or 4 September 2026, whichever is earlier. |

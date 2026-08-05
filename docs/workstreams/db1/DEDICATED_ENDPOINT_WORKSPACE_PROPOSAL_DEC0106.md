@@ -1,6 +1,6 @@
 # DEC-0106: Database mirror directory and dedicated endpoint workspace
 
-**Status:** `APPROVED — REFINEMENT LOCAL VERIFIED; PRIVATE DEPLOYMENT PENDING`
+**Status:** `APPROVED — PRIVATELY DEPLOYED; OWNER REVIEW PENDING`
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror  
 **Prepared under:** owner direction to develop the next implementation proposal after review of three independent UX implementation responses
@@ -333,10 +333,18 @@ surface.
 
 The revision is limited to the existing web renderer, stylesheet and
 deterministic interface-contract test. Production build, all 37 tests,
-capability checks, documentation-link check and whitespace check pass. It has
-not been privately deployed: the prior `cbb5921` web release remains live.
-No source request, capture, database/projection/schedule/API/configuration,
-dependency or unrelated-service change occurred.
+capability checks, documentation-link check and whitespace check pass.
 
-**What next:** separately approve or decline the bounded web-only deployment
-of this verified refinement. No data or infrastructure action is requested.
+The owner approved the bounded web-only deployment on 5 August 2026. The
+existing deployment path built and verified commit
+`8be6c597537e79437c7d491e547ebe0f1ba06892`, created a new CLD web release and
+restarted only `cld-gb-sct-web.service`. Read-only post-release checks confirmed
+that API/web services and all named DB1 D4A–D12 timers remained active, the API
+and web health routes responded, and unauthenticated
+`/db1/gb-sct/research/catalogue` remained denied with `403`. No source request,
+capture, database/projection/schedule/API/configuration, dependency or
+unrelated-service change occurred.
+
+**What next:** owner live review of the corrected Database mirror directory and
+endpoint journey. No further DB1 feature, data or infrastructure work is
+authorised by this decision.

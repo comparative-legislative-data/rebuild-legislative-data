@@ -14,7 +14,7 @@ The owner approved its contained frontend-only package; it was privately
 deployed following local and remote automated verification. Owner review then
 identified a contained presentation refinement: one coherent dark palette,
 one explanation/title per journey and explicit action-result help. That
-refinement is locally verified and awaits a separate private web-only release.
+refinement is privately deployed and awaits owner live review.
 
 ## What DB1 is for
 
