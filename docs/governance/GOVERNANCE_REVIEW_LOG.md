@@ -2786,3 +2786,19 @@ Next review due:
 | Affected work blocked | Any application/CSS mutation, external font/service use, deployment, source access, capture, database or schedule change, DB2, chart, playground, public access and research release remains blocked pending a separately approved implementation package. |
 | Owner decision required | Approve, amend or reject DEC-0102. |
 | Next review due | On DEC-0102 decision; before a usability implementation proposal; on an accessibility finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0171
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0102 adoption and DEC-0103 implementation-proposal preparation |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; GOV-REV-0170; DEC-0102; current DB1 catalogue renderer, stylesheet and existing DB1 research-access routes. |
+| Active phase and authorising scope | Owner adopted DEC-0102 and authorised preparation of a precise implementation proposal only. No interface code, deployment, source request, capture, database or schedule change is authorised. |
+| Checks performed | Confirmed the current authenticated DB1 API already supplies catalogue, retained raw response/download, source URL, fixed record pages, observed structure and all-years manifest access required by the proposed redesign. Confirmed the proposal can be frontend-only and can preserve all existing API paths, reader boundary and source/capture isolation. |
+| Findings | DEC-0103 defines one contained interface package: subject-first catalogue, action-first release workspace, plain source-condition wording, progressive data-guide/provenance disclosure, semantic visual tokens and keyboard/zoom/focus acceptance. No backend or data change is necessary to reach the proposed product contract. |
+| Outcome | `PASS — DEC-0103 PREPARED; OWNER APPROVAL REQUIRED BEFORE IMPLEMENTATION`. |
+| Affected work blocked | All application/CSS mutation, deployment, source access, capture, database/schedule change, API/backend change, dependency addition, DB2, chart, playground, public access and research release remain blocked pending DEC-0103 approval. |
+| Owner decision required | Approve, amend or reject DEC-0103. |
+| Next review due | On DEC-0103 decision; before local implementation; on an accessibility finding; or 4 September 2026, whichever is earlier. |

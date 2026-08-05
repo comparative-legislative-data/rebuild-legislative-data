@@ -1,7 +1,8 @@
 # DEC-0102: DB1 usability and accessibility direction
 
-**Status:** `PROPOSED — OWNER REVIEW REQUIRED BEFORE IMPLEMENTATION`  
-**Date:** 5 August 2026  
+**Status:** `APPROVED — DIRECTION ADOPTED; DEC-0103 IMPLEMENTATION PROPOSAL PREPARED`
+
+**Date:** 5 August 2026
 **Workstream:** DB1: Scottish Parliament source-preserving mirror
 
 ## Decision sought
@@ -205,6 +206,7 @@ solution is preferable to locking in an incoherent one.
 
 ## Owner decision
 
-Approve, amend, or reject this direction. Approval would authorise preparation
-of a separate, exact implementation package only. It would not itself authorise
-any interface mutation, deployment, source or database action.
+The owner adopted this direction on 5 August 2026 and authorised preparation of
+the separate exact [DEC-0103 implementation proposal](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md).
+DEC-0102 itself does not authorise an interface mutation, deployment, source or
+database action.

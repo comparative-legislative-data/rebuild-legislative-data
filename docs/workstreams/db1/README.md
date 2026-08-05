@@ -184,11 +184,12 @@ coverage and clear actions first and keeps the evidence available through
 progressive disclosure.
 
 [DEC-0102: DB1 usability and accessibility direction](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
-records the proposed information architecture, CSS/design direction,
+records the adopted information architecture, CSS/design direction,
 accessibility contract, research-repository references, future shared-shell
-principles, and acceptance tasks. It is a documentation/design proposal only:
-no application, source, database, schedule or deployment change follows until
-the owner approves a separate implementation package.
+principles, and acceptance tasks. Its exact follow-on
+[DEC-0103 implementation proposal](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
+is now awaiting owner approval. No application, source, database, schedule or
+deployment change follows until that package is approved.
 
 ## Current controls and detailed evidence
 
@@ -200,6 +201,7 @@ the owner approves a separate implementation package.
 - [DB1 coverage snapshot](CURRENT_COVERAGE_AND_OPERATIONS.md)
 - [Availability audit method](AVAILABILITY_AUDIT_METHOD.md)
 - [DB1 usability and accessibility direction (DEC-0102)](USABILITY_AND_ACCESSIBILITY_DIRECTION_PROPOSAL_DEC0102.md)
+- [DB1 research workspace implementation proposal (DEC-0103)](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
 - [DB1 delivery archive](../../archive/workstreams/db1/delivery/)
 
 ## Review triggers
