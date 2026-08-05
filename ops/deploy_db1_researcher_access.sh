@@ -83,6 +83,7 @@ create table if not exists db1.projection_structure_profiles (
 );
 insert into db1.schema_migrations (id) values ('023_projection_structure_profiles') on conflict do nothing;
 do $$ begin if not exists (select 1 from pg_roles where rolname = 'cld_gb_sct_db1_access_reader') then create role cld_gb_sct_db1_access_reader login nosuperuser nocreatedb nocreaterole noinherit; end if; end $$;
+grant connect on database cld_gb_sct_db1 to cld_gb_sct_db1_access_reader;
 grant usage on schema db1 to cld_gb_sct_db1_access_reader;
 grant select on db1.projection_structure_profiles to cld_gb_sct_db1_access_reader;
 grant select, insert, update on db1.projection_structure_profiles to cld_gb_sct_d17_runner, cld_gb_sct_d18_runner;
