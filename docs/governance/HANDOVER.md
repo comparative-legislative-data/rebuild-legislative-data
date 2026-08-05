@@ -39,10 +39,10 @@ operational projections and route-specific reconciliation controls.
 The DB1 researcher interface has been reset and privately deployed under
 owner-approved DEC-0101 Stages A–C. Owner testing of the DEC-0103 interface
 then directed the focused DEC-0104 Database mirror accessibility correction;
-it is privately deployed and awaits the next owner review. DEC-0106 now adds
-a locally verified, frontend-only directory and dedicated endpoint workspace
-replacement. Its private web-presentation deployment remains pending owner
-review; it makes no DB1 data, source, schedule or API change.
+it is privately deployed and awaits the next owner review. DEC-0106 adds a
+privately deployed, frontend-only directory and dedicated endpoint workspace
+replacement. It makes no DB1 data, source, schedule or API change; the next
+required step is owner live review of the redesigned research journey.
 The earlier interface exposed internal delivery cohorts
 and projection/rejection mechanics rather than a coherent research resource.
 The approved work is limited to a source-first private research interface,

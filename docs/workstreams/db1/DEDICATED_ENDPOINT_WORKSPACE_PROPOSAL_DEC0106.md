@@ -1,6 +1,6 @@
 # DEC-0106: Database mirror directory and dedicated endpoint workspace
 
-**Status:** `APPROVED — LOCAL IMPLEMENTATION VERIFIED; PRIVATE DEPLOYMENT PENDING`
+**Status:** `APPROVED — PRIVATELY DEPLOYED; OWNER REVIEW PENDING`
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror  
 **Prepared under:** owner direction to develop the next implementation proposal after review of three independent UX implementation responses
@@ -292,13 +292,22 @@ authenticated local DB1 fixture, so this result does not substitute for a
 live owner visual and interaction review. No source request, database/API,
 schedule, dependency, configuration, service or deployment action occurred.
 
-**What next:** owner review of the local/private interface is required before
-the separately bounded private web-presentation deployment. If accepted, only
-the existing project web service may be updated; the API, database and source
-capture path remain untouched.
+### Private deployment record
 
-If approved, the next step is local implementation of the directory and
-dedicated endpoint workspace, followed by the listed verification evidence and
-owner acceptance before any deployment. That implementation would require the
-new explicit approval; this proposal alone authorises no code, deployment or
-operational action.
+The owner explicitly authorised the bounded private web-presentation release
+on 5 August 2026. The existing deployment path built and verified pushed commit
+`cbb5921cc8f7e1db16d49b875865e0fa3b261320`, created a new CLD web release and
+restarted only `cld-gb-sct-web.service`. Remote verification passed the
+production build, all 36 automated tests, capability checks and B1 packaging.
+
+Read-only post-release checks confirmed that `cld-gb-sct-api.service`,
+`cld-gb-sct-web.service` and every named DB1 timer remained active; the API and
+web health routes responded; and an unauthenticated request to
+`/db1/gb-sct/research/catalogue` remained denied with `403`. No Scottish
+Parliament source request, capture, database/projection/schedule/API/configuration
+or unrelated VPS-service change occurred.
+
+**What next:** the owner should conduct the live research journey through the
+Database mirror directory and a representative endpoint workspace, then report
+any residual usability, accessibility or data-access issue. No further DB1
+feature, data, source or infrastructure work is authorised by this decision.
