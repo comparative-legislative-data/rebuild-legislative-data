@@ -3121,3 +3121,18 @@ Next review due:
 | Affected work blocked | Source contact, raw-byte access, database/service/timer change, Research Portal implementation, DB2, public access and research release remain separately gated. |
 | Owner decision required | Choose the next Backend Assurance gate: stored-object integrity audit, live-source parity design, or a combined staged proposal. |
 | Next review due | Before that proposal/decision or Research Portal implementation; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0192
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-directed DB1 full-scope sequencing correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0045 source inventory; DEC-0108/DEC-0109 assurance records; active DB1 narrative and scope register. |
+| Active phase and authorising scope | DEC-0110: record the owner’s direction and prepare, but do not execute, a full-scope DB1 ingestion proposal. |
+| Findings | The current 29-form/113-window retained subset has strong internal evidence but is not the completed 64-form approved DB1 destination. Continuing QA or portal work first would repeat the subset/completion ambiguity. |
+| Outcome | `PASS — FULL-SCOPE INGESTION PLANNING IS THE NEXT DB1 GATE`. |
+| Affected work blocked | Further DB1 QA, raw-byte integrity, live parity, Research Portal implementation, DB2, public access and research release are blocked pending full-scope ingestion or explicit owner-approved exceptions. |
+| Owner decision required | Approve a full-scope ingestion proposal before any new source request, capture, database, timer/service, application or deployment action. |
+| Next review due | On full-scope ingestion proposal/decision; before any DB1 operational action; or 4 September 2026, whichever is earlier. |

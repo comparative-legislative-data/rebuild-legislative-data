@@ -74,6 +74,8 @@ unchanging, or semantically correct.
 
 ## Exit gate
 
-Backend Assurance can move to acceptance only after the gap register is
-resolved or consciously bounded by owner decision. Only then may a Research
-Portal implementation proposal be considered.
+The owner has now set a stricter sequence: no further Backend Assurance,
+stored-object integrity, live-source parity or Research Portal work may proceed
+until DB1 has ingested the full approved 64-form scope, or an owner-approved
+exception explicitly states why a named form cannot yet be ingested. The next
+decision is a full-scope ingestion proposal.

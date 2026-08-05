@@ -1,7 +1,7 @@
 # DB1: Scottish Parliament Database mirror
 
-**Status:** Backend Assurance controls established — owner acceptance is
-required before any mirror-completeness claim or Research Portal delivery.
+**Status:** Full-scope ingestion planning required — no further DB1 assurance
+or portal work may proceed first.
 
 DB1 is the retained-source layer for selected Scottish Parliament API material.
 It is not DB2, an analytical dataset, or a claim of historical completeness.
@@ -82,8 +82,10 @@ DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_A
 
 ## Next decision
 
-DEC-0109 has produced the controlled registers and passed local consistency
-checks. Owner acceptance is now required before treating the Backend Assurance
-control record as accepted. No source request, capture, database mutation,
-schedule change or Research Portal implementation is authorised by that
-implementation result.
+The owner has confirmed that DB1 must become a mirror of the full approved
+64-form scope before any further DB1 QA, stored-object integrity, live-parity
+or Research Portal work. The next task is therefore a full-scope ingestion
+proposal, grouping the 35 outstanding forms by their capture pattern and
+stating any genuinely necessary exception. No new source request, capture,
+database mutation, schedule change or portal implementation is authorised until
+that proposal is explicitly approved.
