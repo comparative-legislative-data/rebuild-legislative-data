@@ -37,7 +37,19 @@ systemctl is-active --quiet cld-gb-sct-api.service
 systemctl is-active --quiet cld-gb-sct-web.service
 test -x "$runtime/node"
 test -d "$project_root/raw/db1"
-for unit in "${units[@]}"; do [[ ! -e "/etc/systemd/system/$unit" ]]; done
+if [[ -e "$secret_file" ]]; then
+  echo "Existing full-scope secret found; refusing to replace a possibly live deployment." >&2
+  exit 1
+fi
+# A failed pre-source deployment can leave unit files but no credential file.
+# Remove only those inactive project-owned remnants before retrying.
+for unit in "${units[@]}"; do
+  if [[ -e "/etc/systemd/system/$unit" ]]; then
+    systemctl is-active --quiet "$unit" && { echo "Existing full-scope unit is active: $unit" >&2; exit 1; }
+    rm -f "/etc/systemd/system/$unit"
+  fi
+done
+systemctl daemon-reload
 [[ ! -e "$secret_file" ]]
 
 commit="$(git -C "$source_root" rev-parse HEAD)"
@@ -74,7 +86,7 @@ GRANT CONNECT ON DATABASE cld_gb_sct_db1 TO cld_gb_sct_fullscope_runner;
 GRANT USAGE ON SCHEMA db1 TO cld_gb_sct_fullscope_runner;
 GRANT SELECT, INSERT, UPDATE ON db1.source_routes, db1.source_forms, db1.capture_runs, db1.raw_objects, db1.manifest_entries, db1.reconciliation_cycles, db1.reconciliation_observations, db1.projection_builds, db1.projection_records, db1.projection_rejections, db1.projection_structure_profiles, db1.capture_universes, db1.capture_universe_members, db1.source_conditions, db1.form_update_controls TO cld_gb_sct_fullscope_runner;
 SQL
-proof="$(PGPASSWORD="$runner_password" psql -h 127.0.0.1 -p 5434 -U cld_gb_sct_fullscope_runner -d "$database" -Atqc "select has_table_privilege(current_user, 'db1.capture_universes', 'INSERT,UPDATE') and has_table_privilege(current_user, 'db1.projection_records', 'INSERT')")"
+proof="$(PGPASSWORD="$runner_password" psql -h 127.0.0.1 -p 5434 -U cld_gb_sct_fullscope_runner -d "$database" -Atqc "select has_table_privilege(current_user, 'db1.capture_universes', 'INSERT') and has_table_privilege(current_user, 'db1.capture_universes', 'UPDATE') and has_table_privilege(current_user, 'db1.projection_records', 'INSERT')")"
 [[ "$proof" == "t" ]]
 install -d -o root -g cld-gb-sct -m 0750 /etc/cld-gb-sct/secrets
 umask 027
