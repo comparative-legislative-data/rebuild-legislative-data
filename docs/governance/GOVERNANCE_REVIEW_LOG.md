@@ -2898,3 +2898,19 @@ Next review due:
 | Affected work blocked | All application/CSS mutation, deployment, source access/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain blocked. |
 | Owner decision required | Approve, amend or reject DEC-0106's contained frontend-only directory/endpoint-workspace package. |
 | Next review due | On DEC-0106 decision; before local implementation; on any routing/infrastructure boundary finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0178
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0106 local Database mirror workspace implementation and verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; governance procedure; decision/risk registers; GOV-REV-0177; DEC-0106; modified web renderer, stylesheet and deterministic interface-contract test; existing DB1 research-access contract; build/test/capability/documentation-check output. |
+| Active phase and authorising decision | Owner-approved DEC-0106, confined to frontend-only private presentation. |
+| Checks performed | Replaced the active Database mirror entry path with a client-side searchable directory and hash-selected endpoint workspace using existing catalogue/research-access responses. Added full-width release rows, existing raw/browse/source access actions, source-condition presentation, secondary provenance/citation disclosure and responsive/focus styles. Removed the hidden-summary/forced-display CSS rule. Ran production build, 36 automated tests, capability scans, documentation-link and whitespace checks. |
+| Findings | The implementation changes only `apps/web/src/main.tsx`, `apps/web/src/styles.css` and `tests/db1_workspace.test.mjs`. It adds no dependency, API path, web-server route, source request, capture, database operation, schedule, configuration or service change. The local test environment has no authenticated DB1 fixture, so automated verification does not replace owner review of the actual private data workspace. |
+| Outcome | `PASS — DEC-0106 LOCAL IMPLEMENTATION VERIFIED; OWNER REVIEW AND PRIVATE DEPLOYMENT PENDING`. |
+| Affected work blocked | Private deployment until owner review; all source/capture, database/projection/schedule/API/web-server/dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0106. |
+| Owner decision required | Review the local/private Database mirror directory and endpoint workspace. If content, explicitly authorise the already-bounded private web-presentation deployment. |
+| Next review due | On owner review; before private deployment; on an interface/accessibility defect; or 4 September 2026, whichever is earlier. |

@@ -311,8 +311,16 @@ function researchRouteUrl(routeId: string, suffix: "raw" | "records", query = ""
 
 function sourceCondition(release: Db1ResearchRelease): { label: string; text: string } {
   if (release.availability === "UPSTREAM_AVAILABILITY_MESSAGE") return {
-    label: "Scottish Parliament availability notice",
+    label: "Upstream availability notice captured",
     text: "When this response was captured, the Scottish Parliament said the data were presently unavailable. This does not establish that historical records do not exist."
+  };
+  if (release.availability === "UPSTREAM_ERROR_RESPONSE") return {
+    label: "Scottish Parliament error response retained",
+    text: "The Database mirror retained the source response as received. Inspect the original JSON for the upstream response; this is not a claim that historical records do not exist."
+  };
+  if (release.availability === "NOT_YET_ASSESSED") return {
+    label: "Raw response available",
+    text: "The original JSON can be viewed and downloaded. Its source condition has not yet been published as a structured research-access aid."
   };
   if (release.availability === "EMPTY_RESPONSE") return {
     label: "No records in this retained response",
@@ -379,6 +387,128 @@ function Db1ResearchReleaseCard({ release, records, onBrowse, loading }: { relea
   const citation = `Scottish Parliament Open Data, ${release.source_url}, retrieved ${new Date(release.capture.retrieved_at).toISOString()}; retained by Comparative Legislative Data Database mirror, manifest ${release.capture.manifest_id}. Accessed ${new Date().toISOString()}.`;
   useEffect(() => { if (page && !loading) resultsHeading.current?.focus(); }, [loading, page?.offset, page?.total_records]);
   return <details className="route-card route-card-db1 research-release"><summary><div className="route-badge"><div><p className="route-group">Retained response{release.source_year ? ` · ${release.source_year}` : ""}</p><h3>{release.endpoint}</h3><code>{release.source_path}</code></div><div className="route-badge-state"><span className="route-state">{condition.label}</span><span className="route-expand-label">Show data access</span></div></div></summary><div className="route-details research-workspace"><p className="release-identity">Dated response held in the Database mirror · captured {new Date(release.capture.retrieved_at).toLocaleDateString()}</p><section className="access-explainer" aria-label="Data access options"><p><strong>Choose how to inspect this response</strong></p><dl><div><dt>View or download original JSON</dt><dd>The exact dated JSON retained by the Database mirror.</dd></div><div><dt>Open Scottish Parliament source</dt><dd>The live upstream API, outside this Database mirror. It may have changed since this capture.</dd></div></dl></section><div className="source-actions primary-actions">{release.research_access.browse_available ? <button type="button" className="source-action relay-action" onClick={() => onBrowse(release.route_id, 0)} disabled={loading}>{loading ? "Loading data…" : "Browse records"}</button> : null}<a className="source-action official-action" href={rawUrl} target="_blank" rel="noreferrer">View original JSON</a><a className="source-action official-action" href={rawDownloadUrl}>Download original JSON</a><a className="source-action official-action" href={release.source_url} target="_blank" rel="noreferrer">Open live Scottish Parliament source</a></div><section className={`source-disclosure source-condition${release.availability === "UPSTREAM_AVAILABILITY_MESSAGE" ? " source-condition-notice" : ""}`}><p><strong>{condition.label}</strong></p><p>{condition.text}</p>{!release.research_access.browse_available ? <InlineHelp label="What is a structured record view?"><p>A structured record view is a convenience browser over the original response. It is only published when it can be provided without changing source fields or structure.</p></InlineHelp> : null}</section>{release.research_access.browse_available ? <section className="research-section" aria-labelledby={`${release.route_id}-explore`}><h4 id={`${release.route_id}-explore`}>Browse retained records</h4><p className="panel-copy">{release.research_access.record_count?.toLocaleString()} records are available in fixed, server-side pages. Record order has no analytical meaning.</p>{page ? <div className="db1-record-list"><h5 ref={resultsHeading} tabIndex={-1}>Records {page.records.length ? `${page.offset + 1}–${page.offset + page.records.length}` : "0"} of {page.total_records.toLocaleString()}</h5><div className="source-actions"><button type="button" className="secondary-button" disabled={loading || page.offset === 0} onClick={() => onBrowse(release.route_id, Math.max(0, page.offset - page.limit))}>Previous 20</button><button type="button" className="secondary-button" disabled={loading || page.offset + page.records.length >= page.total_records} onClick={() => onBrowse(release.route_id, page.offset + page.limit)}>Next 20</button></div>{page.records.map((record) => <details className="db1-record" key={record.source_position}><summary>View retained record</summary><pre>{JSON.stringify(record.preserved_record, null, 2)}</pre><p className="record-lineage">Technical lineage: source position {record.source_position}</p></details>)}</div> : <p className="action-hint" role="status">Select “Browse records” to load the first 20 retained records.</p>}</section> : null}<details className="research-section"><summary>Show data guide</summary>{release.research_access.observed_structure.length > 0 ? <><p className="panel-copy">Observed in this retained response; not a DB2 codebook or validated field definition.</p><ul className="structure-list">{release.research_access.observed_structure.map((field) => <li key={field.key}><code>{field.key}</code><span>{field.observed_types.join(", ")} · present in {field.record_count.toLocaleString()} record{field.record_count === 1 ? "" : "s"}</span></li>)}</ul></> : <><p className="panel-copy">A field guide has not yet been published for this response. Inspect the original JSON; this is not an absence-of-data notice.</p><InlineHelp label="What is a field guide?"><p>A field guide lists source fields observed in a retained response. It is a reading aid, not a transformed dataset or a DB2 codebook.</p></InlineHelp></>}</details><details className="research-section"><summary>Show provenance and citation</summary><dl className="provenance-list"><div><dt>Source URL</dt><dd><a href={release.source_url} target="_blank" rel="noreferrer">{release.source_url}</a></dd></div><div><dt>Capture</dt><dd>{new Date(release.capture.retrieved_at).toLocaleString()} · {release.capture.content_type} · {release.capture.raw_byte_length.toLocaleString()} bytes</dd></div><div><dt>Integrity</dt><dd>SHA-256 <code>{release.capture.raw_sha256}</code></dd></div><div><dt>Reconciliation</dt><dd>{release.reconciliation.state.replaceAll("_", " ")}{release.reconciliation.observed_at ? ` · last recorded ${new Date(release.reconciliation.observed_at).toLocaleString()}` : ""}. Operational evidence only; not a general freshness claim.</dd></div></dl><div className="citation-block"><p><strong>Suggested citation</strong></p><pre>{citation}</pre><CopyButton label="citation" value={citation} /></div><details className="source-examples"><summary>Show request examples</summary><dl className="response-guide"><div><dt>curl</dt><dd><pre>{`curl --cookie "cld_access_session=YOUR_SESSION_COOKIE" -OJ "https://legislativedata.org${rawDownloadUrl}"`}</pre></dd></div><div><dt>Python</dt><dd><pre>{`requests.get("https://legislativedata.org${rawUrl}", cookies={"cld_access_session": "YOUR_SESSION_COOKIE"})`}</pre></dd></div><div><dt>R</dt><dd><pre>{`httr2::request("https://legislativedata.org${rawUrl}") |> httr2::req_perform()`}</pre></dd></div><div><dt>JavaScript</dt><dd><pre>{`fetch("${rawUrl}", { credentials: "include" })`}</pre></dd></div></dl></details></details></div></details>;
+}
+
+function mirrorEndpointFromLocation(): string | undefined {
+  const match = new URLSearchParams(window.location.hash.slice(1)).get("database-mirror-endpoint");
+  return match || undefined;
+}
+
+function mirrorCoverage(releases: Db1ResearchRelease[]): string {
+  const years = releases.flatMap((release) => release.source_year === null ? [] : [release.source_year]);
+  if (!years.length) return `${releases.length} dated retained response${releases.length === 1 ? "" : "s"}`;
+  const uniqueYears = [...new Set(years)].sort((left, right) => left - right);
+  return uniqueYears.length === 1 ? `Retained source year ${uniqueYears[0]}` : `Retained source years ${uniqueYears[0]}–${uniqueYears.at(-1)}`;
+}
+
+function formatCapture(value: string): string {
+  return new Date(value).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+function DatabaseMirrorReleaseDetails({ release }: { release: Db1ResearchRelease }) {
+  const condition = sourceCondition(release);
+  const rawUrl = researchRouteUrl(release.route_id, "raw");
+  const rawDownloadUrl = researchRouteUrl(release.route_id, "raw", "?download=1");
+  const citation = `Scottish Parliament Open Data, ${release.source_url}, retrieved ${new Date(release.capture.retrieved_at).toISOString()}; retained by Comparative Legislative Data Database mirror, manifest ${release.capture.manifest_id}.`;
+  return <section className="mirror-release-details" aria-labelledby={`${release.route_id}-details`}>
+    <div className={`mirror-condition${release.availability === "UPSTREAM_AVAILABILITY_MESSAGE" ? " mirror-condition-notice" : ""}`}>
+      <p className="mirror-kicker">Source condition</p>
+      <h3 id={`${release.route_id}-details`}>{condition.label}</h3>
+      <p>{condition.text}</p>
+    </div>
+    <div className="mirror-action-bar" aria-label={`Access options for ${release.endpoint}`}>
+      <a className="mirror-action mirror-action-primary" href={rawUrl} target="_blank" rel="noreferrer">View original JSON <span className="sr-only">in a new tab</span></a>
+      <a className="mirror-action" href={rawDownloadUrl}>Download original JSON</a>
+      <a className="mirror-action mirror-action-external" href={release.source_url} target="_blank" rel="noreferrer">Open live Scottish Parliament source <span aria-hidden="true">↗</span><span className="sr-only"> in a new tab</span></a>
+    </div>
+    <details className="mirror-secondary-details">
+      <summary>Data guide</summary>
+      {release.research_access.observed_structure.length > 0 ? <ul className="mirror-field-list">{release.research_access.observed_structure.map((field) => <li key={field.key}><code>{field.key}</code><span>{field.observed_types.join(", ")} · observed in {field.record_count.toLocaleString()} record{field.record_count === 1 ? "" : "s"}</span></li>)}</ul> : <p>A field guide has not yet been published for this response. This does not affect access to the original JSON.</p>}
+    </details>
+    <details className="mirror-secondary-details">
+      <summary>Provenance and citation</summary>
+      <dl className="mirror-provenance-list">
+        <div><dt>Source URL</dt><dd><a href={release.source_url} target="_blank" rel="noreferrer">{release.source_url}</a></dd></div>
+        <div><dt>Captured</dt><dd>{new Date(release.capture.retrieved_at).toLocaleString()} · {release.capture.content_type} · {release.capture.raw_byte_length.toLocaleString()} bytes</dd></div>
+        <div><dt>Integrity</dt><dd>SHA-256 <code>{release.capture.raw_sha256}</code></dd></div>
+        <div><dt>Reconciliation</dt><dd>{release.reconciliation.state.replaceAll("_", " ")}{release.reconciliation.observed_at ? ` · last recorded ${new Date(release.reconciliation.observed_at).toLocaleString()}` : ""}. Operational evidence only; not a general freshness claim.</dd></div>
+      </dl>
+      <p className="mirror-citation-label">Suggested citation</p>
+      <pre className="mirror-citation">{citation}</pre>
+      <CopyButton label="citation" value={citation} />
+    </details>
+  </section>;
+}
+
+function DatabaseMirrorWorkspace({ catalogue, records, loadingRoute, onBrowse, onRefresh, onBack, onSettings, isSuperuser, onSuperuser }: {
+  catalogue: Db1ResearchCatalogue | undefined;
+  records: Record<string, Db1ResearchRecords | undefined>;
+  loadingRoute: string | undefined;
+  onBrowse: (routeId: string, offset: number) => void;
+  onRefresh: () => void;
+  onBack: () => void;
+  onSettings: () => void;
+  isSuperuser: boolean;
+  onSuperuser: () => void;
+}) {
+  const [subjectFilter, setSubjectFilter] = useState("All subjects");
+  const [search, setSearch] = useState("");
+  const [selectedEndpoint, setSelectedEndpoint] = useState<string | undefined>(mirrorEndpointFromLocation);
+  const [selectedRelease, setSelectedRelease] = useState<string | undefined>();
+
+  useEffect(() => {
+    const sync = () => setSelectedEndpoint(mirrorEndpointFromLocation());
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+
+  const endpoints = catalogue?.subjects.flatMap((subject) => subject.endpoints.map((endpoint) => ({ ...endpoint, subject: subject.subject }))) ?? [];
+  const activeEndpoint = endpoints.find((endpoint) => endpoint.endpoint === selectedEndpoint);
+  const subjects = catalogue?.subjects.map((subject) => subject.subject) ?? [];
+  const filteredEndpoints = endpoints.filter((endpoint) => {
+    const query = search.trim().toLocaleLowerCase();
+    return (subjectFilter === "All subjects" || endpoint.subject === subjectFilter) && (!query || `${endpoint.endpoint} ${endpoint.subject} ${databaseMirrorEndpointGuide(endpoint.endpoint)}`.toLocaleLowerCase().includes(query));
+  });
+
+  function openEndpoint(endpoint: string) {
+    setSelectedRelease(undefined);
+    setSelectedEndpoint(endpoint);
+    window.location.hash = new URLSearchParams({ "database-mirror-endpoint": endpoint }).toString();
+  }
+
+  function closeEndpoint() {
+    setSelectedRelease(undefined);
+    setSelectedEndpoint(undefined);
+    window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+  }
+
+  const releaseById = activeEndpoint?.releases.find((release) => release.route_id === selectedRelease);
+  const sortedReleases = activeEndpoint ? [...activeEndpoint.releases].sort((left, right) => (right.source_year ?? -Infinity) - (left.source_year ?? -Infinity) || right.capture.retrieved_at.localeCompare(left.capture.retrieved_at)) : [];
+  const allYears = activeEndpoint && new Set(activeEndpoint.releases.flatMap((release) => release.source_year === null ? [] : [release.source_year])).size > 1;
+  const allYearsUrl = activeEndpoint ? `/api/db1/gb-sct/research/all-years?${new URLSearchParams({ subject: activeEndpoint.subject, endpoint: activeEndpoint.endpoint }).toString()}` : undefined;
+
+  return <main className="site-shell db1-shell">
+    <header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header>
+    <section className="db1-intro mirror-page-intro" aria-labelledby="page-title">
+      <p className="breadcrumbs">Research access <span>/</span> Scottish Parliament <span>/</span> Database mirror</p>
+      <p className="eyebrow">Database mirror</p>
+      <h1 id="page-title">{activeEndpoint ? activeEndpoint.endpoint : "Find Scottish Parliament source data"}</h1>
+      <p>{activeEndpoint ? databaseMirrorEndpointGuide(activeEndpoint.endpoint) : "Find a source, then view, download or browse the dated response held in the Database mirror."}</p>
+    </section>
+    <nav className="access-nav" aria-label="Account and data options"><button type="button" className="secondary-button" onClick={onBack}>Live API catalogue</button><button type="button" onClick={onRefresh}>Refresh mirror list</button><button type="button" onClick={onSettings}>Settings</button>{isSuperuser ? <button type="button" onClick={onSuperuser}>Superuser review</button> : null}</nav>
+    {!catalogue ? <section className="catalogue-panel db1-panel"><p role="status">Loading the Database mirror directory…</p></section> : activeEndpoint ? <section className="mirror-surface mirror-endpoint-workspace" aria-label={`${activeEndpoint.endpoint} endpoint workspace`}>
+      <button type="button" className="mirror-back" onClick={closeEndpoint}>← Back to Database mirror directory</button>
+      <div className="mirror-endpoint-heading"><div><p className="mirror-kicker">{activeEndpoint.subject}</p><h2>{activeEndpoint.endpoint}</h2><code>{activeEndpoint.releases[0]?.source_path}</code></div><p>{mirrorCoverage(activeEndpoint.releases)}</p></div>
+      <details className="mirror-about"><summary>How the Database mirror differs from the live API</summary><p>The Database mirror stores dated Scottish Parliament API responses and provides access tools that the live API does not. It does not change source values. A source may have changed since the listed capture date.</p></details>
+      {allYears && allYearsUrl ? <section className="mirror-all-years"><div><p className="mirror-kicker">Mirror-generated access index</p><h3>All retained source years</h3><p>This index lists compatible retained releases and any availability exceptions. It is not one Scottish Parliament response or a combined download.</p></div><a className="mirror-action" href={allYearsUrl} target="_blank" rel="noreferrer">View all-years access index <span className="sr-only">in a new tab</span></a></section> : null}
+      <section className="mirror-release-table-wrap" aria-labelledby="releases-heading"><h3 id="releases-heading">Retained responses</h3><div className="mirror-table-scroll"><table className="mirror-release-table"><thead><tr><th scope="col">Source year/window</th><th scope="col">Captured</th><th scope="col">Source condition</th><th scope="col">Access</th></tr></thead><tbody>{sortedReleases.map((release) => { const condition = sourceCondition(release); const rawUrl = researchRouteUrl(release.route_id, "raw"); const rawDownloadUrl = researchRouteUrl(release.route_id, "raw", "?download=1"); const expanded = release.route_id === selectedRelease; const page = records[release.route_id]?.page; return <><tr key={release.route_id}><th scope="row">{release.source_year ?? "Single retained response"}</th><td>{formatCapture(release.capture.retrieved_at)}</td><td><span className={`mirror-status${release.availability === "UPSTREAM_AVAILABILITY_MESSAGE" ? " mirror-status-notice" : ""}`}>{condition.label}</span></td><td><div className="mirror-row-actions"><a className="mirror-table-primary" href={rawUrl} target="_blank" rel="noreferrer">View JSON<span className="sr-only"> in a new tab</span></a><a href={rawDownloadUrl}>Download</a>{release.research_access.browse_available ? <button type="button" onClick={() => onBrowse(release.route_id, 0)} disabled={loadingRoute === release.route_id}>{loadingRoute === release.route_id ? "Loading…" : "Browse"}</button> : null}<button type="button" aria-expanded={expanded} aria-controls={`${release.route_id}-details`} onClick={() => setSelectedRelease(expanded ? undefined : release.route_id)}>{expanded ? "Hide details" : "Details"}</button></div></td></tr>{expanded ? <tr className="mirror-release-detail-row"><td id={`${release.route_id}-details`} colSpan={4}>{page ? <section className="mirror-browse-results"><h4>Browse retained records</h4><p>{page.records.length ? `Records ${page.offset + 1}–${page.offset + page.records.length}` : "No records"} of {page.total_records.toLocaleString()}. This browsing aid does not change the original JSON.</p><div className="mirror-paging"><button type="button" disabled={loadingRoute === release.route_id || page.offset === 0} onClick={() => onBrowse(release.route_id, Math.max(0, page.offset - page.limit))}>Previous 20</button><button type="button" disabled={loadingRoute === release.route_id || page.offset + page.records.length >= page.total_records} onClick={() => onBrowse(release.route_id, page.offset + page.limit)}>Next 20</button></div>{page.records.map((record) => <details className="mirror-record" key={record.source_position}><summary>Inspect retained record</summary><pre>{JSON.stringify(record.preserved_record, null, 2)}</pre><p>Technical lineage: source position {record.source_position}</p></details>)}</section> : null}<DatabaseMirrorReleaseDetails release={release} /></td></tr> : null}</>; })}</tbody></table></div></section>
+    </section> : <section className="mirror-surface mirror-directory" aria-label="Database mirror directory">
+      <div className="mirror-directory-heading"><div><p className="mirror-kicker">Scottish Parliament · Database mirror</p><h2>Find a source</h2><p>Use a subject or search term to locate a retained Scottish Parliament source response.</p></div><details className="mirror-about"><summary>How the Database mirror differs from the live API</summary><p>The Database mirror ingests selected Scottish Parliament API responses on documented schedules and stores each dated response. It provides access routes that the live API does not, while retaining the original JSON. Check the capture date for each response; the mirror is not the live source.</p></details></div>
+      <div className="mirror-directory-controls"><label>Research subject<select value={subjectFilter} onChange={(event) => setSubjectFilter(event.target.value)}><option>All subjects</option>{subjects.map((subject) => <option key={subject}>{subject}</option>)}</select></label><label>Search sources<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="e.g. committee, bills or official reports" /></label><p role="status">{filteredEndpoints.length} source{filteredEndpoints.length === 1 ? "" : "s"} shown</p></div>
+      <div className="mirror-endpoint-list">{filteredEndpoints.map((endpoint) => <article className="mirror-endpoint-row" key={endpoint.endpoint}><div><p className="mirror-kicker">{endpoint.subject}</p><h3>{endpoint.endpoint}</h3><p>{databaseMirrorEndpointGuide(endpoint.endpoint)}</p><code>{mirrorCoverage(endpoint.releases)}</code></div><button type="button" onClick={() => openEndpoint(endpoint.endpoint)}>Open endpoint</button></article>)}</div>
+    </section>}
+    <p className="boundary">Private access only. The Database mirror provides dated retained source responses and provenance. No live source request, DB2 variable, chart, generic database query or public research release is available here.</p>
+  </main>;
 }
 
 async function request(path: string, init: RequestInit = {}) {
@@ -588,6 +718,10 @@ function App() {
     ...mqaAnnualWindowDb1Routes.map((route) => { const panel = db1MqaAnnualWindow[route.key]; return panel ? <Db1PagedPanel key={route.key} panel={panel} title={route.title} onPage={(offset) => void loadDb1MqaAnnualWindow(route, offset)} /> : null; }),
     d18AnnualWindowPanel
   ];
+
+  if (view === "db1" && identity.authenticated && identity.data_layers_available) {
+    return <DatabaseMirrorWorkspace catalogue={db1ResearchCatalogue} records={db1ResearchRecords} loadingRoute={db1LoadingRoute} onBrowse={(routeId, offset) => void loadDb1ResearchRecords(routeId, offset)} onRefresh={() => void loadDb1Catalogue()} onBack={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }} onSettings={() => { setView("settings"); setFormFeedback(undefined); }} isSuperuser={identity.roles.includes("SUPERUSER")} onSuperuser={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }} />;
+  }
 
   if (view === "db1" && identity.authenticated && identity.data_layers_available) {
     return <main className="site-shell db1-shell"><header className="site-header"><a className="wordmark" href="/">Comparative <span>Legislative Data</span></a><p>Research infrastructure · Private beta</p></header><section className="db1-intro" aria-labelledby="page-title"><p className="breadcrumbs">Research access <span>/</span> Scottish Parliament <span>/</span> Database mirror</p><p className="eyebrow">Database mirror</p><h1 id="page-title">Scottish Parliament data mirror</h1><p>Find a Scottish Parliament source, then view, download or browse the dated response held in the Database mirror.</p></section><p className="identity">Signed in as <strong>{identity.email}</strong>.</p><nav className="access-nav" aria-label="Access options"><span className="signed-in-badge">Private beta active</span><button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Live API catalogue</button><button type="button" onClick={() => void loadDb1Catalogue()}>Refresh mirror list</button><button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button>{identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}</nav><section className="catalogue-panel db1-panel" aria-labelledby="db1-heading"><div className="catalogue-heading"><div><p className="eyebrow">Scottish Parliament · Database mirror</p><h2 id="db1-heading">Find data</h2><p className="panel-copy">Choose a subject, then select the source you want to access.</p></div></div>{db1Feedback ? <p className="form-feedback" role="status">{db1Feedback}</p> : null}{db1ResearchCatalogue ? <><details className="source-disclosure db1-about"><summary>How the Database mirror differs from the live API</summary><p>The Database mirror retrieves selected Scottish Parliament API responses on documented schedules and stores each dated response in PostgreSQL. It provides access routes that the live API does not, while retaining the original JSON.</p><p>Because it is not live, a source may change between captures. Check the capture date for the retained response. The Database mirror does not change source values.</p></details><div className="catalogue-sections">{db1ResearchCatalogue.subjects.map((subject) => <details className="catalogue-section" key={subject.subject}><summary className="catalogue-section-heading"><div><p className="eyebrow">Research subject</p><h3>{subject.subject}</h3></div><div className="catalogue-section-state"><p>{subject.endpoints.length} source{subject.endpoints.length === 1 ? "" : "s"}</p><span>Show sources</span></div></summary><div className="catalogue-list endpoint-list">{subject.endpoints.map((endpoint) => <article className="route-card route-card-db1 endpoint-card endpoint-access" key={endpoint.endpoint}><div className="route-badge"><div><p className="route-group">Scottish Parliament source</p><h3>{endpoint.endpoint}</h3><code>{endpoint.releases.length} retained response{endpoint.releases.length === 1 ? "" : "s"}</code></div><InlineHelp label={`About ${endpoint.endpoint}`}><p>{databaseMirrorEndpointGuide(endpoint.endpoint)}</p></InlineHelp></div><details className="access-data"><summary>Access data</summary><div className="release-list">{endpoint.releases.map((release) => <Db1ResearchReleaseCard key={release.route_id} release={release} records={db1ResearchRecords[release.route_id]} loading={db1LoadingRoute === release.route_id} onBrowse={(routeId, offset) => void loadDb1ResearchRecords(routeId, offset)} />)}</div></details></article>)}</div></details>)}</div></> : <p className="panel-copy" role="status">Loading the Database mirror catalogue…</p>}</section><p className="boundary">Private access only. The Database mirror provides dated retained source responses and provenance. No live source request, DB2 variable, chart, generic database query or public research release is available here.</p></main>;

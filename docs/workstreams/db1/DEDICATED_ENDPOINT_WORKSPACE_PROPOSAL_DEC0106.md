@@ -1,6 +1,6 @@
 # DEC-0106: Database mirror directory and dedicated endpoint workspace
 
-**Status:** `PROPOSED — OWNER REVIEW REQUIRED`  
+**Status:** `APPROVED — LOCAL IMPLEMENTATION VERIFIED; PRIVATE DEPLOYMENT PENDING`
 **Date:** 5 August 2026  
 **Workstream:** DB1: Scottish Parliament source-preserving mirror  
 **Prepared under:** owner direction to develop the next implementation proposal after review of three independent UX implementation responses
@@ -273,8 +273,29 @@ existing authenticated API/DB1 retention/timer path is untouched.
 
 ## 7. Decision required and next step
 
-**Decision requested:** approve the contained frontend-only package in section
-6 as DEC-0106, or specify amendments.
+The owner approved the contained frontend-only package on 5 August 2026.
+
+### Local implementation and verification record
+
+The implementation is confined to the existing web renderer, stylesheet and a
+new deterministic interface-contract test. It introduces a searchable
+Database mirror directory, hash-based endpoint selection that needs no web
+server route change, a full-width release table, truthful raw/live action
+labels, release-level provenance/citation disclosure and a neutral retained
+upstream-availability state. The former CSS rule that hid an inner `summary`
+while forcing its closed body visible has been removed.
+
+`npm test` passed with 36 tests, including the new directory/action/semantic
+contract tests. Production build, capability checks, documentation-link check
+and whitespace check passed. The test environment does not provide an
+authenticated local DB1 fixture, so this result does not substitute for a
+live owner visual and interaction review. No source request, database/API,
+schedule, dependency, configuration, service or deployment action occurred.
+
+**What next:** owner review of the local/private interface is required before
+the separately bounded private web-presentation deployment. If accepted, only
+the existing project web service may be updated; the API, database and source
+capture path remain untouched.
 
 If approved, the next step is local implementation of the directory and
 dedicated endpoint workspace, followed by the listed verification evidence and
