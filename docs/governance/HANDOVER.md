@@ -37,7 +37,8 @@ The architecture has raw response capture, manifests, hashes, source lineage,
 operational projections and route-specific reconciliation controls.
 
 The DB1 researcher interface has been reset and privately deployed under
-owner-approved DEC-0101 Stages A–C; owner end-to-end acceptance remains pending.
+owner-approved DEC-0101 Stages A–C; the DEC-0103 DB1 usability/accessibility
+refinement is privately deployed and owner end-to-end acceptance remains pending.
 The earlier interface exposed internal delivery cohorts
 and projection/rejection mechanics rather than a coherent research resource.
 The approved work is limited to a source-first private research interface,

@@ -2818,3 +2818,19 @@ Next review due:
 | Affected work blocked | Private deployment until owner acceptance; all source, capture, database, schedule, backend/API, dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0103. |
 | Owner decision required | Review/accept the local DB1 workspace result, then explicitly authorise the already-bounded private deployment step if content. |
 | Next review due | On owner acceptance/rejection; before private deployment; on an accessibility or interface finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0173
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0103 private web-presentation deployment verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | DEC-0103; GOV-REV-0172; deployed release output; existing web-presentation deployment path; project service/timer state and local access-boundary checks. |
+| Active phase and authorising decision | Owner-approved DEC-0103 private deployment of the contained frontend-only workspace refinement. |
+| Checks performed | Preflight confirmed root access to the named VPS and active CLD API/web services. The older DB1 access script was excluded because it would unnecessarily repeat DB reader configuration. The existing web-presentation path was used instead: it built/verified commit `bd30cf6`, installed a new web release and restarted only `cld-gb-sct-web.service`. Its remote verification reran the 33 automated tests and capability scans. Post-deployment read-only checks confirmed API, web and D19 timer active; both local health routes responded; and unauthenticated `/db1/gb-sct/research/catalogue` remained `403`. |
+| Findings | No source request, capture, database operation, DB1 schedule/timer change, API release, dependency addition, configuration/secret mutation or unrelated-service action occurred. The release is a private presentation change only. |
+| Outcome | `PASS — DEC-0103 PRIVATELY DEPLOYED; OWNER LIVE ACCEPTANCE PENDING`. |
+| Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0103. |
+| Owner decision required | Test the live authenticated DB1 catalogue; accept it or report a specific usability/accessibility/access defect. |
+| Next review due | On owner acceptance or defect report; before any follow-on DB1 feature; or 4 September 2026, whichever is earlier. |

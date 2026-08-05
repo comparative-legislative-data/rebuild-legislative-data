@@ -188,8 +188,8 @@ records the adopted information architecture, CSS/design direction,
 accessibility contract, research-repository references, future shared-shell
 principles, and acceptance tasks. Its exact follow-on
 [DEC-0103 implementation proposal](DB1_RESEARCH_WORKSPACE_IMPLEMENTATION_PROPOSAL_DEC0103.md)
-has been locally implemented and awaits owner acceptance before private
-deployment. No source, database, schedule or deployment change has occurred.
+has been privately deployed and awaits owner acceptance. The release changed
+only the web presentation; no source, database or schedule change occurred.
 
 ## Current controls and detailed evidence
 
