@@ -5,6 +5,7 @@ const directories = ["apps", "packages"];
 const sourceRelayFile = "apps/api/src/catalogue/source-pass-through.ts";
 const directSourceLinkFile = "apps/web/src/main.tsx";
 const d2CaptureFile = "apps/api/src/db1/foundation.ts";
+const fullScopeCaptureFile = "apps/api/src/db1/full-scope.ts";
 const db1ResearchFile = "apps/api/src/db1/research-access.ts";
 const db1RouteFiles = ["apps/api/src/access/routes.ts", "apps/api/src/server.ts", "apps/web/src/main.tsx", "apps/web/src/db1-qa.tsx", db1ResearchFile];
 const prohibited = [
@@ -54,7 +55,7 @@ for (const directory of directories) {
     if (content.includes("/db1/") && !db1RouteFiles.includes(path)) {
       findings.push(`${path}: DB1 route capability is not permitted here`);
     }
-    if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && path !== db1ResearchFile && content.includes("data.parliament.scot")) {
+    if (path !== sourceRelayFile && path !== directSourceLinkFile && path !== d2CaptureFile && path !== fullScopeCaptureFile && path !== db1ResearchFile && content.includes("data.parliament.scot")) {
       findings.push(`${path}: prohibited capability or claim token data.parliament.scot`);
     }
   }
@@ -97,6 +98,11 @@ for (const term of ["begin read only", "createReadStream", "raw-object path esca
   } else if (!db1Research.includes(term)) {
     throw new Error(`DB1 researcher-access control missing: ${term}`);
   }
+}
+
+const fullScopeCapture = readFileSync(fullScopeCaptureFile, "utf8");
+for (const term of ["FULL_SCOPE_FORMS", "FULL_DB1_SOURCE_FORM_COUNT", "persistResponse", "capture_universes", "source_conditions", "AbortSignal.timeout", "createReadStream", "runFullScopeAnnualDetails"]) {
+  if (!fullScopeCapture.includes(term)) throw new Error(`DB1 full-scope capture control missing: ${term}`);
 }
 
 const sourceRelay = readFileSync(sourceRelayFile, "utf8");
