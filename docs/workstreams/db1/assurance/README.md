@@ -12,8 +12,13 @@ Read in this order:
 1. [Mirror Assurance Report](GB_SCT_DB1_MIRROR_ASSURANCE_REPORT_2026-08-05.md)
 2. [Coverage and assurance matrix](GB_SCT_DB1_COVERAGE_AND_ASSURANCE_MATRIX_2026-08-05.md)
 3. [Gap register](GB_SCT_DB1_GAP_REGISTER_2026-08-05.md)
-4. [Reconciliation and update controls](GB_SCT_DB1_RECONCILIATION_AND_UPDATE_CONTROL_2026-08-05.md)
-5. [Backend capability contract](GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md)
+4. [Expected scope register](GB_SCT_DB1_EXPECTED_SCOPE_REGISTER_2026-08-05.md)
+5. [Route/window update-control register](GB_SCT_DB1_ROUTE_WINDOW_UPDATE_CONTROL_REGISTER_2026-08-05.md)
+6. [Reconciliation and update controls](GB_SCT_DB1_RECONCILIATION_AND_UPDATE_CONTROL_2026-08-05.md)
+7. [Backend capability contract](GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md)
+
+The machine-readable counterpart is
+[`GB_SCT_DB1_SCOPE_AND_UPDATE_CONTROL_REGISTER_2026-08-05.json`](GB_SCT_DB1_SCOPE_AND_UPDATE_CONTROL_REGISTER_2026-08-05.json).
 
 The outcome is `CHANGES_REQUIRED`. That is not an integrity failure: the
 internal evidence chain is intact. It means the project must first create a

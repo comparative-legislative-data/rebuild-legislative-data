@@ -60,10 +60,12 @@ unchanging, or semantically correct.
 
 ## Current assurance gaps
 
-- No expected-scope inventory maps approved source forms/windows to current
-  DB1 route entries.
-- 86 latest states remain `INITIAL`; Official Reports needs a declared wider
-  cadence beyond the separately scheduled 2025 pair.
+- The [expected scope](assurance/GB_SCT_DB1_EXPECTED_SCOPE_REGISTER_2026-08-05.md)
+  and [route/window update-control](assurance/GB_SCT_DB1_ROUTE_WINDOW_UPDATE_CONTROL_REGISTER_2026-08-05.md)
+  registers now classify all selected forms and retained windows. Their
+  baseline-only labels do not establish currentness.
+- Official Reports needs a declared wider cadence beyond the separately
+  scheduled 2025 pair before any currentness claim.
 - Generic original-archive, JSONL, CSV and Parquet capabilities remain absent.
 - Fresh raw-byte integrity and live parity require distinct approvals.
 - Future operational commands must identify both the isolated cluster and the

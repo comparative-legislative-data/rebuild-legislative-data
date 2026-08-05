@@ -1,7 +1,7 @@
 # DB1: Scottish Parliament Database mirror
 
-**Status:** Backend Assurance audited — controlled correction required before
-any mirror-completeness claim or Research Portal delivery.
+**Status:** Backend Assurance controls established — owner acceptance is
+required before any mirror-completeness claim or Research Portal delivery.
 
 DB1 is the retained-source layer for selected Scottish Parliament API material.
 It is not DB2, an analytical dataset, or a claim of historical completeness.
@@ -55,7 +55,7 @@ without a published record projection. This is operational evidence only. It
 does not prove that every approved route/window is captured, reconciled or
 current.
 
-DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_ASSURANCE_REPORT_2026-08-05.md), [coverage matrix](assurance/GB_SCT_DB1_COVERAGE_AND_ASSURANCE_MATRIX_2026-08-05.md), [gap register](assurance/GB_SCT_DB1_GAP_REGISTER_2026-08-05.md), [update-control record](assurance/GB_SCT_DB1_RECONCILIATION_AND_UPDATE_CONTROL_2026-08-05.md) and [capability contract](assurance/GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md). Their outcome is `CHANGES_REQUIRED`: internal lineage is sound, but controlled expected scope and complete reconciliation declarations are not yet in place.
+DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_ASSURANCE_REPORT_2026-08-05.md), [coverage matrix](assurance/GB_SCT_DB1_COVERAGE_AND_ASSURANCE_MATRIX_2026-08-05.md), [expected scope register](assurance/GB_SCT_DB1_EXPECTED_SCOPE_REGISTER_2026-08-05.md), [route/window control register](assurance/GB_SCT_DB1_ROUTE_WINDOW_UPDATE_CONTROL_REGISTER_2026-08-05.md), [gap register](assurance/GB_SCT_DB1_GAP_REGISTER_2026-08-05.md) and [capability contract](assurance/GB_SCT_DB1_BACKEND_CAPABILITY_CONTRACT_2026-08-05.md). Internal lineage and scope/control classification are now established. Byte integrity and live-source parity remain unverified.
 
 ## Boundaries
 
@@ -82,4 +82,8 @@ DEC-0108 now provides a bounded [assurance report](assurance/GB_SCT_DB1_MIRROR_A
 
 ## Next decision
 
-The next owner decision is [DEC-0109](DB1_EXPECTED_SCOPE_AND_UPDATE_CONTROL_PROPOSAL_DEC0109.md), a repository-only correction proposal to create the expected DB1 scope and schedule register and define the first bounded “as-of” claim. No source request, capture, database mutation, schedule change or Research Portal implementation is authorised by the audit result.
+DEC-0109 has produced the controlled registers and passed local consistency
+checks. Owner acceptance is now required before treating the Backend Assurance
+control record as accepted. No source request, capture, database mutation,
+schedule change or Research Portal implementation is authorised by that
+implementation result.

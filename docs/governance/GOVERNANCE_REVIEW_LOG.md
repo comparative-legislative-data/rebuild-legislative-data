@@ -3090,3 +3090,19 @@ Next review due:
 | Affected work blocked | Source/capture, raw-body access, database/file/service/timer change, application/frontend implementation, deployment, DB2, public access and research release remain blocked. |
 | Owner decision required | Approve, amend or decline the exact repository-only DEC-0109 correction package. |
 | Next review due | On DEC-0109 decision; before its execution; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0190
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — completion of approved DEC-0109 repository-only control correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; DEC-0108/DEC-0109; current DB1 assurance evidence; controlled GB-SCT route catalogue; DB1 foundation route declarations. |
+| Active phase and authorising scope | Owner-approved DEC-0109: repository-only expected scope and update-control registers plus local verification. |
+| Checks performed | Created the human expected-scope and route/window-control registers plus a machine-readable counterpart; checked 64 controlled source forms are classified exactly once and the update-control rules resolve to 113 current route/windows; ran documentation-link, build and test verification. |
+| Findings | Scope/control ambiguity is now explicit: all unretained selected forms are `FUTURE_CAPTURE`; annual and Official Reports routes distinguish daily, weekly and baseline-only controls; the 2006 Committee condition remains explicit. Neither register proves raw-byte integrity or live-source parity. |
+| Outcome | `PASS — DEC-0109 IMPLEMENTED; OWNER ACCEPTANCE PENDING`. |
+| Affected work blocked | Stored-object integrity, source parity, capture, database/service/timer change, Research Portal implementation, DB2, public access and research release remain blocked. |
+| Owner decision required | Accept or amend the DEC-0109 registers; then decide the next Backend Assurance gate. |
+| Next review due | On owner acceptance/amendment; before an integrity/parity proposal or Research Portal implementation; or 4 September 2026, whichever is earlier. |
