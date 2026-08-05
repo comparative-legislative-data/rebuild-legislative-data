@@ -2866,3 +2866,19 @@ Next review due:
 | Affected work blocked | All source, capture, database, schedule, API/backend, dependency, DB2, chart, playground, public access and research-release work remains outside DEC-0104. |
 | Owner decision required | Perform the next short live research journey and report any residual UX/accessibility issue. |
 | Next review due | On owner review; before any further DB1 feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0176
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-identified retained-response access defect and DEC-0105 correction |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0175; DEC-0105; DB1 research-access query; Bill Types capture/projection/profile metadata; modified private interface. |
+| Active phase and authorising decision | Owner-directed DEC-0105, confined to reader assembly and private presentation. |
+| Checks performed | Read-only database inspection established that the 4–5 August Bill Types captures have the same digest (`fad9…9014b`), byte length (189) and `UNCHANGED` reconciliation result as the passing 3 August seven-record/two-field projection. The reader now resolves a passing projection by identical raw digest while retaining newest-capture provenance. Local production build, 33 tests, capability scans, documentation-link and whitespace checks passed. |
+| Findings | The defect was an implementation gap: the reader required a projection linked to the newest manifest even where the retained bytes were identical. The correction does not transform source data or claim that a changed response is automatically browsable. |
+| Outcome | `PASS — DEC-0105 LOCAL CORRECTION VERIFIED; PRIVATE API/WEB RELEASE PENDING`. |
+| Affected work blocked | New-digest projection automation, source requests, capture, database mutation, schedule/permission/API-path changes, DB2, charts, playground and public access remain outside DEC-0105. |
+| Owner decision required | No new decision; proceed with the contained private release, then review the new subject → Access data journey. |
+| Next review due | Immediately after release and owner review. |

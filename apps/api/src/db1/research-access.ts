@@ -183,10 +183,13 @@ const latestReleaseSql = `
   join db1.manifest_entries m on m.capture_run_id = c.id
   join db1.raw_objects r on r.digest = m.raw_digest
   left join lateral (
-    select id, projected_records, rejected_records
-    from db1.projection_builds
-    where manifest_id = m.id and origin_class = 'SOURCE_CAPTURE' and integrity_status = 'PASS'
-    order by created_at desc
+    select build.id, build.projected_records, build.rejected_records
+    from db1.projection_builds build
+    join db1.manifest_entries projected_manifest on projected_manifest.id = build.manifest_id
+    where projected_manifest.raw_digest = m.raw_digest
+      and build.origin_class = 'SOURCE_CAPTURE'
+      and build.integrity_status = 'PASS'
+    order by build.created_at desc
     limit 1
   ) p on true
   left join db1.projection_structure_profiles sp on sp.projection_build_id = p.id
@@ -261,11 +264,7 @@ export class Db1ResearchAccess {
       layer: "DB1_RETAINED_SOURCE_RESPONSES",
       access: "PRIVATE_BETA",
       generated_at: new Date().toISOString(),
-      limitations: [
-        "Each item is a dated retained Scottish Parliament response held by DB1, not a live source response or an unqualified completeness/freshness claim.",
-        "Exact raw retrieval returns the retained source bytes named by the manifest. Browsing and structure are separate DB1 research-access aids and create no DB2 variables or semantic codebook.",
-        "The all-available-years option is a DB1-generated manifest over compatible retained windows; it is not one Scottish Parliament response."
-      ],
+      limitations: [],
       subjects
     };
   }

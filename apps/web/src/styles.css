@@ -122,6 +122,7 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .db1-about { margin: 1.25rem 0 1.75rem; }
 .db1-about > summary { cursor: pointer; color: #f4f7fb; font-weight: 800; }
 .db1-about[open] > summary { margin-bottom: .85rem; }
+.db1-about ul:empty { display: none; }
 .catalogue-sections { gap: 1.2rem; }
 .catalogue-section { gap: .65rem; }
 .catalogue-section-heading { padding: .85rem 0; border-top: 1px solid var(--cld-border); border-bottom: 1px solid var(--cld-border); }
@@ -135,6 +136,15 @@ ul { display: grid; gap: .85rem; padding-left: 1.25rem; } li { color: #c8d3df; }
 .endpoint-card .route-state { color: #c8d3df; }
 .endpoint-card .route-details { padding: 0 1rem 1rem; }
 .endpoint-description { max-width: 44rem; margin: .3rem 0 .45rem; color: #c8d3df; font-size: .85rem; font-weight: 400; line-height: 1.4; }
+.endpoint-access .route-badge { align-items: center; min-height: 4.6rem; }
+.endpoint-access .inline-help { margin: 0; }
+.access-data { border-top: 1px solid var(--cld-border); }
+.access-data > summary { padding: .8rem 1rem; color: var(--cld-accent-strong); cursor: pointer; font-weight: 800; }
+.access-data[open] > summary { border-bottom: 1px solid var(--cld-border); }
+.access-data > .release-list { padding: .8rem 1rem 1rem; }
+.access-data .research-release > summary { display: none; }
+.access-data .research-release > .route-details { display: grid; }
+.access-data .research-release { border: 0; background: transparent; }
 .year-index { display: grid; gap: .45rem; margin: 1rem 0; padding: .9rem; border: 1px solid rgba(232, 189, 104, .35); border-radius: .55rem; background: rgba(232, 189, 104, .07); }
 .year-index p { margin: 0; color: #d9e1eb; line-height: 1.45; }
 .year-index .source-action { width: fit-content; margin-top: .2rem; }
