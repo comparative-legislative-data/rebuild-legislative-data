@@ -1,6 +1,6 @@
 # DEC-0103: DB1 research workspace implementation proposal
 
-**Status:** `PROPOSED — OWNER APPROVAL REQUIRED`
+**Status:** `APPROVED — LOCAL IMPLEMENTATION COMPLETE; OWNER ACCEPTANCE AND PRIVATE DEPLOYMENT PENDING`
 
 **Date:** 5 August 2026
 **Workstream:** DB1: Scottish Parliament source-preserving mirror
@@ -203,6 +203,8 @@ proposal; it is not papered over by adding another nested explanatory panel.
 
 ## Owner decision
 
-Approve, amend or reject DEC-0103. Approval authorises only the frontend and
-private-release sequence above. It does not authorise any excluded data,
-backend or infrastructure action.
+The owner approved DEC-0103 on 5 August 2026. The contained local frontend
+implementation passed build, automated tests, capability checks and
+documentation checks. Owner acceptance of the resulting interface is required
+before the separately controlled private deployment step. DEC-0103 does not
+authorise any excluded data, backend or infrastructure action.

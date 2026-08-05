@@ -2802,3 +2802,19 @@ Next review due:
 | Affected work blocked | All application/CSS mutation, deployment, source access, capture, database/schedule change, API/backend change, dependency addition, DB2, chart, playground, public access and research release remain blocked pending DEC-0103 approval. |
 | Owner decision required | Approve, amend or reject DEC-0103. |
 | Next review due | On DEC-0103 decision; before local implementation; on an accessibility finding; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0172
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — DEC-0103 local implementation and verification |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Project design; handover; governance procedure; decision/risk registers; GOV-REV-0171; DEC-0103; modified web renderer and stylesheet; existing DB1 research-access API contract; build/test/capability/documentation-check output. |
+| Active phase and authorising decision | Owner-approved DEC-0103 local frontend implementation only. Deployment remains contingent on owner acceptance. |
+| Checks performed | Reworked the DB1 catalogue into subject-first compact endpoint rows; made release actions and plain source conditions primary; moved field guidance and provenance into labelled disclosure sections; added tokenised visual/accessibility styles, visible focus, text-based states, reduced-motion support, responsive action layout and copy feedback. Ran `npm test` (33 passing tests), production build, DB1 capability scans, documentation-link check and whitespace check. A local Vite shell rendered without compilation error; it cannot exercise authenticated DB1 content without the separate local API/auth service, which was not started. |
+| Findings | The implementation is confined to `apps/web/src/main.tsx` and `apps/web/src/styles.css`; no API, database, source, schedule, dependency, environment, service or deployment file changed. The live private interface has not been altered and therefore still requires owner visual/interaction acceptance before release. |
+| Outcome | `PASS — DEC-0103 LOCAL FRONTEND IMPLEMENTATION VERIFIED; OWNER ACCEPTANCE AND PRIVATE DEPLOYMENT PENDING`. |
+| Affected work blocked | Private deployment until owner acceptance; all source, capture, database, schedule, backend/API, dependency, DB2, chart, playground, public-access and research-release work remains outside DEC-0103. |
+| Owner decision required | Review/accept the local DB1 workspace result, then explicitly authorise the already-bounded private deployment step if content. |
+| Next review due | On owner acceptance/rejection; before private deployment; on an accessibility or interface finding; or 4 September 2026, whichever is earlier. |
