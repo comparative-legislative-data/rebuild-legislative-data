@@ -2978,3 +2978,19 @@ Next review due:
 | Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside this package. |
 | Owner decision required | If the verified local changes are acceptable, explicitly authorise a private web-only deployment; otherwise the existing MVP baseline remains live. |
 | Next review due | On local verification result; on a deployment decision; before a new DB1 researcher-access feature; or 4 September 2026, whichever is earlier. |
+
+### GOV-REV-0183
+
+| Field | Record |
+| --- | --- |
+| Date (UTC) | 5 August 2026 |
+| Review type | Triggered — owner-authorised private web deployment of the Database mirror catalogue-and-hygiene package |
+| Reviewer role | Maintainer |
+| Documents and records reviewed | Governing baseline; handover; registers; GOV-REV-0182; DEC-0106; pushed commit `0307cd2`; existing web-presentation deployment path; remote deployment output; API/web health and anonymous-access boundary result. |
+| Active phase and authorising decision | Owner-authorised, web-only release of the local package verified in GOV-REV-0182. |
+| Checks performed | Deployed commit `0307cd2` through `ops/deploy_web_presentation.sh`. The remote path passed production build, all 39 automated tests, capability scans and B1 packaging, then restarted only `cld-gb-sct-web.service`. Read-only post-release checks confirmed web and API services active, web/API health successful, and unauthenticated `/db1/gb-sct/research/catalogue` still `403`. |
+| Findings | Two brief loopback connection failures occurred while the controlled web service restarted; the script retried and completed successfully. No source request, capture, database or projection operation, timer/schedule change, API/configuration/secret/dependency mutation, or unrelated-service action occurred. |
+| Outcome | `PASS — PRIVATE DATABASE MIRROR CATALOGUE/HYGIENE PACKAGE DEPLOYED`. |
+| Affected work blocked | Source/capture, database/projection/schedule/API/web-server/dependency change, DB2, chart, playground, public access and research release remain outside the deployment scope. |
+| Owner decision required | Any new DB1 feature or broader data/research scope requires a separate proposal and explicit approval. |
+| Next review due | Before a further DB1 feature, on a material defect or scope change, or 4 September 2026, whichever is earlier. |

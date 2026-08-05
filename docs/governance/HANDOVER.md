@@ -43,10 +43,10 @@ DEC-0106's directory and dedicated endpoint workspace is privately deployed;
 the owner then directed a contained presentation refinement to remove the
 broken light/dark treatment, repeated explanation/title and opaque action
 labels. The owner has accepted that private interface as an MVP baseline. The
-current local catalogue-and-hygiene package reconciles retained metadata,
-controlled endpoint descriptions and obsolete renderer code only; it makes no
-DB1 data, source, schedule or API change and needs a separate deployment
-decision before becoming live.
+subsequent catalogue-and-hygiene package was privately deployed from
+`0307cd2`: it reconciles retained metadata, controlled endpoint descriptions
+and obsolete renderer code only. It made no DB1 data, source, schedule or API
+change.
 The earlier interface exposed internal delivery cohorts
 and projection/rejection mechanics rather than a coherent research resource.
 The approved work is limited to a source-first private research interface,
@@ -91,20 +91,11 @@ downloads, charts or research claims require a later approved DB2 package.
 
 ## Next owner decision
 
-Test and accept or identify defects in the deployed [DB1 researcher-product reset](../workstreams/db1/RESEARCHER_PRODUCT_RESET_PROPOSAL.md)
-(DEC-0101). It provides:
-
-- a source-first DB1 catalogue aligned to the proxy subject taxonomy;
-- first-class retained raw-response access, including upstream availability
-  messages;
-- researcher tools, schema/field explanation, downloads, snippets, citation
-  and provenance;
-- a wider DB1 availability audit and targeted recurring recheck for the 2006
-  Committee Official Reports response; and
-- route-specific reconciliation/parity evidence and schedules.
-
-The acceptance review must distinguish what is now deployed from later desired
-work, preserve the DB1/DB2 boundary, and keep Stage D separately gated.
+The private Database mirror MVP is deployed. Any new DB1 researcher-access
+feature, wider coverage claim, source recheck/capture, schedule change, DB2
+work, public access, chart, playground or research release requires its own
+proposal and explicit owner approval. The active [DB1 narrative](../workstreams/db1/README.md)
+records the present product, evidence and known gaps.
 
 ## Documentation hygiene
 
