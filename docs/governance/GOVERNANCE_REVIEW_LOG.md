@@ -3448,3 +3448,23 @@ not authorise database, VPS, source retention, implementation, scheduling,
 frontend or portal work.
 
 **Next review:** owner review and approval/amendment of DEC-0121 only.
+
+---
+
+# GOV-REV-2026-08-06N — Seven-route resolution complete; final initial model prepared
+
+**Outcome:** `PASS — ALL 64 FORMS ACCOUNTED FOR; OWNER REVIEW REQUIRED`
+
+DEC-0121 made eight no-retention source requests. MQA motions detail matched
+its parent; events and questions remained HTTP 500 source conditions; supports
+returned an empty detail object; and plenary detail rejected an ordinary parent
+ID. Existing official metadata and prior controlled evidence establish no
+usable ordinary-ID contract for Committee Report or Vote detail routes. These
+are explicit upstream limitations, not local gaps or missing data claims.
+
+The final initial model accounts for all 64 forms: 33 whole source responses,
+25 parent-backed access forms, and six upstream limitations. It proposes a
+complete initial source-form boundary, without an inferred detail crawl or
+filesystem source archive.
+
+**Next review:** owner review and approval/amendment of DEC-0122: final initial response-unit model plus source-free A1 foundation package.

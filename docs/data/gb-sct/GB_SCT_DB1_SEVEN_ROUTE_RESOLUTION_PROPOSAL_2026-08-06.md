@@ -1,6 +1,6 @@
 # GB-SCT DB1 seven-route resolution proposal
 
-**Status:** proposed; no source, database, VPS, code or frontend action authorised  
+**Status:** completed no-retention source action; final model prepared for owner review
 **Date:** 6 August 2026  
 **Proposed decision:** DEC-0121  
 **Reason:** the previous initial model was incomplete and must not be treated as
@@ -52,22 +52,26 @@ Make one GET request to each whole-parent route:
 
 If either continues to return a source error, stop for that route. DB1 will
 later preserve the named upstream condition on its normal scheduled check. No
-alternative URL, ID or workaround is invented.
+alternative URL, ID or workaround is invented. If a parent has recovered, use
+one reserved immediate detail request against its ordinary source identifier;
+otherwise the route would remain unresolved despite recovery.
 
 ### Part 2: complete the three large-parent comparisons
 
 For MQA motions, MQA supports and the 2026 Plenary Official Reports response:
 
-- retrieve one complete parent response in memory, one at a time;
-- use one ordinary source-provided identifier only long enough to make the
+- stream only until the first complete top-level source object is received,
+  then stop the parent transfer;
+- use its ordinary source-provided identifier only long enough to make the
   paired detail request;
-- discard both bodies and the identifier when the comparison ends; and
+- discard the partial parent body, the complete sampled object and the
+  identifier when the comparison ends; and
 - retain only the route, size, source result, field/shape summary and outcome.
 
-The temporary limit is 200 MiB per response and five minutes per request. This
-is evidence-based: previous observed source responses are about 110 MB for
-motions and about 124 MB for plenary reports. It remains a one-off audit, not
-an ingest or a normal operating limit.
+The temporary limit is 20 MiB of parent stream and two minutes per request.
+This is sufficient for one complete sampled object while avoiding a needless
+110–150 MB whole-response transfer to this Mac. It remains a one-off audit,
+not an ingest or a normal operating limit.
 
 ### Part 3: do not guess the two undocumented detail contracts
 
@@ -91,14 +95,14 @@ At most 12 source requests:
 
 | Purpose | Planned maximum |
 | --- | ---: |
-| Two source-failure rechecks | 2 |
+| Two source-failure parents plus recovered-route detail follow-up | 4 |
 | Three large parent/detail comparisons | 6 |
-| Source-documented-contract checks, only if an official contract names one exact non-ID input | 2 |
 | Pre-body transport retry allowance | 2 |
 
-No request is made merely to discover values. If no official contract supplies
-a permitted value for the two report/vote detail forms, the relevant two
-requests are not used.
+No request is made merely to discover values. The two report/vote contracts are
+resolved from existing official route metadata and observed source behaviour:
+without a published usable contract, they are recorded as upstream limitations
+rather than subjected to further trial-and-error requests.
 
 ## Completion rule
 
@@ -112,9 +116,12 @@ It must state which is which. It must not call unresolved input contracts
 “missing data,” and it must not call DB1 a full endpoint-by-endpoint mirror
 where the source itself does not provide a usable endpoint contract.
 
-## Authority requested
+## Execution record
 
-Approve or amend this 12-request maximum resolution action. It does not
-authorise PostgreSQL, capture, source retention, ingestion, scheduler,
-application, deployment or portal work.
-
+The owner approved this action on 6 August 2026. Eight public no-retention
+requests were made. The results classify every previously unresolved form as a
+parent-backed access form or an explicit upstream source limitation. See the
+[resolution result](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)
+and the [final initial DB1 model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md).
+No PostgreSQL, capture, source retention, ingestion, scheduler, application,
+deployment or portal work is authorised.

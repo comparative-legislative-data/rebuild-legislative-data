@@ -76,11 +76,12 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the [seven-route resolution proposal](../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md).
-The prior initial model was withdrawn because seven API forms lack a defensible
-access path. This proposal resolves them as usable source routes or explicit
-upstream limitations before any DB1 foundation, capture, database mutation,
-schedule, ingest-test scaffold or portal work can be considered.
+Review the [final initial DB1 response-unit model](../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+alongside the [source-free A1 foundation package](../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md).
+All 64 forms are now accounted for: 33 retained whole responses, 25
+parent-backed access forms, and six explicit upstream detail-route limitations.
+No DB1 foundation, capture, database mutation, schedule, ingest-test scaffold
+or portal work is authorised until the owner approves that package.
 
 ## Documentation hygiene
 

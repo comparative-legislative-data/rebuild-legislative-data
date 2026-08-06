@@ -8,9 +8,9 @@ foundation package before any database or source action.
 
 **Reading note:** this document remains the literal 117-URL/year capture list.
 Its treatment of detail/filter access forms is refined by the later proposed
-[initial response-unit model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
-which incorporates the Cohort A and Cohort B evidence. Neither document
-authorises capture.
+[final initial response-unit model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
+which incorporates the Cohort A, Cohort B and seven-route evidence. Neither
+document authorises capture.
 
 ## 1. What this matrix controls
 
