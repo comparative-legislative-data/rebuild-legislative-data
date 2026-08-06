@@ -76,10 +76,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the [Cohort B/final response-unit proposal](../data/gb-sct/GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md).
-It proposes at most 22 public no-retention checks to resolve the ten remaining
-detail-route evidence gaps, then to prepare one final DB1 response-unit model.
-No DB1 rebuild, source capture, database mutation, schedule, ingest-test
+Review the [initial DB1 response-unit model](../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+alongside the [source-free A1 foundation package](../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md).
+It retains the 117 parent source responses, supports 24 detail/filter access
+forms from their retained parent data, and makes seven source-route access gaps
+visible. No DB1 source capture, database mutation, schedule, ingest-test
 scaffold or portal work is authorised.
 
 ## Documentation hygiene

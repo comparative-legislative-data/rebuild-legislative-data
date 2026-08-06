@@ -1,10 +1,16 @@
 # GB-SCT DB1 response-unit matrix
 
-**Status:** proposed A1 control — no capture authority  
+**Status:** proposed literal capture list — no capture authority
 **Date:** 6 August 2026  
 **Governing direction:** DEC-0115  
 **Decision required:** owner approval of this matrix and the separate A1
 foundation package before any database or source action.
+
+**Reading note:** this document remains the literal 117-URL/year capture list.
+Its treatment of detail/filter access forms is refined by the later proposed
+[initial response-unit model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
+which incorporates the Cohort A and Cohort B evidence. Neither document
+authorises capture.
 
 ## 1. What this matrix controls
 

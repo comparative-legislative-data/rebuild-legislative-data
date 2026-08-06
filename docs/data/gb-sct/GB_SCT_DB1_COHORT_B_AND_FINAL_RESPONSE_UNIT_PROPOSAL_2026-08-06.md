@@ -1,6 +1,6 @@
 # GB-SCT DB1 Cohort B and final response-unit proposal
 
-**Status:** proposed documentation and no-retention audit only  
+**Status:** completed no-retention audit; initial model prepared for owner review
 **Date:** 6 August 2026  
 **Proposed decision:** DEC-0119  
 **Depends on:** DEC-0115, DEC-0117 and DEC-0118
@@ -153,10 +153,12 @@ This sequence is deliberately short. It replaces endpoint-by-endpoint
 implementation with one response-unit model, one synthetic database proof, one
 bounded full ingest, and one assurance package.
 
-## Authority requested
+## Execution record
 
-Approve or amend **Cohort B only**: the maximum 22 public no-retention GET
-requests described above. This does not authorise any DB1 capture, PostgreSQL
-or VPS work, schedule, source-body storage, application change, deployment,
-download or researcher portal.
-
+The owner approved Cohort B on 6 August 2026. Fifteen public no-retention
+requests were made; five planned detail requests were correctly not made after
+their parent route had returned a source or transfer condition. See the
+[Cohort B result](GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md) and the resulting
+[initial response-unit model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md).
+No DB1 capture, PostgreSQL or VPS work, schedule, source-body storage,
+application change, deployment, download or researcher portal is authorised.

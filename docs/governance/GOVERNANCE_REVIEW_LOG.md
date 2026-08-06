@@ -3406,3 +3406,25 @@ visible unresolved gap. This preserves the 64-form scope without pretending
 that a detail URL must create an unbounded upstream request queue.
 
 **Next review:** owner review and approval/amendment of DEC-0119. No source capture, PostgreSQL, scheduler, implementation or portal work is authorised.
+
+---
+
+# GOV-REV-2026-08-06L — Cohort B completed; initial response-unit model prepared
+
+**Outcome:** `LIMITED OBSERVATION COMPLETE — INITIAL MODEL OWNER REVIEW REQUIRED`
+
+DEC-0119 used 15 public no-retention requests. Three remaining route families
+produced sampled parent matches. Two parent routes returned HTTP 500; three
+firehose parents exceeded the declared 50 MiB audit ceiling; and two detail
+routes rejected an ordinary parent ID. The audit did not retry, adapt values,
+or create an individual-route crawl. All seven outcomes are represented as
+visible source-route access gaps in the initial DB1 model, while their parent
+response units remain in the proposed PostgreSQL capture boundary.
+
+The proposed model has a simple initial shape: retain 117 named parent
+responses in PostgreSQL, provide source-faithful parent-backed access for 24
+detail/filter forms with sample evidence, and disclose seven unresolved forms.
+It preserves the 64-form scope and permits no claim that every upstream detail
+URL has itself been captured.
+
+**Next review:** owner review of DEC-0120: the initial response-unit model and source-free A1 foundation package. No DB1 source capture, PostgreSQL, scheduler, implementation or portal work is authorised.

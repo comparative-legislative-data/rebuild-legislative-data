@@ -24,12 +24,13 @@ It recommends a bounded, response-level mirror: original response bytes and
 queryable JSON live together in PostgreSQL, controlled by an owner-approved
 response-unit matrix.
 
-The first two proposed controls are ready for owner review, and the remaining
-detail-route evidence has a single bounded proposal:
+The detail-route evidence phase is closed. The remaining owner review is the
+initial response-unit model and the source-free foundation package:
 
 - the [response-unit matrix](../../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md), which makes the 117 bounded fixed/annual requests and 31 unresolved detail/filter forms visible; and
 - the [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md), which proposes a source-free PostgreSQL proof only.
-- the [Cohort B/final response-unit proposal](../../data/gb-sct/GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md), which would test the ten remaining detail-route gaps using at most 22 no-retention source requests before finalising the capture model.
+- the [initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md), which maps all 64 forms to a raw source response, a parent-backed source-faithful access form, or a visible gap; and
+- the [Cohort B result](../../data/gb-sct/GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md), which records the final ten route checks without retaining source data.
 
 ## Boundaries
 
@@ -68,8 +69,10 @@ useful, not to expose ingestion machinery.
   — proposed, finite DB1 capture control; no source authority.
 - [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
   — proposed PostgreSQL foundation and synthetic proof; no source authority.
-- [Cohort B/final response-unit proposal](../../data/gb-sct/GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md)
-  — proposed last source-form evidence check before the matrix can be finalised.
+- [Initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+  — proposed initial capture/access boundary for all 64 forms; owner review required.
+- [Cohort B result](../../data/gb-sct/GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md)
+  — completed final source-form evidence check; no retained source data.
 - [External-review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
   — the brief and honest account of prior failures.
 - [Approved endpoint inventory](../../data/gb-sct/GB_SCT_MASTER_ENDPOINT_DELIVERY_MATRIX_DEC0045.md)
