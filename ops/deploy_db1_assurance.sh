@@ -52,7 +52,6 @@ chown -R root:cld-gb-sct "$release_path"
 chmod -R g+rX,o-rwx "$release_path"
 sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-assurance.service.template" > "/etc/systemd/system/$unit"
 systemctl daemon-reload
-systemctl reset-failed "$unit"
 systemctl start "$unit"
 systemctl is-active --quiet "$unit"
 printf 'DEC-0114 assurance report passed: %s\n' "$release_id"
