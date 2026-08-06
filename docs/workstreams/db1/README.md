@@ -41,3 +41,7 @@ The next task is an independently designed research portal that makes the
 existing mirror useful: clear source descriptions, raw and parent-backed
 access, formats, downloads, snippets, field guidance, citations and visible
 source limitations. It requires its own proposal and owner approval.
+
+The draft [external research-portal commission](../../planning/GB_SCT_DATABASE_MIRROR_RESEARCH_PORTAL_EXTERNAL_COMMISSION_2026-08-06.md)
+sets out the independent design input sought before that proposal is prepared.
+It authorises no implementation.

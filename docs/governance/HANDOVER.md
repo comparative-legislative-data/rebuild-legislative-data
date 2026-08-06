@@ -84,6 +84,10 @@ No DB2 work is enabled. Any Database mirror portal requires its own approved
 researcher-experience design package and must not be inferred from the current
 backend QA scaffold.
 
+A [draft external research-portal commission](../planning/GB_SCT_DATABASE_MIRROR_RESEARCH_PORTAL_EXTERNAL_COMMISSION_2026-08-06.md)
+has been prepared for owner use. It seeks independent product, research-UX and
+visual-design input only; no portal implementation is authorised.
+
 ## Documentation hygiene
 
 `docs/README.md` is the human entry point. Active documents describe present
