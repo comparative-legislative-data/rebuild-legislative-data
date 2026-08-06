@@ -88,6 +88,15 @@ const client = new Client({ connectionString: process.env.DB1_A3_DATABASE_URL, a
 let runId;
 let totalBodyBytes = 0;
 let deadline;
+let totalTimer;
+const runAbort = new AbortController();
+
+function captureClient(unit) {
+  return new Client({
+    connectionString: process.env.DB1_A3_DATABASE_URL,
+    application_name: `cld-db1-a3-${unit.key}`
+  });
+}
 
 function sourceCondition(error, response) {
   if (error?.name === "AbortError") return ["LOCAL_FAILURE", null, "TIMEOUT", "response exceeded its approved time limit"];
@@ -120,39 +129,49 @@ async function seedAndCheckRegistry() {
   if (check.rows[0].forms !== 64 || check.rows[0].units !== 117) throw new Error("database registry does not match reviewed A3 scope");
 }
 
-async function recordCondition(unit, kind, status, code, detail) {
-  await client.query(
+async function recordCondition(database, unit, kind, status, code, detail) {
+  await database.query(
     `insert into db1.response_verification (response_unit_key, capture_run_id, result_kind, upstream_status, condition_code, detail)
      values ($1, $2, $3, $4, $5, $6)`, [unit.key, runId, kind, status, code, detail]
   );
 }
 
-async function retain(unit, response, body) {
+async function retain(database, unit, response, body) {
   const contentType = response.headers.get("content-type") ?? "application/octet-stream";
-  const text = body.toString("utf8");
-  let json = null;
-  try { json = JSON.parse(text); } catch { /* non-JSON retained as original bytes */ }
-  const existing = await client.query("select source_response_id from db1.source_response where response_unit_key = $1 and body_sha256 = $2", [unit.key, crypto.createHash("sha256").update(body).digest("hex")]);
+  const declaredJson = /(?:^|\s|;)application\/(?:[a-z0-9.+-]*\+)?json(?:\s|;|$)/i.test(contentType);
+  const existing = await database.query("select source_response_id from db1.source_response where response_unit_key = $1 and body_sha256 = $2", [unit.key, crypto.createHash("sha256").update(body).digest("hex")]);
   if (existing.rowCount) {
-    await client.query(
+    await database.query(
       `insert into db1.response_verification (response_unit_key, capture_run_id, result_kind, source_response_id, upstream_status, detail)
        values ($1, $2, 'UNCHANGED', $3, $4, 'same bytes as previously retained response')`, [unit.key, runId, existing.rows[0].source_response_id, response.status]
     );
     return "UNCHANGED";
   }
-  const saved = await client.query(
-    `insert into db1.source_response (response_unit_key, capture_run_id, request_method, request_locator, response_status, content_type, raw_body, body_byte_length, body_jsonb)
-     values ($1, $2, 'GET', $3, $4, $5, $6::bytea, octet_length($6::bytea), $7::jsonb)
-     returning source_response_id`, [unit.key, runId, unit.locator, response.status, contentType, body, json ? JSON.stringify(json) : null]
-  );
-  if (json) {
-    await client.query(
+  let saved;
+  let hasJson = declaredJson;
+  try {
+    saved = await database.query(
+      `insert into db1.source_response (response_unit_key, capture_run_id, request_method, request_locator, response_status, content_type, raw_body, body_byte_length, body_jsonb)
+       values ($1, $2, 'GET', $3, $4, $5, $6::bytea, octet_length($6::bytea), case when $7 then convert_from($6::bytea, 'UTF8')::jsonb else null end)
+       returning source_response_id`, [unit.key, runId, unit.locator, response.status, contentType, body, hasJson]
+    );
+  } catch (error) {
+    if (error?.code !== "22P02" || !hasJson) throw error;
+    hasJson = false;
+    saved = await database.query(
+      `insert into db1.source_response (response_unit_key, capture_run_id, request_method, request_locator, response_status, content_type, raw_body, body_byte_length, body_jsonb)
+       values ($1, $2, 'GET', $3, $4, $5, $6::bytea, octet_length($6::bytea), null)
+       returning source_response_id`, [unit.key, runId, unit.locator, response.status, contentType, body]
+    );
+  }
+  if (hasJson) {
+    await database.query(
       `insert into db1.schema_observation (source_response_id, shape_json, shape_sha256)
        select source_response_id, db1.json_shape(body_jsonb), encode(digest(db1.json_shape(body_jsonb)::text, 'sha256'), 'hex') from db1.source_response where source_response_id = $1`, [saved.rows[0].source_response_id]
     );
   }
-  const availabilityMessage = typeof json?.Message === "string" && /presently unavailable/i.test(json.Message);
-  await client.query(
+  const availabilityMessage = /"Message"\s*:\s*"[^"\\]*(?:\\.[^"\\]*)*presently unavailable/i.test(body.toString("utf8", 0, Math.min(body.byteLength, 16_384)));
+  await database.query(
     `insert into db1.response_verification (response_unit_key, capture_run_id, result_kind, source_response_id, upstream_status, condition_code, detail)
      values ($1, $2, $3, $4, $5, $6, $7)`, [
       unit.key,
@@ -167,42 +186,68 @@ async function retain(unit, response, body) {
   return availabilityMessage ? "UPSTREAM_AVAILABILITY_MESSAGE" : "NEW";
 }
 
+async function readBody(response) {
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of response.body) {
+    size += chunk.byteLength;
+    if (size > maxBodyBytes || totalBodyBytes + size > maxTotalBytes) {
+      runAbort.abort("A3 approved body-size budget reached");
+      throw new Error("A3 approved body-size budget reached");
+    }
+    chunks.push(chunk);
+  }
+  totalBodyBytes += size;
+  return Buffer.concat(chunks, size);
+}
+
 async function capture(unit) {
   if (Date.now() >= deadline) throw new Error("A3 total runtime limit reached");
+  const database = captureClient(unit);
+  await database.connect();
   const controller = new AbortController();
   const unitLimit = unit.report ? reportTimeoutMs : ordinaryTimeoutMs;
   const remaining = deadline - Date.now();
   const totalDeadlineWins = remaining < unitLimit;
   const timeout = setTimeout(() => controller.abort(), Math.min(unitLimit, remaining));
   try {
-    const response = await fetch(unit.locator, { method: "GET", signal: controller.signal, headers: { accept: "application/json" } });
+    const response = await fetch(unit.locator, { method: "GET", signal: AbortSignal.any([controller.signal, runAbort.signal]), headers: { accept: "application/json" } });
     if (!response.ok) {
       const [kind, status, code, detail] = sourceCondition(null, response);
-      await recordCondition(unit, kind, status, code, detail);
+      await recordCondition(database, unit, kind, status, code, detail);
       return { key: unit.key, result: code };
     }
-    const body = Buffer.from(await response.arrayBuffer());
-    if (body.byteLength > maxBodyBytes || totalBodyBytes + body.byteLength > maxTotalBytes) throw new Error("A3 approved body-size budget reached");
-    totalBodyBytes += body.byteLength;
-    return { key: unit.key, result: await retain(unit, response, body), bytes: body.byteLength };
+    const body = await readBody(response);
+    return { key: unit.key, result: await retain(database, unit, response, body), bytes: body.byteLength };
   } catch (error) {
+    if (runAbort.signal.aborted) throw new Error(String(runAbort.signal.reason ?? "A3 hard stop"));
     if (totalDeadlineWins && error?.name === "AbortError") throw new Error("A3 total runtime limit reached");
     if (String(error.message).includes("A3 approved body-size") || String(error.message).includes("A3 total runtime")) throw error;
     const [kind, status, code, detail] = sourceCondition(error, null);
-    await recordCondition(unit, kind, status, code, detail);
+    await recordCondition(database, unit, kind, status, code, detail);
     return { key: unit.key, result: code };
-  } finally { clearTimeout(timeout); }
+  } finally {
+    clearTimeout(timeout);
+    await database.end();
+  }
 }
 
 async function runPool(queue, concurrency) {
   let cursor = 0;
   const results = [];
+  let hardStop;
   await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
-    while (cursor < queue.length) {
+    while (cursor < queue.length && !hardStop) {
       const index = cursor++;
-      results.push(await capture(queue[index]));
+      try {
+        results.push(await capture(queue[index]));
+      } catch (error) {
+        hardStop = error;
+        runAbort.abort(error.message);
+      }
     }
   }));
+  if (hardStop) throw hardStop;
   return results;
 }
 
@@ -216,7 +261,9 @@ try {
   );
   runId = run.rows[0].capture_run_id;
   deadline = Date.now() + totalTimeoutMs;
+  totalTimer = setTimeout(() => runAbort.abort("A3 total runtime limit reached"), totalTimeoutMs);
   const [ordinary, reports] = await Promise.all([runPool(units.filter((unit) => !unit.report), 6), runPool(units.filter((unit) => unit.report), 2)]);
+  clearTimeout(totalTimer);
   const complete = await client.query("select count(*)::int as count from db1.response_verification where capture_run_id = $1", [runId]);
   if (complete.rows[0].count !== 117) throw new Error(`baseline closed with ${complete.rows[0].count} of 117 results`);
   await client.query("update db1.capture_run set finished_at = now(), result_status = 'PASS' where capture_run_id = $1", [runId]);
@@ -225,4 +272,7 @@ try {
   if (runId) await client.query("update db1.capture_run set finished_at = now(), result_status = 'FAIL' where capture_run_id = $1 and result_status = 'RUNNING'", [runId]);
   console.error(error);
   process.exitCode = 1;
-} finally { await client.end(); }
+} finally {
+  if (totalTimer) clearTimeout(totalTimer);
+  await client.end();
+}
