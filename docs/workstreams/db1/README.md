@@ -24,12 +24,13 @@ It recommends a bounded, response-level mirror: original response bytes and
 queryable JSON live together in PostgreSQL, controlled by an owner-approved
 response-unit matrix.
 
-The detail-route evidence phase is closed. The remaining owner review is the
-initial response-unit model and the source-free foundation package:
+The detail-route evidence phase exposed seven unresolved access forms. The
+previous initial model was withdrawn rather than treated as a partial mirror.
+The only current owner review is a focused seven-route resolution action:
 
 - the [response-unit matrix](../../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md), which makes the 117 bounded fixed/annual requests and 31 unresolved detail/filter forms visible; and
 - the [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md), which proposes a source-free PostgreSQL proof only.
-- the [initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md), which maps all 64 forms to a raw source response, a parent-backed source-faithful access form, or a visible gap; and
+- the [seven-route resolution proposal](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md), which resolves all seven forms as either usable source routes or explicit upstream limitations; and
 - the [Cohort B result](../../data/gb-sct/GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md), which records the final ten route checks without retaining source data.
 
 ## Boundaries
@@ -69,8 +70,10 @@ useful, not to expose ingestion machinery.
   — proposed, finite DB1 capture control; no source authority.
 - [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
   — proposed PostgreSQL foundation and synthetic proof; no source authority.
-- [Initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
-  — proposed initial capture/access boundary for all 64 forms; owner review required.
+- [Seven-route resolution proposal](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md)
+  — proposed final route-resolution action; owner review required.
+- [Withdrawn initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+  — factual record of 24 parent-backed forms; not eligible for approval.
 - [Cohort B result](../../data/gb-sct/GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md)
   — completed final source-form evidence check; no retained source data.
 - [External-review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)

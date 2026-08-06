@@ -20,7 +20,8 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
 - [Proposed Cohort B and final response-unit decision](GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md)
 - [Cohort B no-retention audit result](GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md)
-- [Proposed initial DB1 response-unit model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+- [Withdrawn incomplete initial DB1 model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
+- [Proposed seven-route resolution action](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md)
 
 The endpoint inventory defines potential programme scope. It is not a
 Database-mirror capture instruction. DEC-0115 now approves a PostgreSQL-first

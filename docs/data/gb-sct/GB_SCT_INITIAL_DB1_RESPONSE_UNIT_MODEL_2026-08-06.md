@@ -1,8 +1,14 @@
 # GB-SCT Cohort B result and initial DB1 response-unit model
 
-**Status:** proposed initial DB1 model; owner review required before any DB1 work  
+**Status:** withdrawn as incomplete — not a DB1 approval
 **Date:** 6 August 2026  
 **Evidence:** DEC-0117, DEC-0118 and Cohort B under DEC-0119
+
+> **Withdrawal notice:** This document prematurely treated seven unresolved
+> access forms as compatible with an initial DB1 model. The owner correctly
+> rejected that position. It remains a factual record of the 24 parent-backed
+> forms, but must not be used to approve DB1. See the [seven-route resolution
+> proposal](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md).
 
 ## The plain-English position
 
@@ -104,14 +110,7 @@ process and not a semantic transformation.
 - No DB2 variables, codebooks, or analytical claims.
 - No claim that all 64 API forms have identical upstream URL-by-URL behaviour.
 
-## Next decision
+## Superseded next decision
 
-Approve or amend this initial response-unit model and the already-proposed
-source-free A1 PostgreSQL foundation package.
-
-If approved, the next work is very limited: build the isolated PostgreSQL
-schema with synthetic data only, then prove directly in SQL that a response
-body and its JSON representation are both in PostgreSQL. There will still be
-no Scottish Parliament data ingest until the owner approves the later bounded
-ingest package.
-
+This document is not eligible for approval. The next decision is the
+[seven-route resolution proposal](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md).

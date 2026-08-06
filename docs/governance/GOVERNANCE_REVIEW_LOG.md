@@ -3428,3 +3428,23 @@ It preserves the 64-form scope and permits no claim that every upstream detail
 URL has itself been captured.
 
 **Next review:** owner review of DEC-0120: the initial response-unit model and source-free A1 foundation package. No DB1 source capture, PostgreSQL, scheduler, implementation or portal work is authorised.
+
+---
+
+# GOV-REV-2026-08-06M — Initial DB1 model withdrawn; seven-route resolution prepared
+
+**Outcome:** `CHANGES REQUIRED — NO DB1 FOUNDATION AUTHORISED`
+
+The owner correctly identified that a model with seven unresolved API forms is
+not a complete Database mirror design. The proposed initial response-unit model
+and its foundation recommendation are withdrawn. The 24 sampled parent-backed
+forms remain useful evidence, but they cannot make the remaining seven forms
+disappear.
+
+The replacement proposal has one purpose: resolve the seven forms as either a
+usable source route or an explicit upstream limitation, without an invented
+ID crawl. It is limited to at most 12 no-retention public requests and does
+not authorise database, VPS, source retention, implementation, scheduling,
+frontend or portal work.
+
+**Next review:** owner review and approval/amendment of DEC-0121 only.
