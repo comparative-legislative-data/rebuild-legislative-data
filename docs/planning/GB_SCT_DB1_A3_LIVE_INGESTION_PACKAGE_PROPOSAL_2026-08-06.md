@@ -33,11 +33,11 @@ as upstream limitations. Neither group creates an extra source request.
 | Source units | Exactly 117 literal URLs: 29 fixed collection routes and 88 literal annual routes. |
 | Permitted host/method | `GET` to `https://data.parliament.scot` only. |
 | Request construction | Read only from the checked-in 117-row registry. No returned ID, page, cursor, year or link may create another request. |
-| Concurrency | Up to six non-report requests and up to two Official Report requests at once. |
+| Concurrency | Up to four non-report requests and one Official Report request at once. This avoids concurrent large-report JSONB writes in the isolated PostgreSQL service. |
 | Retry | None. A source/transport result is recorded once, including 500/503 and the known 2006 Committee availability response if encountered. |
 | Time | 90 seconds per ordinary response, three minutes per Official Report response, and a 90-minute hard limit for the whole run. The operational target is 20–45 minutes. A timeout becomes a visible condition and the run continues unless a hard stop applies. |
 | Size | 256 MiB maximum raw body per response; 8 GiB total received-body budget. A ceiling breach stops the whole run before storing a partial body. |
-| Worker containment | One transient project-only worker, under the `cld-gb-sct` OS identity, with 3 GiB memory and 75% CPU ceilings. No public listener or persistent service unit is created. |
+| Worker containment | One transient project-only worker, under the `cld-gb-sct` OS identity, with a 1.5 GiB memory and 75% CPU ceiling. The isolated DB1 PostgreSQL service has a separate 2 GiB ceiling. No public listener or persistent service unit is created. |
 
 The A2 large-fixture result supports testing the storage path, not a claim
 about real source sizes. These deliberately cautious ceilings make the first

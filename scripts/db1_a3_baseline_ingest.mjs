@@ -262,7 +262,7 @@ try {
   runId = run.rows[0].capture_run_id;
   deadline = Date.now() + totalTimeoutMs;
   totalTimer = setTimeout(() => runAbort.abort("A3 total runtime limit reached"), totalTimeoutMs);
-  const [ordinary, reports] = await Promise.all([runPool(units.filter((unit) => !unit.report), 6), runPool(units.filter((unit) => unit.report), 2)]);
+  const [ordinary, reports] = await Promise.all([runPool(units.filter((unit) => !unit.report), 4), runPool(units.filter((unit) => unit.report), 1)]);
   clearTimeout(totalTimer);
   const complete = await client.query("select count(*)::int as count from db1.response_verification where capture_run_id = $1", [runId]);
   if (complete.rows[0].count !== 117) throw new Error(`baseline closed with ${complete.rows[0].count} of 117 results`);
