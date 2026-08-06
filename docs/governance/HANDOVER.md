@@ -1,6 +1,6 @@
 # Handover: Comparative Legislative Data
 
-**Status:** active programme; live API catalogue operating; Database mirror A2 foundation passed
+**Status:** active programme; live API catalogue operating; Database mirror schema correction proposed
 **Last updated:** 6 August 2026
 
 ## Project in one page
@@ -33,12 +33,19 @@ Parliament API data stored in PostgreSQL as a usable database mirror. It stored
 raw files on the VPS and only manifests in PostgreSQL. That is not a Database
 mirror for this project.
 
-DEC-0122 then approved a strictly source-free A2 proof. The project now has an
-isolated `cld_gb_sct_db1` PostgreSQL database, two new A2 roles, a small
-synthetic-only worker and direct SQL acceptance evidence. It holds synthetic
-test JSON only—not Scottish Parliament data. There is still no live ingest,
-schedule, service, temporary QA interface, portal or DB2 work. The Live API
-catalogue remains separate and operational.
+DEC-0122 then approved a strictly source-free A2 proof. The project has an
+isolated `cld_gb_sct_db1` PostgreSQL database, two A2 roles, a small
+synthetic-only worker and direct SQL acceptance evidence. The first live A3
+approach retained partial Scottish Parliament data in PostgreSQL only, but was
+blocked after real high-volume Official Report bodies made whole-response JSONB
+conversion OOM-kill the isolated DB1 service. No proxy, web, DB2 or other VPS
+service was affected. The partial database must not be treated as a baseline.
+
+The current proposed correction is the
+[lossless raw-response/source-object schema](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
+It keeps exact raw source bytes in PostgreSQL and stores unchanged source
+objects as linked rows, allowing query/download access without one giant JSONB
+document. It requires a source-free stress proof and a new capture decision.
 
 Four substantive independent reviews of the
 [independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
@@ -81,13 +88,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review [DEC-0123's A3 live-ingestion package](../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md).
-It proposes one bounded 117-response baseline, fixed ceilings,
-source-condition handling, direct PostgreSQL acceptance and no schedule. All
-64 forms are accounted for: 33 retained whole responses, 25 parent-backed
-access forms, and six explicit upstream detail-route limitations. No live
-source capture, schedule, portal or DB2 work is authorised until DEC-0123 is
-approved.
+Review proposed [DEC-0124's lossless-object schema](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
+It replaces the blocked whole-response JSONB approach with a source-free
+stress proof. The 117-response boundary and all-64-form model remain intact,
+but no live source capture, schedule, portal or DB2 work is authorised until
+the proof passes and a new ingestion package is approved.
 
 ## Documentation hygiene
 

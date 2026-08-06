@@ -1,6 +1,6 @@
 # GB-SCT DB1 A3 live-ingestion package
 
-**Status:** approved — execution in progress; no schedule, portal or DB2 authority
+**Status:** blocked — do not reuse for source access; superseded for future implementation by proposed DEC-0124
 **Date:** 6 August 2026  
 **Depends on:** DEC-0122 and the passed [A2 foundation proof](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
 
@@ -15,7 +15,7 @@ second attempt at a failed unit beyond the rules below.
 
 ## 2. Plain-English outcome
 
-At the end of the run, every one of the 117 named source responses will have a
+At the end of the run, every one of the 117 named source responses would have had a
 first-class database result:
 
 - its exact returned bytes and matching JSON, held in PostgreSQL, when the
@@ -57,11 +57,13 @@ Before the run, the worker and a single database migration will do only this:
 4. create no route, download, UI, scheduler, filesystem payload store,
    generic record table or DB2 field.
 
-For each response, the worker stores the unchanged body bytes, byte length,
-SHA-256, content type, exact requested URL, times and JSONB where valid in the
-same PostgreSQL row. A 2xx JSON availability message is retained as source
-content. A non-2xx, timeout or other failure becomes a condition event and
-does not erase an earlier good response.
+For each response, the worker attempted to store unchanged body bytes, byte
+length, SHA-256, content type, exact requested URL, times and JSONB where
+valid in the same PostgreSQL row. Real high-volume Official Report responses
+showed that this whole-response JSONB design is unsafe on the shared VPS. A
+2xx JSON availability message remains source content. A non-2xx, timeout or
+other failure becomes a condition event and does not erase an earlier good
+response. Future work uses the separately proposed lossless-object design.
 
 ## 5. Execution sequence
 

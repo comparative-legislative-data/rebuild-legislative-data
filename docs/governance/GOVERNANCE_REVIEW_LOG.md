@@ -3492,3 +3492,27 @@ before the final passing run. See the [A2 result](../data/gb-sct/GB_SCT_DB1_A2_F
 **Next review:** owner review of a separate A3 live-ingestion package. Until
 then, live source access, response capture, scheduling, portal work and DB2
 remain unauthorised.
+
+---
+
+# GOV-REV-2026-08-06P — DB1 A3 resource failure and schema correction
+
+**Outcome:** `CHANGES REQUIRED — NO FURTHER SOURCE ACTION UNDER DEC-0123`
+
+DEC-0123 made two contained attempts at the unchanged 117-unit source matrix.
+Both retained partial source responses in PostgreSQL only; no payload file,
+proxy, portal, DB2 output, or non-DB1 service change occurred. Real Committee
+Official Report bodies measured 45–110 MiB. Materialising each full response as
+one JSONB document OOM-killed the isolated DB1 PostgreSQL cgroup twice. The
+proxy, web application and other PostgreSQL services remained active.
+
+The result proves a local storage-design/resource failure, not an upstream
+source failure or an absence of Scottish Parliament data. DEC-0123 is blocked;
+the partial database is not a baseline or a completeness claim. Proposed
+DEC-0124 replaces whole-response JSONB with exact PostgreSQL raw bytes plus a
+lossless per-source-object JSONB projection. It requires a 150 MiB source-free
+stress proof and a fresh owner-approved ingestion package before any further
+Scottish Parliament request.
+
+**Next review:** owner review of DEC-0124. No source request, database
+implementation, scheduler, portal or DB2 activity is authorised by this review.

@@ -16,7 +16,8 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Proposed DB1 response-unit matrix](GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
 - [DB1 A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
 - [DB1 A2 source-free foundation proof](GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
-- [Proposed DB1 A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
+- [Blocked DB1 A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
+- [Proposed lossless-object schema and access design](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md)
 - [Detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
@@ -28,9 +29,11 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Approved final initial DB1 response-unit model for A2](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
 
 The endpoint inventory defines potential programme scope. It is not a
-Database-mirror capture instruction. The A2 synthetic proof establishes only
-the PostgreSQL storage contract; DB1 source work remains blocked until a
-separate live-ingestion package is owner-approved.
+Database-mirror capture instruction. The A2 proof established a storage
+foundation, but the A3 whole-response JSONB design is blocked after a contained
+high-volume resource failure. DB1 source work remains blocked until DEC-0124's
+source-free lossless-object proof passes and a new live-ingestion package is
+owner-approved.
 
 ## Governance templates and policy
 
