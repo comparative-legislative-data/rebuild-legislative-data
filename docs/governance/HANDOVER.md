@@ -37,9 +37,13 @@ There is currently no DB1 database, database role, retained source data,
 schedule, service, temporary QA interface, implementation code, or active DB1
 delivery record. The Live API catalogue remains separate and operational.
 
-Before any replacement is designed, an external reviewer must assess the
-[independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md), including the two failed approaches and a Postgres-first replacement
-approach. Only then may the owner consider a new DB1 proposal.
+Four substantive independent reviews of the
+[independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
+have been assessed. Their shared safeguards and any rejected recommendations
+are recorded in the proposed
+[Postgres-first rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
+It remains planning only: the owner must approve, amend or reject it before a
+new DB1 implementation package can be prepared.
 
 ### DB2
 
@@ -68,9 +72,10 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Obtain and consider the independent external DB1 review. No DB1 rebuild,
-source capture, database mutation, schedule, ingest-test scaffold or portal
-work is authorised until the owner approves a replacement design.
+Review the proposed [Postgres-first DB1 rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
+No DB1 rebuild, source capture, database mutation, schedule, ingest-test
+scaffold or portal work is authorised until the owner approves a replacement
+design and its response-unit matrix.
 
 ## Documentation hygiene
 

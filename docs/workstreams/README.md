@@ -7,7 +7,7 @@ claims, evidence and approval gates.
 | Workstream | Research purpose | Current position |
 | --- | --- | ---|
 | [Live API catalogue](proxy/README.md) | Private, no-retention access to fixed Scottish Parliament API routes and direct source links. | MVP operating; later review required. |
-| Database mirror | A future PostgreSQL-based mirror of approved Scottish Parliament API responses. | Reset. There is no DB1 database, data store, schedule, service, temporary QA interface, or active implementation record. An [independent external review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md) must be completed before a replacement design is proposed. |
+| [Database mirror](db1/README.md) | A future PostgreSQL-based mirror of approved Scottish Parliament API responses. | No DB1 implementation is active. Four independent reviews have been synthesised into a [proposed Postgres-first rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md), pending owner approval. |
 | [DB2](db2/README.md) | Explicit Tier 1/2 canonical variables, codebooks and reproducible research releases. | Not started. |
 
 Read the [project design](../governance/PROJECT_DESIGN.md) and current
