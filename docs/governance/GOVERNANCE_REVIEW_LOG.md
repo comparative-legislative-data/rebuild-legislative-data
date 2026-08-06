@@ -3347,3 +3347,19 @@ coverage or a DB1 capture rule. It corrects the earlier unsupported assumption
 that all 31 detail/filter forms are necessarily wholly additional data. The
 next potential action is a separately approved stratified endpoint-coverage
 audit before a final response-unit or source-ingestion decision.
+
+---
+
+# GOV-REV-2026-08-06I — Endpoint-coverage audit prepared
+
+**Outcome:** `OWNER REVIEW REQUIRED — COHORT A ONLY`
+
+DEC-0118 prepared a precise no-retention endpoint-coverage proposal. Cohort A
+is capped at 43 serial public requests: 19 ordinary collection/detail pairs
+and three MQA filter forms. It records only field/structure comparison and
+source-access observations. High-volume MQA and uncertain official-report/vote
+detail contracts are explicitly outside this cohort.
+
+No source action has occurred under DEC-0118. Owner approval of the exact
+Cohort A boundary is required before any request; DB1 capture, database,
+implementation, scheduling and frontend work remain blocked.

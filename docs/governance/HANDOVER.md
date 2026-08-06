@@ -73,13 +73,12 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the proposed [response-unit matrix](../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
-and [A1 foundation package](../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md).
-The matrix makes 117 bounded fixed/annual requests visible, but also records
-31 detail/filter forms with no approved finite identifier universe. No DB1
-rebuild, source capture, database mutation, schedule, ingest-test scaffold or
-portal work is authorised until the owner separately approves a package and
-resolves the response-unit policy.
+Review the proposed [endpoint-coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md).
+The limited sample suggests some detail/filter routes may be alternative source
+presentations rather than wholly additional data. The proposed Cohort A audit
+will test that across the ordinary families before the response-unit matrix is
+finalised. No DB1 rebuild, source capture, database mutation, schedule,
+ingest-test scaffold or portal work is authorised.
 
 ## Documentation hygiene
 
