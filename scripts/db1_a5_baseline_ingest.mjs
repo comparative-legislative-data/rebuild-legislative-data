@@ -52,7 +52,7 @@ async function readBody(response, state) {
   state.transferredBytes += size;
   return output.subarray(0, size);
 }
-function sourceMessage(raw) { return /"Message"\s*:\s*"[^"\\]*(?:\\.[^"\\]*)*(?:presently unavailable|unavailable)/i.test(raw.toString("utf8", 0, Math.min(raw.length, 65_536))); }
+function sourceMessage(raw) { return /presently\s+unavailable|"Message"\s*:/i.test(raw.toString("utf8", 0, Math.min(raw.length, 65_536))); }
 async function project(client, sourceResponseId, raw, contentType) {
   const firstByte = raw[whitespace(raw, 0)];
   // The Parliament supplies several JSON arrays as application/octet-stream.

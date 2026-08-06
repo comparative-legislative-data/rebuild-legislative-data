@@ -17,6 +17,11 @@ function insert(rows) {
   return { text: `insert into db1.response_object (source_response_id,source_position,source_object_sha256,object_jsonb) values ${placeholders.join(",")}`, values };
 }
 async function projectArray(client, sourceResponseId, length) {
+  const preview = (await client.query("select substring(raw_body from 1 for $2) as bytes from db1.source_response where source_response_id=$1", [sourceResponseId, Math.min(chunkBytes, 65_536)])).rows[0].bytes;
+  if (/presently\s+unavailable/i.test(preview.toString("utf8"))) {
+    await client.query("insert into db1.projection_run (source_response_id,parser_revision,observed_shape,finished_at,result_status,detail) values ($1,$2,'SOURCE_MESSAGE',now(),'PASS',$3)", [sourceResponseId, revision, "upstream availability message retained exactly"]);
+    return 0;
+  }
   const projection = await client.query("insert into db1.projection_run (source_response_id,parser_revision,observed_shape) values ($1,$2,'ARRAY_OF_OBJECTS') returning projection_run_id", [sourceResponseId, revision]);
   const projectionId = projection.rows[0].projection_run_id;
   const state = { begun: false, ended: false, between: true, depth: 0, inString: false, escaped: false, pieces: [], objectBytes: 0, position: 0, rows: [], rowBytes: 0 };
