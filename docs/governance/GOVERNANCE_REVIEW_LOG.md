@@ -3248,3 +3248,22 @@ human-readable result; PostgreSQL retains the machine-readable report.
 
 **Next review:** owner R4 review of whether the backend’s declared capability
 boundary is accepted for a separately proposed researcher portal.
+
+---
+
+# GOV-REV-2026-08-06D — DB1 targeted MQA availability diagnostic
+
+**Outcome:** `PASS — TWO TEMPORARY UPSTREAM CONDITIONS CLEARED; R4 REVIEW REMAINS REQUIRED`
+
+At the owner’s direction, exactly three previously observed MQA availability
+conditions were checked once: events, questions and supports. Questions and
+supports returned normal HTTP 200 source responses; events remained HTTP 503.
+The three retained raw files passed their size and SHA-256 checks. The full
+117-unit reconciliation remains the governing whole-matrix audit; the
+machine-readable assurance report now separately records that fixed result and
+the latest state of every matrix unit. Current conditions are the known 2006
+Committee Official Reports upstream message and the MQA events HTTP 503.
+
+**Next review:** owner R4 review of the backend boundary; ordinary daily and
+weekly reconciliation will continue to check the two conditions without any
+special-case source crawl.

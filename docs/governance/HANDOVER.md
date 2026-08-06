@@ -35,8 +35,11 @@ rules are recorded in the [close-down and rebuild record](../workstreams/db1/CLO
 The approved rebuild has now completed R1–R3. It made one 117-unit baseline
 and one immediate 117-unit reconciliation through the isolated Database mirror
 data pipe; the resulting [assurance report](../workstreams/db1/ASSURANCE_REPORT_2026-08-06.md)
-records 113 unchanged source responses, four current upstream availability
-conditions and zero raw-file integrity failures. PostgreSQL retains manifest,
+records the fixed full-reconciliation result (113 unchanged responses and four
+then-current upstream availability conditions) and the current 117-unit state
+(113 unchanged, two normal responses restored after temporary upstream errors,
+and two remaining upstream availability conditions), with zero raw-file
+integrity failures. PostgreSQL retains manifest,
 checksum, source-condition and reconciliation evidence; raw bodies are stored
 unchanged in the project raw archive. A daily 33-unit and weekly 84-unit
 schedule is active. The backend has no DB1 API, user access, temporary QA UI or

@@ -313,7 +313,7 @@ async function buildAssuranceReport(pool) {
     }
   }
   const report = {
-    report_version: 1,
+    report_version: 2,
     generated_at: new Date().toISOString(),
     scope: { route_forms: 64, response_units: 117, daily_units: 33, weekly_units: 84 },
     baseline: baseline.rows[0],

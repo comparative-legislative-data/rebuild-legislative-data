@@ -23,15 +23,19 @@ the same 117 requests and compared their raw-response digests to the baseline.
 | --- | --- |
 | R1 source-free PostgreSQL/raw-archive proof | Pass: stored file re-hashed to its recorded digest; zero capture observations existed before baseline. |
 | Baseline | 117/117 outcomes recorded between 08:53 and 09:00 UTC: 115 retained responses and 2 upstream availability responses. |
-| Immediate reconciliation | 117/117 outcomes recorded between 09:07 and 09:14 UTC: 113 `UNCHANGED`, 4 `UPSTREAM_AVAILABILITY_MESSAGE`, 0 `CHANGED`, 0 `FAILED_TO_RETRIEVE`. |
+| Immediate full reconciliation | 117/117 outcomes recorded between 09:07 and 09:14 UTC: 113 `UNCHANGED`, 4 `UPSTREAM_AVAILABILITY_MESSAGE`, 0 `CHANGED`, 0 `FAILED_TO_RETRIEVE`. This remains the fixed full-matrix comparison. |
+| Follow-up MQA diagnostic | Three isolated, already-approved MQA requests recorded between 12:19 and 12:21 UTC: events remained HTTP 503; questions and supports returned HTTP 200 source responses. All three retained raw files passed the size and SHA-256 check. |
+| Current 117-unit state | 113 `UNCHANGED`, 2 `CHANGED`, 2 `UPSTREAM_AVAILABILITY_MESSAGE`, 0 failed. The two `CHANGED` labels mean that a previous upstream error response was replaced by a normal source response; they are not a claim that the underlying parliamentary records changed. |
 | Capture coverage | 117 expected units; 117 observations; 0 unrepresented units. |
 | Raw integrity | 117 current manifest references checked; 0 missing, size-mismatched or SHA-256-mismatched files. |
-| Archive size after reconciliation | 6,249,929,281 bytes. |
+| Archive size after the full reconciliation (before the later diagnostic) | 6,249,929,281 bytes. |
 | Existing services | The project API and web services remained active throughout. |
 
 The machine-readable assurance record is retained in PostgreSQL table
-`db1_assurance_report`; it records the run identifiers, status counts, raw
-integrity result and source conditions used for this report.
+`db1_assurance_report`; version 2 records the fixed full reconciliation, any
+later targeted diagnostic, the latest state for every matrix unit, raw
+integrity and the remaining source conditions. This prevents a bounded
+diagnostic from being mistaken for the full 117-unit audit.
 
 ## Access boundary
 
@@ -45,19 +49,22 @@ backend capability is raw-response retention, provenance and reconciliation.
 
 ## Current upstream conditions
 
-These are source states observed during the immediate reconciliation, not CLD
-errors and not evidence that records never existed.
+These are the current source states after the full reconciliation and the
+follow-up three-request MQA diagnostic. They are not CLD errors and do not
+mean that records never existed.
 
 | Matrix unit | Source state at check |
 | --- | --- |
 | Committee Official Reports, 2006 | HTTP 200 body matched the Scottish Parliament’s “presently unavailable” message. |
 | MQA events collection | HTTP 503. |
-| MQA questions collection | HTTP 500. |
-| MQA supports collection | HTTP 503. |
 
-The 2006 committee response is scheduled weekly. The three MQA collection
-responses are scheduled daily. Each future check retains the returned source
-bytes and records whether the condition continues, changes or clears.
+The later diagnostic also confirmed that the MQA questions and supports
+collections were again returning normal HTTP 200 source responses. They are
+therefore not current availability conditions.
+
+The 2006 committee response is scheduled weekly. The MQA collections are
+scheduled daily. Each future check retains the returned source bytes and
+records whether a condition continues, changes or clears.
 
 ## Routine operation
 
