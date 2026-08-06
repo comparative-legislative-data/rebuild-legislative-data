@@ -3218,3 +3218,11 @@ the owner approves the required matrix. The Live API catalogue and private
 authentication boundary remain separately operational.
 
 ---
+
+# GOV-REV-2026-08-06B — DB1 response-unit rebuild proposal
+
+**Outcome:** `OWNER REVIEW REQUIRED — PLANNING COMPLETE; DB1 REMAINS CLOSED`
+
+The [Database mirror rebuild proposal](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md) turns the 64-form long-term source inventory into a bounded initial capture design: 29 fixed collection responses plus 88 named annual responses, for 117 literal source requests. The remaining 31 parameterised/detail forms are Database-mirror access methods over those retained responses, not an upstream detail crawl or a hidden omission.
+
+The proposal preserves exact-byte retention, manifest and checksum evidence, daily/weekly reconciliation, and a first-class upstream-availability state, including the 2006 Committee Official Reports condition. It contains no source contact, database mutation, schedule, code, temporary QA UI, portal or deployment authority. Owner approval is required before an R1–R3 implementation work package may be prepared.

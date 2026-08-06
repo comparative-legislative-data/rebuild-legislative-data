@@ -3,7 +3,7 @@
 **Status:** Active register
 
 **Version:** 0.1.0
-**Last updated:** 5 August 2026
+**Last updated:** 6 August 2026
 
 This register makes the current project baseline and open owner decisions
 visible. `RECORDED_BASELINE` documents an existing position from the design or
@@ -86,6 +86,7 @@ approved action.
 | DEC-0072 | Expand the selected GB-SCT inventory to authenticated private raw no-retention proxy access. | `APPROVED — EXECUTED, MVP CLOSED` | Owner direction and closure (3 August 2026); [`completed scope, deployment, and interaction record`](../archive/workstreams/proxy/mvp/GB_SCT_FAST_TRACK_PRIVATE_RAW_PROXY_EXPANSION_DEC0072.md); DEC-0045 and DEC-0057. | The owner accepted the proxy MVP after end-to-end private-beta testing. The source-style catalogue, fixed examples/year links, relay, and direct-source option are deployed at commit `6a03166`. A later review is required before any expansion or public-release change. DB1, DB2, capture, research claims, and shared-host changes remain out of scope. |
 
 | DEC-0113 | Close the previous DB1 implementation and require a response-unit rebuild proposal. | `APPROVED — EXECUTED CLOSEDOWN` | Owner direction (6 August 2026); [close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md); DEC-0042, DEC-0045. | The prior DB1 database, raw store, schedules, API routes, temporary QA interface, implementation scripts and active DB1 delivery records were withdrawn because the implementation inferred large detail-request queues from collection responses. Git preserves the detailed history; the active record sets the response-unit, request-bound, exact-byte, reconciliation and backend-before-portal rules for a clean restart. No new DB1 capture, schedule, database, UI or deployment is authorised. |
+| DEC-0114 | Approve the clean Database mirror response-unit rebuild design. | `APPROVED — R1–R3 AUTHORISED` | Owner approval (6 August 2026); [Database mirror rebuild plan](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md); DEC-0006, DEC-0007, DEC-0008, DEC-0113. | The approved baseline is 117 literal source-response requests: 29 fixed collections and 88 named annual responses. The remaining 31 parameterised/detail forms are Database-mirror access methods over those retained responses, not a reason for an upstream detail crawl or a hidden scope omission. R1–R3 may implement the generic foundation, baseline, reconciliation and assurance report only within the stated matrix, capacity and isolation boundaries. |
 
 ## Record updates
 

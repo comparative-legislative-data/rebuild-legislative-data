@@ -19,7 +19,7 @@ obtained, from where, when, how it was handled, and what has not been shown.
 | Layer | Purpose | Current state |
 | --- | --- | --- |
 | Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | Private MVP operating. |
-| Database mirror | Retain dated, source-preserving source responses with demonstrable capture and reconciliation evidence. | Withdrawn and awaiting a clean rebuild proposal. |
+| Database mirror | Retain dated, source-preserving source responses with demonstrable capture and reconciliation evidence. | Clean rebuild proposal awaiting owner review; no data or portal is active. |
 | DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | Not started. |
 
 The layers must never be conflated: a live proxy response is not a retained

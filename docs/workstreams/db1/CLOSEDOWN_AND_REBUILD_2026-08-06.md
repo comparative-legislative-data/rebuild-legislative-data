@@ -93,3 +93,7 @@ response-unit matrix for every intended initial capture, with:
 
 Only after owner approval of that matrix may a clean DB1 foundation be
 implemented.
+
+The required proposal is now available as the
+[Database mirror rebuild proposal](REBUILD_PLAN_PROPOSAL_DEC0114.md). It is
+planning only and awaits owner review.

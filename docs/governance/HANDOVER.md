@@ -33,9 +33,12 @@ code and active delivery documents have been removed. The reason and rebuild
 rules are recorded in the [close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md).
 
 There is currently no Database mirror data, service, schedule, user access or
-research portal. The next step is only a concise, owner-reviewed
-response-unit capture proposal. No new DB1 database, capture, schedule,
-interface or deployment is authorised until that proposal is approved.
+research portal. The [rebuild proposal](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md)
+now defines 117 bounded source-response requests—29 fixed responses and 88
+annual responses—and Database-mirror access methods for the remaining 31
+parameterised/detail forms. No new DB1 database, capture, schedule, interface or deployment is
+authorised until the owner approves the proposal and a later implementation
+package.
 
 ### DB2
 
@@ -64,10 +67,10 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review a new Database mirror **response-unit capture matrix**. It must specify
-each exact source response to retain, explain why it is a response unit rather
-than a derived record crawl, state request volume and cadence, and define how
-changed or unavailable source states will be recorded.
+Review the proposed Database mirror **response-unit capture matrix** in
+[DEC-0114](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md). It specifies
+each fixed source response, a 117-request bound, reconciliation cadence and
+the treatment of changed or unavailable source states.
 
 ## Documentation hygiene
 
