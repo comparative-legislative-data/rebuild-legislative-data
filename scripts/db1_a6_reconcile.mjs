@@ -24,8 +24,8 @@ function option(name) {
 }
 
 const requestedCadence = option("--cadence") ?? "source-free";
-if (!["daily", "weekly", "all", "source-free", "hold"].includes(requestedCadence)) {
-  throw new Error("--cadence must be daily, weekly, all, source-free or hold");
+if (!["daily", "weekly", "all", "source-free", "hold", "synthetic-failure"].includes(requestedCadence)) {
+  throw new Error("--cadence must be daily, weekly, all, source-free, hold or synthetic-failure");
 }
 const holdLockMs = Number(option("--hold-lock-ms") ?? 0);
 if (!Number.isSafeInteger(holdLockMs) || holdLockMs < 0 || holdLockMs > 60_000) {
@@ -252,7 +252,7 @@ function limits(cadence) {
 async function createRun(client, { registryHash, dueHash, dueUnits, cadence, lockResult, status = "RUNNING", detail = {} }) {
   const config = limits(cadence);
   const completed = status !== "RUNNING";
-  const storedCadence = cadence === "hold" ? "SOURCE_FREE" : cadence.toUpperCase().replace("-", "_");
+  const storedCadence = cadence === "hold" || cadence === "synthetic-failure" ? "SOURCE_FREE" : cadence.toUpperCase().replace("-", "_");
   const capture = await client.query(`insert into db1.capture_run
     (run_kind,worker_revision,deployed_package_revision,configuration_sha256,declared_limits,finished_at,result_status,summary_jsonb)
     values ('RECONCILIATION',$1,$2,$3,$4::jsonb,case when $5 then now() else null end,$6,$7::jsonb)
@@ -297,6 +297,7 @@ async function finishRun(client, runId, state, status, stopReason = null) {
 
 function errorCode(error) {
   const text = String(error?.message ?? error);
+  if (text.includes("SYNTHETIC_LOCAL_FAILURE")) return "SYNTHETIC_LOCAL_FAILURE";
   if (text.includes("BODY_LIMIT")) return "BODY_LIMIT";
   if (text.includes("RUN_LIMIT")) return "RUN_LIMIT";
   if (error?.name === "TimeoutError") return "TIMEOUT";
@@ -317,9 +318,13 @@ try {
     throw new Error("approved 64-form / 117-unit registry check failed");
   }
   const registryHash = sha256(JSON.stringify(registry.rows));
+  const synthetic = requestedCadence === "synthetic-failure" ? await client.query(`select response_unit_key,request_method,request_locator,later_cadence
+    from db1.response_unit where response_unit_key='__a6_assurance_synthetic__.drift' and is_synthetic`) : null;
+  if (synthetic && synthetic.rowCount !== 1) throw new Error("synthetic local-failure test unit is missing");
   const due = requestedCadence === "daily" ? registry.rows.filter((unit) => unit.later_cadence === "DAILY")
     : requestedCadence === "weekly" ? registry.rows.filter((unit) => unit.later_cadence === "WEEKLY")
-      : requestedCadence === "all" ? registry.rows : [];
+      : requestedCadence === "all" ? registry.rows
+        : requestedCadence === "synthetic-failure" ? synthetic.rows : [];
   state.dueUnits = due.length;
   const dueHash = sha256(JSON.stringify(due));
   const lock = await client.query("select pg_try_advisory_lock($1) as acquired", [lockKey]);
@@ -349,6 +354,7 @@ try {
         state.attempted += 1;
         const startedAt = new Date();
         try {
+          if (requestedCadence === "synthetic-failure") throw new Error("SYNTHETIC_LOCAL_FAILURE");
           const response = await fetch(unit.request_locator, {
             method: unit.request_method,
             headers: { accept: "application/json" },

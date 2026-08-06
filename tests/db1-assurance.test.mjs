@@ -33,3 +33,7 @@ test("DB1 assurance exposes raw structural drift without assigning data meaning"
     changed: true
   });
 });
+
+test("DB1 assurance test fixtures are explicitly non-source data", () => {
+  assert.equal(sourceAvailabilityMessage(Buffer.from('{"synthetic":true}', "utf8")), false);
+});
