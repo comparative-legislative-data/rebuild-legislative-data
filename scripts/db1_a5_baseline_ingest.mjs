@@ -54,18 +54,25 @@ async function readBody(response, state) {
 }
 function sourceMessage(raw) { return /"Message"\s*:\s*"[^"\\]*(?:\\.[^"\\]*)*(?:presently unavailable|unavailable)/i.test(raw.toString("utf8", 0, Math.min(raw.length, 65_536))); }
 async function project(client, sourceResponseId, raw, contentType) {
-  const projection = await client.query("insert into db1.projection_run (source_response_id,parser_revision,observed_shape) values ($1,$2,$3) returning projection_run_id", [sourceResponseId, workerRevision, !isJson(contentType) ? "NON_JSON" : "MALFORMED_JSON"]);
+  const firstByte = raw[whitespace(raw, 0)];
+  // The Parliament supplies several JSON arrays as application/octet-stream.
+  // The retained bytes, not only the descriptive header, determine whether a
+  // safe JSON projection is attempted.
+  const jsonCandidate = isJson(contentType) || firstByte === 0x5b || firstByte === 0x7b;
+  const projection = await client.query("insert into db1.projection_run (source_response_id,parser_revision,observed_shape) values ($1,$2,$3) returning projection_run_id", [sourceResponseId, workerRevision, jsonCandidate ? "MALFORMED_JSON" : "NON_JSON"]);
   const projectionId = projection.rows[0].projection_run_id;
-  let shape = !isJson(contentType) ? "NON_JSON" : "MALFORMED_JSON"; let detail = null; let count = 0;
-  if (isJson(contentType)) {
+  let shape = jsonCandidate ? "MALFORMED_JSON" : "NON_JSON"; let detail = null; let count = 0;
+  if (jsonCandidate) {
     const first = whitespace(raw, 0);
     try {
       if (raw[first] === 0x5b) {
-        shape = "ARRAY_OF_OBJECTS"; const slices = [...topLevelObjects(raw)];
-        if (slices.some((slice) => slice.raw.length > maxObjectBytes)) { shape = "OBJECT_LIMIT"; detail = `at least one source object exceeds ${maxObjectBytes} bytes`; }
+        shape = "ARRAY_OF_OBJECTS";
+        let exceedsObjectLimit = false;
+        for (const slice of topLevelObjects(raw)) { if (slice.raw.length > maxObjectBytes) { exceedsObjectLimit = true; break; } }
+        if (exceedsObjectLimit) { shape = "OBJECT_LIMIT"; detail = `at least one source object exceeds ${maxObjectBytes} bytes`; }
         else {
           let pending = [];
-          for (const slice of slices) { pending.push({ responseId: sourceResponseId, position: slice.position, sha: sha256(slice.raw), json: slice.raw.toString("utf8") }); count += 1; if (pending.length === batchSize) { await client.query(objectInsert(pending)); pending = []; } }
+          for (const slice of topLevelObjects(raw)) { pending.push({ responseId: sourceResponseId, position: slice.position, sha: sha256(slice.raw), json: slice.raw.toString("utf8") }); count += 1; if (pending.length === batchSize) { await client.query(objectInsert(pending)); pending = []; } }
           if (pending.length) await client.query(objectInsert(pending));
         }
       } else if (raw[first] === 0x7b) {
