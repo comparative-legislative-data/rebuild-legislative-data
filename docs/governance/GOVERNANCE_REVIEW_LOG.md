@@ -3291,3 +3291,22 @@ guidance.
 No DB1 source request, capture, database mutation, schedule, test scaffold,
 portal implementation or DB2 work may proceed. The next required control is
 the [independent external-review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md), followed by a new owner-approved Postgres-first design.
+
+---
+
+# GOV-REV-2026-08-06F — DB1 Postgres-first rebuild direction approved
+
+**Outcome:** `PASS — DESIGN DIRECTION APPROVED; RESPONSE-UNIT MATRIX NEXT`
+
+The owner approved DEC-0115 after four substantive independent reviews were
+synthesised. The approved direction requires source response bodies to be held
+in PostgreSQL, retains original bytes alongside queryable JSON where valid,
+uses a fixed owner-approved response-unit matrix, prohibits inferred detail
+crawls and source transformation, and separates backend completion from a
+later researcher portal.
+
+This is a planning decision only. No DB1 database, source data, schedule,
+code, ingest-test scaffold, deployment or portal action is authorised. The
+next documentation-only task is an exact response-unit matrix and A1
+implementation package; both require owner approval before any operational
+work.

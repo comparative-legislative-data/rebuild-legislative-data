@@ -40,10 +40,11 @@ delivery record. The Live API catalogue remains separate and operational.
 Four substantive independent reviews of the
 [independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
 have been assessed. Their shared safeguards and any rejected recommendations
-are recorded in the proposed
+are recorded in the approved
 [Postgres-first rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
-It remains planning only: the owner must approve, amend or reject it before a
-new DB1 implementation package can be prepared.
+The owner approved that design direction as DEC-0115 on 6 August 2026. It
+remains planning only: the next response-unit matrix and implementation package
+need separate owner approval before any DB1 action.
 
 ### DB2
 
@@ -72,10 +73,10 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the proposed [Postgres-first DB1 rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
-No DB1 rebuild, source capture, database mutation, schedule, ingest-test
-scaffold or portal work is authorised until the owner approves a replacement
-design and its response-unit matrix.
+Prepare the exact response-unit matrix and A1 implementation package under
+DEC-0115. No DB1 rebuild, source capture, database mutation, schedule,
+ingest-test scaffold or portal work is authorised until the owner separately
+approves that package and matrix.
 
 ## Documentation hygiene
 

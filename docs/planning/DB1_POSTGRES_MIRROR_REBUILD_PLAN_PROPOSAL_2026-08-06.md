@@ -1,6 +1,6 @@
 # GB-SCT Database Mirror (DB1): Postgres-first rebuild plan
 
-**Status:** proposed for owner review — planning only; no implementation authority
+**Status:** approved DB1 design direction (DEC-0115) — planning only; no implementation authority
 
 **Date:** 6 August 2026  
 **Applies to:** the future GB-SCT Database mirror only  
@@ -8,11 +8,11 @@
 ingestion code, a temporary test interface, a researcher portal, DB2 work or
 deployment.
 
-## 1. Decision requested
+## 1. Approved decision
 
-The project owner is asked to approve, amend or reject this proposed delivery
-shape. Approval would authorise preparation of a separate, exact implementation
-package; it would **not** itself authorise capture.
+The project owner approved this DB1 design direction on 6 August 2026
+(DEC-0115). That authorises preparation of a separate, exact response-unit
+matrix and implementation package. It does **not** authorise capture.
 
 The intended product is simple:
 
@@ -288,10 +288,9 @@ Detailed implementation experiments belong in Git and test output, not in a
 new pile of ad hoc active documents. The current failed attempts remain closed
 in Git history; this plan is not a continuation of their technical design.
 
-## 11. Owner choices before an implementation package
+## 11. Choices to resolve in the next implementation package
 
-If the owner accepts this direction, the next planning package should resolve
-only these concrete choices:
+The next planning package must resolve only these concrete choices:
 
 1. approve the exact response-unit matrix and its numerical request/volume
    bound for all 64 forms;
@@ -309,7 +308,6 @@ response-unit matrix and a separate implementation package is approved.
 
 ## 12. Smallest next step
 
-**Proposed documentation-only next step:** the owner reviews this plan and
-either approves it as the DB1 design direction or identifies amendments. If
-approved, prepare—not execute—the response-unit matrix and A1 implementation
-package.
+**Approved documentation-only next step:** prepare—not execute—the exact
+response-unit matrix and A1 implementation package. It must return for owner
+approval before any source request, database change or schedule is proposed.

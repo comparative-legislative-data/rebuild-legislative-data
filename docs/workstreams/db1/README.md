@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** proposed rebuild direction; no DB1 implementation is active
+**Status:** approved rebuild direction (DEC-0115); no DB1 implementation is active
 
 ## Purpose
 
@@ -18,7 +18,7 @@ as VPS files and only metadata in PostgreSQL. Neither is an acceptable DB1
 product. Both implementations have been removed; only the separate Live API
 catalogue remains operational.
 
-Four independent reviews have now been synthesised into a proposed
+Four independent reviews have now been synthesised into an approved
 [Postgres-first rebuild plan](../../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
 It recommends a bounded, response-level mirror: original response bytes and
 queryable JSON live together in PostgreSQL, controlled by an owner-approved
@@ -66,6 +66,6 @@ useful, not to expose ingestion machinery.
 
 ## Review triggers
 
-Review this narrative when the owner approves/rejects the plan, when the
-response-unit matrix is proposed or changed, at each backend gate, on a source
-condition/drift finding, and before any researcher-portal proposal.
+Review this narrative when the response-unit matrix is proposed or changed, at
+each backend gate, on a source-condition/drift finding, and before any
+researcher-portal proposal.
