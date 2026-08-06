@@ -17,6 +17,9 @@ const YEAR_SETS = {
   "plenary-reports.year": range(1999, 2026),
   "motion-votes.year": range(2011, 2026)
 };
+const KNOWN_AVAILABILITY_PHRASES = {
+  "committee-reports.year.2006": "presently unavailable"
+};
 
 function range(first, last) {
   return Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
@@ -32,11 +35,15 @@ function matrix() {
     .map((route) => ({ id: route.id, url: `${ORIGIN}${route.template}`, cadence: "daily" }));
   const annual = gbSctRoutes
     .filter((route) => route.parameters.length === 1 && route.parameters[0].name === "year")
-    .flatMap((route) => YEAR_SETS[route.id].map((year) => ({
-      id: `${route.id}.${year}`,
-      url: `${ORIGIN}${route.template.replace(":year", year)}`,
-      cadence: year === "2026" ? "daily" : "weekly"
-    })));
+    .flatMap((route) => YEAR_SETS[route.id].map((year) => {
+      const id = `${route.id}.${year}`;
+      return {
+        id,
+        url: `${ORIGIN}${route.template.replace(":year", year)}`,
+        cadence: year === "2026" ? "daily" : "weekly",
+        availabilityPhrase: KNOWN_AVAILABILITY_PHRASES[id] ?? null
+      };
+    }));
   return [...fixed, ...annual];
 }
 
@@ -71,8 +78,10 @@ async function migrate(pool) {
       request_method text not null default 'GET',
       request_headers jsonb not null default '{}'::jsonb,
       response_headers jsonb,
+      source_condition text,
       error text
     );
+    alter table db1_observation add column if not exists source_condition text;
     create index if not exists db1_observation_unit_finished_idx on db1_observation (unit_id, finished_at desc);
     create table if not exists db1_system_test (
       id uuid primary key,
@@ -136,6 +145,8 @@ async function fetchUnit(unit, rawRoot, budget) {
     await mkdir(dirname(temp), { recursive: true, mode: 0o750 });
     const hash = createHash("sha256");
     let bytes = 0;
+    const availabilityFragments = [];
+    let availabilityBytes = 0;
     await pipeline(
       Readable.fromWeb(response.body),
       new Transform({
@@ -147,6 +158,11 @@ async function fetchUnit(unit, rawRoot, budget) {
             callback(new Error("RUN_CAPTURE_LIMIT_EXCEEDED"));
           }
           else {
+            if (availabilityBytes < 131072) {
+              const fragment = chunk.subarray(0, Math.min(chunk.length, 131072 - availabilityBytes));
+              availabilityFragments.push(fragment);
+              availabilityBytes += fragment.length;
+            }
             budget.claimed += chunk.length;
             hash.update(chunk);
             callback(null, chunk);
@@ -158,14 +174,18 @@ async function fetchUnit(unit, rawRoot, budget) {
     const digest = hash.digest("hex");
     const path = await promoteTempFile(temp, join(rawRoot, "sha256", digest), digest, bytes);
     temp = undefined;
+    const sourceCondition = unit.availabilityPhrase && Buffer.concat(availabilityFragments).toString("utf8").toLowerCase().includes(unit.availabilityPhrase)
+      ? `SOURCE_BODY_MATCH:${unit.availabilityPhrase}`
+      : response.ok ? null : `HTTP_STATUS:${response.status}`;
     return {
       started,
-      status: response.ok ? "RETAINED" : "UPSTREAM_AVAILABILITY_MESSAGE",
+      status: sourceCondition ? "UPSTREAM_AVAILABILITY_MESSAGE" : "RETAINED",
       httpStatus: response.status,
       contentType,
       bytes,
       digest,
       path,
+      sourceCondition,
       responseHeaders: Object.fromEntries(response.headers.entries())
     };
   } catch (error) {
@@ -177,7 +197,7 @@ async function fetchUnit(unit, rawRoot, budget) {
 
 async function priorDigest(pool, unitId) {
   const result = await pool.query(
-    `select sha256 from db1_observation where unit_id=$1 and sha256 is not null and status in ('RETAINED','UNCHANGED','CHANGED') order by finished_at desc limit 1`,
+    `select sha256 from db1_observation where unit_id=$1 and sha256 is not null and status in ('RETAINED','UNCHANGED','CHANGED','UPSTREAM_AVAILABILITY_MESSAGE') order by finished_at desc limit 1`,
     [unitId]
   );
   return result.rows[0]?.sha256 ?? null;
@@ -190,9 +210,9 @@ async function store(pool, runId, unit, result, mode) {
     status = previous === null ? "RETAINED" : previous === result.digest ? "UNCHANGED" : "CHANGED";
   }
   await pool.query(
-    `insert into db1_observation (id,run_id,unit_id,started_at,finished_at,status,http_status,content_type,byte_length,sha256,raw_path,request_method,request_headers,response_headers,error)
-     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'GET','{}'::jsonb,$12::jsonb,$13)`,
-    [randomUUID(), runId, unit.id, result.started, new Date(), status, result.httpStatus ?? null, result.contentType ?? null, result.bytes ?? null, result.digest ?? null, result.path ?? null, JSON.stringify(result.responseHeaders ?? null), result.error ?? null]
+    `insert into db1_observation (id,run_id,unit_id,started_at,finished_at,status,http_status,content_type,byte_length,sha256,raw_path,request_method,request_headers,response_headers,source_condition,error)
+     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'GET','{}'::jsonb,$12::jsonb,$13,$14)`,
+    [randomUUID(), runId, unit.id, result.started, new Date(), status, result.httpStatus ?? null, result.contentType ?? null, result.bytes ?? null, result.digest ?? null, result.path ?? null, JSON.stringify(result.responseHeaders ?? null), result.sourceCondition ?? null, result.error ?? null]
   );
   return status;
 }
@@ -217,6 +237,31 @@ async function runSyntheticProof(pool, rawRoot) {
     );
     throw error;
   }
+}
+
+async function classifyKnownConditions(pool) {
+  const outcomes = [];
+  for (const unit of units.filter((candidate) => candidate.availabilityPhrase)) {
+    const result = await pool.query(
+      `select o.id, o.raw_path, o.status from db1_observation o where o.unit_id=$1 order by o.finished_at desc limit 1`,
+      [unit.id]
+    );
+    const observation = result.rows[0];
+    if (!observation?.raw_path) {
+      outcomes.push({ unit: unit.id, status: "NO_RAW_RESPONSE" });
+      continue;
+    }
+    const raw = await readFile(observation.raw_path);
+    const matched = raw.toString("utf8").toLowerCase().includes(unit.availabilityPhrase);
+    if (matched) {
+      await pool.query(
+        `update db1_observation set status='UPSTREAM_AVAILABILITY_MESSAGE', source_condition=$1 where id=$2`,
+        [`SOURCE_BODY_MATCH:${unit.availabilityPhrase}`, observation.id]
+      );
+    }
+    outcomes.push({ unit: unit.id, status: matched ? "UPSTREAM_AVAILABILITY_MESSAGE" : observation.status });
+  }
+  return outcomes;
 }
 
 async function nextUnit(queue, active, budget) {
@@ -281,6 +326,8 @@ try {
   await migrate(pool);
   if (process.env.DB1_MODE === "synthetic") {
     console.log(JSON.stringify({ mode: "synthetic", ...(await runSyntheticProof(pool, rawRoot)) }));
+  } else if (process.env.DB1_MODE === "classify-known-conditions") {
+    console.log(JSON.stringify({ mode: "classify-known-conditions", outcomes: await classifyKnownConditions(pool) }));
   } else {
     const mode = process.env.DB1_MODE === "reconcile" ? "reconcile" : "baseline";
     const cadence = process.env.DB1_CADENCE ?? "all";

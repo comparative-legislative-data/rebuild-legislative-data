@@ -1,0 +1,23 @@
+[Unit]
+Description=CLD GB-SCT Database mirror DEC-0114 reconciliation (%i)
+After=postgresql@16-cld_gb_sct.service
+Requires=postgresql@16-cld_gb_sct.service
+
+[Service]
+Type=oneshot
+User=cld-gb-sct
+Group=cld-gb-sct
+EnvironmentFile=/etc/cld-gb-sct/secrets/db1-r1-proof.env
+Environment=DB1_MODE=reconcile
+Environment=DB1_CADENCE=%i
+WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID
+ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node /srv/cld-gb-sct/releases/RELEASE_ID/scripts/db1_mirror_runner.mjs
+TimeoutStartSec=03:30:00
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/cld-gb-sct/raw/db1
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+UMask=0027
+
