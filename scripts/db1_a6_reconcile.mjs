@@ -252,6 +252,7 @@ function limits(cadence) {
 async function createRun(client, { registryHash, dueHash, dueUnits, cadence, lockResult, status = "RUNNING", detail = {} }) {
   const config = limits(cadence);
   const completed = status !== "RUNNING";
+  const storedCadence = cadence === "hold" ? "SOURCE_FREE" : cadence.toUpperCase().replace("-", "_");
   const capture = await client.query(`insert into db1.capture_run
     (run_kind,worker_revision,deployed_package_revision,configuration_sha256,declared_limits,finished_at,result_status,summary_jsonb)
     values ('RECONCILIATION',$1,$2,$3,$4::jsonb,case when $5 then now() else null end,$6,$7::jsonb)
@@ -263,7 +264,7 @@ async function createRun(client, { registryHash, dueHash, dueUnits, cadence, loc
   await client.query(`insert into db1.assurance_run
     (capture_run_id,cadence,lock_result,registry_sha256,due_set_sha256,due_units,finished_at,detail)
     values ($1,$2,$3,$4,$5,$6,case when $7 then now() else null end,$8::jsonb)`, [
-    runId, cadence.toUpperCase().replace("-", "_"), lockResult, registryHash, dueHash, dueUnits, completed, JSON.stringify(detail)
+    runId, storedCadence, lockResult, registryHash, dueHash, dueUnits, completed, JSON.stringify(detail)
   ]);
   return runId;
 }
