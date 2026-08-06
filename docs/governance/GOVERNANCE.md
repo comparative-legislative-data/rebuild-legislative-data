@@ -203,3 +203,23 @@ decision identifier, an evidence/verification reference, and a governance
 impact declaration. The design of that technical control needs a separate
 owner-approved proposal. Until then, this documented pre-flight and review
 process is the active enforcement mechanism.
+
+## 11. Database mirror capture gate
+
+A Database mirror is not authorised by an API inventory alone. Before any
+capture or scheduling work, the proposal must include an owner-reviewable
+response-unit matrix. For every initial retained item it must state the exact
+source URL/window, why it is a retained response unit, expected request count,
+metadata and checksum method, update/reconciliation method, source-condition
+handling, and exclusions.
+
+The maintainer must not derive an unbounded or bulk detail-request queue from
+identifiers in a collection response. A parameterised/detail request requires
+its own approved rationale and numerical bound. Any change to the matrix,
+expected request total, source action, target data store or schedule is a new
+material decision.
+
+Backend evidence and researcher presentation are separate deliveries. A
+temporary ingest-test surface may support backend verification only; it must
+not be promoted by incremental patching into a research portal. Portal design
+begins only after the backend has a separately accepted capability boundary.

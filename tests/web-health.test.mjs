@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createWebServer, startWebServer } from "../apps/web/dist/server/server.js";
 
@@ -24,18 +23,4 @@ test("web rejects non-loopback configuration", async () => {
   await assert.rejects(startWebServer(), /PORT must be 3220/);
   if (previousPort === undefined) delete process.env.PORT;
   else process.env.PORT = previousPort;
-});
-
-test("Database mirror QA navigation is isolated from the main application renderer", () => {
-  const appSource = readFileSync("apps/web/src/main.tsx", "utf8");
-  const qaSource = readFileSync("apps/web/src/db1-qa.tsx", "utf8");
-  assert.match(appSource, /DatabaseMirrorQaWorkspace/);
-  assert.match(qaSource, /catalogue\?\.subjects\.flatMap/);
-  assert.match(qaSource, /catalogue\?\.subjects\.map/);
-  assert.match(qaSource, /databaseMirrorEndpointGuide/);
-  assert.match(qaSource, /How the Database mirror differs from the live API/);
-  assert.match(qaSource, /Database mirror directory/);
-  assert.doesNotMatch(qaSource, /function Db1SubjectGroup/);
-  assert.doesNotMatch(qaSource, /Db1PagedPanel/);
-  assert.doesNotMatch(qaSource, /fixed retained DB1 releases with route-specific access modes/);
 });

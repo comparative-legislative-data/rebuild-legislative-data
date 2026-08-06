@@ -1,21 +1,20 @@
 # Archive guide
 
-Archived records are retained for auditability. They record completed,
-superseded, or implementation-specific work and must not be read as current
-authority.
+The archive holds selected non-current records that remain useful for context.
+It is not the project’s primary narrative and it does not replace Git history.
 
-- [`data/gb-sct/endpoint-inventory/`](data/gb-sct/endpoint-inventory/) —
+- [data/gb-sct/endpoint-inventory/](data/gb-sct/endpoint-inventory/) —
   completed inventory selection records.
-- [`data/gb-sct/bills-qualification/`](data/gb-sct/bills-qualification/) —
-  completed Bills route qualification and handling work.
-- [`data/gb-sct/reconnaissance/`](data/gb-sct/reconnaissance/) — completed
+- [data/gb-sct/bills-qualification/](data/gb-sct/bills-qualification/) —
+  completed Bills route qualification work.
+- [data/gb-sct/reconnaissance/](data/gb-sct/reconnaissance/) — completed
   public-API reconnaissance.
-- [`workstreams/proxy/mvp/`](workstreams/proxy/mvp) — completed raw-proxy
-  design, implementation, deployment, and acceptance records.
-- [`workstreams/db1/planning/`](workstreams/db1/planning) — unadopted
-  pre-proxy DB1 planning reference.
-- [`application/private-beta-mvp/`](application/private-beta-mvp/) — completed
-  private-beta access and shell implementation records.
+- [workstreams/proxy/mvp/](workstreams/proxy/mvp) — selected raw-proxy MVP
+  records.
+- [application/private-beta-mvp/](application/private-beta-mvp/) — completed
+  private-beta access work.
 - `infrastructure/` — completed VPS foundation records.
-- [`planning/phase-0/`](planning/phase-0/) — completed Phase 0
-  planning/governance delivery pack.
+
+The withdrawn Database mirror delivery packets are intentionally not archived
+here. Their recovery trail is Git; the active record is the
+[DB1 close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md).

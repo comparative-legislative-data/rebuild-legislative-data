@@ -18,7 +18,6 @@ ProtectControlGroups=true
 RestrictSUIDSGID=true
 LockPersonality=true
 ReadWritePaths=/srv/cld-gb-sct/state
-ReadOnlyPaths=/srv/cld-gb-sct/raw/db1
 CPUQuota=35%
 MemoryMax=768M
 TasksMax=128

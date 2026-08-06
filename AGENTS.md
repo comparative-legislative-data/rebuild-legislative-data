@@ -155,3 +155,23 @@ deleting, reformatting, or otherwise changing repository content. Do not treat
 this standing rule as pre-approval for a tidy-up. Once approved, keep the work
 bounded, preserve audit-relevant history, verify links and relevant checks,
 and record any material documentation/governance effect.
+
+## Mirror-capture safety gate
+
+Before any future Database mirror capture, database mutation, schedule, or
+ingest-test scaffold is proposed or implemented, create a response-unit matrix
+and obtain explicit owner approval. The matrix must name each exact upstream
+request/window, explain why that response is the retained unit, state the total
+request count and practical volume limit, define its retrieval/reconciliation
+cadence, and identify excluded parameterised/detail routes.
+
+Never infer a capture queue by extracting identifiers from a collection or
+parent response. A detail route is a separate source form and may be captured
+only under its own explicit response-unit rationale and approved request bound.
+If the expected request count, source action, or end state changes during
+implementation, stop; do not continue under the previous approval.
+
+A temporary ingest-test UI may expose only the minimum evidence needed to
+confirm capture and reconciliation behaviour. It must not be treated as the
+research portal, and must be removed before an independent researcher-facing
+interface is designed.

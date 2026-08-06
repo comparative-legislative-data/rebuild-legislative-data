@@ -1,8 +1,0 @@
-[Unit]
-Description=Daily CLD GB-SCT DB1 D14 MQA Event subtypes reconciliation
-[Timer]
-OnCalendar=*-*-* 06:30:00 UTC
-Persistent=true
-Unit=cld-gb-sct-db1-d14.service
-[Install]
-WantedBy=timers.target

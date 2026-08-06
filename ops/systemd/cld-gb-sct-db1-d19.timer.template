@@ -1,8 +1,0 @@
-[Unit]
-Description=Weekly CLD GB-SCT DB1 D19 Official Reports 2025 reconciliation
-[Timer]
-OnCalendar=Sun *-*-* 08:15:00 UTC
-Persistent=true
-Unit=cld-gb-sct-db1-d19.service
-[Install]
-WantedBy=timers.target

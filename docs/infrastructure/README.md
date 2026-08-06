@@ -1,9 +1,9 @@
 # Infrastructure overview
 
 This directory records the current-VPS isolation and service-delivery controls
-for Comparative Legislative Data. It is deliberately separate from the proxy,
-DB1 and DB2 data layers: shared application/authentication infrastructure does
-not make their data pipelines shared.
+for Comparative Legislative Data. It is deliberately separate from the Live API
+catalogue, any future Database mirror and DB2: shared application and
+authentication infrastructure does not make their data pipelines shared.
 
 The active architecture uses the current VPS without Docker, a project-owned
 loopback-only PostgreSQL cluster, isolated CLD services, and the
@@ -16,6 +16,6 @@ remain in the governing infrastructure plans:
 - [V4 foundation and web cutover plan](CURRENT_VPS_V4_FOUNDATION_AND_WEB_CUTOVER_PLAN_PROPOSAL.md)
 - [Infrastructure work-package control (DEC-0034)](INFRASTRUCTURE_WORK_PACKAGE_CONTROL_PROPOSAL_DEC0034.md)
 
-Detailed completed V4A work is preserved in [the infrastructure archive](../archive/infrastructure/v4a/).
-Any change to VPS resources remains governed by the current handover and an
-approved, bounded work package.
+Detailed completed V4A work is preserved in
+[the infrastructure archive](../archive/infrastructure/v4a/). Any VPS change
+remains governed by the current handover and an approved, bounded work package.

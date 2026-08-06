@@ -2,44 +2,42 @@
 
 Comparative Legislative Data is research infrastructure for transparent,
 reproducible legislative data. The first legislature is the Scottish Parliament
-(`GB-SCT`). The central promise is modest but demanding: a researcher should be
-able to establish what was obtained, from where, when, how it was handled, and
-what the project does **not** establish.
+(`GB-SCT`). The project’s standard is that a researcher can establish what was
+obtained, from where, when, how it was handled, and what has not been shown.
 
 ## Start here
 
-1. [Project design](governance/PROJECT_DESIGN.md) — governing methodology,
-   provenance model and research standard.
-2. [Current handover](governance/HANDOVER.md) — live programme position,
-   authority and the next decision.
+1. [Project design](governance/PROJECT_DESIGN.md) — governing methodology and
+   research standard.
+2. [Current handover](governance/HANDOVER.md) — the live project position,
+   authority and next decision.
 3. [Programme workstreams](workstreams/README.md) — the human account of the
-   proxy, DB1 and DB2 mini-projects.
+   proxy, Database mirror and DB2 mini-projects.
 
 ## The three data layers
 
-| Layer | Purpose | Read |
+| Layer | Purpose | Current state |
 | --- | --- | --- |
-| Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | [Proxy narrative](workstreams/proxy/README.md) |
-| DB1 | Retain dated, source-preserving responses with manifests; first prove Backend Assurance, then build an independent Research Portal. | [DB1 overview](workstreams/db1/README.md) |
-| DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | [DB2 narrative](workstreams/db2/README.md) |
+| Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | Private MVP operating. |
+| Database mirror | Retain dated, source-preserving source responses with demonstrable capture and reconciliation evidence. | Withdrawn and awaiting a clean rebuild proposal. |
+| DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | Not started. |
 
-These layers must never be conflated: a live proxy response is not a DB1
-capture, and a DB1 capture is not a DB2 variable or research finding.
+The layers must never be conflated: a live proxy response is not a retained
+mirror response, and a retained mirror response is not a DB2 variable or
+research finding.
 
 ## Supporting records
 
-| Area | What it contains | Start with |
-| --- | --- | --- |
-| [GB-SCT source controls](data/gb-sct/) | Approved endpoint scope, handling, volume and updateability evidence shared by the workstreams. | [GB-SCT guide](data/gb-sct/README.md) |
-| [Application](application/) | Private-beta access boundary and current application status. | [Application overview](application/README.md) |
-| [Infrastructure](infrastructure/) | Current VPS/isolation and delivery controls. | [Infrastructure overview](infrastructure/README.md) |
-| [Governance](governance/) | Decisions, risks, handover and review record. | [Handover](governance/HANDOVER.md) |
-| [Archive](archive/) | Completed delivery packets retained for audit, not day-to-day navigation. | [Archive guide](archive/README.md) |
+- [GB-SCT source controls](data/gb-sct/) — endpoint inventory and source
+  handling evidence.
+- [Application](application/) — private-beta access boundary.
+- [Infrastructure](infrastructure/) — VPS isolation and delivery controls.
+- [Governance](governance/) — decisions, risks, handover and review record.
+- [Archive](archive/) — selected non-current records; Git remains the full
+  historical record.
 
 ## Documentation rule
 
 Active documents explain the current product, controls and next decision in
-plain language. Completed implementation packets are archived with an index.
-Every material change must preserve the link between the active narrative and
-its detailed evidence rather than forcing a reader to infer the project from
-implementation filenames.
+plain language. Historic implementation detail belongs in Git, not in a
+second, unintelligible active archive.

@@ -1,9 +1,24 @@
 import { StrictMode, useEffect, useState } from "react";
-import { DatabaseMirrorQaWorkspace, researchRouteUrl } from "./db1-qa.js";
 import { createRoot } from "react-dom/client";
 import type { FormEvent } from "react";
-import type { Catalogue, CatalogueRoute, Db1ResearchCatalogue, Db1ResearchRecords, Identity, SourceGuide, View } from "./types.js";
 import "./styles.css";
+
+type View = "login" | "apply" | "settings" | "admin" | "catalogue";
+type Identity = { authenticated: boolean; email: string | null; roles: string[]; logout_proof: string | null; data_layers_available: false };
+type CatalogueRoute = {
+  id: string;
+  group: string;
+  template: string;
+  priority: string;
+  operatingClass: string;
+  sourcePresentation: "OPENS_RAW_JSON" | "DOWNLOADS_RAW_JSON" | "SOURCE_PRESENTATION_UNESTABLISHED";
+  availability: string;
+  qualification: string;
+  limitation: string;
+  parameters: Array<{ name: string; grammar: string; required: boolean; allowedValues?: string[] }>;
+};
+type Catalogue = { legislature: "GB-SCT"; layer: "UPSTREAM_PASSTHROUGH_DESIGN"; source_requests_enabled: boolean; enabled_route_count: number; route_count: number; routes: CatalogueRoute[] };
+type SourceGuide = { officialUrl?: string; observedStructure: string; variables: Array<{ name: string; note: string }>; caution: string };
 
 const sourceGuides: Record<string, SourceGuide> = {
   "bill-stage-types.collection": {
@@ -85,7 +100,7 @@ const sourceGuides: Record<string, SourceGuide> = {
 };
 
 const familySourceGuides: Record<string, SourceGuide> = {
-  "Bills": { observedStructure: "Observed on 3 August 2026 as a 473-element JSON collection. One collection-derived detail request returned a JSON object with the same seven top-level fields.", variables: [{ name: "ID / BillTypeID / PersonID", note: "Observed numeric source fields. Their identifier stability and relationship semantics are not established." }, { name: "Reference / ShortName / FullName", note: "Observed source text fields; no title, citation, or bill-identity interpretation is made." }, { name: "ThirdPartyOrganisation", note: "Observed as null in the profiled structural value. This does not establish its possible values, content, or handling classification." }], caution: "This structural observation does not establish pagination, completeness, field definitions, source-term coverage, personal-data classification, or research fitness." },
+  "Bills": { observedStructure: "A route-specific field profile has not yet been retained. This is an explicit profile gap, not an absence-of-fields claim.", variables: [{ name: "Profile status", note: "A controlled raw schema observation is next for this route family; no analytical codebook or field definition is implied meanwhile." }], caution: "Use the raw response for inspection. CLD does not yet assert its current fields, identifier semantics, pagination, or completeness." },
   "Formal stages": { observedStructure: "Previously observed as a 1,754-element JSON collection; one detail response had the same four top-level fields.", variables: [{ name: "BillID / BillStageTypeID / ID", note: "Previously observed as numeric source fields; their identity and relationship semantics are not yet established." }, { name: "StageDate", note: "Previously observed as string or null; no date meaning or ordering claim is made." }], caution: "The observation does not establish a bill-stage interpretation, coverage, pagination, or identifier stability." },
   "Stage types": { observedStructure: "Collection and one detail response were previously observed as a four-field JSON structure.", variables: [{ name: "BillTypeID / ID / Sequence", note: "Previously observed numeric source fields; Sequence is not treated as a validated analytical ordering." }, { name: "Name", note: "Previously observed text label; no source-category or historical-meaning claim is made." }], caution: "Do not infer the relation between types, bills, or stages from these fields alone." },
   "Bill types": { observedStructure: "Collection and one detail response were previously observed as a two-field JSON structure.", variables: [{ name: "ID", note: "Previously observed numeric source identifier." }, { name: "Name", note: "Previously observed source text label; not an independently validated category." }], caution: "No completeness, historical classification, or update claim follows." },
@@ -140,29 +155,6 @@ function sourceUrl(route: CatalogueRoute, parameters: Record<string, string>, vi
   return `/api/catalogue/gb-sct/${route.id}/source${query.size > 0 ? `?${query.toString()}` : ""}`;
 }
 
-type SourceExample = { label: string; parameters: Record<string, string>; note?: string };
-
-const annualSourceYears: Record<string, readonly number[]> = {
-  "mqa-questions.year": Array.from({ length: 18 }, (_, index) => 1999 + index),
-  "committee-reports.year": Array.from({ length: 26 }, (_, index) => 1999 + index),
-  "plenary-reports.year": Array.from({ length: 27 }, (_, index) => 1999 + index),
-  "motion-votes.year": Array.from({ length: 15 }, (_, index) => 2011 + index)
-};
-
-const sourceExampleOverrides: Record<string, Record<string, string>> = {
-  "committee-reports.detail": { id: "204795" },
-  "plenary-reports.detail": { id: "1924932" },
-  "motion-votes.detail": { id: "204795" }
-};
-
-function sourceExamples(route: CatalogueRoute): SourceExample[] {
-  const years = annualSourceYears[route.id];
-  if (years) return years.map((value) => ({ label: `Source catalogue year ${value}`, parameters: { year: String(value) }, note: `The Scottish Parliament catalogue publishes this fixed ${value} URL.` }));
-  if (route.parameters.length === 0) return [{ label: "Source route", parameters: {} }];
-  const parameters = Object.fromEntries(route.parameters.map((parameter) => [parameter.name, parameter.allowedValues?.[0] ?? sourceExampleOverrides[route.id]?.[parameter.name] ?? "1"]));
-  return [{ label: "Scottish Parliament catalogue example", parameters, note: "This is the fixed example URL published by the Scottish Parliament catalogue; it is not a CLD search field or a claim about identifier meaning." }];
-}
-
 function RouteBadge({ route }: { route: CatalogueRoute }) {
   const relayed = route.availability === "RELAYED_PRIVATE_BETA";
   const guide = sourceGuides[route.id] ?? familySourceGuides[route.group];
@@ -173,8 +165,7 @@ function RouteBadge({ route }: { route: CatalogueRoute }) {
   };
   const action = route.sourcePresentation === "DOWNLOADS_RAW_JSON" ? "Downloads raw JSON from the Scottish Parliament source" : route.sourcePresentation === "SOURCE_PRESENTATION_UNESTABLISHED" ? "Source presentation is not yet established; it may open raw JSON or download a raw file" : "Opens raw JSON in a new browser tab";
   const actionVerb = route.sourcePresentation === "DOWNLOADS_RAW_JSON" ? "Download" : "Open";
-  const examples = sourceExamples(route);
-  return <details className={`route-card${relayed ? " route-card-relayed" : ""}`}><summary><div className="route-badge"><div><p className="route-group">{route.group} · {route.priority}</p><h3>{route.id}</h3><code>{route.template}</code></div><div className="route-badge-state"><span className="route-state">{route.availability.replaceAll("_", " ")}</span><span className="route-expand-label">Show details</span></div></div></summary><div className="route-details"><dl><div><dt>Operating class</dt><dd>{route.operatingClass.replaceAll("_", " ")}</dd></div><div><dt>Source action</dt><dd>{action}</dd></div><div><dt>Qualification</dt><dd>{route.qualification.replaceAll("_", " ")}</dd></div></dl><p>{route.limitation}</p>{relayed ? <div className="source-disclosure"><p><strong>Two ways to inspect this live response:</strong> the CLD relay retains neither response body nor a copy, and adds request provenance headers. The official API action leaves CLD and opens the fixed Scottish Parliament source route directly.</p><dl className="response-guide"><div><dt>Response guide</dt><dd>{guideText.observedStructure}</dd></div><div><dt>Variables and elements</dt><dd><ul>{guideText.variables.map((variable) => <li key={variable.name}><code>{variable.name}</code> — {variable.note}</li>)}</ul></dd></div><div><dt>Interpretive limit</dt><dd>{guideText.caution}</dd></div><div><dt>Citation guidance</dt><dd>Cite the Scottish Parliament Open Data endpoint and your own access date/time. Cite CLD only as the no-retention access/provenance layer, not as the source-data publisher or an immutable release.</dd></div></dl><details className="source-examples"><summary>Show {examples.length === 1 ? "the source-style API route" : `${examples.length} individual source-style API routes`}</summary><p>Each link below has its source example identifier or year already embedded. No value is entered, generated, or retained by CLD.</p><div className="source-example-list">{examples.map((example) => <section className="source-example" key={example.label}><div><strong>{example.label}</strong><code>{sourceUrl(route, example.parameters, false)}</code>{example.note ? <p>{example.note}</p> : null}</div><div className="source-actions"><a className="source-action relay-action" href={sourceUrl(route, example.parameters, true)} target="_blank" rel="noreferrer">{actionVerb} via CLD no-retention relay</a><a className="source-action official-action" href={sourceUrl(route, example.parameters, false)} target="_blank" rel="noreferrer">{actionVerb} from Scottish Parliament API directly</a></div></section>)}</div></details></div> : null}</div></details>;
+  return <details className={`route-card${relayed ? " route-card-relayed" : ""}`}><summary><div className="route-badge"><div><p className="route-group">{route.group} · {route.priority}</p><h3>{route.id}</h3><code>{route.template}</code></div><div className="route-badge-state"><span className="route-state">{route.availability.replaceAll("_", " ")}</span><span className="route-expand-label">Show details</span></div></div></summary><div className="route-details"><dl><div><dt>Operating class</dt><dd>{route.operatingClass.replaceAll("_", " ")}</dd></div><div><dt>Source action</dt><dd>{action}</dd></div><div><dt>Qualification</dt><dd>{route.qualification.replaceAll("_", " ")}</dd></div>{route.parameters.length > 0 ? <div><dt>Allowed parameters</dt><dd>{route.parameters.map((parameter) => `${parameter.name}: ${parameter.grammar}${parameter.required ? " (required)" : ""}`).join(", ")}</dd></div> : null}</dl><p>{route.limitation}</p>{relayed ? <div className="source-disclosure"><p><strong>Two ways to inspect this live response:</strong> the CLD relay retains neither response body nor a copy, and adds request provenance headers. The official API action leaves CLD and opens the fixed Scottish Parliament source route directly.</p><dl className="response-guide"><div><dt>Response guide</dt><dd>{guideText.observedStructure}</dd></div><div><dt>Variables and elements</dt><dd><ul>{guideText.variables.map((variable) => <li key={variable.name}><code>{variable.name}</code> — {variable.note}</li>)}</ul></dd></div><div><dt>Interpretive limit</dt><dd>{guideText.caution}</dd></div><div><dt>Citation guidance</dt><dd>Cite the Scottish Parliament Open Data endpoint and your own access date/time. Cite CLD only as the no-retention access/provenance layer, not as the source-data publisher or an immutable release.</dd></div></dl><form className="source-parameter-form" onSubmit={(event) => { event.preventDefault(); const parameters = Object.fromEntries(new FormData(event.currentTarget).entries()) as Record<string, string>; window.open(sourceUrl(route, parameters, true), "_blank", "noreferrer"); }}><div className="source-parameter-inputs">{route.parameters.map((parameter) => parameter.grammar === "fixed_value" ? <input key={parameter.name} name={parameter.name} type="hidden" value={parameter.allowedValues?.[0] ?? ""} /> : <label key={parameter.name}>{parameter.name}<input name={parameter.name} required={parameter.required} placeholder={parameter.grammar === "year" ? "e.g. 2025" : parameter.grammar === "positive_integer" ? "positive integer" : "source identifier"} pattern={parameter.grammar === "year" ? "199[9]|20[0-9]{2}" : undefined} /></label>)}</div><div className="source-actions"><button className="source-action relay-action">{actionVerb} via CLD no-retention relay</button><button type="button" className="source-action official-action" onClick={(event) => { const form = event.currentTarget.form; if (!form?.reportValidity()) return; const parameters = Object.fromEntries(new FormData(form).entries()) as Record<string, string>; window.open(sourceUrl(route, parameters, false), "_blank", "noreferrer"); }}>{actionVerb} from Scottish Parliament API directly</button></div></form></div> : null}</div></details>;
 }
 
 async function request(path: string, init: RequestInit = {}) {
@@ -192,10 +183,6 @@ function App() {
   const [applications, setApplications] = useState<Array<{ id: string; email: string; requestText: string; createdAt: string }>>([]);
   const [catalogue, setCatalogue] = useState<Catalogue | undefined>();
   const [catalogueFeedback, setCatalogueFeedback] = useState<string | undefined>();
-  const [db1Feedback, setDb1Feedback] = useState<string | undefined>();
-  const [db1ResearchCatalogue, setDb1ResearchCatalogue] = useState<Db1ResearchCatalogue | undefined>();
-  const [db1ResearchRecords, setDb1ResearchRecords] = useState<Record<string, Db1ResearchRecords | undefined>>({});
-  const [db1LoadingRoute, setDb1LoadingRoute] = useState<string | undefined>();
 
   async function refreshIdentity() {
     const response = await request("/auth/me");
@@ -256,43 +243,11 @@ function App() {
   async function loadCatalogue() {
     const response = await request("/catalogue/gb-sct");
     if (!response.ok) {
-      setCatalogueFeedback("The Live API catalogue is unavailable for this account.");
+      setCatalogueFeedback("The route catalogue is unavailable for this account.");
       return;
     }
     setCatalogue(await response.json() as Catalogue);
     setCatalogueFeedback(undefined);
-  }
-
-  async function loadDb1Catalogue() {
-    const response = await request("/db1/gb-sct/research/catalogue");
-    if (!response.ok) {
-      setDb1Feedback("The Database mirror directory is unavailable for this account.");
-      return;
-    }
-    setDb1ResearchCatalogue(await response.json() as Db1ResearchCatalogue);
-    setDb1Feedback(undefined);
-  }
-
-  async function loadDb1ResearchRecords(routeId: string, offset: number) {
-    setDb1LoadingRoute(routeId);
-    try {
-      const response = await request(`${researchRouteUrl(routeId, "records")}?offset=${offset}&limit=20`);
-      if (!response.ok) {
-        setDb1Feedback("The retained record page could not be loaded. The exact raw response remains available.");
-        return;
-      }
-      const result = await response.json() as Db1ResearchRecords;
-      setDb1ResearchRecords((current) => ({ ...current, [routeId]: result }));
-      setDb1Feedback(undefined);
-    } catch {
-      setDb1Feedback("The retained record page could not be loaded. The exact raw response remains available.");
-    } finally {
-      setDb1LoadingRoute(undefined);
-    }
-  }
-
-  if (view === "db1" && identity.authenticated && identity.data_layers_available) {
-    return <DatabaseMirrorQaWorkspace catalogue={db1ResearchCatalogue} records={db1ResearchRecords} loadingRoute={db1LoadingRoute} feedback={db1Feedback} onBrowse={(routeId, offset) => void loadDb1ResearchRecords(routeId, offset)} onRefresh={() => void loadDb1Catalogue()} onBack={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }} onSettings={() => { setView("settings"); setFormFeedback(undefined); }} isSuperuser={identity.roles.includes("SUPERUSER")} onSuperuser={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }} />;
   }
 
   if (activationToken) {
@@ -315,8 +270,7 @@ function App() {
       <nav className="access-nav" aria-label="Access options">
         {!identity.authenticated ? <><button type="button" onClick={() => { setView("login"); setFormFeedback(undefined); }}>Log in</button><button type="button" onClick={() => { setView("apply"); setFormFeedback(undefined); }}>Apply for beta access</button></> : null}
         {identity.authenticated ? <span className="signed-in-badge">Private beta active</span> : null}
-        {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Live API catalogue</button> : null}
-        {identity.authenticated && identity.data_layers_available ? <button type="button" onClick={() => { setView("db1"); setFormFeedback(undefined); void loadDb1Catalogue(); }}>Database mirror</button> : null}
+        {identity.authenticated ? <button type="button" onClick={() => { setView("catalogue"); setFormFeedback(undefined); void loadCatalogue(); }}>Route catalogue</button> : null}
         {identity.authenticated ? <button type="button" onClick={() => { setView("settings"); setFormFeedback(undefined); }}>Settings</button> : null}
         {identity.roles.includes("SUPERUSER") ? <button type="button" onClick={() => { setView("admin"); setFormFeedback(undefined); void loadApplications(); }}>Superuser review</button> : null}
       </nav>
@@ -325,8 +279,8 @@ function App() {
       {view === "apply" ? <section className="access-panel" aria-labelledby="apply-heading"><h2 id="apply-heading">Apply for beta access</h2><p className="panel-copy">Tell us how you would use the platform. A superuser reviews each request.</p>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const data = new FormData(event.currentTarget); void submit(event, "/auth/applications", { email: String(data.get("email") ?? ""), requestText: String(data.get("requestText") ?? "") }, "Your request has been received. If approved, you will receive an activation link."); }}><label>Email<input name="email" type="email" required autoComplete="email" /></label><label>Why would access be useful?<textarea name="requestText" maxLength={2000} required /></label><button>Submit application</button></form></section> : null}
       {view === "settings" && identity.authenticated ? <section className="access-panel" aria-labelledby="settings-heading"><h2 id="settings-heading">Settings</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}<form onSubmit={(event) => { const password = new FormData(event.currentTarget).get("password"); if (typeof password === "string") void submit(event, "/auth/password/change", { password }, "Your password has been changed."); }}><label>New password<input name="password" type="password" minLength={12} required autoComplete="new-password" /></label><button>Change password</button></form><button className="secondary-button" type="button" onClick={() => { void request("/auth/logout", { method: "POST", body: JSON.stringify({ logout_proof: identity.logout_proof ?? "" }) }).then(async (response) => { const outcome = await response.json().catch(() => undefined) as { signed_out?: unknown } | undefined; const nextIdentity = await refreshIdentity(); setView("login"); setMessage(response.ok && outcome?.signed_out === true && !nextIdentity?.authenticated ? "You are signed out." : "We could not confirm sign-out. Please try again."); }); }}>Log out</button></section> : null}
       {view === "admin" && identity.roles.includes("SUPERUSER") ? <section className="access-panel" aria-labelledby="admin-heading"><h2 id="admin-heading">Superuser review</h2>{formFeedback ? <p className="form-feedback" role="status">{formFeedback}</p> : null}{applications.length === 0 ? <p>No pending applications.</p> : <ul>{applications.map((application) => <li key={application.id}><p><strong>{application.email}</strong></p><p>{application.requestText}</p><button type="button" onClick={() => void approve(application.id)}>Approve</button></li>)}</ul>}</section> : null}
-      {view === "catalogue" && identity.authenticated ? <section className="catalogue-panel" aria-labelledby="catalogue-heading"><p className="eyebrow">GB-SCT route inventory</p><h2 id="catalogue-heading">Transparent upstream access catalogue</h2><p className="panel-copy">This is raw, transient source access — not a CLD dataset or snapshot. Open a source family, then an endpoint badge, to inspect the fixed source-style route, response guidance, and the choice between the CLD relay and the official source.</p>{catalogueFeedback ? <p className="form-feedback" role="status">{catalogueFeedback}</p> : null}{catalogue ? <><p className="catalogue-summary"><strong>{catalogue.route_count} selected route forms</strong> · {catalogue.enabled_route_count} authenticated private no-retention relay routes available.</p><div className="catalogue-sections">{catalogueSections.map((section) => { const routes = catalogue.routes.filter((route) => (section.groups as readonly string[]).includes(route.group)); const enabled = routes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").length; return <details className="catalogue-section" key={section.id}><summary className="catalogue-section-heading"><div><p className="eyebrow">Source family</p><h3>{section.title}</h3></div><div className="catalogue-section-state"><p>{routes.length} route forms{enabled > 0 ? ` · ${enabled} live private route${enabled === 1 ? "" : "s"}` : ""}</p><span>Show endpoints</span></div></summary><div className="catalogue-list">{routes.map((route) => <RouteBadge key={route.id} route={route} />)}</div></details>; })}</div></> : <p className="panel-copy">Loading the route registry…</p>}</section> : null}
-      <p className="boundary">Current boundary: private raw source relay plus, for eligible users, dated retained Database mirror responses with route-specific access modes. No canonical dataset, chart, export, general database query, or research release is available.</p>
+      {view === "catalogue" && identity.authenticated ? <section className="catalogue-panel" aria-labelledby="catalogue-heading"><p className="eyebrow">GB-SCT route inventory</p><h2 id="catalogue-heading">Transparent upstream access catalogue</h2><p className="panel-copy">This is raw, transient source access — not a CLD dataset or snapshot. Select an endpoint badge to inspect the fixed route, allowed parameters, response guidance, and the choice between the CLD relay and the official source.</p>{catalogueFeedback ? <p className="form-feedback" role="status">{catalogueFeedback}</p> : null}{catalogue ? <><p className="catalogue-summary"><strong>{catalogue.route_count} selected route forms</strong> · {catalogue.enabled_route_count} authenticated private no-retention relay routes available.</p><div className="catalogue-sections">{catalogueSections.map((section) => { const routes = catalogue.routes.filter((route) => (section.groups as readonly string[]).includes(route.group)); const enabled = routes.filter((route) => route.availability === "RELAYED_PRIVATE_BETA").length; return <section className="catalogue-section" key={section.id} aria-labelledby={`${section.id}-heading`}><header className="catalogue-section-heading"><div><p className="eyebrow">Source family</p><h3 id={`${section.id}-heading`}>{section.title}</h3></div><p>{routes.length} route forms{enabled > 0 ? ` · ${enabled} live private route${enabled === 1 ? "" : "s"}` : ""}</p></header><div className="catalogue-list">{routes.map((route) => <RouteBadge key={route.id} route={route} />)}</div></section>; })}</div></> : <p className="panel-copy">Loading the route registry…</p>}</section> : null}
+      <p className="boundary">Current boundary: private raw source relay only. No Database mirror, canonical dataset, chart, export, or research release is available.</p>
     </main>
   );
 }

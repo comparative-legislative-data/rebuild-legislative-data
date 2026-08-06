@@ -17,7 +17,7 @@
     "build": "npm run typecheck && vite build --config apps/web/vite.config.ts",
     "test": "npm run build && node --test tests/*.test.mjs",
     "check:docs": "node scripts/check_doc_links.mjs",
-    "verify:capabilities": "node scripts/verify_capabilities.mjs && node scripts/verify_db1_foundation.mjs",
+    "verify:capabilities": "node scripts/verify_capabilities.mjs",
     "package:b1": "npm run build && node scripts/package_b1_release.mjs",
     "verify": "npm run test && npm run verify:capabilities && npm run package:b1"
   },

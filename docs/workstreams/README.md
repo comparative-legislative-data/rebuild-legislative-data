@@ -1,16 +1,14 @@
 # Programme workstreams
 
-Comparative Legislative Data has three separate initial mini-projects. They
-share the private application and authentication boundary, but have distinct
-data pipes, claims, evidence and approval gates.
+Comparative Legislative Data has three initial mini-projects. They share the
+private application and authentication boundary, but have distinct data pipes,
+claims, evidence and approval gates.
 
-| Workstream | What a researcher receives | Current position |
-| --- | --- | --- |
-| [Proxy](proxy/README.md) | Live Scottish Parliament API responses through a no-retention CLD relay or direct source link. | Private MVP complete; later review required. |
-| [DB1](db1/README.md) | Retained, source-preserving responses and the evidence needed to prove a bounded mirror claim. | Reset: Backend Assurance comes first; the present private UI is a QA surface, not the later Research Portal. |
+| Workstream | Research purpose | Current position |
+| --- | --- | ---|
+| [Live API catalogue](proxy/README.md) | Private, no-retention access to fixed Scottish Parliament API routes and direct source links. | MVP operating; later review required. |
+| [Database mirror close-down](db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md) | A future exact-response mirror with independently evidenced completeness and currency. | Previous implementation withdrawn; no data or portal is active. |
 | [DB2](db2/README.md) | Explicit Tier 1/2 canonical variables, codebooks and reproducible research releases. | Not started. |
 
-The programme's master methodology is the [project design](../governance/PROJECT_DESIGN.md).
-For current operational status read the [handover](../governance/HANDOVER.md).
-The detailed implementation trail is evidence in [the archive](../archive/),
-not the primary explanation of the project.
+Read the [project design](../governance/PROJECT_DESIGN.md) and current
+[handover](../governance/HANDOVER.md) before proposing material work.

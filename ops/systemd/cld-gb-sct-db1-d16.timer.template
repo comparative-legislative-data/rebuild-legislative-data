@@ -1,8 +1,0 @@
-[Unit]
-Description=Daily CLD GB-SCT DB1 D16 MQA programme reconciliation
-[Timer]
-OnCalendar=*-*-* 07:00:00 UTC
-Persistent=true
-Unit=cld-gb-sct-db1-d16.service
-[Install]
-WantedBy=timers.target

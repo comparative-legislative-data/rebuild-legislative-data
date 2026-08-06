@@ -3200,3 +3200,21 @@ Next review due:
 | Affected work blocked | Research Portal implementation, DB2, public release, general database query and further assurance/parity claims remain blocked. Full-scope source capture is authorised only within DEC-0112. |
 | Owner decision required | None for the approved DEC-0112 boundary. A new decision is required for any scope expansion or after the package closure if the next phase changes target/scope. |
 | Next review due | After the isolated deployment/preflight, at each named source-condition or contract stop, and before the 64-form closure/audit. |
+# GOV-REV-2026-08-06 — DB1 close-down and control correction
+
+**Outcome:** \`CHANGES_REQUIRED — DB1 closed; rebuild proposal required\`
+
+The prior Database mirror implementation was withdrawn after its capture model
+confused source-form scope with a queue of inferred per-record detail requests.
+The project-only DB1 database, raw store, schedules, code, temporary QA
+interface and active delivery-document tree have been removed. The
+[close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md)
+is now the active DB1 narrative; Git preserves detailed history.
+
+The project design, handover, decision register, AGENTS.md and governance
+procedure now require a response-unit matrix, a numerical request bound and a
+separate backend-before-portal sequence. No new DB1 action is authorised until
+the owner approves the required matrix. The Live API catalogue and private
+authentication boundary remain separately operational.
+
+---
