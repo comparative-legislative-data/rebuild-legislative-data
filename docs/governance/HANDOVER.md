@@ -42,8 +42,11 @@ Four substantive independent reviews of the
 have been assessed. Their shared safeguards and any rejected recommendations
 are recorded in the approved
 [Postgres-first rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
-The owner approved that design direction as DEC-0115 on 6 August 2026. It
-remains planning only: the next response-unit matrix and implementation package
+The owner approved that design direction as DEC-0115 on 6 August 2026. The
+subsequent no-retention [Cohort A coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
+found 20 sampled parent/detail or parent/filter subset observations, while
+leaving high-volume routes and two Member-status detail forms unresolved. It
+remains planning only: a final response-unit model and implementation package
 need separate owner approval before any DB1 action.
 
 ### DB2
@@ -73,12 +76,13 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the proposed [endpoint-coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md).
-The limited sample suggests some detail/filter routes may be alternative source
-presentations rather than wholly additional data. The proposed Cohort A audit
-will test that across the ordinary families before the response-unit matrix is
-finalised. No DB1 rebuild, source capture, database mutation, schedule,
-ingest-test scaffold or portal work is authorised.
+Review the completed [Cohort A endpoint-coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md).
+It provides limited evidence that many ordinary detail/filter routes may be
+alternative source presentations rather than wholly additional data. The next
+decision is whether to approve a separately bounded Cohort B/final
+response-unit proposal for the remaining high-volume and uncertain routes. No
+DB1 rebuild, source capture, database mutation, schedule, ingest-test scaffold
+or portal work is authorised.
 
 ## Documentation hygiene
 

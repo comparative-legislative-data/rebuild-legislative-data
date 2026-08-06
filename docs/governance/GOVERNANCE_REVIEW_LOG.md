@@ -3363,3 +3363,26 @@ detail contracts are explicitly outside this cohort.
 No source action has occurred under DEC-0118. Owner approval of the exact
 Cohort A boundary is required before any request; DB1 capture, database,
 implementation, scheduling and frontend work remain blocked.
+
+---
+
+# GOV-REV-2026-08-06J — Endpoint-coverage audit, Cohort A
+
+**Outcome:** `LIMITED OBSERVATION COMPLETE — RESPONSE-UNIT DECISION REMAINS REQUIRED`
+
+Following owner approval, DEC-0118 Cohort A used 42 serial public GET requests
+under its 43-request cap. Twenty sampled ordinary collection/detail or MQA
+collection/filter comparisons produced an exact sampled subset result. No
+response body, resolved identifier, raw object, VPS/database record,
+application code or project data was retained. Two Member-status collection
+requests initially used an incorrect singular route name and returned 404; the
+correct plural parent routes were then observed within the cap, but their
+detail forms were deliberately not requested. The result records this as an
+evidence gap, not a source-data absence.
+
+The audit does not establish full route equivalence or authorise a DB1 model.
+High-volume MQA, official-report and vote families, the MQA event-subtype gap,
+and the two untested Member-status detail forms remain for the next bounded
+capture-boundary proposal.
+
+**Next review:** owner review of the [Cohort A result](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md), followed by a separate Cohort B/final response-unit proposal. No source capture, PostgreSQL, scheduler, implementation or portal work is authorised.

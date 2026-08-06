@@ -1,6 +1,6 @@
 # GB-SCT endpoint-coverage and academic-access audit
 
-**Status:** proposed no-retention source audit — no source action authorised  
+**Status:** completed — no-retention source audit; no DB1 action authorised
 **Date:** 6 August 2026  
 **Depends on:** DEC-0115 and the limited [detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
 
@@ -89,7 +89,7 @@ The limits intentionally make this an evidence audit, not a covert ingest.
 
 ## 5. Cohort B — high-volume and uncertain-detail contract audit
 
-The following nine forms cannot safely be treated as ordinary pair comparison:
+The following 11 forms cannot safely be treated as ordinary pair comparison:
 
 - `/api/motionsquestionsanswersevents` and `/:id`;
 - `/api/motionsquestionsanswersmotions` and `/:id`;
@@ -114,6 +114,12 @@ detail request merely to fill a table cell.
 The annual parent routes remain separately visible in the proposed 117-unit
 baseline. Their content and researcher usefulness will be audited as annual
 source responses, not assumed from the unresolved `/:id` forms.
+
+The previously sampled MQA event-type pair is retained as limited evidence in
+the [sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md).
+The MQA event-subtype detail pair is neither in Cohort A nor Cohort B as
+currently proposed; it remains an explicit small-route gap for the next audit
+revision. This correction does not alter Cohort A's approved request bound.
 
 ## 6. Result categories
 
@@ -151,7 +157,7 @@ from the approved 64-form inventory by this audit.
 
 ## 8. Authority requested
 
-Approve or amend **Cohort A only**: up to 43 public no-retention GET requests
-under the boundaries above. Cohort B, DB1 implementation, source capture,
-database work, scheduler work, frontend work and any route-coverage decision
-remain out of scope.
+The owner approved Cohort A on 6 August 2026. It was executed using 42 public
+no-retention GET requests. See the [Cohort A result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md).
+Cohort B, DB1 implementation, source capture, database work, scheduler work,
+frontend work and any route-coverage decision remain out of scope.
