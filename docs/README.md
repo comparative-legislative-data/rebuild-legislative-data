@@ -19,7 +19,7 @@ obtained, from where, when, how it was handled, and what has not been shown.
 | Layer | Purpose | Current state |
 | --- | --- | --- |
 | Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | Private MVP operating. |
-| Database mirror | Retain dated, source-preserving source responses with demonstrable capture and reconciliation evidence. | DEC-0114 R1–R3 passed within the 117-unit response matrix. The Database mirror is operating privately; the independent research portal is not started. |
+| Database mirror | A future PostgreSQL-based mirror of approved Scottish Parliament API responses. | Withdrawn and not implemented. The failed raw-file/manifest build was removed on 6 August 2026. An independent external review is required before a new owner-approved design. |
 | DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | Not started. |
 
 The layers must never be conflated: a live proxy response is not a retained

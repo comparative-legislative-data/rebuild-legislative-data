@@ -3207,9 +3207,10 @@ Next review due:
 The prior Database mirror implementation was withdrawn after its capture model
 confused source-form scope with a queue of inferred per-record detail requests.
 The project-only DB1 database, raw store, schedules, code, temporary QA
-interface and active delivery-document tree have been removed. The
-[close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md)
-is now the active DB1 narrative; Git preserves detailed history.
+interface and active delivery-document tree have been removed. The close-down
+and rebuild record has since been removed from the active repository because
+the later rebuild also failed. Git preserves detailed history; the active gate
+is now the independent external-review commission.
 
 The project design, handover, decision register, AGENTS.md and governance
 procedure now require a response-unit matrix, a numerical request bound and a
@@ -3223,7 +3224,7 @@ authentication boundary remain separately operational.
 
 **Outcome:** `OWNER REVIEW REQUIRED — PLANNING COMPLETE; DB1 REMAINS CLOSED`
 
-The [Database mirror rebuild proposal](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md) turns the 64-form long-term source inventory into a bounded initial capture design: 29 fixed collection responses plus 88 named annual responses, for 117 literal source requests. The remaining 31 parameterised/detail forms are Database-mirror access methods over those retained responses, not an upstream detail crawl or a hidden omission.
+The now-withdrawn Database mirror rebuild proposal turned the 64-form long-term source inventory into a bounded initial capture design: 29 fixed collection responses plus 88 named annual responses, for 117 literal source requests. The remaining 31 parameterised/detail forms were described as Database-mirror access methods over those retained responses, not an upstream detail crawl or a hidden omission.
 
 The proposal preserves exact-byte retention, manifest and checksum evidence, daily/weekly reconciliation, and a first-class upstream-availability state, including the 2006 Committee Official Reports condition. It contains no source contact, database mutation, schedule, code, temporary QA UI, portal or deployment authority. Owner approval is required before an R1–R3 implementation work package may be prepared.
 
@@ -3242,9 +3243,9 @@ manifest-linked raw files re-hashed and re-sized correctly.
 
 The generic worker’s daily 33-unit and weekly 84-unit schedules are active.
 The existing API and web services remained active, and no DB1 reader,
-researcher portal, DB2 output or public data access was added. The active
-[assurance report](../workstreams/db1/ASSURANCE_REPORT_2026-08-06.md) is the
-human-readable result; PostgreSQL retains the machine-readable report.
+researcher portal, DB2 output or public data access was added. The assurance
+report and its PostgreSQL metadata were subsequently removed because the
+underlying DB1 product was not the required PostgreSQL mirror.
 
 **Next review:** owner R4 review of whether the backend’s declared capability
 boundary is accepted for a separately proposed researcher portal.
@@ -3267,3 +3268,26 @@ Committee Official Reports upstream message and the MQA events HTTP 503.
 **Next review:** owner R4 review of the backend boundary; ordinary daily and
 weekly reconciliation will continue to check the two conditions without any
 special-case source crawl.
+
+---
+
+# GOV-REV-2026-08-06E — DB1 implementation withdrawal and external-review gate
+
+**Outcome:** `CHANGES_REQUIRED — DB1 fully removed; independent review required`
+
+The R1–R3 implementation did not meet the owner's intended Database mirror
+product. It stored source-response files on the VPS and metadata manifests in
+PostgreSQL; it did not ingest the source data into PostgreSQL as a usable
+Database mirror. Its internal checks therefore cannot be treated as acceptance
+of DB1.
+
+On the owner's direction, the project DB1 database, database role, raw store,
+schedules, service units, secret, implementation code, temporary QA interface
+and active delivery records were removed. The Live API catalogue and private
+authentication boundary remain operational and separate. The historic
+implementation record is preserved in Git, not retained as active project
+guidance.
+
+No DB1 source request, capture, database mutation, schedule, test scaffold,
+portal implementation or DB2 work may proceed. The next required control is
+the [independent external-review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md), followed by a new owner-approved Postgres-first design.

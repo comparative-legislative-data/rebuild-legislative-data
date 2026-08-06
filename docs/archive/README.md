@@ -16,5 +16,5 @@ It is not the project’s primary narrative and it does not replace Git history.
 - `infrastructure/` — completed VPS foundation records.
 
 The withdrawn Database mirror delivery packets are intentionally not archived
-here. Their recovery trail is Git; the active record is the
-[DB1 close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md).
+here. Their recovery trail is Git; the active gate is the
+[independent external-review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md).

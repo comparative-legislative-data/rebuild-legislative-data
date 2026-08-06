@@ -8,6 +8,14 @@
 
 **Clarification:** DEC-0074, recorded from owner direction on 3 August 2026
 
+> **Current implementation status (6 August 2026):** The prior DB1
+> implementation is withdrawn and has been removed. This programme still
+> governs the separation of proxy, Database mirror and DB2, but its former
+> raw-capture/archive implementation language does not authorise a new DB1
+> build. A replacement must be Postgres-first, independently reviewed and
+> separately owner-approved. See the
+> [external-review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md).
+
 ## 1. Purpose
 
 This proposal establishes the research-access architecture for the Scottish Parliament (`GB-SCT`) pilot. It separates three products that serve different research needs and must never be represented as one another.

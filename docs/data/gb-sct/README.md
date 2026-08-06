@@ -12,11 +12,12 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 - [Update-signal reconnaissance](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
-- [Database mirror close-down and rebuild rules](../../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md)
+- [Independent Database mirror review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
 
 The endpoint inventory defines potential programme scope. It is not a
-Database-mirror capture instruction. Any new retained-data work must start with
-the approved response-unit capture matrix required by the close-down record.
+Database-mirror capture instruction. The failed DB1 implementation was removed
+on 6 August 2026. Any replacement must be reviewed independently and then
+receive a new owner-approved PostgreSQL-first design before source work begins.
 
 ## Governance templates and policy
 
