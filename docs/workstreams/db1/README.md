@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** approved rebuild direction (DEC-0115); no DB1 implementation is active
+**Status:** A2 source-free PostgreSQL foundation passed; live ingestion not started
 
 ## Purpose
 
@@ -26,18 +26,19 @@ response-unit matrix.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final
-initial source-form model. The owner review is now the model and its source-free
-foundation proof:
+initial source-form model. The owner approved that model for the source-free
+foundation proof only; the proof passed on 6 August 2026:
 
 - the [response-unit matrix](../../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md), which lists the 117 bounded fixed/annual source requests;
 - the [final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md), which accounts for every form as a retained source response, parent-backed access form, or upstream limitation;
-- the [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md), which proposes the synthetic PostgreSQL proof only; and
+- the [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md), which completed the synthetic PostgreSQL proof only;
+- the [A2 proof result](../../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md), which records the direct SQL evidence; and
 - the [seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md), which records the final checks without retaining source data.
 
 ## Boundaries
 
 - The long-term selected inventory is 64 Scottish Parliament API forms. It is
-  not yet a capture queue.
+  not yet a live capture queue.
 - Before any capture, an explicit response-unit matrix must name every allowed
   request/window, its bound, cadence and exception handling.
 - DB1 does not infer detail IDs, transform source fields, create variables or
@@ -70,9 +71,11 @@ useful, not to expose ingestion machinery.
 - [Response-unit matrix](../../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
   — proposed, finite DB1 capture control; no source authority.
 - [A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
-  — proposed PostgreSQL foundation and synthetic proof; no source authority.
+  — completed PostgreSQL foundation and synthetic proof; no source authority.
+- [A2 proof result](../../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
+  — direct SQL storage and integrity evidence; synthetic data only.
 - [Final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
-  — proposed complete all-64-form source-unit/access model; owner review required.
+  — approved all-64-form source-unit/access model for A2 only; no live-ingest authority.
 - [Seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)
   — completed final route-resolution evidence; no retained source data.
 - [Withdrawn initial response-unit model](../../data/gb-sct/GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)

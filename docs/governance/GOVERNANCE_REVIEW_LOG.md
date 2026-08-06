@@ -3468,3 +3468,27 @@ complete initial source-form boundary, without an inferred detail crawl or
 filesystem source archive.
 
 **Next review:** owner review and approval/amendment of DEC-0122: final initial response-unit model plus source-free A1 foundation package.
+
+---
+
+# GOV-REV-2026-08-06O — DB1 A2 source-free PostgreSQL proof
+
+**Outcome:** `PASS — SYNTHETIC POSTGRESQL FOUNDATION PROVED; LIVE INGEST REMAINS BLOCKED`
+
+Following owner approval of DEC-0122, A2 created one isolated DB1 database and
+fresh least-privilege A2 roles in the existing loopback-only project cluster.
+It generated synthetic JSON only. Direct SQL proved that raw `bytea`, JSONB,
+digest and byte count live together in `source_response`; changed/unchanged
+history and an upstream-condition event preserve the last successful response;
+and a non-registry response unit is rejected before any network step. No
+Scottish Parliament request, capture, schedule, portal or DB2 action occurred.
+
+Pre-flight also found and removed 83 stale, project-owned DB1/fullscope staging
+items left by the withdrawn build, without reading them. The scoped DB1 path
+contains only code, not a raw payload file; the live API and web services
+remained active. Two failed synthetic setup/proof runs remain visibly recorded
+before the final passing run. See the [A2 result](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md).
+
+**Next review:** owner review of a separate A3 live-ingestion package. Until
+then, live source access, response capture, scheduling, portal work and DB2
+remain unauthorised.

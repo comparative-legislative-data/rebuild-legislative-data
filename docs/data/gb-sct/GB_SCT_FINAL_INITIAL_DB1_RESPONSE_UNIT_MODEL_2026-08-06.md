@@ -1,6 +1,6 @@
 # GB-SCT final initial DB1 response-unit model
 
-**Status:** proposed complete initial source-form model; owner review required  
+**Status:** approved for the A1/A2 foundation only; no live-ingest authority
 **Date:** 6 August 2026  
 **Evidence:** DEC-0117 through DEC-0121
 
@@ -94,4 +94,3 @@ Approval should be limited to the source-free A1 PostgreSQL proof:
 
 It does not authorise live source capture, a schedule, a frontend, a download,
 or any DB2 work. Those require the next bounded package after A1 passes.
-

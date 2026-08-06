@@ -19,7 +19,7 @@ obtained, from where, when, how it was handled, and what has not been shown.
 | Layer | Purpose | Current state |
 | --- | --- | --- |
 | Proxy | Help private users find and inspect live Scottish Parliament API routes without CLD retaining the response. | Private MVP operating. |
-| Database mirror | A future PostgreSQL-based mirror of approved Scottish Parliament API responses. | Postgres-first rebuild direction approved after four independent reviews; no implementation is active. Read the [DB1 narrative](workstreams/db1/README.md) and [approved rebuild plan](planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md). |
+| Database mirror | A PostgreSQL-based mirror of approved Scottish Parliament API responses. | The source-free storage foundation has passed. It holds synthetic test data only; no live Scottish Parliament response has been ingested. Read the [DB1 narrative](workstreams/db1/README.md). |
 | DB2 | Create separately governed Tier 1/2 variables, codebooks and research releases. | Not started. |
 
 The layers must never be conflated: a live proxy response is not a retained

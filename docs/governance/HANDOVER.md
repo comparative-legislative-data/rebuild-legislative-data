@@ -1,6 +1,6 @@
 # Handover: Comparative Legislative Data
 
-**Status:** active programme; live API catalogue only; Database mirror reset
+**Status:** active programme; live API catalogue operating; Database mirror A2 foundation passed
 **Last updated:** 6 August 2026
 
 ## Project in one page
@@ -33,9 +33,12 @@ Parliament API data stored in PostgreSQL as a usable database mirror. It stored
 raw files on the VPS and only manifests in PostgreSQL. That is not a Database
 mirror for this project.
 
-There is currently no DB1 database, database role, retained source data,
-schedule, service, temporary QA interface, implementation code, or active DB1
-delivery record. The Live API catalogue remains separate and operational.
+DEC-0122 then approved a strictly source-free A2 proof. The project now has an
+isolated `cld_gb_sct_db1` PostgreSQL database, two new A2 roles, a small
+synthetic-only worker and direct SQL acceptance evidence. It holds synthetic
+test JSON only—not Scottish Parliament data. There is still no live ingest,
+schedule, service, temporary QA interface, portal or DB2 work. The Live API
+catalogue remains separate and operational.
 
 Four substantive independent reviews of the
 [independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
@@ -45,9 +48,11 @@ are recorded in the approved
 The owner approved that design direction as DEC-0115 on 6 August 2026. The
 subsequent no-retention [Cohort A coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
 found 20 sampled parent/detail or parent/filter subset observations, while
-leaving high-volume routes and two Member-status detail forms unresolved. It
-remains planning only: a final response-unit model and implementation package
-need separate owner approval before any DB1 action.
+leaving high-volume routes and two Member-status detail forms unresolved. The
+later seven-route resolution produced an all-64-form model, and the
+[A2 result](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
+now proves the storage contract without retaining source data. A live baseline
+needs its own bounded A3 owner decision.
 
 ### DB2
 
@@ -76,12 +81,12 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the [final initial DB1 response-unit model](../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
-alongside the [source-free A1 foundation package](../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md).
-All 64 forms are now accounted for: 33 retained whole responses, 25
-parent-backed access forms, and six explicit upstream detail-route limitations.
-No DB1 foundation, capture, database mutation, schedule, ingest-test scaffold
-or portal work is authorised until the owner approves that package.
+Prepare and review a separate A3 live-ingestion package. It must name the 117
+fixed/annual source response units, resource ceilings informed by A2,
+source-condition handling, reconciliation and rollback. All 64 forms are
+accounted for: 33 retained whole responses, 25 parent-backed access forms, and
+six explicit upstream detail-route limitations. No live source capture,
+schedule, portal or DB2 work is authorised until that package is approved.
 
 ## Documentation hygiene
 

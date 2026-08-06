@@ -1,6 +1,6 @@
 # DB1 A1 foundation implementation package
 
-**Status:** proposed for owner review — no implementation authority  
+**Status:** approved and executed — A2 synthetic proof PASS; no live ingest authority
 **Date:** 6 August 2026  
 **Depends on:** DEC-0115 and the proposed
 [GB-SCT DB1 response-unit matrix](../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
@@ -118,7 +118,7 @@ must exist:
 
 ## 8. Owner decision requested
 
-Approve, amend or reject this A1/A2 package. Approval would authorise only the
-isolated PostgreSQL foundation and synthetic proof described above. It would
-not authorise source access, DB1 baseline ingestion, a cron/systemd schedule,
-researcher access or deployment beyond the isolated proof target.
+The owner approved this package on 6 August 2026. Its synthetic proof passed;
+see the [A2 result](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md).
+It does not authorise source access, DB1 baseline ingestion, a cron/systemd
+schedule, researcher access or deployment beyond the isolated proof target.
