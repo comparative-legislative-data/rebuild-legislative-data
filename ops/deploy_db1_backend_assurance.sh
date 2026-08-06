@@ -51,6 +51,7 @@ PATH="$runtime:$PATH" npm ci --ignore-scripts --prefix "$staging/source"
 PATH="$runtime:$PATH" node --test "$staging/source/tests/db1-assurance.test.mjs"
 node --check "$staging/source/scripts/db1_a6_reconcile.mjs"
 node --check "$staging/source/scripts/db1_a6_health_report.mjs"
+node --check "$staging/source/scripts/db1_a6_synthetic_drift_proof.mjs"
 
 release_path="$project_root/db1-worker-releases/$commit"
 if [[ ! -d "$release_path" ]]; then
@@ -92,6 +93,7 @@ systemctl start cld-gb-sct-db1-reconcile@source-free.service
 set -a
 source "$worker_secret"
 set +a
+sudo -n -u cld-gb-sct env DB1_A6_DATABASE_URL="$DB1_A6_DATABASE_URL" DB1_A6_REQUIRE_FROM="$current_link/package.json" DB1_A6_DEPLOYED_PACKAGE_REVISION="$commit" "$runtime/node" "$current_link/scripts/db1_a6_synthetic_drift_proof.mjs" > "$staging/synthetic-drift.json"
 sudo -n -u cld-gb-sct env DB1_A6_DATABASE_URL="$DB1_A6_DATABASE_URL" DB1_A6_REQUIRE_FROM="$current_link/package.json" DB1_A6_DEPLOYED_PACKAGE_REVISION="$commit" DB1_A6_DISK_PATH="$project_root" "$runtime/node" "$current_link/scripts/db1_a6_reconcile.mjs" --cadence hold --hold-lock-ms 5000 > "$staging/hold-lock.json" &
 holder_pid=$!
 sleep 1

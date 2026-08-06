@@ -19,15 +19,23 @@ try {
     select count(*)::int as raw_responses,
            count(*) filter (where body_byte_length <> octet_length(raw_body))::int as byte_length_mismatches,
            count(distinct response_unit_key)::int as represented_units
-      from db1.source_response
+      from db1.source_response response
+      join db1.response_unit unit using(response_unit_key)
+     where not unit.is_synthetic
   ), linkage as (
     select count(*) filter (where response.source_response_id is null)::int as projection_orphans,
            count(*)::int as projections,
            coalesce(sum(projection.object_count), 0)::bigint as projected_objects
       from db1.projection_run projection
       left join db1.source_response response using(source_response_id)
+      left join db1.response_unit unit using(response_unit_key)
+     where not coalesce(unit.is_synthetic, false)
   ), profiles as (
-    select count(*)::int as schema_profiles from db1.response_schema_profile
+    select count(*)::int as schema_profiles
+      from db1.response_schema_profile profile
+      join db1.source_response response using(source_response_id)
+      join db1.response_unit unit using(response_unit_key)
+     where not unit.is_synthetic
   ), assurance as (
     select max(finished_at) filter (where cadence='DAILY' and lock_result='ACQUIRED') as latest_daily_run,
            max(finished_at) filter (where cadence='WEEKLY' and lock_result='ACQUIRED') as latest_weekly_run,
@@ -42,7 +50,10 @@ try {
            count(*) filter (where latest_result_kind='LOCAL_FAILURE')::int as current_local_failures
       from db1.v_assurance_unit_state
   ), drift as (
-    select count(*)::int as schema_drift_events from db1.schema_drift_event
+    select count(*) filter (where not unit.is_synthetic)::int as production_schema_drift_events,
+           count(*) filter (where unit.is_synthetic)::int as synthetic_schema_drift_test_events
+      from db1.schema_drift_event event
+      join db1.response_unit unit using(response_unit_key)
   )
   select row_to_json(registry) as registry, row_to_json(forms) as forms,
          row_to_json(raw_integrity) as raw_integrity, row_to_json(linkage) as linkage,
