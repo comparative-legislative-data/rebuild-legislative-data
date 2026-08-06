@@ -82,13 +82,16 @@ upstream condition or local failure is named rather than hidden.
 
 There is no approved off-VPS PostgreSQL backup destination or successful
 restore test yet. Therefore DB1 has routine parity evidence but is **not yet a
-fully recoverable service**. That is a separate owner decision because it
-requires a storage location, retention period, encryption/key ownership and
-restore target.
+fully recoverable service**. The owner has deliberately parked recovery work
+until the value of the application is clearer. It remains a future requirement
+because it needs a storage location, retention period, encryption/key ownership
+and restore target.
 
-No researcher-facing Database mirror portal is authorised until that recovery
-gate is passed and a separate portal design is approved.
+A researcher-facing Database mirror portal remains a separately designed
+product. It is not authorised by this backend result, but recovery is not a
+portal prerequisite implied by this package.
 
-**What next:** choose the controlled off-VPS backup destination and retention
-approach, then authorise one backup-and-isolated-restore package. The frontend
-remains out of scope until that backend recovery evidence is complete.
+**What next:** carry the recovery requirement forward; when the owner decides
+it is worthwhile, choose an off-VPS backup destination and retention approach,
+then authorise one backup-and-isolated-restore package. The frontend remains a
+separate decision and design package.

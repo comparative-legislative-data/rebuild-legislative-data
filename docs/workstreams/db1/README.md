@@ -40,8 +40,11 @@ database without contacting the source. Its [completed backend-assurance
 result](../../data/gb-sct/GB_SCT_DB1_A6_BACKEND_ASSURANCE_RESULT_2026-08-06.md)
 then records a complete 117-URL byte-level recheck: 114 unchanged responses,
 three named upstream conditions, no source change, local failure or production
-schema drift. The routine daily/weekly timers are enabled. Off-VPS recovery and
-any researcher portal are not yet authorised.
+schema drift. The routine daily/weekly timers are enabled. Off-VPS recovery is
+deliberately parked until the owner decides the application warrants that
+investment; it remains a recorded requirement rather than a claim that DB1 can
+be recovered after VPS loss. A researcher portal remains a separate product
+decision and design package; it is not authorised by the backend result.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final
@@ -106,8 +109,8 @@ useful, not to expose ingestion machinery.
 - [A5 production baseline result](../../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
   — current dated raw-capture and projection evidence.
 - [Backend-assurance package](../../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md)
-  — proposed routine-check, parity, drift, health and recovery controls; no
-  frontend authority.
+  — executed routine-check, parity, drift and health controls; recovery remains
+  deliberately deferred and there is no frontend authority.
 - [Final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
   — approved all-64-form source-unit/access model for A2 only; no live-ingest authority.
 - [Seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)

@@ -79,8 +79,11 @@ Read the [DB1 A5 production baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIA
 The 117-response boundary and all-64-form model remain intact. The initial
 baseline alone authorised no schedule, portal or DB2 work; DEC-0126 has now
 passed Gates A–E, including a complete recheck, and enabled the timer schedule.
-The next decision is an off-VPS backup-and-restore package. No portal or DB2
-work is enabled.
+Off-VPS backup-and-restore is deliberately parked until the owner decides the
+application warrants that investment; it remains an open recovery requirement.
+No DB2 work is enabled. Any Database mirror portal requires its own approved
+researcher-experience design package and must not be inferred from the current
+backend QA scaffold.
 
 ## Documentation hygiene
 
