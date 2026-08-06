@@ -3567,3 +3567,17 @@ is the 117 named requests after the production schema proof passes.
 **Next review:** owner approval, amendment or rejection of DEC-0125. Nothing
 in this planning record authorises a VPS/database change or Scottish Parliament
 request.
+
+---
+
+# GOV-REV-2026-08-06S — DEC-0125 execution opened
+
+**Outcome:** `APPROVED — PRODUCTION SCHEMA, SYNTHETIC PROOF AND ONE BOUNDED BASELINE RUN AUTHORISED`
+
+The owner approved DEC-0125 on 6 August 2026. Execution is limited to the
+production schema replacement, its source-free proof, and then one serial,
+no-retry request to each of the 117 named Scottish Parliament URLs. No
+schedule, portal, DB2, source-scope expansion or backup work is authorised.
+
+**Next review:** direct PostgreSQL acceptance evidence and the initial-baseline
+result, including any retained upstream availability conditions.

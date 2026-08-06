@@ -1,6 +1,6 @@
 # GB-SCT DB1 production schema and initial-baseline package
 
-**Status:** proposed — owner approval required before implementation or source action
+**Status:** approved — execution in progress (owner instruction, 6 August 2026)
 
 **Date:** 6 August 2026
 
