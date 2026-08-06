@@ -39,8 +39,8 @@ source-free test and then DEC-0125's production implementation. The
 records one exact response for each of 117 approved URLs: raw bytes and
 provenance in PostgreSQL, plus 4,063,556 linked source-object rows. Three
 source conditions are named rather than omitted. DB1 is a dated baseline only;
-routine update, reconciliation, drift reporting, backup/restore and any
-researcher portal remain separate work.
+the source-free run-lock, health and drift controls have passed, but its first
+reconciliation, backup/restore and any researcher portal remain separate work.
 
 The independent-review commission, response-unit matrix and earlier source-free
 proofs remain part of the audit trail. The current operational record is the
@@ -76,9 +76,9 @@ be shaped to serve assumed DB2 variables.
 
 Read the [DB1 A5 production baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md).
 The 117-response boundary and all-64-form model remain intact. DB1 has a dated
-initial baseline only: no schedule, portal or DB2 work is enabled. The next
-decision must be a separate backend-assurance package for routine checks,
-reconciliation, health and recovery.
+initial baseline only: no schedule, portal or DB2 work is enabled. DEC-0126
+is approved and its Gate A controls passed; the next authorised activity is
+one controlled reconciliation of the same response units.
 
 ## Documentation hygiene
 

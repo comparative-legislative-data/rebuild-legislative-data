@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** dated 117-response PostgreSQL baseline passed; backend assurance proposed; no researcher portal
+**Status:** dated 117-response PostgreSQL baseline passed; backend-assurance Gate A passed; no researcher portal
 
 ## Purpose
 
@@ -33,6 +33,12 @@ records 117 exact PostgreSQL raw responses and 4,063,556 linked source-object
 rows. It names rather than hides the 2006 Committee Reports availability
 message and MQA Events/Questions HTTP-500 responses. This is a dated baseline,
 not a routine-currentness or researcher-access claim.
+
+DEC-0126's [source-free Gate A result](../../data/gb-sct/GB_SCT_DB1_A6_GATE_A_CONTROL_RESULT_2026-08-06.md)
+proves the run-lock, health and structural-drift controls against the isolated
+database without contacting the source. The next authorised activity is one
+reconciliation of the same 117 URLs. No routine timer or researcher portal is
+enabled.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final

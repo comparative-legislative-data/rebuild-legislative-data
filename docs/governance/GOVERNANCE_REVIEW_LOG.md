@@ -3644,3 +3644,24 @@ separate owner decision.
 
 **Next review:** Gate A source-free control result; stop if the fixed matrix,
 resource boundary or protected-service state changes.
+
+---
+
+# GOV-REV-2026-08-06W — DB1 backend-assurance Gate A passed
+
+**Outcome:** `PASS — SOURCE-FREE LOCK, HEALTH AND DRIFT CONTROLS; TIMERS DISABLED`
+
+The direct PostgreSQL result records the unchanged 64-form/117-unit baseline:
+117 raw responses, 4,063,556 linked source objects, zero byte-length mismatch,
+zero missing response/verification state, three named upstream conditions and
+no production schema drift. The test-only synthetic unit produced one separate
+drift event; it is excluded from source totals. A held PostgreSQL advisory lock
+yielded a recorded blocked outcome. No Scottish Parliament request occurred.
+
+The first deployment exposed only worker-package permission/environment/test
+metadata defects. Each was corrected before source activity; no public service,
+timer, proxy or non-project resource changed.
+
+**Next review:** the already authorised Gate B reconciliation of the unchanged
+117 literal URLs, followed by direct parity and health evidence. Timers remain
+disabled until those results pass.

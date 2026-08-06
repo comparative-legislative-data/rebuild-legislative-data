@@ -1,6 +1,6 @@
 # GB-SCT DB1 backend-assurance package
 
-**Status:** approved — execution opened (owner instruction, 6 August 2026)
+**Status:** approved — Gate A passed; Gates B–E remain in the authorised package
 
 **Authorising decision:** DEC-0126
 
