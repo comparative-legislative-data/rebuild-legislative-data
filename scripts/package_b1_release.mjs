@@ -19,6 +19,7 @@ const allowed = [
   "ops/systemd",
   "ops/nginx",
   "ops/deploy_web_presentation.sh",
+  "scripts/db1_mirror_runner.mjs",
   "migrations/access_control",
   "apps/api/package.json",
   "apps/web/package.json",
