@@ -189,6 +189,21 @@ This is the required evidence for a scoped completeness statement. It is not a c
 | R3 — reconciliation | Named daily/weekly scheduled checks, source-condition handling and a backend assurance report. | Yes | Same work package |
 | R4 — closure | Owner review of the assurance report and a decision on whether the backend is ready for an independent portal design. | No new source work | Separate owner review |
 
+### R1 source-free proof
+
+R1 begins with a deliberately source-free proof on the isolated VPS. It creates
+only the project Database mirror database, an append-only raw-archive layout
+and a one-shot, loopback-only worker. The worker writes a locally generated
+test byte sequence, records its checksum and path in a separate system-test
+table, and re-reads the file to prove that PostgreSQL and the immutable archive
+agree. It creates no capture unit, observation, schedule, proxy route or
+research-facing interface, and makes no request to the Scottish Parliament.
+
+The R1 proof is accepted only when the project database contains a passing
+system-test result, the raw file re-hashes to the recorded SHA-256 value, and
+the capture-observation table remains empty. This is infrastructure evidence,
+not a data or mirror-completeness claim.
+
 ## Out of scope
 
 - DB2 variables, joins, transformations, codebooks, charts or research claims;

@@ -1,0 +1,21 @@
+[Unit]
+Description=CLD GB-SCT Database mirror R1 source-free proof
+After=postgresql@16-cld_gb_sct.service
+Requires=postgresql@16-cld_gb_sct.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+User=cld-gb-sct
+Group=cld-gb-sct
+EnvironmentFile=/etc/cld-gb-sct/secrets/db1-r1-proof.env
+Environment=DB1_MODE=synthetic
+WorkingDirectory=/srv/cld-gb-sct/releases/RELEASE_ID
+ExecStart=/srv/cld-gb-sct/runtime/node-v24.18.1/bin/node /srv/cld-gb-sct/releases/RELEASE_ID/scripts/db1_mirror_runner.mjs
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/cld-gb-sct/raw/db1
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+UMask=0027
