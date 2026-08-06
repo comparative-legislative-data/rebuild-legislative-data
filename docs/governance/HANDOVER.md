@@ -90,11 +90,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Prepare and review a final DB1 schema/capture package using the proven
-[lossless-object design](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
-The 117-response boundary and all-64-form model remain intact, but no live
-source capture, schedule, portal or DB2 work is authorised until that separate
-package is approved.
+Review proposed [DEC-0125's production schema and initial-baseline
+package](../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md).
+The 117-response boundary and all-64-form model remain intact. No live source
+capture, schedule, portal or DB2 work is authorised until the package is
+approved.
 
 ## Documentation hygiene
 

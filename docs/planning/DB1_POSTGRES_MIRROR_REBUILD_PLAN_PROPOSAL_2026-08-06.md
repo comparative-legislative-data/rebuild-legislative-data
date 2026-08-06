@@ -1,6 +1,7 @@
 # GB-SCT Database Mirror (DB1): Postgres-first rebuild plan
 
-**Status:** approved DB1 design direction (DEC-0115) — planning only; no implementation authority
+**Status:** approved DB1 design direction (DEC-0115) — historic whole-response
+JSONB storage detail superseded by DEC-0124; planning only
 
 **Date:** 6 August 2026  
 **Applies to:** the future GB-SCT Database mirror only  
@@ -23,6 +24,15 @@ The intended product is simple:
 
 DB1 is neither the live API proxy nor DB2. It must not create analytical
 variables, semantic interpretations, record-to-record joins or derived facts.
+
+> **Current storage correction:** sections 4.1–4.2 below record the original
+> Postgres-first direction but their whole-response JSONB detail was disproved
+> by DEC-0123. The current approved storage direction is the
+> [lossless raw-response/source-object schema](GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md),
+> validated source-free by DEC-0124. The proposed
+> [production-schema/initial-baseline package](GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
+> is the current decision record. This document is retained for the independent
+> review synthesis and project-gate structure, not as final DDL authority.
 
 ## 2. Evidence considered
 

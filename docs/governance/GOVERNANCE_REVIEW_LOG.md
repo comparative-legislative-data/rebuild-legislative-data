@@ -3545,3 +3545,25 @@ updates, public access or a complete Database mirror.
 
 **Next review:** owner review of a separate final-schema and bounded
 117-response capture package. No source request is authorised by this result.
+
+---
+
+# GOV-REV-2026-08-06R — DB1 production schema and initial-baseline package prepared
+
+**Outcome:** `OWNER REVIEW REQUIRED — NO SOURCE OR DATABASE ACTION AUTHORISED`
+
+DEC-0125 turns the passing A4 synthetic storage evidence into one small,
+reviewable backend package. It preserves the approved 64-form/117-literal-URL
+boundary, removes the old whole-response JSONB design, and uses a common
+PostgreSQL raw-response/source-object schema. The proposed initial run is one
+serial, no-retry request to each literal URL, after a repeat source-free proof
+against the production tables.
+
+The proposal explicitly includes deletion of the project-only non-baseline
+partial `db1` schema. It excludes schedule activation, frontend work, DB2,
+backups and any source-scope expansion. The only proposed live source activity
+is the 117 named requests after the production schema proof passes.
+
+**Next review:** owner approval, amendment or rejection of DEC-0125. Nothing
+in this planning record authorises a VPS/database change or Scottish Parliament
+request.

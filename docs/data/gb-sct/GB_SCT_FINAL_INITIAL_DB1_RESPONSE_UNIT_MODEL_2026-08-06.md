@@ -1,6 +1,6 @@
 # GB-SCT final initial DB1 response-unit model
 
-**Status:** approved for the A1/A2 foundation only; no live-ingest authority
+**Status:** approved 64-form/117-response model; no live-ingest authority
 **Date:** 6 August 2026  
 **Evidence:** DEC-0117 through DEC-0121
 
@@ -8,9 +8,10 @@
 
 DB1 will be a PostgreSQL database holding the raw Scottish Parliament API
 responses approved for this project. Each stored response will keep its
-original bytes and a queryable JSON copy in the same PostgreSQL row, together
-with its source URL, capture time, status and checksum. DB1 will not store raw
-payloads as VPS files and will not create DB2 variables.
+original bytes, source URL, capture time, status and checksum. Where a response
+contains source objects, DB1 will store unchanged source-object JSONB rows
+linked to the original bytes. It will not store raw payloads as VPS files,
+whole response documents as JSONB, or DB2 variables.
 
 This model accounts for every approved API form. It does not pretend that the
 Scottish Parliament supplies usable data from every detail URL.
@@ -83,14 +84,17 @@ currently usable as an ordinary detail API.
 
 ## What this authorises if approved
 
-Approval should be limited to the source-free A1 PostgreSQL proof:
+The earlier A1/A2 foundation approval is complete. Any future baseline needs a
+separate approval under the production-schema package. Its source-free check
+will:
 
 1. create the isolated schema;
-2. insert synthetic response bytes and the same synthetic JSON into one
-   PostgreSQL row;
-3. prove with SQL that both can be retrieved, with matching size and checksum;
+2. insert synthetic response bytes and lossless synthetic source objects into
+   PostgreSQL rows;
+3. prove with SQL that raw bytes and object lineage have matching size, digest
+   and position evidence;
 4. prove that no payload file is written outside PostgreSQL; and
 5. stop.
 
 It does not authorise live source capture, a schedule, a frontend, a download,
-or any DB2 work. Those require the next bounded package after A1 passes.
+or any DB2 work. Those require separate approval.

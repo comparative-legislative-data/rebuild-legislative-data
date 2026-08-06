@@ -1,16 +1,17 @@
 # GB-SCT DB1 response-unit matrix
 
-**Status:** proposed A3 literal capture boundary — no live-capture authority
+**Status:** proposed DEC-0125 literal capture boundary — no live-capture authority
 **Date:** 6 August 2026  
 **Governing direction:** DEC-0115  
-**Decision required:** owner approval of the separate A3 live-ingestion package
+**Decision required:** owner approval of the separate production-schema and
+initial-baseline package
 before any source action.
 
 **Reading note:** this document remains the literal 117-URL/year capture list.
 Its treatment of detail/filter access forms is refined by the later approved
 [final initial response-unit model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
 which incorporates the Cohort A, Cohort B and seven-route evidence. The A2
-storage proof has passed; neither record authorises live capture.
+and A4 storage proofs have passed; neither record authorises live capture.
 
 ## 1. What this matrix controls
 
@@ -57,10 +58,11 @@ routine reconciliation class below. The base host is
 | Committees and committee roles | `/api/committees`; `/api/committeeroles`; `/api/committeetypes`; `/api/committeetypelinks` |
 | Motions, questions and related records | `/api/motionsquestionsanswersevents`; `/api/motionsquestionsanswerseventtypes`; `/api/motionsquestionsanswerseventsubtypes`; `/api/motionsquestionsanswerseventlinks`; `/api/motionsquestionsanswersmotions`; `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=consideration`; `/api/MotionsQuestionsAnswersMotionsBusiness?motionfilter=programme`; `/api/motionsquestionsanswersquestions`; `/api/motionsquestionsanswerssupports` |
 
-Each URL is retained exactly as returned: original bytes and, where valid JSON,
-a queryable JSON representation in the same PostgreSQL response row. There is
-no pagination, ID follow-up, field selection, envelope stripping or response
-transformation in this matrix.
+Each URL is retained exactly as returned: original bytes in PostgreSQL and,
+where the response is a top-level object/array, unchanged source-object rows
+linked to those bytes. There is no pagination, ID follow-up, field selection,
+envelope stripping or response transformation in this matrix. The rejected
+whole-response JSONB model is not part of this boundary.
 
 ## 4. Capture-ready annual response units: 88 URLs
 
@@ -130,8 +132,8 @@ unattempted or failed local check.
 
 ## 7. Proposed resource and stop rules
 
-The A1 package must test these before any live baseline. They are limits, not
-claims about the source:
+The production-schema package must test these before any live baseline. They
+are limits, not claims about the source:
 
 - use bounded concurrency and never transfer more than one high-volume annual
   official-report response at a time;
@@ -146,6 +148,7 @@ claims about the source:
 
 ## 8. Approval test and next step
 
-This matrix is ready for review as the 117-response A3 baseline boundary. It
-does not authorise capture by itself. The [A3 package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
+This matrix is ready for review as the 117-response initial-baseline boundary.
+It does not authorise capture by itself. The proposed
+[production-schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
 sets the one-run limits, stops and acceptance tests.
