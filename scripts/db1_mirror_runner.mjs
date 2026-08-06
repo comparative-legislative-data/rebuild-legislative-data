@@ -94,6 +94,11 @@ async function migrate(pool) {
       raw_path text,
       detail text
     );
+    create table if not exists db1_assurance_report (
+      id uuid primary key,
+      created_at timestamptz not null,
+      report jsonb not null
+    );
   `);
 }
 
@@ -264,6 +269,45 @@ async function classifyKnownConditions(pool) {
   return outcomes;
 }
 
+async function buildAssuranceReport(pool) {
+  const baseline = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='baseline' and finished_at is not null order by finished_at desc limit 1`);
+  const reconciliation = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='reconcile' and finished_at is not null order by finished_at desc limit 1`);
+  if (!baseline.rows[0] || !reconciliation.rows[0]) throw new Error("BASELINE_AND_RECONCILIATION_REQUIRED");
+  const currentRun = reconciliation.rows[0];
+  const observations = await pool.query(
+    `select o.unit_id, o.status, o.http_status, o.source_condition, o.sha256, o.byte_length, o.raw_path, u.source_url, u.cadence
+     from db1_observation o join db1_capture_unit u on u.id=o.unit_id where o.run_id=$1 order by o.unit_id`,
+    [currentRun.id]
+  );
+  const statusCounts = Object.fromEntries(await pool.query(
+    `select status, count(*)::integer as count from db1_observation where run_id=$1 group by status order by status`,
+    [currentRun.id]
+  ).then((result) => result.rows.map((row) => [row.status, row.count])));
+  let integrityFailures = 0;
+  for (const observation of observations.rows.filter((row) => row.sha256)) {
+    try {
+      const raw = await readFile(observation.raw_path);
+      if (raw.byteLength !== Number(observation.byte_length) || createHash("sha256").update(raw).digest("hex") !== observation.sha256) integrityFailures += 1;
+    } catch {
+      integrityFailures += 1;
+    }
+  }
+  const report = {
+    report_version: 1,
+    generated_at: new Date().toISOString(),
+    scope: { route_forms: 64, response_units: 117, daily_units: 33, weekly_units: 84 },
+    baseline: baseline.rows[0],
+    reconciliation: currentRun,
+    reconciliation_statuses: statusCounts,
+    raw_integrity: { checked: observations.rows.filter((row) => row.sha256).length, failures: integrityFailures },
+    source_conditions: observations.rows
+      .filter((row) => row.status === "UPSTREAM_AVAILABILITY_MESSAGE")
+      .map((row) => ({ unit_id: row.unit_id, source_url: row.source_url, http_status: row.http_status, source_condition: row.source_condition, cadence: row.cadence }))
+  };
+  await pool.query(`insert into db1_assurance_report (id,created_at,report) values ($1,now(),$2::jsonb)`, [randomUUID(), JSON.stringify(report)]);
+  return report;
+}
+
 async function nextUnit(queue, active, budget) {
   while (queue.length) {
     if (budget.exhausted) return null;
@@ -328,6 +372,8 @@ try {
     console.log(JSON.stringify({ mode: "synthetic", ...(await runSyntheticProof(pool, rawRoot)) }));
   } else if (process.env.DB1_MODE === "classify-known-conditions") {
     console.log(JSON.stringify({ mode: "classify-known-conditions", outcomes: await classifyKnownConditions(pool) }));
+  } else if (process.env.DB1_MODE === "assurance") {
+    console.log(JSON.stringify({ mode: "assurance", report: await buildAssuranceReport(pool) }));
   } else {
     const mode = process.env.DB1_MODE === "reconcile" ? "reconcile" : "baseline";
     const cadence = process.env.DB1_CADENCE ?? "all";
