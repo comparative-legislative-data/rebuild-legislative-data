@@ -78,9 +78,7 @@ if [[ "$migration_ready" != "t" ]]; then
 fi
 
 if [[ -L "$current_link" ]]; then previous_target="$(readlink -f "$current_link")"; fi
-next_link="$staging/db1-worker-current"
-ln -s "$release_path" "$next_link"
-mv -f "$next_link" "$current_link"
+ln -sfn "$release_path" "$current_link"
 
 sed "s#RELEASE_ID#$commit#g" "$release_path/ops/systemd/cld-gb-sct-db1-reconcile@.service.template" > /etc/systemd/system/cld-gb-sct-db1-reconcile@.service
 install -o root -g root -m 0644 "$release_path/ops/systemd/cld-gb-sct-db1-daily.timer" /etc/systemd/system/cld-gb-sct-db1-daily.timer
