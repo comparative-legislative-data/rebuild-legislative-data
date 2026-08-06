@@ -1,6 +1,7 @@
 # GB-SCT DB1 production schema and initial-baseline package
 
-**Status:** approved — execution in progress (owner instruction, 6 August 2026)
+**Status:** executed — initial baseline pass (6 August 2026); see the
+[result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
 
 **Date:** 6 August 2026
 

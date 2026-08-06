@@ -90,11 +90,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Execute approved [DEC-0125's production schema and initial-baseline
-package](../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md).
-The 117-response boundary and all-64-form model remain intact. The only live
-source activity authorised is one no-retry request to each named URL after the
-production synthetic proof passes; no schedule, portal or DB2 work is in scope.
+Read the [DB1 A5 production baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md).
+The 117-response boundary and all-64-form model remain intact. DB1 has a dated
+initial baseline only: no schedule, portal or DB2 work is enabled. The next
+decision must be a separate backend-assurance package for routine checks,
+reconciliation, health and recovery.
 
 ## Documentation hygiene
 

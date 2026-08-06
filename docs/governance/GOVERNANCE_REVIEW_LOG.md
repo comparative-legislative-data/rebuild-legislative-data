@@ -3581,3 +3581,22 @@ schedule, portal, DB2, source-scope expansion or backup work is authorised.
 
 **Next review:** direct PostgreSQL acceptance evidence and the initial-baseline
 result, including any retained upstream availability conditions.
+
+---
+
+# GOV-REV-2026-08-06T — DB1 production baseline complete
+
+**Outcome:** `PASS — DATED INITIAL BASELINE; NO ROUTINE UPDATE OR PORTAL AUTHORISED`
+
+DEC-0125 completed with one serial, no-retry request to all 117 approved
+Scottish Parliament response units. PostgreSQL retained all 117 exact raw
+responses and 4,063,556 linked unchanged source-object rows. The three source
+conditions—2006 Committee Reports availability message and MQA Events/Questions
+HTTP 500s—are retained and named, not silently omitted. The public API and web
+services remained healthy.
+
+The full result is recorded in the [A5 baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md).
+
+**Next review:** owner review of a separate backend-assurance package for
+routine source checks, reconciliation, health reporting and recovery. No
+front-end Database mirror, schedule or DB2 work is authorised by this review.

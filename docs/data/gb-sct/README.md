@@ -19,7 +19,8 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Blocked DB1 A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
 - [Approved lossless-object schema and access design](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md)
 - [DB1 A4 lossless-object source-free stress-proof result](GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md)
-- [Proposed DB1 production schema and initial baseline](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
+- [DB1 production schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
+- [DB1 A5 production baseline result](GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
 - [Detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
@@ -34,8 +35,9 @@ The endpoint inventory defines potential programme scope. It is not a
 Database-mirror capture instruction. The A2 proof established a storage
 foundation, and DEC-0124's A4 proof passed for the replacement lossless-object
 pattern. The A3 whole-response JSONB design remains blocked. DB1 source work
-remains blocked until the proposed production-schema/initial-baseline package
-is owner-approved.
+now has a passing dated production baseline. It is not a claim of continuing
+freshness: schedule, reconciliation and researcher-facing access remain
+separate decisions.
 
 ## Governance templates and policy
 
