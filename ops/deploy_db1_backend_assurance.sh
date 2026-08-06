@@ -76,6 +76,11 @@ if [[ "$migration_ready" != "t" ]]; then
   install -o postgres -g postgres -m 0640 "$release_path/migrations/db1_a6/005_backend_assurance.sql" "$migration_copy"
   sudo -n -u postgres psql -X -v ON_ERROR_STOP=1 -h "$socket_directory" -p 5434 -d "$database" -f "$migration_copy"
 fi
+synthetic_unit_ready="$(sudo -n -u postgres psql -X -Atqc "select exists(select 1 from db1.response_unit where response_unit_key='__a6_assurance_synthetic__.drift' and is_synthetic)" -h "$socket_directory" -p 5434 -d "$database")"
+if [[ "$synthetic_unit_ready" != "t" ]]; then
+  install -o postgres -g postgres -m 0640 "$release_path/migrations/db1_a6/006_synthetic_assurance_test_unit.sql" "$migration_copy"
+  sudo -n -u postgres psql -X -v ON_ERROR_STOP=1 -h "$socket_directory" -p 5434 -d "$database" -f "$migration_copy"
+fi
 
 if [[ -L "$current_link" ]]; then previous_target="$(readlink -f "$current_link")"; fi
 ln -sfn "$release_path" "$current_link"
