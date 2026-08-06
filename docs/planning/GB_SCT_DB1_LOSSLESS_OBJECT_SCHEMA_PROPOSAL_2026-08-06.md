@@ -1,6 +1,6 @@
 # GB-SCT DB1 lossless-object schema and access design
 
-**Status:** proposed — owner review required; no source, database, schedule or portal authority
+**Status:** approved for source-free proof — executed PASS; no source, capture, schedule or portal authority
 
 **Date:** 6 August 2026
 
@@ -158,7 +158,7 @@ The revised schema may move to a new ingestion proposal only if all are true:
 
 ## 9. Owner choice
 
-**Approve, amend or decline DEC-0124.** Approval would authorise only the
-source-free schema/projection proof in section 6. It would not authorise a new
-Scottish Parliament request. A separate package is required after the proof to
-resume the 117-unit baseline.
+DEC-0124 was approved and the source-free proof passed. See the
+[A4 proof result](../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md).
+This approval did not authorise a Scottish Parliament request. A separate,
+owner-approved package is still required before any 117-unit baseline capture.

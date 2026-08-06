@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** A2 source-free foundation passed; A3 whole-response JSONB ingestion blocked; lossless-object schema decision next
+**Status:** A2 foundation and A4 lossless-object stress proof passed; a new final-schema/capture package is next
 
 ## Purpose
 
@@ -24,7 +24,7 @@ It recommended a bounded, response-level mirror: original response bytes and
 queryable JSON live together in PostgreSQL, controlled by an owner-approved
 response-unit matrix. Live A3 execution then showed that whole-response JSONB
 is not safe for the 45–110 MiB Official Report responses on the shared VPS.
-The current proposed correction is the [lossless-object schema](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md): exact raw bytes remain in PostgreSQL while unchanged top-level source objects become linked JSONB rows.
+The approved correction is the [lossless-object schema](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md): exact raw bytes remain in PostgreSQL while unchanged top-level source objects become linked JSONB rows. Its [A4 source-free proof](../../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md) passed with a 150 MiB synthetic response, then removed the test payload rows. This proves the storage pattern is viable on the isolated service; it does not make the partial A3 database a baseline or authorise source recapture.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final
@@ -79,7 +79,10 @@ useful, not to expose ingestion machinery.
 - [Blocked A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
   — retained only as the factual record of the failed whole-response JSONB approach; do not reuse it for source access.
 - [Lossless-object schema proposal](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md)
-  — current proposed backend correction and source-free proof.
+  — approved backend correction; its source-free proof passed.
+- [A4 lossless-object stress-proof result](../../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md)
+  — direct PostgreSQL/resource evidence for the revised storage pattern;
+  synthetic data only.
 - [Final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
   — approved all-64-form source-unit/access model for A2 only; no live-ingest authority.
 - [Seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)

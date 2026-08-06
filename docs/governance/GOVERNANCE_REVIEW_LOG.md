@@ -3516,3 +3516,32 @@ Scottish Parliament request.
 
 **Next review:** owner review of DEC-0124. No source request, database
 implementation, scheduler, portal or DB2 activity is authorised by this review.
+
+---
+
+# GOV-REV-2026-08-06Q — DB1 A4 lossless-object source-free stress proof
+
+**Outcome:** `PASS — STORAGE PATTERN PROVED; LIVE INGEST REMAINS BLOCKED`
+
+Following owner approval of DEC-0124, one synthetic 150 MiB top-level JSON
+array was retained in a disposable PostgreSQL proof schema as exact `bytea`.
+It was then parsed into 2,399 unchanged top-level JSONB object rows. Direct
+checks passed for the raw byte length/digest, object count, source-position
+coverage and per-object digests. The worker exited successfully within a
+temporary 768 MiB limit; its own recorded peak RSS was 547,127,296 bytes.
+
+The first proof attempt completed all content checks but failed its final
+cleanup because `TRUNCATE` needs table-owner permission. It was recorded as a
+failed proof, its synthetic row was removed, and the corrected rerun passed.
+After the pass, the disposable payload/object tables were truncated. They now
+contain zero rows; the VPS proof directory contains only the migration and
+worker code. The PostgreSQL, API and web services remained active. No Scottish
+Parliament request, capture, schedule, portal or DB2 activity occurred.
+
+The result proves that the revised storage pattern avoids the failed
+whole-response JSONB operation under this bounded synthetic test. It does not
+prove real-source capture, all response shapes, reconciliation, routine
+updates, public access or a complete Database mirror.
+
+**Next review:** owner review of a separate final-schema and bounded
+117-response capture package. No source request is authorised by this result.

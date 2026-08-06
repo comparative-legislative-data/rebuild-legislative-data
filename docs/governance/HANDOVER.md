@@ -41,11 +41,13 @@ blocked after real high-volume Official Report bodies made whole-response JSONB
 conversion OOM-kill the isolated DB1 service. No proxy, web, DB2 or other VPS
 service was affected. The partial database must not be treated as a baseline.
 
-The current proposed correction is the
+The approved correction is the
 [lossless raw-response/source-object schema](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
-It keeps exact raw source bytes in PostgreSQL and stores unchanged source
-objects as linked rows, allowing query/download access without one giant JSONB
-document. It requires a source-free stress proof and a new capture decision.
+Its [A4 source-free stress proof](../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md)
+passed: a 150 MiB synthetic JSON response was held as PostgreSQL bytes and
+projected into unchanged top-level objects without whole-response JSONB. The
+proof payload was removed afterwards. A new final-schema and source-ingestion
+package is still required; no partial A3 data is a baseline.
 
 Four substantive independent reviews of the
 [independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
@@ -88,11 +90,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review proposed [DEC-0124's lossless-object schema](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
-It replaces the blocked whole-response JSONB approach with a source-free
-stress proof. The 117-response boundary and all-64-form model remain intact,
-but no live source capture, schedule, portal or DB2 work is authorised until
-the proof passes and a new ingestion package is approved.
+Prepare and review a final DB1 schema/capture package using the proven
+[lossless-object design](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
+The 117-response boundary and all-64-form model remain intact, but no live
+source capture, schedule, portal or DB2 work is authorised until that separate
+package is approved.
 
 ## Documentation hygiene
 
