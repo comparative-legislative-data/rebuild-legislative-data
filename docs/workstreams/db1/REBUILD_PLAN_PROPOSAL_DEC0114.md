@@ -204,6 +204,16 @@ system-test result, the raw file re-hashes to the recorded SHA-256 value, and
 the capture-observation table remains empty. This is infrastructure evidence,
 not a data or mirror-completeness claim.
 
+**Result (6 August 2026): PASS.** The isolated VPS proof wrote a 133-byte
+locally generated test object to the project raw archive. PostgreSQL recorded
+the same SHA-256 digest as a direct re-read of that file
+(`f5c16e6df5fc7781057a77faa43786fbd62051915616c54fd8f7235171aadcb1`), and
+the capture-observation table contained zero rows. The existing API and web
+services remained active throughout. The first attempt exposed a raw-directory
+ownership error; the installer now gives the one-shot project worker ownership
+of its own raw directory and preserves a failed proof release for a bounded
+zero-capture resume. No Scottish Parliament request was made.
+
 ## Out of scope
 
 - DB2 variables, joins, transformations, codebooks, charts or research claims;
