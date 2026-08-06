@@ -13,11 +13,13 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 - [Update-signal reconnaissance](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
 - [Independent Database mirror review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
+- [Proposed DB1 response-unit matrix](GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
+- [Proposed DB1 A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
 
 The endpoint inventory defines potential programme scope. It is not a
-Database-mirror capture instruction. The failed DB1 implementation was removed
-on 6 August 2026. Any replacement must be reviewed independently and then
-receive a new owner-approved PostgreSQL-first design before source work begins.
+Database-mirror capture instruction. DEC-0115 now approves a PostgreSQL-first
+design direction, but DB1 source work remains blocked until the owner approves
+the response-unit matrix and a separate implementation package.
 
 ## Governance templates and policy
 

@@ -3310,3 +3310,22 @@ code, ingest-test scaffold, deployment or portal action is authorised. The
 next documentation-only task is an exact response-unit matrix and A1
 implementation package; both require owner approval before any operational
 work.
+
+---
+
+# GOV-REV-2026-08-06G — DB1 response-unit and A1 proposals prepared
+
+**Outcome:** `OWNER REVIEW REQUIRED — NO DB1 ACTION AUTHORISED`
+
+Under DEC-0115 the proposed matrix and A1 foundation package were prepared
+without source, VPS, database or application action. The matrix identifies 117
+literal fixed/annual source requests for 33 forms and, equally importantly,
+records the 31 remaining parameterised/detail forms as an unresolved
+input-universe decision. It does not use returned identifiers to make a
+capture queue.
+
+The A1 package is limited to a future source-free PostgreSQL proof: original
+synthetic bytes plus JSONB in the database, direct SQL acceptance tests and no
+researcher interface. Owner approval is required before that foundation work;
+no full-scope source capture may be proposed until the 31-form policy is
+resolved in the response-unit matrix.
