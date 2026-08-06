@@ -15,6 +15,7 @@ It is not the project’s primary narrative and it does not replace Git history.
   private-beta access work.
 - `infrastructure/` — completed VPS foundation records.
 
-The withdrawn Database mirror delivery packets are intentionally not archived
-here. Their recovery trail is Git; the active gate is the
-[independent external-review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md).
+The detailed Database mirror rebuild packets are intentionally not part of the
+active reading path. The [current DB1 backend state](../data/gb-sct/GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md)
+contains the durable narrative, scope, evidence and lessons. Git preserves the
+full implementation trail.

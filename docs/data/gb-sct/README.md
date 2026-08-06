@@ -4,7 +4,23 @@ This directory contains current controls for Scottish Parliament source work. It
 is not the product narrative: begin with the [programme workstreams](../../workstreams/README.md),
 then use these records to inspect a source boundary or prepare a proposal.
 
-## Current controls
+## Active DB1 records
+
+Start with the [current DB1 backend state](GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md).
+It is the single human-readable explanation of what is held in PostgreSQL,
+how all 64 approved API forms are treated, what was verified, the known source
+conditions and the boundaries before researcher-portal work.
+
+- [Current DB1 backend state](GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md)
+- [Active 117-unit response matrix](GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
+- [Completed DB1 backend-assurance result](GB_SCT_DB1_A6_BACKEND_ASSURANCE_RESULT_2026-08-06.md)
+
+The endpoint inventory defines programme scope. The matrix is the only current
+capture/reconciliation control. Detailed rebuild-stage proposals, exploratory
+comparisons and superseded proof packets are historical context retained in
+Git; they are not part of the active reading path.
+
+## Other current source controls
 
 - [Programme design (DEC-0042)](GB_SCT_TRANSPARENT_ACCESS_DB1_DB2_PROGRAMME_PROPOSAL_DEC0042.md)
 - [Approved endpoint/variable roadmap](ENDPOINT_INVENTORY_AND_VARIABLE_ROADMAP.md)
@@ -12,32 +28,6 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Route-level handling register](GB_SCT_ROUTE_LEVEL_HANDLING_REGISTER_2026-08-03.md)
 - [High-volume operational register](GB_SCT_HIGH_VOLUME_OPERATIONAL_REGISTER_2026-08-03.md)
 - [Update-signal reconnaissance](GB_SCT_UPDATE_SIGNAL_RECONNAISSANCE_RESULT_2026-08-02.md)
-- [Independent Database mirror review commission](../../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
-- [Proposed DB1 response-unit matrix](GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
-- [DB1 A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
-- [DB1 A2 source-free foundation proof](GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
-- [Blocked DB1 A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
-- [Approved lossless-object schema and access design](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md)
-- [DB1 A4 lossless-object source-free stress-proof result](GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md)
-- [DB1 production schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
-- [DB1 A5 production baseline result](GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
-- [Detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
-- [Cohort A endpoint-coverage audit result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
-- [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
-- [Proposed Cohort B and final response-unit decision](GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md)
-- [Cohort B no-retention audit result](GB_SCT_DB1_COHORT_B_RESULT_2026-08-06.md)
-- [Withdrawn incomplete initial DB1 model](GB_SCT_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
-- [Proposed seven-route resolution action](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_PROPOSAL_2026-08-06.md)
-- [Seven-route resolution result](GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)
-- [Approved final initial DB1 response-unit model for A2](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
-
-The endpoint inventory defines potential programme scope. It is not a
-Database-mirror capture instruction. The A2 proof established a storage
-foundation, and DEC-0124's A4 proof passed for the replacement lossless-object
-pattern. The A3 whole-response JSONB design remains blocked. DB1 source work
-now has a passing dated production baseline. It is not a claim of continuing
-freshness: schedule, reconciliation and researcher-facing access remain
-separate decisions.
 
 ## Governance templates and policy
 

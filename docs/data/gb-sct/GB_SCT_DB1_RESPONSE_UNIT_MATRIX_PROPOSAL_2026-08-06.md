@@ -1,18 +1,15 @@
 # GB-SCT DB1 response-unit matrix
 
-**Status:** executed DEC-0125 literal baseline boundary; retained as the
-current controlled 117-unit reconciliation scope
+**Status:** active DEC-0125/DEC-0126 literal baseline and reconciliation
+control
 **Date:** 6 August 2026  
 **Governing direction:** DEC-0115  
-**Next decision required:** owner approval of the separate
-[backend-assurance package](../../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md)
-before routine source checks, a schedule or database changes.
+**Change rule:** a new owner decision is required before any URL, year,
+cadence, source form or response-unit treatment changes.
 
 **Reading note:** this document remains the literal 117-URL/year capture list.
-Its treatment of detail/filter access forms is refined by the later approved
-[final initial response-unit model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
-which incorporates the Cohort A, Cohort B and seven-route evidence. The A2
-and A4 storage proofs have passed; neither record authorises live capture.
+Its treatment of detail/filter access forms is summarised in the
+[current DB1 backend state](GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md).
 
 ## 1. What this matrix controls
 

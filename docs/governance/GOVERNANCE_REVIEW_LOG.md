@@ -3685,8 +3685,30 @@ routine, named check evidence only; it does not create an unqualified
 currentness claim, a public release, a researcher portal or DB2 work.
 
 **Remaining block:** no off-VPS backup destination or isolated restore test is
-approved. That must be a separate package before DB1 is described as a
-recoverable backend service or any researcher portal begins.
+approved. DB1 must not be described as a recoverable backend service until that
+separate package is implemented and tested.
 
 **Next review:** owner decision on backup location, retention, key ownership
 and isolated restore-test target.
+
+---
+
+# GOV-REV-2026-08-06Y — DB1 backend close-out and recovery deferral
+
+**Outcome:** `PASS — CURRENT BACKEND STATE RECORDED; RECOVERY DELIBERATELY DEFERRED`
+
+Following the completed DEC-0126 assurance package, the owner requested a
+direct source-to-PostgreSQL demonstration and a documentation close-out. The
+read-only example confirmed that the live Scottish Parliament detail route
+`/api/billtypes/1` returned the same object as DB1 selected from its retained
+`/api/billtypes` parent response, with capture provenance. The result is
+recorded in the [current DB1 backend state](../data/gb-sct/GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md).
+
+The active DB1 reading path is now limited to that state record, the fixed
+117-unit matrix and the completed assurance result. Recovery work is
+deliberately parked until the owner judges that the application warrants the
+investment. It remains an open requirement; no recoverability claim is made.
+
+**Next review:** owner consideration of an independent researcher-portal
+design commission. No portal implementation, DB2 work, source-scope change or
+backup activity is authorised by this review.

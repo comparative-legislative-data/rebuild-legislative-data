@@ -34,19 +34,19 @@ Reports exhausted the isolated database's memory. No other project service was
 affected.
 
 The replacement lossless raw-response/source-object design passed a 150 MiB
-source-free test and then DEC-0125's production implementation. The
-[A5 result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
-records one exact response for each of 117 approved URLs: raw bytes and
-provenance in PostgreSQL, plus 4,063,556 linked source-object rows. Three
-source conditions are named rather than omitted. DB1 is a dated baseline only;
-the source-free run-lock, health and drift controls and its first all-unit
-reconciliation have passed. Routine daily/weekly checks are enabled;
-backup/restore and any researcher portal remain separate work.
+source-free test and then DEC-0125's production implementation. It retains
+one exact response for each of 117 approved URLs: raw bytes and provenance in
+PostgreSQL, plus 4,063,556 linked source-object rows. Three source conditions
+are named rather than omitted. DEC-0126 then passed the source-free run-lock,
+health and drift controls and a complete 117-unit recheck. Routine daily/weekly
+checks are enabled.
 
-The independent-review commission, response-unit matrix and earlier source-free
-proofs remain part of the audit trail. The current operational record is the
-A5 result above, followed by the proposed
-[backend-assurance package](../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md).
+Read the [current DB1 backend state](../data/gb-sct/GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md)
+first. It is the current explanation of scope, PostgreSQL storage, all-64-form
+treatment, parity evidence and outstanding boundaries. Recovery is deliberately
+deferred until the owner decides the application warrants it. A researcher
+portal is a separate design decision; it is not an accidental continuation of
+the backend QA screen.
 
 ### DB2
 
@@ -75,9 +75,8 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Read the [DB1 A5 production baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md).
-The 117-response boundary and all-64-form model remain intact. The initial
-baseline alone authorised no schedule, portal or DB2 work; DEC-0126 has now
+Read the [current DB1 backend state](../data/gb-sct/GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md).
+The 117-response boundary and all-64-form model remain intact. DEC-0126 has
 passed Gates A–E, including a complete recheck, and enabled the timer schedule.
 Off-VPS backup-and-restore is deliberately parked until the owner decides the
 application warrants that investment; it remains an open recovery requirement.
