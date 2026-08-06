@@ -54,7 +54,7 @@ chmod -R g+rX,o-rwx "$release_path"
 password="$(openssl rand -hex 32)"
 sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d postgres -v ON_ERROR_STOP=1 -c "create role $role login nosuperuser nocreatedb nocreaterole noinherit password '$password'"
 sudo -n -u postgres createdb -h "$socket_directory" -p 5434 -O "$role" "$database"
-install -d -o root -g cld-gb-sct -m 0750 "$project_root/raw/db1"
+install -d -o cld-gb-sct -g cld-gb-sct -m 0750 "$project_root/raw/db1"
 install -d -o root -g cld-gb-sct -m 0750 /etc/cld-gb-sct/secrets
 umask 027
 printf 'CLD_DB1_DATABASE_URL=postgresql://%s:%s@127.0.0.1:5434/%s\nCLD_DB1_RAW_ROOT=%s\n' "$role" "$password" "$database" "$project_root/raw/db1" > "$secret_file"
