@@ -3665,3 +3665,28 @@ timer, proxy or non-project resource changed.
 **Next review:** the already authorised Gate B reconciliation of the unchanged
 117 literal URLs, followed by direct parity and health evidence. Timers remain
 disabled until those results pass.
+
+---
+
+# GOV-REV-2026-08-06X — DB1 backend assurance complete within DEC-0126 scope
+
+**Outcome:** `PASS — 117-UNIT PARITY RECHECK AND ROUTINE TIMERS ENABLED`
+
+Gates A–E passed. The source-free controls left the real source inventory
+unchanged. The subsequent serial recheck attempted all 117 approved literal
+URLs: 114 were byte-for-byte unchanged and the same three upstream conditions
+were retained. There were no source changes, local failures, not-attempted
+units or production schema-drift events. The worker stayed within its approved
+memory, CPU, body, run-volume and no-retry controls; protected VPS services
+remained active.
+
+The daily 33-unit and weekly 84-unit timers are enabled. This establishes
+routine, named check evidence only; it does not create an unqualified
+currentness claim, a public release, a researcher portal or DB2 work.
+
+**Remaining block:** no off-VPS backup destination or isolated restore test is
+approved. That must be a separate package before DB1 is described as a
+recoverable backend service or any researcher portal begins.
+
+**Next review:** owner decision on backup location, retention, key ownership
+and isolated restore-test target.

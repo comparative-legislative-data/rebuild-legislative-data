@@ -1,6 +1,6 @@
 # GB-SCT DB1 backend-assurance package
 
-**Status:** approved — Gate A passed; Gates B–E remain in the authorised package
+**Status:** executed — Gates A–E passed; recovery is separately gated
 
 **Authorising decision:** DEC-0126
 

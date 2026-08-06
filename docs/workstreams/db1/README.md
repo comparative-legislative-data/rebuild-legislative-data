@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** dated 117-response PostgreSQL baseline passed; backend-assurance Gate A passed; no researcher portal
+**Status:** PostgreSQL baseline and first all-unit reconciliation passed; routine checks enabled; recovery and portal remain separate
 
 ## Purpose
 
@@ -36,9 +36,12 @@ not a routine-currentness or researcher-access claim.
 
 DEC-0126's [source-free Gate A result](../../data/gb-sct/GB_SCT_DB1_A6_GATE_A_CONTROL_RESULT_2026-08-06.md)
 proves the run-lock, health and structural-drift controls against the isolated
-database without contacting the source. The next authorised activity is one
-reconciliation of the same 117 URLs. No routine timer or researcher portal is
-enabled.
+database without contacting the source. Its [completed backend-assurance
+result](../../data/gb-sct/GB_SCT_DB1_A6_BACKEND_ASSURANCE_RESULT_2026-08-06.md)
+then records a complete 117-URL byte-level recheck: 114 unchanged responses,
+three named upstream conditions, no source change, local failure or production
+schema drift. The routine daily/weekly timers are enabled. Off-VPS recovery and
+any researcher portal are not yet authorised.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final
