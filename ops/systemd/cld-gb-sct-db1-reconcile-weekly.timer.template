@@ -1,0 +1,11 @@
+[Unit]
+Description=CLD GB-SCT Database mirror weekly historic reconciliation trigger
+
+[Timer]
+OnCalendar=Mon *-*-* 04:17:00 UTC
+Persistent=true
+Unit=cld-gb-sct-db1-reconcile@weekly.service
+
+[Install]
+WantedBy=timers.target
+
