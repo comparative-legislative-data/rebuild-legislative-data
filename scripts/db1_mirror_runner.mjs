@@ -10,6 +10,7 @@ import { gbSctRoutes } from "../apps/api/dist/catalogue/gb-sct.js";
 const ORIGIN = "https://data.parliament.scot";
 const WORKER_VERSION = "db1-mirror-runner-r1";
 const MAX_RESPONSE_BYTES = 512 * 1024 * 1024;
+const MAX_RUN_BYTES = 16 * 1024 * 1024 * 1024;
 const YEAR_SETS = {
   "mqa-questions.year": range(2011, 2026),
   "committee-reports.year": range(1999, 2026),
@@ -122,7 +123,7 @@ async function persistBytes(rawRoot, bytes) {
   return { digest, bytes: bytes.byteLength, path: await promoteTempFile(temp, destination, digest, bytes.byteLength) };
 }
 
-async function fetchUnit(unit, rawRoot) {
+async function fetchUnit(unit, rawRoot, budget) {
   const started = new Date();
   let temp;
   try {
@@ -141,7 +142,12 @@ async function fetchUnit(unit, rawRoot) {
         transform(chunk, _encoding, callback) {
           bytes += chunk.length;
           if (bytes > MAX_RESPONSE_BYTES) callback(new Error("CAPTURE_LIMIT_EXCEEDED"));
+          else if (budget.claimed + chunk.length > MAX_RUN_BYTES) {
+            budget.exhausted = true;
+            callback(new Error("RUN_CAPTURE_LIMIT_EXCEEDED"));
+          }
           else {
+            budget.claimed += chunk.length;
             hash.update(chunk);
             callback(null, chunk);
           }
@@ -164,7 +170,8 @@ async function fetchUnit(unit, rawRoot) {
     };
   } catch (error) {
     await unlink(temp).catch(() => undefined);
-    return { started, status: error instanceof Error && error.message === "CAPTURE_LIMIT_EXCEEDED" ? "CAPTURE_LIMIT_EXCEEDED" : "FAILED_TO_RETRIEVE", error: error instanceof Error ? error.message : String(error) };
+    const message = error instanceof Error ? error.message : String(error);
+    return { started, status: message === "CAPTURE_LIMIT_EXCEEDED" || message === "RUN_CAPTURE_LIMIT_EXCEEDED" ? "CAPTURE_LIMIT_EXCEEDED" : "FAILED_TO_RETRIEVE", error: message };
   }
 }
 
@@ -212,8 +219,9 @@ async function runSyntheticProof(pool, rawRoot) {
   }
 }
 
-async function nextUnit(queue, active) {
+async function nextUnit(queue, active, budget) {
   while (queue.length) {
+    if (budget.exhausted) return null;
     const index = queue.findIndex((unit) => !isHighVolume(unit) || active.highVolume < 2);
     if (index >= 0) return queue.splice(index, 1)[0];
     await new Promise((resolve) => setTimeout(resolve, 25));
@@ -236,15 +244,16 @@ async function runCapture(pool, rawRoot, mode, selectedUnits) {
   );
   const queue = [...selectedUnits];
   const active = { highVolume: 0 };
+  const budget = { claimed: 0, exhausted: false };
   const results = [];
   await Promise.all(Array.from({ length: 3 }, async () => {
     for (;;) {
-      const unit = await nextUnit(queue, active);
+      const unit = await nextUnit(queue, active, budget);
       if (!unit) return;
       const highVolume = isHighVolume(unit);
       if (highVolume) active.highVolume += 1;
       try {
-        const result = await fetchUnit(unit, rawRoot);
+        const result = await fetchUnit(unit, rawRoot, budget);
         const status = await store(pool, runId, unit, result, mode);
         results.push({ unit: unit.id, status });
       } finally {
@@ -253,7 +262,7 @@ async function runCapture(pool, rawRoot, mode, selectedUnits) {
     }
   }));
   await pool.query(`update db1_capture_run set finished_at=now() where id=$1`, [runId]);
-  return { runId, expected: selectedUnits.length, results };
+  return { runId, expected: selectedUnits.length, claimedBytes: budget.claimed, limitReached: budget.exhausted, results };
 }
 
 const units = matrix();
