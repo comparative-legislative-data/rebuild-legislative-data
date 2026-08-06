@@ -1,6 +1,6 @@
 # GB-SCT DB1 A3 live-ingestion package
 
-**Status:** proposed for owner review — no live source authority  
+**Status:** approved — execution in progress; no schedule, portal or DB2 authority
 **Date:** 6 August 2026  
 **Depends on:** DEC-0122 and the passed [A2 foundation proof](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
 
