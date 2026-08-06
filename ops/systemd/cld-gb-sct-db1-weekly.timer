@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the weekly Comparative Legislative Data DB1 reconciliation
+
+[Timer]
+OnCalendar=Mon *-*-* 04:15:00
+RandomizedDelaySec=2m
+Persistent=true
+Unit=cld-gb-sct-db1-reconcile@weekly.service
+
+[Install]
+WantedBy=timers.target

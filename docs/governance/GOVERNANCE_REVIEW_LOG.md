@@ -3619,3 +3619,28 @@ They remain a separately gated owner choice before DB1 can be represented as a
 robust recoverable service.
 
 **Next review:** owner approval, amendment or rejection of DEC-0126.
+
+---
+
+# GOV-REV-2026-08-06V — DEC-0126 execution opened
+
+**Outcome:** `APPROVED — BACKEND ASSURANCE GATES A–E AUTHORISED; FRONTEND EXCLUDED`
+
+The owner approved DEC-0126 on 6 August 2026. Execution is limited to the
+existing 117 literal response units: source-free controls, one controlled
+reconciliation of those same URLs, PostgreSQL parity and health evidence,
+schema-drift records, and no-overlap controls. It may not add a source form,
+new year, ID crawl, frontend, DB2 work, public exposure, package change or
+backup destination.
+
+**Containment:** all work stays in the isolated `cld_gb_sct_db1` database and
+project-owned worker/timer paths. The worker remains serial with the approved
+768 MiB, 35% CPU, 150 MiB per-body, 20 GiB per-run and three-hour limits.
+
+**Verification record:** a source-free control result, controlled 117-unit
+reconciliation result, and direct PostgreSQL parity/health report will be
+recorded before any timer is enabled. Off-VPS backup and restore remain a
+separate owner decision.
+
+**Next review:** Gate A source-free control result; stop if the fixed matrix,
+resource boundary or protected-service state changes.

@@ -1,9 +1,8 @@
 # GB-SCT DB1 backend-assurance package
 
-**Status:** proposed — owner approval required before any VPS, database,
-schedule, backup or Scottish Parliament source action
+**Status:** approved — execution opened (owner instruction, 6 August 2026)
 
-**Proposed decision:** DEC-0126
+**Authorising decision:** DEC-0126
 
 **Builds on:** the [A5 production baseline result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md), the approved
 [117-unit matrix](../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md), and DEC-0125.

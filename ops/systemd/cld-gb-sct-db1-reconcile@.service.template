@@ -1,0 +1,29 @@
+[Unit]
+Description=Comparative Legislative Data DB1 reconciliation (%i)
+After=network-online.target postgresql@16-cld_gb_sct.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=cld-gb-sct
+Group=cld-gb-sct
+WorkingDirectory=/srv/cld-gb-sct/db1-worker-current
+EnvironmentFile=/etc/cld-gb-sct/secrets/db1-worker.env
+Environment=DB1_A6_REQUIRE_FROM=/srv/cld-gb-sct/db1-worker-current/package.json
+Environment=DB1_A6_DEPLOYED_PACKAGE_REVISION=RELEASE_ID
+Environment=DB1_A6_DISK_PATH=/srv/cld-gb-sct
+ExecStart=/usr/bin/flock -n /run/cld-gb-sct-db1/reconcile.lock /srv/cld-gb-sct/runtime/node-v24.18.1/bin/node /srv/cld-gb-sct/db1-worker-current/scripts/db1_a6_reconcile.mjs --cadence %i
+RuntimeDirectory=cld-gb-sct-db1
+RuntimeDirectoryMode=0750
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ReadWritePaths=/run/cld-gb-sct-db1
+CPUQuota=35%
+MemoryMax=768M
+TasksMax=128
