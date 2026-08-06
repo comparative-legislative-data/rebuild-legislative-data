@@ -1,11 +1,12 @@
 # GB-SCT DB1 response-unit matrix
 
-**Status:** proposed DEC-0125 literal capture boundary — no live-capture authority
+**Status:** executed DEC-0125 literal baseline boundary; retained as the
+current controlled 117-unit reconciliation scope
 **Date:** 6 August 2026  
 **Governing direction:** DEC-0115  
-**Decision required:** owner approval of the separate production-schema and
-initial-baseline package
-before any source action.
+**Next decision required:** owner approval of the separate
+[backend-assurance package](../../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md)
+before routine source checks, a schedule or database changes.
 
 **Reading note:** this document remains the literal 117-URL/year capture list.
 Its treatment of detail/filter access forms is refined by the later approved
@@ -151,4 +152,6 @@ are limits, not claims about the source:
 This matrix is ready for review as the 117-response initial-baseline boundary.
 It does not authorise capture by itself. The proposed
 [production-schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
-sets the one-run limits, stops and acceptance tests.
+set the completed initial-run limits, stops and acceptance tests. The proposed
+[backend-assurance package](../../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md)
+would govern future routine checks without changing this 117-unit boundary.

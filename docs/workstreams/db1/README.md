@@ -1,6 +1,6 @@
 # Database mirror (DB1)
 
-**Status:** A2 foundation and A4 lossless-object stress proof passed; production baseline package proposed for owner review
+**Status:** dated 117-response PostgreSQL baseline passed; backend assurance proposed; no researcher portal
 
 ## Purpose
 
@@ -26,7 +26,13 @@ response-unit matrix. Live A3 execution then showed that whole-response JSONB
 is not safe for the 45–110 MiB Official Report responses on the shared VPS.
 The approved correction is the [lossless-object schema](../../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md): exact raw bytes remain in PostgreSQL while unchanged top-level source objects become linked JSONB rows. Its [A4 source-free proof](../../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md) passed with a 150 MiB synthetic response, then removed the test payload rows. This proves the storage pattern is viable on the isolated service; it does not make the partial A3 database a baseline or authorise source recapture.
 
-The proposed [production-schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md) is the next decision. It would cleanly replace the partial A3 `db1` schema, repeat the synthetic check against the production tables, then make one bounded 117-request baseline run. It does not start the future routine-update service or research portal.
+DEC-0125 then replaced the partial A3 schema, passed the production
+source-free proof and made one serial, no-retry request to every approved
+response unit. The [A5 result](../../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
+records 117 exact PostgreSQL raw responses and 4,063,556 linked source-object
+rows. It names rather than hides the 2006 Committee Reports availability
+message and MQA Events/Questions HTTP-500 responses. This is a dated baseline,
+not a routine-currentness or researcher-access claim.
 
 The detail-route evidence phase is complete. The prior incomplete model was
 withdrawn, then the seven-route action classified all 64 forms in one final
@@ -41,10 +47,11 @@ foundation proof only; the proof passed on 6 August 2026:
 
 ## Boundaries
 
-- The long-term selected inventory is 64 Scottish Parliament API forms. It is
-  not yet a live capture queue.
-- Before any capture, an explicit response-unit matrix must name every allowed
-  request/window, its bound, cadence and exception handling.
+- The long-term selected inventory is 64 Scottish Parliament API forms. The
+  approved initial mirror boundary is the matrix's 117 literal response units;
+  it is not an ID crawl or route-discovery queue.
+- Any later check must use the same explicit response-unit matrix, with its
+  stated cadence and exception handling.
 - DB1 does not infer detail IDs, transform source fields, create variables or
   claim a DB2 analytical meaning.
 - Source conditions such as an upstream availability message must be retained
@@ -86,8 +93,12 @@ useful, not to expose ingestion machinery.
   — direct PostgreSQL/resource evidence for the revised storage pattern;
   synthetic data only.
 - [Production schema and initial-baseline package](../../planning/GB_SCT_DB1_PRODUCTION_SCHEMA_AND_INITIAL_BASELINE_PACKAGE_PROPOSAL_2026-08-06.md)
-  — proposed single backend implementation decision; no source authority until
-  approved.
+  — executed DEC-0125 package.
+- [A5 production baseline result](../../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
+  — current dated raw-capture and projection evidence.
+- [Backend-assurance package](../../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md)
+  — proposed routine-check, parity, drift, health and recovery controls; no
+  frontend authority.
 - [Final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
   — approved all-64-form source-unit/access model for A2 only; no live-ingest authority.
 - [Seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)

@@ -7,7 +7,7 @@ claims, evidence and approval gates.
 | Workstream | Research purpose | Current position |
 | --- | --- | ---|
 | [Live API catalogue](proxy/README.md) | Private, no-retention access to fixed Scottish Parliament API routes and direct source links. | MVP operating; later review required. |
-| [Database mirror](db1/README.md) | A future PostgreSQL-based mirror of approved Scottish Parliament API responses. | The Postgres-first design direction is approved (DEC-0115); no DB1 implementation is active. The next task is a response-unit matrix and implementation package, both still subject to owner approval. |
+| [Database mirror](db1/README.md) | A PostgreSQL-based mirror of approved Scottish Parliament API responses. | DEC-0125's dated 117-response baseline has passed. The next proposed package is backend assurance—routine reconciliation, drift, health and recovery—before any portal work. |
 | [DB2](db2/README.md) | Explicit Tier 1/2 canonical variables, codebooks and reproducible research releases. | Not started. |
 
 Read the [project design](../governance/PROJECT_DESIGN.md) and current

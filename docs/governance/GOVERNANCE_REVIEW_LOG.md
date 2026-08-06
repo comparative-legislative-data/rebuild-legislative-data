@@ -3600,3 +3600,22 @@ The full result is recorded in the [A5 baseline result](../data/gb-sct/GB_SCT_DB
 **Next review:** owner review of a separate backend-assurance package for
 routine source checks, reconciliation, health reporting and recovery. No
 front-end Database mirror, schedule or DB2 work is authorised by this review.
+
+---
+
+# GOV-REV-2026-08-06U — DB1 backend-assurance package prepared
+
+**Outcome:** `OWNER REVIEW REQUIRED — NO NEW SOURCE, VPS, DATABASE OR SCHEDULE ACTION AUTHORISED`
+
+Following the passing A5 baseline, the proposed DEC-0126 package separates
+backend assurance from portal delivery. It retains the exact 117-unit response
+boundary and proposes routine daily/weekly checks, append-only changed raw
+responses, explicit source conditions, field-profile drift records, run locks
+and compact PostgreSQL health evidence. It does not propose frontend, DB2,
+route expansion or an ID crawl.
+
+Off-VPS backup destination and restore testing are deliberately not assumed.
+They remain a separately gated owner choice before DB1 can be represented as a
+robust recoverable service.
+
+**Next review:** owner approval, amendment or rejection of DEC-0126.

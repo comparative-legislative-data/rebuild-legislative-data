@@ -1,6 +1,6 @@
 # Handover: Comparative Legislative Data
 
-**Status:** active programme; live API catalogue operating; Database mirror schema correction proposed
+**Status:** active programme; live API catalogue operating; dated Database mirror baseline complete; backend assurance proposed
 **Last updated:** 6 August 2026
 
 ## Project in one page
@@ -27,41 +27,25 @@ research release.
 
 ### Database mirror
 
-The second Database mirror implementation was withdrawn and fully removed on
-6 August 2026 because it did not deliver the agreed product: Scottish
-Parliament API data stored in PostgreSQL as a usable database mirror. It stored
-raw files on the VPS and only manifests in PostgreSQL. That is not a Database
-mirror for this project.
+Two earlier Database mirror attempts were withdrawn: one inferred an
+unbounded ID crawl; another stored raw VPS files rather than PostgreSQL data.
+A third whole-response JSONB design was blocked when high-volume Official
+Reports exhausted the isolated database's memory. No other project service was
+affected.
 
-DEC-0122 then approved a strictly source-free A2 proof. The project has an
-isolated `cld_gb_sct_db1` PostgreSQL database, two A2 roles, a small
-synthetic-only worker and direct SQL acceptance evidence. The first live A3
-approach retained partial Scottish Parliament data in PostgreSQL only, but was
-blocked after real high-volume Official Report bodies made whole-response JSONB
-conversion OOM-kill the isolated DB1 service. No proxy, web, DB2 or other VPS
-service was affected. The partial database must not be treated as a baseline.
+The replacement lossless raw-response/source-object design passed a 150 MiB
+source-free test and then DEC-0125's production implementation. The
+[A5 result](../data/gb-sct/GB_SCT_DB1_A5_INITIAL_BASELINE_RESULT_2026-08-06.md)
+records one exact response for each of 117 approved URLs: raw bytes and
+provenance in PostgreSQL, plus 4,063,556 linked source-object rows. Three
+source conditions are named rather than omitted. DB1 is a dated baseline only;
+routine update, reconciliation, drift reporting, backup/restore and any
+researcher portal remain separate work.
 
-The approved correction is the
-[lossless raw-response/source-object schema](../planning/GB_SCT_DB1_LOSSLESS_OBJECT_SCHEMA_PROPOSAL_2026-08-06.md).
-Its [A4 source-free stress proof](../data/gb-sct/GB_SCT_DB1_A4_LOSSLESS_OBJECT_STRESS_PROOF_RESULT_2026-08-06.md)
-passed: a 150 MiB synthetic JSON response was held as PostgreSQL bytes and
-projected into unchanged top-level objects without whole-response JSONB. The
-proof payload was removed afterwards. A new final-schema and source-ingestion
-package is still required; no partial A3 data is a baseline.
-
-Four substantive independent reviews of the
-[independent review commission](../planning/DB1_EXTERNAL_REVIEW_COMMISSION_2026-08-06.md)
-have been assessed. Their shared safeguards and any rejected recommendations
-are recorded in the approved
-[Postgres-first rebuild plan](../planning/DB1_POSTGRES_MIRROR_REBUILD_PLAN_PROPOSAL_2026-08-06.md).
-The owner approved that design direction as DEC-0115 on 6 August 2026. The
-subsequent no-retention [Cohort A coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
-found 20 sampled parent/detail or parent/filter subset observations, while
-leaving high-volume routes and two Member-status detail forms unresolved. The
-later seven-route resolution produced an all-64-form model, and the
-[A2 result](../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
-now proves the storage contract without retaining source data. A live baseline
-needs its own bounded A3 owner decision.
+The independent-review commission, response-unit matrix and earlier source-free
+proofs remain part of the audit trail. The current operational record is the
+A5 result above, followed by the proposed
+[backend-assurance package](../planning/GB_SCT_DB1_BACKEND_ASSURANCE_PACKAGE_PROPOSAL_2026-08-06.md).
 
 ### DB2
 
