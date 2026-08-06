@@ -74,6 +74,8 @@ useful, not to expose ingestion machinery.
   — completed PostgreSQL foundation and synthetic proof; no source authority.
 - [A2 proof result](../../data/gb-sct/GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
   — direct SQL storage and integrity evidence; synthetic data only.
+- [A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
+  — proposed single baseline run; owner approval required before source access.
 - [Final initial DB1 response-unit model](../../data/gb-sct/GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md)
   — approved all-64-form source-unit/access model for A2 only; no live-ingest authority.
 - [Seven-route resolution result](../../data/gb-sct/GB_SCT_DB1_SEVEN_ROUTE_RESOLUTION_RESULT_2026-08-06.md)

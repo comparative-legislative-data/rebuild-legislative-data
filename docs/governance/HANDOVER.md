@@ -81,12 +81,13 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Prepare and review a separate A3 live-ingestion package. It must name the 117
-fixed/annual source response units, resource ceilings informed by A2,
-source-condition handling, reconciliation and rollback. All 64 forms are
-accounted for: 33 retained whole responses, 25 parent-backed access forms, and
-six explicit upstream detail-route limitations. No live source capture,
-schedule, portal or DB2 work is authorised until that package is approved.
+Review [DEC-0123's A3 live-ingestion package](../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md).
+It proposes one bounded 117-response baseline, fixed ceilings,
+source-condition handling, direct PostgreSQL acceptance and no schedule. All
+64 forms are accounted for: 33 retained whole responses, 25 parent-backed
+access forms, and six explicit upstream detail-route limitations. No live
+source capture, schedule, portal or DB2 work is authorised until DEC-0123 is
+approved.
 
 ## Documentation hygiene
 

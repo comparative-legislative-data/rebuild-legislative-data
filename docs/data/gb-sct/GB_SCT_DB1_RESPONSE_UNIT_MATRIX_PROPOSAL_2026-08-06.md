@@ -1,16 +1,16 @@
 # GB-SCT DB1 response-unit matrix
 
-**Status:** proposed literal capture list — no capture authority
+**Status:** proposed A3 literal capture boundary — no live-capture authority
 **Date:** 6 August 2026  
 **Governing direction:** DEC-0115  
-**Decision required:** owner approval of this matrix and the separate A1
-foundation package before any database or source action.
+**Decision required:** owner approval of the separate A3 live-ingestion package
+before any source action.
 
 **Reading note:** this document remains the literal 117-URL/year capture list.
-Its treatment of detail/filter access forms is refined by the later proposed
+Its treatment of detail/filter access forms is refined by the later approved
 [final initial response-unit model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md),
-which incorporates the Cohort A, Cohort B and seven-route evidence. Neither
-document authorises capture.
+which incorporates the Cohort A, Cohort B and seven-route evidence. The A2
+storage proof has passed; neither record authorises live capture.
 
 ## 1. What this matrix controls
 
@@ -35,15 +35,13 @@ The 64 approved API forms divide into two visible groups:
 | Position | Forms | Proposed initial response units | Meaning |
 | --- | ---: | ---: | --- |
 | **Capture-ready** | 33 forms | **117** | 29 fixed collection URLs plus 88 named annual URLs have a finite request rule. |
-| **Input-universe gap** | 31 forms | **0** | Parameterised/detail forms remain in scope but no literal identifier set has been approved. They must not be silently omitted or converted into a queue extracted from collections. |
+| **Parent-backed or upstream-limited access** | 31 forms | **0 extra requests** | 25 forms use their named retained parent response; six are explicit upstream detail-route limitations. None is omitted and none creates an inferred request queue. |
 
-This is not a claim that the 31 forms are irrelevant. It is the opposite: the
-matrix makes them visible precisely because DB1 cannot honestly claim a
-64-form request-level mirror while their request units are unknown.
-
-The A1 package may build and test the PostgreSQL foundation using synthetic
-data, but it must not begin source capture until the owner has chosen how the
-31-form input-universe gap will be resolved.
+This does not turn a parent-backed form into a separately retained detail URL.
+It makes the source-access boundary explicit: the 117 named collection/annual
+responses are retained; later DB1 access to 25 forms comes from their named
+parent response; six forms remain upstream limitations. No implementation may
+turn the 31 forms into a crawl.
 
 ## 3. Capture-ready fixed response units: 29 URLs
 
@@ -88,46 +86,29 @@ exclusion. If returned again, DB1 records it as an upstream source condition
 for the named `year=2006` unit. It does not treat it as zero records or skip
 the unit.
 
-## 5. The 31 unresolved forms: visible scope gaps, not hidden exclusions
+## 5. The 31 non-request forms: visible access treatment, not exclusions
 
 These forms all remain part of the approved long-term 64-form inventory. None
-has a proposed source request because `:id`/`UniqueId` values are not known as
-a finite, owner-approved universe. The matrix forbids a worker from obtaining
-those values by reading any collection response.
+has its own source request because it would require an unapproved identifier
+universe. The matrix forbids a worker from obtaining those values by reading
+any collection response.
 
-A limited no-retention sample has now shown that three sampled detail routes
-had the same field structure as their parent collections and one sampled MQA
-filter result was an exact transient row-level subset of the parent collection.
-See the [sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md).
-That is useful evidence for the next route-coverage audit, not proof that the
-remaining forms require no direct retention.
+The completed controlled evidence is consolidated in the
+[final initial DB1 response-unit model](GB_SCT_FINAL_INITIAL_DB1_RESPONSE_UNIT_MODEL_2026-08-06.md):
+25 forms are parent-backed and six are upstream limitations. It does not claim
+that DB1 independently retained every possible detail URL.
 
 | Class | Forms without a current finite request universe | Count |
 | --- | --- | ---: |
 | Standard `:id` detail forms | `/api/bills/:id`; `/api/billstages/:id`; `/api/billstagetypes/:id`; `/api/billtypes/:id`; `/api/sessions/:id`; `/api/members/:id`; `/api/memberelectionconstituencystatuses/:id`; `/api/memberelectionregionstatuses/:id`; `/api/constituencies/:id`; `/api/regions/:id`; `/api/parties/:id`; `/api/memberparties/:id`; `/api/partyroles/:id`; `/api/memberpartyroles/:id`; `/api/governmentroles/:id`; `/api/membergovernmentroles/:id`; `/api/committees/:id`; `/api/committeeroles/:id`; `/api/committeetypes/:id`; `/api/motionsquestionsanswersevents/:id`; `/api/motionsquestionsanswerseventtypes/:id`; `/api/motionsquestionsanswerseventsubtypes/:id`; `/api/motionsquestionsanswersmotions/:id`; `/api/motionsquestionsanswersquestions/:id`; `/api/motionsquestionsanswerssupports/:id`; `/api/Orscommitteemeeting/:id`; `/api/orsplenarymeeting/:id`; `/api/votesmotion/:id` | 28 |
 | Link filters | `/api/motionsquestionsanswerseventlinks?childUniqueId=:id`; `/api/motionsquestionsanswerseventlinks?mainUniqueId=:id`; `/api/motionsquestionsanswerseventlinks?parentUniqueId=:id` | 3 |
 
-### Required owner choice for these forms
+### Access treatment
 
-The next matrix revision must choose one of the following, consistently and
-explicitly for each affected form:
-
-1. **Independently retained detail responses.** Supply or approve a finite
-   literal identifier universe, its provenance, numerical request bound and
-   refresh rule. The worker will use only that static list.
-2. **Collection/annual response is the DB1 retention unit.** Formally define
-   the detail/filter route as a live API access form rather than an independent
-   retained-response unit. This is only valid if the owner accepts that DB1 is
-   mirroring the stated collection/annual response rather than asserting
-   request-level parity for the detail form.
-3. **A different, source-documented finite window.** Record the exact
-   source-supported finite input set and owner approval before implementation.
-
-Option 2 is the smallest and fastest DB1 scope, but it does not satisfy a
-claim that every detail-form response has independently been retained. Option
-1 can support that stronger claim, but it must not be supplied by an inferred
-crawl. This is a genuine product-scope decision, not an implementation detail
-that a worker can decide for itself.
+The A3 registry will record the parent form and evidence state for every one
+of these 31 forms. It makes no detail request. Any later proposal for an
+independently retained detail response must supply a finite, owner-approved
+identifier universe and must not be created from returned collection IDs.
 
 ## 6. Proposed update and reconciliation classes
 
@@ -139,7 +120,7 @@ routine check while keeping high-volume annual work bounded on the shared VPS.
 | Fixed collections | 29 | Daily | No upstream update watermark is relied on; compare received bytes with the latest retained successful response. |
 | Current-year annual windows | 4 (`year=2026`) | Daily | These are the most likely active-year routes. |
 | Historical annual windows | 84 | Weekly, split across a single bounded scheduled run | Historical coverage remains visible and is rechecked without a daily high-volume transfer burst. |
-| Unresolved detail/filter forms | 31 forms, zero requests | Not scheduled | A check would be an unauthorised request until a finite input rule is approved. |
+| Parent-backed or upstream-limited forms | 31 forms, zero extra requests | Not scheduled | Their treatment is metadata over named retained parents or an upstream limitation, not an independent source request. |
 
 The total capture-ready initial baseline is **117 requests**. A scheduled
 run verifies the same set; it does not discover new years, IDs or routes.
@@ -165,11 +146,6 @@ claims about the source:
 
 ## 8. Approval test and next step
 
-This matrix is ready for review as a **partial but honest** response-unit
-control. It is not ready to authorise full 64-form capture because 31 forms
-lack a finite unit rule.
-
-**Proposed next step:** review this matrix alongside the A1 foundation package.
-The owner may approve A1 synthetic PostgreSQL work and the 117-unit baseline
-direction, but must decide the detail/filter route policy before approving any
-full-scope source capture.
+This matrix is ready for review as the 117-response A3 baseline boundary. It
+does not authorise capture by itself. The [A3 package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
+sets the one-run limits, stops and acceptance tests.

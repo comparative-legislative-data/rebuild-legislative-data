@@ -16,6 +16,7 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Proposed DB1 response-unit matrix](GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
 - [DB1 A1 foundation package](../../planning/DB1_A1_FOUNDATION_IMPLEMENTATION_PACKAGE_PROPOSAL_2026-08-06.md)
 - [DB1 A2 source-free foundation proof](GB_SCT_DB1_A2_FOUNDATION_PROOF_RESULT_2026-08-06.md)
+- [Proposed DB1 A3 live-ingestion package](../../planning/GB_SCT_DB1_A3_LIVE_INGESTION_PACKAGE_PROPOSAL_2026-08-06.md)
 - [Detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
