@@ -3329,3 +3329,21 @@ synthetic bytes plus JSONB in the database, direct SQL acceptance tests and no
 researcher interface. Owner approval is required before that foundation work;
 no full-scope source capture may be proposed until the 31-form policy is
 resolved in the response-unit matrix.
+
+---
+
+# GOV-REV-2026-08-06H — Detail/filter sample comparison
+
+**Outcome:** `LIMITED OBSERVATION COMPLETE — WIDER AUDIT REQUIRES APPROVAL`
+
+Under DEC-0117, eight public no-retention requests compared three small
+collection/detail route pairs and one MQA collection/filter pair. No response
+body, resolved identifier, raw object or download was retained. The sample
+found matching field structures in the three detail comparisons and an exact
+transient row-level subset for the MQA filter comparison.
+
+The evidence does not establish general endpoint equivalence, historical
+coverage or a DB1 capture rule. It corrects the earlier unsupported assumption
+that all 31 detail/filter forms are necessarily wholly additional data. The
+next potential action is a separately approved stratified endpoint-coverage
+audit before a final response-unit or source-ingestion decision.

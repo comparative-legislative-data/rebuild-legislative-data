@@ -89,6 +89,13 @@ has a proposed source request because `:id`/`UniqueId` values are not known as
 a finite, owner-approved universe. The matrix forbids a worker from obtaining
 those values by reading any collection response.
 
+A limited no-retention sample has now shown that three sampled detail routes
+had the same field structure as their parent collections and one sampled MQA
+filter result was an exact transient row-level subset of the parent collection.
+See the [sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md).
+That is useful evidence for the next route-coverage audit, not proof that the
+remaining forms require no direct retention.
+
 | Class | Forms without a current finite request universe | Count |
 | --- | --- | ---: |
 | Standard `:id` detail forms | `/api/bills/:id`; `/api/billstages/:id`; `/api/billstagetypes/:id`; `/api/billtypes/:id`; `/api/sessions/:id`; `/api/members/:id`; `/api/memberelectionconstituencystatuses/:id`; `/api/memberelectionregionstatuses/:id`; `/api/constituencies/:id`; `/api/regions/:id`; `/api/parties/:id`; `/api/memberparties/:id`; `/api/partyroles/:id`; `/api/memberpartyroles/:id`; `/api/governmentroles/:id`; `/api/membergovernmentroles/:id`; `/api/committees/:id`; `/api/committeeroles/:id`; `/api/committeetypes/:id`; `/api/motionsquestionsanswersevents/:id`; `/api/motionsquestionsanswerseventtypes/:id`; `/api/motionsquestionsanswerseventsubtypes/:id`; `/api/motionsquestionsanswersmotions/:id`; `/api/motionsquestionsanswersquestions/:id`; `/api/motionsquestionsanswerssupports/:id`; `/api/Orscommitteemeeting/:id`; `/api/orsplenarymeeting/:id`; `/api/votesmotion/:id` | 28 |
