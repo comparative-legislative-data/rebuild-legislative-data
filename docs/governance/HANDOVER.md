@@ -1,6 +1,6 @@
 # Handover: Comparative Legislative Data
 
-**Status:** active programme; Database mirror reset
+**Status:** active programme; Database mirror backend awaiting R4 owner review
 **Last updated:** 6 August 2026
 
 ## Project in one page
@@ -32,13 +32,15 @@ Its project-only database, raw store, schedules, API routes, temporary QA UI,
 code and active delivery documents have been removed. The reason and rebuild
 rules are recorded in the [close-down and rebuild record](../workstreams/db1/CLOSEDOWN_AND_REBUILD_2026-08-06.md).
 
-There is currently no Database mirror data, service, schedule, user access or
-research portal. The [rebuild proposal](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md)
-now defines 117 bounded source-response requests—29 fixed responses and 88
-annual responses—and Database-mirror access methods for the remaining 31
-parameterised/detail forms. No new DB1 database, capture, schedule, interface or deployment is
-authorised until the owner approves the proposal and a later implementation
-package.
+The approved rebuild has now completed R1–R3. It made one 117-unit baseline
+and one immediate 117-unit reconciliation through the isolated Database mirror
+data pipe; the resulting [assurance report](../workstreams/db1/ASSURANCE_REPORT_2026-08-06.md)
+records 113 unchanged source responses, four current upstream availability
+conditions and zero raw-file integrity failures. PostgreSQL retains manifest,
+checksum, source-condition and reconciliation evidence; raw bodies are stored
+unchanged in the project raw archive. A daily 33-unit and weekly 84-unit
+schedule is active. The backend has no DB1 API, user access, temporary QA UI or
+research portal.
 
 ### DB2
 
@@ -67,10 +69,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the proposed Database mirror **response-unit capture matrix** in
-[DEC-0114](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md). It specifies
-each fixed source response, a 117-request bound, reconciliation cadence and
-the treatment of changed or unavailable source states.
+Conduct the DEC-0114 **R4 backend review** using the
+[assurance report](../workstreams/db1/ASSURANCE_REPORT_2026-08-06.md). The
+decision is whether the bounded backend is accepted as the capability boundary
+for a separately designed researcher portal; it is not a decision to expose
+data or begin DB2.
 
 ## Documentation hygiene
 

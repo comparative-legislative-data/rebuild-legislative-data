@@ -3226,3 +3226,25 @@ authentication boundary remain separately operational.
 The [Database mirror rebuild proposal](../workstreams/db1/REBUILD_PLAN_PROPOSAL_DEC0114.md) turns the 64-form long-term source inventory into a bounded initial capture design: 29 fixed collection responses plus 88 named annual responses, for 117 literal source requests. The remaining 31 parameterised/detail forms are Database-mirror access methods over those retained responses, not an upstream detail crawl or a hidden omission.
 
 The proposal preserves exact-byte retention, manifest and checksum evidence, daily/weekly reconciliation, and a first-class upstream-availability state, including the 2006 Committee Official Reports condition. It contains no source contact, database mutation, schedule, code, temporary QA UI, portal or deployment authority. Owner approval is required before an R1–R3 implementation work package may be prepared.
+
+---
+
+# GOV-REV-2026-08-06C — DB1 backend execution and assurance
+
+**Outcome:** `PASS — R1–R3 EXECUTED; OWNER R4 REVIEW REQUIRED`
+
+DEC-0114’s R1–R3 work completed within its exact 117-unit matrix and isolated
+project target. The source-free foundation proof passed; the baseline and
+immediate reconciliation each recorded all 117 units. The reconciliation
+recorded 113 unchanged source responses, four explicit upstream availability
+conditions, no changed or failed response, and no unrepresented unit. All 117
+manifest-linked raw files re-hashed and re-sized correctly.
+
+The generic worker’s daily 33-unit and weekly 84-unit schedules are active.
+The existing API and web services remained active, and no DB1 reader,
+researcher portal, DB2 output or public data access was added. The active
+[assurance report](../workstreams/db1/ASSURANCE_REPORT_2026-08-06.md) is the
+human-readable result; PostgreSQL retains the machine-readable report.
+
+**Next review:** owner R4 review of whether the backend’s declared capability
+boundary is accepted for a separately proposed researcher portal.

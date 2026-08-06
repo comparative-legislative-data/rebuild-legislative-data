@@ -235,4 +235,4 @@ The plan is accepted only if the owner agrees that it:
 
 ## What next
 
-**Next step:** implement R1–R3 within this exact matrix and its declared bounds: generic foundation, one baseline batch, one immediate reconciliation batch and the backend assurance report. Any change to the request matrix, capacity limits, target isolation or frontend scope requires a new owner decision.
+**Next step:** owner R4 review of the [backend assurance report](ASSURANCE_REPORT_2026-08-06.md). Any researcher portal, public/data access, DB2 work, matrix change, capacity change or target-isolation change requires a new owner decision.

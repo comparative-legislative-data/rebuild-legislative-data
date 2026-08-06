@@ -1,6 +1,6 @@
 # DB1 close-down and rebuild record
 
-**Status:** closed; no Database mirror is currently operating
+**Status:** historical close-down record; superseded by the active DEC-0114 rebuild record
 **Date:** 6 August 2026
 **Scope:** GB-SCT Database mirror only
 
@@ -94,6 +94,8 @@ response-unit matrix for every intended initial capture, with:
 Only after owner approval of that matrix may a clean DB1 foundation be
 implemented.
 
-The required proposal is now available as the
-[Database mirror rebuild proposal](REBUILD_PLAN_PROPOSAL_DEC0114.md). It is
-planning only and awaits owner review.
+The required proposal was accepted and implemented as the
+[Database mirror rebuild plan](REBUILD_PLAN_PROPOSAL_DEC0114.md). Its active
+[assurance report](ASSURANCE_REPORT_2026-08-06.md) records the new backend;
+this document remains the explanation of why the earlier implementation was
+withdrawn and must not be read as the current operating state.
