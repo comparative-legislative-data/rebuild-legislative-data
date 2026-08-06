@@ -4,10 +4,12 @@ set -euo pipefail
 # DEC-0114 R3 only: write one manifest/raw-integrity assurance record.
 if [[ "${1:-}" != "--from-clone" ]]; then
   [[ "${EUID}" -eq 0 ]] || { echo "This deployment must run as root." >&2; exit 1; }
+  refresh="${1:-}"
+  [[ -z "$refresh" || "$refresh" == "--refresh" ]] || { echo "Usage: $0 [--refresh]" >&2; exit 1; }
   stage="$(mktemp -d /srv/cld-gb-sct/staging/db1-assurance.XXXXXX)"
   trap 'rm -rf "$stage"' EXIT
   git clone --depth 1 https://github.com/comparative-legislative-data/rebuild-legislative-data.git "$stage/source"
-  exec bash "$stage/source/ops/deploy_db1_assurance.sh" --from-clone
+  exec bash "$stage/source/ops/deploy_db1_assurance.sh" --from-clone "$refresh"
 fi
 
 [[ "${EUID}" -eq 0 ]] || { echo "This deployment must run as root." >&2; exit 1; }
@@ -18,6 +20,8 @@ database=cld_gb_sct_db1
 secret_file=/etc/cld-gb-sct/secrets/db1-r1-proof.env
 unit=cld-gb-sct-db1-assurance.service
 source_root="$(cd "$(dirname "$0")/.." && pwd)"
+refresh="${2:-}"
+[[ -z "$refresh" || "$refresh" == "--refresh" ]] || { echo "Usage: $0 [--refresh]" >&2; exit 1; }
 
 systemctl is-active --quiet postgresql@16-cld_gb_sct.service
 systemctl is-active --quiet cld-gb-sct-api.service
@@ -25,7 +29,12 @@ systemctl is-active --quiet cld-gb-sct-web.service
 test -x "$runtime/node"
 test -f "$secret_file"
 test -d "$project_root/raw/db1"
-[[ ! -e "/etc/systemd/system/$unit" ]]
+if [[ "$refresh" == "--refresh" ]]; then
+  test -e "/etc/systemd/system/$unit"
+  systemctl stop "$unit"
+else
+  [[ ! -e "/etc/systemd/system/$unit" ]]
+fi
 reconciliation_rows="$(sudo -n -u postgres psql -h "$socket_directory" -p 5434 -d "$database" -Atqc "select count(*) from db1_observation o join db1_capture_run r on r.id=o.run_id where r.mode='reconcile' and r.expected_units=117 and r.finished_at is not null")"
 [[ "$reconciliation_rows" == "117" ]]
 
@@ -43,6 +52,7 @@ chown -R root:cld-gb-sct "$release_path"
 chmod -R g+rX,o-rwx "$release_path"
 sed "s#RELEASE_ID#${release_id}#g" "$source_root/ops/systemd/cld-gb-sct-db1-assurance.service.template" > "/etc/systemd/system/$unit"
 systemctl daemon-reload
+systemctl reset-failed "$unit"
 systemctl start "$unit"
 systemctl is-active --quiet "$unit"
 printf 'DEC-0114 assurance report passed: %s\n' "$release_id"

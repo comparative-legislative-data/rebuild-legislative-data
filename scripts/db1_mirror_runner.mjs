@@ -271,17 +271,37 @@ async function classifyKnownConditions(pool) {
 
 async function buildAssuranceReport(pool) {
   const baseline = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='baseline' and finished_at is not null order by finished_at desc limit 1`);
-  const reconciliation = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='reconcile' and finished_at is not null order by finished_at desc limit 1`);
-  if (!baseline.rows[0] || !reconciliation.rows[0]) throw new Error("BASELINE_AND_RECONCILIATION_REQUIRED");
-  const currentRun = reconciliation.rows[0];
+  const fullReconciliation = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='reconcile' and expected_units=117 and finished_at is not null order by finished_at desc limit 1`);
+  const targetedDiagnostic = await pool.query(`select id, started_at, finished_at, expected_units from db1_capture_run where mode='reconcile' and expected_units<117 and finished_at is not null order by finished_at desc limit 1`);
+  if (!baseline.rows[0] || !fullReconciliation.rows[0]) throw new Error("BASELINE_AND_FULL_RECONCILIATION_REQUIRED");
+  const fullRun = fullReconciliation.rows[0];
+  const fullStatusCounts = Object.fromEntries(await pool.query(
+    `select status, count(*)::integer as count from db1_observation where run_id=$1 group by status order by status`,
+    [fullRun.id]
+  ).then((result) => result.rows.map((row) => [row.status, row.count])));
   const observations = await pool.query(
     `select o.unit_id, o.status, o.http_status, o.source_condition, o.sha256, o.byte_length, o.raw_path, u.source_url, u.cadence
-     from db1_observation o join db1_capture_unit u on u.id=o.unit_id where o.run_id=$1 order by o.unit_id`,
-    [currentRun.id]
+     from (
+       select distinct on (o.unit_id) o.*
+       from db1_observation o
+       join db1_capture_run r on r.id=o.run_id
+       where r.finished_at is not null
+       order by o.unit_id, o.finished_at desc
+     ) o
+     join db1_capture_unit u on u.id=o.unit_id
+     order by o.unit_id`
   );
   const statusCounts = Object.fromEntries(await pool.query(
-    `select status, count(*)::integer as count from db1_observation where run_id=$1 group by status order by status`,
-    [currentRun.id]
+    `select current.status, count(*)::integer as count
+     from (
+       select distinct on (o.unit_id) o.status
+       from db1_observation o
+       join db1_capture_run r on r.id=o.run_id
+       where r.finished_at is not null
+       order by o.unit_id, o.finished_at desc
+     ) current
+     group by current.status
+     order by current.status`
   ).then((result) => result.rows.map((row) => [row.status, row.count])));
   let integrityFailures = 0;
   for (const observation of observations.rows.filter((row) => row.sha256)) {
@@ -297,8 +317,9 @@ async function buildAssuranceReport(pool) {
     generated_at: new Date().toISOString(),
     scope: { route_forms: 64, response_units: 117, daily_units: 33, weekly_units: 84 },
     baseline: baseline.rows[0],
-    reconciliation: currentRun,
-    reconciliation_statuses: statusCounts,
+    full_reconciliation: { ...fullRun, statuses: fullStatusCounts },
+    latest_targeted_diagnostic: targetedDiagnostic.rows[0] ?? null,
+    current_statuses: statusCounts,
     raw_integrity: { checked: observations.rows.filter((row) => row.sha256).length, failures: integrityFailures },
     source_conditions: observations.rows
       .filter((row) => row.status === "UPSTREAM_AVAILABILITY_MESSAGE")
