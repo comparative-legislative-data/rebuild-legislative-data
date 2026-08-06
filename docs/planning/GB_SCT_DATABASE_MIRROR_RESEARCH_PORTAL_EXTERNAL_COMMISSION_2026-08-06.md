@@ -236,16 +236,12 @@ A first-time user should be able to answer:
 6. How do I get an all-years package where one is offered?
 7. Can I complete these tasks with keyboard navigation and 200% zoom?
 
-## 9. Supporting context
+## 9. Self-contained brief
 
-Reviewers can respond from this brief alone. For optional further detail:
-
-- [Project design](../governance/PROJECT_DESIGN.md)
-- [Current DB1 backend state](../data/gb-sct/GB_SCT_DB1_CURRENT_BACKEND_STATE_2026-08-06.md)
-- [DB1 workstream narrative](../workstreams/db1/README.md)
-- [Response-unit control matrix](../data/gb-sct/GB_SCT_DB1_RESPONSE_UNIT_MATRIX_PROPOSAL_2026-08-06.md)
+This commission is self-contained. Reviewers should rely on the project,
+backend, user-task and constraint information in this document; no repository
+access, linked documents, screenshots or other project material is assumed.
 
 **What next:** owner review of this draft, then external responses can be
 gathered and compared before any Database Mirror portal proposal or
 implementation begins.
-
