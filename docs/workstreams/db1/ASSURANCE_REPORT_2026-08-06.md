@@ -33,6 +33,16 @@ The machine-readable assurance record is retained in PostgreSQL table
 `db1_assurance_report`; it records the run identifiers, status counts, raw
 integrity result and source conditions used for this report.
 
+## Access boundary
+
+The 31 identifier/filter forms in the approved inventory do not introduce
+another upstream source response: their source records are contained in the
+retained collection or annual responses covered above. DB1 does **not yet**
+publish PostgreSQL record-access routes for those forms. That is not a
+source-capture omission and it does not trigger an upstream detail crawl; it is
+a separate researcher-portal/API access-design task after R4. The current
+backend capability is raw-response retention, provenance and reconciliation.
+
 ## Current upstream conditions
 
 These are source states observed during the immediate reconciliation, not CLD
@@ -72,7 +82,8 @@ backend’s actual capabilities.
 It does **not** claim that the Scottish Parliament API has no other URLs,
 cannot change between checks, has complete historical coverage, or provides
 semantic research variables. It does not create DB2, a canonical dataset,
-downloads in research formats, public access or a research finding.
+downloads in research formats, PostgreSQL record-access routes, public access
+or a research finding.
 
 ## R4 decision
 
