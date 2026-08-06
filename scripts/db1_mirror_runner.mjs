@@ -378,7 +378,12 @@ try {
     const mode = process.env.DB1_MODE === "reconcile" ? "reconcile" : "baseline";
     const cadence = process.env.DB1_CADENCE ?? "all";
     if (!["all", "daily", "weekly"].includes(cadence)) throw new Error("DB1_CADENCE must be all, daily or weekly");
-    const selectedUnits = cadence === "all" ? units : units.filter((unit) => unit.cadence === cadence);
+    const requestedIds = process.env.DB1_UNIT_IDS?.split(",").filter(Boolean) ?? [];
+    const unknownIds = requestedIds.filter((id) => !units.some((unit) => unit.id === id));
+    if (unknownIds.length) throw new Error(`DB1_UNIT_IDS includes unapproved units: ${unknownIds.join(",")}`);
+    const selectedUnits = requestedIds.length
+      ? units.filter((unit) => requestedIds.includes(unit.id))
+      : cadence === "all" ? units : units.filter((unit) => unit.cadence === cadence);
     console.log(JSON.stringify(await runCapture(pool, rawRoot, mode, selectedUnits)));
   }
 } finally {
