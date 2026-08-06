@@ -13,13 +13,17 @@ runtime="$project_root/runtime/node-v24.18.1/bin"
 socket_directory=/run/postgresql-cld-gb-sct
 database=cld_gb_sct_db1
 staging="$(mktemp -d "$project_root/staging/db1-assurance.XXXXXX")"
+migration_copy="$(mktemp /tmp/cld-db1-a6.XXXXXX.sql)"
 release_path=""
 previous_target=""
 current_link="$project_root/db1-worker-current"
 worker_secret=/etc/cld-gb-sct/secrets/db1-worker.env
 source_secret=/etc/cld-gb-sct/secrets/db1-a5.env
 
-cleanup() { rm -rf -- "$staging"; }
+cleanup() {
+  rm -f -- "$migration_copy"
+  rm -rf -- "$staging"
+}
 rollback_link() {
   if [[ -n "$previous_target" ]]; then
     ln -sfn "$previous_target" "$current_link"
@@ -68,7 +72,8 @@ unset DB1_A5_DATABASE_URL DB1_A5_REQUIRE_FROM
 
 migration_ready="$(sudo -n -u postgres psql -X -Atqc "select to_regclass('db1.assurance_run') is not null and to_regclass('db1.response_schema_profile') is not null and to_regclass('db1.schema_drift_event') is not null" -h "$socket_directory" -p 5434 -d "$database")"
 if [[ "$migration_ready" != "t" ]]; then
-  sudo -n -u postgres psql -X -v ON_ERROR_STOP=1 -h "$socket_directory" -p 5434 -d "$database" -f "$release_path/migrations/db1_a6/005_backend_assurance.sql"
+  install -o postgres -g postgres -m 0640 "$release_path/migrations/db1_a6/005_backend_assurance.sql" "$migration_copy"
+  sudo -n -u postgres psql -X -v ON_ERROR_STOP=1 -h "$socket_directory" -p 5434 -d "$database" -f "$migration_copy"
 fi
 
 if [[ -L "$current_link" ]]; then previous_target="$(readlink -f "$current_link")"; fi
