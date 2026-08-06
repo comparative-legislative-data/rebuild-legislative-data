@@ -76,13 +76,11 @@ be shaped to serve assumed DB2 variables.
 
 ## Next decision
 
-Review the completed [Cohort A endpoint-coverage audit](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md).
-It provides limited evidence that many ordinary detail/filter routes may be
-alternative source presentations rather than wholly additional data. The next
-decision is whether to approve a separately bounded Cohort B/final
-response-unit proposal for the remaining high-volume and uncertain routes. No
-DB1 rebuild, source capture, database mutation, schedule, ingest-test scaffold
-or portal work is authorised.
+Review the [Cohort B/final response-unit proposal](../data/gb-sct/GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md).
+It proposes at most 22 public no-retention checks to resolve the ten remaining
+detail-route evidence gaps, then to prepare one final DB1 response-unit model.
+No DB1 rebuild, source capture, database mutation, schedule, ingest-test
+scaffold or portal work is authorised.
 
 ## Documentation hygiene
 

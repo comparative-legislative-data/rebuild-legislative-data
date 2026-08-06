@@ -18,6 +18,7 @@ then use these records to inspect a source boundary or prepare a proposal.
 - [Detail/filter sample comparison](GB_SCT_DETAIL_FILTER_SAMPLE_COMPARISON_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit result](GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md)
 - [Cohort A endpoint-coverage audit proposal](GB_SCT_ENDPOINT_COVERAGE_AUDIT_PROPOSAL_2026-08-06.md)
+- [Proposed Cohort B and final response-unit decision](GB_SCT_DB1_COHORT_B_AND_FINAL_RESPONSE_UNIT_PROPOSAL_2026-08-06.md)
 
 The endpoint inventory defines potential programme scope. It is not a
 Database-mirror capture instruction. DEC-0115 now approves a PostgreSQL-first

@@ -3386,3 +3386,23 @@ and the two untested Member-status detail forms remain for the next bounded
 capture-boundary proposal.
 
 **Next review:** owner review of the [Cohort A result](../data/gb-sct/GB_SCT_ENDPOINT_COVERAGE_AUDIT_RESULT_2026-08-06.md), followed by a separate Cohort B/final response-unit proposal. No source capture, PostgreSQL, scheduler, implementation or portal work is authorised.
+
+---
+
+# GOV-REV-2026-08-06K — Cohort B and final response-unit proposal prepared
+
+**Outcome:** `OWNER REVIEW REQUIRED — NO SOURCE OR DB1 ACTION AUTHORISED`
+
+The new package resolves the remaining ten detail-route evidence gaps in one
+proposed 20-request no-retention cohort, with two tightly limited pre-body
+transport retries. It is deliberately a source-form comparison, not a capture
+or a crawl. Its proposed result will distinguish forms that may be accessed
+from a named retained parent response from forms that need a separate finite
+source-unit rule.
+
+The proposed final matrix would then map every long-term API form transparently
+to a raw PostgreSQL capture unit, a source-faithful database access form, or a
+visible unresolved gap. This preserves the 64-form scope without pretending
+that a detail URL must create an unbounded upstream request queue.
+
+**Next review:** owner review and approval/amendment of DEC-0119. No source capture, PostgreSQL, scheduler, implementation or portal work is authorised.
